@@ -1,9 +1,9 @@
-This is an example source code to show how to write an IP block to implement UDP TX path using LegUp. 
+This is an example project to show you how to create an AXI4-Slave top-level interface using HLS.
 
 Please follow the user guide to install LegUp HLS and learn more about the features of this HLS tool:
  - https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls#getting-started
 
-After the installation is done, you can try out this example through either GUI or commandline. 
+After the installation is done, you can try out this example through either GUI or command-line. 
 
 # Using LegUp HLS IDE
 1. Launch LegUp HLS IDE.
@@ -11,7 +11,7 @@ After the installation is done, you can try out this example through either GUI 
    * From the menu select: File -> Import.
    * In the import window select General -> "Existing Projects into Workspace". Click Next.
    * Click the Browse button beside "Select root directory". Navigate to where you cloned this fpga-hls-examples git repository.
-   * Under Projects you should see the "udp_tx" project checked. Click Finish.
+   * Under Projects you should see the "axi_slave" project checked. Click Finish.
 3. Try "Run Software", "Compile to Hardware", and "SW/HW Co-simulation".
 
 # Using LegUp HLS Commandline

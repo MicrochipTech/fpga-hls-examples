@@ -21,16 +21,13 @@ After the installation is done, you can try out this example through either GUI
 or command-line. 
 
 # Using LegUp HLS IDE
-1. Launch LegUp IDE.
-2. Create a new LegUp project.
-   * Set a project name, e.g., "fp_mult".
-   * Add all `.hpp`, `.cpp` source files from this directory.
-   * Skip "Top-Level Function" since a top-level pragma is already specified for the `custom_top` function in `fmul_test.cpp`.
-   * Skip "Test Bench Module" as we will use SW/HW Co-simulation.
-   * Select "PolarFire" and "MPF300TS-1FCG1152I on MPF300 board" for the target FPGA device.
-   * Then "Finish".
-3. Click "HLS Constraints" button, then select "Set target clock period" constraint type, set constraint value 20 (in nanoseconds), click "Add" and "OK".
-4. Try "Run Software", "Compile to Hardware", and "SW/HW Co-simulation".
+1. Launch LegUp HLS IDE.
+2. Import the example HLS project.
+   * From the menu select: File -> Import.
+   * In the import window select General -> "Existing Projects into Workspace". Click Next.
+   * Click the Browse button beside "Select root directory". Navigate to where you cloned this fpga-hls-examples git repository.
+   * Under Projects you should see the fp_mult project checked. Click Finish.
+3. Try "Run Software", "Compile to Hardware", and "SW/HW Co-simulation".
 
 # Using LegUp HLS Command-line
 1. Make sure environment variable "LEGUP_ROOT_DIR" is properly set. 
