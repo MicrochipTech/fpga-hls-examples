@@ -1,6 +1,7 @@
 This is an example source code to show how to write an IP block to implement UDP TX path using LegUp. 
 
-Please follow the documentation in https://www.legupcomputing.com/ to install LegUp and learn more about the features of this HLS tool.
+Please follow the user guide to install LegUp HLS and learn more about the features of this HLS tool:
+ - https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls#getting-started
 
 After the installation is done, you can try out this example through either GUI or commandline. 
 
