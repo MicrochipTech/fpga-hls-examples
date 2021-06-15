@@ -16,7 +16,7 @@
 					<folderInfo id="legup.managedbuild.config.gnu.exe.release.448880873." name="/" resourcePath="">
 						<toolChain id="legup.managedbuild.toolchain.gnu.exe.release.784819721" name="Linux GCC" superClass="legup.managedbuild.toolchain.gnu.exe.release">
 							<targetPlatform id="legup.managedbuild.target.gnu.platform.exe.release.146885132" name="Debug Platform" superClass="legup.managedbuild.target.gnu.platform.exe.release"/>
-							<builder autoBuildTarget="C:\LegUp-9.1\legup\bin\legup cosim LEGUP_TOOL_PATH=C:\Microsemi\Libero_SoC_v12.5\ModelSimPro\win32acoem" buildPath="${workspace_loc:/axi_master}/" cleanBuildTarget="C:\LegUp-9.1\legup\bin\legup clean" command="${LEGUP_CYGWIN_BIN}\bash.exe" enableCleanBuild="false" id="com.legup.managedbuild.makefileGenerator.1833293933" incrementalBuildTarget="C:\LegUp-9.1\legup\bin\legup cosim LEGUP_TOOL_PATH=C:\Microsemi\Libero_SoC_v12.5\ModelSimPro\win32acoem" keepEnvironmentInBuildfile="false" superClass="com.legup.managedbuild.makefileGenerator"/>
+							<builder autoBuildTarget="C:\LegUp-9.1\legup\bin\legup cosim LEGUP_TOOL_PATH=C:\Microsemi\Libero_SoC_v12.5\ModelSimPro\win32acoem" buildPath="${workspace_loc:/axi_initiator}/" cleanBuildTarget="C:\LegUp-9.1\legup\bin\legup clean" command="${LEGUP_CYGWIN_BIN}\bash.exe" enableCleanBuild="false" id="com.legup.managedbuild.makefileGenerator.1833293933" incrementalBuildTarget="C:\LegUp-9.1\legup\bin\legup cosim LEGUP_TOOL_PATH=C:\Microsemi\Libero_SoC_v12.5\ModelSimPro\win32acoem" keepEnvironmentInBuildfile="false" superClass="com.legup.managedbuild.makefileGenerator"/>
 							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1593274539" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
 							<tool id="legup.managedbuild.tool.gnu.cpp.compiler.exe.debug.1073813088" name="GCC C++ Compiler" superClass="legup.managedbuild.tool.gnu.cpp.compiler.exe.debug">
 								<option id="gnu.cpp.compiler.option.optimization.level.833907967" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
@@ -53,7 +53,7 @@
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="axi_master.legup.managedbuild.target.gnu.exe.26003946" name="Executable" projectType="legup.managedbuild.target.gnu.exe"/>
+		<project id="axi_initiator.legup.managedbuild.target.gnu.exe.26003946" name="Executable" projectType="legup.managedbuild.target.gnu.exe"/>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>

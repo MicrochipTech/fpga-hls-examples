@@ -8,8 +8,8 @@ You can find the user guide and tutorials for the Microchip HLS integrated devel
 
 Example | Description
 --------|------------
-[axi_master](./axi_master)|Example of an AXI4-Master top-level interface.
-[axi_slave](./axi_slave)|Example of an AXI4-Slave top-level interface.
+[axi_initiator](./axi_initiator)|Example of an AXI4-Initiator top-level interface.
+[axi_target](./axi_target)|Example of an AXI4-Target top-level interface.
 
 
 ## Tutorial Examples

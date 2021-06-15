@@ -1,40 +1,40 @@
-#include <legup/axi_interface.hpp>
-#include <legup/ap_int.hpp>
+#include <hls/axi_interface.hpp>
+#include <hls/ap_int.hpp>
 #include <stdio.h>
-using namespace legup;
+using namespace hls;
 
-void simple_master(AxiInterface<ap_uint<32>, ap_uint<64>, ap_uint<8>> &master) {
-#pragma LEGUP function top
+void simple_initiator(AxiInterface<ap_uint<32>, ap_uint<64>, ap_uint<8>> &initiator) {
+#pragma HLS function top
     ap_uint<9> remaining = AXIM_MAX_BURST_LEN;
     ap_uint<32> r_addr = 0;
     ap_uint<32> w_addr = AXIM_MAX_BURST_LEN * 8;
 
-#pragma LEGUP loop pipeline
+#pragma HLS loop pipeline
     for (; remaining != 0; --remaining) {
         bool is_last = remaining == 1;
 
         if (remaining == AXIM_MAX_BURST_LEN) {
             // Request to read data in burst.
-            axi_m_read_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(master, r_addr, AXIM_MAX_BURST_LEN);
+            axi_m_read_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, r_addr, AXIM_MAX_BURST_LEN);
 
             // Request to write data in burst.
-            axi_m_write_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(master, w_addr, AXIM_MAX_BURST_LEN);
+            axi_m_write_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, w_addr, AXIM_MAX_BURST_LEN);
         }
 
         // Write back the data we read + 1.
-        ap_uint<64> data = axi_m_read_data<ap_uint<32>, ap_uint<64>>(master);
-        axi_m_write_data<ap_uint<32>, ap_uint<64>, ap_uint<8>>(master, ap_uint<64>(data + 1), ap_uint<8>(0xFF), is_last);
+        ap_uint<64> data = axi_m_read_data<ap_uint<32>, ap_uint<64>>(initiator);
+        axi_m_write_data<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, ap_uint<64>(data + 1), ap_uint<8>(0xFF), is_last);
 
     }
 
     // After the last write, read the response code.
-    ap_uint<2> bresp = axi_m_write_resp(master);
+    ap_uint<2> bresp = axi_m_write_resp(initiator);
 }
 
 int main() {
     AxiInterface<ap_uint<32>, ap_uint<64>, ap_uint<8>> axi_if(AXIM_MAX_BURST_LEN);
 
-    // Prepare the data to be read by the AXI master.
+    // Prepare the data to be read by the AXI initiator.
     for (int i = 0; i < AXIM_MAX_BURST_LEN; i++) {
         RdDataSignals<ap_uint<64>> r_sig;
         r_sig.data = i;
@@ -43,12 +43,12 @@ int main() {
         axi_if.r.write(r_sig);
     }
 
-    // Prepare the write response for the write from AXI master.
+    // Prepare the write response for the write from AXI initiator.
     WrRespSignals b_sig;
     axi_if.b.write(b_sig);
 
     // Run the top-level function that will be synthesize to hardware.
-    simple_master(axi_if);
+    simple_initiator(axi_if);
 
     bool failed = false;
 
