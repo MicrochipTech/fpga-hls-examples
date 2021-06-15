@@ -8,7 +8,7 @@
 
 void sobel_filter(unsigned char in[HEIGHT][WIDTH],
                   unsigned char out[HEIGHT][WIDTH]) {
-#pragma LEGUP function top
+#pragma HLS function top
 
     // The 3x3 Sobel filters.
     const static int gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
@@ -16,7 +16,7 @@ void sobel_filter(unsigned char in[HEIGHT][WIDTH],
 
     int x = 0;
     int y = 1;
-#pragma LEGUP loop pipeline
+#pragma HLS loop pipeline
     for (int i = 0; i < (HEIGHT - 2) * (WIDTH - 2); i++) {
         // increment row when column reaches end of row
         y = (x == WIDTH - 2) ? y + 1 : y;

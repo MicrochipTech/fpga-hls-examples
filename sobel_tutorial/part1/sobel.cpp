@@ -8,7 +8,7 @@
 
 void sobel_filter(unsigned char in[HEIGHT][WIDTH],
                   unsigned char out[HEIGHT][WIDTH]) {
-#pragma LEGUP function top
+#pragma HLS function top
 
     // The 3x3 Sobel filters.
     const static int gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};

@@ -1,18 +1,18 @@
 #include "input.h"
 #include "output.h"
-#include <legup/image_processing.hpp>
-#include <legup/streaming.hpp>
+#include <hls/image_processing.hpp>
+#include <hls/streaming.hpp>
 #include <stdio.h>
 
-using namespace legup;
+using namespace hls;
 
 #define HEIGHT 512
 #define WIDTH 512
 
 void sobel_filter(FIFO<unsigned char> &input_fifo,
                   FIFO<unsigned char> &output_fifo) {
-#pragma LEGUP function top
-#pragma LEGUP function pipeline
+#pragma HLS function top
+#pragma HLS function pipeline
 
     // The 3x3 Sobel filters.
     const static int GX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
