@@ -1,8 +1,8 @@
 #include "fmult.hpp"
 #include "half.hpp"
 
-#include <legup/streaming.hpp>
-#include <legup/types.h>
+#include <hls/streaming.hpp>
+#include <hls/types.h>
 
 #include <iostream>
 #include <limits>
@@ -11,6 +11,7 @@
 
 #define StrT const char *
 
+using hls::FIFO;
 using half_float::half;
 
 // Parse bits from float, double, or half.
@@ -160,26 +161,26 @@ template <typename FType> void check(FType ina, FType inb, FType actual) {
 // CoSim does not support float return type or argument.
 // custom_top instantiates all eight cores together.
 // We target DSP that can do 17x17 unsigned multiplication (PolarFire).
-void custom_top(legup::FIFO<ap_uint<16>> &half_ina,
-                legup::FIFO<ap_uint<16>> &half_inb,
-                legup::FIFO<ap_uint<16>> &half_out,
-                legup::FIFO<uint64> &double_ina,
-                legup::FIFO<uint64> &double_inb,
-                legup::FIFO<uint64> &double_out, legup::FIFO<uint32> &float_ina,
-                legup::FIFO<uint32> &float_inb,
-                legup::FIFO<uint32> &float_out) {
-#pragma LEGUP function top
+void custom_top(FIFO<ap_uint<16>> &half_ina,
+                FIFO<ap_uint<16>> &half_inb,
+                FIFO<ap_uint<16>> &half_out,
+                FIFO<uint64> &double_ina,
+                FIFO<uint64> &double_inb,
+                FIFO<uint64> &double_out, FIFO<uint32> &float_ina,
+                FIFO<uint32> &float_inb,
+                FIFO<uint32> &float_out) {
+#pragma HLS function top
     fmult_16_wrapper<17, 17>(half_ina, half_inb, half_out);
     fmult_32_wrapper<17, 17>(float_ina, float_inb, float_out);
     fmult_64_wrapper<17, 17>(double_ina, double_inb, double_out);
 }
 
-void run_test(double a, double b, legup::FIFO<ap_uint<16>> &half_ina,
-              legup::FIFO<ap_uint<16>> &half_inb,
-              legup::FIFO<ap_uint<16>> &half_out,
-              legup::FIFO<uint64> &double_ina, legup::FIFO<uint64> &double_inb,
-              legup::FIFO<uint64> &double_out, legup::FIFO<uint32> &float_ina,
-              legup::FIFO<uint32> &float_inb, legup::FIFO<uint32> &float_out) {
+void run_test(double a, double b, FIFO<ap_uint<16>> &half_ina,
+              FIFO<ap_uint<16>> &half_inb,
+              FIFO<ap_uint<16>> &half_out,
+              FIFO<uint64> &double_ina, FIFO<uint64> &double_inb,
+              FIFO<uint64> &double_out, FIFO<uint32> &float_ina,
+              FIFO<uint32> &float_inb, FIFO<uint32> &float_out) {
 
     // Inject input.
     half h_a(a), h_b(b);
@@ -211,15 +212,15 @@ void run_test(double a, double b, legup::FIFO<ap_uint<16>> &half_ina,
 
 int main() {
 
-    legup::FIFO<ap_uint<16>> half_ina(2);
-    legup::FIFO<ap_uint<16>> half_inb(2);
-    legup::FIFO<ap_uint<16>> half_out(2);
-    legup::FIFO<uint64> double_ina(2);
-    legup::FIFO<uint64> double_inb(2);
-    legup::FIFO<uint64> double_out(2);
-    legup::FIFO<uint32> float_ina(2);
-    legup::FIFO<uint32> float_inb(2);
-    legup::FIFO<uint32> float_out(2);
+    FIFO<ap_uint<16>> half_ina(2);
+    FIFO<ap_uint<16>> half_inb(2);
+    FIFO<ap_uint<16>> half_out(2);
+    FIFO<uint64> double_ina(2);
+    FIFO<uint64> double_inb(2);
+    FIFO<uint64> double_out(2);
+    FIFO<uint32> float_ina(2);
+    FIFO<uint32> float_inb(2);
+    FIFO<uint32> float_out(2);
 
     double neg_nan = -0.0 / 0.0;
     double pos_nan = +0.0 / 0.0;

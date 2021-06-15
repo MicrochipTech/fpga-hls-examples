@@ -2,11 +2,13 @@
 #include "checksum_calc.h"
 #include "utils.h"
 
-#include <legup/bit_level_operations.h>
-#include <legup/streaming.hpp>
-#include <legup/types.h>
+#include <hls/bit_level_operations.h>
+#include <hls/streaming.hpp>
+#include <hls/types.h>
 
 #include <stdlib.h>
+
+using hls::FIFO;
 
 struct metadata {
     uint32 src_addr;
@@ -15,12 +17,12 @@ struct metadata {
     uint16 dest_port;
 };
 
-void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
-                       legup::FIFO<metadata> &metadata_in,
-                       legup::FIFO<uint16> &length_in,
-                       legup::FIFO<AxiWord> &data_out,
-                       legup::FIFO<AxiWord> &checksum_out) {
-#pragma LEGUP function pipeline
+void udpTxReadFunction(FIFO<AxiWord> &data_in,
+                       FIFO<metadata> &metadata_in,
+                       FIFO<uint16> &length_in,
+                       FIFO<AxiWord> &data_out,
+                       FIFO<AxiWord> &checksum_out) {
+#pragma HLS function pipeline
 
     // From http://www.faqs.org/rfcs/rfc768.html
     //
@@ -99,14 +101,14 @@ void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
             // udp length (in a format of IP header) + source addr
             // 0x1100 is the protocol used
             output_word.data =
-                legup_bit_concat_3(ByteSwap32(temp_metadata.src_addr), 32,
+                hls_bit_concat_3(ByteSwap32(temp_metadata.src_addr), 32,
                                    ByteSwap16(packet_length), 16, 0x1100, 16);
 
             // also prepare the next data for checksum and downstream, which has
             // dest addr, src & dest port
             remaining = ByteSwap32(temp_metadata.dest_addr);
             remaining_extra =
-                legup_bit_concat_2(ByteSwap16(temp_metadata.dest_port), 16,
+                hls_bit_concat_2(ByteSwap16(temp_metadata.dest_port), 16,
                                    ByteSwap16(temp_metadata.src_port), 16);
 
             udp_tx_r_state = PSEUDOHEADER;
@@ -116,9 +118,9 @@ void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
         break;
     case PSEUDOHEADER:
         output_word.data =
-            legup_bit_concat_2(remaining_extra, 32, remaining, 32);
+            hls_bit_concat_2(remaining_extra, 32, remaining, 32);
         remaining =
-            legup_bit_concat_2(0x0000, 16, ByteSwap16(packet_length), 16);
+            hls_bit_concat_2(0x0000, 16, ByteSwap16(packet_length), 16);
         packet_length -= 8;
 
         udp_tx_r_state = FORWARD;
@@ -132,10 +134,10 @@ void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
             // read input word
             AxiWord input_word = data_in.read();
 
-            output_word.data = legup_bit_concat_2(
-                legup_bit_select(input_word.data, 31, 0), 32, remaining, 32);
+            output_word.data = hls_bit_concat_2(
+                hls_bit_select(input_word.data, 31, 0), 32, remaining, 32);
 
-            remaining = legup_bit_select(input_word.data, 63, 32);
+            remaining = hls_bit_select(input_word.data, 63, 32);
 
             if (packet_length > 8) {
                 packet_length -= 8;
@@ -144,7 +146,7 @@ void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
                 udp_tx_r_state = RESIDUE;
             } else {
                 output_word.keep =
-                    legup_bit_concat_2(Length2Keep(packet_length), 4, 0xF, 4);
+                    hls_bit_concat_2(Length2Keep(packet_length), 4, 0xF, 4);
                 output_word.last = 1;
 
                 packet_length = 0;
@@ -155,7 +157,7 @@ void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
         }
         break;
     case RESIDUE:
-        output_word.data = legup_bit_concat_2(0x00000000, 32, remaining, 32);
+        output_word.data = hls_bit_concat_2(0x00000000, 32, remaining, 32);
         output_word.keep = Length2Keep(packet_length);
         output_word.last = 1;
 
@@ -168,10 +170,10 @@ void udpTxReadFunction(legup::FIFO<AxiWord> &data_in,
     }
 }
 
-void udpTxWriteFunction(legup::FIFO<AxiWord> &data_in,
-                        legup::FIFO<uint16> &checksum_in,
-                        legup::FIFO<AxiWord> &data_out) {
-#pragma LEGUP function pipeline
+void udpTxWriteFunction(FIFO<AxiWord> &data_in,
+                        FIFO<uint16> &checksum_in,
+                        FIFO<AxiWord> &data_out) {
+#pragma HLS function pipeline
 
     // IP Header
     //
@@ -208,19 +210,19 @@ void udpTxWriteFunction(legup::FIFO<AxiWord> &data_in,
 
             // add 20 bytes to the IP header length
             uint16 temp_length =
-                ByteSwap16(legup_bit_select(input_word.data, 31, 16)) + 20;
+                ByteSwap16(hls_bit_select(input_word.data, 31, 16)) + 20;
 
-            output_word.data = legup_bit_concat_3(
+            output_word.data = hls_bit_concat_3(
                 0x00000000, 32, ByteSwap16(temp_length), 16, 0x0045, 16);
 
-            remaining = legup_bit_select(input_word.data, 63, 32);
+            remaining = hls_bit_select(input_word.data, 63, 32);
             udp_tx_w_state = IP1;
 
             data_out.write(output_word);
         }
         break;
     case IP1:
-        output_word.data = legup_bit_concat_2(remaining, 32, 0x000011FF, 32);
+        output_word.data = hls_bit_concat_2(remaining, 32, 0x000011FF, 32);
         udp_tx_w_state = IP2;
         data_out.write(output_word);
         break;
@@ -236,7 +238,7 @@ void udpTxWriteFunction(legup::FIFO<AxiWord> &data_in,
             uint16 checksum = checksum_in.read();
             output_word = data_in.read();
             output_word.data =
-                legup_bit_update(output_word.data, 31, 16, checksum);
+                hls_bit_update(output_word.data, 31, 16, checksum);
 
             if (output_word.last) {
                 udp_tx_w_state = IDLE;
@@ -261,24 +263,24 @@ void udpTxWriteFunction(legup::FIFO<AxiWord> &data_in,
 // FIXME: have to create a wrapper function for the shared checksumCalculation,
 // otherwise we will have multiple implementations for the same module when we
 // integrate multiple projects together
-void udpTxChecksum(legup::FIFO<AxiWord> &data_in,
-                   legup::FIFO<uint16> &checksum_out) {
-#pragma LEGUP function pipeline
+void udpTxChecksum(FIFO<AxiWord> &data_in,
+                   FIFO<uint16> &checksum_out) {
+#pragma HLS function pipeline
     checksumCalculation(data_in, checksum_out);
 }
 
-void udpTx(legup::FIFO<AxiWord> &data_in, legup::FIFO<metadata> &metadata_in,
-           legup::FIFO<uint16> &length_in, legup::FIFO<AxiWord> &data_out) {
-#pragma LEGUP function top
+void udpTx(FIFO<AxiWord> &data_in, FIFO<metadata> &metadata_in,
+           FIFO<uint16> &length_in, FIFO<AxiWord> &data_out) {
+#pragma HLS function top
 
-    // Declare intermediate legup::FIFOs for inter-function communication
+    // Declare intermediate FIFOs for inter-function communication
     // Note that the FIFO size should be big enough to hold the whole packet
-    static legup::FIFO<AxiWord> read2write(8192);
+    static FIFO<AxiWord> read2write(8192);
     // FIXME: Need to use big FIFOs here only to run software testbench
     // properly. The FIFO depth can be reduce to 2 when generating hardware to
     // save resources.
-    static legup::FIFO<AxiWord> read2checksum(8192);
-    static legup::FIFO<uint16> checksum2write(8192);
+    static FIFO<AxiWord> read2checksum(8192);
+    static FIFO<uint16> checksum2write(8192);
 
     udpTxReadFunction(data_in, metadata_in, length_in, read2write,
                       read2checksum);
@@ -288,10 +290,10 @@ void udpTx(legup::FIFO<AxiWord> &data_in, legup::FIFO<metadata> &metadata_in,
 
 int main() {
 
-    legup::FIFO<AxiWord> data_in(1024);
-    legup::FIFO<metadata> metadata_in(1024);
-    legup::FIFO<uint16> length_in(1024);
-    legup::FIFO<AxiWord> data_out(1024);
+    FIFO<AxiWord> data_in(1024);
+    FIFO<metadata> metadata_in(1024);
+    FIFO<uint16> length_in(1024);
+    FIFO<AxiWord> data_out(1024);
 
     AxiWord input_word;
     metadata input_md;

@@ -2,12 +2,12 @@
 
 #include "utils.h"
 
-#include <legup/bit_level_operations.h>
-#include <legup/streaming.hpp>
-#include <legup/types.h>
+#include <hls/bit_level_operations.h>
+#include <hls/streaming.hpp>
+#include <hls/types.h>
 
-void checksumCalculation(legup::FIFO<AxiWord> &dataIn,
-                         legup::FIFO<uint16> &checksumOut) {
+void checksumCalculation(hls::FIFO<AxiWord> &dataIn,
+                         hls::FIFO<uint16> &checksumOut) {
 
     // One software example for calculating checksum
     //
@@ -38,8 +38,8 @@ void checksumCalculation(legup::FIFO<AxiWord> &dataIn,
 
         uint32 tempSum = checksum;
         tempSum +=
-            legup_bit_select(data, 63, 48) + legup_bit_select(data, 47, 32) +
-            legup_bit_select(data, 31, 16) + legup_bit_select(data, 15, 0);
+            hls_bit_select(data, 63, 48) + hls_bit_select(data, 47, 32) +
+            hls_bit_select(data, 31, 16) + hls_bit_select(data, 15, 0);
 
         if (inputWord.last) {
             checksum = 0;
@@ -48,7 +48,7 @@ void checksumCalculation(legup::FIFO<AxiWord> &dataIn,
             tempSum = (tempSum & 0xFFFF) + (tempSum >> 16);
             // Select the lower 16 bits, reverse the bits of the result
             // and write it into the output
-            checksumOut.write(~legup_bit_select(tempSum, 15, 0));
+            checksumOut.write(~hls_bit_select(tempSum, 15, 0));
         } else {
             checksum = tempSum;
         }

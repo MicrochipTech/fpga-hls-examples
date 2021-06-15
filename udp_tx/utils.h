@@ -1,26 +1,26 @@
 #ifndef __UTILS_H__
 #define __UTILS_H__
 
-#include <legup/bit_level_operations.h>
-#include <legup/types.h>
+#include <hls/bit_level_operations.h>
+#include <hls/types.h>
 
 static inline uint16 ByteSwap16(uint16 input) {
-    return legup_bit_concat_2(legup_bit_select(input, 7, 0), 8,
-                              legup_bit_select(input, 15, 8), 8);
+    return hls_bit_concat_2(hls_bit_select(input, 7, 0), 8,
+                              hls_bit_select(input, 15, 8), 8);
 }
 
 static inline uint32 ByteSwap32(uint32 input) {
-    return legup_bit_concat_4(
-        legup_bit_select(input, 7, 0), 8, legup_bit_select(input, 15, 8), 8,
-        legup_bit_select(input, 23, 16), 8, legup_bit_select(input, 31, 24), 8);
+    return hls_bit_concat_4(
+        hls_bit_select(input, 7, 0), 8, hls_bit_select(input, 15, 8), 8,
+        hls_bit_select(input, 23, 16), 8, hls_bit_select(input, 31, 24), 8);
 }
 
 static inline uint64 ByteSwap64(uint64 input) {
-    return legup_bit_concat_8(
-        legup_bit_select(input, 7, 0), 8, legup_bit_select(input, 15, 8), 8,
-        legup_bit_select(input, 23, 16), 8, legup_bit_select(input, 31, 24), 8,
-        legup_bit_select(input, 39, 32), 8, legup_bit_select(input, 47, 40), 8,
-        legup_bit_select(input, 55, 48), 8, legup_bit_select(input, 63, 56), 8);
+    return hls_bit_concat_8(
+        hls_bit_select(input, 7, 0), 8, hls_bit_select(input, 15, 8), 8,
+        hls_bit_select(input, 23, 16), 8, hls_bit_select(input, 31, 24), 8,
+        hls_bit_select(input, 39, 32), 8, hls_bit_select(input, 47, 40), 8,
+        hls_bit_select(input, 55, 48), 8, hls_bit_select(input, 63, 56), 8);
 }
 
 static inline uint8 Length2Keep(uint4 length) {

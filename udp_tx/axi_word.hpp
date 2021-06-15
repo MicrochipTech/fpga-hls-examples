@@ -1,7 +1,7 @@
 #ifndef __AXI_WORD_H__
 #define __AXI_WORD_H__
 
-#include <legup/types.h>
+#include <hls/types.h>
 
 struct AxiWord {
     uint64 data;

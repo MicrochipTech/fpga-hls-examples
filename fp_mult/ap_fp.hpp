@@ -1,8 +1,8 @@
-#ifndef LEGUP_AP_FP_HPP
-#define LEGUP_AP_FP_HPP
+#ifndef __AP_FP_HPP__
+#define __AP_FP_HPP__
 
-#include "legup/ap_int.hpp"
-#include <legup/types.h>
+#include "hls/ap_int.hpp"
+#include <cstdint>
 
 #define F_M_W 23 // float mantissa width
 #define F_E_W 8  // float exponent width
@@ -11,7 +11,7 @@
 #define H_M_W 10 // half mantissa width
 #define H_E_W 5  // half exponent width
 
-namespace legup {
+namespace hls {
 
 // Class for arbitrary precision floating-point numbers.
 template <unsigned M_W, unsigned E_W> class ap_fp {
@@ -32,13 +32,13 @@ private:
 }; // class ap_fp
 
 ap_fp<D_M_W, D_E_W> double_to_ap_fp(double in) {
-    return ap_fp<D_M_W, D_E_W>(ap_uint<64>(*(uint64 *)&in));
+    return ap_fp<D_M_W, D_E_W>(ap_uint<64>(*(uint64_t *)&in));
 }
 
 ap_fp<F_M_W, F_E_W> float_to_ap_fp(float in) {
-    return ap_fp<F_M_W, F_E_W>(ap_uint<32>(*(uint32 *)&in));
+    return ap_fp<F_M_W, F_E_W>(ap_uint<32>(*(uint32_t *)&in));
 }
 
-} // namespace legup
+} // namespace hls
 
-#endif
+#endif // __AP_FP_HPP__
