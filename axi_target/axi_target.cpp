@@ -6,7 +6,7 @@ struct TargetLayout target_memory;
 
 void calc_kernel() {
 #pragma HLS function top
-    target_memory.sum_result = (uint64)target_memory.a + (uint64)target_memory.b +
+    target_memory.sum_result = (uint64_t)target_memory.a + (uint64_t)target_memory.b +
                               target_memory.arr[0] + target_memory.arr[1] +
                               target_memory.arr[2] + target_memory.arr[3] +
                               target_memory.arr[4] + target_memory.arr[5] +

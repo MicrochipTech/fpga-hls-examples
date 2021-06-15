@@ -2,7 +2,7 @@
 #define __AP_FP_HPP__
 
 #include "hls/ap_int.hpp"
-#include <cstdint>
+#include "hls/types.h"
 
 #define F_M_W 23 // float mantissa width
 #define F_E_W 8  // float exponent width
@@ -32,11 +32,11 @@ private:
 }; // class ap_fp
 
 ap_fp<D_M_W, D_E_W> double_to_ap_fp(double in) {
-    return ap_fp<D_M_W, D_E_W>(ap_uint<64>(*(uint64_t *)&in));
+    return ap_fp<D_M_W, D_E_W>(ap_uint<64>(*(uint64 *)&in));
 }
 
 ap_fp<F_M_W, F_E_W> float_to_ap_fp(float in) {
-    return ap_fp<F_M_W, F_E_W>(ap_uint<32>(*(uint32_t *)&in));
+    return ap_fp<F_M_W, F_E_W>(ap_uint<32>(*(uint32 *)&in));
 }
 
 } // namespace hls

@@ -6,8 +6,8 @@ SRCS = axi_target.cpp
 GUI_BASE_DIR = 
 LEVEL = $(LEGUP_ROOT_DIR)/examples
 EXTRA_SW_COMPILATION_FLAG+= -pg -Wall -std=c++0x -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1 
-CPP_FLAG+= -I$(LEGUP_ROOT_DIR)/legup-library 
-EXTRA_LD_LIBRARY_PATH+= $(LEGUP_ROOT_DIR)/legup-library
+CPP_FLAG+= -I$(LEGUP_ROOT_DIR)/smarthls-library 
+EXTRA_LD_LIBRARY_PATH+= $(LEGUP_ROOT_DIR)/smarthls-library
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user
 endif
