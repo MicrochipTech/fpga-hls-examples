@@ -2,7 +2,6 @@
 #include "half.hpp"
 
 #include <hls/streaming.hpp>
-#include <hls/types.h>
 
 #include <iostream>
 #include <limits>
@@ -33,9 +32,9 @@ struct HalfBits {
     ap_uint<11> M;
 };
 
-ap_uint<32> ToBits(float in) { return ap_uint<32>(*(uint32 *)(&in)); }
-ap_uint<64> ToBits(double in) { return ap_uint<32>(*(uint64 *)(&in)); }
-ap_uint<16> ToBits(half in) { return ap_uint<16>(*(uint16 *)(&in)); }
+ap_uint<16> ToBits(half in) { return ap_uint<16>(*(unsigned short *)(&in)); }
+ap_uint<32> ToBits(float in) { return ap_uint<32>(*(unsigned *)(&in)); }
+ap_uint<64> ToBits(double in) { return ap_uint<32>(*(unsigned long long *)(&in)); }
 
 FloatBits ParseBits(float in) {
     ap_uint<32> bits = ToBits(in);
@@ -67,12 +66,12 @@ template <> void print_value_and_bits<half>(StrT var_name, half in) {
 // Compares output.
 
 bool isDenormal(float in) {
-    ap_uint<32> ap_in(*(uint32 *)&in);
+    ap_uint<32> ap_in(*(unsigned *)&in);
     return !ap_in(30, 23);
 }
 
 bool isDenormal(double in) {
-    ap_uint<64> ap_in(*(uint64 *)&in);
+    ap_uint<64> ap_in(*(unsigned long long *)&in);
     return !ap_in(62, 52);
 }
 
@@ -90,32 +89,33 @@ bool denormalMatches(ap_uint<W> expect, ap_uint<W> actual) {
 
 bool isDenormalAndMatches(float expect, float actual) {
     return isDenormal(expect) &&
-           denormalMatches<23>(ap_uint<32>(*(uint32 *)&expect),
-                               ap_uint<32>(*(uint32 *)&actual));
+           denormalMatches<23>(ap_uint<32>(*(unsigned *)&expect),
+                               ap_uint<32>(*(unsigned *)&actual));
 }
 
 bool isDenormalAndMatches(double expect, double actual) {
     return isDenormal(expect) &&
-           denormalMatches<52>(ap_uint<64>(*(uint64 *)&expect),
-                               ap_uint<64>(*(uint64 *)&actual));
+           denormalMatches<52>(ap_uint<64>(*(unsigned long long *)&expect),
+                               ap_uint<64>(*(unsigned long long *)&actual));
 }
 
 bool isDenormalAndMatches(half expect, half actual) {
     return isDenormal(expect) &&
-           denormalMatches<10>(ap_uint<16>(*(uint16 *)&expect),
-                               ap_uint<16>(*(uint16 *)&actual));
+           denormalMatches<10>(ap_uint<16>(*(unsigned short *)&expect),
+                               ap_uint<16>(*(unsigned short *)&actual));
 }
 
 bool isSmallDenormal(float in) {
-    return isDenormal(in) && !(*(uint32 *)&in & 1 << 22);
+    return isDenormal(in) && !(*(unsigned *)&in & 1 << 22);
 }
 
 bool isSmallDenormal(double in) {
-    return isDenormal(in) && !(*(uint64 *)&in & (uint64)1 << 51);
+    return isDenormal(in) &&
+           !(*(unsigned long long *)&in & (unsigned long long)1 << 51);
 }
 
 bool isSmallDenormal(half in) {
-    return isDenormal(in) && !(*(uint16 *)&in & 1 << 9);
+    return isDenormal(in) && !(*(unsigned short *)&in & 1 << 9);
 }
 
 unsigned match_count = 0;
@@ -164,11 +164,11 @@ template <typename FType> void check(FType ina, FType inb, FType actual) {
 void custom_top(FIFO<ap_uint<16>> &half_ina,
                 FIFO<ap_uint<16>> &half_inb,
                 FIFO<ap_uint<16>> &half_out,
-                FIFO<uint64> &double_ina,
-                FIFO<uint64> &double_inb,
-                FIFO<uint64> &double_out, FIFO<uint32> &float_ina,
-                FIFO<uint32> &float_inb,
-                FIFO<uint32> &float_out) {
+                FIFO<unsigned long long> &double_ina,
+                FIFO<unsigned long long> &double_inb,
+                FIFO<unsigned long long> &double_out, FIFO<unsigned> &float_ina,
+                FIFO<unsigned> &float_inb,
+                FIFO<unsigned> &float_out) {
 #pragma HLS function top
     fmult_16_wrapper<17, 17>(half_ina, half_inb, half_out);
     fmult_32_wrapper<17, 17>(float_ina, float_inb, float_out);
@@ -178,9 +178,9 @@ void custom_top(FIFO<ap_uint<16>> &half_ina,
 void run_test(double a, double b, FIFO<ap_uint<16>> &half_ina,
               FIFO<ap_uint<16>> &half_inb,
               FIFO<ap_uint<16>> &half_out,
-              FIFO<uint64> &double_ina, FIFO<uint64> &double_inb,
-              FIFO<uint64> &double_out, FIFO<uint32> &float_ina,
-              FIFO<uint32> &float_inb, FIFO<uint32> &float_out) {
+              FIFO<unsigned long long> &double_ina, FIFO<unsigned long long> &double_inb,
+              FIFO<unsigned long long> &double_out, FIFO<unsigned> &float_ina,
+              FIFO<unsigned> &float_inb, FIFO<unsigned> &float_out) {
 
     // Inject input.
     half h_a(a), h_b(b);
@@ -189,12 +189,12 @@ void run_test(double a, double b, FIFO<ap_uint<16>> &half_ina,
     half_ina.write(h_a_16);
     half_inb.write(h_b_16);
 
-    double_ina.write(*(uint64 *)(&a));
-    double_inb.write(*(uint64 *)(&b));
+    double_ina.write(*(unsigned long long *)(&a));
+    double_inb.write(*(unsigned long long *)(&b));
 
     float f_a = a, f_b = b;
-    float_ina.write(*(uint32 *)(&f_a));
-    float_inb.write(*(uint32 *)(&f_b));
+    float_ina.write(*(unsigned *)(&f_a));
+    float_inb.write(*(unsigned *)(&f_b));
 
     // Call custom top.
     custom_top(half_ina, half_inb, half_out, double_ina, double_inb, double_out,
@@ -202,8 +202,8 @@ void run_test(double a, double b, FIFO<ap_uint<16>> &half_ina,
 
     // Check output.
     short out_16 = half_out.read().to_uint64();
-    uint64 out_64 = double_out.read();
-    uint32 out_32 = float_out.read();
+    unsigned long long out_64 = double_out.read();
+    unsigned out_32 = float_out.read();
 
     check(h_a, h_b, *(half *)(&out_16));
     check(a, b, *(double *)(&out_64));
@@ -215,12 +215,12 @@ int main() {
     FIFO<ap_uint<16>> half_ina(2);
     FIFO<ap_uint<16>> half_inb(2);
     FIFO<ap_uint<16>> half_out(2);
-    FIFO<uint64> double_ina(2);
-    FIFO<uint64> double_inb(2);
-    FIFO<uint64> double_out(2);
-    FIFO<uint32> float_ina(2);
-    FIFO<uint32> float_inb(2);
-    FIFO<uint32> float_out(2);
+    FIFO<unsigned long long> double_ina(2);
+    FIFO<unsigned long long> double_inb(2);
+    FIFO<unsigned long long> double_out(2);
+    FIFO<unsigned> float_ina(2);
+    FIFO<unsigned> float_inb(2);
+    FIFO<unsigned> float_out(2);
 
     double neg_nan = -0.0 / 0.0;
     double pos_nan = +0.0 / 0.0;

@@ -272,9 +272,9 @@ fmult(ap_fp<M_W, E_W> A, ap_fp<M_W, E_W> B) {
 }
 
 template <unsigned MULT_W_A, unsigned MULT_W_B>
-void fmult_64_wrapper(FIFO<uint64> &input_a_fifo,
-                      FIFO<uint64> &input_b_fifo,
-                      FIFO<uint64> &output_fifo) {
+void fmult_64_wrapper(FIFO<unsigned long long> &input_a_fifo,
+                      FIFO<unsigned long long> &input_b_fifo,
+                      FIFO<unsigned long long> &output_fifo) {
 #pragma HLS function pipeline
     ap_fp<D_M_W, D_E_W> in_a =
         ap_fp<D_M_W, D_E_W>(ap_uint<64>(input_a_fifo.read()));
@@ -285,9 +285,9 @@ void fmult_64_wrapper(FIFO<uint64> &input_a_fifo,
 }
 
 template <unsigned MULT_W_A, unsigned MULT_W_B>
-void fmult_32_wrapper(FIFO<uint32> &input_a_fifo,
-                      FIFO<uint32> &input_b_fifo,
-                      FIFO<uint32> &output_fifo) {
+void fmult_32_wrapper(FIFO<unsigned> &input_a_fifo,
+                      FIFO<unsigned> &input_b_fifo,
+                      FIFO<unsigned> &output_fifo) {
 #pragma HLS function pipeline
     ap_fp<F_M_W, F_E_W> in_a =
         ap_fp<F_M_W, F_E_W>(ap_uint<32>(input_a_fifo.read()));
