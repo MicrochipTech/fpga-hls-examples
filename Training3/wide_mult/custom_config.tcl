@@ -1,0 +1,1 @@
+set_parameter USE_FIFO_FOR_PIPELINE_REG 1

@@ -1,0 +1,8 @@
+Custom_FPGA_device=false
+FPGA_device=MPF300
+FPGA_family=PolarFire
+Hybrid_system=MiV_SoC
+constraints=set_custom_test_bench_file;;custom_tb.v\nset_custom_test_bench_module;;custom_tb\n
+eclipse.preferences.version=1
+test_bench_file=custom_tb.v
+test_bench_module=custom_tb

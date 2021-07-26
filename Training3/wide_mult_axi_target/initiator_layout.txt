@@ -1,0 +1,42 @@
+// This is the memory mapped struct format from the MiV
+
+// SmartHLS Wide Multiplier AXI Target Layout
+struct wide_mult {
+    uint32_t run;
+
+    // Result is 256 bit signed
+    uint32_t result0;
+    uint32_t result1;
+    uint32_t result2;
+    uint32_t result3;
+    uint32_t result4;
+    uint32_t result5;
+    uint32_t result6;
+    uint32_t result7;
+
+    // A is 128 bit signed
+    uint32_t A0;
+    uint32_t A1;
+    uint32_t A2;
+    uint32_t A3;
+    // B is 64  bit unsigned
+    uint32_t B0;
+    uint32_t B1;
+    // C is 64  bit signed
+    uint32_t C0;
+    uint32_t C1;
+    // D is 128 bit signed
+    uint32_t D0;
+    uint32_t D1;
+    uint32_t D2;
+    uint32_t D3;
+    // E is 128 bit signed
+    uint32_t E0;
+    uint32_t E1;
+    uint32_t E2;
+    uint32_t E3;
+
+    // Extra padding as SmartHLS expects structs
+    // with an even number of 64-bit words
+    uint32_t padding;
+};
