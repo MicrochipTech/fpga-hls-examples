@@ -62,35 +62,7 @@ ap_uint<8> get_texture_pixel(uint16_t x, uint16_t y) {
     byte_select = x % 8;
 
     // Note: first pixel at least significant byte of 64Bit LSRAM buffer entry
-    switch (byte_select) {
-    case 0:
-        return (input_64b(8 * 0 + 7, 8 * 0));
-        break;
-    case 1:
-        return (input_64b(8 * 1 + 7, 8 * 1));
-        break;
-    case 2:
-        return (input_64b(8 * 2 + 7, 8 * 2));
-        break;
-    case 3:
-        return (input_64b(8 * 3 + 7, 8 * 3));
-        break;
-    case 4:
-        return (input_64b(8 * 4 + 7, 8 * 4));
-        break;
-    case 5:
-        return (input_64b(8 * 5 + 7, 8 * 5));
-        break;
-    case 6:
-        return (input_64b(8 * 6 + 7, 8 * 6));
-        break;
-    case 7:
-        return (input_64b(8 * 7 + 7, 8 * 7));
-        break;
-    default:
-        return (-1);
-        break;
-    }
+    return (input_64b(8 * byte_select + 7, 8 * byte_select));
 }
 
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -102,7 +74,7 @@ void texture_mapper(uint8_t run_loop, uint8_t &run_done,
     uint32_t ax, ay, bx, by; // texture start coordinates
     ap_uint<32> cx, cy;
     int32_t dxdx, dydx; // deltas over x loop (calculated for every line)
-    ap_uint<16> p0, p1, p2, p3, p4, p5, p6, p7;
+    ap_uint<8> p0, p1, p2, p3, p4, p5, p6, p7;
     uint16_t n;
 
     run_done = 0; // clear done output
