@@ -21,7 +21,7 @@
 //     C..D
 //
 #include "axi4_target.h"
-#include "hls/bit_level_operations.h"
+#include <hls/ap_int.hpp>
 #include <hls/streaming.hpp>
 #include <stdio.h>
 #include <stdint.h>
@@ -39,9 +39,9 @@ volatile uint64_t texture_frame[texture_size * texture_size / 8];
 
 // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-uint8_t get_texture_pixel(uint16_t x, uint16_t y) {
+ap_uint<8> get_texture_pixel(uint16_t x, uint16_t y) {
     uint32_t offset;
-    uint64_t input_64b;
+    ap_uint<64> input_64b;
     uint8_t byte_select;
 
     // ensure x&y coordinates are valid (in range), simplified due to texture
@@ -64,28 +64,28 @@ uint8_t get_texture_pixel(uint16_t x, uint16_t y) {
     // Note: first pixel at least significant byte of 64Bit LSRAM buffer entry
     switch (byte_select) {
     case 0:
-        return (hls_bit_select(input_64b, 8 * 0 + 7, 8 * 0));
+        return (input_64b(8 * 0 + 7, 8 * 0));
         break;
     case 1:
-        return (hls_bit_select(input_64b, 8 * 1 + 7, 8 * 1));
+        return (input_64b(8 * 1 + 7, 8 * 1));
         break;
     case 2:
-        return (hls_bit_select(input_64b, 8 * 2 + 7, 8 * 2));
+        return (input_64b(8 * 2 + 7, 8 * 2));
         break;
     case 3:
-        return (hls_bit_select(input_64b, 8 * 3 + 7, 8 * 3));
+        return (input_64b(8 * 3 + 7, 8 * 3));
         break;
     case 4:
-        return (hls_bit_select(input_64b, 8 * 4 + 7, 8 * 4));
+        return (input_64b(8 * 4 + 7, 8 * 4));
         break;
     case 5:
-        return (hls_bit_select(input_64b, 8 * 5 + 7, 8 * 5));
+        return (input_64b(8 * 5 + 7, 8 * 5));
         break;
     case 6:
-        return (hls_bit_select(input_64b, 8 * 6 + 7, 8 * 6));
+        return (input_64b(8 * 6 + 7, 8 * 6));
         break;
     case 7:
-        return (hls_bit_select(input_64b, 8 * 7 + 7, 8 * 7));
+        return (input_64b(8 * 7 + 7, 8 * 7));
         break;
     default:
         return (-1);
@@ -100,9 +100,9 @@ void texture_mapper(uint8_t run_loop, uint8_t &run_done,
 #pragma HLS function top
 
     uint32_t ax, ay, bx, by; // texture start coordinates
-    uint32_t cx, cy;
+    ap_uint<32> cx, cy;
     int32_t dxdx, dydx; // deltas over x loop (calculated for every line)
-    uint16_t p0, p1, p2, p3, p4, p5, p6, p7;
+    ap_uint<16> p0, p1, p2, p3, p4, p5, p6, p7;
     uint16_t n;
 
     run_done = 0; // clear done output
@@ -130,42 +130,33 @@ void texture_mapper(uint8_t run_loop, uint8_t &run_done,
         for (n = 0; n < image_width / 8; n++) {
 
             // calculate texture coordinates of 8 pixels
-            p0 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p0 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p1 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p1 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p2 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p2 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p3 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p3 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p4 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p4 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p5 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p5 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p6 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p6 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
-            p7 = get_texture_pixel(hls_bit_select(cx, 31, 16),
-                                   hls_bit_select(cy, 31, 16));
+            p7 = get_texture_pixel(cx(31, 16), cy(31, 16));
             cx += dxdx;
             cy += dydx;
 
             // concatenate 8 pixels and place result in output FIFO
-            output_fifo.write(hls_bit_concat_8(p0, 8, p1, 8, p2, 8, p3, 8, p4,
-                                               8, p5, 8, p6, 8, p7, 8));
+            output_fifo.write((p0, p1, p2, p3, p4, p5, p6, p7));
         }
 
         // interpolate to get coordinates of next line in texture space
