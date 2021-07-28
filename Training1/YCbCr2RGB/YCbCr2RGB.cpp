@@ -25,7 +25,7 @@ struct YCbCr {
 typedef ap_fixpt<18, 11> fixpt_t;
 
 void YCbCr2RGB_smarthls(hls::FIFO<YCbCr> &input_fifo,
-                     hls::FIFO<RGB>   &output_fifo) {
+                        hls::FIFO<RGB>   &output_fifo) {
 
 #pragma HLS function top
 #pragma HLS function pipeline

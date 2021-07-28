@@ -100,7 +100,7 @@ void write_bmp(const char *filename, const bmp_header_t *header, const bmp_pixel
 }
 
 void alpha_blend_smarthls(hls::FIFO<input_t> &input_fifo,
-                       hls::FIFO<rgb_t>   &output_fifo) {
+                          hls::FIFO<rgb_t>   &output_fifo) {
 
 #pragma HLS function top
 #pragma HLS function pipeline
