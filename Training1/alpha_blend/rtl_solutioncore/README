@@ -1,0 +1,16 @@
+Vendor: Microsemi 
+Library: SolutionCore 
+Name: alpha_blend_control 
+Version: 2.0.0 
+
+Vault: C:\Microsemi\Common\vault 
+
+Documentation: 
+Microsemi_UG0641_Alpha_Blending_User_Guide.pdf 
+
+Description: Alpha Blending is a per pixel mixture of two video streams. 
+
+Market Segment: Aerospace, Automotive, Industrial and Military
+
+To run the testbench open Modelsim and run:
+	do tb.tcl
