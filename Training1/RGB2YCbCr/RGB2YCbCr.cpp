@@ -24,7 +24,7 @@ struct YCbCr {
 // 10 integer bits and 8 fractional bits
 typedef ap_fixpt<18, 10> fixpt_t;
 
-void RGB2YCbCr_legup(hls::FIFO<RGB>   &input_fifo,
+void RGB2YCbCr_smarthls(hls::FIFO<RGB>   &input_fifo,
                      hls::FIFO<YCbCr> &output_fifo) {
 
 #pragma HLS function top
@@ -85,7 +85,7 @@ int main() {
 
 
     while (!input_fifo.empty()) {
-        RGB2YCbCr_legup(input_fifo, output_fifo);
+        RGB2YCbCr_smarthls(input_fifo, output_fifo);
         out = output_fifo.read();
         expected = expected_fifo.read();
 

@@ -99,7 +99,7 @@ void write_bmp(const char *filename, const bmp_header_t *header, const bmp_pixel
     fclose(file);
 }
 
-void alpha_blend_legup(hls::FIFO<input_t> &input_fifo,
+void alpha_blend_smarthls(hls::FIFO<input_t> &input_fifo,
                        hls::FIFO<rgb_t>   &output_fifo) {
 
 #pragma HLS function top
@@ -149,7 +149,7 @@ int main() {
     in.channel2 = ap_uint<24>("0x547698");
     in.alpha    = ap_uint<8>("0x84");
     input_fifo.write(in);
-    alpha_blend_legup(input_fifo, output_fifo);
+    alpha_blend_smarthls(input_fifo, output_fifo);
     rgb_t out = output_fifo.read();
     if (out != ap_uint<24>("4C6E57")) {
         std::cout << "out = " << out.to_string() << std::endl;
@@ -179,7 +179,7 @@ int main() {
             input_fifo.write(in);
 
             // run design
-            alpha_blend_legup(input_fifo, output_fifo);
+            alpha_blend_smarthls(input_fifo, output_fifo);
 
             rgb_t rgb = output_fifo.read();
             output_image_ptr->r = rgb(R1, R2);
