@@ -1,4 +1,4 @@
-// Import legup/thread.hpp to access the LegUp thread library and API.
+// Import hls/thread.hpp to access the SmartHLS thread library and API.
 #include "hls/thread.hpp"
 #include "hls/streaming.hpp"
 
@@ -6,7 +6,7 @@
 // These must be global instead of local to the top level function because the
 // top level function does not wait for the threads to finish before returning.
 
-// The contention free pragma tells LegUp not to generate an arbiter.
+// The contention free pragma tells SmartHLS not to generate an arbiter.
 #pragma HLS memory impl variable(buf) contention_free(true)
 int buf[100] = {0};
 volatile bool done = false;

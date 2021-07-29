@@ -21,7 +21,7 @@ void sobel_filter(FIFO<unsigned char> &input_fifo,
     // i, j indicates the x/y coordinates in the image.
     static int i = 0, j = 0;
 
-    // LegUp's line buffer library.
+    // SmartHLS's line buffer library.
     static LineBuffer<unsigned char, WIDTH, 3> line_buffer;
 
     // Read input pixel from FIFO and put into the line buffer.
