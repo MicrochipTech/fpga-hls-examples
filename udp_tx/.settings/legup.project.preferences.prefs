@@ -1,0 +1,5 @@
+Custom_FPGA_device=false
+FPGA_device=MPF300
+FPGA_family=PolarFire
+Hybrid_system=MiV_SoC
+eclipse.preferences.version=1
