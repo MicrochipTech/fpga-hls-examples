@@ -16,6 +16,10 @@ Example | Description
 Example | Description
 --------|------------
 [sobel_tutorial](./sobel_tutorial)|HLS Tutorial: Sobel Filter Edge Detection Example.
+[Training1](./Training1)|SmartHLS™ Training Session 1: Image Processing on the PolarFire® Video Kit 
+[Training2](./Training2)|SmartHLS™ Training Session 2: Multi-threaded Digit Recognition on the PolarFire® Video Kit 
+[Training3](./Training3)|SmartHLS™ Training Session 3: AXI Interfaces to DDR & Mi-V Soft Processor on the PolarFire® Video Kit 
+
 
 ## Simple Examples
 Example | Description
