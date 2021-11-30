@@ -22,7 +22,7 @@ end
 // These are the same digits used in the software testbench just in mem format
 reg [7:0] test_images [0 : NUM_PIXELS - 1];
 initial
-  $readmemh("../test_images.mem", test_images);
+  $readmemh("../../test_images.mem", test_images);
 
 integer cycle_count = 0;
 integer frame_idx = 0;
