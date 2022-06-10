@@ -55,6 +55,7 @@ void loop_unroll() {
 }
 
 int main() {
+#pragma HLS function top
 	no_dependency();
 	data_dependency();
 	memory_dependency();
