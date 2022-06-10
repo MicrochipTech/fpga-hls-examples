@@ -31,6 +31,7 @@ void memory_contention() {
 }
 
 int main() {
+#pragma HLS function top
 	cross_iteration_dependency();
 	functional_unit_contention();
 	memory_contention();
