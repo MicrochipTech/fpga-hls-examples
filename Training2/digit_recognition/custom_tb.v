@@ -97,6 +97,7 @@ ClassifierPipeline_top DUT (
   .clk (clk),
   .reset (reset),
   .start (~reset),
+  .ready (),
   .finish (),
 
   .classifier_input_valid_write_en (classifier_input_valid_write_en),
