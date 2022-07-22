@@ -103,6 +103,7 @@ ClassifierPipeline_top DUT (
   .classifier_input_valid_write_data (classifier_input_valid_write_data),
   .classifier_input_valid_read_data (classifier_input_valid_read_data),
 
+  .classifier_input_clken (),
   .classifier_input_address_a (classifier_input_a0_a0_a0_address_a),
   .classifier_input_read_data_a (classifier_input_a0_a0_a0_read_data_a),
   .classifier_input_read_data_b (16'bX /* should be unused */),
