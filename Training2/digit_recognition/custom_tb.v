@@ -109,6 +109,10 @@ ClassifierPipeline_top DUT (
   .classifier_input_read_data_a (classifier_input_a0_a0_a0_read_data_a),
   .classifier_input_read_data_b (16'bX /* should be unused */),
 
+  .classifier_input_read_en_a (),
+  .classifier_input_read_en_b (),
+  .classifier_input_address_b (),
+
   .classifier_output       (classifier_output_data),
   .classifier_output_ready (classifier_output_ready),
   .classifier_output_valid (classifier_output_valid)
