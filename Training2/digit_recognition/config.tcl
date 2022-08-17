@@ -5,3 +5,4 @@ source $env(LEGUP_ROOT_DIR)/examples/legup.tcl
 set_project PolarFire MPF300 MiV_SoC
 set_custom_test_bench_file custom_tb.v
 set_custom_test_bench_module custom_tb
+set_parameter CLOCK_PERIOD 10
