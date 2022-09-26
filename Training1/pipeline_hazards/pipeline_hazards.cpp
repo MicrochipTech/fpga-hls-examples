@@ -1,10 +1,9 @@
 #define N 10
 
-volatile int array[N] = {0, 1 , 2, 3, 4, 5, 6, 7, 8 ,9};
 volatile int coeff1 = 3;
 volatile int coeff2 = 2;
 
-void cross_iteration_dependency() {
+void cross_iteration_dependency(int array [N]) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
 	for (int i = 0; i < N - 1; i++) {
@@ -12,7 +11,7 @@ void cross_iteration_dependency() {
 	}
 }
 
-void functional_unit_contention() {
+void functional_unit_contention(int array [N]) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
 	for (int i = 0; i < N; i++) {
@@ -22,7 +21,7 @@ void functional_unit_contention() {
 	}
 }
 
-void memory_contention() {
+void memory_contention(int array [N]) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
 	for (int i = 0; i < N - 1; i++) {
@@ -32,8 +31,10 @@ void memory_contention() {
 
 int main() {
 #pragma HLS function top
-	cross_iteration_dependency();
-	functional_unit_contention();
-	memory_contention();
+	// Maybe initialize using a loop
+	int array[N] = {0, 1 , 2, 3, 4, 5, 6, 7, 8 ,9};
+	cross_iteration_dependency(array);
+	functional_unit_contention(array);
+	memory_contention(array);
 	return 0;
 }
