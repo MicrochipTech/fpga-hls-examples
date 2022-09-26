@@ -7,20 +7,6 @@
 // All variables are marked as contention_free as there will only be up two 2
 // accesses on each of them per cycle.
 
-// Tensors outputs of each layer in the CNN.
-#pragma HLS memory impl variable(conv1_output) contention_free(true)
-Tensor<26, 2> conv1_output;
-#pragma HLS memory impl variable(maxpool_output) contention_free(true)
-Tensor<13, 2> maxpool_output;
-#pragma HLS memory impl variable(conv2_output) contention_free(true)
-Tensor<11, 4> conv2_output;
-#pragma HLS memory impl variable(conv3_output) contention_free(true)
-Tensor<9, 4> conv3_output;
-#pragma HLS memory impl variable(conv4_output) contention_free(true)
-Tensor<7, 2> conv4_output;
-#pragma HLS memory impl variable(fc_output) contention_free(true)
-DType fc_output[10];
-
 // Input valid signal to CNN to make sure CNN is always accessing valid data.
 #pragma HLS memory impl variable(classifier_input_valid) contention_free(true)
 volatile bool classifier_input_valid = false;
@@ -46,6 +32,20 @@ volatile bool conv1_output_valid = false, maxpool_output_valid = false,
 // software and hardware.
 void ClassifierPipeline() {
 #pragma HLS function top
+
+	// Tensors outputs of each layer in the CNN.
+	#pragma HLS memory impl variable(conv1_output) contention_free(true)
+	Tensor<26, 2> conv1_output;
+	#pragma HLS memory impl variable(maxpool_output) contention_free(true)
+	Tensor<13, 2> maxpool_output;
+	#pragma HLS memory impl variable(conv2_output) contention_free(true)
+	Tensor<11, 4> conv2_output;
+	#pragma HLS memory impl variable(conv3_output) contention_free(true)
+	Tensor<9, 4> conv3_output;
+	#pragma HLS memory impl variable(conv4_output) contention_free(true)
+	Tensor<7, 2> conv4_output;
+	#pragma HLS memory impl variable(fc_output) contention_free(true)
+	DType fc_output[10];
 
     hls::thread<void> t0(
         Conv</* INPUT_SIZE */ 28, /* INPUT_DEPTH */ 1, /* OUTPUT_SIZE */ 26,
