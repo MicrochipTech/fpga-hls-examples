@@ -1,0 +1,50 @@
+# Microsemi Physical design constraints file
+
+# Version: v12.6 12.900.20.24
+
+# Design Name: VIDEO_KIT_TOP 
+
+# Input Netlist Format: EDIF 
+
+# Family: PolarFire , Die: MPF300TS , Package: FCG1152 , Speed grade: -1 
+
+# Date generated: Mon Feb  8 16:31:21 2021 
+
+
+#
+# Local clock constraints
+#
+
+
+#
+# Region constraints
+#
+
+
+#
+# Core cell constraints
+#
+
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_3_CTRL/I_LANECTRL -fixed true -x 947 -y 378
+set_location -inst_name HDMI/PF_XCVR_ERM_C0_0/I_XCVR/LANE1 -fixed true -x 2460 -y 317
+set_location -inst_name HDMI/PF_XCVR_ERM_C0_0/I_XCVR/LANE0 -fixed true -x 2460 -y 371
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_5_CTRL/I_LANECTRL -fixed true -x 1235 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_6_CTRL/I_LANECTRL -fixed true -x 1379 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/IOD_BCLK_TRAINING/I_IOD_0 -fixed true -x 84 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_0_CTRL/I_LANECTRL -fixed true -x 503 -y 378
+set_location -inst_name HDMI/PF_XCVR_ERM_C0_0/I_XCVR/LANE2 -fixed true -x 2460 -y 344
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_1_CTRL/I_LANECTRL -fixed true -x 659 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_7_CTRL/I_LANECTRL -fixed true -x 1523 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_2_CTRL/I_LANECTRL -fixed true -x 803 -y 378
+set_location -inst_name HDMI/PF_XCVR_ERM_C0_0/I_XCVR/LANE3 -fixed true -x 2461 -y 344
+set_location -inst_name PF_DDR4_C0_0/DLL_0/dll_inst_0 -fixed true -x 3 -y 377
+set_location -inst_name PF_DDR4_C0_0/CCC_0/pll_inst_0 -fixed true -x 1 -y 377
+set_location -inst_name HDMI/PF_XCVR_REF_CLK_C0_0/PF_XCVR_REF_CLK_C0_0/I_IO -fixed true -x 2467 -y 371
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_1_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 648 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_6_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 1368 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_4_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 1080 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_3_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 936 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_7_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 1512 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_0_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 492 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_5_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 1224 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_2_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 792 -y 378

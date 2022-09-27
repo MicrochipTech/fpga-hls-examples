@@ -1,0 +1,40 @@
+
+
+# Microsemi Physical design constraints file
+
+# Version: v2021.1 2021.1.0.17
+
+# Design Name: TOP 
+
+# Input Netlist Format: EDIF 
+
+# Family: PolarFire , Die: MPF300T , Package: FCG1152 , Speed grade: -1 
+
+# Date generated: Mon May 24 23:17:26 2021 
+
+
+#
+# Local clock constraints
+#
+
+
+#
+# Region constraints
+#
+
+
+#
+# Core cell constraints
+#
+
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_3_CTRL/I_LANECTRL -fixed true -x 947 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/IOD_BCLK_TRAINING/I_IOD_0 -fixed true -x 84 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_0_CTRL/I_LANECTRL -fixed true -x 503 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_1_CTRL/I_LANECTRL -fixed true -x 659 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_2_CTRL/I_LANECTRL -fixed true -x 803 -y 378
+set_location -inst_name PF_DDR4_C0_0/DLL_0/dll_inst_0 -fixed true -x 3 -y 377
+set_location -inst_name PF_DDR4_C0_0/CCC_0/pll_inst_0 -fixed true -x 1 -y 377
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_1_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 648 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_3_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 936 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_0_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 492 -y 378
+set_location -inst_name PF_DDR4_C0_0/DDRPHY_BLK_0/LANE_2_IOD_READ_TRAINING/I_IOD_0 -fixed true -x 792 -y 378
