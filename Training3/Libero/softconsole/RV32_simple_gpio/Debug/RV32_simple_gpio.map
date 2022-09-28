@@ -1,0 +1,1554 @@
+Archive member included to satisfy reference by file (symbol)
+
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memset.o)
+                              ./drivers/CoreI2C/core_i2c.o (memset)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+                              ./main.o (snprintf)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+                              ./application/hdmi_config/hdmi_tx.o (sprintf)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+                              ./main.o (strtol)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+                              ./riscv_hal/syscall.o (isatty)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+                              ./riscv_hal/syscall.o (write)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o) (_write_r)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-ctype_.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o) (_ctype_)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o) (_impure_ptr)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o) (_svfprintf_r)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (_printf_i)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (memchr)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memcpy-asm.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (memcpy)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memmove.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (memmove)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (_free_r)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (_malloc_r)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o) (_realloc_r)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o) (__malloc_lock)
+c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
+                              c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o) (_malloc_usable_size_r)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x4               ./riscv_hal/syscall.o
+g_uart              0x8               ./main.o
+g_i2c_instance_hdmi
+                    0x6c              ./main.o
+UART_Buffer         0x101             ./main.o
+g_gpio0             0x8               ./main.o
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 ./riscv_hal/entry.o
+ .data          0x0000000000000000        0x0 ./riscv_hal/entry.o
+ .bss           0x0000000000000000        0x0 ./riscv_hal/entry.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/init.o
+ .text          0x0000000000000000        0x0 ./riscv_hal/init.o
+ .data          0x0000000000000000        0x0 ./riscv_hal/init.o
+ .bss           0x0000000000000000        0x0 ./riscv_hal/init.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal.o
+ .text          0x0000000000000000        0x0 ./riscv_hal/riscv_hal.o
+ .data          0x0000000000000000        0x0 ./riscv_hal/riscv_hal.o
+ .bss           0x0000000000000000        0x0 ./riscv_hal/riscv_hal.o
+ .text.SysTick_Config
+                0x0000000000000000       0xa0 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x74e ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x19 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x22 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x52 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x94 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x16 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x10e ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x8d ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x16 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x43 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x57 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x58 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x182 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x339 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x16 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x29 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x103 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x6a ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x1df ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x16 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x1c ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x52 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x40 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x40 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0xd5 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x1c ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x3d ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000       0x35 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x51a ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000000000      0x3a6 ./riscv_hal/riscv_hal.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/riscv_hal_stubs.o
+ .text          0x0000000000000000        0x0 ./riscv_hal/riscv_hal_stubs.o
+ .data          0x0000000000000000        0x0 ./riscv_hal/riscv_hal_stubs.o
+ .bss           0x0000000000000000        0x0 ./riscv_hal/riscv_hal_stubs.o
+ .text.External_IRQHandler
+                0x0000000000000000        0xe ./riscv_hal/riscv_hal_stubs.o
+ .text.MSYS_E10_IRQHandler
+                0x0000000000000000        0xe ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000      0x74e ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x22 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x52 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x19 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x94 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x57 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000      0x339 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x16 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x6a ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x1c ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x52 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x40 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x40 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0xd5 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x1c ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000       0x3d ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000000000      0x51a ./riscv_hal/riscv_hal_stubs.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./riscv_hal/syscall.o
+ .text          0x0000000000000000        0x0 ./riscv_hal/syscall.o
+ .data          0x0000000000000000        0x0 ./riscv_hal/syscall.o
+ .bss           0x0000000000000000        0x0 ./riscv_hal/syscall.o
+ .sbss.__env    0x0000000000000000        0x4 ./riscv_hal/syscall.o
+ .sdata.environ
+                0x0000000000000000        0x4 ./riscv_hal/syscall.o
+ .rodata        0x0000000000000000        0x3 ./riscv_hal/syscall.o
+ .text.write_hex
+                0x0000000000000000       0xb8 ./riscv_hal/syscall.o
+ .text._isatty  0x0000000000000000       0x2c ./riscv_hal/syscall.o
+ .text.stub     0x0000000000000000       0x20 ./riscv_hal/syscall.o
+ .text._open    0x0000000000000000       0x2a ./riscv_hal/syscall.o
+ .text._openat  0x0000000000000000       0x2e ./riscv_hal/syscall.o
+ .text._close   0x0000000000000000       0x22 ./riscv_hal/syscall.o
+ .text._execve  0x0000000000000000       0x2a ./riscv_hal/syscall.o
+ .text._fork    0x0000000000000000       0x1e ./riscv_hal/syscall.o
+ .text._fstat   0x0000000000000000       0x42 ./riscv_hal/syscall.o
+ .text._getpid  0x0000000000000000       0x10 ./riscv_hal/syscall.o
+ .text._kill    0x0000000000000000       0x26 ./riscv_hal/syscall.o
+ .text._link    0x0000000000000000       0x26 ./riscv_hal/syscall.o
+ .text._lseek   0x0000000000000000       0x3e ./riscv_hal/syscall.o
+ .text._read    0x0000000000000000       0x2a ./riscv_hal/syscall.o
+ .text._stat    0x0000000000000000       0x26 ./riscv_hal/syscall.o
+ .text._times   0x0000000000000000       0x22 ./riscv_hal/syscall.o
+ .text._unlink  0x0000000000000000       0x22 ./riscv_hal/syscall.o
+ .text._wait    0x0000000000000000       0x22 ./riscv_hal/syscall.o
+ .text._write   0x0000000000000000       0x2a ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000      0x74e ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x22 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x52 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x19 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x94 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x57 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0xcf ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000      0x339 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x16 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x20 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x34 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x6a ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x1c ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x52 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x40 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x40 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0xd5 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x1c ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x3d ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0xbe ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000      0x51a ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x58 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000      0x182 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000       0x35 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000000000      0x3a6 ./riscv_hal/syscall.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .group         0x0000000000000000        0xc ./hal/hal_irq.o
+ .text          0x0000000000000000        0x0 ./hal/hal_irq.o
+ .data          0x0000000000000000        0x0 ./hal/hal_irq.o
+ .bss           0x0000000000000000        0x0 ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000      0x74e ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000       0x22 ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000      0x103 ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000       0x6a ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000      0x1df ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000      0x3a6 ./hal/hal_irq.o
+ .debug_macro   0x0000000000000000       0x74 ./hal/hal_irq.o
+ .data          0x0000000000000000        0x0 ./hal/hw_reg_access.o
+ .bss           0x0000000000000000        0x0 ./hal/hw_reg_access.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreUARTapb/core_uart_apb.o
+ .text          0x0000000000000000        0x0 ./drivers/CoreUARTapb/core_uart_apb.o
+ .data          0x0000000000000000        0x0 ./drivers/CoreUARTapb/core_uart_apb.o
+ .bss           0x0000000000000000        0x0 ./drivers/CoreUARTapb/core_uart_apb.o
+ .text.UART_fill_tx_fifo
+                0x0000000000000000       0xae ./drivers/CoreUARTapb/core_uart_apb.o
+ .text.UART_get_rx_status
+                0x0000000000000000       0x3e ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000      0x74e ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000       0x22 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000       0x8e ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000       0x51 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000      0x103 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000       0x6a ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000      0x1df ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000000000       0x64 ./drivers/CoreUARTapb/core_uart_apb.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/core_i2c.o
+ .text          0x0000000000000000        0x0 ./drivers/CoreI2C/core_i2c.o
+ .data          0x0000000000000000        0x0 ./drivers/CoreI2C/core_i2c.o
+ .bss           0x0000000000000000        0x0 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_channel_init
+                0x0000000000000000      0x112 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_read
+                0x0000000000000000      0x12c ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_get_status
+                0x0000000000000000       0x20 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_system_tick
+                0x0000000000000000       0x7c ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_slave_tx_buffer
+                0x0000000000000000       0x54 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_slave_rx_buffer
+                0x0000000000000000       0x54 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_slave_mem_offset_length
+                0x0000000000000000       0x36 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_register_write_handler
+                0x0000000000000000       0x3c ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_enable_slave
+                0x0000000000000000       0x5a ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_disable_slave
+                0x0000000000000000       0x4c ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_slave_second_addr
+                0x0000000000000000       0x3e ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_disable_slave_second_addr
+                0x0000000000000000       0x32 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_gca
+                0x0000000000000000       0x2e ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_clear_gca
+                0x0000000000000000       0x2e ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_smbus_init
+                0x0000000000000000       0x2c ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_enable_smbus_irq
+                0x0000000000000000       0x74 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_disable_smbus_irq
+                0x0000000000000000       0x74 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_suspend_smbus_slave
+                0x0000000000000000       0x48 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_resume_smbus_slave
+                0x0000000000000000       0x48 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_reset_smbus
+                0x0000000000000000       0x48 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_smbus_alert
+                0x0000000000000000       0x46 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_clear_smbus_alert
+                0x0000000000000000       0x46 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_get_irq_status
+                0x0000000000000000       0x8a ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_set_user_data
+                0x0000000000000000       0x20 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_get_user_data
+                0x0000000000000000       0x18 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000      0x74e ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x22 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x8e ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x51 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000      0x103 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x6a ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000      0x1df ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x64 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x16 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x19 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x34 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x34 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x16 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x43 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x34 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x10 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x58 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000      0x182 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000      0x339 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000000000       0x35 ./drivers/CoreI2C/core_i2c.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreI2C/i2c_interrupt.o
+ .text          0x0000000000000000        0x0 ./drivers/CoreI2C/i2c_interrupt.o
+ .data          0x0000000000000000        0x0 ./drivers/CoreI2C/i2c_interrupt.o
+ .bss           0x0000000000000000        0x0 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000      0x74e ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000       0x22 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000       0x8e ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000       0x51 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000      0x103 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000       0x6a ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000      0x1df ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000       0x64 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000000000       0x16 ./drivers/CoreI2C/i2c_interrupt.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./drivers/CoreGPIO/core_gpio.o
+ .text          0x0000000000000000        0x0 ./drivers/CoreGPIO/core_gpio.o
+ .data          0x0000000000000000        0x0 ./drivers/CoreGPIO/core_gpio.o
+ .bss           0x0000000000000000        0x0 ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_config
+                0x0000000000000000       0x52 ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_set_outputs
+                0x0000000000000000      0x10a ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_get_inputs
+                0x0000000000000000      0x126 ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_get_outputs
+                0x0000000000000000      0x126 ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_drive_inout
+                0x0000000000000000      0x12c ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_enable_irq
+                0x0000000000000000       0x6c ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_disable_irq
+                0x0000000000000000       0x6a ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_clear_irq
+                0x0000000000000000       0xfc ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_get_irq_sources
+                0x0000000000000000      0x126 ./drivers/CoreGPIO/core_gpio.o
+ .text.GPIO_clear_all_irq_sources
+                0x0000000000000000       0xf6 ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000      0x74e ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000       0x22 ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000       0x8e ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000       0x51 ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000      0x103 ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000       0x6a ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000      0x1df ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000       0x64 ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000000000       0x16 ./drivers/CoreGPIO/core_gpio.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .text          0x0000000000000000        0x0 ./application/hdmi_config/hdmi_tx.o
+ .data          0x0000000000000000        0x0 ./application/hdmi_config/hdmi_tx.o
+ .bss           0x0000000000000000        0x0 ./application/hdmi_config/hdmi_tx.o
+ .rodata.iic_hdmi_out_embedded_sync_config
+                0x0000000000000000        0xc ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000      0x74e ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x22 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x52 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x19 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x94 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x34 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x34 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x57 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000      0x339 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x10 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x16 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x43 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x34 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x10 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x58 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000      0x182 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x10 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x6a ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x1c ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x52 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x40 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x10 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x40 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0xd5 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x1c ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x3d ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x16 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000      0x103 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000      0x1df ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x35 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000000000       0x34 ./application/hdmi_config/hdmi_tx.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .group         0x0000000000000000        0xc ./main.o
+ .text          0x0000000000000000        0x0 ./main.o
+ .data          0x0000000000000000        0x0 ./main.o
+ .bss           0x0000000000000000        0x0 ./main.o
+ .sbss.g_toggle
+                0x0000000000000000        0x1 ./main.o
+ .sbss.g_10ms_count
+                0x0000000000000000        0x4 ./main.o
+ .debug_macro   0x0000000000000000      0x74e ./main.o
+ .debug_macro   0x0000000000000000       0x22 ./main.o
+ .debug_macro   0x0000000000000000       0x52 ./main.o
+ .debug_macro   0x0000000000000000       0x19 ./main.o
+ .debug_macro   0x0000000000000000       0x94 ./main.o
+ .debug_macro   0x0000000000000000       0x34 ./main.o
+ .debug_macro   0x0000000000000000       0x34 ./main.o
+ .debug_macro   0x0000000000000000       0x16 ./main.o
+ .debug_macro   0x0000000000000000       0x57 ./main.o
+ .debug_macro   0x0000000000000000       0x97 ./main.o
+ .debug_macro   0x0000000000000000      0x339 ./main.o
+ .debug_macro   0x0000000000000000       0xfd ./main.o
+ .debug_macro   0x0000000000000000       0x10 ./main.o
+ .debug_macro   0x0000000000000000       0x16 ./main.o
+ .debug_macro   0x0000000000000000       0x43 ./main.o
+ .debug_macro   0x0000000000000000       0x34 ./main.o
+ .debug_macro   0x0000000000000000       0x10 ./main.o
+ .debug_macro   0x0000000000000000       0x58 ./main.o
+ .debug_macro   0x0000000000000000      0x182 ./main.o
+ .debug_macro   0x0000000000000000       0x10 ./main.o
+ .debug_macro   0x0000000000000000       0x6a ./main.o
+ .debug_macro   0x0000000000000000       0x1c ./main.o
+ .debug_macro   0x0000000000000000       0x52 ./main.o
+ .debug_macro   0x0000000000000000       0x40 ./main.o
+ .debug_macro   0x0000000000000000       0x10 ./main.o
+ .debug_macro   0x0000000000000000       0x40 ./main.o
+ .debug_macro   0x0000000000000000       0xd5 ./main.o
+ .debug_macro   0x0000000000000000       0x1c ./main.o
+ .debug_macro   0x0000000000000000       0x3d ./main.o
+ .debug_macro   0x0000000000000000       0x16 ./main.o
+ .debug_macro   0x0000000000000000      0x16f ./main.o
+ .debug_macro   0x0000000000000000       0x16 ./main.o
+ .debug_macro   0x0000000000000000       0x35 ./main.o
+ .debug_macro   0x0000000000000000       0x16 ./main.o
+ .debug_macro   0x0000000000000000       0x29 ./main.o
+ .debug_macro   0x0000000000000000      0x103 ./main.o
+ .debug_macro   0x0000000000000000      0x1df ./main.o
+ .debug_macro   0x0000000000000000       0x64 ./main.o
+ .debug_macro   0x0000000000000000      0x3a6 ./main.o
+ .debug_macro   0x0000000000000000       0x74 ./main.o
+ .debug_macro   0x0000000000000000       0x34 ./main.o
+ .debug_macro   0x0000000000000000       0x40 ./main.o
+ .debug_macro   0x0000000000000000       0x3c ./main.o
+ .debug_macro   0x0000000000000000       0x28 ./main.o
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memset.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+ .text._snprintf_r
+                0x0000000000000000       0x70 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+ .text._sprintf_r
+                0x0000000000000000       0x40 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .text._strtol_r
+                0x0000000000000000        0x8 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .text.strtol_l
+                0x0000000000000000       0x18 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+ .text.isatty   0x0000000000000000        0x8 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+ .debug_frame   0x0000000000000000       0x20 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+ .riscv.attributes
+                0x0000000000000000       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sysisatty.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+ .text.write    0x0000000000000000       0x18 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+ .debug_frame   0x0000000000000000       0x20 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+ .riscv.attributes
+                0x0000000000000000       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-syswrite.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+ .text._write_r
+                0x0000000000000000       0x3a c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+ .debug_frame   0x0000000000000000       0x30 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+ .riscv.attributes
+                0x0000000000000000       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-writer.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-ctype_.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-ctype_.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-ctype_.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+ .sdata2._global_impure_ptr
+                0x0000000000000000        0x4 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ .text.__ssprint_r
+                0x0000000000000000      0x148 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memcpy-asm.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memcpy-asm.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memmove.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memmove.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+ .text          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
+ .data          0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
+ .bss           0x0000000000000000        0x0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x0000000080000000 0x0000000000010000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD ./riscv_hal/entry.o
+LOAD ./riscv_hal/init.o
+LOAD ./riscv_hal/riscv_hal.o
+LOAD ./riscv_hal/riscv_hal_stubs.o
+LOAD ./riscv_hal/syscall.o
+LOAD ./hal/hal_irq.o
+LOAD ./hal/hw_reg_access.o
+LOAD ./drivers/CoreUARTapb/core_uart_apb.o
+LOAD ./drivers/CoreI2C/core_i2c.o
+LOAD ./drivers/CoreI2C/i2c_interrupt.o
+LOAD ./drivers/CoreGPIO/core_gpio.o
+LOAD ./application/hdmi_config/hdmi_tx.o
+LOAD ./main.o
+LOAD c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imc/ilp32\libgcc.a
+LOAD c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a
+LOAD c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libc_nano.a
+LOAD c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imc/ilp32\libgcc.a
+START GROUP
+LOAD c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/rv32imc/ilp32\libgcc.a
+LOAD c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libc_nano.a
+END GROUP
+                0x0000000080000000                RAM_START_ADDRESS = 0x80000000
+                0x0000000000000100                MTVEC_OFFSET = 0x100
+                0x0000000000010000                RAM_SIZE = 0x10000
+                0x0000000000001000                STACK_SIZE = 0x1000
+                0x0000000000001000                HEAP_SIZE = 0x1000
+
+.entry          0x0000000080000000      0x100
+ *(SORT_NONE(.entry))
+ .entry         0x0000000080000000       0x60 ./riscv_hal/entry.o
+                0x0000000080000000                _start
+                0x0000000000000100                . = MTVEC_OFFSET
+ *fill*         0x0000000080000060       0xa0 
+                0x0000000080000100                . = ALIGN (0x10)
+
+.trap_e         0x0000000080000100      0x480
+ *(SORT_NONE(.trap_e))
+ .trap_e        0x0000000080000100      0x476 ./riscv_hal/entry.o
+                0x0000000080000580                . = ALIGN (0x10)
+ *fill*         0x0000000080000576        0xa 
+
+.text           0x0000000080000580     0x4620
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text.copy_section
+                0x0000000080000580       0x48 ./riscv_hal/init.o
+ .text.zero_section
+                0x00000000800005c8       0x3e ./riscv_hal/init.o
+ .text._init    0x0000000080000606       0x92 ./riscv_hal/init.o
+                0x0000000080000606                _init
+ .text._fini    0x0000000080000698        0xe ./riscv_hal/init.o
+                0x0000000080000698                _fini
+ .text.clear_soft_interrupt
+                0x00000000800006a6       0x18 ./riscv_hal/riscv_hal.o
+ .text.__disable_irq
+                0x00000000800006be       0x22 ./riscv_hal/riscv_hal.o
+                0x00000000800006be                __disable_irq
+ .text.__enable_irq
+                0x00000000800006e0       0x16 ./riscv_hal/riscv_hal.o
+                0x00000000800006e0                __enable_irq
+ .text.handle_m_timer_interrupt
+                0x00000000800006f6       0x62 ./riscv_hal/riscv_hal.o
+                0x00000000800006f6                handle_m_timer_interrupt
+ .text.handle_m_soft_interrupt
+                0x0000000080000758       0x16 ./riscv_hal/riscv_hal.o
+                0x0000000080000758                handle_m_soft_interrupt
+ .text.handle_trap
+                0x000000008000076e      0x1f0 ./riscv_hal/riscv_hal.o
+                0x000000008000076e                handle_trap
+ .text.Software_IRQHandler
+                0x000000008000095e        0xc ./riscv_hal/riscv_hal_stubs.o
+                0x000000008000095e                Software_IRQHandler
+ .text.SysTick_Handler
+                0x000000008000096a        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x000000008000096a                SysTick_Handler
+ .text.MGECI_IRQHandler
+                0x0000000080000978        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x0000000080000978                MGECI_IRQHandler
+ .text.MGEUI_IRQHandler
+                0x0000000080000986        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x0000000080000986                MGEUI_IRQHandler
+ .text.OPSRV_REG_IRQHandler
+                0x0000000080000994        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x0000000080000994                OPSRV_REG_IRQHandler
+ .text.MSYS_E15_IRQHandler
+                0x00000000800009a2        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x00000000800009a2                MSYS_E15_IRQHandler
+ .text.MSYS_E14_IRQHandler
+                0x00000000800009b0        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x00000000800009b0                MSYS_E14_IRQHandler
+ .text.MSYS_E13_IRQHandler
+                0x00000000800009be        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x00000000800009be                MSYS_E13_IRQHandler
+ .text.MSYS_E12_IRQHandler
+                0x00000000800009cc        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x00000000800009cc                MSYS_E12_IRQHandler
+ .text.MSYS_E11_IRQHandler
+                0x00000000800009da        0xe ./riscv_hal/riscv_hal_stubs.o
+                0x00000000800009da                MSYS_E11_IRQHandler
+ .text._exit    0x00000000800009e8        0xc ./riscv_hal/syscall.o
+                0x00000000800009e8                _exit
+ .text._sbrk    0x00000000800009f4       0x6e ./riscv_hal/syscall.o
+                0x00000000800009f4                _sbrk
+ .text.HAL_enable_interrupts
+                0x0000000080000a62       0x14 ./hal/hal_irq.o
+                0x0000000080000a62                HAL_enable_interrupts
+ .text.HAL_disable_interrupts
+                0x0000000080000a76       0x28 ./hal/hal_irq.o
+                0x0000000080000a76                HAL_disable_interrupts
+ .text.HAL_restore_interrupts
+                0x0000000080000a9e       0x1a ./hal/hal_irq.o
+                0x0000000080000a9e                HAL_restore_interrupts
+ .text          0x0000000080000ab8       0xa8 ./hal/hw_reg_access.o
+                0x0000000080000ab8                HW_set_32bit_reg
+                0x0000000080000abc                HW_get_32bit_reg
+                0x0000000080000ac0                HW_set_32bit_reg_field
+                0x0000000080000ae2                HW_get_32bit_reg_field
+                0x0000000080000aec                HW_set_16bit_reg
+                0x0000000080000af2                HW_get_16bit_reg
+                0x0000000080000af8                HW_set_16bit_reg_field
+                0x0000000080000b1a                HW_get_16bit_reg_field
+                0x0000000080000b26                HW_set_8bit_reg
+                0x0000000080000b2c                HW_get_8bit_reg
+                0x0000000080000b32                HW_set_8bit_reg_field
+                0x0000000080000b54                HW_get_8bit_reg_field
+ .text.UART_init
+                0x0000000080000b60       0xc4 ./drivers/CoreUARTapb/core_uart_apb.o
+                0x0000000080000b60                UART_init
+ .text.UART_send
+                0x0000000080000c24       0x80 ./drivers/CoreUARTapb/core_uart_apb.o
+                0x0000000080000c24                UART_send
+ .text.UART_get_rx
+                0x0000000080000ca4       0xea ./drivers/CoreUARTapb/core_uart_apb.o
+                0x0000000080000ca4                UART_get_rx
+ .text.UART_polled_tx_string
+                0x0000000080000d8e       0x7a ./drivers/CoreUARTapb/core_uart_apb.o
+                0x0000000080000d8e                UART_polled_tx_string
+ .text.I2C_init
+                0x0000000080000e08       0xf6 ./drivers/CoreI2C/core_i2c.o
+                0x0000000080000e08                I2C_init
+ .text.I2C_write
+                0x0000000080000efe      0x10a ./drivers/CoreI2C/core_i2c.o
+                0x0000000080000efe                I2C_write
+ .text.I2C_write_read
+                0x0000000080001008      0x150 ./drivers/CoreI2C/core_i2c.o
+                0x0000000080001008                I2C_write_read
+ .text.I2C_wait_complete
+                0x0000000080001158       0x4c ./drivers/CoreI2C/core_i2c.o
+                0x0000000080001158                I2C_wait_complete
+ .text.enable_slave_if_required
+                0x00000000800011a4       0x32 ./drivers/CoreI2C/core_i2c.o
+ .text.I2C_isr  0x00000000800011d6      0x770 ./drivers/CoreI2C/core_i2c.o
+                0x00000000800011d6                I2C_isr
+ .text.I2C_enable_irq
+                0x0000000080001946       0x12 ./drivers/CoreI2C/i2c_interrupt.o
+                0x0000000080001946                I2C_enable_irq
+ .text.I2C_disable_irq
+                0x0000000080001958       0x12 ./drivers/CoreI2C/i2c_interrupt.o
+                0x0000000080001958                I2C_disable_irq
+ .text.GPIO_init
+                0x000000008000196a      0x11e ./drivers/CoreGPIO/core_gpio.o
+                0x000000008000196a                GPIO_init
+ .text.GPIO_set_output
+                0x0000000080001a88      0x1a6 ./drivers/CoreGPIO/core_gpio.o
+                0x0000000080001a88                GPIO_set_output
+ .text.hdmi_i2c_tx_write
+                0x0000000080001c2e       0x98 ./application/hdmi_config/hdmi_tx.o
+ .text.hdmi_i2c_tx_read
+                0x0000000080001cc6       0x66 ./application/hdmi_config/hdmi_tx.o
+ .text.HDMI_tx_setup
+                0x0000000080001d2c      0x1ac ./application/hdmi_config/hdmi_tx.o
+                0x0000000080001d2c                HDMI_tx_setup
+ .text.__enable_external_irq
+                0x0000000080001ed8       0x1c ./main.o
+ .text.__enable_sys_ext_irq
+                0x0000000080001ef4       0x40 ./main.o
+ .text.print    0x0000000080001f34       0x22 ./main.o
+                0x0000000080001f34                print
+ .text.validate_input_hex
+                0x0000000080001f56       0x70 ./main.o
+                0x0000000080001f56                validate_input_hex
+ .text.get_data_from_uart
+                0x0000000080001fc6      0x16e ./main.o
+                0x0000000080001fc6                get_data_from_uart
+ .text.get_user_input
+                0x0000000080002134       0x6c ./main.o
+                0x0000000080002134                get_user_input
+ .text.run_single_multiply
+                0x00000000800021a0      0x3c0 ./main.o
+                0x00000000800021a0                run_single_multiply
+ .text.run_burst_multiply
+                0x0000000080002560      0xb08 ./main.o
+                0x0000000080002560                run_burst_multiply
+ .text.main     0x0000000080003068       0x52 ./main.o
+                0x0000000080003068                main
+ .text.rotate_points
+                0x00000000800030ba      0x3a0 ./main.o
+                0x00000000800030ba                rotate_points
+ .text.External_IRQHandler
+                0x000000008000345a       0x3a ./main.o
+                0x000000008000345a                External_IRQHandler
+ .text.MSYS_E10_IRQHandler
+                0x0000000080003494       0x1a ./main.o
+                0x0000000080003494                MSYS_E10_IRQHandler
+ .text.Init     0x00000000800034ae       0x52 ./main.o
+                0x00000000800034ae                Init
+ .text          0x0000000080003500       0x10 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memset.o)
+                0x0000000080003500                memset
+ .text.snprintf
+                0x0000000080003510       0x74 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+                0x0000000080003510                sniprintf
+                0x0000000080003510                snprintf
+ .text.sprintf  0x0000000080003584       0x48 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+                0x0000000080003584                siprintf
+                0x0000000080003584                sprintf
+ .text._strtol_l.isra.0
+                0x00000000800035cc      0x12c c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .text.strtol   0x00000000800036f8       0x12 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+                0x00000000800036f8                strtol
+ .text.__ssputs_r
+                0x000000008000370a       0xe8 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x000000008000370a                __ssputs_r
+ .text._svfprintf_r
+                0x00000000800037f2      0x276 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00000000800037f2                _svfiprintf_r
+                0x00000000800037f2                _svfprintf_r
+ .text._printf_common
+                0x0000000080003a68      0x10c c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000080003a68                _printf_common
+ .text._printf_i
+                0x0000000080003b74      0x2a4 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000080003b74                _printf_i
+ .text.memchr   0x0000000080003e18       0x1a c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+                0x0000000080003e18                memchr
+ .text          0x0000000080003e32       0x16 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memcpy-asm.o)
+                0x0000000080003e32                memcpy
+ .text          0x0000000080003e48       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memmove.o)
+                0x0000000080003e48                memmove
+ .text._free_r  0x0000000080003e6e       0xa4 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+                0x0000000080003e6e                _free_r
+ .text._malloc_r
+                0x0000000080003f12       0xce c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+                0x0000000080003f12                _malloc_r
+ .text._realloc_r
+                0x0000000080003fe0       0x4e c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+                0x0000000080003fe0                _realloc_r
+ .text._sbrk_r  0x000000008000402e       0x2a c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+                0x000000008000402e                _sbrk_r
+ .text.__malloc_lock
+                0x0000000080004058        0x2 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+                0x0000000080004058                __malloc_lock
+ .text.__malloc_unlock
+                0x000000008000405a        0x2 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+                0x000000008000405a                __malloc_unlock
+ .text._malloc_usable_size_r
+                0x000000008000405c       0x14 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
+                0x000000008000405c                _malloc_usable_size_r
+ *(.plt)
+                0x0000000080004070                . = ALIGN (0x10)
+ *fill*         0x0000000080004070        0x0 
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *crtend.o(.ctors)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *crtend.o(.dtors)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000000080004070        0x6 ./riscv_hal/init.o
+ *fill*         0x0000000080004076        0x2 
+ .rodata.I2C_isr
+                0x0000000080004078      0x364 ./drivers/CoreI2C/core_i2c.o
+ .rodata.iic_hdmi_out_config
+                0x00000000800043dc       0x36 ./application/hdmi_config/hdmi_tx.o
+ *fill*         0x0000000080004412        0x2 
+ .rodata        0x0000000080004414      0x132 ./application/hdmi_config/hdmi_tx.o
+ *fill*         0x0000000080004546        0x2 
+ .rodata        0x0000000080004548      0x515 ./main.o
+ *fill*         0x0000000080004a5d        0x3 
+ .rodata._ctype_
+                0x0000000080004a60      0x101 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-ctype_.o)
+                0x0000000080004a60                _ctype_
+ *fill*         0x0000000080004b61        0x3 
+ .rodata._svfprintf_r.str1.4
+                0x0000000080004b64       0x13 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ *fill*         0x0000000080004b77        0x1 
+ .rodata._printf_i.str1.4
+                0x0000000080004b78       0x28 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                                         0x25 (size before relaxing)
+ *(.gcc_except_table)
+ *(.eh_frame_hdr)
+ *(.eh_frame)
+ *(.init)
+ *(.fini)
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_NAME(.init_array.*))
+ *(.init_array)
+                [!provide]                        PROVIDE (__init_array_end = .)
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(.fini_array)
+ *(SORT_BY_NAME(.fini_array.*))
+                [!provide]                        PROVIDE (__fini_array_end = .)
+                0x0000000080004ba0                . = ALIGN (0x10)
+
+.rela.dyn       0x0000000080004ba0        0x0
+ .rela.entry    0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.trap_e   0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text._init
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.handle_m_timer_interrupt
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.handle_m_soft_interrupt
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.handle_trap
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.sdata.curbrk.3063
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text._sbrk
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.sdata.this_i2c
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.HDMI_tx_setup
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.print
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.get_data_from_uart
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.main
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.External_IRQHandler
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.MSYS_E10_IRQHandler
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text.Init
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.data.impure_data
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text._svfprintf_r
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+ .rela.text._sbrk_r
+                0x0000000080004ba0        0x0 ./riscv_hal/entry.o
+
+.sdata          0x0000000080004ba0       0x10
+                0x0000000080004ba0                __sdata_load = LOADADDR (.sdata)
+                0x0000000080004ba0                __sdata_start = .
+                0x00000000800053a0                PROVIDE (__global_pointer$ = (. + 0x800))
+ *(.srodata.cst16)
+ *(.srodata.cst8)
+ *(.srodata.cst4)
+ *(.srodata.cst2)
+ *(.srodata*)
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata.curbrk.3063
+                0x0000000080004ba0        0x4 ./riscv_hal/syscall.o
+ .sdata.this_i2c
+                0x0000000080004ba4        0x4 ./application/hdmi_config/hdmi_tx.o
+ .sdata.g_scale
+                0x0000000080004ba8        0x4 ./main.o
+                0x0000000080004ba8                g_scale
+ .sdata._impure_ptr
+                0x0000000080004bac        0x4 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+                0x0000000080004bac                _impure_ptr
+                0x0000000080004bb0                . = ALIGN (0x10)
+                0x0000000080004bb0                __sdata_end = .
+
+.data           0x0000000080004bb0      0xbe0
+                0x0000000080004bb0                __data_load = LOADADDR (.data)
+                0x0000000080004bb0                __data_start = .
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.g_sin_table
+                0x0000000080004bb0      0x5a0 ./main.o
+                0x0000000080004bb0                g_sin_table
+ .data.g_cos_table
+                0x0000000080005150      0x5a0 ./main.o
+                0x0000000080005150                g_cos_table
+ .data.g_message
+                0x00000000800056f0       0x32 ./main.o
+                0x00000000800056f0                g_message
+ *fill*         0x0000000080005722        0x2 
+ .data.impure_data
+                0x0000000080005724       0x60 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+                0x0000000080005790                . = ALIGN (0x10)
+ *fill*         0x0000000080005784        0xc 
+                0x0000000080005790                __data_end = .
+
+.sbss           0x0000000080005790       0x20
+                0x0000000080005790                __sbss_start = .
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss.g_systick_increment
+                0x0000000080005790        0x8 ./riscv_hal/riscv_hal.o
+ .sbss.g_frame_counter
+                0x0000000080005798        0x4 ./main.o
+                0x0000000080005798                g_frame_counter
+ .sbss.g_scale_flag
+                0x000000008000579c        0x1 ./main.o
+                0x000000008000579c                g_scale_flag
+ *fill*         0x000000008000579d        0x3 
+ .sbss.g_angle  0x00000000800057a0        0x4 ./main.o
+                0x00000000800057a0                g_angle
+ .sbss.__malloc_free_list
+                0x00000000800057a4        0x4 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00000000800057a4                __malloc_free_list
+ .sbss.__malloc_sbrk_start
+                0x00000000800057a8        0x4 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+                0x00000000800057a8                __malloc_sbrk_start
+ *(.scommon)
+                0x00000000800057b0                . = ALIGN (0x10)
+ *fill*         0x00000000800057ac        0x4 
+                0x00000000800057b0                __sbss_end = .
+
+.bss            0x00000000800057b0      0x1a0
+                0x00000000800057b0                __bss_start = .
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss.tx_buffer
+                0x00000000800057b0       0x10 ./application/hdmi_config/hdmi_tx.o
+ *(COMMON)
+ COMMON         0x00000000800057c0        0x4 ./riscv_hal/syscall.o
+                0x00000000800057c0                errno
+ COMMON         0x00000000800057c4      0x180 ./main.o
+                0x00000000800057c4                g_uart
+                0x00000000800057cc                g_i2c_instance_hdmi
+                0x0000000080005838                UART_Buffer
+                0x000000008000593c                g_gpio0
+                0x0000000080005950                . = ALIGN (0x10)
+ *fill*         0x0000000080005944        0xc 
+                0x0000000080005950                __bss_end = .
+                0x0000000080005950                _end = .
+
+.heap           0x0000000080005950     0x1000
+                0x0000000080005950                __heap_start = .
+                0x0000000080006950                . = (. + HEAP_SIZE)
+ *fill*         0x0000000080005950     0x1000 
+                0x0000000080006950                __heap_end = .
+                0x0000000080006950                . = ALIGN (0x10)
+                0x0000000080006950                _heap_end = __heap_end
+
+.stack          0x0000000080006950     0x1000
+                0x0000000080006950                __stack_bottom = .
+                0x0000000080007950                . = (. + STACK_SIZE)
+ *fill*         0x0000000080006950     0x1000 
+                0x0000000080007950                __stack_top = .
+OUTPUT(RV32_simple_gpio.elf elf32-littleriscv)
+
+.riscv.attributes
+                0x0000000000000000       0x26
+ .riscv.attributes
+                0x0000000000000000       0x24 ./riscv_hal/entry.o
+ .riscv.attributes
+                0x0000000000000024       0x26 ./riscv_hal/init.o
+ .riscv.attributes
+                0x000000000000004a       0x26 ./riscv_hal/riscv_hal.o
+ .riscv.attributes
+                0x0000000000000070       0x26 ./riscv_hal/riscv_hal_stubs.o
+ .riscv.attributes
+                0x0000000000000096       0x26 ./riscv_hal/syscall.o
+ .riscv.attributes
+                0x00000000000000bc       0x26 ./hal/hal_irq.o
+ .riscv.attributes
+                0x00000000000000e2       0x24 ./hal/hw_reg_access.o
+ .riscv.attributes
+                0x0000000000000106       0x26 ./drivers/CoreUARTapb/core_uart_apb.o
+ .riscv.attributes
+                0x000000000000012c       0x26 ./drivers/CoreI2C/core_i2c.o
+ .riscv.attributes
+                0x0000000000000152       0x26 ./drivers/CoreI2C/i2c_interrupt.o
+ .riscv.attributes
+                0x0000000000000178       0x26 ./drivers/CoreGPIO/core_gpio.o
+ .riscv.attributes
+                0x000000000000019e       0x26 ./application/hdmi_config/hdmi_tx.o
+ .riscv.attributes
+                0x00000000000001c4       0x26 ./main.o
+ .riscv.attributes
+                0x00000000000001ea       0x24 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memset.o)
+ .riscv.attributes
+                0x000000000000020e       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+ .riscv.attributes
+                0x0000000000000234       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+ .riscv.attributes
+                0x000000000000025a       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .riscv.attributes
+                0x0000000000000280       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-ctype_.o)
+ .riscv.attributes
+                0x00000000000002a6       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-impure.o)
+ .riscv.attributes
+                0x00000000000002cc       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ .riscv.attributes
+                0x00000000000002f2       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .riscv.attributes
+                0x0000000000000318       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+ .riscv.attributes
+                0x000000000000033e       0x24 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memcpy-asm.o)
+ .riscv.attributes
+                0x0000000000000362       0x24 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memmove.o)
+ .riscv.attributes
+                0x0000000000000386       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+ .riscv.attributes
+                0x00000000000003ac       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+ .riscv.attributes
+                0x00000000000003d2       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+ .riscv.attributes
+                0x00000000000003f8       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+ .riscv.attributes
+                0x000000000000041e       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+ .riscv.attributes
+                0x0000000000000444       0x26 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
+
+.comment        0x0000000000000000       0x51
+ .comment       0x0000000000000000       0x51 ./riscv_hal/init.o
+                                         0x52 (size before relaxing)
+ .comment       0x0000000000000051       0x52 ./riscv_hal/riscv_hal.o
+ .comment       0x0000000000000051       0x52 ./riscv_hal/riscv_hal_stubs.o
+ .comment       0x0000000000000051       0x52 ./riscv_hal/syscall.o
+ .comment       0x0000000000000051       0x52 ./hal/hal_irq.o
+ .comment       0x0000000000000051       0x52 ./drivers/CoreUARTapb/core_uart_apb.o
+ .comment       0x0000000000000051       0x52 ./drivers/CoreI2C/core_i2c.o
+ .comment       0x0000000000000051       0x52 ./drivers/CoreI2C/i2c_interrupt.o
+ .comment       0x0000000000000051       0x52 ./drivers/CoreGPIO/core_gpio.o
+ .comment       0x0000000000000051       0x52 ./application/hdmi_config/hdmi_tx.o
+ .comment       0x0000000000000051       0x52 ./main.o
+
+.debug_line     0x0000000000000000     0x6faf
+ .debug_line    0x0000000000000000      0xc56 ./riscv_hal/entry.o
+ .debug_line    0x0000000000000c56      0x47e ./riscv_hal/init.o
+ .debug_line    0x00000000000010d4      0x84c ./riscv_hal/riscv_hal.o
+ .debug_line    0x0000000000001920      0x448 ./riscv_hal/riscv_hal_stubs.o
+ .debug_line    0x0000000000001d68      0x7c8 ./riscv_hal/syscall.o
+ .debug_line    0x0000000000002530      0x36d ./hal/hal_irq.o
+ .debug_line    0x000000000000289d      0x185 ./hal/hw_reg_access.o
+ .debug_line    0x0000000000002a22      0x65c ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_line    0x000000000000307e     0x1443 ./drivers/CoreI2C/core_i2c.o
+ .debug_line    0x00000000000044c1      0x31c ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_line    0x00000000000047dd      0xb51 ./drivers/CoreGPIO/core_gpio.o
+ .debug_line    0x000000000000532e      0x69f ./application/hdmi_config/hdmi_tx.o
+ .debug_line    0x00000000000059cd     0x15e2 ./main.o
+
+.debug_info     0x0000000000000000     0x75b9
+ .debug_info    0x0000000000000000       0x22 ./riscv_hal/entry.o
+ .debug_info    0x0000000000000022      0xb0b ./riscv_hal/init.o
+ .debug_info    0x0000000000000b2d      0xccf ./riscv_hal/riscv_hal.o
+ .debug_info    0x00000000000017fc      0x1ad ./riscv_hal/riscv_hal_stubs.o
+ .debug_info    0x00000000000019a9     0x1183 ./riscv_hal/syscall.o
+ .debug_info    0x0000000000002b2c       0xf7 ./hal/hal_irq.o
+ .debug_info    0x0000000000002c23       0x26 ./hal/hw_reg_access.o
+ .debug_info    0x0000000000002c49      0x34d ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_info    0x0000000000002f96     0x15e6 ./drivers/CoreI2C/core_i2c.o
+ .debug_info    0x000000000000457c      0x386 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_info    0x0000000000004902      0x642 ./drivers/CoreGPIO/core_gpio.o
+ .debug_info    0x0000000000004f44      0xdf4 ./application/hdmi_config/hdmi_tx.o
+ .debug_info    0x0000000000005d38     0x1881 ./main.o
+
+.debug_abbrev   0x0000000000000000     0x16cd
+ .debug_abbrev  0x0000000000000000       0x12 ./riscv_hal/entry.o
+ .debug_abbrev  0x0000000000000012      0x268 ./riscv_hal/init.o
+ .debug_abbrev  0x000000000000027a      0x29d ./riscv_hal/riscv_hal.o
+ .debug_abbrev  0x0000000000000517       0x97 ./riscv_hal/riscv_hal_stubs.o
+ .debug_abbrev  0x00000000000005ae      0x338 ./riscv_hal/syscall.o
+ .debug_abbrev  0x00000000000008e6       0xcc ./hal/hal_irq.o
+ .debug_abbrev  0x00000000000009b2       0x14 ./hal/hw_reg_access.o
+ .debug_abbrev  0x00000000000009c6      0x122 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_abbrev  0x0000000000000ae8      0x2ec ./drivers/CoreI2C/core_i2c.o
+ .debug_abbrev  0x0000000000000dd4      0x113 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_abbrev  0x0000000000000ee7      0x17c ./drivers/CoreGPIO/core_gpio.o
+ .debug_abbrev  0x0000000000001063      0x28b ./application/hdmi_config/hdmi_tx.o
+ .debug_abbrev  0x00000000000012ee      0x3df ./main.o
+
+.debug_aranges  0x0000000000000000      0x4e0
+ .debug_aranges
+                0x0000000000000000       0x28 ./riscv_hal/entry.o
+ .debug_aranges
+                0x0000000000000028       0x38 ./riscv_hal/init.o
+ .debug_aranges
+                0x0000000000000060       0x50 ./riscv_hal/riscv_hal.o
+ .debug_aranges
+                0x00000000000000b0       0x78 ./riscv_hal/riscv_hal_stubs.o
+ .debug_aranges
+                0x0000000000000128       0xc0 ./riscv_hal/syscall.o
+ .debug_aranges
+                0x00000000000001e8       0x30 ./hal/hal_irq.o
+ .debug_aranges
+                0x0000000000000218       0x20 ./hal/hw_reg_access.o
+ .debug_aranges
+                0x0000000000000238       0x48 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_aranges
+                0x0000000000000280      0x110 ./drivers/CoreI2C/core_i2c.o
+ .debug_aranges
+                0x0000000000000390       0x28 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_aranges
+                0x00000000000003b8       0x78 ./drivers/CoreGPIO/core_gpio.o
+ .debug_aranges
+                0x0000000000000430       0x30 ./application/hdmi_config/hdmi_tx.o
+ .debug_aranges
+                0x0000000000000460       0x80 ./main.o
+
+.debug_str      0x0000000000000000     0xd83f
+ .debug_str     0x0000000000000000       0x88 ./riscv_hal/entry.o
+ .debug_str     0x0000000000000088     0x8ea1 ./riscv_hal/init.o
+                                       0x918b (size before relaxing)
+ .debug_str     0x0000000000008f29      0x42d ./riscv_hal/riscv_hal.o
+                                       0x94e4 (size before relaxing)
+ .debug_str     0x0000000000009356      0x106 ./riscv_hal/riscv_hal_stubs.o
+                                       0x6189 (size before relaxing)
+ .debug_str     0x000000000000945c     0x1267 ./riscv_hal/syscall.o
+                                       0x98eb (size before relaxing)
+ .debug_str     0x000000000000a6c3      0x788 ./hal/hal_irq.o
+                                       0x4e7a (size before relaxing)
+ .debug_str     0x000000000000ae4b       0x17 ./hal/hw_reg_access.o
+                                         0x8a (size before relaxing)
+ .debug_str     0x000000000000ae62      0x82c ./drivers/CoreUARTapb/core_uart_apb.o
+                                       0x4390 (size before relaxing)
+ .debug_str     0x000000000000b68e     0x10f4 ./drivers/CoreI2C/core_i2c.o
+                                       0x7c18 (size before relaxing)
+ .debug_str     0x000000000000c782       0x42 ./drivers/CoreI2C/i2c_interrupt.o
+                                       0x3ef1 (size before relaxing)
+ .debug_str     0x000000000000c7c4      0x9d0 ./drivers/CoreGPIO/core_gpio.o
+                                       0x45a3 (size before relaxing)
+ .debug_str     0x000000000000d194      0x1c5 ./application/hdmi_config/hdmi_tx.o
+                                       0x7b88 (size before relaxing)
+ .debug_str     0x000000000000d359      0x4e6 ./main.o
+                                       0xa26c (size before relaxing)
+
+.debug_ranges   0x0000000000000000      0x408
+ .debug_ranges  0x0000000000000000       0x20 ./riscv_hal/entry.o
+ .debug_ranges  0x0000000000000020       0x28 ./riscv_hal/init.o
+ .debug_ranges  0x0000000000000048       0x40 ./riscv_hal/riscv_hal.o
+ .debug_ranges  0x0000000000000088       0x68 ./riscv_hal/riscv_hal_stubs.o
+ .debug_ranges  0x00000000000000f0       0xb0 ./riscv_hal/syscall.o
+ .debug_ranges  0x00000000000001a0       0x20 ./hal/hal_irq.o
+ .debug_ranges  0x00000000000001c0       0x38 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_ranges  0x00000000000001f8      0x100 ./drivers/CoreI2C/core_i2c.o
+ .debug_ranges  0x00000000000002f8       0x18 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_ranges  0x0000000000000310       0x68 ./drivers/CoreGPIO/core_gpio.o
+ .debug_ranges  0x0000000000000378       0x20 ./application/hdmi_config/hdmi_tx.o
+ .debug_ranges  0x0000000000000398       0x70 ./main.o
+
+.debug_macro    0x0000000000000000     0x4583
+ .debug_macro   0x0000000000000000      0x1cf ./riscv_hal/init.o
+ .debug_macro   0x00000000000001cf      0x74e ./riscv_hal/init.o
+ .debug_macro   0x000000000000091d       0x19 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000936       0x22 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000958       0x52 ./riscv_hal/init.o
+ .debug_macro   0x00000000000009aa       0x94 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000a3e       0x34 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000a72       0x34 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000aa6       0x16 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000abc      0x10e ./riscv_hal/init.o
+ .debug_macro   0x0000000000000bca       0x8d ./riscv_hal/init.o
+ .debug_macro   0x0000000000000c57       0x16 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000c6d       0x43 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000cb0       0x57 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000d07       0x34 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000d3b       0x10 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000d4b       0x58 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000da3      0x182 ./riscv_hal/init.o
+ .debug_macro   0x0000000000000f25      0x339 ./riscv_hal/init.o
+ .debug_macro   0x000000000000125e       0x16 ./riscv_hal/init.o
+ .debug_macro   0x0000000000001274       0x29 ./riscv_hal/init.o
+ .debug_macro   0x000000000000129d      0x103 ./riscv_hal/init.o
+ .debug_macro   0x00000000000013a0       0x6a ./riscv_hal/init.o
+ .debug_macro   0x000000000000140a      0x1df ./riscv_hal/init.o
+ .debug_macro   0x00000000000015e9       0x16 ./riscv_hal/init.o
+ .debug_macro   0x00000000000015ff       0x10 ./riscv_hal/init.o
+ .debug_macro   0x000000000000160f       0x1c ./riscv_hal/init.o
+ .debug_macro   0x000000000000162b       0x52 ./riscv_hal/init.o
+ .debug_macro   0x000000000000167d       0x40 ./riscv_hal/init.o
+ .debug_macro   0x00000000000016bd       0x10 ./riscv_hal/init.o
+ .debug_macro   0x00000000000016cd       0x40 ./riscv_hal/init.o
+ .debug_macro   0x000000000000170d       0xd5 ./riscv_hal/init.o
+ .debug_macro   0x00000000000017e2       0x1c ./riscv_hal/init.o
+ .debug_macro   0x00000000000017fe       0x3d ./riscv_hal/init.o
+ .debug_macro   0x000000000000183b       0x35 ./riscv_hal/init.o
+ .debug_macro   0x0000000000001870      0x51a ./riscv_hal/init.o
+ .debug_macro   0x0000000000001d8a      0x3a6 ./riscv_hal/init.o
+ .debug_macro   0x0000000000002130      0x209 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x0000000000002339       0x74 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x00000000000023ad       0x34 ./riscv_hal/riscv_hal.o
+ .debug_macro   0x00000000000023e1      0x151 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000002532       0x10 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000002542       0xcf ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000002611       0x20 ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x0000000000002631       0xbe ./riscv_hal/riscv_hal_stubs.o
+ .debug_macro   0x00000000000026ef      0x21f ./riscv_hal/syscall.o
+ .debug_macro   0x000000000000290e       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x000000000000291e      0x23b ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002b59       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002b69       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002b79       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002b89       0x35 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002bbe      0x122 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002ce0       0x1c ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002cfc       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002d0c       0x10 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002d1c       0x16 ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002d32      0x15a ./riscv_hal/syscall.o
+ .debug_macro   0x0000000000002e8c       0xa8 ./hal/hal_irq.o
+ .debug_macro   0x0000000000002f34       0x8e ./hal/hal_irq.o
+ .debug_macro   0x0000000000002fc2       0x51 ./hal/hal_irq.o
+ .debug_macro   0x0000000000003013       0x64 ./hal/hal_irq.o
+ .debug_macro   0x0000000000003077       0xe1 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x0000000000003158      0x106 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x000000000000325e       0x40 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x000000000000329e       0x16 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_macro   0x00000000000032b4      0x267 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x000000000000351b      0x1c1 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x00000000000036dc       0x3c ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000003718       0x58 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x0000000000003770      0x174 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x00000000000038e4       0x10 ./drivers/CoreI2C/core_i2c.o
+ .debug_macro   0x00000000000038f4       0xa4 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x0000000000003998       0x35 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_macro   0x00000000000039cd       0xcf ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000003a9c      0x11c ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000003bb8       0x64 ./drivers/CoreGPIO/core_gpio.o
+ .debug_macro   0x0000000000003c1c      0x1eb ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000003e07       0x16 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000003e1d       0x97 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000003eb4       0xfd ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000003fb1      0x16f ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000004120       0x28 ./application/hdmi_config/hdmi_tx.o
+ .debug_macro   0x0000000000004148      0x319 ./main.o
+ .debug_macro   0x0000000000004461      0x122 ./main.o
+
+.debug_frame    0x0000000000000000     0x1618
+ .debug_frame   0x0000000000000000       0xa4 ./riscv_hal/init.o
+ .debug_frame   0x00000000000000a4      0x11c ./riscv_hal/riscv_hal.o
+ .debug_frame   0x00000000000001c0      0x1b8 ./riscv_hal/riscv_hal_stubs.o
+ .debug_frame   0x0000000000000378      0x33c ./riscv_hal/syscall.o
+ .debug_frame   0x00000000000006b4       0x84 ./hal/hal_irq.o
+ .debug_frame   0x0000000000000738      0x100 ./drivers/CoreUARTapb/core_uart_apb.o
+ .debug_frame   0x0000000000000838      0x4dc ./drivers/CoreI2C/core_i2c.o
+ .debug_frame   0x0000000000000d14       0x58 ./drivers/CoreI2C/i2c_interrupt.o
+ .debug_frame   0x0000000000000d6c      0x1f0 ./drivers/CoreGPIO/core_gpio.o
+ .debug_frame   0x0000000000000f5c       0x88 ./application/hdmi_config/hdmi_tx.o
+ .debug_frame   0x0000000000000fe4      0x258 ./main.o
+ .debug_frame   0x000000000000123c       0x68 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-snprintf.o)
+ .debug_frame   0x00000000000012a4       0x48 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sprintf.o)
+ .debug_frame   0x00000000000012ec       0x60 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-strtol.o)
+ .debug_frame   0x000000000000134c       0xe0 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x000000000000142c       0x8c c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x00000000000014b8       0x20 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-memchr.o)
+ .debug_frame   0x00000000000014d8       0x40 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x0000000000001518       0x40 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x0000000000001558       0x40 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x0000000000001598       0x30 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000000015c8       0x30 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-mlock.o)
+ .debug_frame   0x00000000000015f8       0x20 c:/microchip/softconsole-v2022.2-risc-v-728/riscv-unknown-elf-gcc/bin/../lib/gcc/riscv64-unknown-elf/8.3.0/../../../../riscv64-unknown-elf/lib/rv32imc/ilp32\libg_nano.a(lib_a-nano-msizer.o)
