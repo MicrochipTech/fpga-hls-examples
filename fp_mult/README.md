@@ -15,7 +15,8 @@ done using float and double types, as well as a half precision floating point
 format, implemented by the third party library in half.hpp.
 
 Please follow the user guide to install SmartHLS and learn more about the features of this HLS tool:
- - https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls#getting-started
+ - Homepage: https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
+ - User guide: https://microchiptech.github.io/fpga-hls-docs/
 
 After the installation is done, you can try out this example through either GUI
 or command-line. 
