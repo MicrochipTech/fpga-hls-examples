@@ -1,7 +1,7 @@
 # fpga-hls-examples
 This repository contains open-source (MIT license) high-level synthesis (HLS) C++ Examples for Microchip FPGAs. 
 
-The homepage for the Microchip HLS integrated development environment here:
+The homepage for the Microchip HLS integrated development environment is:
  - https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
 
 You can find the Microchip HLS software user guide here:
