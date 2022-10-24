@@ -9,6 +9,9 @@ LEVEL = $(LEGUP_ROOT_DIR)/examples
 
 USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -I$(LEGUP_ROOT_DIR)/smarthls-library
 
+## FIXME: suppress 'unused-variable' warnings from axi_slave.mmap.tmp:data_mmap_w()
+USER_CXX_FLAG += -Wno-unused-variable
+
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user
 endif
