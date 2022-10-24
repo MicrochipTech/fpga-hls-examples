@@ -1,5 +1,6 @@
 #include "axi_target.h"
 #include <stdio.h>
+#include <inttypes.h>
 
 #pragma HLS interface variable(target_memory) type(axi_slave)
 struct TargetLayout target_memory;
@@ -38,7 +39,7 @@ int main() {
 
     calc_kernel();
 
-    printf("sum_result = %llx\n", target_memory.sum_result);
+    printf("sum_result = %" PRIx64 "\n", target_memory.sum_result);
     printf("xor_result = %x\n", target_memory.xor_result);
     printf("or_result = %x\n", target_memory.or_result);
 
