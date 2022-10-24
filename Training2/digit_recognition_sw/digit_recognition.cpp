@@ -4,22 +4,22 @@
 #include "digit_recognition.h"
 #include "hls/thread.hpp"
 
+// Tensors outputs of each layer in the CNN.
+Tensor<26, 2> conv1_output;
+Tensor<13, 2> maxpool_output;
+Tensor<11, 4> conv2_output;
+Tensor<9, 4> conv3_output;
+Tensor<7, 2> conv4_output;
+DType fc_output[10];
+
 // Input tensor to CNN and output classification FIFO.
-Tensor<28, 1> classifier_input; // Can try making an argument to ClassifierPipeline()
+Tensor<28, 1> classifier_input;
 // Output FIFO is size 10 to catch outputs from 10 runs in main testbench
 FIFO<ap_uint<4>> classifier_output(10);
 
 // Top level function which calls all layers in sequence.
 void ClassifierPipeline() {
 #pragma function top
-
-	// Tensors outputs of each layer in the CNN.
-	Tensor<26, 2> conv1_output;
-	Tensor<13, 2> maxpool_output;
-	Tensor<11, 4> conv2_output;
-	Tensor<9, 4> conv3_output;
-	Tensor<7, 2> conv4_output;
-	DType fc_output[10];
 
     Conv</* INPUT_SIZE */ 28, /* INPUT_DEPTH */ 1, /* OUTPUT_SIZE */ 26,
          /* OUTPUT_DEPTH */ 2, /* FILTER_SIZE */ 3>(
