@@ -4,7 +4,7 @@
 #include <hls/streaming.hpp>
 
 #ifndef printd
-#define printd
+#define printd( ... ) {}
 #endif
 
 #ifdef USE_AP_INT
