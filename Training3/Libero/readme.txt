@@ -10,7 +10,7 @@ C:\Microchip\Libero_SoC_v2022.2\SmartHLS-2022.2\cygwin64\Cygwin.bat
 
 2. Navigate to this current directory, e.g.:
 
-cd /cygdrive/c/Workspace/fpga-hls-examples/Training3/Libero/
+cd /cygdrive/c/Workspace/fpga-hls-examples-main/Training3/Libero/
 
 Note that C:\ is replaced by /cygdrive/c/
 
