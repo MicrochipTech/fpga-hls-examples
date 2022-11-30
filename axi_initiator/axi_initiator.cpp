@@ -15,10 +15,10 @@ void simple_initiator(AxiInterface<ap_uint<32>, ap_uint<64>, ap_uint<8>> &initia
 
         if (remaining == AXIM_MAX_BURST_LEN) {
             // Request to read data in burst.
-            axi_m_read_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, r_addr, AXIM_MAX_BURST_LEN);
+            axi_m_read_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, r_addr, ap_uint<9>(AXIM_MAX_BURST_LEN));
 
             // Request to write data in burst.
-            axi_m_write_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, w_addr, AXIM_MAX_BURST_LEN);
+            axi_m_write_req<ap_uint<32>, ap_uint<64>, ap_uint<8>>(initiator, w_addr, ap_uint<9>(AXIM_MAX_BURST_LEN));
         }
 
         // Write back the data we read + 1.
@@ -28,7 +28,7 @@ void simple_initiator(AxiInterface<ap_uint<32>, ap_uint<64>, ap_uint<8>> &initia
     }
 
     // After the last write, read the response code.
-    ap_uint<2> bresp = axi_m_write_resp(initiator);
+    ap_uint<2> __attribute__((unused)) bresp = axi_m_write_resp(initiator);
 }
 
 int main() {

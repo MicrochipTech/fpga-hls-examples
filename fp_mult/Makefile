@@ -2,12 +2,15 @@
 ########## If you have your own custom Makefile, please name it Makefile.user. ##########
 NAME = fp_mult
 LOCAL_CONFIG = -legup-config=config.tcl
-SRCS = fmult_test.cpp 
-GUI_BASE_DIR = 
+SRCS = fmult_test.cpp
+GUI_BASE_DIR =
 LEVEL = $(LEGUP_ROOT_DIR)/examples
-EXTRA_SW_COMPILATION_FLAG+= -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1
-CPP_FLAG+= -I$(LEGUP_ROOT_DIR)/smarthls-library 
-EXTRA_LD_LIBRARY_PATH+= $(LEGUP_ROOT_DIR)/smarthls-library
+
+USER_CXX_FLAG += -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1 -I$(LEGUP_ROOT_DIR)/smarthls-library
+
+## ignore 'mismatched-tags' warning about 'numeric_limits' generated from half.hpp
+USER_CXX_FLAG += -Wno-mismatched-tags
+
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user
 endif

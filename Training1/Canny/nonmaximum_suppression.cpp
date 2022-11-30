@@ -79,8 +79,12 @@ void nonmaximum_suppression(hls::FIFO<unsigned short> &input_fifo,
     // point must be greater than both averages otherwise set to 0
     // (suppress)
     int output = current_pixel;
+
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
     output = (output >= avg1) ? output : 0;
     output = (output >= avg2) ? output : 0;
+    #pragma GCC diagnostic pop
 
     output_fifo.write(output);
 }

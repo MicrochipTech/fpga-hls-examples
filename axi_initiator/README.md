@@ -1,7 +1,8 @@
 This is an example project to show you how to create an AXI4-Initiator top-level interface using HLS.
 
 Please follow the user guide to install SmartHLS and learn more about the features of this HLS tool:
- - https://www.microsemi.com/product-directory/fpga-design-tools/5590-hls#getting-started
+ - Homepage: https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
+ - User guide: https://microchiptech.github.io/fpga-hls-docs/
 
 After the installation is done, you can try out this example through either GUI or command-line. 
 
