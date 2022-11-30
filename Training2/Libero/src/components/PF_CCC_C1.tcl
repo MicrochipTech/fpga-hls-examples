@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300TS-1FCG1152I
 # Create and Configure the core component PF_CCC_C1
-create_and_configure_core -core_vlnv Actel:SgCore:PF_CCC:$PF_CCC_version -component_name {PF_CCC_C1} -params {\
+create_and_configure_core -core_vlnv Actel:SgCore:PF_CCC:* -component_name {PF_CCC_C1} -params {\
 "DLL_CLK_0_BANKCLK_EN:false"  \
 "DLL_CLK_0_DEDICATED_EN:false"  \
 "DLL_CLK_0_FABCLK_EN:false"  \

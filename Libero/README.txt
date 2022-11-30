@@ -14,8 +14,3 @@ Each of the Libero subdirectories contains the following:
 4. libero_flow.tcl - this is the file that needs to be sourced to the Libero
    executable in script mode. You can also run this file in the IDE by
    selecting <Project><Execute Script>
-
-Note: While running libero_flow.tcl, if you see a failure in configuring a
-particular core because it is no longer supported in that particular Libero
-release, you can edit the top of libero_flow.tcl to update the version of 
-that particular core with the latest version.

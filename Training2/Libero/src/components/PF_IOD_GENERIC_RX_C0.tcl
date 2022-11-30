@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300TS-1FCG1152I
 # Create and Configure the core component PF_IOD_GENERIC_RX_C0
-create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_IOD_GENERIC_RX:$PF_IOD_GENERIC_RX_version -component_name {PF_IOD_GENERIC_RX_C0} -params {\
+create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_IOD_GENERIC_RX:* -component_name {PF_IOD_GENERIC_RX_C0} -params {\
 "CLOCK_DELAY_VALUE:0" \
 "DATA_RATE:1200" \
 "DATA_RATIO:8" \

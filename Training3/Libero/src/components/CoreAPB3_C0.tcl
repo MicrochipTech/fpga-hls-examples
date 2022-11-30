@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component CoreAPB3_C0
-create_and_configure_core -core_vlnv Actel:DirectCore:CoreAPB3:$CoreAPB3_version -component_name {CoreAPB3_C0} -params {\
+create_and_configure_core -core_vlnv Actel:DirectCore:CoreAPB3:* -component_name {CoreAPB3_C0} -params {\
 "APB_DWIDTH:32"  \
 "APBSLOT0ENABLE:true"  \
 "APBSLOT1ENABLE:true"  \

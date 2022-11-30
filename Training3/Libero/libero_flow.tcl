@@ -2,38 +2,21 @@
 
 new_project -location {./Libero_training3} -name {Libero_training3} -project_description {} -block_mode 0 -hdl Verilog -family {PolarFire} -die {MPF300T} -package {FCG1152} -speed {-1} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESERVEMIGRATIONPINS:1} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {TEMPR:EXT} -adv_options {UNUSED_MSS_IO_RESISTOR_PULL:None} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 
-#IP core version variables
-set PF_CCC_version 2.2.214
-set CORERESET_PF_version 2.3.100
-set PF_DDR4_version 2.5.108
-set PF_SRAM_AHBL_AXI_version 1.2.108
-set COREFIFO_version 2.7.105
-set COREI2C_version 7.2.101
-set CoreAPB3_version 4.1.100
-set CoreGPIO_version 3.2.102
-set COREJTAGDEBUG_version 3.1.100
-set PF_INIT_MONITOR_version 2.0.304
-set MIV_RV32_version 3.0.100
-set CoreUARTapb_version 5.6.102
-set COREAXI4INTERCONNECT_version 2.8.103
-set COREAXITOAXICONNECT_version 2.0.101
-
-
 #Download all the required cores to the vault
-download_core -vlnv "Actel:SgCore:PF_CCC:${PF_CCC_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Actel:DirectCore:CORERESET_PF:${CORERESET_PF_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:SystemBuilder:PF_DDR4:${PF_DDR4_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Actel:SystemBuilder:PF_SRAM_AHBL_AXI:${PF_SRAM_AHBL_AXI_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Actel:DirectCore:COREFIFO:${COREFIFO_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREI2C:${COREI2C_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CoreAPB3:${CoreAPB3_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CoreGPIO:${CoreGPIO_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREJTAGDEBUG:${COREJTAGDEBUG_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:SgCore:PF_INIT_MONITOR:${PF_INIT_MONITOR_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Microsemi:MiV:MIV_RV32:${MIV_RV32_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CoreUARTapb:${CoreUARTapb_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREAXI4INTERCONNECT:${COREAXI4INTERCONNECT_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREAXITOAXICONNECT:${COREAXITOAXICONNECT_version}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:SgCore:PF_CCC:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Actel:DirectCore:CORERESET_PF:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:SystemBuilder:PF_DDR4:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Actel:SystemBuilder:PF_SRAM_AHBL_AXI:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Actel:DirectCore:COREFIFO:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREI2C:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CoreAPB3:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CoreGPIO:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREJTAGDEBUG:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:SgCore:PF_INIT_MONITOR:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Microsemi:MiV:MIV_RV32:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CoreUARTapb:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREAXI4INTERCONNECT:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREAXITOAXICONNECT:*}" -location {www.microchip-ip.com/repositories/DirectCore}
 
 #source the below tcl file to create the top level SmartDesign and generate it
 source ./src/TOP_recursive.tcl

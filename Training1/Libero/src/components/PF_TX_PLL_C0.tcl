@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300TS-1FCG1152I
 # Create and Configure the core component PF_TX_PLL_C0
-create_and_configure_core -core_vlnv Actel:SgCore:PF_TX_PLL:$PF_TX_PLL_version -component_name {PF_TX_PLL_C0} -params {\
+create_and_configure_core -core_vlnv Actel:SgCore:PF_TX_PLL:* -component_name {PF_TX_PLL_C0} -params {\
 "CORE:PF_TX_PLL"  \
 "INIT:0x0"  \
 "TxPLL_AUX_LOW_SEL:true"  \

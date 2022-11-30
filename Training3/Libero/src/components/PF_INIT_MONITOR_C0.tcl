@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component PF_INIT_MONITOR_C0
-create_and_configure_core -core_vlnv Actel:SgCore:PF_INIT_MONITOR:$PF_INIT_MONITOR_version -component_name {PF_INIT_MONITOR_C0} -params {\
+create_and_configure_core -core_vlnv Actel:SgCore:PF_INIT_MONITOR:* -component_name {PF_INIT_MONITOR_C0} -params {\
 "BANK_0_CALIB_STATUS_ENABLED:false"  \
 "BANK_0_CALIB_STATUS_SIMULATION_DELAY:1"  \
 "BANK_0_RECALIBRATION_ENABLED:false"  \

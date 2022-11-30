@@ -2,46 +2,26 @@
 
 new_project -location {./Libero_training2} -name {Libero_training2} -project_description {} -block_mode 0 -hdl Verilog -family {PolarFire} -die {MPF300TS} -package {FCG1152} -speed {-1} -die_voltage {1.0} -part_range {IND} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESERVEMIGRATIONPINS:1} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {TEMPR:IND} -adv_options {UNUSED_MSS_IO_RESISTOR_PULL:None} -adv_options {VCCI_1.2_VOLTR:IND} -adv_options {VCCI_1.5_VOLTR:IND} -adv_options {VCCI_1.8_VOLTR:IND} -adv_options {VCCI_2.5_VOLTR:IND} -adv_options {VCCI_3.3_VOLTR:IND} -adv_options {VOLTR:IND} 
 
-set PF_CCC_version 2.2.214
-set Display_Controller_version 3.1.2
-set CORERESET_PF_version  2.2.107
-set CORERXIODBITALIGN_version  2.1.104
-set PF_IOD_GENERIC_RX_version  2.1.109
-set PF_DDR4_version  2.5.108
-set PF_SRAM_AHBL_AXI_version  1.2.108
-set mipicsi2rxdecoderPF_version  2.2.5
-set COREAHBTOAPB3_version  3.1.100
-set COREI2C_version  7.2.101
-set CoreAPB3_version  4.1.100
-set CoreGPIO_version  3.2.102
-set COREJTAGDEBUG_version  3.1.100
-set CoreAHBLite_version  5.4.102
-set PF_INIT_MONITOR_version  2.0.304
-set MIV_RV32IMA_L1_AHB_version  2.3.100
-set COREUART_version 5.6.102
-set Bayer_Interpolation_version 3.0.2
-set Image_Enhancement_version 3.0.0
-
 #Download all the required cores to the vault
-download_core -vlnv "Actel:SgCore:PF_CCC:${PF_CCC_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Microsemi:SolutionCore:Display_Controller:${Display_Controller_version}"  -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CORERESET_PF:${CORERESET_PF_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CORERXIODBITALIGN:${CORERXIODBITALIGN_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:SystemBuilder:PF_IOD_GENERIC_RX:${PF_IOD_GENERIC_RX_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Actel:SystemBuilder:PF_DDR4:${PF_DDR4_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Actel:SystemBuilder:PF_SRAM_AHBL_AXI:${PF_SRAM_AHBL_AXI_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Microsemi:SolutionCore:mipicsi2rxdecoderPF:${mipicsi2rxdecoderPF_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREAHBTOAPB3:${COREAHBTOAPB3_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREI2C:${COREI2C_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CoreAPB3:${CoreAPB3_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CoreGPIO:${CoreGPIO_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREJTAGDEBUG:${COREJTAGDEBUG_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:CoreAHBLite:${CoreAHBLite_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:SgCore:PF_INIT_MONITOR:${PF_INIT_MONITOR_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Microsemi:MiV:MIV_RV32IMA_L1_AHB:${MIV_RV32IMA_L1_AHB_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:DirectCore:COREUART:${COREUART_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Microsemi:SolutionCore:Bayer_Interpolation:${Bayer_Interpolation_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Microsemi:SolutionCore:Image_Enhancement:${Image_Enhancement_version}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:SgCore:PF_CCC:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Microsemi:SolutionCore:Display_Controller:*}"  -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CORERESET_PF:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CORERXIODBITALIGN:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:SystemBuilder:PF_IOD_GENERIC_RX:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Actel:SystemBuilder:PF_DDR4:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Actel:SystemBuilder:PF_SRAM_AHBL_AXI:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Microsemi:SolutionCore:mipicsi2rxdecoderPF:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREAHBTOAPB3:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREI2C:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CoreAPB3:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CoreGPIO:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREJTAGDEBUG:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:CoreAHBLite:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:SgCore:PF_INIT_MONITOR:*}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Microsemi:MiV:MIV_RV32IMA_L1_AHB:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Actel:DirectCore:COREUART:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Microsemi:SolutionCore:Bayer_Interpolation:*}" -location {www.microchip-ip.com/repositories/DirectCore}
+download_core -vlnv "Microsemi:SolutionCore:Image_Enhancement:*}" -location {www.microchip-ip.com/repositories/DirectCore}
 
 #source the below tcl file to create the top level SmartDesign and generate it
 source ./src/VIDEO_KIT_TOP_recursive.tcl

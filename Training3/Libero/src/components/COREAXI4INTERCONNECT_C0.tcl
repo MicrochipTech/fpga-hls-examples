@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component COREAXI4INTERCONNECT_C0
-create_and_configure_core -core_vlnv Actel:DirectCore:COREAXI4INTERCONNECT:$COREAXI4INTERCONNECT_version -component_name {COREAXI4INTERCONNECT_C0} -params {\
+create_and_configure_core -core_vlnv Actel:DirectCore:COREAXI4INTERCONNECT:* -component_name {COREAXI4INTERCONNECT_C0} -params {\
 "ADDR_WIDTH:32"  \
 "CROSSBAR_MODE:0"  \
 "DATA_WIDTH:64"  \

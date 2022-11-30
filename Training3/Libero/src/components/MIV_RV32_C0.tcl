@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component MIV_RV32_C0
-create_and_configure_core -core_vlnv Microsemi:MiV:MIV_RV32:$MIV_RV32_version -component_name {MIV_RV32_C0} -params {\
+create_and_configure_core -core_vlnv Microsemi:MiV:MIV_RV32:* -component_name {MIV_RV32_C0} -params {\
 "AHB_END_ADDR_0:0xffff"  \
 "AHB_END_ADDR_1:0x8fff"  \
 "AHB_MASTER_TYPE:1"  \

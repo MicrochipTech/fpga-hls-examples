@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component CoreGPIO_C0
-create_and_configure_core -core_vlnv Actel:DirectCore:CoreGPIO:$CoreGPIO_version -component_name {CoreGPIO_C0} -params {\
+create_and_configure_core -core_vlnv Actel:DirectCore:CoreGPIO:* -component_name {CoreGPIO_C0} -params {\
 "APB_WIDTH:32"  \
 "FIXED_CONFIG_0:true"  \
 "FIXED_CONFIG_1:true"  \

@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component COREFIFO_C0
-create_and_configure_core -core_vlnv Actel:DirectCore:COREFIFO:$COREFIFO_version -component_name {COREFIFO_C0} -params {\
+create_and_configure_core -core_vlnv Actel:DirectCore:COREFIFO:* -component_name {COREFIFO_C0} -params {\
 "AE_STATIC_EN:false"  \
 "AEVAL:4"  \
 "AF_STATIC_EN:false"  \

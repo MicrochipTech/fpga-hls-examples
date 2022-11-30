@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300TS-1FCG1152I
 # Create and Configure the core component PF_DDR4_C0
-create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_DDR4:$PF_DDR4_version -component_name {PF_DDR4_C0} -params {\
+create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_DDR4:* -component_name {PF_DDR4_C0} -params {\
 "ADDRESS_MIRROR:false" \
 "ADDRESS_ORDERING:CHIP_ROW_BG_BANK_COL" \
 "AUTO_SELF_REFRESH:3" \

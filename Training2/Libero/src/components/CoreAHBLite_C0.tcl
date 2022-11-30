@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300TS-1FCG1152I
 # Create and Configure the core component CoreAHBLite_C0
-create_and_configure_core -core_vlnv Actel:DirectCore:CoreAHBLite:$CoreAHBLite_version -component_name {CoreAHBLite_C0} -params {\
+create_and_configure_core -core_vlnv Actel:DirectCore:CoreAHBLite:* -component_name {CoreAHBLite_C0} -params {\
 "HADDR_SHG_CFG:1"  \
 "M0_AHBSLOT0ENABLE:false"  \
 "M0_AHBSLOT1ENABLE:false"  \

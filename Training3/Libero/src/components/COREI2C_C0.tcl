@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component COREI2C_C0
-create_and_configure_core -core_vlnv Actel:DirectCore:COREI2C:$COREI2C_version -component_name {COREI2C_C0} -params {\
+create_and_configure_core -core_vlnv Actel:DirectCore:COREI2C:* -component_name {COREI2C_C0} -params {\
 "ADD_SLAVE1_ADDRESS_EN:false"  \
 "BAUD_RATE_FIXED:false"  \
 "BAUD_RATE_VALUE:0"  \

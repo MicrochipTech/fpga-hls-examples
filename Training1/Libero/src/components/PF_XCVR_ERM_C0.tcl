@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300TS-1FCG1152I
 # Create and Configure the core component PF_XCVR_ERM_C0
-create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_XCVR_ERM:$PF_XCVR_ERM_version -component_name {PF_XCVR_ERM_C0} -params {\
+create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_XCVR_ERM:* -component_name {PF_XCVR_ERM_C0} -params {\
 "EXPOSE_ALL_DEBUG_PORTS:false" \
 "EXPOSE_FWF_EN_PORTS:false" \
 "SHOW_UNIVERSAL_SOLN_PORTS:true" \

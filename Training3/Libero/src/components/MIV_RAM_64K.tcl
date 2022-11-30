@@ -2,7 +2,7 @@
 # Family: PolarFire
 # Part Number: MPF300T-1FCG1152E
 # Create and Configure the core component MIV_RAM_64K
-create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_SRAM_AHBL_AXI:$PF_SRAM_AHBL_AXI_version -component_name {MIV_RAM_64K} -params {\
+create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_SRAM_AHBL_AXI:* -component_name {MIV_RAM_64K} -params {\
 "AXI4_AWIDTH:32" \
 "AXI4_DWIDTH:32" \
 "AXI4_IDWIDTH:8" \
