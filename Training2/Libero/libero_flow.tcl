@@ -2,22 +2,22 @@
 
 new_project -location {./Libero_training2} -name {Libero_training2} -project_description {} -block_mode 0 -hdl Verilog -family {PolarFire} -die {MPF300TS} -package {FCG1152} -speed {-1} -die_voltage {1.0} -part_range {IND} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESERVEMIGRATIONPINS:1} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {TEMPR:IND} -adv_options {UNUSED_MSS_IO_RESISTOR_PULL:None} -adv_options {VCCI_1.2_VOLTR:IND} -adv_options {VCCI_1.5_VOLTR:IND} -adv_options {VCCI_1.8_VOLTR:IND} -adv_options {VCCI_2.5_VOLTR:IND} -adv_options {VCCI_3.3_VOLTR:IND} -adv_options {VOLTR:IND} 
 
-set PF_CCC_version 2.2.214
+set PF_CCC_version 2.2.220
 set Display_Controller_version 3.1.2
-set CORERESET_PF_version  2.2.107
-set CORERXIODBITALIGN_version  2.1.104
-set PF_IOD_GENERIC_RX_version  2.1.109
-set PF_DDR4_version  2.5.108
-set PF_SRAM_AHBL_AXI_version  1.2.108
-set mipicsi2rxdecoderPF_version  2.2.5
-set COREAHBTOAPB3_version  3.1.100
-set COREI2C_version  7.2.101
-set CoreAPB3_version  4.1.100
-set CoreGPIO_version  3.2.102
-set COREJTAGDEBUG_version  3.1.100
-set CoreAHBLite_version  5.4.102
-set PF_INIT_MONITOR_version  2.0.304
-set MIV_RV32IMA_L1_AHB_version  2.3.100
+set CORERESET_PF_version 2.2.107
+set CORERXIODBITALIGN_version 2.1.104
+set PF_IOD_GENERIC_RX_version 2.1.110
+set PF_DDR4_version 2.5.109
+set PF_SRAM_AHBL_AXI_version 1.2.110
+set mipicsi2rxdecoderPF_version 2.2.5
+set COREAHBTOAPB3_version 3.1.100
+set COREI2C_version 7.2.101
+set CoreAPB3_version 4.1.100
+set CoreGPIO_version 3.2.102
+set COREJTAGDEBUG_version 3.1.100
+set CoreAHBLite_version 5.4.102
+set PF_INIT_MONITOR_version 2.0.304
+set MIV_RV32IMA_L1_AHB_version 2.3.100
 set COREUART_version 5.6.102
 set Bayer_Interpolation_version 3.0.2
 set Image_Enhancement_version 3.0.0
