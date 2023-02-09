@@ -3,10 +3,10 @@
 
 #include <assert.h>
 
-void canny(hls::FIFO<hls::ap_uint<1>> &switch_fifo_0,
-           hls::FIFO<hls::ap_uint<1>> &switch_fifo_1,
-           hls::FIFO<hls::ap_uint<1>> &switch_fifo_2,
-           hls::FIFO<hls::ap_uint<1>> &switch_fifo_3,
+void canny(bool switch_0,
+           bool switch_1,
+           bool switch_2,
+           bool switch_3,
            hls::FIFO<unsigned char> &input_fifo,
            hls::FIFO<unsigned char> &output_fifo) {
 #pragma HLS function top
@@ -16,19 +16,19 @@ void canny(hls::FIFO<hls::ap_uint<1>> &switch_fifo_0,
     hls::FIFO<unsigned short> output_fifo_sf(/* depth = */ 2);
     hls::FIFO<unsigned char> output_fifo_nm(/* depth = */ 2);
 
-    gaussian_filter(switch_fifo_0, input_fifo, output_fifo_gf);
-    sobel_filter(switch_fifo_1, output_fifo_gf, output_fifo_sf);
-    nonmaximum_suppression(switch_fifo_2, output_fifo_sf, output_fifo_nm);
-    hysteresis_filter(switch_fifo_3, output_fifo_nm, output_fifo);
+    gaussian_filter(switch_0, input_fifo, output_fifo_gf);
+    sobel_filter(switch_1, output_fifo_gf, output_fifo_sf);
+    nonmaximum_suppression(switch_2, output_fifo_sf, output_fifo_nm);
+    hysteresis_filter(switch_3, output_fifo_nm, output_fifo);
 }
 
 int main() {
     unsigned int i, j;
 
-    hls::FIFO<hls::ap_uint<1>> switch_fifo_0(/* depth = */ WIDTH * HEIGHT * 2);
-    hls::FIFO<hls::ap_uint<1>> switch_fifo_1(/* depth = */ WIDTH * HEIGHT * 2);
-    hls::FIFO<hls::ap_uint<1>> switch_fifo_2(/* depth = */ WIDTH * HEIGHT * 2);
-    hls::FIFO<hls::ap_uint<1>> switch_fifo_3(/* depth = */ WIDTH * HEIGHT * 2);
+    bool switch_0;
+    bool switch_1;
+    bool switch_2;
+    bool switch_3;
     hls::FIFO<unsigned char> input_fifo(/* depth = */ WIDTH * HEIGHT * 2);
     hls::FIFO<unsigned char> output_fifo(/* depth = */ WIDTH * HEIGHT * 2);
 
@@ -75,20 +75,19 @@ int main() {
     nm_sw(sobel_output, nonmaximum_suppression_output);
     hf_sw(nonmaximum_suppression_output, hysteresis_output_golden);
 
-    const hls::ap_uint<1> on = 1;
     // Write test input pixels.
     for (i = 0; i < HEIGHT; i++) {
         for (j = 0; j < WIDTH; j++) {
-            switch_fifo_0.write(on);
-            switch_fifo_1.write(on);
-            switch_fifo_2.write(on);
-            switch_fifo_3.write(on);
+            switch_0 = true;
+            switch_1 = true;
+            switch_2 = true;
+            switch_3 = true;
             unsigned char r = input_channel->r;
             unsigned char g = input_channel->g;
             unsigned char b = input_channel->b;
             unsigned grayscale = (r + g + b) / 3;
             input_fifo.write(grayscale);
-            canny(switch_fifo_0, switch_fifo_1, switch_fifo_2, switch_fifo_3,
+            canny(switch_0, switch_1, switch_2, switch_3,
                   input_fifo, output_fifo);
             input_channel++;
         }
@@ -96,12 +95,12 @@ int main() {
 
     // Give more inputs to flush out all pixels.
     for (i = 0; i < GF_KERNEL_SIZE * WIDTH + GF_KERNEL_SIZE; i++) {
-        switch_fifo_0.write(on);
-        switch_fifo_1.write(on);
-        switch_fifo_2.write(on);
-        switch_fifo_3.write(on);
+        switch_0 = true;
+        switch_1 = true;
+        switch_2 = true;
+        switch_3 = true;
         input_fifo.write(0);
-        canny(switch_fifo_0, switch_fifo_1, switch_fifo_2, switch_fifo_3,
+        canny(switch_0, switch_1, switch_2, switch_3,
               input_fifo, output_fifo);
     }
 

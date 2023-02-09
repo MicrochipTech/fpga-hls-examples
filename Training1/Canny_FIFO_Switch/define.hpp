@@ -25,7 +25,7 @@ void window_and_line_buffer(hls::ap_uint<10> input,
 
 // Gaussian Filter.
 const unsigned int GF_KERNEL_SIZE = 5;
-void gaussian_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
+void gaussian_filter(bool on_switch,
                      hls::FIFO<unsigned char> &input_fifo,
                      hls::FIFO<unsigned char> &output_fifo);
 void gf_sw(unsigned char input[][WIDTH], unsigned char output[][WIDTH]);
@@ -33,13 +33,13 @@ void gf_sw(unsigned char input[][WIDTH], unsigned char output[][WIDTH]);
 // Sobel Filter.
 const unsigned int SF_KERNEL_SIZE = 3;
 void sf_sw(unsigned char input[][WIDTH], hls::ap_uint<10> output[][WIDTH]);
-void sobel_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
+void sobel_filter(bool on_switch,
                   hls::FIFO<unsigned char> &input_fifo,
                   hls::FIFO<unsigned short> &output_fifo);
 
 // Non-maximum suppression.
 const unsigned int NM_KERNEL_SIZE = 3;
-void nonmaximum_suppression(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
+void nonmaximum_suppression(bool on_switch,
                             hls::FIFO<unsigned short> &input_fifo,
                             hls::FIFO<unsigned char> &output_fifo);
 void nm_sw(hls::ap_uint<10> input[][WIDTH], unsigned char output[][WIDTH]);
@@ -47,7 +47,7 @@ void nm_sw(hls::ap_uint<10> input[][WIDTH], unsigned char output[][WIDTH]);
 // Hysteresis filter.
 const unsigned int HF_KERNEL_SIZE = 3;
 void hf_sw(unsigned char input[][WIDTH], unsigned char output[][WIDTH]);
-void hysteresis_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
+void hysteresis_filter(bool on_switch,
                        hls::FIFO<unsigned char> &input_fifo,
                        hls::FIFO<unsigned char> &output_fifo);
 
