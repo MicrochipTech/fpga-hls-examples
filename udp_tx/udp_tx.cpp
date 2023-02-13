@@ -265,6 +265,7 @@ void udpTxChecksum(hls::FIFO<AxiWord> &data_in,
 void udpTx(hls::FIFO<AxiWord> &data_in, hls::FIFO<metadata> &metadata_in,
            hls::FIFO<ap_uint<16>> &length_in, hls::FIFO<AxiWord> &data_out) {
 #pragma HLS function top
+#pragma HLS function dataflow
 
     // Declare intermediate hls::FIFOs for inter-function communication
     // Note that the FIFO size should be big enough to hold the whole packet

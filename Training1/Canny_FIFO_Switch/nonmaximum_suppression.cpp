@@ -1,8 +1,8 @@
 #include "define.hpp"
 #include <hls/image_processing.hpp>
 
-void nonmaximum_suppression(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
-		                    hls::FIFO<unsigned short> &input_fifo,
+void nonmaximum_suppression(bool on_switch,
+                            hls::FIFO<unsigned short> &input_fifo,
                             hls::FIFO<unsigned char> &output_fifo) {
     #pragma HLS function pipeline
 
@@ -36,12 +36,11 @@ void nonmaximum_suppression(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
     unsigned int center = NM_KERNEL_SIZE / 2;
     int current_pixel = (int)line_buffer.window[center][center] & 0xff;
 
-	// if filter is off, pass pixel through
-    bool on = switch_fifo.read();
-    if (!on) {
-		output_fifo.write(current_pixel);
-		return;
-	}
+    // if filter is off, pass pixel through
+    if (!on_switch) {
+        output_fifo.write(current_pixel);
+        return;
+    }
 
     if (outofbounds) {
         output_fifo.write(current_pixel);

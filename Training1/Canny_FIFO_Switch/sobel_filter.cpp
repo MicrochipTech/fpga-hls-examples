@@ -6,8 +6,8 @@ const int GX[SF_KERNEL_SIZE]
 const int GY[SF_KERNEL_SIZE]
             [SF_KERNEL_SIZE] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
 
-void sobel_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
-		          hls::FIFO<unsigned char> &input_fifo,
+void sobel_filter(bool on_switch,
+                  hls::FIFO<unsigned char> &input_fifo,
                   hls::FIFO<unsigned short> &output_fifo) {
     #pragma HLS function pipeline
 
@@ -42,8 +42,7 @@ void sobel_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
     unsigned char current_pixel = line_buffer.window[center][center];
 
     // if filter is off, pass pixel through
-    bool on = switch_fifo.read();
-    if (!on) {
+    if (!on_switch) {
         output_fifo.write(current_pixel);
         return;
     }
