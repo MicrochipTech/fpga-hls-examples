@@ -1,0 +1,1296 @@
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:31:14 2023
+----------------------------------------------------------------------------
+main.cpp:20:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+main.cpp:24:30: error: use of undeclared identifier 'collatz'
+        printf("%d %d\n", i, collatz(i));
+                             ^
+1 warning and 1 error generated.
+Error: Error! Command failed!
+Command: '/home/parisa/legup/llvm/Debug+Asserts/bin/clang'
+Args: '['-fno-exceptions', '-O3', 'main.cpp', '-emit-llvm', '-c', '-D__SYNTHESIS__', '-D', 'LEGUP_DEFAULT_FIFO_DEPTH=2', '-m32', '-I', '/usr/include/i386-linux-gnu', '-O3', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', '-fno-builtin', '-I/home/parisa/legup/examples/lib/include', '-I/home/parisa/legup/smarthls-library', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', '-target', 'i386-unknown-linux-gnu', '--gcc-toolchain=/home/parisa/legup/dependencies/gcc', '-fno-vectorize', '-fno-slp-vectorize', '-Werror=implicit-function-declaration', '-Wno-ignored-attributes', '-D_GLIBCXX_USE_CXX11_ABI=1', '-g', '-mllvm', '-disable-llvm-optzns', '-o', 'hls_output/.hls/main.bc']'
+Shell Command: /home/parisa/legup/llvm/Debug+Asserts/bin/clang -fno-exceptions -O3 main.cpp -emit-llvm -c -D__SYNTHESIS__ -D LEGUP_DEFAULT_FIFO_DEPTH=2 -m32 -I /usr/include/i386-linux-gnu -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -fno-builtin -I/home/parisa/legup/examples/lib/include -I/home/parisa/legup/smarthls-library -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -target i386-unknown-linux-gnu --gcc-toolchain=/home/parisa/legup/dependencies/gcc -fno-vectorize -fno-slp-vectorize -Werror=implicit-function-declaration -Wno-ignored-attributes -D_GLIBCXX_USE_CXX11_ABI=1 -g -mllvm -disable-llvm-optzns -o hls_output/.hls/main.bc
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp:20:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+main.cpp:24:30: error: use of undeclared identifier 'collatz'
+        printf("%d %d\n", i, collatz(i));
+                             ^
+1 warning and 1 error generated.
+'
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:31:54 2023
+----------------------------------------------------------------------------
+main.cpp:20:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+0  opt             0x0000000001613aff
+1  opt             0x0000000001613d7b
+2  opt             0x0000000001613708
+3  libpthread.so.0 0x00007f41c95e0140
+4  opt             0x000000000042a52a
+5  opt             0x00000000013e61aa
+6  opt             0x0000000000ad1d0b
+7  opt             0x0000000000f33451
+8  opt             0x0000000000f335a3
+9  opt             0x0000000000f338b8
+10 opt             0x0000000000f33f28
+11 opt             0x0000000000f34115
+12 opt             0x0000000000436f3c
+13 libc.so.6       0x00007f41c8789ac5 __libc_start_main + 245
+14 opt             0x000000000040fc09
+Stack dump:
+0.	Program arguments: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -generate-trip-counts hls_output/.hls/uncomputable_subloop.50.ifconv.bc -o hls_output/.hls/uncomputable_subloop.51.generatetripcounts.bc 
+1.	Running pass 'Function Pass Manager' on module 'hls_output/.hls/uncomputable_subloop.50.ifconv.bc'.
+2.	Running pass 'Loop Pass Manager' on function '@_Z11sum_collatzi'
+3.	Running pass 'LegUp Generate Trip Counts' on basic block '%for.body2'
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:35:33 2023
+----------------------------------------------------------------------------
+main.cpp:21:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:35:50 2023
+----------------------------------------------------------------------------
+main.cpp:21:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+[1m[33m> 'Compile Software to Hardware' step is up to date.[39m[0m
+  Enter 'Y' (yes) to re-run 'Compile Software to Hardware'.
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:50:31 2023
+----------------------------------------------------------------------------
+main.cpp:21:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+[1m[33m> 'Compile Software to Hardware' step is up to date.[39m[0m
+  Enter 'Y' (yes) to re-run 'Compile Software to Hardware'.
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:55:00 2023
+----------------------------------------------------------------------------
+main.cpp:21:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 09:57:36 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+[1m[33m> 'Compile Software to Hardware' step is up to date.[39m[0m
+  Enter 'Y' (yes) to re-run 'Compile Software to Hardware'.
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:09:59 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+[1m[33m> 'Compile Software to Hardware' step is up to date.[39m[0m
+  Enter 'Y' (yes) to re-run 'Compile Software to Hardware'.
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:15:03 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+640
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:17:20 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:52:13 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:53:35 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:54:56 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 10:57:50 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 11:01:27 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 11:01:40 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 11:05:10 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 11:06:11 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 11:39:39 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 11:50:00 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 12:06:52 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 12:09:22 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:21:37 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:30:18 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:30:38 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:31:10 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:35:01 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:38:09 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Wed Mar 29 13:41:35 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Thu Mar 30 10:39:33 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Thu Mar 30 10:51:53 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Thu Mar 30 14:29:43 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+0  llc             0x000000000118c7e5
+1  llc             0x000000000118ca61
+2  llc             0x000000000118c3ee
+3  libpthread.so.0 0x00007ff37d3b1140
+4  llc             0x00000000004de076
+5  llc             0x00000000004c83fe
+6  llc             0x00000000004b71f3
+7  llc             0x000000000047e0ba
+8  llc             0x00000000004652da
+9  llc             0x000000000046449c
+10 llc             0x0000000000e474ce
+11 llc             0x0000000000e47b3e
+12 llc             0x0000000000e47d2b
+13 llc             0x00000000004131b6
+14 llc             0x00000000004122c7
+15 libc.so.6       0x00007ff37c55aac5 __libc_start_main + 245
+16 llc             0x000000000040f529
+Stack dump:
+0.	Program arguments: /home/parisa/legup/llvm/Debug+Asserts/bin/llc -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=uncomputable_subloop -march=v hls_output/.hls/uncomputable_subloop.bc 
+1.	Running pass 'Unnamed pass: implement Pass::getPassName()' on module 'hls_output/.hls/uncomputable_subloop.bc'.
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Thu Mar 30 14:33:08 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+0  llc             0x000000000118c7f5
+1  llc             0x000000000118ca71
+2  llc             0x000000000118c3fe
+3  libpthread.so.0 0x00007f90afed9140
+4  llc             0x00000000004de076
+5  llc             0x00000000004c83fe
+6  llc             0x00000000004b71f3
+7  llc             0x000000000047e0ba
+8  llc             0x00000000004652da
+9  llc             0x000000000046449c
+10 llc             0x0000000000e474de
+11 llc             0x0000000000e47b4e
+12 llc             0x0000000000e47d3b
+13 llc             0x00000000004131b6
+14 llc             0x00000000004122c7
+15 libc.so.6       0x00007f90af082ac5 __libc_start_main + 245
+16 llc             0x000000000040f529
+Stack dump:
+0.	Program arguments: /home/parisa/legup/llvm/Debug+Asserts/bin/llc -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=uncomputable_subloop -march=v hls_output/.hls/uncomputable_subloop.bc 
+1.	Running pass 'Unnamed pass: implement Pass::getPassName()' on module 'hls_output/.hls/uncomputable_subloop.bc'.
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Thu Mar 30 14:45:22 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Error: SmartHLS execution interrupted by user!
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Thu Mar 30 14:51:09 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+0  llc             0x000000000118c80d
+1  llc             0x000000000118ca89
+2  llc             0x000000000118c416
+3  libpthread.so.0 0x00007fd73f1ff140
+4  llc             0x00000000004de088
+5  llc             0x00000000004c8410
+6  llc             0x00000000004b7205
+7  llc             0x000000000047e0cc
+8  llc             0x00000000004652ec
+9  llc             0x00000000004644ae
+10 llc             0x0000000000e474f6
+11 llc             0x0000000000e47b66
+12 llc             0x0000000000e47d53
+13 llc             0x00000000004131b6
+14 llc             0x00000000004122c7
+15 libc.so.6       0x00007fd73e3a8ac5 __libc_start_main + 245
+16 llc             0x000000000040f529
+Stack dump:
+0.	Program arguments: /home/parisa/legup/llvm/Debug+Asserts/bin/llc -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=uncomputable_subloop -march=v hls_output/.hls/uncomputable_subloop.bc 
+1.	Running pass 'Static Runtime Pass' on module 'hls_output/.hls/uncomputable_subloop.bc'.
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:23:31 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:43:18 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:45:09 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sum_collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: Found trip count of: 30
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sum_collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: sum_collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sum_collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sum_collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sum_collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sum_collatz.rpt.

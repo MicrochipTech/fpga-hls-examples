@@ -1,0 +1,5 @@
+digraph {
+Node0x37a4310[label="sum_collatz_inst", shape="box"];
+Node0x37ab210[label="sum_collatz_top_inst_inst", shape="box"];
+Node0x37ab210 -> Node0x37a4310;
+}

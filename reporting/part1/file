@@ -1,0 +1,292 @@
+Debug: run() Caller Function: get_user_makefile_variables():15
+Debug: make export-user-makefile-variables AVOID_BASH=1 LEGUP_ROOT_DIR=/home/parisa/legup
+Debug: NAME = part1
+Debug: LOCAL_CONFIG = -legup-config=config.tcl
+Debug: NO_INLINE = 
+Debug: VHDL_WRAPPER_SIM = 
+Debug: SYNTHESIS_TOP_MODULE = sobel_filter_top
+Debug: POST_SYNTH_SIM = 
+Debug: PROGRAMMER_ID = 
+Debug: BOARD_IP = 
+Debug: QOR_TEST_NAME = part1
+Debug: COMMIT_HASH = 
+Debug: QOR_BUILD = 
+Debug: QOR_BUILD_NAME = 
+Debug: NO_OPT = 
+Debug: MODELSIM_TOOL_PATH = 
+Debug: MODELSIM_TOOL_PATH_OS_INDEP = 
+Debug: LIBERO_TOOL_PATH = 
+Debug: LIBERO_TOOL_PATH_OS_INDEP = 
+Debug: SYNPLIFY_PATH = /home/shadjis/latest_linux_Libero_SoC/Libero/bin64/../../SynplifyPro/bin/
+Debug: MEMORY_BASE_ADDRESSMEMORY_SIZE = 
+Debug: MEMORY_WIDTH = 
+Debug: MEMORY_SIM_INIT_FILE_NAME = 
+Debug: DATA_MEMORY_BASE_ADDRESS = 
+Debug: COMBINE_BB = 
+Debug: OUTPUT_PATH = hls_output
+Debug: CUSTOM_RTL_FUNCTIONS = n
+Debug: FPGA_BOARD = MPF300
+Debug: DEVICE_FAMILY = PolarFire
+Debug: DEVICE = MPF300TS-1FCG1152I
+Debug: PROJECT = hw_only
+Debug: FPGA_VENDOR = MICROSEMI
+Debug: OPENMP = 
+Debug: SYSTEM_UART_TYPE = 
+Debug: CLOCK_PERIOD = 10
+Debug: SYNTHESIS_CLOCK_PERIOD = 10
+Debug: LEGUP_DEFAULT_FIFO_DEPTH = 2
+Debug: PROC_ARCH = 
+Debug: LEGUP_CUSTOM_VHDL_FILES = 
+Debug: USE_TOP_LEVEL_WRAPPER_FILE = 0
+Debug: TARGET_ARCH = 
+Debug: SOURCE_TRANSFORM = 1
+Debug: REPLICATE_RAMS = 
+Debug: USE_ACTGENO = 0
+Debug: CUSTOM_TOP_LEVEL = sobel_filter
+Debug: SRCS = sobel.cpp  
+Debug: RISCV_SRCS = sobel.cpp  
+Debug: CFLAG = -D__SYNTHESIS__ -m32 -I /usr/include/i386-linux-gnu -D LEGUP_DEFAULT_FIFO_DEPTH=2 -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu/ -fno-builtin -I /home/parisa/legup/examples/lib/include/ -I /home/parisa/legup/smarthls-library
+Debug: CPP_FLAG = -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu/
+Debug: USER_CXX_FLAG = 
+Debug: NO_STD_COMPILE_OPTS = 
+Debug: USER_CXX_FLAG_RISCV = 
+Debug: USER_LINK_FLAG = 
+Debug: USER_LINK_FLAG_RISCV = 
+Debug: LINK_ICICLE_LIBS = -L/home/parisa/legup/smarthls-library/hls -lhls_riscv64_no_accel
+Debug: LINK_ICICLE_LIBS_SOC = -L/home/parisa/legup/smarthls-library/hls -lhls_riscv64_accel
+Debug: LINK_FLAG_RISCV = 
+Debug: PROGRAM_ARGUMENTS = 
+Debug: UNROLL = 
+Debug: USER_ENV_VARS = 
+Debug: USER_ENV_VARS_RISCV = 
+Debug: LLC_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=part1
+Debug: OPT_O3_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=0 -PURE_HW_FLOW= -before-removing-tb=1 -O3 -inline-threshold=-9999
+Debug: OPT_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW=
+Debug: NUM_LIBERO_PnR_PASSES = 25
+Debug: BOARD_PATH = 
+Debug: INPUT_FILES_RISCV = 
+Debug: OUTPUT_FILES_RISCV = 
+Debug: SYNTHESIS_TOP_MODULE = sobel_filter_top
+Debug: CUSTOM_TOP_LEVEL = sobel_filter
+Debug: ACCELERATOR_NAME = sobel_filter
+Debug: TEST_BENCH = 
+Debug: CUSTOM_TEST_BENCH = 
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-tcl-cmds puts [concat "MEMORY_BASE_ADDRESS =" [get_parameter SYSTEM_MEMORY_BASE_ADDRESS]];
+puts [concat "MEMORY_SIZE =" [get_parameter SYSTEM_MEMORY_SIZE]];
+puts [concat "MEMORY_WIDTH =" [get_parameter SYSTEM_MEMORY_WIDTH]];
+puts [concat "MEMORY_SIM_INIT_FILE_NAME =" [get_parameter SYSTEM_MEMORY_SIM_INIT_FILE_NAME]];
+puts [concat "DATA_MEMORY_BASE_ADDRESS =" [get_parameter SYSTEM_DATA_MEMORY_BASE_ADDRESS]];
+puts [concat "OUTPUT_PATH =" [get_legup_output_path]];
+puts [concat "CUSTOM_RTL_FUNCTIONS =" [atleast_one_custom_rtl]];
+puts [concat "FPGA_BOARD =" [get_board]];
+puts [concat "DEVICE_FAMILY =" [get_device_family]];
+puts [concat "DEVICE =" [get_device]];
+puts [concat "PROJECT =" [get_parameter SYSTEM_PROJECT_NAME]];
+puts [concat "SYNTHESIS_TOP_MODULE_FILE =" [get_synthesis_top_module_file]];
+puts [concat "FPGA_VENDOR =" [get_parameter FPGA_VENDOR]];
+puts [concat "OPENMP =" [get_parameter ENABLE_OPENMP]];
+puts [concat "SYSTEM_UART_TYPE =" [get_parameter SYSTEM_UART_TYPE]];
+puts [concat "CLOCK_PERIOD =" [get_parameter CLOCK_PERIOD]];
+puts [concat "SYNTHESIS_CLOCK_PERIOD =" [get_parameter SYNTHESIS_CLOCK_PERIOD]];
+puts [concat "LEGUP_DEFAULT_FIFO_DEPTH =" [get_parameter DEFAULT_FIFO_DEPTH]];
+puts [concat "PROC_ARCH =" [get_parameter SYSTEM_PROCESSOR_ARCHITECTURE]];
+puts [concat "LEGUP_CUSTOM_VHDL_FILES =" [get_custom_vhdl_files]];
+puts [concat "USE_TOP_LEVEL_WRAPPER_FILE =" [get_parameter PRINT_TOPLEVEL_WRAPPER]];
+puts [concat "SOURCE_TRANSFORM =" [get_parameter POINTSTO_ANALYZE_HW_ONLY]];
+puts [concat "REPLICATE_RAMS =" [get_parameter REPLICATE_RAMS]];
+puts [concat "USE_ACTGENO =" [get_actgeno_usage]];
+puts [concat "CUSTOM_TOP_LEVEL =" [get_custom_top_level_module]];
+exit; /dev/null -o /dev/null
+Debug: MEMORY_BASE_ADDRESS = 
+Debug: MEMORY_SIZE = 
+Debug: MEMORY_WIDTH = 
+Debug: MEMORY_SIM_INIT_FILE_NAME = 
+Debug: DATA_MEMORY_BASE_ADDRESS = 
+Debug: OUTPUT_PATH = hls_output
+Debug: CUSTOM_RTL_FUNCTIONS = n
+Debug: FPGA_BOARD = MPF300
+Debug: DEVICE_FAMILY = PolarFire
+Debug: DEVICE = MPF300TS-1FCG1152I
+Debug: PROJECT = hw_only
+Debug: SYNTHESIS_TOP_MODULE_FILE = 
+Debug: FPGA_VENDOR = MICROSEMI
+Debug: OPENMP = 
+Debug: SYSTEM_UART_TYPE = 
+Debug: CLOCK_PERIOD = 10
+Debug: SYNTHESIS_CLOCK_PERIOD = 
+Debug: LEGUP_DEFAULT_FIFO_DEPTH = 2
+Debug: PROC_ARCH = 
+Debug: LEGUP_CUSTOM_VHDL_FILES = 
+Debug: USE_TOP_LEVEL_WRAPPER_FILE = 0
+Debug: SOURCE_TRANSFORM = 1
+Debug: REPLICATE_RAMS = 
+Debug: USE_ACTGENO = 0
+Debug: CUSTOM_TOP_LEVEL = 
+Debug: run() Caller Function: _call_dependency_handler():224
+Debug: /home/parisa/legup/examples/scripts/utils/target_dependency/DependencyHandler hw part1
+[1m[33m> 'Compile Software to Hardware' step is up to date.[39m[0m
+  Enter 'Y' (yes) to re-run 'Compile Software to Hardware'.
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: hw
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-startup /dev/null -o /dev/null
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Tue Mar 28 08:45:26 2023
+----------------------------------------------------------------------------
+Debug: run() Caller Function: _run_clang():223
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/clang -fno-exceptions -O3 sobel.cpp -emit-llvm -c -D__SYNTHESIS__ -D LEGUP_DEFAULT_FIFO_DEPTH=2 -m32 -I /usr/include/i386-linux-gnu -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -fno-builtin -I/home/parisa/legup/examples/lib/include -I/home/parisa/legup/smarthls-library -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -target i386-unknown-linux-gnu --gcc-toolchain=/home/parisa/legup/dependencies/gcc -fno-vectorize -fno-slp-vectorize -Werror=implicit-function-declaration -Wno-ignored-attributes -D_GLIBCXX_USE_CXX11_ABI=1 -g -mllvm -disable-llvm-optzns -o hls_output/.hls/sobel.bc
+Debug: run() Caller Function: _frontend():284
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/llvm-link hls_output/.hls/sobel.bc -o hls_output/.hls/part1.00.0.first_link.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -simplifycfg -dataflow-split-bb -dataflow-exline-region hls_output/.hls/part1.00.0.first_link.bc -o hls_output/.hls/part1.00.1.exline_region.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -axi-interface -axi-gen-code-only hls_output/.hls/part1.00.1.exline_region.bc -o hls_output/.hls/part1.axi.00.prelto.1.bc
+Debug: run() Caller Function: _run_opt_o3():213
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=0 -PURE_HW_FLOW= -before-removing-tb=1 -O3 -inline-threshold=-9999 hls_output/.hls/part1.00.2.axi_slave_link.bc -o hls_output/.hls/part1.00.2.O3.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -remove-debug-info hls_output/.hls/part1.00.2.O3.bc -o hls_output/.hls/part1.00.prelto.1.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -before-removing-tb=1 -lower-bitcasted-function-calls -legup-preprocessing -legup-preprocess-thread-lib -legup-lower-thread-structs -always-inline -axi-interface -loop-rotate -legup-unroll -unroll-threads=1 -break-constgeps -legup-parallel-api -deadargelim hls_output/.hls/part1.00.prelto.1.bc -o hls_output/.hls/part1.01.parallel.bc
+Info: Adding no_inline attribute to the user-specified function: sobel_filter
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -before-removing-tb=1 -break-constgeps -annotate-toplevel-ptrargs -ANALYZE_WHOLE_PROGRAM=1 -break-constgeps -lower-globals-to-arguments -std-link-opts -break-constgeps -loweratomic -legup-sc-parser hls_output/.hls/part1.01.parallel.bc -o hls_output/.hls/part1.02.preprocessing.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -before-removing-tb=1 -break-constgeps -removeswtestbench -globaldce -expand-struct-regs hls_output/.hls/part1.02.preprocessing.bc -o hls_output/.hls/part1.03.swremoved.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-code-support-checking hls_output/.hls/part1.03.swremoved.bc -o /dev/null
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -arbitrary-bitwidth -inline-global-apint-ctor -instcombine -simplifycfg -instcombine -extract-global-ap-int-initializer hls_output/.hls/part1.03.swremoved.bc -o hls_output/.hls/part1.04.ap_int_global_init.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= hls_output/.hls/part1.04.ap_int_global_init.bc -o hls_output/.hls/part1.05.mempromo.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -arbitrary-bitwidth -legup-lower-sc hls_output/.hls/part1.05.mempromo.bc -o hls_output/.hls/part1.06.lower.int.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -break-constgeps -legup-lower-single-element-struct hls_output/.hls/part1.06.lower.int.bc -o hls_output/.hls/part1.07.lower.ap.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -data-pack -split-legup-force-reg hls_output/.hls/part1.07.lower.ap.bc -o hls_output/.hls/part1.08.lower.datapack.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-lower-fifos hls_output/.hls/part1.08.lower.datapack.bc -o hls_output/.hls/part1.09.lower.fifo.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -basiccg -inline-cost -inline -globalopt -globaldce hls_output/.hls/part1.09.lower.fifo.bc -o hls_output/.hls/part1.10.lower.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -std-link-opts hls_output/.hls/part1.10.lower.bc -o hls_output/.hls/part1.11.stdlinkopts.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -std-compile-opts hls_output/.hls/part1.11.stdlinkopts.bc -o hls_output/.hls/part1.12.stdcompileopts.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -std-link-opts hls_output/.hls/part1.12.stdcompileopts.bc -o hls_output/.hls/part1.13.stdlinkopts2.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-lower-math-for-pipeline hls_output/.hls/part1.13.stdlinkopts2.bc -o hls_output/.hls/part1.14.lowermath.bc
+Debug: run() Caller Function: _ir_transformations():534
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/llvm-link hls_output/.hls/part1.14.lowermath.bc /home/parisa/legup/examples/lib/llvm/libm_32.bc -o hls_output/.hls/part1.15.postlto.6.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-prelto -mp-preprocess hls_output/.hls/part1.15.postlto.6.bc -o hls_output/.hls/part1.16.legupprelto.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -globaldce -std-link-opts -internalize hls_output/.hls/part1.16.legupprelto.bc -o hls_output/.hls/part1.17.postlto.8.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -frem-shrinking hls_output/.hls/part1.17.postlto.8.bc -o hls_output/.hls/part1.18.postlto.9.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-process-bw -legup-prop-bw hls_output/.hls/part1.18.postlto.9.bc -o hls_output/.hls/part1.19.ab.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -indvars2 -mem2reg -simplifycfg -loops -lcssa -loop-simplify -loop-rotate hls_output/.hls/part1.19.ab.bc -o hls_output/.hls/part1.20.looprotate.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -replicate-functions hls_output/.hls/part1.20.looprotate.bc -o hls_output/.hls/part1.21.replicate.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-inliner -always-inline hls_output/.hls/part1.21.replicate.bc -o hls_output/.hls/part1.22.inline.1.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -globaldce hls_output/.hls/part1.22.inline.1.bc -o hls_output/.hls/part1.23.inline.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -lcssa -rotation-max-header-size=1000 -loop-rotate -legup-unroll hls_output/.hls/part1.23.inline.bc -o hls_output/.hls/part1.24.unroll.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -loops -lcssa -loop-simplify -indvars2 -legup-loop-nest-merge -simplifycfg -dce hls_output/.hls/part1.24.unroll.bc -o hls_output/.hls/part1.25.loop_nest_merged.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -break-constgeps hls_output/.hls/part1.25.loop_nest_merged.bc -o hls_output/.hls/part1.26.breakgeps.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -voidptr-argpromotion -dce -globaldce hls_output/.hls/part1.26.breakgeps.bc -o hls_output/.hls/part1.27.voidptr.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -resolve-bitcast -instcombine -std-link-opts -break-constgeps hls_output/.hls/part1.27.voidptr.bc -o hls_output/.hls/part1.28.voidptropt.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -loop-simplify -indvars -mem-partition -instcombine -axi-interface -axi-rm-unused-mem-only -dce -deadargelim -dce -globaldce -break-constgeps hls_output/.hls/part1.28.voidptropt.bc -o hls_output/.hls/part1.29.mp.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -break-constgeps -bit-pack-struct -byte-pack-struct -abi-pack-struct -llvm-pack-struct hls_output/.hls/part1.29.mp.bc -o hls_output/.hls/part1.30.pack.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -instcombine -break-constgeps -select-transform -mem2reg hls_output/.hls/part1.30.pack.bc -o hls_output/.hls/part1.31.memlowered.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-sc-fsm-generator -annotate-toplevel-ptrargs -annotate-noalias hls_output/.hls/part1.31.memlowered.bc -o hls_output/.hls/part1.32.fifo.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-handle-static-objects -dce hls_output/.hls/part1.32.fifo.bc -o hls_output/.hls/part1.33.static.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -mergereturn -legup-ga2l -dce -mem2reg hls_output/.hls/part1.33.static.bc -o hls_output/.hls/part1.34.ga2l.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -instcombine -std-link-opts hls_output/.hls/part1.34.ga2l.bc -o hls_output/.hls/part1.36.postlto.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -break-constgeps -legup-struct-support-checking hls_output/.hls/part1.36.postlto.bc -o hls_output/.hls/part1.37.check.struct.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-cleanup hls_output/.hls/part1.37.check.struct.bc -o hls_output/.hls/part1.38.cleanup.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -flatten-memory -dce -instcombine -licm -break-constgeps hls_output/.hls/part1.38.cleanup.bc -o hls_output/.hls/part1.39.flatten.memory.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-promote-ap -mem2reg -licm hls_output/.hls/part1.39.flatten.memory.bc -o hls_output/.hls/part1.40.promoted.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -basicaa -loop-simplify -loop-rotate -indvars2 -instcombine -axi-initiator-fifo-creation -globaldce -mem2reg -deadargelim -extract-dataflow-loop -annotate-fifoarguments hls_output/.hls/part1.40.promoted.bc -o hls_output/.hls/part1.42.df.loop.extract.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -dataflow-split-bb -dataflow-code-motion -always-inline -instcombine hls_output/.hls/part1.42.df.loop.extract.bc -o hls_output/.hls/part1.43.df.code.motion.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -dataflow-arguments -deadargelim -globaldce hls_output/.hls/part1.43.df.code.motion.bc -o hls_output/.hls/part1.44.df.1.arg.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -basicaa -dataflow-arg-conversion-fifo -mem2reg hls_output/.hls/part1.44.df.1.arg.bc -o hls_output/.hls/part1.45.df.2.fifo.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -basicaa -dataflow-arg-conversion-pipo -resolve-bitcast -instcombine hls_output/.hls/part1.45.df.2.fifo.bc -o hls_output/.hls/part1.46.df.3.pipo.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -gvn -legup-strength-reduction -legup-expr-tree-balance -legup-store-merge hls_output/.hls/part1.47.preifconv.1.bc -o hls_output/.hls/part1.48.preifconv.2.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -simplifycfg hls_output/.hls/part1.48.preifconv.2.bc -o hls_output/.hls/part1.49.preifconv.3.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-if-conversion hls_output/.hls/part1.49.preifconv.3.bc -o hls_output/.hls/part1.50.ifconv.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -generate-trip-counts hls_output/.hls/part1.50.ifconv.bc -o hls_output/.hls/part1.51.generatetripcounts.bc
+Info: Found trip count of: 512
+Info: Status of invariance: 1
+Info: Is innermost
+Info: Found trip count of: 512
+Info: Status of invariance: 1
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -simplifycfg hls_output/.hls/part1.51.generatetripcounts.bc -o hls_output/.hls/part1.52.ifconv.1.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -enable-pre=false -enable-load-pre=false -loop-simplify -indvars2 -instcombine -gvn -legup-strength-reduction -rewrite-loop-init -constprop -early-cse -dce -annotate-fifoarguments hls_output/.hls/part1.52.ifconv.1.bc -o hls_output/.hls/part1.53.ifconv.2.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-final-code-support-checking hls_output/.hls/part1.53.ifconv.2.bc -o /dev/null
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-reduce-latency -legup-reduce-latency-annotate-depth -fuse-ops -bit-manipulation -globaldce -adce -annotate-legup-force-reg hls_output/.hls/part1.53.ifconv.2.bc -o hls_output/.hls/part1.55.finaloptimizedir.bc
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -restore-metadata -basicaa -loop-pipeline -function-pipeline hls_output/.hls/part1.55.finaloptimizedir.bc -o hls_output/.hls/part1.bc
+Debug: run() Caller Function: _backend():1075
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/llc -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=part1 -march=v hls_output/.hls/part1.bc
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Done Scheduling.
+Info: Generating RTL for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sobel_filter_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sobel_filter_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/part1_sobel_filter.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sobel_filter.rpt.
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -generate-accelerator-driver -LEGUP_ACCELERATOR_FILENAME=part1 hls_output/.hls/part1.bc -o /dev/null

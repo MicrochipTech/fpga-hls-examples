@@ -1,0 +1,134 @@
+Debug: run() Caller Function: get_user_makefile_variables():15
+Debug: make export-user-makefile-variables AVOID_BASH=1 LEGUP_ROOT_DIR=/home/parisa/legup
+Debug: NAME = part1
+Debug: LOCAL_CONFIG = -legup-config=config.tcl
+Debug: NO_INLINE = 
+Debug: VHDL_WRAPPER_SIM = 
+Debug: SYNTHESIS_TOP_MODULE = sobel_filter_top
+Debug: POST_SYNTH_SIM = 
+Debug: PROGRAMMER_ID = 
+Debug: BOARD_IP = 
+Debug: QOR_TEST_NAME = part1
+Debug: COMMIT_HASH = 
+Debug: QOR_BUILD = 
+Debug: QOR_BUILD_NAME = 
+Debug: NO_OPT = 
+Debug: MODELSIM_TOOL_PATH = 
+Debug: MODELSIM_TOOL_PATH_OS_INDEP = 
+Debug: LIBERO_TOOL_PATH = 
+Debug: LIBERO_TOOL_PATH_OS_INDEP = 
+Debug: SYNPLIFY_PATH = /home/shadjis/latest_linux_Libero_SoC/Libero/bin64/../../SynplifyPro/bin/
+Debug: MEMORY_BASE_ADDRESSMEMORY_SIZE = 
+Debug: MEMORY_WIDTH = 
+Debug: MEMORY_SIM_INIT_FILE_NAME = 
+Debug: DATA_MEMORY_BASE_ADDRESS = 
+Debug: COMBINE_BB = 
+Debug: OUTPUT_PATH = hls_output
+Debug: CUSTOM_RTL_FUNCTIONS = n
+Debug: FPGA_BOARD = MPF300
+Debug: DEVICE_FAMILY = PolarFire
+Debug: DEVICE = MPF300TS-1FCG1152I
+Debug: PROJECT = hw_only
+Debug: FPGA_VENDOR = MICROSEMI
+Debug: OPENMP = 
+Debug: SYSTEM_UART_TYPE = 
+Debug: CLOCK_PERIOD = 10
+Debug: SYNTHESIS_CLOCK_PERIOD = 10
+Debug: LEGUP_DEFAULT_FIFO_DEPTH = 2
+Debug: PROC_ARCH = 
+Debug: LEGUP_CUSTOM_VHDL_FILES = 
+Debug: USE_TOP_LEVEL_WRAPPER_FILE = 0
+Debug: TARGET_ARCH = 
+Debug: SOURCE_TRANSFORM = 1
+Debug: REPLICATE_RAMS = 
+Debug: USE_ACTGENO = 0
+Debug: CUSTOM_TOP_LEVEL = sobel_filter
+Debug: SRCS = sobel.cpp  
+Debug: RISCV_SRCS = sobel.cpp  
+Debug: CFLAG = -D__SYNTHESIS__ -m32 -I /usr/include/i386-linux-gnu -D LEGUP_DEFAULT_FIFO_DEPTH=2 -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu/ -fno-builtin -I /home/parisa/legup/examples/lib/include/ -I /home/parisa/legup/smarthls-library
+Debug: CPP_FLAG = -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu/
+Debug: USER_CXX_FLAG = 
+Debug: NO_STD_COMPILE_OPTS = 
+Debug: USER_CXX_FLAG_RISCV = 
+Debug: USER_LINK_FLAG = 
+Debug: USER_LINK_FLAG_RISCV = 
+Debug: LINK_ICICLE_LIBS = -L/home/parisa/legup/smarthls-library/hls -lhls_riscv64_no_accel
+Debug: LINK_ICICLE_LIBS_SOC = -L/home/parisa/legup/smarthls-library/hls -lhls_riscv64_accel
+Debug: LINK_FLAG_RISCV = 
+Debug: PROGRAM_ARGUMENTS = 
+Debug: UNROLL = 
+Debug: USER_ENV_VARS = 
+Debug: USER_ENV_VARS_RISCV = 
+Debug: LLC_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=part1
+Debug: OPT_O3_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=0 -PURE_HW_FLOW= -before-removing-tb=1 -O3 -inline-threshold=-9999
+Debug: OPT_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW=
+Debug: NUM_LIBERO_PnR_PASSES = 25
+Debug: BOARD_PATH = 
+Debug: INPUT_FILES_RISCV = 
+Debug: OUTPUT_FILES_RISCV = 
+Debug: SYNTHESIS_TOP_MODULE = sobel_filter_top
+Debug: CUSTOM_TOP_LEVEL = sobel_filter
+Debug: ACCELERATOR_NAME = sobel_filter
+Debug: TEST_BENCH = 
+Debug: CUSTOM_TEST_BENCH = 
+Debug: run() Caller Function: _run_opt():196
+Debug: /home/parisa/legup/llvm/Debug+Asserts/bin/opt -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW= -legup-tcl-cmds puts [concat "MEMORY_BASE_ADDRESS =" [get_parameter SYSTEM_MEMORY_BASE_ADDRESS]];
+puts [concat "MEMORY_SIZE =" [get_parameter SYSTEM_MEMORY_SIZE]];
+puts [concat "MEMORY_WIDTH =" [get_parameter SYSTEM_MEMORY_WIDTH]];
+puts [concat "MEMORY_SIM_INIT_FILE_NAME =" [get_parameter SYSTEM_MEMORY_SIM_INIT_FILE_NAME]];
+puts [concat "DATA_MEMORY_BASE_ADDRESS =" [get_parameter SYSTEM_DATA_MEMORY_BASE_ADDRESS]];
+puts [concat "OUTPUT_PATH =" [get_legup_output_path]];
+puts [concat "CUSTOM_RTL_FUNCTIONS =" [atleast_one_custom_rtl]];
+puts [concat "FPGA_BOARD =" [get_board]];
+puts [concat "DEVICE_FAMILY =" [get_device_family]];
+puts [concat "DEVICE =" [get_device]];
+puts [concat "PROJECT =" [get_parameter SYSTEM_PROJECT_NAME]];
+puts [concat "SYNTHESIS_TOP_MODULE_FILE =" [get_synthesis_top_module_file]];
+puts [concat "FPGA_VENDOR =" [get_parameter FPGA_VENDOR]];
+puts [concat "OPENMP =" [get_parameter ENABLE_OPENMP]];
+puts [concat "SYSTEM_UART_TYPE =" [get_parameter SYSTEM_UART_TYPE]];
+puts [concat "CLOCK_PERIOD =" [get_parameter CLOCK_PERIOD]];
+puts [concat "SYNTHESIS_CLOCK_PERIOD =" [get_parameter SYNTHESIS_CLOCK_PERIOD]];
+puts [concat "LEGUP_DEFAULT_FIFO_DEPTH =" [get_parameter DEFAULT_FIFO_DEPTH]];
+puts [concat "PROC_ARCH =" [get_parameter SYSTEM_PROCESSOR_ARCHITECTURE]];
+puts [concat "LEGUP_CUSTOM_VHDL_FILES =" [get_custom_vhdl_files]];
+puts [concat "USE_TOP_LEVEL_WRAPPER_FILE =" [get_parameter PRINT_TOPLEVEL_WRAPPER]];
+puts [concat "SOURCE_TRANSFORM =" [get_parameter POINTSTO_ANALYZE_HW_ONLY]];
+puts [concat "REPLICATE_RAMS =" [get_parameter REPLICATE_RAMS]];
+puts [concat "USE_ACTGENO =" [get_actgeno_usage]];
+puts [concat "CUSTOM_TOP_LEVEL =" [get_custom_top_level_module]];
+exit; /dev/null -o /dev/null
+Debug: MEMORY_BASE_ADDRESS = 
+Debug: MEMORY_SIZE = 
+Debug: MEMORY_WIDTH = 
+Debug: MEMORY_SIM_INIT_FILE_NAME = 
+Debug: DATA_MEMORY_BASE_ADDRESS = 
+Debug: OUTPUT_PATH = hls_output
+Debug: CUSTOM_RTL_FUNCTIONS = n
+Debug: FPGA_BOARD = MPF300
+Debug: DEVICE_FAMILY = PolarFire
+Debug: DEVICE = MPF300TS-1FCG1152I
+Debug: PROJECT = hw_only
+Debug: SYNTHESIS_TOP_MODULE_FILE = 
+Debug: FPGA_VENDOR = MICROSEMI
+Debug: OPENMP = 
+Debug: SYSTEM_UART_TYPE = 
+Debug: CLOCK_PERIOD = 10
+Debug: SYNTHESIS_CLOCK_PERIOD = 
+Debug: LEGUP_DEFAULT_FIFO_DEPTH = 2
+Debug: PROC_ARCH = 
+Debug: LEGUP_CUSTOM_VHDL_FILES = 
+Debug: USE_TOP_LEVEL_WRAPPER_FILE = 0
+Debug: SOURCE_TRANSFORM = 1
+Debug: REPLICATE_RAMS = 
+Debug: USE_ACTGENO = 0
+Debug: CUSTOM_TOP_LEVEL = 
+Debug: run() Caller Function: _call_dependency_handler():224
+Debug: /home/parisa/legup/examples/scripts/utils/target_dependency/DependencyHandler hw part1
+[1m[33m> 'Compile Software to Hardware' step is up to date.[39m[0m
+  Enter 'Y' (yes) to re-run 'Compile Software to Hardware'.
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Error: SmartHLS execution interrupted by user!

@@ -1,0 +1,10 @@
+SYNTHESIS_TOP_MODULE :=collatz_top
+CUSTOM_TOP_LEVEL :=collatz
+ACCELERATOR_NAME :=collatz
+TEST_BENCH :=
+CUSTOM_TEST_BENCH :=
+define SOC_INCOMPATIBLE_INTF
+
+	Function collatz: module control, n
+
+endef

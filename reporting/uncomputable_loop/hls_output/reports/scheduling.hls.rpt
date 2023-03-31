@@ -1,0 +1,71 @@
+// ----------------------------------------------------------------------------
+// Smart High-Level Synthesis Tool Version 2023.1
+// Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+// For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+// Date: Fri Mar 31 11:45:08 2023
+// ----------------------------------------------------------------------------
+Target FPGA: MICROSEMI PolarFire
+Project type: hw_onlyClock period constraint: 10ns
+Start Function: collatz
+state: LEGUP_0, basic block: LEGUP_0
+   Transition: if (start): LEGUP_F_collatz_BB_entry_1 default: LEGUP_0
+state: LEGUP_F_collatz_BB_entry_1, basic block: BB_entry
+   %cmp5 = icmp eq i32 %n, 1, !dbg !347, !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_entry_1)
+   br i1 %cmp5, label %if.then, label %if.end.preheader, !dbg !347, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: if (%cmp5): LEGUP_F_collatz_BB_if_then_4 default: LEGUP_F_collatz_BB_if_end_preheader_2
+state: LEGUP_F_collatz_BB_if_end_preheader_2, basic block: BB_if_end_preheader
+   br label %if.end, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: default: LEGUP_F_collatz_BB_if_end_5
+state: LEGUP_F_collatz_BB_if_then_loopexit_3, basic block: BB_if_then_loopexit
+   br label %if.then, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: default: LEGUP_F_collatz_BB_if_then_4
+state: LEGUP_F_collatz_BB_if_then_4, basic block: BB_if_then
+   %i.0.lcssa = phi i32 [ 0, %entry ], [ %0, %if.then.loopexit ], !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_then_4)
+   ret i32 %i.0.lcssa, !dbg !353, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: default: LEGUP_0
+state: LEGUP_F_collatz_BB_if_end_5, basic block: BB_if_end
+   %i.07 = phi i32 [ %0, %for.inc ], [ 0, %if.end.preheader ], !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_end_5)
+   %n.addr.06 = phi i32 [ %n.addr.1, %for.inc ], [ %n, %if.end.preheader ], !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_end_5)
+   %bit_select6 = call i1 @hls_bit_select_1_32(i32 %n.addr.06, i64 0, i64 0), !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_if_end_5)
+   %bit_select4 = call i31 @hls_bit_select_31_32(i32 %n.addr.06, i64 30, i64 0), !MSB !355, !LSB !350, !ExtendFrom !355 (endState: LEGUP_F_collatz_BB_if_end_5)
+   %0 = add i32 %i.07, 1, !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_end_5)
+   %bit_concat7 = call i32 @hls_bit_concat_31_1(i31 0, i64 31, i1 %bit_select6, i64 1), !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_if_end_5)
+   %tobool = icmp eq i32 %bit_concat7, 0, !dbg !356, !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_if_end_5)
+   br i1 %tobool, label %if.else, label %if.then1, !dbg !356, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: if (%tobool): LEGUP_F_collatz_BB_if_else_7 default: LEGUP_F_collatz_BB_if_then1_6
+state: LEGUP_F_collatz_BB_if_then1_6, basic block: BB_if_then1
+   %bit_concat5 = call i32 @hls_bit_concat_31_1(i31 %bit_select4, i64 31, i1 false, i64 1), !MSB !352, !LSB !358, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_then1_6)
+   %sr_add1 = add i32 %n.addr.06, %bit_concat5, !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_then1_6)
+   %add = add nsw i32 %sr_add1, 1, !dbg !359, !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_then1_6)
+   br label %for.inc, !dbg !361, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: default: LEGUP_F_collatz_BB_for_inc_8
+state: LEGUP_F_collatz_BB_if_else_7, basic block: BB_if_else
+   %1 = sext i32 %n.addr.06 to i64, !MSB !362, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %sr_negate = sub i64 0, %1, !MSB !362, !LSB !350, !ExtendFrom !363 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %bit_select2 = call i33 @hls_bit_select_33_64(i64 %sr_negate, i64 32, i64 0), !MSB !363, !LSB !350, !ExtendFrom !363 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %bit_concat3 = call i64 @hls_bit_concat_33_31(i33 %bit_select2, i64 33, i31 0, i64 31), !MSB !362, !LSB !352, !ExtendFrom !362 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %sr_add2 = add i64 %1, %bit_concat3, !MSB !362, !LSB !350, !ExtendFrom !362 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %bit_select1 = call i32 @hls_bit_select_32_64(i64 %sr_add2, i64 63, i64 32), !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %2 = add i32 %bit_select1, %n.addr.06, !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %bit_select = call i1 @hls_bit_select_1_32(i32 %2, i64 31, i64 31), !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %bit_concat = call i32 @hls_bit_concat_31_1(i31 0, i64 31, i1 %bit_select, i64 1), !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_if_else_7)
+   %3 = add i32 %2, %bit_concat, !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_if_else_7)
+   br label %for.inc, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: default: LEGUP_F_collatz_BB_for_inc_8
+state: LEGUP_F_collatz_BB_for_inc_8, basic block: BB_for_inc
+   %n.addr.1 = phi i32 [ %add, %if.then1 ], [ %3, %if.else ], !MSB !352, !LSB !350, !ExtendFrom !352 (endState: LEGUP_F_collatz_BB_for_inc_8)
+   %cmp = icmp eq i32 %n.addr.1, 1, !dbg !347, !MSB !350, !LSB !350, !ExtendFrom !350 (endState: LEGUP_F_collatz_BB_for_inc_8)
+   br i1 %cmp, label %if.then.loopexit, label %if.end, !dbg !347, !legup.tripCount !350, !MSB !351, !LSB !350, !ExtendFrom !351
+   Transition: if (%cmp): LEGUP_F_collatz_BB_if_then_loopexit_3 default: LEGUP_F_collatz_BB_if_end_5
+
+Basic Block: BB_entry, Num States: 1, Location: <main.cpp:4,7>
+Basic Block: BB_if_end_preheader, Num States: 1, Location: <>
+Basic Block: BB_if_then_loopexit, Num States: 1, Location: <>
+Basic Block: BB_if_then, Num States: 1, Location: <main.cpp:8>
+Basic Block: BB_if_end, Num States: 1, Location: <main.cpp:10>
+Basic Block: BB_if_then1, Num States: 1, Location: <main.cpp:11-12>
+Basic Block: BB_if_else, Num States: 1, Location: <>
+Basic Block: BB_for_inc, Num States: 1, Location: <main.cpp:7,11>
+End Function: collatz
+--------------------------------------------------------------------------------
+

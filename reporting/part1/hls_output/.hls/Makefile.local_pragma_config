@@ -1,0 +1,10 @@
+SYNTHESIS_TOP_MODULE :=sobel_filter_top
+CUSTOM_TOP_LEVEL :=sobel_filter
+ACCELERATOR_NAME :=sobel_filter
+TEST_BENCH :=
+CUSTOM_TEST_BENCH :=
+define SOC_INCOMPATIBLE_INTF
+
+	Function sobel_filter: module control, in, out
+
+endef

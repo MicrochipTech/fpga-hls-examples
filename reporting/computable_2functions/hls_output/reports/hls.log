@@ -1,0 +1,267 @@
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+Error: Error! Command failed!
+Command: '/home/parisa/legup/dependencies/gcc/bin/g++'
+Args: '['-O1', '-g', '-pg', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', 'main.cpp', '-Wno-attributes', '-Wno-unknown-pragmas', '-I/home/parisa/legup/smarthls-library', '-L/home/parisa/legup/smarthls-library/hls', '-lhls_x86', '-o', 'hls_output/.hls/computable_2functions.sw_binary', '-fopenmp', '-pthread', '-lm', '-lrt']'
+Shell Command: /home/parisa/legup/dependencies/gcc/bin/g++ -O1 -g -pg -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu main.cpp -Wno-attributes -Wno-unknown-pragmas -I/home/parisa/legup/smarthls-library -L/home/parisa/legup/smarthls-library/hls -lhls_x86 -o hls_output/.hls/computable_2functions.sw_binary -fopenmp -pthread -lm -lrt
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+'
+
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+Error: Error! Command failed!
+Command: '/home/parisa/legup/dependencies/gcc/bin/g++'
+Args: '['-O1', '-g', '-pg', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', 'main.cpp', '-Wno-attributes', '-Wno-unknown-pragmas', '-I/home/parisa/legup/smarthls-library', '-L/home/parisa/legup/smarthls-library/hls', '-lhls_x86', '-o', 'hls_output/.hls/computable_2functions.sw_binary', '-fopenmp', '-pthread', '-lm', '-lrt']'
+Shell Command: /home/parisa/legup/dependencies/gcc/bin/g++ -O1 -g -pg -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu main.cpp -Wno-attributes -Wno-unknown-pragmas -I/home/parisa/legup/smarthls-library -L/home/parisa/legup/smarthls-library/hls -lhls_x86 -o hls_output/.hls/computable_2functions.sw_binary -fopenmp -pthread -lm -lrt
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+'
+
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+50176
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:32:58 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:35:19 2023
+----------------------------------------------------------------------------
+main.cpp:16:18: error: [HLS pragma] expected pipeline | unroll | flatten | bounds
+#pragma HLS loop nounroll
+                 ^
+1 error generated.
+Error: Error! Command failed!
+Command: '/home/parisa/legup/llvm/Debug+Asserts/bin/clang'
+Args: '['-fno-exceptions', '-O3', 'main.cpp', '-emit-llvm', '-c', '-D__SYNTHESIS__', '-D', 'LEGUP_DEFAULT_FIFO_DEPTH=2', '-m32', '-I', '/usr/include/i386-linux-gnu', '-O3', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', '-fno-builtin', '-I/home/parisa/legup/examples/lib/include', '-I/home/parisa/legup/smarthls-library', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', '-target', 'i386-unknown-linux-gnu', '--gcc-toolchain=/home/parisa/legup/dependencies/gcc', '-fno-vectorize', '-fno-slp-vectorize', '-Werror=implicit-function-declaration', '-Wno-ignored-attributes', '-D_GLIBCXX_USE_CXX11_ABI=1', '-g', '-mllvm', '-disable-llvm-optzns', '-o', 'hls_output/.hls/main.bc']'
+Shell Command: /home/parisa/legup/llvm/Debug+Asserts/bin/clang -fno-exceptions -O3 main.cpp -emit-llvm -c -D__SYNTHESIS__ -D LEGUP_DEFAULT_FIFO_DEPTH=2 -m32 -I /usr/include/i386-linux-gnu -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -fno-builtin -I/home/parisa/legup/examples/lib/include -I/home/parisa/legup/smarthls-library -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -target i386-unknown-linux-gnu --gcc-toolchain=/home/parisa/legup/dependencies/gcc -fno-vectorize -fno-slp-vectorize -Werror=implicit-function-declaration -Wno-ignored-attributes -D_GLIBCXX_USE_CXX11_ABI=1 -g -mllvm -disable-llvm-optzns -o hls_output/.hls/main.bc
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp:16:18: error: [HLS pragma] expected pipeline | unroll | flatten | bounds
+#pragma HLS loop nounroll
+                 ^
+1 error generated.
+'
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:36:09 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Found trip count of: 0
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:37:16 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:43:52 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:45:43 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.

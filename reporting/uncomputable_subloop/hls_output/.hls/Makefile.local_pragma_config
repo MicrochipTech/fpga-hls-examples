@@ -1,0 +1,10 @@
+SYNTHESIS_TOP_MODULE :=sum_collatz_top
+CUSTOM_TOP_LEVEL :=sum_collatz
+ACCELERATOR_NAME :=sum_collatz
+TEST_BENCH :=
+CUSTOM_TEST_BENCH :=
+define SOC_INCOMPATIBLE_INTF
+
+	Function sum_collatz: module control, n
+
+endef

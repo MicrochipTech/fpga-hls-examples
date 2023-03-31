@@ -1,0 +1,9 @@
+digraph {
+Node0x28654b0[label="sobel_filter_inst", shape="box"];
+Node0x286ae60[label="sobel_filter_top_inst_inst", shape="box"];
+Node0x286ae60 -> Node0x28654b0;
+Node0x286b1a0[label="in_var_inst", style=filled, color="lightblue"];
+Node0x28654b0 -> Node0x286b1a0;
+Node0x286c4e0[label="out_var_inst", style=filled, color="lightblue"];
+Node0x28654b0 -> Node0x286c4e0;
+}
