@@ -1,0 +1,10 @@
+SYNTHESIS_TOP_MODULE :=top_function_top
+CUSTOM_TOP_LEVEL :=top_function
+ACCELERATOR_NAME :=top_function
+TEST_BENCH :=
+CUSTOM_TEST_BENCH :=
+define SOC_INCOMPATIBLE_INTF
+
+	Function top_function: module control, n
+
+endef

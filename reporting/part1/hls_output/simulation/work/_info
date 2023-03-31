@@ -8,45 +8,45 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/simulation
+d/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/simulation
 vcosim_ram_dual_port
-Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1679943780
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1680285385
 !i10b 1
 !s100 @kQl=1Im7FiLM@o]Hml=H0
-IUhW`W=PS:1=[?@eCVa6Go2
+I0PB2C9OKzVE5`DFJF@8V40
 S1
-R0
-Z3 w1679943778
+Z2 d/home/parisa/fpga-hls-examples/reporting/part1/hls_output/simulation
+Z3 w1680285385
 Z4 8cosim_tb.sv
 Z5 Fcosim_tb.sv
-!i122 0
+!i122 3
 L0 363 187
 Z6 VDg1SIo80bB@j0V0VzS_@n1
 Z7 OW;L;2022.2;75
 r1
 !s85 0
 31
-Z8 !s108 1679943780.000000
-!s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/part1_sobel_filter.v|
-Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/part1_sobel_filter.v|cosim_tb.sv|
+Z8 !s108 1680285385.000000
+!s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v|
+Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v|cosim_tb.sv|
 !s101 -O0
 !i113 1
 Z10 o-sv -O0
-Z11 !s92 -sv +define+MEM_INIT_DIR=\"/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/mem_init/\" -O0
+Z11 !s92 -sv +define+MEM_INIT_DIR=\"/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/mem_init/\" -O0
 Z12 tCvgOpt 0
 vcosim_ram_dual_port_byte_enabled
+R0
 R1
-R2
 !i10b 1
 !s100 L?h][QgeCYRDU96=:n1`n0
-I33mGi]7h9@5WPSce>e8Xk3
+I5azQ6^TMdPD?=1Kfib63z3
 S1
-R0
+R2
 R3
 R4
 R5
-!i122 0
+!i122 3
 L0 617 81
 R6
 R7
@@ -54,7 +54,7 @@ r1
 !s85 0
 31
 R8
-Z13 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/part1_sobel_filter.v|
+Z13 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v|
 R9
 !s101 -O0
 !i113 1
@@ -62,17 +62,17 @@ R10
 R11
 R12
 vcosim_ram_dual_port_regular
+R0
 R1
-R2
 !i10b 1
 !s100 P0I5f9OYdX_d:[Gd=U5=L2
-I`?cBml;]d^9AGY@fnZa[d3
+IGcRVm^1:ZG:?n>91KzUm`1
 S1
-R0
+R2
 R3
 R4
 R5
-!i122 0
+!i122 3
 L0 699 73
 R6
 R7
@@ -88,17 +88,17 @@ R10
 R11
 R12
 vcosim_tb
+R0
 R1
-R2
 !i10b 1
 !s100 SYKX@@^HCcLDIeXkSDiZ`1
-IBiZ3DWL0a`?gmSi<:<E6G3
+I9S?91e8dlUEUmJ83O;6WY1
 S1
-R0
+R2
 R3
 R4
 R5
-!i122 0
+!i122 3
 L0 329 12
 R6
 R7
@@ -114,17 +114,17 @@ R10
 R11
 R12
 vsobel_filter_sobel_filter
+R0
 R1
-R2
 !i10b 1
 !s100 _nizIB[HcdJI<h1U[0RTE3
-ID[_78f0IeBfaiRI`Q8=MF0
+IAn8El[Wi^R:`DlfBJ1T`G2
 S1
-R0
-Z14 w1679943698
-Z15 8/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/part1_sobel_filter.v
-Z16 F/home/parisa/fpga-hls-examples/sobel_tutorial/part1/hls_output/rtl/part1_sobel_filter.v
-!i122 0
+R2
+Z14 w1680285364
+Z15 8/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v
+Z16 F/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v
+!i122 3
 L0 205 911
 R6
 R7
@@ -140,17 +140,17 @@ R10
 R11
 R12
 vsobel_filter_top
+R0
 R1
-R2
 !i10b 1
 !s100 C<l1mTB7NFj3ia?SUTGHe3
-IPWIKSU__e@7lAk=C`oM9e3
+IjL1dlfOaSam036MZa;zz<3
 S1
-R0
+R2
 R14
 R15
 R16
-!i122 0
+!i122 3
 L0 20 183
 R6
 R7
@@ -166,17 +166,17 @@ R10
 R11
 R12
 vsobel_filter_top_tb
+R0
 R1
-R2
 !i10b 1
 !s100 W`Yz8iQdlLdDEcXcn>z;>1
-Ig@g3]:HcL3M<Vd4Tm<cTa3
+I[X3l8OQZ17cRJN9P6ROP<0
 S1
-R0
+R2
 R3
 R4
 R5
-!i122 0
+!i122 3
 L0 2 327
 R6
 R7

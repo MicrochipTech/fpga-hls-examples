@@ -42,4 +42,8 @@ if exit_status == 0:
                             printing_lines = True
                         if printing_lines:
                             print(line.strip())
+        # -cs runs cosimulation
+        if '-cs' in sys.argv:
+            os.chdir('../..')
+            os.system('shls cosim -a | grep \'^Cycle\\|^Number\'')
         os.chdir(starting_directory)

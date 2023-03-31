@@ -7567,3 +7567,373 @@ Info: Exporting IP modules.
 Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/part1/hls_output/scripts/create_hdl_plus.tcl.
 Info: Verilog output file(s): hls_output/rtl/part1_sobel_filter.v
 Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sobel_filter.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:42:43 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sobel_filter
+Info: Found trip count of: 512
+Info: Found trip count of: 512
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Done Scheduling.
+Info: Generating RTL for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sobel_filter_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sobel_filter_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/part1/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/part1_sobel_filter.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sobel_filter.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:43:10 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Error: SmartHLS execution interrupted by user!
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:43:54 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sobel_filter
+Info: Found trip count of: 512
+Info: Found trip count of: 512
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Done Scheduling.
+Info: Generating RTL for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sobel_filter_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sobel_filter_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/part1/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/part1_sobel_filter.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sobel_filter.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:44:21 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for sobel_filter function call 1.
+PASS!
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:44:41 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v cosim_tb.sv 
+-- Compiling module sobel_filter_top
+-- Compiling module sobel_filter_sobel_filter
+-- Compiling module sobel_filter_top_tb
+-- Compiling module cosim_tb
+-- Compiling module cosim_ram_dual_port
+-- Compiling module cosim_ram_dual_port_byte_enabled
+-- Compiling module cosim_ram_dual_port_regular
+
+Top level modules:
+	cosim_tb
+End time: 13:44:41 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:44:42 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.sobel_filter_top_tb
+# Loading work.sobel_filter_top
+# Loading work.sobel_filter_sobel_filter
+# Loading work.cosim_ram_dual_port
+# Loading work.cosim_ram_dual_port_regular
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing memory out_var at cycle =           0
+# Initializing memory in_var at cycle =           0
+# Storing memory contents out_var at cycle =     2087959
+# Storing memory contents in_var at cycle =     2087959
+#           1 /           1 function calls completed.
+# Number of calls:           1
+# Cycle latency:     2087960
+# ** Note: $finish    : cosim_tb.sv(338)
+#    Time: 41759410 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:45:04 on Mar 31,2023, Elapsed time: 0:00:22
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
+PASS!
+Number of calls: 1
+Cycle latency: 2,087,960
+SW/HW co-simulation: PASS
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:47:49 2023
+----------------------------------------------------------------------------
+Error: SmartHLS execution interrupted by user!
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:48:18 2023
+----------------------------------------------------------------------------
+Error: SmartHLS execution interrupted by user!
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:51:00 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sobel_filter
+Info: Found trip count of: 512
+Info: Found trip count of: 512
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Done Scheduling.
+Info: Generating RTL for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sobel_filter_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sobel_filter_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/part1/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/part1_sobel_filter.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sobel_filter.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:51:28 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for sobel_filter function call 1.
+PASS!
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:51:48 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v cosim_tb.sv 
+-- Compiling module sobel_filter_top
+-- Compiling module sobel_filter_sobel_filter
+-- Compiling module sobel_filter_top_tb
+-- Compiling module cosim_tb
+-- Compiling module cosim_ram_dual_port
+-- Compiling module cosim_ram_dual_port_byte_enabled
+-- Compiling module cosim_ram_dual_port_regular
+
+Top level modules:
+	cosim_tb
+End time: 13:51:48 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:51:49 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.sobel_filter_top_tb
+# Loading work.sobel_filter_top
+# Loading work.sobel_filter_sobel_filter
+# Loading work.cosim_ram_dual_port
+# Loading work.cosim_ram_dual_port_regular
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing memory out_var at cycle =           0
+# Initializing memory in_var at cycle =           0
+# Storing memory contents out_var at cycle =     2087959
+# Storing memory contents in_var at cycle =     2087959
+#           1 /           1 function calls completed.
+# Number of calls:           1
+# Cycle latency:     2087960
+# ** Note: $finish    : cosim_tb.sv(338)
+#    Time: 41759410 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:52:11 on Mar 31,2023, Elapsed time: 0:00:22
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
+PASS!
+Number of calls: 1
+Cycle latency: 2,087,960
+SW/HW co-simulation: PASS
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:55:38 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: sobel_filter
+Info: Found trip count of: 512
+Info: Found trip count of: 512
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Done Scheduling.
+Info: Generating RTL for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sobel_filter(unsigned char (*) [512], unsigned char (*) [512]).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: sobel_filter_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: sobel_filter_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/part1/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/part1_sobel_filter.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.sobel_filter.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:56:05 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for sobel_filter function call 1.
+PASS!
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:56:25 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/part1/hls_output/rtl/part1_sobel_filter.v cosim_tb.sv 
+-- Compiling module sobel_filter_top
+-- Compiling module sobel_filter_sobel_filter
+-- Compiling module sobel_filter_top_tb
+-- Compiling module cosim_tb
+-- Compiling module cosim_ram_dual_port
+-- Compiling module cosim_ram_dual_port_byte_enabled
+-- Compiling module cosim_ram_dual_port_regular
+
+Top level modules:
+	cosim_tb
+End time: 13:56:25 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:56:27 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.sobel_filter_top_tb
+# Loading work.sobel_filter_top
+# Loading work.sobel_filter_sobel_filter
+# Loading work.cosim_ram_dual_port
+# Loading work.cosim_ram_dual_port_regular
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing memory out_var at cycle =           0
+# Initializing memory in_var at cycle =           0
+# Storing memory contents out_var at cycle =     2087959
+# Storing memory contents in_var at cycle =     2087959
+#           1 /           1 function calls completed.
+# Number of calls:           1
+# Cycle latency:     2087960
+# ** Note: $finish    : cosim_tb.sv(338)
+#    Time: 41759410 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:56:49 on Mar 31,2023, Elapsed time: 0:00:22
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
+PASS!
+Number of calls: 1
+Cycle latency: 2,087,960
+SW/HW co-simulation: PASS

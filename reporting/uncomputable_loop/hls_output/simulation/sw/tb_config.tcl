@@ -1,0 +1,5 @@
+set_parameter COSIM_TB_NUM_CALLS collatz,1,
+set_parameter COSIM_TB_NUM_CALLS collatz,2,
+set_parameter COSIM_TB_NUM_CALLS collatz,3,
+set_parameter COSIM_TB_NUM_CALLS collatz,4,
+set_parameter COSIM_TB_NUM_CALLS collatz,5,

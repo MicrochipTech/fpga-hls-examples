@@ -1,0 +1,29 @@
+==================================================================
+=====  Summary Report for RTL Simulation and FPGA Synthesis  =====
+==================================================================
+
+Project name: uncomputable_loop
+FPGA Vendor: MICROSEMI
+Device Family: PolarFire
+Device: MPF300TS-1FCG1152I
+
+Table of Contents
+  1. Simulation Result
+  2. Timing Result of HLS-generated IP Core
+  3. Resource Usage of HLS-generated IP Core
+
+
+====== 1. Simulation Result ======
+
+Number of calls: 5
+Cycle latency: 185
+SW/HW co-simulation: PASS
+
+====== 2. Timing Result of HLS-generated IP Core (top-level module: collatz_top) ======
+
+N/A. Please run 'Synthesize Hardware to FPGA' to obtain the timing result.
+
+====== 3. Resource Usage of HLS-generated IP Core (top-level module: collatz_top) ======
+
+N/A. Please run 'Synthesize Hardware to FPGA' to obtain the resource usage result.
+

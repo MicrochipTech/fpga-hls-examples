@@ -1,0 +1,115 @@
+m255
+K4
+z2
+!s11f vlog 2022.2 2022.04, Apr 26 2022
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/simulation
+vcosim_tb
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1680285326
+!i10b 1
+!s100 M^42C_RbeWdNimnoQ9mfO3
+I7W1[LN0cXi`gF7358LbhA2
+S1
+R0
+Z3 w1680285326
+Z4 8cosim_tb.sv
+Z5 Fcosim_tb.sv
+!i122 4
+L0 236 12
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OW;L;2022.2;75
+r1
+!s85 0
+31
+Z8 !s108 1680285326.000000
+!s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/uncomputable_subloop_sum_collatz.v|
+Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/uncomputable_subloop_sum_collatz.v|cosim_tb.sv|
+!s101 -O0
+!i113 1
+Z10 o-sv -O0
+Z11 !s92 -sv +define+MEM_INIT_DIR=\"/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/mem_init/\" -O0
+Z12 tCvgOpt 0
+vsum_collatz_sum_collatz
+R1
+R2
+!i10b 1
+!s100 US@<<lQ`IMSSccN8D=8];1
+In6VXiTi6o2ZNnbOPP>73`0
+S1
+R0
+Z13 w1680285325
+Z14 8/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/uncomputable_subloop_sum_collatz.v
+Z15 F/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/uncomputable_subloop_sum_collatz.v
+!i122 4
+L0 102 350
+R6
+R7
+r1
+!s85 0
+31
+R8
+Z16 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/uncomputable_subloop/hls_output/rtl/uncomputable_subloop_sum_collatz.v|
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vsum_collatz_top
+R1
+R2
+!i10b 1
+!s100 L152H767k@Uh6B>2CdI@U0
+I7j=`TR6k2fP^50T7NC[3`3
+S1
+R0
+R13
+R14
+R15
+!i122 4
+L0 20 80
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vsum_collatz_top_tb
+R1
+R2
+!i10b 1
+!s100 >>gF=ILZIKLnKW1D4bD@O2
+Ic764ATe2]Z]^Sc9MzfkH^2
+S1
+R0
+R3
+R4
+R5
+!i122 4
+L0 2 234
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12

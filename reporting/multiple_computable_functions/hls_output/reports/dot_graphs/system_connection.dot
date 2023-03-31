@@ -1,0 +1,7 @@
+digraph {
+Node0x33d2e00[label="top_function_inst", shape="box"];
+Node0x33e6e50[label="top_function_top_inst_inst", shape="box"];
+Node0x33e6e50 -> Node0x33d2e00;
+Node0x33e71b0[label="sub_function_inst", shape="box"];
+Node0x33d2e00 -> Node0x33e71b0;
+}

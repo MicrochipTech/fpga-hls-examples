@@ -1,0 +1,219 @@
+m255
+K4
+z2
+!s11f vlog 2022.2 2022.04, Apr 26 2022
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/simulation
+vcosim_tb
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1680285414
+!i10b 1
+!s100 co0ghohFa``kB`XQ?>mOH1
+Il^T`28819KMjfDam?M@cA3
+S1
+Z2 d/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/simulation
+Z3 w1680285414
+Z4 8cosim_tb.sv
+Z5 Fcosim_tb.sv
+!i122 18
+L0 236 12
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OW;L;2022.2;75
+r1
+!s85 0
+31
+Z8 !s108 1680285414.000000
+!s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v|
+Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v|cosim_tb.sv|
+!s101 -O0
+!i113 1
+Z10 o-sv -O0
+Z11 !s92 -sv +define+MEM_INIT_DIR=\"/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/\" -O0
+Z12 tCvgOpt 0
+vtop_function_legup_mult
+R0
+R1
+!i10b 1
+!s100 OGWag7`OR:GX^4YOk`5=F0
+Ijf8<aMS`Fe_VdW>z<JL253
+S1
+R2
+Z13 w1680285413
+Z14 8/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v
+Z15 F/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v
+!i122 18
+L0 537 53
+R6
+R7
+r1
+!s85 0
+31
+R8
+Z16 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v|
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vtop_function_legup_mult_core
+R0
+R1
+!i10b 1
+!s100 =oWf^9dYk6n?XbbHaUV:d2
+IeQ@Dhk[FCC<]R?@aFh[NQ2
+S1
+R2
+R13
+R14
+R15
+!i122 18
+L0 615 33
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vtop_function_legup_mult_pipelined
+R0
+R1
+!i10b 1
+!s100 lXnCFHOYX4`>k;eoXO5m=0
+I@mHma?WSLKnL2^YAUmWUK3
+S1
+R2
+R13
+R14
+R15
+!i122 18
+L0 671 82
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vtop_function_sub_function
+R0
+R1
+!i10b 1
+!s100 kY?3KJc2W8YGB_=HiOnCa0
+IIHP]2WDOhjKUD5<nYQ]bY2
+S1
+R2
+R13
+R14
+R15
+!i122 18
+L0 370 143
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vtop_function_top
+R0
+R1
+!i10b 1
+!s100 Eo<z@AGaCNjMIWhDOaN9h2
+I5XIeLC99?zCBj4KSle?`l2
+S1
+R2
+R13
+R14
+R15
+!i122 18
+L0 20 148
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vtop_function_top_function
+R0
+R1
+!i10b 1
+!s100 >:hCU3:V3kAKSm^f8h?oW1
+InZVj3:>`>Hn?^kj6^WkQn0
+S1
+R2
+R13
+R14
+R15
+!i122 18
+L0 170 198
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vtop_function_top_tb
+R0
+R1
+!i10b 1
+!s100 kTOfHVMY>al>6d04ah>c30
+I4;3U>?O9T1<7:VK^SmKWA2
+S1
+R2
+R3
+R4
+R5
+!i122 18
+L0 2 234
+R6
+R7
+r1
+!s85 0
+31
+R8
+R16
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12

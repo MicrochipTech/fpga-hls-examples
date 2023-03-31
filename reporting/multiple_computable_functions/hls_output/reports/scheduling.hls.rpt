@@ -1,0 +1,57 @@
+// ----------------------------------------------------------------------------
+// Smart High-Level Synthesis Tool Version 2023.1
+// Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+// For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+// Date: Fri Mar 31 13:56:53 2023
+// ----------------------------------------------------------------------------
+Target FPGA: MICROSEMI PolarFire
+Project type: hw_onlyClock period constraint: 10ns
+Start Function: top_function
+state: LEGUP_0, basic block: LEGUP_0
+   Transition: if (start): LEGUP_F_top_function_BB_entry_1 default: LEGUP_0
+state: LEGUP_F_top_function_BB_entry_1, basic block: BB_entry
+   br label %for.body, !dbg !353, !MSB !356, !LSB !357, !ExtendFrom !356
+   Transition: default: LEGUP_F_top_function_BB_for_body_2
+state: LEGUP_F_top_function_BB_for_body_2, basic block: BB_for_body
+   %indvar = phi i32 [ %0, %for.body ], [ 0, %entry ], !MSB !358, !LSB !357, !ExtendFrom !358 (endState: LEGUP_F_top_function_BB_for_body_2)
+   %sum.05 = phi i32 [ %add1, %for.body ], [ 0, %entry ], !MSB !359, !LSB !357, !ExtendFrom !359 (endState: LEGUP_F_top_function_BB_for_body_2)
+   %i.06 = add i32 %indvar, %n, !dbg !360, !MSB !359, !LSB !357, !ExtendFrom !359 (endState: LEGUP_F_top_function_BB_for_body_2)
+   %0 = add i32 %indvar, 1, !dbg !353, !MSB !362, !LSB !357, !ExtendFrom !362 (endState: LEGUP_F_top_function_BB_for_body_2)
+   %exitcond1 = icmp eq i32 %0, 16, !dbg !353, !MSB !357, !LSB !357, !ExtendFrom !357 (endState: LEGUP_F_top_function_BB_for_body_2)
+   Transition: default: LEGUP_function_call_3
+state: LEGUP_function_call_3, basic block: BB_for_body
+   %call = tail call fastcc i32 @_Z12sub_functioni(i32 %i.06) #3, !dbg !360 (endState: LEGUP_function_call_3)
+   Transition: if (sub_function_finish): LEGUP_F_top_function_BB_for_body_4 default: LEGUP_function_call_3
+state: LEGUP_F_top_function_BB_for_body_4, basic block: BB_for_body
+   %add1 = add nsw i32 %call, %sum.05, !dbg !360, !MSB !359, !LSB !357, !ExtendFrom !359 (endState: LEGUP_F_top_function_BB_for_body_4)
+   br i1 %exitcond1, label %for.end, label %for.body, !dbg !353, !legup.tripCount !363, !MSB !356, !LSB !357, !ExtendFrom !356
+   Transition: if (%exitcond1): LEGUP_F_top_function_BB_for_end_5 default: LEGUP_F_top_function_BB_for_body_2
+state: LEGUP_F_top_function_BB_for_end_5, basic block: BB_for_end
+   ret i32 %add1, !dbg !364, !MSB !356, !LSB !357, !ExtendFrom !356
+   Transition: default: LEGUP_0
+
+Basic Block: BB_entry, Num States: 1, Location: <main.cpp:5,8>
+Basic Block: BB_for_body, Num States: 3, Location: <main.cpp:8-9>
+Basic Block: BB_for_end, Num States: 1, Location: <main.cpp:11>
+End Function: top_function
+--------------------------------------------------------------------------------
+
+Target FPGA: MICROSEMI PolarFire
+Project type: hw_onlyClock period constraint: 10ns
+Start Function: sub_function
+state: LEGUP_0, basic block: LEGUP_0
+   Transition: if (start): LEGUP_F_sub_function_BB_entry_1 default: LEGUP_0
+state: LEGUP_F_sub_function_BB_entry_1, basic block: BB_entry
+   %mul = mul nsw i32 %n, %n, !dbg !351, !MSB !352, !LSB !353, !ExtendFrom !352 (endState: LEGUP_F_sub_function_BB_entry_3)
+   Transition: default: LEGUP_F_sub_function_BB_entry_2
+state: LEGUP_F_sub_function_BB_entry_2, basic block: BB_entry
+   Transition: default: LEGUP_F_sub_function_BB_entry_3
+state: LEGUP_F_sub_function_BB_entry_3, basic block: BB_entry
+   %sub = sub nsw i32 %mul, %n, !dbg !351, !MSB !352, !LSB !353, !ExtendFrom !352 (endState: LEGUP_F_sub_function_BB_entry_3)
+   ret i32 %sub, !dbg !351, !MSB !354, !LSB !353, !ExtendFrom !354
+   Transition: default: LEGUP_0
+
+Basic Block: BB_entry, Num States: 3, Location: <main.cpp:15>
+End Function: sub_function
+--------------------------------------------------------------------------------
+

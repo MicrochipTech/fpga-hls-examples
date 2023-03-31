@@ -1,0 +1,2076 @@
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+Error: Error! Command failed!
+Command: '/home/parisa/legup/dependencies/gcc/bin/g++'
+Args: '['-O1', '-g', '-pg', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', 'main.cpp', '-Wno-attributes', '-Wno-unknown-pragmas', '-I/home/parisa/legup/smarthls-library', '-L/home/parisa/legup/smarthls-library/hls', '-lhls_x86', '-o', 'hls_output/.hls/computable_2functions.sw_binary', '-fopenmp', '-pthread', '-lm', '-lrt']'
+Shell Command: /home/parisa/legup/dependencies/gcc/bin/g++ -O1 -g -pg -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu main.cpp -Wno-attributes -Wno-unknown-pragmas -I/home/parisa/legup/smarthls-library -L/home/parisa/legup/smarthls-library/hls -lhls_x86 -o hls_output/.hls/computable_2functions.sw_binary -fopenmp -pthread -lm -lrt
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+'
+
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+Error: Error! Command failed!
+Command: '/home/parisa/legup/dependencies/gcc/bin/g++'
+Args: '['-O1', '-g', '-pg', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', 'main.cpp', '-Wno-attributes', '-Wno-unknown-pragmas', '-I/home/parisa/legup/smarthls-library', '-L/home/parisa/legup/smarthls-library/hls', '-lhls_x86', '-o', 'hls_output/.hls/computable_2functions.sw_binary', '-fopenmp', '-pthread', '-lm', '-lrt']'
+Shell Command: /home/parisa/legup/dependencies/gcc/bin/g++ -O1 -g -pg -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu main.cpp -Wno-attributes -Wno-unknown-pragmas -I/home/parisa/legup/smarthls-library -L/home/parisa/legup/smarthls-library/hls -lhls_x86 -o hls_output/.hls/computable_2functions.sw_binary -fopenmp -pthread -lm -lrt
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp: In function ‘int top_function(int)’:
+main.cpp:7:30: error: ‘sub_function’ was not declared in this scope
+         sum += sub_function(i);
+                              ^
+'
+
+[1m[33m> 'Compile Software' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'Run Software'.
+
+  - Compile Software
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: sw_compile sw
+Info: Compiling Software...
+50176
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:32:58 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:35:19 2023
+----------------------------------------------------------------------------
+main.cpp:16:18: error: [HLS pragma] expected pipeline | unroll | flatten | bounds
+#pragma HLS loop nounroll
+                 ^
+1 error generated.
+Error: Error! Command failed!
+Command: '/home/parisa/legup/llvm/Debug+Asserts/bin/clang'
+Args: '['-fno-exceptions', '-O3', 'main.cpp', '-emit-llvm', '-c', '-D__SYNTHESIS__', '-D', 'LEGUP_DEFAULT_FIFO_DEPTH=2', '-m32', '-I', '/usr/include/i386-linux-gnu', '-O3', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', '-fno-builtin', '-I/home/parisa/legup/examples/lib/include', '-I/home/parisa/legup/smarthls-library', '-std=c++11', '-std=gnu++11', '-I/home/parisa/legup/examples/../dependencies/include', '-I/home/parisa/legup/examples/../dependencies/usr/include', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0', '-I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu', '-target', 'i386-unknown-linux-gnu', '--gcc-toolchain=/home/parisa/legup/dependencies/gcc', '-fno-vectorize', '-fno-slp-vectorize', '-Werror=implicit-function-declaration', '-Wno-ignored-attributes', '-D_GLIBCXX_USE_CXX11_ABI=1', '-g', '-mllvm', '-disable-llvm-optzns', '-o', 'hls_output/.hls/main.bc']'
+Shell Command: /home/parisa/legup/llvm/Debug+Asserts/bin/clang -fno-exceptions -O3 main.cpp -emit-llvm -c -D__SYNTHESIS__ -D LEGUP_DEFAULT_FIFO_DEPTH=2 -m32 -I /usr/include/i386-linux-gnu -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -fno-builtin -I/home/parisa/legup/examples/lib/include -I/home/parisa/legup/smarthls-library -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/usr/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu -target i386-unknown-linux-gnu --gcc-toolchain=/home/parisa/legup/dependencies/gcc -fno-vectorize -fno-slp-vectorize -Werror=implicit-function-declaration -Wno-ignored-attributes -D_GLIBCXX_USE_CXX11_ABI=1 -g -mllvm -disable-llvm-optzns -o hls_output/.hls/main.bc
+CWD: 'None'
+Return Code: 1
+Output: 'main.cpp:16:18: error: [HLS pragma] expected pipeline | unroll | flatten | bounds
+#pragma HLS loop nounroll
+                 ^
+1 error generated.
+'
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:36:09 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Found trip count of: 0
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:37:16 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:43:52 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 11:45:43 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:23:23 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+4960
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Reading pref.tcl
+
+# 2022.2
+
+# vmap -c
+# Model Technology ModelSim Microsemi Pro vmap 2022.2 Lib Mapping Utility 2022.04 Apr 26 2022
+# vmap -c 
+# Copying /home/shadjis/latest_linux_Libero_SoC/ModelSimPro/modeltech/linuxacoem/../modelsim.ini to modelsim.ini
+#  vlib work
+#  vmap work ./work
+# Model Technology ModelSim Microsemi Pro vmap 2022.2 Lib Mapping Utility 2022.04 Apr 26 2022
+# vmap work ./work 
+# Modifying modelsim.ini
+#  exit
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:23:25 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/computable_2functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:23:26 on Mar 31,2023, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:23:27 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:23:33 on Mar 31,2023, Elapsed time: 0:00:06
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+4960
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+[1m[33m> 'Source code and/or project settings' is more recent than 'Compile Software to Hardware' step.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'HW/SW Co-Simulation'.
+  Alternatively, you may override the step(s) as up to date if the source code or project setting changes do not affect the step(s) below.
+
+  - Compile Software to Hardware
+
+Y - yes (default)
+s - no, skip above step(s)
+o - no, skip and override above step(s) as up to date
+c - cancel
+[Y/s/o/c]:
+Info: Running the following targets: hw cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:25:33 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+4960
+Gathering inputs/outputs from software execution for top_function function call 2.
+12000
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:25:36 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/computable_2functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:25:36 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:25:38 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+# Initializing constant argument n at cycle =           2
+#           1 /           2 function calls completed.
+# Storing return value return_val at cycle =         132
+#           2 /           2 function calls completed.
+# Storing return value return_val at cycle =         264
+# Number of calls:           2
+# Cycle latency:         266
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 5530 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:25:39 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+4960
+Retrieving hardware outputs from RTL simulation for top_function function call 2.
+12000
+Number of calls: 2
+Cycle latency: 266
+SW/HW co-simulation: PASS
+[1m[33m> 'Source code and/or project settings' is more recent than 'Compile Software to Hardware' step.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'HW/SW Co-Simulation'.
+  Alternatively, you may override the step(s) as up to date if the source code or project setting changes do not affect the step(s) below.
+
+  - Compile Software to Hardware
+
+Y - yes (default)
+s - no, skip above step(s)
+o - no, skip and override above step(s) as up to date
+c - cancel
+[Y/s/o/c]:
+Info: Running the following targets: hw cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:26:07 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Gathering inputs/outputs from software execution for top_function function call 2.
+16960
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:26:10 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/computable_2functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:26:10 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:26:12 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+# Initializing constant argument n at cycle =           2
+#           1 /           2 function calls completed.
+# Storing return value return_val at cycle =         132
+#           2 /           2 function calls completed.
+# Storing return value return_val at cycle =         264
+# Number of calls:           2
+# Cycle latency:         266
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 5530 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:26:13 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Retrieving hardware outputs from RTL simulation for top_function function call 2.
+16960
+Number of calls: 2
+Cycle latency: 266
+SW/HW co-simulation: PASS
+[1m[33m> 'Source code and/or project settings' is more recent than 'Compile Software to Hardware' step.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'HW/SW Co-Simulation'.
+  Alternatively, you may override the step(s) as up to date if the source code or project setting changes do not affect the step(s) below.
+
+  - Compile Software to Hardware
+
+Y - yes (default)
+s - no, skip above step(s)
+o - no, skip and override above step(s) as up to date
+c - cancel
+[Y/s/o/c]:
+Info: Running the following targets: hw cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:26:53 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Gathering inputs/outputs from software execution for top_function function call 2.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:26:56 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/computable_2functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:26:56 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:26:58 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+# Initializing constant argument n at cycle =           2
+#           1 /           2 function calls completed.
+# Storing return value return_val at cycle =         132
+#           2 /           2 function calls completed.
+# Storing return value return_val at cycle =         264
+# Number of calls:           2
+# Cycle latency:         266
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 5530 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:26:59 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Retrieving hardware outputs from RTL simulation for top_function function call 2.
+Number of calls: 2
+Cycle latency: 266
+SW/HW co-simulation: PASS
+[1m[33m> 'Source code and/or project settings' is more recent than 'Compile Software to Hardware' step.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'HW/SW Co-Simulation'.
+  Alternatively, you may override the step(s) as up to date if the source code or project setting changes do not affect the step(s) below.
+
+  - Compile Software to Hardware
+
+Y - yes (default)
+s - no, skip above step(s)
+o - no, skip and override above step(s) as up to date
+c - cancel
+[Y/s/o/c]:
+Info: Running the following targets: hw cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:28:25 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/computable_2functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:28:28 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/computable_2functions/hls_output/rtl/computable_2functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:28:28 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:28:30 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:28:31 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+[1m[33m> 'Compile Software to Hardware' step has not yet run.[39m[0m
+  Enter 'Y' (yes) to run the following step(s) automatically before continuing to 'HW/SW Co-Simulation'.
+
+  - Compile Software to Hardware
+
+Y - yes (default)
+c - cancel
+[Y/c]:
+Info: Running the following targets: hw cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:38:56 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/multiple_computable_functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:38:59 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:39:00 on Mar 31,2023, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:39:01 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:39:02 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:39:08 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:39:09 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:39:09 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:39:10 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:39:11 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+Error: Encountered unhandled exception. Broken pipe.
+Traceback (most recent call last):
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 597, in <module>
+    main()
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 593, in main
+    shls_cmd(config, args)
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 564, in shls_cmd
+    hw.startup(config, args.commands[0])
+
+  File "/home/parisa/legup/lib/python/flow/hw.py", line 121, in startup
+    _run_opt(config, ["-legup-startup"])
+
+  File "/home/parisa/legup/lib/python/flow/hw.py", line 196, in _run_opt
+    return run(
+
+  File "/home/parisa/legup/lib/python/flow/utils.py", line 95, in run
+    sys.stdout.flush()
+
+BrokenPipeError: [Errno 32] Broken pipe
+
+Info: Running the following targets: cosim
+Error: Encountered unhandled exception. Broken pipe.
+Traceback (most recent call last):
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 597, in <module>
+    main()
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 593, in main
+    shls_cmd(config, args)
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 564, in shls_cmd
+    hw.startup(config, args.commands[0])
+
+  File "/home/parisa/legup/lib/python/flow/hw.py", line 121, in startup
+    _run_opt(config, ["-legup-startup"])
+
+  File "/home/parisa/legup/lib/python/flow/hw.py", line 196, in _run_opt
+    return run(
+
+  File "/home/parisa/legup/lib/python/flow/utils.py", line 95, in run
+    sys.stdout.flush()
+
+BrokenPipeError: [Errno 32] Broken pipe
+
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:40:00 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:40:01 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:40:01 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:40:02 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:40:03 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:40:24 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:40:24 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:40:25 on Mar 31,2023, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:40:26 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:40:27 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:43:27 2023
+----------------------------------------------------------------------------
+Error: SmartHLS execution interrupted by user!
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:45:05 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/multiple_computable_functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:45:09 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:45:09 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:45:09 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:45:11 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:45:12 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+Error: Encountered unhandled exception. Broken pipe.
+Traceback (most recent call last):
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 597, in <module>
+    main()
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 593, in main
+    shls_cmd(config, args)
+
+  File "/home/parisa/legup/lib/python/flow/shls.py", line 564, in shls_cmd
+    hw.startup(config, args.commands[0])
+
+  File "/home/parisa/legup/lib/python/flow/hw.py", line 121, in startup
+    _run_opt(config, ["-legup-startup"])
+
+  File "/home/parisa/legup/lib/python/flow/hw.py", line 196, in _run_opt
+    return run(
+
+  File "/home/parisa/legup/lib/python/flow/utils.py", line 95, in run
+    sys.stdout.flush()
+
+BrokenPipeError: [Errno 32] Broken pipe
+
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:46:16 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:46:16 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:46:16 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:46:18 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:46:19 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:46:40 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:46:41 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:46:41 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:46:42 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:46:43 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:48:44 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:48:45 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:48:45 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:48:46 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:48:47 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:49:14 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:49:15 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:49:15 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:49:16 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:49:17 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:49:25 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:49:26 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:49:26 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:49:27 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:49:28 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:49:52 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:49:53 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:49:53 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:49:54 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:49:55 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:50:02 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:50:03 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:50:03 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:50:04 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:50:05 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:52:12 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/multiple_computable_functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:52:15 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:52:16 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:52:16 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:52:18 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:52:19 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:56:50 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: top_function
+Info: Adding no_inline attribute to the user-specified function: sub_function
+Info: Found trip count of: 16
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: top_function(int).
+Info: Running Scheduling for function: sub_function(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: top_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: top_function(int).
+Info: Generating module datapath.
+Info: Generating RTL for function: sub_function(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: sub_function(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: top_function_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: top_function_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/multiple_computable_functions_top_function.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.top_function.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 13:56:54 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for top_function function call 1.
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 13:56:54 on Mar 31,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/multiple_computable_functions/hls_output/rtl/multiple_computable_functions_top_function.v cosim_tb.sv 
+-- Compiling module top_function_top
+-- Compiling module top_function_top_function
+-- Compiling module top_function_sub_function
+-- Compiling module top_function_legup_mult
+-- Compiling module top_function_legup_mult_core
+-- Compiling module top_function_legup_mult_pipelined
+-- Compiling module top_function_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 13:56:54 on Mar 31,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 13:56:56 on Mar 31,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.top_function_top_tb
+# Loading work.top_function_top
+# Loading work.top_function_top_function
+# Loading work.top_function_sub_function
+# Loading work.top_function_legup_mult
+# Loading work.top_function_legup_mult_pipelined
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+#           1 /           1 function calls completed.
+# Storing return value return_val at cycle =         132
+# Number of calls:           1
+# Cycle latency:         134
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 2890 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:56:57 on Mar 31,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for top_function function call 1.
+Number of calls: 1
+Cycle latency: 134
+SW/HW co-simulation: PASS
