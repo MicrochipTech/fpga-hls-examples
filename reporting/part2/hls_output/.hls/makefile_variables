@@ -1,0 +1,67 @@
+NAME = part2
+ LOCAL_CONFIG = -legup-config=config.tcl
+ NO_INLINE = 
+ VHDL_WRAPPER_SIM = 
+ SYNTHESIS_TOP_MODULE = sobel_filter_top
+ POST_SYNTH_SIM = 
+ PROGRAMMER_ID = 
+ BOARD_IP = 
+ QOR_TEST_NAME = part2
+ COMMIT_HASH = 
+ QOR_BUILD = 
+ QOR_BUILD_NAME = 
+ NO_OPT = 
+ MODELSIM_TOOL_PATH = 
+ MODELSIM_TOOL_PATH_OS_INDEP = 
+ LIBERO_TOOL_PATH = 
+ LIBERO_TOOL_PATH_OS_INDEP = 
+ SYNPLIFY_PATH = /home/shadjis/latest_linux_Libero_SoC/Libero/bin64/../../SynplifyPro/bin/
+ MEMORY_BASE_ADDRESSMEMORY_SIZE = 
+ MEMORY_WIDTH = 
+ MEMORY_SIM_INIT_FILE_NAME = 
+ DATA_MEMORY_BASE_ADDRESS = 
+ COMBINE_BB = 
+ OUTPUT_PATH = hls_output
+ CUSTOM_RTL_FUNCTIONS = n
+ FPGA_BOARD = MPF300
+ DEVICE_FAMILY = PolarFire
+ DEVICE = MPF300TS-1FCG1152I
+ PROJECT = hw_only
+ FPGA_VENDOR = MICROSEMI
+ OPENMP = 
+ SYSTEM_UART_TYPE = 
+ CLOCK_PERIOD = 10
+ SYNTHESIS_CLOCK_PERIOD = 10
+ LEGUP_DEFAULT_FIFO_DEPTH = 2
+ PROC_ARCH = 
+ LEGUP_CUSTOM_VHDL_FILES = 
+ USE_TOP_LEVEL_WRAPPER_FILE = 0
+ TARGET_ARCH = 
+ SOURCE_TRANSFORM = 1
+ REPLICATE_RAMS = 
+ USE_ACTGENO = 0
+ CUSTOM_TOP_LEVEL = sobel_filter
+ SRCS = sobel.cpp  
+ RISCV_SRCS = sobel.cpp  
+ CFLAG = -D__SYNTHESIS__ -m32 -I /usr/include/i386-linux-gnu -D LEGUP_DEFAULT_FIFO_DEPTH=2 -O3 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu/ -fno-builtin -I /home/parisa/legup/examples/lib/include/ -I /home/parisa/legup/smarthls-library
+ CPP_FLAG = -std=c++11 -std=gnu++11 -I/home/parisa/legup/examples/../dependencies/include -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0 -I/home/parisa/legup/examples/../dependencies/gcc/include/c++/5.4.0/x86_64-unknown-linux-gnu/
+ USER_CXX_FLAG = 
+ NO_STD_COMPILE_OPTS = 
+ USER_CXX_FLAG_RISCV = 
+ USER_LINK_FLAG = 
+ USER_LINK_FLAG_RISCV = 
+ LINK_ICICLE_LIBS = -L/home/parisa/legup/smarthls-library/hls -lhls_riscv64_no_accel
+ LINK_ICICLE_LIBS_SOC = -L/home/parisa/legup/smarthls-library/hls -lhls_riscv64_accel
+ LINK_FLAG_RISCV = 
+ PROGRAM_ARGUMENTS = 
+ UNROLL = 
+ USER_ENV_VARS = 
+ USER_ENV_VARS_RISCV = 
+ LLC_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=part2
+ OPT_O3_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=0 -PURE_HW_FLOW= -before-removing-tb=1 -O3 -inline-threshold=-9999
+ OPT_FLAGS = -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -vectorizer-min-trip-count=1000000 -slp-threshold=1000000 -force-vector-width=1 -simplifycfg-disable-switchtolookup -instcombine-disable-foldphiload -instcombine-disable-sign-ext-opt -after-clang=1 -PURE_HW_FLOW=
+ NUM_LIBERO_PnR_PASSES = 25
+ BOARD_PATH = 
+ INPUT_FILES_RISCV = 
+ OUTPUT_FILES_RISCV = 
+

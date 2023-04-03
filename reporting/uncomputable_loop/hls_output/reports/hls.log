@@ -3883,3 +3883,369 @@ Retrieving hardware outputs from RTL simulation for collatz function call 5.
 Number of calls: 5
 Cycle latency: 185
 SW/HW co-simulation: PASS
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 14:14:15 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_loop_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 14:53:54 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+0  llc             0x000000000118ecd9
+1  llc             0x000000000118ef55
+2  llc             0x000000000118e8e2
+3  libpthread.so.0 0x00007f00b8c75140
+4  libc.so.6       0x00007f00b7f34260
+5  llc             0x00000000004291c9
+6  llc             0x0000000000429154
+7  llc             0x00000000007ac56c
+8  llc             0x00000000007abcba
+9  llc             0x00000000007ab4e6
+10 llc             0x00000000007aaa6a
+11 llc             0x00000000007a7ecb
+12 llc             0x00000000006806b3
+13 llc             0x0000000000678e32
+14 llc             0x000000000063daae
+15 llc             0x0000000000e49deb
+16 llc             0x0000000000e4a2da
+17 llc             0x0000000000e4a4c7
+18 llc             0x00000000004131b6
+19 llc             0x00000000004122c7
+20 libc.so.6       0x00007f00b7e1eac5 __libc_start_main + 245
+21 llc             0x000000000040f529
+Stack dump:
+0.	Program arguments: /home/parisa/legup/llvm/Debug+Asserts/bin/llc -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=uncomputable_loop -march=v hls_output/.hls/uncomputable_loop.bc 
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 14:55:55 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+0  llc             0x000000000118ecd9
+1  llc             0x000000000118ef55
+2  llc             0x000000000118e8e2
+3  libpthread.so.0 0x00007ff288746140
+4  libc.so.6       0x00007ff287a05260
+5  llc             0x00000000004291c9
+6  llc             0x0000000000429154
+7  llc             0x00000000007ac56c
+8  llc             0x00000000007abcba
+9  llc             0x00000000007ab4e6
+10 llc             0x00000000007aaa6a
+11 llc             0x00000000007a7ecb
+12 llc             0x00000000006806b3
+13 llc             0x0000000000678e32
+14 llc             0x000000000063daae
+15 llc             0x0000000000e49deb
+16 llc             0x0000000000e4a2da
+17 llc             0x0000000000e4a4c7
+18 llc             0x00000000004131b6
+19 llc             0x00000000004122c7
+20 libc.so.6       0x00007ff2878efac5 __libc_start_main + 245
+21 llc             0x000000000040f529
+Stack dump:
+0.	Program arguments: /home/parisa/legup/llvm/Debug+Asserts/bin/llc -legup-config=/home/parisa/legup/examples/legup.tcl -legup-config=config.tcl -PURE_HW_FLOW= -LEGUP_ACCELERATOR_FILENAME=uncomputable_loop -march=v hls_output/.hls/uncomputable_loop.bc 
+
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 15:03:33 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_loop_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 15:06:20 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_loop_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Fri Mar 31 16:09:11 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_loop_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.collatz.rpt.
+Info: Running the following targets: hw
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Mon Apr  3 08:58:13 2023
+----------------------------------------------------------------------------
+Info: Adding no_inline attribute to the user-specified function: collatz
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: StrengthReduction: Replacing multiply by constant (i64 -2147483647) with 1 adder: + (1 << 0) - (1 << 31) 
+Info: Found trip count of: 0
+Info: StrengthReduction: Replacing multiply by constant (i32 3) with 1 adder: + (1 << 0) + (1 << 1) 
+Info: Running Allocation.
+Info: Target FPGA: MICROSEMI PolarFire.
+Info: Project type: hw_only
+Info: Clock period constraint: 10.00 ns (100.00 MHz).
+Info: Allocating memories.
+Info: Running Scheduling for function: collatz(int).
+Info: Done Scheduling.
+Info: Generating RTL for function: collatz(int).
+Info: Generating module declaration.
+Info: Generating module signals.
+Info: Running Binding for function: collatz(int).
+Info: Generating module datapath.
+Info: Generating interconnect for top-level module.
+Info: Outputting VHDL wrapper for top-level module: collatz_top
+Info: Printing RTL to file.
+Info: Outputting top-level module: collatz_top.
+Info: Exporting IP modules.
+Info: Generating HDL+ Tcl script to be imported in SmartDesign: /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/scripts/create_hdl_plus.tcl.
+Info: Verilog output file(s): hls_output/rtl/uncomputable_loop_collatz.v
+Info: SmartHLS summary report(s): hls_output/reports/summary.hls.collatz.rpt.
+Info: Running the following targets: cosim
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2023.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Mon Apr  3 08:58:16 2023
+----------------------------------------------------------------------------
+Info: Generating Co-simulation Software Wrapper
+Info: Compiling Software...
+Gathering inputs/outputs from software execution for collatz function call 1.
+5 5
+Gathering inputs/outputs from software execution for collatz function call 2.
+6 8
+Gathering inputs/outputs from software execution for collatz function call 3.
+7 16
+Gathering inputs/outputs from software execution for collatz function call 4.
+8 3
+Gathering inputs/outputs from software execution for collatz function call 5.
+9 19
+Info: Generating Co-simulation RTL testbench
+Info: Running RTL simulation
+Model Technology ModelSim Microsemi Pro vlog 2022.2 Compiler 2022.04 Apr 26 2022
+Start time: 08:58:17 on Apr 03,2023
+vlog -sv "+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/rtl/mem_init/"" /home/parisa/fpga-hls-examples/reporting/uncomputable_loop/hls_output/rtl/uncomputable_loop_collatz.v cosim_tb.sv 
+-- Compiling module collatz_top
+-- Compiling module collatz_collatz
+-- Compiling module collatz_top_tb
+-- Compiling module cosim_tb
+
+Top level modules:
+	cosim_tb
+End time: 08:58:17 on Apr 03,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0
+Reading pref.tcl
+
+# 2022.2
+
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 08:58:18 on Apr 03,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.collatz_top_tb
+# Loading work.collatz_top
+# Loading work.collatz_collatz
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing constant argument n at cycle =           0
+# Initializing constant argument n at cycle =           2
+# Storing return value return_val at cycle =          21
+#           1 /           5 function calls completed.
+# Initializing constant argument n at cycle =          23
+# Storing return value return_val at cycle =          51
+#           2 /           5 function calls completed.
+# Initializing constant argument n at cycle =          53
+# Storing return value return_val at cycle =         105
+#           3 /           5 function calls completed.
+# Initializing constant argument n at cycle =         107
+#           4 /           5 function calls completed.
+# Storing return value return_val at cycle =         120
+# Storing return value return_val at cycle =         183
+#           5 /           5 function calls completed.
+# Number of calls:           5
+# Cycle latency:         185
+# ** Note: $finish    : cosim_tb.sv(245)
+#    Time: 3910 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 08:58:20 on Apr 03,2023, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 0
+Info: Verifying RTL simulation
+Retrieving hardware outputs from RTL simulation for collatz function call 1.
+5 5
+Retrieving hardware outputs from RTL simulation for collatz function call 2.
+6 8
+Retrieving hardware outputs from RTL simulation for collatz function call 3.
+7 16
+Retrieving hardware outputs from RTL simulation for collatz function call 4.
+8 3
+Retrieving hardware outputs from RTL simulation for collatz function call 5.
+9 19
+Number of calls: 5
+Cycle latency: 185
+SW/HW co-simulation: PASS

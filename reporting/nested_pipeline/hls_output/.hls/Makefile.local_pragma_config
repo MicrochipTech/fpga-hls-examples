@@ -1,0 +1,10 @@
+SYNTHESIS_TOP_MODULE :=row_cumulative_sum_top
+CUSTOM_TOP_LEVEL :=row_cumulative_sum
+ACCELERATOR_NAME :=row_cumulative_sum
+TEST_BENCH :=
+CUSTOM_TEST_BENCH :=
+define SOC_INCOMPATIBLE_INTF
+
+	Function row_cumulative_sum: module control, grid
+
+endef

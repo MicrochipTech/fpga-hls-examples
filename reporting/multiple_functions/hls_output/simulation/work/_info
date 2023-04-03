@@ -11,23 +11,23 @@ cModel Technology
 Z0 d/home/parisa/fpga-hls-examples/reporting/multiple_functions/hls_output/simulation
 vcosim_tb
 Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z2 !s110 1680285334
+Z2 !s110 1680526713
 !i10b 1
 !s100 M^42C_RbeWdNimnoQ9mfO3
 I^ojL?6AWU>U98@4?lI7RR3
 S1
 R0
-Z3 w1680285334
+Z3 w1680526712
 Z4 8cosim_tb.sv
 Z5 Fcosim_tb.sv
-!i122 4
+!i122 5
 L0 236 12
 Z6 VDg1SIo80bB@j0V0VzS_@n1
 Z7 OW;L;2022.2;75
 r1
 !s85 0
 31
-Z8 !s108 1680285334.000000
+Z8 !s108 1680526712.000000
 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/multiple_functions/hls_output/rtl/multiple_functions_sum_collatz.v|
 Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/multiple_functions/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/reporting/multiple_functions/hls_output/rtl/multiple_functions_sum_collatz.v|cosim_tb.sv|
 !s101 -O0
@@ -43,10 +43,10 @@ R2
 I>5I8VgIg@mT4j9D2_RA=C2
 S1
 R0
-Z13 w1680285332
+Z13 w1680526711
 Z14 8/home/parisa/fpga-hls-examples/reporting/multiple_functions/hls_output/rtl/multiple_functions_sum_collatz.v
 Z15 F/home/parisa/fpga-hls-examples/reporting/multiple_functions/hls_output/rtl/multiple_functions_sum_collatz.v
-!i122 4
+!i122 5
 L0 370 277
 R6
 R7
@@ -72,7 +72,7 @@ R0
 R13
 R14
 R15
-!i122 4
+!i122 5
 L0 170 198
 R6
 R7
@@ -98,7 +98,7 @@ R0
 R13
 R14
 R15
-!i122 4
+!i122 5
 L0 20 148
 R6
 R7
@@ -124,7 +124,7 @@ R0
 R3
 R4
 R5
-!i122 4
+!i122 5
 L0 2 234
 R6
 R7

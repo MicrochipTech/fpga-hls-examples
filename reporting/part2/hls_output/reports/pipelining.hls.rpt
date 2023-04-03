@@ -1,0 +1,217 @@
+// ----------------------------------------------------------------------------
+// Smart High-Level Synthesis Tool Version 2023.1
+// Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+// For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+// Date: Mon Apr  3 09:00:22 2023
+// ----------------------------------------------------------------------------
+Found Loop: Loop at depth 1 containing: %for.body<header><latch><exiting>
+
+Label: for_loop_sobel_cpp_20_5
+ID: _Z12sobel_filterPA512_hS0_1_for_body
+Trip count: 260100
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Scheduled.
+MII = 4
+II = 4
+Final Pipeline Schedule:
+Total pipeline stages: 2
+Stage: 0
+Time: 0 Stage: 0 instr:   %x.033 = phi i32 [ 0, %entry ], [ %.add5, %for.body ], !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %y.032 = phi i32 [ 1, %entry ], [ %cond, %for.body ], !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %i.031 = phi i32 [ 0, %entry ], [ %8, %for.body ], !MSB !394, !LSB !392, !ExtendFrom !394, !legup.canonical_induction !395
+Time: 0 Stage: 0 instr:   tail call void @__legup_label(i8* getelementptr inbounds ([24 x i8]* @.str, i32 0, i32 0)) #1, !dbg !396, !legup !398
+Time: 0 Stage: 0 instr:   %cmp1 = icmp eq i32 %x.033, 510, !dbg !400, !MSB !392, !LSB !392, !ExtendFrom !392
+Time: 0 Stage: 0 instr:   %bit_concat16 = call i32 @hls_bit_concat_31_1(i31 0, i64 31, i1 %cmp1, i64 1), !MSB !392, !LSB !392, !ExtendFrom !392
+Time: 0 Stage: 0 instr:   %cond = add i32 %bit_concat16, %y.032, !dbg !400, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %bit_select14 = call i23 @hls_bit_select_23_32(i32 %cond, i64 22, i64 0), !MSB !401, !LSB !392, !ExtendFrom !401
+Time: 0 Stage: 0 instr:   %add5 = add nsw i32 %x.033, 1, !dbg !402, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %.add5 = select i1 %cmp1, i32 1, i32 %add5, !dbg !404, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %add14 = add nsw i32 %.add5, -1, !dbg !405, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %bit_concat15 = call i32 @hls_bit_concat_23_9(i23 %bit_select14, i64 23, i9 0, i64 9), !MSB !393, !LSB !406, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.mul4 = add i32 %bit_concat15, -512, !MSB !393, !LSB !406, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.add14 = add i32 %mem.flat.mul4, %add14, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep17 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add14, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %0 = load i8* %mem.flat.gep17, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 0 Stage: 0 instr:   %mem.flat.add24 = add i32 %mem.flat.mul4, %.add5, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep27 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add24, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %add14.2 = add nsw i32 %.add5, 1, !dbg !405, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.add34 = add i32 %mem.flat.mul4, %add14.2, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep37 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add34, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %2 = load i8* %mem.flat.gep37, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 0 Stage: 0 instr:   %mem.flat.add44 = add i32 %bit_concat15, %add14, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep47 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add44, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %mem.flat.add54 = add i32 %bit_concat15, %add14.2, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep57 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add54, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %mem.flat.mul34 = add i32 %bit_concat15, 512, !MSB !393, !LSB !406, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.add64 = add i32 %mem.flat.mul34, %add14, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep67 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add64, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %mem.flat.add74 = add i32 %mem.flat.mul34, %.add5, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep77 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add74, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %mem.flat.add84 = add i32 %mem.flat.mul34, %add14.2, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep87 = getelementptr [262144 x i8]* %in, i32 0, i32 %mem.flat.add84, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %mem.flat.add94 = add i32 %bit_concat15, %.add5, !MSB !393, !LSB !392, !ExtendFrom !393
+Time: 0 Stage: 0 instr:   %mem.flat.gep97 = getelementptr [262144 x i8]* %out, i32 0, i32 %mem.flat.add94, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 0 Stage: 0 instr:   %8 = add nsw i32 %i.031, 1, !dbg !428, !MSB !429, !LSB !392, !ExtendFrom !429
+Time: 0 Stage: 0 instr:   %exitcond = icmp eq i32 %8, 260100, !dbg !388, !MSB !392, !LSB !392, !ExtendFrom !392
+Time: 0 Stage: 0 instr:   br i1 %exitcond, label %for.end53, label %for.body, !dbg !388, !llvm.loop !430, !legup.tripCount !431, !MSB !391, !LSB !392, !ExtendFrom !391
+Time: 1 Stage: 0 instr:   %bit_concat13 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %0, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 1 Stage: 0 instr:   %1 = load i8* %mem.flat.gep27, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 1 Stage: 0 instr:   %bit_concat11 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %2, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 1 Stage: 0 instr:   %5 = load i8* %mem.flat.gep67, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 1 Stage: 0 instr:   %add21.138 = sub i32 %bit_concat11, %bit_concat13, !dbg !413, !MSB !393, !LSB !392, !ExtendFrom !411
+Time: 1 Stage: 0 instr:   %add27.2 = add nuw nsw i32 %bit_concat11, %bit_concat13, !dbg !416, !MSB !411, !LSB !392, !ExtendFrom !411
+Time: 2 Stage: 0 instr:   %bit_concat12 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %1, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 2 Stage: 0 instr:   %3 = load i8* %mem.flat.gep47, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 2 Stage: 0 instr:   %4 = load i8* %mem.flat.gep57, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 2 Stage: 0 instr:   %bit_concat8 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %5, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 2 Stage: 0 instr:   %add21.2.1 = sub i32 %add21.138, %bit_concat8, !dbg !413, !MSB !393, !LSB !392, !ExtendFrom !406
+Time: 2 Stage: 0 instr:   %add27.249 = sub i32 %add27.2, %bit_concat8, !dbg !416, !MSB !393, !LSB !392, !ExtendFrom !406
+Time: 3 Stage: 0 instr:   %bit_concat10 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %3, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 3 Stage: 0 instr:   %bit_concat9 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %4, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 3 Stage: 0 instr:   %6 = load i8* %mem.flat.gep77, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 3 Stage: 0 instr:   %7 = load i8* %mem.flat.gep87, align 1, !dbg !405, !tbaa !407, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 3 Stage: 0 instr:   %tmp = sub i32 %bit_concat9, %bit_concat10, !MSB !393, !LSB !392, !ExtendFrom !411
+Time: 3 Stage: 0 instr:   %bit_select4 = call i31 @hls_bit_select_31_32(i32 %tmp, i64 30, i64 0), !MSB !412, !LSB !392, !ExtendFrom !411
+Time: 3 Stage: 0 instr:   %bit_concat5 = call i32 @hls_bit_concat_31_1(i31 %bit_select4, i64 31, i1 false, i64 1), !MSB !393, !LSB !395, !ExtendFrom !406
+Stage: 1
+Time: 4 Stage: 1 instr:   %bit_concat7 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %6, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 4 Stage: 1 instr:   %bit_concat6 = call i32 @hls_bit_concat_24_8(i24 0, i64 24, i8 %7, i64 8), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 4 Stage: 1 instr:   %add21.246 = add nsw i32 %add21.2.1, %bit_concat6, !dbg !413, !MSB !393, !LSB !392, !ExtendFrom !414
+Time: 4 Stage: 1 instr:   %add21.2.2 = add nsw i32 %add21.246, %bit_concat5, !dbg !413, !MSB !393, !LSB !392, !ExtendFrom !415
+Time: 4 Stage: 1 instr:   %bit_select2 = call i1 @hls_bit_select_1_32(i32 %add21.2.2, i64 31, i64 31), !MSB !392, !LSB !392, !ExtendFrom !392
+Time: 4 Stage: 1 instr:   %tmp3 = sub i32 %bit_concat12, %bit_concat7, !MSB !393, !LSB !392, !ExtendFrom !411
+Time: 4 Stage: 1 instr:   %bit_select3 = call i31 @hls_bit_select_31_32(i32 %tmp3, i64 30, i64 0), !MSB !412, !LSB !392, !ExtendFrom !411
+Time: 4 Stage: 1 instr:   %bit_concat = call i32 @hls_bit_concat_31_1(i31 %bit_select3, i64 31, i1 false, i64 1), !MSB !393, !LSB !395, !ExtendFrom !406
+Time: 4 Stage: 1 instr:   %add27.1.2 = sub i32 %add27.249, %bit_concat6, !dbg !416, !MSB !393, !LSB !392, !ExtendFrom !414
+Time: 4 Stage: 1 instr:   %add27.2.2 = add nsw i32 %add27.1.2, %bit_concat, !dbg !416, !MSB !393, !LSB !392, !ExtendFrom !415
+Time: 4 Stage: 1 instr:   %bit_select1 = call i1 @hls_bit_select_1_32(i32 %add27.2.2, i64 31, i64 31), !MSB !392, !LSB !392, !ExtendFrom !392
+Time: 4 Stage: 1 instr:   %sub = sub nsw i32 0, %add21.2.2, !dbg !417, !MSB !393, !LSB !392, !ExtendFrom !419
+Time: 4 Stage: 1 instr:   %cond35 = select i1 %bit_select2, i32 %sub, i32 %add21.2.2, !dbg !420, !MSB !393, !LSB !392, !ExtendFrom !419
+Time: 4 Stage: 1 instr:   %sub38 = sub nsw i32 0, %add27.2.2, !dbg !421, !MSB !393, !LSB !392, !ExtendFrom !419
+Time: 4 Stage: 1 instr:   %cond41 = select i1 %bit_select1, i32 %sub38, i32 %add27.2.2, !dbg !423, !MSB !393, !LSB !392, !ExtendFrom !419
+Time: 4 Stage: 1 instr:   %add42 = add nsw i32 %cond41, %cond35, !dbg !424, !MSB !393, !LSB !392, !ExtendFrom !425
+Time: 4 Stage: 1 instr:   %bit_select = call i8 @hls_bit_select_8_32(i32 %add42, i64 7, i64 0), !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 4 Stage: 1 instr:   %cmp43 = icmp sgt i32 %add42, 255, !dbg !426, !MSB !392, !LSB !392, !ExtendFrom !392
+Time: 4 Stage: 1 instr:   %conv48 = select i1 %cmp43, i8 -1, i8 %bit_select, !dbg !427, !MSB !410, !LSB !392, !ExtendFrom !410
+Time: 4 Stage: 1 instr:   store i8 %conv48, i8* %mem.flat.gep97, align 1, !dbg !427, !tbaa !407, !MSB !391, !LSB !392, !ExtendFrom !391
+
+
+Pipeline Table:
+Total pipeline stages: 2
+Stage:                              0                                                           1
+   II:        0              1              2              3     |        0              1              2              3
+ Time:        0              1              2              3     |        4              5              6              7
+         %x.033              -              -              -         %x.033              -              -              -
+         %y.032              -              -              -         %y.032              -              -              -
+         %i.031              -              -              -         %i.031              -              -              -
+       <badref>              -              -              -       <badref>              -              -              -
+          %cmp1              -              -              -          %cmp1              -              -              -
+%bit_concat1...              -              -              -%bit_concat1...              -              -              -
+          %cond              -              -              -          %cond              -              -              -
+%bit_select1...              -              -              -%bit_select1...              -              -              -
+          %add5              -              -              -          %add5              -              -              -
+         %.add5              -              -              -         %.add5              -              -              -
+         %add14              -              -              -         %add14              -              -              -
+%bit_concat1...              -              -              -%bit_concat1...              -              -              -
+%mem.flat.mu...              -              -              -%mem.flat.mu...              -              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+             %0              -              -              -             %0              -              -              -
+              -%bit_concat1...              -              -              -%bit_concat1...              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -             %1              -              -              -             %1              -              -
+              -              -%bit_concat1...              -              -              -%bit_concat1...              -
+       %add14.2              -              -              -       %add14.2              -              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+             %2              -              -              -             %2              -              -              -
+              -%bit_concat1...              -              -              -%bit_concat1...              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -              -             %3              -              -              -             %3              -
+              -              -              -%bit_concat1...              -              -              -%bit_concat1...
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -              -             %4              -              -              -             %4              -
+              -              -              -   %bit_concat9              -              -              -   %bit_concat9
+%mem.flat.mu...              -              -              -%mem.flat.mu...              -              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -             %5              -              -              -             %5              -              -
+              -              -   %bit_concat8              -              -              -   %bit_concat8              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -              -              -             %6              -              -              -             %6
+              -              -              -              -   %bit_concat7              -              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -              -              -             %7              -              -              -             %7
+              -              -              -              -   %bit_concat6              -              -              -
+              -              -              -           %tmp              -              -              -           %tmp
+              -              -              -   %bit_select4              -              -              -   %bit_select4
+              -              -              -   %bit_concat5              -              -              -   %bit_concat5
+              -     %add21.138              -              -              -     %add21.138              -              -
+              -              -     %add21.2.1              -              -              -     %add21.2.1              -
+              -              -              -              -     %add21.246              -              -              -
+              -              -              -              -     %add21.2.2              -              -              -
+              -              -              -              -   %bit_select2              -              -              -
+              -              -              -              -          %tmp3              -              -              -
+              -              -              -              -   %bit_select3              -              -              -
+              -              -              -              -    %bit_concat              -              -              -
+              -       %add27.2              -              -              -       %add27.2              -              -
+              -              -     %add27.249              -              -              -     %add27.249              -
+              -              -              -              -     %add27.1.2              -              -              -
+              -              -              -              -     %add27.2.2              -              -              -
+              -              -              -              -   %bit_select1              -              -              -
+              -              -              -              -           %sub              -              -              -
+              -              -              -              -        %cond35              -              -              -
+              -              -              -              -         %sub38              -              -              -
+              -              -              -              -        %cond41              -              -              -
+              -              -              -              -         %add42              -              -              -
+              -              -              -              -    %bit_select              -              -              -
+              -              -              -              -         %cmp43              -              -              -
+              -              -              -              -        %conv48              -              -              -
+%mem.flat.ad...              -              -              -%mem.flat.ad...              -              -              -
+%mem.flat.ge...              -              -              -%mem.flat.ge...              -              -              -
+              -              -              -              -       <badref>              -              -              -
+             %8              -              -              -             %8              -              -              -
+      %exitcond              -              -              -      %exitcond              -              -              -
+       <badref>              -              -              -       <badref>              -              -              -
+

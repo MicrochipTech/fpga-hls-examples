@@ -1,0 +1,36 @@
+# vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
+# Start time: 09:01:09 on Apr 03,2023
+# //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
+# //
+# //  Copyright 1991-2022 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim Microsemi Pro and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.cosim_tb
+# Loading work.row_cumulative_sum_top_tb
+# Loading work.row_cumulative_sum_top
+# Loading work.row_cumulative_sum_row_cumulative_sum
+# Loading work.cosim_ram_dual_port
+# Loading work.cosim_ram_dual_port_regular
+# set StdArithNoWarnings 1
+# 1
+#  run 1000000000000000ns
+# Running SW/HW co-simulation...
+# Initializing memory grid at cycle =           0
+# Storing memory contents grid at cycle =       40803
+#           1 /           1 function calls completed.
+# Number of calls:           1
+# Cycle latency:       40804
+# ** Note: $finish    : cosim_tb.sv(239)
+#    Time: 816290 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 09:01:10 on Apr 03,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+SW/HW co-simulation: PASS

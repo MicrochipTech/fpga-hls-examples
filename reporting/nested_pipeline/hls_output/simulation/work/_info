@@ -1,0 +1,193 @@
+m255
+K4
+z2
+!s11f vlog 2022.2 2022.04, Apr 26 2022
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/simulation
+vcosim_ram_dual_port
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1680526867
+!i10b 1
+!s100 Az_VbbD?;bz9F;OKg0UDb2
+IEZZidTW3WF[Ef=zFI;KAj3
+S1
+R0
+Z3 w1680526867
+Z4 8cosim_tb.sv
+Z5 Fcosim_tb.sv
+!i122 1
+L0 264 187
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OW;L;2022.2;75
+r1
+!s85 0
+31
+Z8 !s108 1680526867.000000
+!s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/nested_pipeline_row_cumulative_sum.v|
+Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/nested_pipeline_row_cumulative_sum.v|cosim_tb.sv|
+!s101 -O0
+!i113 1
+Z10 o-sv -O0
+Z11 !s92 -sv +define+MEM_INIT_DIR=\"/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/mem_init/\" -O0
+Z12 tCvgOpt 0
+vcosim_ram_dual_port_byte_enabled
+R1
+Z13 !s110 1680526868
+!i10b 1
+!s100 ?1V_n@JoCbe7MoAiEP5^g3
+IgVGVmJ2m^VeLX0Vd8Nd1g2
+S1
+R0
+R3
+R4
+R5
+!i122 1
+L0 518 81
+R6
+R7
+r1
+!s85 0
+31
+R8
+Z14 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/nested_pipeline_row_cumulative_sum.v|
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vcosim_ram_dual_port_regular
+R1
+R13
+!i10b 1
+!s100 J:BF1V^YIeP;i``C>mj^O2
+I6FS:R`8S]:SJUamCIjdhK1
+S1
+R0
+R3
+R4
+R5
+!i122 1
+L0 600 73
+R6
+R7
+r1
+!s85 0
+31
+R8
+R14
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vcosim_tb
+R1
+R2
+!i10b 1
+!s100 nH[DfzibI?:Qg_A2Q=o9C3
+INVLlBEmzNMSaB0k4O63VH1
+S1
+R0
+R3
+R4
+R5
+!i122 1
+L0 230 12
+R6
+R7
+r1
+!s85 0
+31
+R8
+R14
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vrow_cumulative_sum_row_cumulative_sum
+R1
+R2
+!i10b 1
+!s100 ^JW3kbSe2Y0>z>4Yej?5l1
+IG?<a8PhN[RV[GNo;z?6MH1
+S1
+R0
+Z15 w1680526866
+Z16 8/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/nested_pipeline_row_cumulative_sum.v
+Z17 F/home/parisa/fpga-hls-examples/reporting/nested_pipeline/hls_output/rtl/nested_pipeline_row_cumulative_sum.v
+!i122 1
+L0 156 508
+R6
+R7
+r1
+!s85 0
+31
+R8
+R14
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vrow_cumulative_sum_top
+R1
+R2
+!i10b 1
+!s100 FiecFaoC3UCF7?XQjE3Uf3
+IUn5QG1hZKJj7eef7lch=W0
+S1
+R0
+R15
+R16
+R17
+!i122 1
+L0 20 134
+R6
+R7
+r1
+!s85 0
+31
+R8
+R14
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vrow_cumulative_sum_top_tb
+R1
+R2
+!i10b 1
+!s100 0=Z0[JlQOV0G7ab2eN0]e0
+I[cgHYGzB7k`0TaS`8SJ=T1
+S1
+R0
+R3
+R4
+R5
+!i122 1
+L0 2 228
+R6
+R7
+r1
+!s85 0
+31
+R8
+R14
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12

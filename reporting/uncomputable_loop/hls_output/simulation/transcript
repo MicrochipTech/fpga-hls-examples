@@ -1,5 +1,5 @@
 # vsim -suppress 8607 -suppress 2249 -suppress 2685 -suppress 2718 -suppress 3017 -suppress 3722 -suppress 12110 -suppress 8891 "+nowarn8891" -c -do "set StdArithNoWarnings 1; run 1000000000000000ns; exit;" work.cosim_tb 
-# Start time: 13:55:20 on Mar 31,2023
+# Start time: 08:58:18 on Apr 03,2023
 # //  ModelSim Microsemi Pro 2022.2 Apr 26 2022 Linux 3.10.0-1160.el7.x86_64
 # //
 # //  Copyright 1991-2022 Mentor Graphics Corporation
@@ -41,6 +41,6 @@
 # Cycle latency:         185
 # ** Note: $finish    : cosim_tb.sv(245)
 #    Time: 3910 ns  Iteration: 1  Instance: /cosim_tb
-# End time: 13:55:21 on Mar 31,2023, Elapsed time: 0:00:01
+# End time: 08:58:20 on Apr 03,2023, Elapsed time: 0:00:02
 # Errors: 0, Warnings: 0
 SW/HW co-simulation: PASS

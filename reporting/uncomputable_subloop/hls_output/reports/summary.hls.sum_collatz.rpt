@@ -2,7 +2,7 @@
 // Smart High-Level Synthesis Tool Version 2023.1
 // Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
 // For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
-// Date: Fri Mar 31 13:55:25 2023
+// Date: Mon Apr  3 08:58:23 2023
 // ----------------------------------------------------------------------------
 
 SmartHLS Summary Report for Project: uncomputable_subloop.
@@ -59,10 +59,6 @@ Basic Block Latencies:
 | for_end10           | 1             | main.cpp:23             |
 +---------------------+---------------+-------------------------+
 
-====== 3. Pipeline Result ======
-
-No pipeline is generated.
-
 ====== 4. Memory Usage ======
 
 +----------------+
@@ -113,12 +109,12 @@ You can enable this feature by setting config parameter 'ADAPTIVE_LATENCY_BINDIN
 
 ====== 7. Static Runtime Estimate ======
 
-+-------------------------------------------------------------------------------------+
-| Function: sum_collatz                                                               |
-+---------------------+---------------------+-----------+----------------+------------+
-| Header Block        | Parent              | Trip Cout | Iteration Time | Total Time |
-+---------------------+---------------------+-----------+----------------+------------+
-| for_body2_preheader | None                | 30        | -              | -          |
-| if_end              | for_body2_preheader | -         | 3              | -          |
-+---------------------+---------------------+-----------+----------------+------------+
++------------------------------------------------------------------------+
+| Function: sum_collatz                                                  |
++---------------------+---------------------+-----------+----------------+
+| Header Block        | Parent              | Trip Cout | Iteration Time |
++---------------------+---------------------+-----------+----------------+
+| for_body2_preheader | None                | 30        | -              |
+| if_end              | for_body2_preheader | -         | 3              |
++---------------------+---------------------+-----------+----------------+
 

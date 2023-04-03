@@ -2,7 +2,7 @@
 // Smart High-Level Synthesis Tool Version 2023.1
 // Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
 // For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
-// Date: Fri Mar 31 13:56:53 2023
+// Date: Mon Apr  3 08:59:50 2023
 // ----------------------------------------------------------------------------
 
 SmartHLS Summary Report for Project: multiple_computable_functions.
@@ -60,10 +60,6 @@ Basic Block Latencies:
 | entry       | 3             | main.cpp:15             |
 +-------------+---------------+-------------------------+
 
-====== 3. Pipeline Result ======
-
-No pipeline is generated.
-
 ====== 4. Memory Usage ======
 
 +----------------+
@@ -114,18 +110,16 @@ You can enable this feature by setting config parameter 'ADAPTIVE_LATENCY_BINDIN
 
 ====== 7. Static Runtime Estimate ======
 
-+-----------------------------------------------------------------+
-| Function: sub_function takes 6 cycles                           |
-+--------------+--------+-----------+----------------+------------+
-| Header Block | Parent | Trip Cout | Iteration Time | Total Time |
-+--------------+--------+-----------+----------------+------------+
++---------------------------------------+
+| Function: sub_function takes 6 cycles |
++---------------------------------------+
 
 
-+-----------------------------------------------------------------+
-| Function: top_function takes 133 cycles                         |
-+--------------+--------+-----------+----------------+------------+
-| Header Block | Parent | Trip Cout | Iteration Time | Total Time |
-+--------------+--------+-----------+----------------+------------+
-| for_body     | None   | 16        | 8              | 128        |
-+--------------+--------+-----------+----------------+------------+
++--------------------------------------------------------+
+| Function: top_function takes 133 cycles                |
++--------------+-----------+----------------+------------+
+| Header Block | Trip Cout | Iteration Time | Total Time |
++--------------+-----------+----------------+------------+
+| for_body     | 16        | 8              | 128        |
++--------------+-----------+----------------+------------+
 

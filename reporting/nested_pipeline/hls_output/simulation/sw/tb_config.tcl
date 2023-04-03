@@ -1,0 +1,1 @@
+set_parameter COSIM_TB_NUM_CALLS row_cumulative_sum,1,

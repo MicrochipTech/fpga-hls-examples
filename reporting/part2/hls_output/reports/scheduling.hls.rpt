@@ -1,0 +1,28 @@
+// ----------------------------------------------------------------------------
+// Smart High-Level Synthesis Tool Version 2023.1
+// Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+// For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+// Date: Mon Apr  3 09:00:22 2023
+// ----------------------------------------------------------------------------
+Target FPGA: MICROSEMI PolarFire
+Project type: hw_onlyClock period constraint: 10ns
+Start Function: sobel_filter
+state: LEGUP_0, basic block: BB_entry
+   br label %for.body, !dbg !388, !MSB !391, !LSB !392, !ExtendFrom !391
+   Transition: if (start): LEGUP_pipeline_wait_for_loop_sobel_cpp_20_5_1 default: LEGUP_0
+state: LEGUP_pipeline_wait_for_loop_sobel_cpp_20_5_1, basic block: BB_for_body, pipeline type: loop, pipeline ID: _Z12sobel_filterPA512_hS0_1_for_body, II: 4, length: 6, trip count: 260100
+   %x.033 = phi i32 [ 0, %entry ], [ %.add5, %for.body ], !MSB !393, !LSB !392, !ExtendFrom !393, !legup.pipeline.start_time !392, !legup.pipeline.avail_time !392, !legup.pipeline.stage !392 (endState: LEGUP_pipeline_wait_for_loop_sobel_cpp_20_5_1)
+   %y.032 = phi i32 [ 1, %entry ], [ %cond, %for.body ], !MSB !393, !LSB !392, !ExtendFrom !393, !legup.pipeline.start_time !392, !legup.pipeline.avail_time !392, !legup.pipeline.stage !392 (endState: LEGUP_pipeline_wait_for_loop_sobel_cpp_20_5_1)
+   %i.031 = phi i32 [ 0, %entry ], [ %8, %for.body ], !MSB !394, !LSB !392, !ExtendFrom !394, !legup.canonical_induction !395, !legup.pipeline.start_time !392, !legup.pipeline.avail_time !392, !legup.pipeline.stage !392 (endState: LEGUP_pipeline_wait_for_loop_sobel_cpp_20_5_1)
+   br i1 %exitcond, label %for.end53, label %for.body, !dbg !388, !llvm.loop !434, !legup.tripCount !435, !MSB !391, !LSB !392, !ExtendFrom !391, !legup.II !413, !legup.totalTime !436, !legup.maxStage !395, !legup.pipeline.start_time !392, !legup.pipeline.avail_time !392, !legup.pipeline.stage !392, !legup.loop_pipelined !395, !legup.label !437
+   Transition: if (for_loop_sobel_cpp_20_5_pipeline_finish): LEGUP_F_sobel_filter_BB_for_end53_2 default: LEGUP_pipeline_wait_for_loop_sobel_cpp_20_5_1
+state: LEGUP_F_sobel_filter_BB_for_end53_2, basic block: BB_for_end53
+   ret void, !dbg !438, !MSB !391, !LSB !392, !ExtendFrom !391
+   Transition: default: LEGUP_0
+
+Basic Block: BB_entry, Num States: 1, Location: <sobel.cpp:20>
+Basic Block: BB_for_body, Num States: 6, Location: <sobel.cpp:20,22,24,30-32,36-37,39-40,42>
+Basic Block: BB_for_end53, Num States: 1, Location: <sobel.cpp:44>
+End Function: sobel_filter
+--------------------------------------------------------------------------------
+

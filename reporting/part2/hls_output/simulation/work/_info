@@ -1,0 +1,193 @@
+m255
+K4
+z2
+!s11f vlog 2022.2 2022.04, Apr 26 2022
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/parisa/fpga-hls-examples/sobel_tutorial/part2/hls_output/simulation
+vcosim_ram_dual_port
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1680526843
+!i10b 1
+!s100 @kQl=1Im7FiLM@o]Hml=H0
+IAWfX:a6dl^^5:U1<Vn]lf3
+S1
+Z2 d/home/parisa/fpga-hls-examples/reporting/part2/hls_output/simulation
+Z3 w1680526843
+Z4 8cosim_tb.sv
+Z5 Fcosim_tb.sv
+!i122 2
+L0 363 187
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OW;L;2022.2;75
+r1
+!s85 0
+31
+Z8 !s108 1680526843.000000
+!s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/part2_sobel_filter.v|
+Z9 !s90 -sv|+define+MEM_INIT_DIR="/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/mem_init/"|/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/part2_sobel_filter.v|cosim_tb.sv|
+!s101 -O0
+!i113 1
+Z10 o-sv -O0
+Z11 !s92 -sv +define+MEM_INIT_DIR=\"/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/mem_init/\" -O0
+Z12 tCvgOpt 0
+vcosim_ram_dual_port_byte_enabled
+R0
+R1
+!i10b 1
+!s100 L?h][QgeCYRDU96=:n1`n0
+IOWHGPE6`hZ:_53NC=nRKM3
+S1
+R2
+R3
+R4
+R5
+!i122 2
+L0 617 81
+R6
+R7
+r1
+!s85 0
+31
+R8
+Z13 !s107 cosim_tb.sv|/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/part2_sobel_filter.v|
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vcosim_ram_dual_port_regular
+R0
+R1
+!i10b 1
+!s100 P0I5f9OYdX_d:[Gd=U5=L2
+IS2bkN_?B;5WXIkNMindZ^1
+S1
+R2
+R3
+R4
+R5
+!i122 2
+L0 699 73
+R6
+R7
+r1
+!s85 0
+31
+R8
+R13
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vcosim_tb
+R0
+R1
+!i10b 1
+!s100 SYKX@@^HCcLDIeXkSDiZ`1
+IH8NX5l7PY<j[SU;[PIjD`3
+S1
+R2
+R3
+R4
+R5
+!i122 2
+L0 329 12
+R6
+R7
+r1
+!s85 0
+31
+R8
+R13
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vsobel_filter_sobel_filter
+R0
+R1
+!i10b 1
+!s100 ]WiIJUBaY43kNdAFfMUSb0
+I`8WB9eObNf?VNom8ALe932
+S1
+R2
+Z14 w1680526822
+Z15 8/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/part2_sobel_filter.v
+Z16 F/home/parisa/fpga-hls-examples/reporting/part2/hls_output/rtl/part2_sobel_filter.v
+!i122 2
+L0 205 891
+R6
+R7
+r1
+!s85 0
+31
+R8
+R13
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vsobel_filter_top
+R0
+R1
+!i10b 1
+!s100 C<l1mTB7NFj3ia?SUTGHe3
+I@Gc_A5FnNj_0N]4O:z0Q63
+S1
+R2
+R14
+R15
+R16
+!i122 2
+L0 20 183
+R6
+R7
+r1
+!s85 0
+31
+R8
+R13
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12
+vsobel_filter_top_tb
+R0
+R1
+!i10b 1
+!s100 W`Yz8iQdlLdDEcXcn>z;>1
+IEgB9WYo1K]3k0z3NE7BRn2
+S1
+R2
+R3
+R4
+R5
+!i122 2
+L0 2 327
+R6
+R7
+r1
+!s85 0
+31
+R8
+R13
+R9
+!s101 -O0
+!i113 1
+R10
+R11
+R12

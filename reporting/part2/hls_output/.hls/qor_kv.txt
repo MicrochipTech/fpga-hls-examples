@@ -1,0 +1,6 @@
+Pipeline-0-Label for_loop_sobel_cpp_20_5
+Pipeline-0-Func-BB "sobel_filter(unsigned char (*) [512], unsigned char (*) [512])-for_body"
+Pipeline-0-II 4
+Pipeline-0-Length 6
+Pipeline-0-TripCount 260100
+Pipeline-0-Latency 1040402

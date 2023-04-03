@@ -2,7 +2,7 @@
 // Smart High-Level Synthesis Tool Version 2023.1
 // Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
 // For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
-// Date: Fri Mar 31 13:55:32 2023
+// Date: Mon Apr  3 08:58:31 2023
 // ----------------------------------------------------------------------------
 
 SmartHLS Summary Report for Project: multiple_functions.
@@ -67,10 +67,6 @@ Basic Block Latencies:
 | for_inc          | 1             | main.cpp:20,24          |
 +------------------+---------------+-------------------------+
 
-====== 3. Pipeline Result ======
-
-No pipeline is generated.
-
 ====== 4. Memory Usage ======
 
 +----------------+
@@ -121,20 +117,20 @@ You can enable this feature by setting config parameter 'ADAPTIVE_LATENCY_BINDIN
 
 ====== 7. Static Runtime Estimate ======
 
-+-----------------------------------------------------------------+
-| Function: sum_collatz                                           |
-+--------------+--------+-----------+----------------+------------+
-| Header Block | Parent | Trip Cout | Iteration Time | Total Time |
-+--------------+--------+-----------+----------------+------------+
-| for_body     | None   | 30        | -              | -          |
-+--------------+--------+-----------+----------------+------------+
++--------------------------+
+| Function: sum_collatz    |
++--------------+-----------+
+| Header Block | Trip Cout |
++--------------+-----------+
+| for_body     | 30        |
++--------------+-----------+
 
 
-+-----------------------------------------------------------------+
-| Function: collatz                                               |
-+--------------+--------+-----------+----------------+------------+
-| Header Block | Parent | Trip Cout | Iteration Time | Total Time |
-+--------------+--------+-----------+----------------+------------+
-| if_end       | None   | -         | 3              | -          |
-+--------------+--------+-----------+----------------+------------+
++-------------------------------+
+| Function: collatz             |
++--------------+----------------+
+| Header Block | Iteration Time |
++--------------+----------------+
+| if_end       | 3              |
++--------------+----------------+
 

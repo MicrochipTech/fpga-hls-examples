@@ -1,7 +1,7 @@
 digraph {
-Node0x2f22bd0[label="sum_collatz_inst", shape="box"];
-Node0x2f28820[label="sum_collatz_top_inst_inst", shape="box"];
-Node0x2f28820 -> Node0x2f22bd0;
-Node0x2f28b60[label="collatz_inst", shape="box"];
-Node0x2f22bd0 -> Node0x2f28b60;
+Node0x3b17c10[label="sum_collatz_inst", shape="box"];
+Node0x3b1d8a0[label="sum_collatz_top_inst_inst", shape="box"];
+Node0x3b1d8a0 -> Node0x3b17c10;
+Node0x3b1dbe0[label="collatz_inst", shape="box"];
+Node0x3b17c10 -> Node0x3b1dbe0;
 }

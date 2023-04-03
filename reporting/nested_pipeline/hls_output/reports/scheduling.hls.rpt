@@ -1,0 +1,54 @@
+// ----------------------------------------------------------------------------
+// Smart High-Level Synthesis Tool Version 2023.1
+// Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+// For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+// Date: Mon Apr  3 09:01:06 2023
+// ----------------------------------------------------------------------------
+Target FPGA: MICROSEMI PolarFire
+Project type: hw_onlyClock period constraint: 10ns
+Start Function: row_cumulative_sum
+state: LEGUP_0, basic block: BB_entry
+   br label %for.cond1.preheader, !dbg !370, !MSB !373, !LSB !374, !ExtendFrom !373
+   Transition: if (start): LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1 default: LEGUP_0
+state: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1, basic block: BB_for_cond1_preheader
+   %i.09 = phi i32 [ 0, %entry ], [ %4, %for.inc8 ], !MSB !375, !LSB !374, !ExtendFrom !375 (endState: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1)
+   %loop.init.phi9 = phi i32 [ 0, %entry ], [ %6, %for.inc8 ], !MSB !376, !LSB !374, !ExtendFrom !376 (endState: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1)
+   %loop.init.phi10 = phi i32 [ 1, %entry ], [ %bit_concat, %for.inc8 ], !MSB !376, !LSB !374, !ExtendFrom !376 (endState: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1)
+   %mem.flat.gep5 = getelementptr [40000 x i32]* %grid, i32 0, i32 %loop.init.phi9, !dbg !377, !MSB !373, !LSB !374, !ExtendFrom !373 (endState: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1)
+   %.pre = load i32* %mem.flat.gep5, align 4, !dbg !377, !tbaa !379, !MSB !376, !LSB !374, !ExtendFrom !376 (endState: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_2)
+   Transition: default: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_2
+state: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_2, basic block: BB_for_cond1_preheader
+   br label %for.body3, !dbg !383, !MSB !373, !LSB !374, !ExtendFrom !373
+   Transition: default: LEGUP_pipeline_wait_for_loop_main_cpp_9_9_3
+state: LEGUP_pipeline_wait_for_loop_main_cpp_9_9_3, basic block: BB_for_body3, pipeline type: loop, pipeline ID: _Z18row_cumulative_sumPA200_i_for_body3, II: 1, length: 3, trip count: 199
+   %0 = phi i32 [ %.pre, %for.cond1.preheader ], [ %add7, %for.body3 ], !dbg !386, !MSB !376, !LSB !374, !ExtendFrom !376, !legup.pipeline.start_time !374, !legup.pipeline.avail_time !374, !legup.pipeline.stage !374 (endState: LEGUP_pipeline_wait_for_loop_main_cpp_9_9_3)
+   %j.08 = phi i32 [ 0, %for.cond1.preheader ], [ %2, %for.body3 ], !MSB !376, !LSB !374, !ExtendFrom !376, !legup.canonical_induction !388, !legup.pipeline.start_time !374, !legup.pipeline.avail_time !374, !legup.pipeline.stage !374 (endState: LEGUP_pipeline_wait_for_loop_main_cpp_9_9_3)
+   br i1 %exitcond2, label %for.inc8, label %for.body3, !dbg !383, !llvm.loop !392, !legup.tripCount !393, !MSB !373, !LSB !374, !ExtendFrom !373, !legup.II !388, !legup.totalTime !394, !legup.maxStage !388, !legup.pipeline.start_time !374, !legup.pipeline.avail_time !374, !legup.pipeline.stage !374, !legup.loop_pipelined !388, !legup.label !395
+   Transition: if (for_loop_main_cpp_9_9_pipeline_finish): LEGUP_F_row_cumulative_sum_BB_for_inc8_4 default: LEGUP_pipeline_wait_for_loop_main_cpp_9_9_3
+state: LEGUP_F_row_cumulative_sum_BB_for_inc8_4, basic block: BB_for_inc8
+   %4 = add nsw i32 %i.09, 1, !dbg !396, !MSB !397, !LSB !374, !ExtendFrom !397 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_select5 = call i25 @hls_bit_select_25_32(i32 %4, i64 24, i64 0), !MSB !397, !LSB !374, !ExtendFrom !397 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_select3 = call i26 @hls_bit_select_26_32(i32 %4, i64 25, i64 0), !MSB !397, !LSB !374, !ExtendFrom !397 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_select1 = call i29 @hls_bit_select_29_32(i32 %4, i64 28, i64 0), !MSB !397, !LSB !374, !ExtendFrom !397 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %exitcond = icmp eq i32 %4, 200, !dbg !370, !MSB !374, !LSB !374, !ExtendFrom !374 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_concat6 = call i32 @hls_bit_concat_25_7(i25 %bit_select5, i64 25, i7 0, i64 7), !MSB !398, !LSB !375, !ExtendFrom !398 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_concat4 = call i32 @hls_bit_concat_26_6(i26 %bit_select3, i64 26, i6 0, i64 6), !MSB !399, !LSB !400, !ExtendFrom !399 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_concat2 = call i32 @hls_bit_concat_29_3(i29 %bit_select1, i64 29, i3 0, i64 3), !MSB !401, !LSB !394, !ExtendFrom !401 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %5 = add i32 %bit_concat2, %bit_concat4, !MSB !398, !LSB !394, !ExtendFrom !398 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %6 = add i32 %bit_concat6, %5, !MSB !402, !LSB !394, !ExtendFrom !402 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_select = call i31 @hls_bit_select_31_32(i32 %6, i64 31, i64 1), !MSB !398, !LSB !391, !ExtendFrom !398 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   %bit_concat = call i32 @hls_bit_concat_31_1(i31 %bit_select, i64 31, i1 true, i64 1), !MSB !402, !LSB !374, !ExtendFrom !402 (endState: LEGUP_F_row_cumulative_sum_BB_for_inc8_4)
+   br i1 %exitcond, label %for.end10, label %for.cond1.preheader, !dbg !370, !legup.tripCount !403, !MSB !373, !LSB !374, !ExtendFrom !373
+   Transition: if (%exitcond): LEGUP_F_row_cumulative_sum_BB_for_end10_5 default: LEGUP_F_row_cumulative_sum_BB_for_cond1_preheader_1
+state: LEGUP_F_row_cumulative_sum_BB_for_end10_5, basic block: BB_for_end10
+   ret void, !dbg !404, !MSB !373, !LSB !374, !ExtendFrom !373
+   Transition: default: LEGUP_0
+
+Basic Block: BB_entry, Num States: 1, Location: <main.cpp:7>
+Basic Block: BB_for_cond1_preheader, Num States: 2, Location: <main.cpp:7,9-10>
+Basic Block: BB_for_body3, Num States: 3, Location: <main.cpp:9-10>
+Basic Block: BB_for_inc8, Num States: 1, Location: <main.cpp:7>
+Basic Block: BB_for_end10, Num States: 1, Location: <main.cpp:13>
+End Function: row_cumulative_sum
+--------------------------------------------------------------------------------
+
