@@ -4,10 +4,10 @@ NAME = wide_mult_axi
 LOCAL_CONFIG = -legup-config=config.tcl
 SRCS = wide_mult_axi.cpp
 GUI_BASE_DIR =
-LEVEL = $(LEGUP_ROOT_DIR)/examples
+LEVEL = $(SHLS_ROOT_DIR)/examples
 
 
-USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -I$(LEGUP_ROOT_DIR)/smarthls-library
+USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -I$(SHLS_ROOT_DIR)/smarthls-library
 
 ## FIXME: suppress 'unused-variable' warnings from axi_slave.mmap.tmp:data_mmap_w()
 USER_CXX_FLAG += -Wno-unused-variable
