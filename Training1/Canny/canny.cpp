@@ -6,6 +6,7 @@
 void canny(hls::FIFO<unsigned char> &input_fifo,
            hls::FIFO<unsigned char> &output_fifo) {
 #pragma HLS function top
+#pragma HLS function dataflow
 
     hls::FIFO<unsigned char> output_fifo_gf(/* depth = */ 2);
     hls::FIFO<unsigned short> output_fifo_sf(/* depth = */ 2);

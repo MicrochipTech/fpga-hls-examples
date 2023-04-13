@@ -170,6 +170,7 @@ void custom_top(FIFO<ap_uint<16>> &half_ina,
                 FIFO<unsigned> &float_inb,
                 FIFO<unsigned> &float_out) {
 #pragma HLS function top
+#pragma HLS function dataflow
     fmult_16_wrapper<17, 17>(half_ina, half_inb, half_out);
     fmult_32_wrapper<17, 17>(float_ina, float_inb, float_out);
     fmult_64_wrapper<17, 17>(double_ina, double_inb, double_out);
