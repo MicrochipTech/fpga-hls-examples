@@ -50,23 +50,11 @@ sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:input_fifo_axi4s
 sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:output_fifo_axi4stream} -pin_names {canny_top_0:output_fifo}
 sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:output_fifo_axi4stream} -pin_names {canny_top_0:output_fifo_ready}
 sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:output_fifo_axi4stream} -pin_names {canny_top_0:output_fifo_valid}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_0_axi4stream} -pin_names {canny_top_0:switch_fifo_0}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_0_axi4stream} -pin_names {canny_top_0:switch_fifo_0_valid}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_1_axi4stream} -pin_names {canny_top_0:switch_fifo_1}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_1_axi4stream} -pin_names {canny_top_0:switch_fifo_1_valid}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_2_axi4stream} -pin_names {canny_top_0:switch_fifo_2}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_2_axi4stream} -pin_names {canny_top_0:switch_fifo_2_valid}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_3_axi4stream} -pin_names {canny_top_0:switch_fifo_3}
-sd_show_bif_pins -sd_name ${sd_name} -bif_pin_name {canny_top_0:switch_fifo_3_axi4stream} -pin_names {canny_top_0:switch_fifo_3_valid}
 sd_invert_pins -sd_name ${sd_name} -pin_names {canny_top_0:reset}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {canny_top_0:start} -value {VCC}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {canny_top_0:ready}
 sd_mark_pins_unused -sd_name ${sd_name} -pin_names {canny_top_0:finish}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {canny_top_0:switch_fifo_0_valid} -value {VCC}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {canny_top_0:switch_fifo_3_valid} -value {VCC}
 sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {canny_top_0:output_fifo_ready} -value {VCC}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {canny_top_0:switch_fifo_2_valid} -value {VCC}
-sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {canny_top_0:switch_fifo_1_valid} -value {VCC}
 
 
 
@@ -157,10 +145,10 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_0:Y" "video_fifo_0:rresetn
 sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:clk" "clk" "delay_0:clk" "gaussian_filter_pipelined_top_0:clk" "switch_3_state_controller_top_0:clk" "video_fifo_0:rclock_i" "video_fifo_0:wclock_i" "video_fifo_1:rclock_i" "video_fifo_1:wclock_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:input_fifo_valid" "gaussian_filter_pipelined_top_0:input_fifo_valid" "input_valid" "video_fifo_0:wen_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:output_fifo_valid" "delay_0:valid_i" "video_fifo_0:ren_i" "video_fifo_1:ren_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_fifo_0" "gaussian_filter_pipelined_top_0:on_switch" "switches[0:0]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_fifo_1" "switches[1:1]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_fifo_2" "switches[2:2]" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_fifo_3" "switches[3:3]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_0" "gaussian_filter_pipelined_top_0:on_switch" "switches[0:0]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_1" "switches[1:1]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_2" "switches[2:2]" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"canny_top_0:switch_3" "switches[3:3]" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"delay_0:valid_o" "output_valid" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"gaussian_filter_pipelined_top_0:output_fifo_valid" "video_fifo_1:wen_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"switch_3_state_controller_top_0:toggle" "toggle" }

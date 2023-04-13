@@ -10,7 +10,7 @@ const unsigned int GAUSSIAN[GF_KERNEL_SIZE]
                                                {1, 3, 4, 3, 1}};
 const unsigned int DIVISOR = 128;
 
-void gaussian_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
+void gaussian_filter(bool on_switch,
                      hls::FIFO<unsigned char> &input_fifo,
                      hls::FIFO<unsigned char> &output_fifo) {
     #pragma HLS function pipeline
@@ -46,10 +46,9 @@ void gaussian_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
     unsigned char current_pixel = line_buffer.window[center][center];
 
     // if filter is off, pass pixel through
-    bool on = switch_fifo.read();
-    if (!on) {
-    	output_fifo.write(current_pixel);
-    	return;
+    if (!on_switch) {
+        output_fifo.write(current_pixel);
+        return;
     }
 
     if (outofbounds) {

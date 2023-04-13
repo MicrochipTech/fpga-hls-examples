@@ -1,7 +1,7 @@
 #include "define.hpp"
 #include <hls/image_processing.hpp>
 
-void hysteresis_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
+void hysteresis_filter(bool on_switch,
                        hls::FIFO<unsigned char> &input_fifo,
                        hls::FIFO<unsigned char> &output_fifo) {
 #pragma HLS function pipeline
@@ -37,8 +37,7 @@ void hysteresis_filter(hls::FIFO<hls::ap_uint<1>> &switch_fifo,
     unsigned char current_pixel = line_buffer.window[center][center];
 
     // if filter is off, pass pixel through
-    bool on = switch_fifo.read();
-    if (!on) {
+    if (!on_switch) {
         output_fifo.write(current_pixel);
         return;
     }
