@@ -102,7 +102,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {video_fifo} -instanc
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {video_fifo_0} -params {\
 "g_HALF_EMPTY_THRESHOLD:1280" \
 "g_INPUT_VIDEO_DATA_BIT_WIDTH:8" \
-"g_VIDEO_FIFO_AWIDTH:12" }\
+"g_VIDEO_FIFO_AWIDTH:14" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {video_fifo_0}
 sd_update_instance -sd_name ${sd_name} -instance_name {video_fifo_0}
@@ -123,7 +123,7 @@ sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {video_fifo} -instanc
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {video_fifo_1} -params {\
 "g_HALF_EMPTY_THRESHOLD:1280" \
 "g_INPUT_VIDEO_DATA_BIT_WIDTH:8" \
-"g_VIDEO_FIFO_AWIDTH:12" }\
+"g_VIDEO_FIFO_AWIDTH:13" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {video_fifo_1}
 sd_update_instance -sd_name ${sd_name} -instance_name {video_fifo_1}
