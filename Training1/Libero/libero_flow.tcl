@@ -6,8 +6,8 @@ set PF_CCC_version 2.2.220
 set Display_Controller_version 3.1.2
 set HDMI_RX_version 4.2.0
 set HDMI_TX_version 1.0.2
-set PF_TX_PLL_version 2.0.302
-set PF_XCVR_ERM_version 3.1.200
+set PF_TX_PLL_version 2.0.304
+set PF_XCVR_ERM_version 3.1.204
 set PF_XCVR_REF_CLK_version 1.0.103
 set CORERESET_PF_version 2.2.107
 set CORERXIODBITALIGN_version 2.1.104
@@ -32,8 +32,8 @@ download_core -vlnv "Actel:SgCore:PF_CCC:${PF_CCC_version}" -location {www.micro
 download_core -vlnv "Microsemi:SolutionCore:Display_Controller:${Display_Controller_version}"  -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv "Microsemi:SolutionCore:HDMI_RX:${HDMI_RX_version}" -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv "Microsemi:SolutionCore:HDMI_TX:${HDMI_TX_version}" -location {www.microchip-ip.com/repositories/DirectCore}
-download_core -vlnv "Actel:SgCore:PF_TX_PLL:${PF_TX_PLL_version}" -location {www.microchip-ip.com/repositories/SgCore}
-download_core -vlnv "Actel:SystemBuilder:PF_XCVR_ERM:${PF_XCVR_ERM_version}" -location {www.microchip-ip.com/repositories/SgCore}
+download_core -vlnv "Actel:SgCore:PF_TX_PLL:${PF_TX_PLL_version}" -location {www.microchip-ip.com/repositories/DoNotShare_2021}
+download_core -vlnv "Actel:SystemBuilder:PF_XCVR_ERM:${PF_XCVR_ERM_version}" -location {www.microchip-ip.com/repositories/DoNotShare_2021}
 download_core -vlnv "Actel:SgCore:PF_XCVR_REF_CLK:${PF_XCVR_REF_CLK_version}" -location {www.microchip-ip.com/repositories/SgCore}
 download_core -vlnv "Actel:DirectCore:CORERESET_PF:${CORERESET_PF_version}" -location {www.microchip-ip.com/repositories/DirectCore}
 download_core -vlnv "Actel:DirectCore:CORERXIODBITALIGN:${CORERXIODBITALIGN_version}" -location {www.microchip-ip.com/repositories/DirectCore}
