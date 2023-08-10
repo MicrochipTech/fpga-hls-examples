@@ -14,6 +14,7 @@ Example | Description
 [Training1](./Training1)|SmartHLS™ Training Session 1: Image Processing on the PolarFire® Video Kit 
 [Training2](./Training2)|SmartHLS™ Training Session 2: Multi-threaded Digit Recognition on the PolarFire® Video Kit 
 [Training3](./Training3)|SmartHLS™ Training Session 3: AXI Interfaces to DDR & Mi-V Soft Processor on the PolarFire® Video Kit 
+[Training4](./Training4)|SmartHLS™ Training Session 4: SmartHLS™ Training for Microchip PolarFire® SoC Flow  
 
 ## Examples of HLS Features
 
