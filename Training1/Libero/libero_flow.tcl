@@ -7,7 +7,7 @@ set Display_Controller_version 3.1.2
 set HDMI_RX_version 4.2.0
 set HDMI_TX_version 1.0.2
 set PF_TX_PLL_version 2.0.304
-set PF_XCVR_ERM_version 3.1.204
+set PF_XCVR_ERM_version 3.1.205
 set PF_XCVR_REF_CLK_version 1.0.103
 set CORERESET_PF_version 2.2.107
 set CORERXIODBITALIGN_version 2.1.104
