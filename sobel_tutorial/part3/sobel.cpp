@@ -12,61 +12,64 @@ using namespace hls;
 void sobel_filter(FIFO<unsigned char> &input_fifo,
                   FIFO<unsigned char> &output_fifo) {
 #pragma HLS function top
+#pragma HLS function pipeline
 
     // The 3x3 Sobel filters.
-    const static int gx[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
-    const static int gy[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
+    const static int GX[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+    const static int GY[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
+
+    // i, j indicates the x/y coordinates in the image.
+    static int i = 0, j = 0;
 
     // SmartHLS's line buffer library.
-    LineBuffer<unsigned char, WIDTH, 3> line_buffer;
-    const unsigned LineBufferFillCount = WIDTH + 1;
+    static LineBuffer<unsigned char, WIDTH, 3> line_buffer;
 
-    // Output pixel location
-    int x = 0;
-    int y = 0;
-#pragma HLS loop pipeline
-    for (int i = 0; i < (HEIGHT * WIDTH + LineBufferFillCount); i++) {
+    // Read input pixel from FIFO and put into the line buffer.
+    unsigned char input_pixel = input_fifo.read();
+    line_buffer.ShiftInPixel(input_pixel);
 
-        // Read input pixel from FIFO and put into the line buffer.
-        unsigned char input_pixel = 0;
-        if (i < HEIGHT * WIDTH)
-            input_pixel = input_fifo.read();
-        line_buffer.ShiftInPixel(input_pixel);
+    // Wait for line buffers to fill before output.
+    static int count = 0;
+    if (count++ <= WIDTH)
+        return;
 
-        // Wait for line buffers to fill before output.
-        if (i < LineBufferFillCount) {
-            continue;
+    // Indicates whether the corresponding 3x3 receptive field is out of bound.
+    bool outofbounds = (i < 1) | (i > HEIGHT - 2) | (j < 1) | (j > WIDTH - 2);
+
+    // Apply the sobel filter at the current "receptive field".
+    int gx_sum = 0, gy_sum = 0;
+    for (int m = -1; m <= 1; m++) {
+        for (int n = -1; n <= 1; n++) {
+            // Get the pixel in "receptive field" from LineBuffer's window.
+            int pixel = line_buffer.window[m + 1][n + 1];
+            gx_sum += pixel * GX[m + 1][n + 1];
+            gy_sum += pixel * GY[m + 1][n + 1];
         }
+    }
 
-        // Indicates whether the corresponding 3x3 receptive field is out of
-        // bounds.
-        bool outofbounds =
-            (x < 1) | (x > HEIGHT - 2) | (y < 1) | (y > WIDTH - 2);
-        // increment row when column reaches end of row
-        y = (x == WIDTH - 1) ? y + 1 : y;
-        // increment column until end of row
-        x = (x == WIDTH - 1) ? 0 : x + 1;
+    gx_sum = (gx_sum < 0) ? -gx_sum : gx_sum;
+    gy_sum = (gy_sum < 0) ? -gy_sum : gy_sum;
 
-        // Apply the sobel filter at the current "receptive field".
-        int gx_sum = 0, gy_sum = 0;
-        for (int m = -1; m <= 1; m++) {
-            for (int n = -1; n <= 1; n++) {
-                // Get the pixel in "receptive field" from LineBuffer's window.
-                int pixel = line_buffer.window[m + 1][n + 1];
-                gx_sum += pixel * gx[m + 1][n + 1];
-                gy_sum += pixel * gy[m + 1][n + 1];
-            }
-        }
+    int sum = gx_sum + gy_sum;
+    sum = (sum > 255) ? 255 : sum;
 
-        gx_sum = (gx_sum < 0) ? -gx_sum : gx_sum;
-        gy_sum = (gy_sum < 0) ? -gy_sum : gy_sum;
+    // Set output to 0 if the corresponding 3x3 receptive field is out of bound.
+    output_fifo.write(outofbounds ? 0 : sum);
 
-        int sum = gx_sum + gy_sum;
-        sum = (sum > 255) ? 255 : sum;
-
-        // Set output to 0 if the corresponding 3x3 receptive field is
-        // out of bounds.
-        output_fifo.write(outofbounds ? 0 : sum);
+    // Keep track of row/column of image.
+    if (j < WIDTH - 1) {
+        // Case 1: Moving to next pixel from left to right across image row.
+        j++;
+    } else if (i == HEIGHT - 1 && j == WIDTH - 1) {
+        // Case 2: End of the image frame, reset to the first pixel coordinates
+        // for the next image frame.
+        i = 0;
+        j = 0;
+    } else {
+        // Case 3: End of image row. Move to the first pixel of one row down in
+        // the image frame.
+        i++;
+        j = 0;
     }
 }
 
@@ -78,10 +81,15 @@ int main() {
     for (int i = 0; i < HEIGHT; i++) {
         for (int j = 0; j < WIDTH; j++) {
             input_fifo.write(elaine_512_input[i][j]);
+            sobel_filter(input_fifo, output_fifo);
         }
     }
 
-    sobel_filter(input_fifo, output_fifo);
+    // Need to push in extra pixels to flush the pipeline.
+    for (int i = 0; i < WIDTH + 2; i++) {
+        input_fifo.write(0);
+        sobel_filter(input_fifo, output_fifo);
+    }
 
     // Verify output by comparing against a golden output.
     int mismatch_count = 0;
@@ -101,3 +109,4 @@ int main() {
 
     return mismatch_count;
 }
+

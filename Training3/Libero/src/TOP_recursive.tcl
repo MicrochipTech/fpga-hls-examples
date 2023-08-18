@@ -16,8 +16,8 @@ source ./src/components/delay_chain.tcl
 # This is because only one MEM_INIT_DIR can be specified:
 #   configure_tool -name {SYNTHESIZE} -params {SYNPLIFY_OPTIONS:set_option -hdl_define -set MEM_INIT_DIR="..."}
 # So it will always use the last one.
-source ../wide_mult_axi/hls_output/scripts/libero/create_hdl_plus.tcl
-source ../texture_mapper/hls_output/scripts/libero/create_hdl_plus.tcl
+source ../wide_mult_axi/hls_output/scripts/create_hdl_plus.tcl
+source ../texture_mapper/hls_output/scripts/create_hdl_plus.tcl
 source ./src/components/counter.tcl 
 build_design_hierarchy
 
