@@ -61,6 +61,7 @@ int main() {
     unsigned int i, j;
     unsigned int matching = 0;
 
+    hls::FIFO<unsigned char> output_fifo(/* depth = */ WIDTH * HEIGHT * 2);
     hls::ap_uint<1> on = 1;
 
     bmp_header_t input_channel_header, golden_output_image_header;

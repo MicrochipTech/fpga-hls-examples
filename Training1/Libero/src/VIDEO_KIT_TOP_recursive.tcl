@@ -11,14 +11,14 @@ set_root -module VIDEO_KIT_TOP::work
 #Sourcing the Tcl files in which HDL+ core definitions are created for HDL modules
 source ./src/components/video_fifo.tcl 
 source ./src/components/ddr_rw_arbiter.tcl 
-source ../Canny_FIFO_Switch/hls_output/scripts/libero/create_hdl_plus.tcl
+source ../Canny_FIFO_Switch/hls_output/scripts/create_hdl_plus.tcl
 
-source ../Gaussian_FIFO_Pipelined/hls_output/scripts/libero/create_hdl_plus.tcl
+source ../Gaussian_FIFO_Pipelined/hls_output/scripts/create_hdl_plus.tcl
 source ./src/components/mux_3_to_1_8bit.tcl 
 source ./src/components/switch_3_state_controller_top.tcl 
-source ../RGB2YCbCr/hls_output/scripts/libero/create_hdl_plus.tcl
-source ../YCbCr2RGB/hls_output/scripts/libero/create_hdl_plus.tcl
-source ../alpha_blend/hls_output/scripts/libero/create_hdl_plus.tcl
+source ../RGB2YCbCr/hls_output/scripts/create_hdl_plus.tcl
+source ../YCbCr2RGB/hls_output/scripts/create_hdl_plus.tcl
+source ../alpha_blend/hls_output/scripts/create_hdl_plus.tcl
 source ./src/components/apb3_if.tcl 
 build_design_hierarchy
 
