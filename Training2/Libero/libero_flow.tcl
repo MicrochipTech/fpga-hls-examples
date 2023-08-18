@@ -8,7 +8,7 @@ set CORERESET_PF_version 2.2.107
 set CORERXIODBITALIGN_version 2.1.104
 set PF_IOD_GENERIC_RX_version 2.1.110
 set PF_DDR4_version 2.5.111
-set PF_SRAM_AHBL_AXI_version 1.2.110
+set PF_SRAM_AHBL_AXI_version 1.2.111
 set mipicsi2rxdecoderPF_version 2.2.5
 set COREAHBTOAPB3_version 3.1.100
 set COREI2C_version 7.2.101
