@@ -8,10 +8,17 @@ void canny(hls::FIFO<unsigned char> &input_fifo,
 #pragma HLS function top
 #pragma HLS function dataflow
 
+
+#ifndef __SYNTHESIS__
+    // For software, the fifo depth has to be larger.
+    hls::FIFO<unsigned char> output_fifo_gf(WIDTH * HEIGHT * 2);
+    hls::FIFO<unsigned short> output_fifo_sf(WIDTH * HEIGHT * 2);
+    hls::FIFO<unsigned char> output_fifo_nm(WIDTH * HEIGHT * 2);
+#else
     hls::FIFO<unsigned char> output_fifo_gf(/* depth = */ 2);
     hls::FIFO<unsigned short> output_fifo_sf(/* depth = */ 2);
     hls::FIFO<unsigned char> output_fifo_nm(/* depth = */ 2);
-
+#endif
     gaussian_filter(input_fifo, output_fifo_gf);
     sobel_filter(output_fifo_gf, output_fifo_sf);
     nonmaximum_suppression(output_fifo_sf, output_fifo_nm);
@@ -75,7 +82,6 @@ int main() {
             unsigned char b = input_channel->b;
             unsigned grayscale = (r + g + b) / 3;
             input_fifo.write(grayscale);
-            canny(input_fifo, output_fifo);
             input_channel++;
         }
     }
@@ -83,8 +89,9 @@ int main() {
     // Give more inputs to flush out all pixels.
     for (i = 0; i < GF_KERNEL_SIZE * WIDTH + GF_KERNEL_SIZE; i++) {
         input_fifo.write(0);
-        canny(input_fifo, output_fifo);
     }
+
+    canny(input_fifo, output_fifo);
 
     // output validation
     for (i = 0; i < HEIGHT; i++) {

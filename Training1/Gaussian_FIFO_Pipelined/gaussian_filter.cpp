@@ -27,16 +27,18 @@ bool is_out_of_bounds(unsigned int kernel_size, unsigned int i, unsigned int j) 
            (j > (WIDTH - center - 1));
 }
 
-void update_image_position(int &i, int &j) {
+void update_image_position(unsigned int &i, unsigned int &j) {
     if (j < WIDTH - 1) {
-        // increment column
+        // Case 1: Moving to next pixel from left to right across image row.
         j++;
     } else if (i == HEIGHT - 1 && j == WIDTH - 1) {
-        // end of the image frame
+        // Case 2: End of the image frame, reset to the first pixel coordinates
+        // for the next image frame.
         i = 0;
         j = 0;
     } else {
-        // increment row
+        // Case 3: End of image row. Move to the first pixel of one row down in
+        // the image frame.
         i++;
         j = 0;
     }
@@ -46,52 +48,51 @@ void gaussian_filter_pipelined(hls::ap_uint<1> on_switch,
                                hls::FIFO<unsigned char> &input_fifo,
                                hls::FIFO<unsigned char> &output_fifo) {
 #pragma HLS function top
-#pragma HLS function pipeline
 
-    if (input_fifo.empty())
-        return;
+    hls::LineBuffer<unsigned char, WIDTH, KERNEL_SIZE> line_buffer;
+    const unsigned center = KERNEL_SIZE / 2;
+    const unsigned LineBufferFillCount = center * WIDTH + center;
+    // track the position we are at while processing each input frame
+    unsigned int x = 0, y = 0;
 
-    unsigned char input_pixel = input_fifo.read();
+#pragma HLS loop pipeline
+    for (unsigned int i = 0; i < (HEIGHT * WIDTH + LineBufferFillCount); i++) {
+        unsigned char input_pixel = 0;
+        if (i < HEIGHT * WIDTH)
+            input_pixel = input_fifo.read();
+        line_buffer.ShiftInPixel(input_pixel);
 
-    static hls::LineBuffer<unsigned char, WIDTH, KERNEL_SIZE> line_buffer;
-
-    line_buffer.ShiftInPixel(input_pixel);
-
-    // keep track of how many pixels we have shifted into the line_buffer to
-    // tell when it is filled
-    static unsigned int count = 0;
-    if (!is_filled(KERNEL_SIZE, count)) {
-        count++;
-        return;
-    }
-
-    // i, j to track the position we are at while processing each input frame
-    static int i = 0, j = 0;
-
-    // calculate if the kernel is currently out of bounds, i.e. the kernel
-    // overlaps with pixels outside of the current input frame
-    bool outofbounds = is_out_of_bounds(KERNEL_SIZE, i, j);
-
-    // update i, j for next iteration
-    update_image_position(i, j);
-
-    if (!on_switch || outofbounds) {
-        unsigned int center = KERNEL_SIZE / 2;
-        unsigned char current_pixel = line_buffer.window[center][center];
-        output_fifo.write(current_pixel);
-        return;
-    }
-
-    unsigned int sum = 0;
-    for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
-        for (unsigned int n = 0; n < KERNEL_SIZE; n++) {
-            sum += ((unsigned int)line_buffer.window[m][n]) * GAUSSIAN[m][n];
+        // keep track of how many pixels we have shifted into the line_buffer to
+        // tell when it is filled
+        if (!is_filled(KERNEL_SIZE, i)) {
+            continue;
         }
+
+        // calculate if the kernel is currently out of bounds, i.e. the kernel
+        // overlaps with pixels outside of the current input frame
+        bool out_of_bounds =
+            is_out_of_bounds(KERNEL_SIZE, y, x);
+
+        // update x, y for next iteration
+        update_image_position(y, x);
+
+        if (!on_switch || out_of_bounds) {
+            output_fifo.write(line_buffer.window[center][center]);
+            continue;
+        }
+
+        unsigned int sum = 0;
+        for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
+            for (unsigned int n = 0; n < KERNEL_SIZE; n++) {
+                sum +=
+                    ((unsigned int)line_buffer.window[m][n] * GAUSSIAN[m][n]);
+            }
+        }
+
+        sum /= DIVISOR;
+
+        output_fifo.write((unsigned char)sum);
     }
-
-    int output = sum / DIVISOR;
-
-    output_fifo.write(output);
 }
 
 int main() {
@@ -116,6 +117,8 @@ int main() {
     output_image = (bmp_pixel_t*)malloc(SIZE * sizeof(bmp_pixel_t));
     output_image_ptr = output_image;
 
+    // convert image to grayscale and write to input array
+
     // input
     for (i = 0; i < HEIGHT; i++) {
         for (j = 0; j < WIDTH; j++) {
@@ -124,17 +127,12 @@ int main() {
             unsigned char b = input_channel->b;
             unsigned grayscale = (r + g + b) / 3;
             input_fifo.write(grayscale);
-            // run design
-            gaussian_filter_pipelined(on, input_fifo, output_fifo);
             input_channel++;
         }
     }
 
-    // Give more inputs to flush out all pixels.
-    for (i = 0; i < KERNEL_SIZE * WIDTH + KERNEL_SIZE; i++) {
-        input_fifo.write(0);
-        gaussian_filter_pipelined(on, input_fifo, output_fifo);
-    }
+    // run design
+    gaussian_filter_pipelined(on, input_fifo, output_fifo);
 
     // output validation
     for (i = 0; i < HEIGHT; i++) {
@@ -169,4 +167,3 @@ int main() {
     write_bmp("output.bmp", &input_channel_header, output_image);
     return result_incorrect;
 }
-
