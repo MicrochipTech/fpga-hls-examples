@@ -28,3 +28,8 @@ Example | Description
 --------|------------
 [udp_tx](./udp_tx)|Simple UDP Transmit (TX) core from a network stack.
 [fp_mult](./fp_mult)|Arbitrary precision floating-point multiplication core.
+
+## Advanced Examples
+Example | Description
+--------|------------
+[RISC-V example](./risc-v-demo)|End-to-end SmartHLS + RISC-V + H264 over Ethernet Example.
