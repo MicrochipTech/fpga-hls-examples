@@ -297,6 +297,7 @@ integer num_res = 0;
 integer num_mismatch = 0;
 
 always @ (result) begin
+    @(negedge SYSCLK)
     $display ("time=%0t num=%d\n  A=%h B=%h C=%h D=%h E=%h\n  result=               %h\n  check_result_widemult=%h",
              $time, num_res, astim_r_delayed, bstim_r_delayed, cstim_r_delayed,
              dstim_r_delayed, estim_r_delayed, result, check_result_widemult,);
