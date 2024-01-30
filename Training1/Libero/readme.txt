@@ -1,22 +1,48 @@
-This training can be regenerated on Windows using Cygwin or on Linux.
+This training can be regenerated on Windows or on Linux.
 
 -----------------------------------------------------------------------
-Windows (Cygwin):
+Windows:
 -----------------------------------------------------------------------
 
-1. Open Cygwin by running the .bat file from the SmartHLS installation directory, e.g.: 
+1. Open terminal you prefer and navigate to this current directory, e.g.:
 
-C:\Microchip\Libero_SoC_v2022.2\SmartHLS-2022.2\cygwin64\Cygwin.bat
+cd C:\Workspace\fpga-hls-examples-main\Training1\
 
-2. Navigate to this current directory, e.g.:
+2. Set shls to point to the correct executable.
 
-cd /cygdrive/c/Workspace/fpga-hls-examples-main/Training1/Libero/
+3. Navigate to folders and follow steps below to generate the HLS example designs:
 
-Note that C:\ is replaced by /cygdrive/c/
+3.1 	cd Canny_FIFO_Switch
 
-3. Run the Bash script to generate the HLS example designs:
+	shls hw
 
-bash run_shls_on_examples.sh
+	cd ..
+
+3.2	cd Gaussian_FIFO_Pipelined
+	
+	shls hw
+
+	cd ..
+
+3.3	cd RGB2YCbCr
+
+	shls hw
+
+	cd ..
+
+3.4	cd YCbCr2RGB
+
+	shls hw
+
+	cd ..
+
+3.5	cd alpha_blend
+
+	shls hw
+
+	cd ..
+
+3.6 	cd Libero 
 
 4. When this completes, use Libero to generate the project. This can be
    done from the shell or the IDE.
