@@ -48,45 +48,13 @@ set mss_config_loc "$install_loc/bin64/pfsoc_mss"
 set local_dir [pwd]
 set constraint_path ./script_support/constraints
 
-if {[info exists I2C_LOOPBACK]} {
-    set project_name "MPFS_ICICLE_I2C_LOOPBACK"
-    set project_dir "$local_dir/MPFS_ICICLE_I2C_LOOPBACK"
-} elseif {[info exists VECTORBLOX]} {
-    set project_name "MPFS_ICICLE_Vectorblox"
-    set project_dir "$local_dir/MPFS_ICICLE_Vectorblox"
-} elseif {[info exists SPI_LOOPBACK]} {
-    set project_name "MPFS_ICICLE_SPI_LOOPBACK"
-    set project_dir "$local_dir/MPFS_ICICLE_SPI_LOOPBACK"
-} elseif {[info exists DRI_CCC_DEMO]} {
-    set project_name "MPFS_ICICLE_DRI_CCC_DEMO"
-    set project_dir "$local_dir/MPFS_ICICLE_DRI_CCC_DEMO"
-} elseif {[info exists MICRON_QSPI]} {
-    set project_name "MPFS_ICICLE_MICRON_QSPI"
-    set project_dir "$local_dir/MPFS_ICICLE_MICRON_QSPI"
-} elseif {[info exists SMARTHLS]} {
-    set project_name "Icicle_SoC"
-    set project_dir "$local_dir/soc"
-} elseif {[info exists BFM_SIMULATION] && [info exists AXI4_STREAM_DEMO]} {
-    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
-    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO_BFM"
-} elseif {[info exists AXI4_STREAM_DEMO]} {
-    set project_name "MPFS_ICICLE_AXI4_STREAM_DEMO"
-    set project_dir "$local_dir/MPFS_ICICLE_AXI4_STREAM_DEMO"
-} elseif {[info exists BFM_SIMULATION]} {
-    set project_name "MPFS_ICICLE_BFM_SIMULATION"
-    set project_dir "$local_dir/MPFS_ICICLE_BFM_SIMULATION"
-} else {
-    set project_name "MPFS_ICICLE"
-    set project_dir "$local_dir/MPFS_ICICLE"
-}
 
-if {[info exists MSS_LINUX]} {
+set project_name "Icicle_SoC"
+set project_dir "$local_dir/soc"
 
-} elseif {[info exists MSS_BAREMETAL]} {
 
-} else {
-    set MSS_LINUX 1
-}
+set MSS_LINUX 1
+
 
 source ./script_support/additional_configurations/functions.tcl
 
@@ -171,11 +139,8 @@ if { [file exists $project_dir/$project_name.prjx] } {
     }
     file mkdir $local_dir/script_support/components/MSS
 
-    if {[info exists MSS_LINUX]} {
-        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
-    } else {
-        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_baremetal.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
-    }
+
+    exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/MPFS_ICICLE_MSS_linux.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS
 
     import_mss_component -file "$local_dir/script_support/components/MSS/ICICLE_MSS.cxz"
 
@@ -222,45 +187,24 @@ if { [file exists $project_dir/$project_name.prjx] } {
         -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
         -input_type {constraint} 
 
-    if {[info exists MICRON_QSPI]} {
-	    organize_tool_files \
-            -tool {PLACEROUTE} \
-            -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_RPi_MICRON_QSPI.pdc" \
-            -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
-            -file "${project_dir}/constraint/fic_clocks.sdc" \
-            -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-            -input_type {constraint}
-    } else {
-	    organize_tool_files \
-            -tool {PLACEROUTE} \
-            -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
-            -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
-            -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
-            -file "${project_dir}/constraint/fic_clocks.sdc" \
-            -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
-            -input_type {constraint}
-	}
+	organize_tool_files \
+        -tool {PLACEROUTE} \
+        -file "${project_dir}/constraint/io/ICICLE_CAN0.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_MIKROBUS.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_SDIO.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_USB.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_MAC.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_PCIE.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_MMUART0.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_MMUART1.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_MMUART3.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_MMUART2.pdc" \
+        -file "${project_dir}/constraint/io/ICICLE_RPi.pdc" \
+        -file "${project_dir}/constraint/fp/NW_PLL.pdc" \
+        -file "${project_dir}/constraint/fic_clocks.sdc" \
+        -module {MPFS_ICICLE_KIT_BASE_DESIGN::work} \
+        -input_type {constraint}
 	
     organize_tool_files \
         -tool {VERIFYTIMING} \
@@ -276,54 +220,6 @@ if { [file exists $project_dir/$project_name.prjx] } {
     build_design_hierarchy
 
 
-
-    #
-    # // Apply additional design configurations
-    #
-
-    if {[info exists MSS_BAREMETAL]} {
-	    source script_support/additional_configurations/MSS_BAREMETAL/MSS_BAREMETAL.tcl
-    }
-
-    if {[info exists BFM_SIMULATION]} {
-        source script_support/simulation/Test_bench.tcl
-    }
-
-    if {[info exists AXI4_STREAM_DEMO]} {
-        if {[info exists BFM_SIMULATION]} {
-            source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR_BFM.tcl    
-        } else {
-            source script_support/additional_configurations/AXI4_STREAM_DATA_GENERATOR/AXI4_STREAM_DATA_GENERATOR.tcl    
-        }
-    }
-
-    if {[info exists I2C_LOOPBACK]} {
-        if {[file isdirectory $local_dir/script_support/components/MSS_I2C_LOOPBACK]} {
-            file delete -force $local_dir/script_support/components/MSS_I2C_LOOPBACK
-        }
-        file mkdir $local_dir/script_support/components/MSS_I2C_LOOPBACK
-        create_config $local_dir/script_support/components/MSS/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg
-        update_param $local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg "I2C_1 " "FABRIC"
-        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/I2C_LOOPBACK/ICICLE_MSS_I2C_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_I2C_LOOPBACK
-        source ./script_support/additional_configurations/I2C_LOOPBACK/I2C_LOOPBACK.tcl
-    } elseif {[info exists VECTORBLOX]} {
-        source ./script_support/additional_configurations/Vectorblox/Vectorblox.tcl
-    } elseif {[info exists SPI_LOOPBACK]} {
-        if {[file isdirectory $local_dir/script_support/components/MSS_SPI_LOOPBACK]} {
-            file delete -force $local_dir/script_support/components/MSS_SPI_LOOPBACK
-        }
-        file mkdir $local_dir/script_support/components/MSS_SPI_LOOPBACK
-        create_config $local_dir/script_support/components/MSS/ICICLE_MSS.cfg $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg
-        update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI                                " "UNUSED"
-        update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI_CLK                                " "UNUSED"
-        update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "QSPI_DATA_3_2                                " "UNUSED"
-        update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1                                " "MSSIO_B2_B"
-        update_param $local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg "SPI_1_SS1                                " "FABRIC"
-        exec $mss_config_loc -GENERATE -CONFIGURATION_FILE:$local_dir/script_support/additional_configurations/SPI_LOOPBACK/ICICLE_MSS_SPI_LOOPBACK.cfg -OUTPUT_DIR:$local_dir/script_support/components/MSS_SPI_LOOPBACK
-        source ./script_support/additional_configurations/SPI_LOOPBACK/SPI_LOOPBACK.tcl
-    } elseif {[info exists DRI_CCC_DEMO]} {
-        source ./script_support/additional_configurations/DRI_CCC_DEMO/DRI_CCC_DEMO.tcl
-    }
     #
     # // Derive timing constraints
     #
@@ -358,18 +254,16 @@ if { [file exists $project_dir/$project_name.prjx] } {
 # 
 # Compile and integrate the SmartHLS code
 #
-if {[info exists SMARTHLS]} {
-    if {$isNewProject} {
-        # Prepare the SmartDesign for HLS integration 
-        source ./script_support/additional_configurations/smarthls/pre_hls_integration.tcl
-    }
+if {$isNewProject} {
+    # Prepare the SmartDesign for HLS integration 
+    source ./script_support/additional_configurations/smarthls/pre_hls_integration.tcl
+}
 
-    # If the SmartHLS variable points to a valid SmartHLS project directory, then compile it.
-    # Otherwise, HLS modules can be added later.
-    if {[file isdirectory $SMARTHLS]} {
-        source ./script_support/additional_configurations/smarthls/compile_and_integrate_shls_to_refdesign.tcl
-        derive_constraints_sdc
-    }
+# If the SmartHLS variable points to a valid SmartHLS project directory, then compile it.
+# Otherwise, HLS modules can be added later.
+if {[file isdirectory $SMARTHLS]} {
+    source ./script_support/additional_configurations/smarthls/compile_and_integrate_shls_to_refdesign.tcl
+    derive_constraints_sdc
 }
 
 build_design_hierarchy
@@ -401,11 +295,9 @@ if {[info exists GENERATE_PROGRAMMING_DATA]} {
 }  elseif {[info exists PROGRAM]} {
     run_tool -name {PROGRAMDEVICE}
 } elseif {[info exists EXPORT_FPE]} {   
-    set gUseSPI 0
-    if {[info exists SMARTHLS]} {
-        set gUseSPI [update_snvm_to_spi_ram_cfg $project_dir/designer/MPFS_ICICLE_KIT_BASE_DESIGN/MPFS_ICICLE_KIT_BASE_DESIGN_RAM.cfg ]
-        generate_design_initialization_data
-    }
+    set gUseSPI [update_snvm_to_spi_ram_cfg $project_dir/designer/MPFS_ICICLE_KIT_BASE_DESIGN/MPFS_ICICLE_KIT_BASE_DESIGN_RAM.cfg ]
+    generate_design_initialization_data
+    
     
     set jobPath $local_dir
     if {[file isdirectory $EXPORT_FPE]} {set jobPath $EXPORT_FPE}
