@@ -1,29 +1,25 @@
-This training can be regenerated on Windows using Cygwin or on Linux.
+This training can be regenerated on Windows or on Linux.
 
 -----------------------------------------------------------------------
-Windows (Cygwin):
+Windows:
 -----------------------------------------------------------------------
 
-1. Open Cygwin by running the .bat file from the SmartHLS installation directory, e.g.: 
-
-C:\Microchip\Libero_SoC_v2022.2\SmartHLS-2022.2\cygwin64\Cygwin.bat
+1. Open the Windows command prompt (cmd) and navigate to the current directory.
 
 2. Navigate to this current directory, e.g.:
 
-cd /cygdrive/c/Workspace/fpga-hls-examples-main/Training3/Libero/
+> cd C:\Workspace\fpga-hls-examples-main\Training3\Libero
 
-Note that C:\ is replaced by /cygdrive/c/
+3. Run the following script to generate the HLS example designs:
 
-3. Run the Bash script to generate the HLS example designs:
-
-bash run_shls_on_examples.sh
+> run_shls_on_examples.bat
 
 4. When this completes, use Libero to generate the project. This can be
    done from the shell or the IDE.
 
 4a. Shell: From the same directory, run the command:
 
-libero SCRIPT:libero_flow.tcl LOGFILE:output.log &
+> libero SCRIPT:libero_flow.tcl LOGFILE:output.log &
 
 4b. IDE: 
 - Open Libero
