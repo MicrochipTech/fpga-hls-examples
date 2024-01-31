@@ -24,8 +24,8 @@ January 2024 <br /><br /><br />
 <tr class="even">
 <td>1.1</td>
 <td>June 24, 2022</td>
-<td><p>Corrected figures and runtime after correcting the source files for Section 8</p>
-<p>Fixed PolarFire® SoC registered trademark position</p></td>
+<td><li>Corrected figures and runtime after correcting the source files for Section 8</li>
+<li>Fixed PolarFire® SoC registered trademark position</li></td>
 </tr>
 <tr class="odd">
 <td>2.0</td>
@@ -35,7 +35,7 @@ January 2024 <br /><br /><br />
 <tr class="even">
 <td>3.0</td>
 <td>Jan 22, 2024</td>
-<td><p>Updated for Libero 2024.1</p></td>
+<td>Updated for Libero 2024.1</td>
 </tr>
 </tbody></table>
 
@@ -141,12 +141,10 @@ Download the training design files in advance:
         <https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases>
       - SHA256:
         4a1406ba9e764a94026fcea2ee8fbb84f91384e953e7ba6176fcb7dadcbc5522
-  - Training design files for Section 7 can be found in Github in `<Path to Github Examples>/Training4/vector_add_soc`
-  - Training design files for Section 8 can be found at `<Path to your SmartHLS directory>/boards/iciclekit/ref_design`
-  - The pre-compiled bitstreams can be found at `<Path to Github Examples>/Training4/SmartHLS_Training4_Jobs_2024.1`
+  - Training design files for Section 7 can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
+  - Training design files for Section 8 can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
+  - The pre-compiled bitstreams can be found on Github under [Training4/SmartHLS_Training4_Jobs_2024.1](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/SmartHLS_Training4_Jobs_2024.1)
       - Alternatively, users may regenerate the bitstreams using a .tcl script by following the instructions in section 8.7.
-
-Note: it is important that the versions of bitstreams above and Libero all match/are all compatible with each other.
 
 ## 3.3 PolarFire® SoC Icicle kit Setup
 
@@ -1859,7 +1857,7 @@ bitstream for the PolarFire SoC Reference Design, but with a SmartHLS
 subsystem that contains an invert function accelerator and a
 `threshold_to_zero` function accelerator connected. We have generated
 the bitstream in advance and stored the bitstream in the
-SmartHLS\_Training4\_Jobs\_2023.02.zip file downloaded in section 3.3.
+SmartHLS\_Training4\_Jobs\_2024.1 file downloaded in section 3.3.
 Users can save time by using the precompiled bitstream instead and
 continue onto the next section, section 8.8.
 
@@ -1930,9 +1928,10 @@ still cannot be found, the script will give an error and users will have
 to manually modify the script or add SmartHLS to their PATH environment
 variable.
 
-To use `run_libero.sh` to compile, you will to be able to run `bash` scripts. If you do
-not have this, you will need to use the GUI to compile. First, open your shell and
-navigate to the `icicle-kit-reference-design folder`. Then run
+To use `run_libero.sh` to compile, you will to be able to run `bash` scripts. If you cannot 
+do this, you will need to use the GUI to compile. 
+
+First, open your shell and navigate to the `icicle-kit-reference-design folder`. Then run
 `./script_support/additional_configurations/smarthls/run_libero.sh`.
 
 ```
@@ -2090,35 +2089,53 @@ back to the DDR memory. `threshold_to_zero()` follows a similar flow. In
 total there are four DMA operations.
 
 ![](.//media/image3.png)We can run the software and hardware accelerated
-versions of the code for comparison. First, we open the command line
-interface. If you are using Windows, you need a method of running `bash` scripts.
+versions of the code for comparison. If you are using Linux, open the command line
+interface. If you are using Windows, open the command prompt (cmd).
 
-Add `<SmartHLS Installation Path>/SmartHLS/bin` your PATH environemnt variable.
-If you are on Linux, you can enter the following command:
+Add `<SmartHLS Installation Path>/SmartHLS/bin` your PATH environment variable.
+If you are using Linux, enter the following command:
 ```
-export PATH=<SmartHLS Installation Path>/SmartHLS/bin:$PATH
+$ export PATH=<SmartHLS Installation Path>/SmartHLS/bin:$PATH
 ```
-If you are on Windows, your command will vary depending on what program you are using
-to run the `bash` scripts.
+If you are using Windows, enter the following command:
+```
+> set PATH=<SmartHLS Installation Path>/SmartHLS/bin;%PATH%
+```
 
 ![](.//media/image2.png) After adding SmartHLS to the PATH environment
 variable, export `BOARD_IP` environment variable so that SmartHLS knows
 the IP address of the Icicle board. Please refer to Figure 8‑19 on
-finding out the IP of the Icicle board. If you are using Linux, use the
+finding out the IP of the Icicle board. If you are using Linux, enter the
 following command:
 ```
-export BOARD_IP=<Your Icicle Board IP>
+$ export BOARD_IP=<Your Icicle Board IP>
 ```
+If you are using Windows, enter the following command:
+```
+> set BOARD_IP=<Your Icicle Board IP>
+```
+
 ![](.//media/image2.png)Now that we have finished setting up the
 environment, we can move on compiling and running the software. Go to
-your Icicle Kit Reference Design folder, and then run:
+your Icicle Kit Reference Design folder. If you are using Linux, run the following 
+commands:
 ```
-cd script_support/additional_configurations/smarthls/invert_and_threshold
+$ cd script_support/additional_configurations/smarthls/invert_and_threshold
 
-./compile_sw.shls.sh
+$ ./compile_sw.shls.sh
 
-./run_sw.shls.sh
+$ ./run_sw.shls.sh
 ```
+
+If you are using Windows, run the following commands:
+```
+> cd script_support\additional_configurations\smarthls\invert_and_threshold
+
+> compile_sw.shls.bat
+
+> run_sw.shls.bat
+```
+
 You might see a warning about “REMOTE HOST IDENTIFICATION HAS CHANGED”
 because we have changed the OS image. Simply remove previous ssh info by
 doing a “`rm ~/.ssh`” and accept the new RSA fingerprint the next time
@@ -2332,20 +2349,33 @@ repeatedly.
 SRCS = main_variations/main.cpu_usage.cpp
 ```
 
-Open a terminal on the Icicle board and run the Linux `top` command
+Open a terminal on the Icicle board and run the Linux `top` command:
 ```
-> ssh root@$BOARD\_IP
+$ ssh root@$BOARD\_IP
 
-> top
+$ top
 ```
-In another terminal, compile the software and run again:
-```
-> shls clean
 
-> ./compile_sw.shls.sh
+In another terminal, compile the software and run again. If you are using Linux, run:
 
-> ./run_sw.shls.sh
 ```
+$ shls clean
+
+$ ./compile_sw.shls.sh
+
+$ ./run_sw.shls.sh
+```
+
+If you are using Windows, run:
+
+```
+> shls.bat clean
+
+> compile_sw.shls.bat
+
+> run_sw.shls.bat
+```
+
 Running software-only causes the CPU to reach 100% usage:
 
 <p align="center">
@@ -2437,14 +2467,24 @@ in the next section.
 SRCS = main_variations/main.non-blocking.cpp
 ```
 
-Then compile the software and run again:
+Then compile the software and run again. For Linux:
 ```
-> shls clean
+$ shls clean
 
-> ./compile_sw.shls.sh
+$ ./compile_sw.shls.sh
 
-> ./run_sw.shls.sh
+$ ./run_sw.shls.sh
 ```
+
+For Windows:
+```
+> shls.bat clean
+
+> compile_sw.shls.bat
+
+> run_sw.shls.bat
+```
+
 <p align="center">
 <img src=".//media/image76.png" />
 <p align="center">Figure 8‑36 Runtime Results of main.non-blocking.cpp</p></p>
@@ -2462,8 +2502,8 @@ the same DMA.
 In the past sections we have only been changing the software, and have
 made no changes regarding the hardware. Now we will change the hardware
 and generate a new bitstream. Alternatively, you can use the
-`INVERT_AND_THRESHOLD_FIFO.job` precompiled bitstream in
-SmartHLS\_Training4\_Jobs\_2023.02.zip.
+`INVERT_AND_THRESHOLD_FIFO.job` precompiled bitstream in the
+SmartHLS\_Training4\_Jobs\_2024.1 folder on Github.
 
 In this example, we will refactor the code and merge the two functions,
 `invert()` and `threshold_to_zero()`, into a single top function called
@@ -2474,7 +2514,7 @@ functions internally as shown in Figure 8‑37.
 <img src=".//media/image77.png" />
 <p align="center">Figure 8‑37 Data Movement of main.fifo.cpp</p></p>
 
-We consolidated invert and threshold\_to\_zero into a single top module,
+We consolidated `invert` and `threshold_to_zero` into a single top module,
 instead of two independent cores before. Normally, a user would have to
 disconnect and remove the previous two modules by hand using the GUI or
 via TCL commands to reconnect the new single hardware module. SmartHLS
@@ -2497,10 +2537,10 @@ how this new accelerator is implemented in SmartHLS:
 ```
 <p align="center">Figure 8‑38 Thread and FIFO in main.fifo.cpp</p>
 
-The operations performed in the invert\_and\_threshold\_to\_zero()
+The operations performed in the `invert_and_threshold_to_zero()`
 function is a classic example of the producer-consumer pattern. The in
 data is received from the AXI target interface and passed to each stage
-of the computation, namely invert and threshold\_to\_zero. We use a
+of the computation, namely `invert` and `threshold_to_zero`. We use a
 thread
 ([hls::thread](https://microchiptech.github.io/fpga-hls-docs/optimizationguide.html#inferring-streaming-hardware-via-producer-consumer-pattern-with-threads))
 for each stage as each stage can be run independently as long as there
@@ -2521,7 +2561,7 @@ By combining the 2 functions into one, we achieved the following:
     image data stays longer on the fabric increasing the amount of
     computation per data movement to/from the CPU.
 
-![](.//media/image3.png) Modify the Makefile.user and select: 
+![](.//media/image3.png) Modify the `Makefile.user` and select: 
 ```
 SRCS = main_variations/main.fifo.cpp
 ```
@@ -2532,16 +2572,26 @@ FPGA bitstream](#programming-the-fpga-bitstream) because this variation
 requires a hardware change.
 
 Alternatively, you can use the `INVERT_AND_THRESHOLD_FIFO.job`
-precompiled bitstream in SmartHLS\_Training4\_Jobs\_2023.02.zip.
+precompiled bitstream in SmartHLS\_Training4\_Jobs\_2024.1 folder on Github.
 
-Then compile the software and run again:
+Then compile the software and run again. On Linux:
 ```
-> shls clean
+$ shls clean
 
-> ./compile_sw.shls.sh
+$ ./compile_sw.shls.sh
 
-> ./run_sw.shls.sh
+$ ./run_sw.shls.sh
 ```
+
+On Windows:
+```
+> shls.bat clean
+
+> compile_sw.shls.bat
+
+> run_sw.shls.bat
+```
+
 <p align="center">
 <img src=".//media/image78.png" />
 <p align="center">Figure 8‑39 main.fifo.cpp Runtime with Hardware Acceleration</p></p>
