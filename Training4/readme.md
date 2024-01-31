@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">SmartHLS™ Training for Microchip PolarFire® SoC Flow <br /></h1>
+<h1 style="text-align: center;">SmartHLS™ Training for Microchip PolarFire® SoC Flow</h1>
 <h2 style="text-align: center;">
 Revision 3.0 <br />
 January 2024 <br /><br /><br />
@@ -1665,7 +1665,7 @@ This custom flow (not SmartHLS) continues with synthesis,
 place-and-route, and bitstream generation.
 
 <p align="center">
-<img src=".//media/image55.png" />
+<img src=".//media/custom_flow.drawio.png" />
 <p align="center">Figure 8‑6 Steps for User-Defined SoC with SmartHLS Integration</p></p>
 
 Compilation of the SmartHLS modules can be done *on-the-fly* using a TCL
