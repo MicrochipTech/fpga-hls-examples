@@ -47,11 +47,11 @@ January 2024 <br /><br /><br />
 
 [3 Requirements](#3-requirements)
 
-[3.1 Software Requirements](#31-software-requirements)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Software Requirements](#31-software-requirements)
 
-[3.2 Download Training Design Files](#32-download-training-design-files)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2 Download Training Design Files](#32-download-training-design-files)
 
-[3.3 PolarFire® SoC Icicle kit Setup](#33-polarfire-soc-icicle-kit-setup)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3 PolarFire® SoC Icicle kit Setup](#33-polarfire-soc-icicle-kit-setup)
 
 [4 Introduction](#4-introduction)
 
@@ -59,57 +59,57 @@ January 2024 <br /><br /><br />
 
 [6 Application Example: Vector Addition](#6-application-example-vector-addition)
 
-[6.1 Creating a new Project](#61-creating-a-new-project)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.1 Creating a new Project](#61-creating-a-new-project)
 
-[6.2 SmartHLS IP Flow](#62-smarthls-ip-flow)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2 SmartHLS IP Flow](#62-smarthls-ip-flow)
 
-[6.2.1 Vector Add: Design Description](#621-vector-add-design-description)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.1 Vector Add: Design Description](#621-vector-add-design-description)
 
-[6.2.2 Compile Software to Hardware Reports](#622-compile-software-to-hardware-reports)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.2 Compile Software to Hardware Reports](#622-compile-software-to-hardware-reports)
 
-[6.2.3 Generated Verilog Output](#623-generated-verilog-output)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.3 Generated Verilog Output](#623-generated-verilog-output)
 
-[6.2.4 Running Co-Simulation](#624-running-co-simulation)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.4 Running Co-Simulation](#624-running-co-simulation)
 
-[6.2.5 Libero Synthesis and Hardware Report](#625-libero-synthesis-and-hardware-report)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.5 Libero Synthesis and Hardware Report](#625-libero-synthesis-and-hardware-report)
 
-[6.2.6 SmartHLS Generated Software Driver APIs](#626-smarthls-generated-software-driver-apis)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.6 SmartHLS Generated Software Driver APIs](#626-smarthls-generated-software-driver-apis)
 
-[6.3 SmartHLS SoC Flow](#63-smarthls-soc-flow)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.3 SmartHLS SoC Flow](#63-smarthls-soc-flow)
 
-[6.3.1 SoC Data Transfer Methods](#631-soc-data-transfer-methods)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.3.1 SoC Data Transfer Methods](#631-soc-data-transfer-methods)
 
-[6.4 SmartHLS Memory Allocation Library](#64-smarthls-memory-allocation-library)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.4 SmartHLS Memory Allocation Library](#64-smarthls-memory-allocation-library)
 
 [7 Running Vector-Add Reference SoC Generation on the Board](#7-running-vector-add-reference-soc-generation-on-the-board)
 
 [8 Integrating SmartHLS into an Existing SoC design](#8-integrating-smarthls-into-an-existing-soc-design)
 
-[8.1 Motivation](#81-motivation)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.1 Motivation](#81-motivation)
 
-[8.2 Example: Integrate SmartHLS into the PolarFire® SoC Icicle Kit Reference Design](#82-example-integrate-smarthls-into-the-polarfire-soc-icicle-kit-reference-design)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.2 Example: Integrate SmartHLS into the PolarFire® SoC Icicle Kit Reference Design](#82-example-integrate-smarthls-into-the-polarfire-soc-icicle-kit-reference-design)
 
-[8.3 Custom Flow Integration](#83-custom-flow-integration)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.3 Custom Flow Integration](#83-custom-flow-integration)
 
-[8.4 Simple Image Processing Example](#84-simple-image-processing-example)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.4 Simple Image Processing Example](#84-simple-image-processing-example)
 
-[8.5 Flashing PolarFire® SoC Icicle Kit Reference Design](#85-flashing-polarfire-soc-icicle-kit-reference-design)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.5 Flashing PolarFire® SoC Icicle Kit Reference Design](#85-flashing-polarfire-soc-icicle-kit-reference-design)
 
-[8.6 Extract the Icicle Kit Reference Design Files](#86-extract-the-icicle-kit-reference-design-files)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.6 Extract the Icicle Kit Reference Design Files](#86-extract-the-icicle-kit-reference-design-files)
 
-[8.7 Compiling the hardware](#87-compiling-the-hardware)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.7 Compiling the hardware](#87-compiling-the-hardware)
 
-[8.8 Programming the FPGA bitstream](#88-programming-the-fpga-bitstream)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8 Programming the FPGA bitstream](#88-programming-the-fpga-bitstream)
 
-[8.8.1 Chaining HW modules using CPU shared memory (main.simple.cpp)](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.1 Chaining HW modules using CPU shared memory (main.simple.cpp)](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
 
-[8.8.2 CPU usage (main.cpu\_usage.cpp)](#882-cpu-usage-maincpu_usagecpp)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.2 CPU usage (main.cpu\_usage.cpp)](#882-cpu-usage-maincpu_usagecpp)
 
-[8.8.3 Non-blocking hardware execution](#883-non-blocking-hardware-execution)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.3 Non-blocking hardware execution](#883-non-blocking-hardware-execution)
 
-[8.8.4 Chaining using FIFOs](#884-chaining-using-fifos)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.4 Chaining using FIFOs](#884-chaining-using-fifos)
 
-[8.8.5 Summary](#885-summary)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.5 Summary](#885-summary)
 
 [9 Current limitations of the SoC flow](#9-current-limitations-of-the-soc-flow)
 
