@@ -238,13 +238,20 @@ module top_sync_vg_pattern
 		.r_out(r_out),
 		.g_out(g_out),
 		.b_out(b_out),
-		.total_active_pix(H_TOTAL - (H_FP + H_BP + H_SYNC)), // (1920) // h_total - (h_fp+h_bp+h_sync)
-		.total_active_lines(INTERLACED ? (V_TOTAL_0 - (V_FP_0 + V_BP_0 + V_SYNC_0)) + (V_TOTAL_1 - (V_FP_1 + V_BP_1 + V_SYNC_1)) : (V_TOTAL_0 - (V_FP_0 + V_BP_0 + V_SYNC_0))), // originally: 13'd480
+		.total_active_pix(active_pix),
+		.total_active_lines(active_lines),
 //		.pattern(PATTERN_TYPE),
 		.pattern(pattern_i),
 		.ramp_step(PATTERN_RAMP_STEP)
 	);
 	
+    wire [11:0] active_pix = H_TOTAL - (H_FP + H_BP + H_SYNC);
+    wire [11:0] active_lines = (
+        INTERLACED ? 
+        (V_TOTAL_0 - (V_FP_0 + V_BP_0 + V_SYNC_0)) + (V_TOTAL_1 - (V_FP_1 + V_BP_1 + V_SYNC_1)) :
+        (V_TOTAL_0 - (V_FP_0 + V_BP_0 + V_SYNC_0))
+    ); // originally: 13'd480
+
 	assign TPG_CLK_o = ~clk_i;
     
     always@(posedge clk_i or negedge resetb_i)
