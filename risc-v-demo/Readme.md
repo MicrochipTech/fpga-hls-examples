@@ -1,4 +1,4 @@
-# End-to-end SmartHLS + RISC-V + H264 over Ethernet Example
+  # End-to-end SmartHLS + RISC-V + H264 over Ethernet Example
 
 This SmartHLS example is meant to show how to perform simple, real-time and live 
 video processing within an end-to-end system including the interaction and 
@@ -143,12 +143,7 @@ update the parameters and recompile the bitstream.**
 
 ## Downloading Software Dependencies
 
-The precompiled libraries are downloaded from this [link](https://www.microchip.com/en-us/software-library/smarthls-compiled-open-source-libraries). For convenience, there is a script that can download them. From a Linux terminal (or cygwin terminal in Windows) run the following:
-
-```
-cd precompiiled/shls_sw_dependencies
-./download_precopiled_libraries.sh
-```
+The precompiled libraries are included with your installation of SHLS, under `<SmartHLS INSTALLATION DIR>\smarthls-library\external\vision\precompiled_sw_libraries`.
 
 ## Board Setup
 
@@ -243,8 +238,7 @@ now updated.
 ### Flashing the Board on Windows
 
 On Windows, you can either use a program like [Balena's Etcher](https://etcher.balena.io) 
-or use the `zcat` command inside the Cygwin terminal to program the flash memory.
-Cygwin is included in the SmartHLS installation.
+or use a shell that can run the the `zcat`, such as Cygwin, to program the flash memory.
 
 <ins>Using Balena Etcher<ins>
 
@@ -271,25 +265,23 @@ After the flashing command completes, you should disconnect the mounted drive,
 by typing `Ctrl+C` in the HSS Serial Terminal. The Linux image on the board is 
 now updated.
 
-<ins>Using Cygwin<ins>
+<ins>Using `zcat`<ins>
 
-To open the Host PC Terminal users should open `Cygwin` that is shipped with SmartHLS. 
-Open Windows File Explorer, then navigate to the SmartHLS installation directory:
-`<SMARTHLS_INSTALLATION_DIR>/cygwin64/`.  Then right-click on `Cygwin.bat` and 
+To open the Host PC Terminal users should open their shell and 
 choose “Run as administrator”. Administrator rights are required to flash the 
 Linux image to the board.
 
-In Cygwin, enter the command `ls /dev/sd*`, and take note of what appears.
+Enter the command `ls /dev/sd*`, and take note of what appears.
 This will be used in a later step to help determine the device name of the eMMC flash memory.
 To flash the Linux image we first need to expose the eMMC flash memory as a USB 
 storage device to the host PC. Make sure you have connected the `j19` USB port on
 the board to your PC. 
 
- In the Cygwin terminal, type the `ls /dev/sd*` command again, and compare with 
+Type the `ls /dev/sd*` command again, and compare with 
  what you saw in the earlier step. Note which device has showed up, as it will be 
  the eMMC flash memory on the board. 
  
-To use `zcat` command inside the Cygwin terminal, navigate to the example folder and
+To use `zcat` command, navigate to the example folder and
 use the following command (replace `sdx` with the new sd device name you have for the
 flash memory):
 
@@ -359,18 +351,18 @@ has been setup correctly, let's setup the software for the example.
 
 In Section [Setup static IP address](#setup-static-ip-address) the board IPv4 
 address was set to `192.168.2.1`. If you changed that, then open the `setup.sh` 
-file and adjust the `BOARD_IP` variable accordingly. After that run the setup 
-script from a command-line terminal under the `precompiled` directory. 
-
-**NOTE:** If you 
-are using Windows, you can open a Cygwin terminal by executing the `Cygwin.bat` 
-file included in the SmartHLS installation, for example, 
-`C:\Microchip\Libero_SoC_v20XX.Y\SmartHLS-20XX.Y\cygwin64\Cygwin.bat`.
-
-
+or `setup.bat` file, depending on if you're using Linux or Windows, and adjust the `BOARD_IP` 
+variable accordingly. After that run the setup 
+script from a command-line terminal under the `precompiled` directory. If you are 
+using Linux, run:
 ```
 bash> cd precompiled
 bash> setup.sh
+```
+If you are using Windows, run:
+```
+cd precompiled
+setup.bat
 ```
 
 This script will copy the OpenCV and FFMPEG libraries, the files for the control 
@@ -392,7 +384,7 @@ You should see the SmartHLS example GUI show up. Then you can click on the `Star
 button and at the top-left corner you should see the Frames-Per-Second counter 
 changing. Otherwise, something went wrong during the setup process. 
 
-To watch the streaming video, click on the `SDP File`` button at the bottom-right
+To watch the streaming video, click on the `SDP File` button at the bottom-right
 corner and open it with the VLC software or any other Video player that supports
 that format. 
 
