@@ -6,7 +6,7 @@ compile the application software and update the example webpage on the board.
 
 ## Requirements To Recompile the Example:
 
-- Use Libero/SmartHLS release 2023.2
+- Use Libero/SmartHLS release 2024.1
 - Use the PolarFireSoC Video Kit with Production Silicon.  For boards with 
   Engineering Sample silicon you would need to change the project parameters in 
   the `sev-kit-reference-design/MPFS_SEV_KIT_REFERENCE_DESIGN.tcl` file. 
