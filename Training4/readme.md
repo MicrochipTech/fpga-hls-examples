@@ -143,7 +143,7 @@ Download the training design files in advance:
         4a1406ba9e764a94026fcea2ee8fbb84f91384e953e7ba6176fcb7dadcbc5522
   - Training design files for Section 7 can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
   - Training design files for Section 8 can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
-  - The pre-compiled bitstreams can be found on Github under [Training4/SmartHLS_Training4_Jobs](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/SmartHLS_Training4_Jobs)
+  - The pre-compiled bitstreams can be found on Github under [Training4/precompiled-binaries](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/precompiled-binaries)
       - Alternatively, users may regenerate the bitstreams using a .tcl script by following the instructions in section 8.7.
 
 ## 3.3 PolarFire® SoC Icicle kit Setup
@@ -1900,7 +1900,7 @@ bitstream for the PolarFire SoC Reference Design, but with a SmartHLS
 subsystem that contains an invert function accelerator and a
 `threshold_to_zero` function accelerator connected. We have generated
 the bitstream in advance and stored the bitstream in the
-`SmartHLS_Training4_Jobs` folder downloaded in section 3.3.
+`precompiled-binaries` folder downloaded in section 3.3.
 Users can save time by using the precompiled bitstream instead and
 continue onto the next section, section 8.8.
 
@@ -2027,7 +2027,7 @@ job file* radio button, and navigate to Icicle reference design folder
 to select the generated bitstream from Section 8.7 `<icicle-kit-reference-design>\soc\Icicle_SoC.job`
 
 If you have skipped the previous section, you can program with the
-precompiled .job file in the Jobs folder `SmartHLS_Training4_Jobs\INVERT_AND_THRESHOLD_SIMPLE.job`.
+precompiled .job file in the Jobs folder `precompiled-binaries\INVERT_AND_THRESHOLD_SIMPLE.job`.
 
 Set your FPExpress project location to wherever you please, then click
 *OK*.
@@ -2546,7 +2546,7 @@ In the past sections we have only been changing the software, and have
 made no changes regarding the hardware. Now we will change the hardware
 and generate a new bitstream. Alternatively, you can use the
 `INVERT_AND_THRESHOLD_FIFO.job` precompiled bitstream in the
-`SmartHLS_Training4_Jobs` folder on Github.
+`precompiled-binaries` folder on Github.
 
 In this example, we will refactor the code and merge the two functions,
 `invert()` and `threshold_to_zero()`, into a single top function called
@@ -2615,7 +2615,7 @@ FPGA bitstream](#programming-the-fpga-bitstream) because this variation
 requires a hardware change.
 
 Alternatively, you can use the `INVERT_AND_THRESHOLD_FIFO.job`
-precompiled bitstream in `SmartHLS_Training4_Jobs` folder on Github.
+precompiled bitstream in `precompiled-binaries` folder on Github.
 
 Then compile the software and run again. On Linux:
 ```
