@@ -289,7 +289,7 @@ and select “Example Project 5: Vector Add” from the list of example
 projects, as shown in Figure 6‑3. Then click on *Next*.
 
 <p align="center">
-<img src=".//media/image13.jpeg" />
+<img src=".//media/image13.png" />
 <p align="center">Figure 6‑3 Creating Vector Add SmartHLS Project</p></p>
 
 
@@ -539,11 +539,17 @@ IDE.
 ![](.//media/image3.png) Now, execute the compiled software by clicking
 on the *Run Software* icon ![](.//media/image21.png) in the toolbar. You
 should see the message *RESULT: PASS* appearing in the *Console* window,
-as shown in Figure 6‑13.
+as shown below.
 
-<p align="center">
-<img src=".//media/image22.png" />
-<p align="center">Figure 6‑13 Compile Software Successful</p></p>
+```
+13:58:58 **** Build of configuration LegUp for project vector_add_soc ****
+"C:\\Microchip\\SmartHLS-2024.1\\SmartHLS\\bin\\shls.bat" -s sw_compile sw_run 
+Info: Running the following targets: sw_compile sw_run
+Info: Compiling Software...
+RESULT: PASS
+
+13:59:06 Build Finished (took 7s.703ms)
+```
 
 ![](.//media/image3.png)Now we can compile the C++ software into
 hardware using SmartHLS by clicking on the toolbar icon
@@ -625,8 +631,8 @@ should be 512 bits (16x32).
 <p align="center">Figure 6‑15 An Example I/O Memory Usage Table</p>
 
 The report section on the AXI4 target interface address map, is shown
-below in Figure 6‑16. This section first confirms that “Yes”
-(highlighted) this HLS accelerator is compatible with the reference SoC
+below in Figure 6‑16. This section first confirms that **“Yes”**
+ this HLS accelerator is compatible with the reference SoC
 features (to be covered in Section 6.3). An accelerator is compatible if
 the control and all function arguments have an interface type of either
 `axi_target` or `axi_initiator`, so that the accelerator can be
@@ -648,7 +654,7 @@ array elements (SIZE) x 4 bytes per element (int) = 64 bytes.
 ```
 ====== 4. AXI4 Target Interface Address Map ======
 
-Compatibility of HLS accelerator with reference SoC features: Yes.\
+Compatibility of HLS accelerator with reference SoC features: Yes.
 Default base address in reference SoC: 0x70000000.
 
 +---------------------------------------------------------------------------------+
@@ -685,19 +691,16 @@ If you open the Verilog file you will see the `clk`, `reset`, and AXI Target
 interface port (`axi4target`) as shown in Figure 6‑18.
 
 ```
-module vector_add_axi_target_memcpy_top # (     
-  parameter ADDR_WIDTH = 8,                           
-  parameter AXI_DATA_WIDTH = 64,                     
-  parameter AXI_ID_WIDTH = 1                         
-) (                                                  
+module vector_add_axi_target_memcpy_top
+(                                               
   input  clk,                                           
-  input  reset,                                         
+  input  reset,   
 
-  output                          axi4target_arready,                      
-  input                           axi4target_arvalid,                       
-  input  [ADDR_WIDTH - 1:0]       axi4target_araddr,  
-  input  [AXI_ID_WIDTH - 1:0]     axi4target_arid, 
-  input  [1:0]                    axi4target_arburst,               
+  output                          axi4target_arready,
+  input                           axi4target_arvalid,
+  input  [8 - 1:0] axi4target_araddr,
+  input  [1 - 1:0] axi4target_arid,
+  input  [1:0]                    axi4target_arburst,                 
   ...                                                  
 ```
 <p align="center">Figure 6‑18 Snippet of vector_add_soc_vector_add_axi_target_memcpy.v</p>
@@ -780,7 +783,7 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as shown below in Figure 6‑20. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2022.1. The timing results and resource usage
+tutorial used Libero® SoC v2024.1. The timing results and resource usage
 might also differ depending on the random seed used in the Libero tool
 flow.
 
@@ -789,7 +792,7 @@ flow.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 5.000 ns      | 200.000 MHz | 1.455 ns    | 3.545 ns | 282.087 MHz |
+| clk          | 5.000 ns      | 200.000 MHz | 1.622 ns    | 3.378 ns | 296.033 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
 When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the critical path of the system.
@@ -798,16 +801,16 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-------------------+--------+------------+
 | Resource Type            | Used              | Total  | Percentage |
 +--------------------------+-------------------+--------+------------+
-| Fabric + Interface 4LUT* | 1284 + 336 = 1620 | 254196 | 0.64       |
-| Fabric + Interface DFF*  | 388 + 336 = 724   | 254196 | 0.28       |
+| Fabric + Interface 4LUT* | 1219 + 240 = 1459 | 254196 | 0.57       |
+| Fabric + Interface DFF*  | 397 + 240 = 637   | 254196 | 0.25       |
 | I/O Register             | 0                 | 432    | 0.00       |
 | User I/O                 | 0                 | 144    | 0.00       |
-| uSRAM                    | 22                | 2352   | 0.94       |
+| uSRAM                    | 14                | 2352   | 0.60       |
 | LSRAM                    | 2                 | 812    | 0.25       |
 | Math                     | 0                 | 784    | 0.00       |
 +--------------------------+-------------------+--------+------------+
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 2) + (36 * 0) + (12 * 22) = 336.
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 2) + (36 * 0) + (12 * 14) = 240.
 ```
 
 <p align="center">Figure 6‑20 Timing and Resource Usage Results</p>
@@ -916,7 +919,7 @@ the report (see Figure 6‑23) and can be modified when incorporating
 these driver functions into your own hardware system if the accelerator
 base address changes.
 
-<u><p align="center">`vector_add_soc_accelerator_driver.h`</p></u>
+<u><p align="center">`vector_add_soc_memory_map.h`</p></u>
 ```
 10  #define VECTOR_ADD_AXI_TARGET_MEMCPY_BASE_ADDR 0x70000000 
 11  #define VECTOR_ADD_AXI_TARGET_MEMCPY_SPAN_ADDR 0x100      
@@ -944,7 +947,7 @@ Default base address in reference SoC: 0x70000000.
 <p align="center">Figure 6‑23 Module Base Address and Span in Header File</p>
 
 ![](.//media/image3.png) Open `vector_add_soc_accelerator_driver.cpp`.
-Line 137 to line 164 are the control module functions for the
+Line 137 to line 165 are the control module functions for the
 `vector_add_axi_target_memcpy` top function.
 `vector_add_axi_target_memcpy_start()` writes to the
 `vector_add_axi_target_memcpy` accelerator control register to start
@@ -989,7 +992,7 @@ parameters.
 
 <p align="center">Figure 6‑24 Control Module Function of vector_add_axi_target_memcpy Top Module</p>
 
-![](.//media/image3.png)Go to line 167.
+![](.//media/image3.png)Go to line 168.
 `vector_add_axi_target_memcpy_hls_driver()` is the direct
 replacement function for the software version of
 `vector_add_axi_target_memcpy()`. SmartHLS will automatically replace
@@ -1001,52 +1004,52 @@ parameters as `vector_add_axi_target_memcpy()`, but the parameters are
 casted into void pointers, as void pointers can be used to point to any
 data type.
 ```
-167  // This is a blocking function that calls and waits for the accelerator to return.                                            
-168  // The return value is the result computed by the accelerator.                                                                
-169  void vector_add_axi_target_memcpy_hls_driver(void* in, void* out) {                                  
-170                                                                                                                                
-171    vector_add_axi_target_memcpy_write_input_and_start(in);                                                               
-172    vector_add_axi_target_memcpy_join_and_read_output(out);                                                               
-173  }                                                                                                                             
-174                                                                                                                                
+168  // This is a blocking function that calls and waits for the accelerator to return.                                            
+169  // The return value is the result computed by the accelerator.                                                                
+170  void vector_add_axi_target_memcpy_hls_driver(void* in, void* out) {                                  
+171                                                                                                                                
+172    vector_add_axi_target_memcpy_write_input_and_start(in);                                                               
+173    vector_add_axi_target_memcpy_join_and_read_output(out);                                                               
+174  }                                                                                                                             
 175                                                                                                                                
-176  // This is a non-blocking function that starts the computation on the accelerator.                                            
-177  // Use vector_add_axi_target_memcpy_join() to wait for the accelerator to finish and return with the result.             
-178  void vector_add_axi_target_memcpy_write_input_and_start(void* in) {                                      
-179                                                                                                                                
-180  // Run setup function                                                                                                         
-181  if (vector_add_axi_target_memcpy_setup() == 1) {                                                                     
-182  printf("Error: setup function failed for invert");                                                                            
-183  exit(EXIT_FAILURE);                                                                                                          
-184  }                                                                                                                             
-185                                                                                                                                
-186  vector_add_axi_target_memcpy_memcpy_write_a(a, 64);                                                                    
-187  vector_add_axi_target_memcpy_memcpy_write_b(b, 64);                                                                    
-188                                                                                                                                
-189  vector_add_axi_target_memcpy_start();                                                                                    
-190                                                                                                                               
-191  }                                                                                                                             
-192                                                                                                                                
+176                                                                                                                                
+177  // This is a non-blocking function that starts the computation on the accelerator.                                            
+178  // Use vector_add_axi_target_memcpy_join() to wait for the accelerator to finish and return with the result.             
+179  void vector_add_axi_target_memcpy_write_input_and_start(void* in) {                                      
+180                                                                                                                                
+181  // Run setup function                                                                                                         
+182  if (vector_add_axi_target_memcpy_setup() == 1) {                                                                     
+183  printf("Error: setup function failed for invert");                                                                            
+184  exit(EXIT_FAILURE);                                                                                                          
+185  }                                                                                                                             
+186                                                                                                                                
+187  vector_add_axi_target_memcpy_memcpy_write_a(a, 64);                                                                    
+188  vector_add_axi_target_memcpy_memcpy_write_b(b, 64);                                                                    
+189                                                                                                                                
+190  vector_add_axi_target_memcpy_start();                                                                                    
+191                                                                                                                               
+192  }                                                                                                                             
 193                                                                                                                                
-194  // This is a blocking function that waits for the computation started by vector_add_axi_target_memcpy _start() to return. 
-195  // The return value is the result computed by the accelerator.                                                                
-196  void vector_add_axi_target_memcpy_join_and_read_output(void* out) {                                      
-197                                                                                                                                
-198  vector_add_axi_target_memcpy_join();                                                                                     
-199                                                                                                                                
-200  vector_add_axi_target_memcpy_memcpy_read_result(result, 64);                                                           
-201                                                                                                                                
-202  }                                                                                                                             
+194                                                                                                                                
+195  // This is a blocking function that waits for the computation started by vector_add_axi_target_memcpy _start() to return. 
+196  // The return value is the result computed by the accelerator.                                                                
+197  void vector_add_axi_target_memcpy_join_and_read_output(void* out) {                                      
+198                                                                                                                                
+199  vector_add_axi_target_memcpy_join();                                                                                     
+200                                                                                                                                
+201  vector_add_axi_target_memcpy_memcpy_read_result(result, 64);                                                           
+202                                                                                                                                
+203  }                                                                                                                             
 ```
 <p align="center">Figure 6‑25 Top-Level Function for vector_add_axi_target_memcpy Top Module</p>
 
-On line 169, `vector_add_axi_target_memcpy_hls_driver()` makes a
+On line 170, `vector_add_axi_target_memcpy_hls_driver()` makes a
 call to the non-blocking
 `vector_add_axi_target_memcpy_write_input_and_start()`
 function that writes the input arguments and starts the accelerator.
 Then, `vector_add_axi_target_memcpy_hls_driver()` calls the
 blocking `vector_add_axi_target_memcpy_join_and_read_output()`
-function on line 172 to wait for and read back the accelerator’s output.
+function on line 173 to wait for and read back the accelerator’s output.
 Users can use
 `vector_add_axi_target_memcpy_write_input_and_start()` to
 start the calculation, then execute other computations on the MSS in
@@ -1135,7 +1138,7 @@ for RISC-V* and *Program board with prebuilt bitstream*.
 <img src=".//media/image32.png" />
 <p align="center">Figure 6-28: Base SoC with no HLS Accelerators menu options</p>
 
-There are 6 options under *Reference SoC with HLS Accelerator(s)* as
+There are 7 options under *Reference SoC with HLS Accelerator(s)* as
 shown in Figure 6-29. There are 3 more options than Figure 6-28 because
 the bitstream is not prebuilt like the Base SoC. We have additional
 steps to generate the Libero design, run RTL synthesis, and run
@@ -1337,7 +1340,7 @@ line 123. The interface type for arguments `a`, `b` and `result` is set to
 `axi_initator` on lines 125-129. The `ptr_addr_interface` sub-option on
 line 126 specifies the type of interface that is used to receive the
 pointer address to access the argument. In this case, the pointer
-address of argument "`a` will be received with the AXI target interface
+address of argument "`a`" will be received with the AXI target interface
 as shown in Figure 6‑36, and this pointer address will be used to access
 the data for argument "`a`" with the AXI initiator interface as shown in
 Figure 6‑37. If the `ptr_addr_interface` is not specified, for example
@@ -1474,8 +1477,7 @@ clicking on `vector_add_soc` then *New -\> File* (Figure 7‑1).
 <img src=".//media/image48.png" />
 <p align="center">Figure 7‑1 Creating a New File</p>
 
-![](.//media/image3.png) Insert a line for your board’s network IP
-address, like what is shown in Figure 7‑2.
+![](.//media/image3.png) Insert a line for your board’s network IP, like what is shown in Figure 7‑2.
 
 ```
 BOARD_IP = <Your Board IP> 
@@ -1504,9 +1506,21 @@ programmed, you will see the message in Figure 7‑4.
 <img src=".//media/image49.png" />
 <p align="center">Figure 7‑3 Program Board with Prebuilt Bitstream Option Menu</p></p>
 
-<p align="center">
-<img src=".//media/image50.png" />
-<p align="center">Figure 7‑4 Program Board Successful</p></p>
+
+```
+programmer '1380218' : device 'MPFS250T_ES' : Executing action PROGRAM PASSED.
+programmer '1380218' : Chain programming PASSED.
+Chain Programming Finished: Tue Feb  6 15:32:09 2024 (Elapsed time 00:00:58)
+
+                        o - o - o - o - o - o
+
+The 'run_selected_actions' command succeeded.
+The Execute Script command succeeded.
+Exported log file C:/Developers/hls_workspace/11/hls_output/FPExpress_project/job.log.
+
+15:32:09 Build Finished (took 1m:13s.617ms)
+```
+<p align="center">Figure 7‑4 Program Board Successful</p>
 
 ![](.//media/image3.png)Users can run their program entirely in software
 on the MSS without calling the accelerators. This is useful for
@@ -1523,9 +1537,37 @@ correct result should see `RESULT: PASS` as seen on Figure 7‑6.
 <img src=".//media/image51.png" />
 <p align="center">Figure 7‑5 Run Software without Accelerators Option Menu</p></p>
 
-<p align="center">
-<img src=".//media/image52.png" />
-<p align="center">Figure 7‑6 Expected Output from Running Software on Board</p></p>
+
+```
+Info: Running the following targets: soc_base_proj_run
+----------------------------------------------------------------------------
+Smart High-Level Synthesis Tool Version 2024.1
+Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
+For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
+Date: Tue Feb  6 16:32:58 2024
+----------------------------------------------------------------------------
+Info: Checking for SmartHLS feature license.
+Info: SmartHLS feature license was successfully checked out.
+Info: The Programmer ID is not set. All connected programmers will be programmed. If only one of the multiple connected programmers is to be programmed, please specify it using "board.programmerID" in projConfig.json
+Info: Waiting on board ready...
+Info: Board ready!
+Info: Connected (version 2.0, client dropbear_2020.81)
+Info: Authentication (publickey) failed.
+Info: Authentication (password) successful!
+Info: [chan 0] Opened sftp connection (server version 3)
+Info: Make dir root@10.245.245.188:/home/root/.
+Info: Copying C:/Developers/hls_workspace/vector_add_soc/hls_output/vector_add_soc.no_accel.elf to root@10.245.245.188:/home/root/.
+Info: Application starting (over ssh root@10.245.245.188
+Info: Running: pushd .;  ./vector_add_soc.no_accel.elf  |& tee bin_cl_out.txt; popd
+Application output:
+~ ~
+RESULT: PASS
+~
+Info: Application finished!
+Info: Copying bin_cl_out.txt from root@10.245.245.188:/home/root/. to C:/Developers/hls_workspace/vector_add_soc/hls_output/files
+Info: [chan 0] sftp session closed.
+```
+<p align="center">Figure 7‑6 Expected Output from Running Software on Board</p>
 
 Now that you have verified that your software program can run correctly
 on your Icicle Kit, you can run the software with accelerators that
@@ -1789,7 +1831,7 @@ take 15-30 minutes.
 ![](.//media/image3.png)
 
 Navigate to
-`<SMARTHLS_INSTALLATION_DIR>\SmartHLS\boards\iciclekit\ref_design`.
+`<SMARTHLS_INSTALLATION_DIR>\SmartHLS\reference_designs\Icicle_SoC\ref_design`.
 Rename `ref_design` to `icicle-kit-reference-design`, and move it to your
 `C:\` drive. Open it, and you should see the following files and
 directories:
@@ -1906,7 +1948,19 @@ continue onto the next section, section 8.8.
 
 ![](.//media/image2.png)We can compile by either using the Libero GUI or
 by running the `run_libero.sh` script in
-`icicle-kit-reference-design\script_support\additional_configurations\smarthls`.
+`icicle-kit-reference-design\script_support\additional_configurations\smarthls` (Linux only).
+
+Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`. Otherwise, you will fail to run shls in [Section 8.8.1](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
+
+```
+SRCS = main_variations/main.simple.cpp
+# SRCS = main_variations/main.cpu_usage.cpp
+# SRCS = main_variations/main.hls_driver.cpp
+# SRCS = main_variations/main.non-blocking.cpp
+
+# This option requires bitstream configuration 
+# SRCS = main_variations/main.fifo.cpp
+```
 
 To use the Libero GUI to compile, open Libero. Press Ctrl+U in Libero to
 open the “Execute Script” dialog as shown in Figure 8‑12. In the
@@ -1915,9 +1969,7 @@ open the “Execute Script” dialog as shown in Figure 8‑12. In the
 field enter the following:
 
 ```
-SMARTHLS:C:\icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold
-EXPORT_FPE:C:\icicle-kit-reference-design\MPFS_ICICLE_SMARTHLS_DEMO \ 
-HSS_UPDATE:1
+SMARTHLS:C:/icicle-kit-reference-design/script_support/additional_configurations/smarthls/invert_and_threshold EXPORT_FPE:C:/icicle-kit-reference-design/MPFS_ICICLE_SMARTHLS_DEMO/ HSS_UPDATE:1
 ```
 
 The above argument assumes that you have extracted the reference folder
@@ -2024,7 +2076,7 @@ find FPExpress under `<Libero Installation Folder>/Libero/bin/`
 
 ![](.//media/image3.png) Click *New…*, select *Import FlashPro Express
 job file* radio button, and navigate to Icicle reference design folder
-to select the generated bitstream from Section 8.7 `<icicle-kit-reference-design>\soc\Icicle_SoC.job`
+to select the generated bitstream from Section 8.7 `<icicle-kit-reference-design>\Icicle_SoC.job`
 
 If you have skipped the previous section, you can program with the
 precompiled .job file in the Jobs folder `precompiled-binaries\INVERT_AND_THRESHOLD_SIMPLE.job`.
@@ -2142,7 +2194,7 @@ $ export PATH=<SmartHLS Installation Path>/SmartHLS/bin:$PATH
 ```
 If you are using Windows, enter the following command:
 ```
-> set PATH=<SmartHLS Installation Path>/SmartHLS/bin;%PATH%
+> set PATH=<SmartHLS Installation Path>/SmartHLS/bin:%PATH%
 ```
 
 ![](.//media/image2.png) After adding SmartHLS to the PATH environment
@@ -2185,7 +2237,7 @@ doing a “`rm ~/.ssh`” and accept the new RSA fingerprint the next time
 ssh prompts.
 
 While the code compiles, let’s look at these 2 scripts. The first
-script, `compile_sw_shls.sh` (Figure 8‑24), simply compiles the RISC-V executables with and without
+script, `compile_sw.shls.sh` (Figure 8‑24), simply compiles the RISC-V executables with and without
 accelerators. Line 10 is equivalent to *Cross-compile with accelerator
 drivers* in Figure 7‑7 and Line 13 is equivalent to *Cross-compile
 software for RISC-V* in Figure 7‑5 Run Software without Accelerators
@@ -2208,7 +2260,7 @@ Figure 6‑26 without prompting.
 ```
 <p align="center">Figure 8‑24 Compilation Script: compile_sw.shls.sh</p>
 
-The second script, `run_sw_shls.sh` (Figure 8‑25), runs the RISC-V
+The second script, `run_sw.shls.sh` (Figure 8‑25), runs the RISC-V
 executables with and without accelerators on the board. Line 7 is
 equivalent to *Run software without accelerators* (Figure 7‑5) and line
 11 is equivalent to *Run software with accelerators* (Figure 7‑7).
@@ -2232,7 +2284,7 @@ Section 8.8.
 10  echo "Run w/HW module"        
 11  shls -s soc_accel_proj_run 
 ```
-<p align="center">Figure 8‑25 Run Program Script: run_sw_shls.sh</p>
+<p align="center">Figure 8‑25 Run Program Script: run_sw.shls.sh</p>
 
 `Makefile.user` defines various options related to compiling and running
 the compiled program. Figure 8‑26 is a snippet of `Makefile.user`
@@ -2354,12 +2406,15 @@ measured runtime. This represents only 30% of the total runtime, with
 the other 70% spent performing data transfer.
 
 ```
-====== 2. Function and Loop Scheduling Results ======                           
-+-----------------------------------------------+----------+-----+---------+   
-| Label                                         | Function | ... | Latency |      
-+-----------------------------------------------+----------+-----+---------+   
-| for_loop_main_variations_main_simple_cpp_11_5 | invert   | ... | 86402   |
-+-----------------------------------------------+----------+-------------+-+   
+====== 2. Function and Loop Scheduling Results ======
+
++----------------------------------------------------------------------------------------------------------------+
+| Function: invert takes 86407 cycles                                                                            |
++-----------------------------------------------+--------------------------------------------+...+---------------+
+| Loop                                          | Location In Source                         |...| Total Latency |
++-----------------------------------------------+--------------------------------------------+...+---------------+
+| for.loop:main_variations/main.simple.cpp:12:5 | line 12 of main_variations/main.simple.cpp |...| 86403         |
++-----------------------------------------------+--------------------------------------------+...+---------------+
 ```
 <p align="center">Figure 8‑31 Pipeline Result of invert()</p>
 
