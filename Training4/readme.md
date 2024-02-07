@@ -822,10 +822,9 @@ generated hardware from an attached processor. This accelerator driver
 code can be found under `hls_output` in the `accelerator_drivers` output
 directory as shown in Figure 6‑21.
 
-![Graphical user interface, text, application, chat or text message
-Description automatically generated](.//media/image29.png)
-
-<p align="center">Figure 6‑21 Accelerator Driver Files Location</p>
+<p align="center">
+<img src=".//media/image29.png" />
+<p align="center">Figure 6‑21 Accelerator Driver Files Location</p></p>
 
 The header file, `<PROJ_NAME>_accelerator_drivers.h`, in the
 directory lists the user-callable functions that can be used to control
