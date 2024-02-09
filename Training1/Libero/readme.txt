@@ -25,6 +25,8 @@ bash run_shls_on_examples.sh
 
 libero SCRIPT:libero_flow.tcl LOGFILE:output.log &
 
+Note that this command will fail if the Libero_training1 folder was un-tarred in this folder, due to Libero_training1.prjx already existing. If this happens, delete the Libero_training1 folder and re-run the command.
+
 4b. IDE: 
 - Open Libero
 - Go to File -> Execute Script
