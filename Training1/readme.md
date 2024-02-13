@@ -115,9 +115,13 @@ bash run_shls_on_examples.sh
 ```
 
 When this completes, use Libero to generate the project. Open Libero 2024.1, and go to File -> Execute Script.
-Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY=1`.
+Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
-Click 'Run'. This should take about 5 minutes.
+<p align="center"><img src=".//media/libero_execute_script.png" /></p>
+<p align="center"><img src=".//media/generate_only.png" /></p>
+
+Click 'Run'. This should take about 10 minutes.
+
 
 # Overview
 
@@ -495,9 +499,9 @@ directions below.
 <p align="center"><img src=".//media/image30.png" /></p></br>
 
 5.  In the next step, check off “Copy projects into workspace” and then
-    select “Select root directory” and then click Browse... In the popup
-    window browse to the Training1 directory (after you extracted the
-    zip file from github) and click OK.
+    select “Select root directory” and then click Browse... 
+    
+    In the popup window browse to the Training1 directory and click OK.
 
 <p align="center"><img src=".//media/image31.png" /></p></br>
 
@@ -2426,7 +2430,6 @@ The Gaussian blur is also the first filter stage of the Canny Edge
 Filter.
 
 <p align="center"><img src=".//media/image124.png"/> <img src=".//media/image125.png"/></br>
-
 Figure 24: Side-by-side of original grayscale image (top) and Gaussian
 Blurred image (bottom)</p>
 
@@ -2453,9 +2456,9 @@ filter coefficient and summed together.
 We can see on line 7 that the size of the filter used in this
 implementation is 5x5 with 25 *coefficients* in total. The coefficients
 correspond to a Gaussian distribution centered at the middle element
-(2,2) which has the value 12. The DIVISOR is then used to normalize the
+(2,2) which has the value 12. The `DIVISOR` is then used to normalize the
 sum back to a value between 0 and 255. The values of the filter are
-specifically chosen so that the DIVISOR is a power of 2, making the
+specifically chosen so that the `DIVISOR` is a power of 2, making the
 hardware implementation of the divide a right-shift instead of a divide.
 ```
 const unsigned int KERNEL_SIZE = 5;
@@ -3487,14 +3490,14 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     <p align="center"><img src=".//media/image142.png"></p></br>
 
 6.  On the top toolbar, click Project-\>Execute Script... and run the
-    `create_hdl_plus.tcl` file from the Canny_FIFO_Switch SmartHLS
+    `create_hdl_plus.tcl` file from the `Canny_FIFO_Switch` SmartHLS
     project directory which will import the new canny_top into the
     design hierarchy. This will open a report window when it finishes.
     Make sure there are no errors and close the report window.
     <p align="center"><img src=".//media/image143.png"></p></br>
 
 7.  Right click on the `canny_top_0` component, select “Replace
-    Component…” and then replace it with the newly imported canny_top.
+    Component…” and then replace it with the newly imported `canny_top`.
     Make sure to check “Replace all instances using ‘canny_top’ with
     new selected component.”
 <p align="center"><img src=".//media/image144.png"><img src=".//media/image145.png"></p></br>
@@ -3504,7 +3507,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     <p align="center"><img src=".//media/image146.png"></p></br>
 
 9.  Click the “Generate Component” (![](.//media/image88.png)) button in
-    the SmartDesign toolbar for LegUp_Image_Filters and each parent
+    the SmartDesign toolbar for `LegUp_Image_Filters` and each parent
     component (`video_pipelining`, `VIDEO_KIT_TOP`).
 
 10. Go to the Design Flow tab and double click Generate FPGA Array Data.
@@ -3529,9 +3532,6 @@ generated Verilog Cores into Libero® SoC SmartDesign.
 13. Click the Content from file and add the hex file as shown above. The
     hex file came from SoftConsole and contains the program executes on
     the Mi-V soft processor.
-
-    The file path may be different depending on whether you downloaded the
-    Libero project as a .zip file or re-generated it using tcl.
 
     Remember to select the “Use relative path” option when browsing to the
     memory file:
