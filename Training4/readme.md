@@ -1,12 +1,8 @@
-<h1 style="text-align: center;">SmartHLS™ Training for Microchip PolarFire® SoC Flow</h1>
-<h2 style="text-align: center;">
-Revision 3.0 <br />
-January 2024 <br /><br /><br />
+<h1><p align="center">SmartHLS™ Training for Microchip PolarFire® SoC Flow</p></h1>
+<h2><p align="center">Revision 3.0 <br/>January 2024 <br/><br/><br/></p></h2>
+<p align="center"><img src=".//media/image1.png" /></p>
 
-![](.//media/image1.png)
-</h2>
-
-# 1.  Revision History
+# Revision History
 
 <table><thead>
 <tr class="header">
@@ -24,7 +20,7 @@ January 2024 <br /><br /><br />
 <tr class="even">
 <td>1.1</td>
 <td>June 24, 2022</td>
-<td><li>Corrected figures and runtime after correcting the source files for Section 8</li>
+<td><li>Corrected figures and runtime after correcting the source files for the "Integrating SmartHLS into an Existing SoC design" section</li>
 <li>Fixed PolarFire® SoC registered trademark position</li></td>
 </tr>
 <tr class="odd">
@@ -39,86 +35,12 @@ January 2024 <br /><br /><br />
 </tr>
 </tbody></table>
 
-# 2.  Table of Contents
-
-[1 Revision History](#1-revision-history)
-
-[2 Table of Contents](#2-table-of-contents)
-
-[3 Requirements](#3-requirements)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Software Requirements](#31-software-requirements)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2 Download Training Design Files](#32-download-training-design-files)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3 PolarFire® SoC Icicle kit Setup](#33-polarfire-soc-icicle-kit-setup)
-
-[4 Introduction](#4-introduction)
-
-[5 Hardware Acceleration: Software/Hardware Partitioning](#5-hardware-acceleration-softwarehardware-partitioning)
-
-[6 Application Example: Vector Addition](#6-application-example-vector-addition)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.1 Creating a new Project](#61-creating-a-new-project)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2 SmartHLS IP Flow](#62-smarthls-ip-flow)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.1 Vector Add: Design Description](#621-vector-add-design-description)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.2 Compile Software to Hardware Reports](#622-compile-software-to-hardware-reports)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.3 Generated Verilog Output](#623-generated-verilog-output)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.4 Running Co-Simulation](#624-running-co-simulation)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.5 Libero Synthesis and Hardware Report](#625-libero-synthesis-and-hardware-report)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.2.6 SmartHLS Generated Software Driver APIs](#626-smarthls-generated-software-driver-apis)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.3 SmartHLS SoC Flow](#63-smarthls-soc-flow)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.3.1 SoC Data Transfer Methods](#631-soc-data-transfer-methods)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[6.4 SmartHLS Memory Allocation Library](#64-smarthls-memory-allocation-library)
-
-[7 Running Vector-Add Reference SoC Generation on the Board](#7-running-vector-add-reference-soc-generation-on-the-board)
-
-[8 Integrating SmartHLS into an Existing SoC design](#8-integrating-smarthls-into-an-existing-soc-design)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.1 Motivation](#81-motivation)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.2 Example: Integrate SmartHLS into the PolarFire® SoC Icicle Kit Reference Design](#82-example-integrate-smarthls-into-the-polarfire-soc-icicle-kit-reference-design)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.3 Custom Flow Integration](#83-custom-flow-integration)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.4 Simple Image Processing Example](#84-simple-image-processing-example)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.5 Flashing PolarFire® SoC Icicle Kit Reference Design](#85-flashing-polarfire-soc-icicle-kit-reference-design)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.6 Extract the Icicle Kit Reference Design Files](#86-extract-the-icicle-kit-reference-design-files)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.7 Compiling the hardware](#87-compiling-the-hardware)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8 Programming the FPGA bitstream](#88-programming-the-fpga-bitstream)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.1 Chaining HW modules using CPU shared memory (main.simple.cpp)](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.2 CPU usage (main.cpu\_usage.cpp)](#882-cpu-usage-maincpu_usagecpp)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.3 Non-blocking hardware execution](#883-non-blocking-hardware-execution)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.4 Chaining using FIFOs](#884-chaining-using-fifos)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[8.8.5 Summary](#885-summary)
-
-[9 Current limitations of the SoC flow](#9-current-limitations-of-the-soc-flow)
-
-# 3.  Requirements
+# Requirements
 
 This section provides all the requirements needed before starting the
 training.
 
-## 3.1 Software Requirements
+## Software Requirements
 
 You should install the following software:
 
@@ -130,7 +52,7 @@ You should install the following software:
 
 This document uses the Windows versions of Libero® SoC 2024.1 and SmartHLS 2024.1. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
 
-## 3.2 Download Training Design Files
+## Download Training Design Files
 
 Download the training design files in advance:
 
@@ -141,12 +63,12 @@ Download the training design files in advance:
         <https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases>
       - SHA256:
         4a1406ba9e764a94026fcea2ee8fbb84f91384e953e7ba6176fcb7dadcbc5522
-  - Training design files for Section 7 can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
-  - Training design files for Section 8 can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
-  - The pre-compiled bitstreams can be found on Github under [Training4/precompiled-binaries](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/precompiled-binaries)
-      - Alternatively, users may regenerate the bitstreams using a .tcl script by following the instructions in section 8.7.
+  - Training design files for the [Running Vector-Add Reference SoC Generation on the Board](#running-vector-add-reference-soc-generation-on-the-board) section can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
+  - Training design files for the [Integrating SmartHLS into an Existing SoC design](#integrating-smarthls-into-an-existing-soc-design) section can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
+  - The pre-compiled bitstreams can be found on Github in the release assets.
+      - Alternatively, users may regenerate the bitstreams using a .tcl script by following the instructions in [Compiling the hardware](#compiling-the-hardware).
 
-## 3.3 PolarFire® SoC Icicle kit Setup
+## PolarFire® SoC Icicle kit Setup
 
 Later parts of the training involve running steps on the Icicle kit board. The following hardware is required:
 
@@ -169,7 +91,7 @@ SmartDesigns](https://microchiptech.github.io/fpga-hls-docs/userguide.html#user-
 
 ![](.//media/image3.png) We will use this cursor symbol throughout this tutorial to indicate sections where you need to perform actions to follow along.
 
-# 4.  Introduction
+# Introduction
 
 Our previous trainings focused on using SmartHLS as an IP generator,
 where SmartHLS takes as input a C++ program and generates a SmartDesign
@@ -190,7 +112,7 @@ generated](.//media/image6.png)
 
 <p align="center">Figure 4‑1 SmartHLS IP Flow from Software to Hardware on FPGA</p>
 
-# 5.  Hardware Acceleration: Software/Hardware Partitioning
+# Hardware Acceleration: Software/Hardware Partitioning
 
 SmartHLS SoC flow also supports partitioning the input C++ program
 between software running on the MSS processor while user-specified
@@ -239,7 +161,7 @@ interconnect. Additional hardware accelerators can be added, if there is
 room in the memory-map, by simply attaching them to the AXI
 interconnect.
 
-# 6.  Application Example: Vector Addition
+# Application Example: Vector Addition
 
 In this section, you will use SmartHLS SoC flow to target a vector
 addition program written in C++ to the PolarFire SoC FPGA. The vector
@@ -247,7 +169,7 @@ addition will take two input arrays, add these two arrays
 element-by-element, and store the sum for each element into the output
 array.
 
-## 6.1 Creating a new Project
+## Creating a new Project
 
 ![](.//media/image3.png) First start the SmartHLS IDE.
 
@@ -331,14 +253,14 @@ appear in the main panel to the right of the *Project Explorer*.
 <p align="center">Figure 6‑6 Project Explorer for browsing source files and reports</p></p>
 
 
-## 6.2 SmartHLS IP Flow
+## SmartHLS IP Flow
 
 The *SmartHLS IP flow* refers to when SmartHLS generates a hardware IP
 core that can be integrated into a user’s SmartDesign system in Libero.
 SmartHLS can go one step further and integrate the generated IP core,
 which we refer to as an accelerator, into a Reference SoC targeting
 PolarFire SoC. We call this flow the *SmartHLS SoC flow* (described
-later in Section 6.3).
+[later](#smarthls-soc-flow)).
 
 Once a SmartHLS project is created, you should always open one of the
 source files (such as `vector_add_soc.cpp`) or double-click on the
@@ -364,7 +286,7 @@ SmartHLS.
 Towards the top of SmartHLS, you will find a toolbar, as shown in Figure
 6‑8, which you can use to execute the main features of the SmartHLS
 tool. Highlighted in red is the new SoC pulldown menu. We will describe
-the SoC pulldown menu in Section 6.3.
+the SoC pulldown menu in the [SmartHLS SoC Flow](#smarthls-soc-flow) section.
 
 <p align="center">
 <img src=".//media/image19.png" />
@@ -383,7 +305,7 @@ transfer method for each top-level function argument. These pragmas
 specify how the generated hardware accelerators interface with the rest
 of the SoC. Figure 6‑10 below contains a summary of the SmartHLS pragmas
 used in the vector-add example. More details on the interfaces will be
-covered in Section 6.3.1. For a complete pragma reference, see our
+covered in the [SoC Data Transfer Methods](#soc-data-transfer-methods) section. For a complete pragma reference, see our
 [pragma
 guide](https://microchiptech.github.io/fpga-hls-docs/pragmas.html).
 
@@ -394,8 +316,7 @@ co-simulation to verify the generated hardware. Finally, we can try
 synthesizing the generated IP, and integrate the IP into an existing
 hardware system using the output SmartDesign TCL script, software
 drivers, and Verilog for the FPGA hardware accelerators. The last SoC
-step of the workflow, “Generate SoC Project” will be covered in Section
-6.3.
+step of the workflow, “Generate SoC Project” will be covered in the [SmartHLS SoC Flow](#smarthls-soc-flow) section.
 
 <table>
 <thead>
@@ -427,7 +348,7 @@ dma(<strong>true</strong>|<strong>false</strong>)</td>
 <td><p>Set pointer argument of ARGUMENT_NAME to use axi_target as the interface.<br />
 <br />
 NUM_ARRAY_ELEMENTS indicates the number of elements in the array.</p>
-<p>If dma(true), DMA will be used for transferring data. More details in Section 6.3.1.2.</p></td>
+<p>If dma(true), DMA will be used for transferring data. More details in the DMA Copy: AXI Target with DMA section.</p></td>
 </tr>
 <tr class="odd">
 <td><strong>#pragma</strong> HLS interface argument(&lt;ARGUMENT_NAME&gt;) \<br />
@@ -444,7 +365,7 @@ num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;)</td>
 
 <p align="center">Figure 6‑10 Summary of Pragmas Used in Vector-Add</p>
 
-### 6.2.1 Vector Add: Design Description
+### Vector Add: Design Description
 
 We can now browse through the code in `vector_add_soc.cpp` file. We will
 first look at line 25 of the `vector_add_sw` C++ function as shown in
@@ -518,17 +439,17 @@ different SmartHLS top-level functions. We also call this function from
 our software test bench in main on line 158.
 
 In the main function on line 141, we allocate the input arrays in
-contiguous physical memory using `hls_malloc` (covered in Section 6.4)
+contiguous physical memory using [`hls_malloc`](#smarthls-memory-allocation-library)
 and initialize the input arrays on lines 150-155. The main function
 calls the top-level function that will be turned into hardware on line
 160, and compares the result against a software-computed golden output
 on line 168. Note that the main function returns 0 if the results match,
-which is required to run Software-Hardware Co-Simulation (Section
-6.2.4). There are no restrictions on C++ code used in the main function
+which is required to run [Software-Hardware Co-Simulation](#running-co-simulation)
+. There are no restrictions on C++ code used in the main function
 that will not be turned into hardware, for example, file I/O can be used
 for your software testbench.
 
-### 6.2.2 Compile Software to Hardware Reports
+### Compile Software to Hardware Reports
 
 ![](.//media/image3.png) Click on the *Compile Software* icon
 ![](.//media/image20.png) in the toolbar. This compiles the software
@@ -633,7 +554,7 @@ should be 512 bits (16x32).
 The report section on the AXI4 target interface address map, is shown
 below in Figure 6‑16. This section first confirms that **“Yes”**
  this HLS accelerator is compatible with the reference SoC
-features (to be covered in Section 6.3). An accelerator is compatible if
+features (to be covered [later](#smarthls-soc-flow) in the training). An accelerator is compatible if
 the control and all function arguments have an interface type of either
 `axi_target` or `axi_initiator`, so that the accelerator can be
 automatically integrated into the Reference SoC. If any of the interface
@@ -678,7 +599,7 @@ hls_output/accelerator_drivers/vector_add_soc_accelerator_driver.[h|cpp]
 
 <p align="center">Figure 6‑16 Compatibility with Reference SoC Features and Address Space of Accelerator’s Module Control and Arguments</p>
 
-### 6.2.3 Generated Verilog Output
+### Generated Verilog Output
 
 You can find the generated Verilog code in
 `hls_output/rtl/vector_add_soc_vector_add_axi_target_memcpy.v.`
@@ -706,7 +627,7 @@ module vector_add_axi_target_memcpy_top
 <p align="center">Figure 6‑18 Snippet of vector_add_soc_vector_add_axi_target_memcpy.v</p>
 
 
-### 6.2.4 Running Co-Simulation
+### Running Co-Simulation
 
 Now we can simulate the Verilog RTL hardware with ModelSim to find out
 the number of cycles needed to execute the circuit – the cycle latency.
@@ -772,7 +693,7 @@ non-zero return value will `FAIL`. Please make sure that your main
 function always follows this convention and returns 0 if the top-level
 function tests are all successful.
 
-### 6.2.5 Libero Synthesis and Hardware Report
+### Libero Synthesis and Hardware Report
 
 ![](.//media/image3.png) Click the ![](.//media/image28.png) icon on the
 toolbar to *Synthesize Hardware to FPGA*. SmartHLS will run Libero
@@ -815,7 +736,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 
 <p align="center">Figure 6‑20 Timing and Resource Usage Results</p>
 
-### 6.2.6 SmartHLS Generated Software Driver APIs
+### SmartHLS Generated Software Driver APIs
 
 SmartHLS generates C++ driver functions that can be used to control the
 generated hardware from an attached processor. This accelerator driver
@@ -997,7 +918,7 @@ replacement function for the software version of
 `vector_add_axi_target_memcpy()`. SmartHLS will automatically replace
 the body of `vector_add_axi_target_memcpy()` by a single call to
 `vector_add_axi_target_memcpy_hls_driver()` when you click “Run
-software with accelerators” (covered in Section 6.3).
+software with accelerators” (covered in the [SmartHLS SoC Flow](#smarthls-soc-flow) section.)
 `vector_add_axi_target_memcpy_hls_driver()` has the same
 parameters as `vector_add_axi_target_memcpy()`, but the parameters are
 casted into void pointers, as void pointers can be used to point to any
@@ -1058,7 +979,7 @@ Later, users can use
 retrieve the results from the hardware accelerator. This is like using
 threads to do parallel computations.
 
-## 6.3 SmartHLS SoC Flow
+## SmartHLS SoC Flow
 
 SmartHLS can generate a reference SoC design, with user-specified
 partitioning of software running on MSS and hardware accelerators
@@ -1165,7 +1086,7 @@ you can open with Libero in `hls_output/soc/Icicle_SoC.prjx`. The
 generated SmartDesign hardware system contains the MSS connected via
 AXI4 to the `vector_add_axi_target_memcpy` accelerator as shown in
 Figure 6‑31. Note that the generated accelerator is the same as the one
-generated using IP flow in the previous Section 6.2.
+generated using IP flow in the [previous section](#smarthls-ip-flow).
 
 ![](.//media/image3.png) The Reference SoC Libero design is generated in
 the project directory, under `hls_output/soc/Icicle_SoC.prjx` Libero
@@ -1205,7 +1126,7 @@ connections between the MSS and the vector add accelerator.
 ![](.//media/image3.png) Now close the Libero project and go back to the
 SmartHLS IDE.
 
-### 6.3.1 SoC Data Transfer Methods
+### SoC Data Transfer Methods
 
 In this section, we will cover the three different SoC data transfer
 methods supported between the MSS and the hardware accelerator: CPU
@@ -1226,7 +1147,7 @@ cache coherency. See the [SoC Data Transfer
 Methods](https://microchiptech.github.io/fpga-hls-docs/userguide.html#soc-data-transfer-methods)
 user guide section for further reference.
 
-#### 6.3.1.1 CPU Copy: AXI Target
+#### CPU Copy: AXI Target
 
 In CPU Copy mode, the MSS handles the transfer of data between the DDR
 and the accelerator. The MSS requests the data from DDR and passes the
@@ -1246,7 +1167,7 @@ top-level function (see code previously in Figure 6‑12):
 #pragma HLS interface argument(a) type(axi_target)
 ```
 
-#### 6.3.1.2 DMA Copy: AXI Target with DMA
+#### DMA Copy: AXI Target with DMA
 
 In DMA Copy mode, the MSS will use the hardened DMA engine (PDMA) to
 transfer data between the DDR and the accelerator (Figure 6‑34). This is
@@ -1278,7 +1199,7 @@ from using the DMA. We wrote this function for illustrative purposes.
 ```
 <p align="center">Figure 6‑35 AXI Target DMA Pragma</p>
 
-#### 6.3.1.3 Accelerator Direct Access: AXI Initiator
+#### Accelerator Direct Access: AXI Initiator
 
 Accelerator direct access mode allows the hardware accelerator to
 directly read and write to DDR. Unlike the AXI Target interface, AXI
@@ -1416,7 +1337,7 @@ given address and write the result into the DDR memory directly.
 ```
 <p align="center">Figure 6-41 An Example RTL Interface Generated Table for AXI Initiator</p>
 
-## 6.4 SmartHLS Memory Allocation Library
+## SmartHLS Memory Allocation Library
 
 In `vector_add_soc.cpp`, on lines of 144-147 of the main function, we
 used the `hls_malloc` function to allocate physically contiguous memory
@@ -1447,7 +1368,7 @@ CPU Copy mode, the MSS controls all data that is read/written to
 accelerators and DDR and the MSS will automatically handle the virtual
 memory address translations.
 
-# 7.  Running Vector-Add Reference SoC Generation on the Board
+# Running Vector-Add Reference SoC Generation on the Board
 
 This section uses a PolarFire SoC Icicle Kit. The Icicle Kit is a
 low-cost development platform featuring a hardened five-core RISC-V
@@ -1592,9 +1513,9 @@ executable running on the board, and the output should match Figure 7‑6.
 In this case, the vector add computation is being performed by the
 hardware accelerator generated by SmartHLS.
 
-# 8.  Integrating SmartHLS into an Existing SoC design
+# Integrating SmartHLS into an Existing SoC design
 
-## 8.1 Motivation
+## Motivation
 
 Until this point, we have been targeting the Reference SoC Libero
 project generated by SmartHLS. This allows users with no experience
@@ -1620,7 +1541,7 @@ you can integrate a SmartHLS system into the *PolarFire SoC Icicle Kit
 Reference Design* created by the Embedded Software Systems team, which
 is shipped with SmartHLS.
 
-## 8.2 Example: Integrate SmartHLS into the *PolarFire® SoC Icicle Kit Reference Design*
+## Example: Integrate SmartHLS into the *PolarFire® SoC Icicle Kit Reference Design*
 
 Custom SoC designs can have many different configurations. SmartHLS
 defines a set of TCL parameters, as shown underlined in Figure 8‑1,
@@ -1722,11 +1643,11 @@ used to demonstrate how given a different reference design, the SoC
 integration parameters may be changed, as long as the changes are valid
 for that specific design.
 
-## 8.3 Custom Flow Integration
+## Custom Flow Integration
 
 The difference in the compilation processes between the Custom Flow and
-SoC Flow that we have covered in Section 6.3 resides in what tool drives
-the flow. In Section 6.3, we used SmartHLS GUI as the main entry point
+[SoC Flow](#smarthls-soc-flow) resides in what tool drives
+the flow. In the [SoC Flow](#smarthls-soc-flow) section, we used SmartHLS GUI as the main entry point
 and driver of the compilation process. SmartHLS has TCL scripts to
 generate the HDL hardware modules from the C++ description and integrate
 them automatically. In this case SmartHLS calls Libero to perform
@@ -1775,7 +1696,7 @@ run by Libero to automatically import the generated Verilog files into a
 SmartDesign HDL+ component, which can then be integrated with existing
 SmartDesign projects.
 
-## 8.4 Simple Image Processing Example
+## Simple Image Processing Example
 
 We now introduce a simple image processing example to highlight some
 performance and resource aspects to keep in mind when using the SmartHLS
@@ -1795,19 +1716,18 @@ We will be working with two hardware modules: a pixel value inversion
 <img src=".//media/image57.png" />
 <p align="center">Figure 8‑8 Visual Example of Invert and Threshold_to_Zero Transformations</p></p>
 
-## 8.5 Flashing PolarFire® SoC Icicle Kit Reference Design
+## Flashing PolarFire® SoC Icicle Kit Reference Design
 
-As in Section 7, a Linux image needs to be flashed to the eMMC memory in
+As in the [Vector Add On-Board section](#running-vector-add-reference-soc-generation-on-the-board), 
+a Linux image needs to be flashed to the eMMC memory in
 the Icicle board. If users have already flashed the Linux image as
 described in the [Icicle Setup
 Guide](https://microchiptech.github.io/fpga-hls-docs/icicle_setup.html),
-this section may be skipped, and users may move on to Section 8.6. A
+this section may be skipped, and users may move on to [this section](#extract-the-icicle-kit-reference-design-files). A
 similar procedure can be followed for the user’s own Linux image when
 integrating SmartHLS design into their own existing system.
 
-![](.//media/image3.png)If you haven’t already, please download
-**core-image-minimal-dev-icicle-kit-es.wic.gz** (See Section 3.2:
-Download Training Design Files). This Linux image is the Icicle
+![](.//media/image3.png)If you haven’t already, [please download **core-image-minimal-dev-icicle-kit-es.wic.gz**](#download-training-design-files). This Linux image is the Icicle
 Reference Image and has the same or extended functionality compared to
 the pre-programmed FPGA design on the Icicle Kit. This Linux image is
 from [PolarFire SoC Yocto BSP
@@ -1825,7 +1745,7 @@ match/are all compatible with each other. Failure to do this will result
 in unexpected behaviour. Flashing the Linux image in this step could
 take 15-30 minutes.
 
-## 8.6 Extract the Icicle Kit Reference Design Files
+## Extract the Icicle Kit Reference Design Files
 
 ![](.//media/image3.png)
 
@@ -1934,22 +1854,22 @@ A description of each file in `invert_and_threshold` is given in Figure
 
 <p align="center">Figure 8‑11 Description of Various Files in SmartHLS Example</p>
 
-## 8.7 Compiling the hardware
+## Compiling the hardware
 
 In this section, we are going to generate a Libero project and the
 bitstream for the PolarFire SoC Reference Design, but with a SmartHLS
 subsystem that contains an invert function accelerator and a
 `threshold_to_zero` function accelerator connected. We have generated
-the bitstream in advance and stored the bitstream in the
-`precompiled-binaries` folder downloaded in section 3.3.
+the bitstream in advance, which can be downloaded from the release assets on Github 
+(see [this section](#download-training-design-files)).
 Users can save time by using the precompiled bitstream instead and
-continue onto the next section, section 8.8.
+continue onto the [next section](#programming-the-fpga-bitstream).
 
 ![](.//media/image2.png)We can compile by either using the Libero GUI or
 by running the `run_libero.sh` script in
 `icicle-kit-reference-design\script_support\additional_configurations\smarthls` (Linux only).
 
-Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`. Otherwise, you will fail to run shls in [Section 8.8.1](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
+Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`. Otherwise, you will fail to [run shls](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
 
 ```
 SRCS = main_variations/main.simple.cpp
@@ -2063,7 +1983,7 @@ This script does essentially the same thing as what a user would do to
 run `MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl` using the Libero GUI (see
 instructions above on how to compile the hardware using the Libero GUI.)
 
-## 8.8 Programming the FPGA bitstream
+## Programming the FPGA bitstream
 
 After generating the project, we can program the Icicle board using
 FlashPro Express. FlashPro Express comes packaged with the Libero
@@ -2075,10 +1995,10 @@ find FPExpress under `<Libero Installation Folder>/Libero/bin/`
 
 ![](.//media/image3.png) Click *New…*, select *Import FlashPro Express
 job file* radio button, and navigate to Icicle reference design folder
-to select the generated bitstream from Section 8.7 `<icicle-kit-reference-design>\Icicle_SoC.job`
+to select the generated bitstream from the [previous section](#compiling-the-hardware) `<icicle-kit-reference-design>/Icicle_SoC.job`
 
 If you have skipped the previous section, you can program with the
-precompiled .job file in the Jobs folder `precompiled-binaries\INVERT_AND_THRESHOLD_SIMPLE.job`.
+precompiled .job file from the release assets `Training4/Jobs/INVERT_AND_THRESHOLD_SIMPLE.job`.
 
 Set your FPExpress project location to wherever you please, then click
 *OK*.
@@ -2130,10 +2050,10 @@ Now that the IP address of the board is determined, you can access it
 remotely over the network using SSH with the command `ssh root@[your
 board IP here]`.
 
-### 8.8.1 Chaining HW modules using CPU shared memory (main.simple.cpp)
+### Chaining HW modules using CPU shared memory (main.simple.cpp)
 
 We will now explore different versions of the image filter introduced in
-Section 8.4. The goal of this exercise is demonstrating the design
+[earlier](#simple-image-processing-example). The goal of this exercise is demonstrating the design
 considerations that should be taken and the understanding how the system
 should work as a whole. We implemented a simple version of invert and
 `threshold_to_zero` functions in `main.simple.cpp`. Although we will not
@@ -2267,8 +2187,7 @@ However, unlike the options chosen from the IDE, line 8 and 11 do not
 build any dependencies as described in Figure 6‑26. The
 `soc_base_proj_run` and `soc_accel_proj_run` commands skip all build
 dependencies because we do not wish to program the board with a SmartHLS
-SoC, we already have programmed our Custom SoC bitstream to the FPGA in
-Section 8.8.
+SoC, we already have [programmed our Custom SoC bitstream to the FPGA](#programming-the-fpga-bitstream).
 
 ```
 01  #!/bin/bash                  
@@ -2427,7 +2346,7 @@ invert() or `threshold_to_zero()` hardware accelerators are called, the
 processing time is about the same (57 ms) because the data transfer time
 dominates the overall runtime.
 
-### 8.8.2 CPU usage (main.cpu\_usage.cpp)
+### CPU usage (main.cpu_usage.cpp)
 
 Faster execution times is one benefit of offloading functions to the
 FPGA, the other benefit is leaving the CPU free to perform other tasks.
@@ -2493,7 +2412,7 @@ completion. Sometimes for long running tasks, the MSS only needs to
 check occasionally (e.g., every 1 second), instead of many thousands of
 times per second, which frees up the CPU to do other useful work.
 
-### 8.8.3 Non-blocking hardware execution
+### Non-blocking hardware execution
 
 In `main.non-blocking.cpp`, we change the objective and we no longer
 require chaining the two image transformations as we did before with
@@ -2504,7 +2423,7 @@ output data of each image transformation. With this change, we have
 removed the data dependency between the transformations and we can now
 overlap the computation and data transmission between the hardware
 modules. To accomplish this, we can use the non-blocking software driver
-API functions generated by SmartHLS. See Section 6.2.6 for explanation
+API functions generated by SmartHLS. See [this section](#smarthls-generated-software-driver-apis) for explanation
 on the generated software driver APIs.
 
 Instead of calling `invert()` or `threshold_to_zero()`, we used a
@@ -2547,7 +2466,7 @@ completion on line 83 and 86, where the `*_join_and_read_output()`
 functions are called. This approach is like starting a thread and the
 waiting for the result at synchronization. A full list of available
 driver functions can be found under the `hls_output/accelerator_driver`
-directory as described in Section 6.2.6.
+directory as described [previously](#smarthls-generated-software-driver-apis).
 
 Although `invert()` and `threshold_to_zero()` can run independently of
 each other, they still share the same physical DMA in the MSS that can
@@ -2594,7 +2513,7 @@ parallel in this example did not completely overlap the runtime of the
 two functions. They can only be partially overlapped because they share
 the same DMA.
 
-### 8.8.4 Chaining using FIFOs
+### Chaining using FIFOs
 
 In the past sections we have only been changing the software, and have
 made no changes regarding the hardware. Now we will change the hardware
@@ -2663,13 +2582,12 @@ By combining the 2 functions into one, we achieved the following:
 SRCS = main_variations/main.fifo.cpp
 ```
 
-Rerun the entire flow as described in Section 8.7: [Compiling the
-hardware](#compiling-the-hardware) and Section 8.8: [Programming the
-FPGA bitstream](#programming-the-fpga-bitstream) because this variation
+Rerun the entire flow as described in the [Compiling the hardware](#compiling-the-hardware) section
+and the [Programming the FPGA bitstream](#programming-the-fpga-bitstream) because this variation
 requires a hardware change.
 
 Alternatively, you can use the `INVERT_AND_THRESHOLD_FIFO.job`
-precompiled bitstream in `precompiled-binaries` folder on Github.
+precompiled bitstream included as a release asset on Github.
 
 Then compile the software and run again. On Linux:
 ```
@@ -2703,10 +2621,10 @@ function. The runtime is still dominated by DMA transfers. Thus, we can
 expect more saving in runtime as we increase the complexity of the
 accelerator function.
 
-### 8.8.5 Summary
+### Summary
 
-The runtime of the various implementations that we have explored in
-Section 8.8 are summarized below in Figure 8‑40.
+The runtimes of the various implementations that we have explored 
+have been summarized below in Figure 8‑40.
 
 <table>
 <thead>
@@ -2831,7 +2749,7 @@ functions to parallelize computation, how the DMA affects runtime, and
 how the DMA can be the bottleneck in your system. We hope you take what
 we have shown here and incorporate SmartHLS into your own SoC designs.
 
-# 9. Current limitations of the SoC flow
+# Current limitations of the SoC flow
 
 In the first release of the SmartHLS PolarFire SoC flow there are a few
 limitations:
@@ -2877,7 +2795,7 @@ The function would have to be rewritten (padded) like this:
 foo(uint32_t &in)
 ```
 
-For this reason, in Section 8.4, the 24-bit pixel format (3-channels
+For this reason, in our [Image Processing example](#simple-image-processing-example), the 24-bit pixel format (3-channels
 RGB, 8-bits per channel) had to be padded with the extra 8-bit alpha
 channel even though the original .bmp image does not contain the alpha
 channel. The alpha channel is ignored when reading and writing back to
