@@ -546,9 +546,9 @@ images is given by an alpha input coefficient. Given an input pixel with
 a red, green, blue (RGB) value, then the alpha blended output for each
 color (RGB) is given by the equation below:
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?R_{out} = R_{channel1} \times \left( 1 - alpha \right) + \ R_{channel2} \times alpha"/></br>
-<img src="https://latex.codecogs.com/gif.latex?G_{out} = G_{channel1} \times \left( 1 - alpha \right) + \ G_{channel2} \times alpha"/></br>
-<img src="https://latex.codecogs.com/gif.latex?B_{out} = B_{channel1} \times \left( 1 - alpha \right) + \ B_{channel2} \times alpha"/></p></br>
+$$R_{out} = R_{channel1} \times \left( 1 - alpha \right) + \ R_{channel2} \times alpha$$
+$$G_{out} = G_{channel1} \times \left( 1 - alpha \right) + \ G_{channel2} \times alpha$$
+$$B_{out} = B_{channel1} \times \left( 1 - alpha \right) + \ B_{channel2} \times alpha$$
 
 In the equations above, alpha ranges from 0 to 1. But in hardware the
 alpha input is represented by an 8-bit value that ranges from 0 to 255.

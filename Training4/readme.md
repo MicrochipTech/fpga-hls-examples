@@ -1708,7 +1708,7 @@ We will be working with two hardware modules: a pixel value inversion
 (i.e. simply flip the bits of every pixel value) and a
 `threshold_to_zero` transformation. The latter is defined as:
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?pixOut(x,y) = \left\{ \begin{matrix}\text{pixIn}\left( x,y \right),\ \ \ \ pixIn\left( x,y \right) > thresh \\0,\ \ otherwise \\\end{matrix} \right.\ " /> </p>
+$$pixOut(x,y) = \left\{ \begin{matrix}\text{pixIn}\left( x,y \right),\ \ \ \ pixIn\left( x,y \right) > thresh \\0,\ \ otherwise \\\end{matrix} \right.\$$
 
 
 
