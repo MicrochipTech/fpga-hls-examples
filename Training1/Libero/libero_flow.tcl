@@ -1,5 +1,4 @@
-#Libero project creation
-
+#Argument Parsing
 if { $::argc > 0 } {
     set i 1
     foreach arg $::argv {
@@ -18,6 +17,7 @@ if { $::argc > 0 } {
     puts "no command line argument passed"
 }
 
+#Libero project creation
 new_project -location {./Libero_training1} -name {Libero_training1} -project_description {} -block_mode 0 -hdl Verilog -family {PolarFire} -die {MPF300TS} -package {FCG1152} -speed {-1} -die_voltage {1.0} -part_range {IND} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESERVEMIGRATIONPINS:1} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {TEMPR:IND} -adv_options {UNUSED_MSS_IO_RESISTOR_PULL:None} -adv_options {VCCI_1.2_VOLTR:IND} -adv_options {VCCI_1.5_VOLTR:IND} -adv_options {VCCI_1.8_VOLTR:IND} -adv_options {VCCI_2.5_VOLTR:IND} -adv_options {VCCI_3.3_VOLTR:IND} -adv_options {VOLTR:IND} 
 
 set PF_CCC_version 2.2.220
