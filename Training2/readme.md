@@ -1350,8 +1350,7 @@ consider that the interfaces between the pipeline stages are RAMs, and
 that reading and writing to the same RAM must be controlled such that a
 later stage will not read invalid data while the previous layer is
 writing to the RAM. This can be easily achieved by the same “done”
-handshaking strategy we used in the simple project seen in section
-7.1.1. This prevents the layers from reading buffers that are partially
+handshaking strategy we used in the simple project seen in the [section 'Producer Consumer Example'](#producer-consumer-example). This prevents the layers from reading buffers that are partially
 filled with new data, as new data does not come in as a continuous
 stream. In practice, this has very little effect on the prediction as
 the frame rate is fairly high and the video input should remain fairly
@@ -1428,7 +1427,7 @@ simulation.
 ![](.//media/image3.png)Now open the `digit_recognition.h` source file.
 
 This file holds the software implementation for each of the three types
-of layers we presented in section 8.2.1. Scroll to line 54 to see the
+of layers we presented in the [Neural Network Basics](#neural-network-basics). Scroll to line 54 to see the
 definition of the convolution layer Conv. In the basic software
 implementation, this layer takes an input tensor, output tensor,
 weights, and biases as arguments. These arrays conveniently turn into
@@ -1723,7 +1722,7 @@ on line 54 and 55 for the Conv layer.
 
 Lastly, we add input and output valid handling logic inside of each
 layer to finish implementing the synchronization. This is the same kind
-of handshaking we saw in Section 7.1.1. An example of this
+of handshaking we saw in the [section 'Producer Consumer Example'](#producer-consumer-example). An example of this
 synchronization is shown on lines 66-99 and 114-115 for the Conv layer.
 
 ```C
@@ -1773,8 +1772,7 @@ In the body of the `ClassifierPipeline` function you will find the
 function calls have been changed to thread API calls. On line 50, we
 have the declaration of the first thread t0. This is the exact same Conv
 layer function call as on line 24 of the software version, we just
-replaced the call with a thread declaration that we have seen in Section
-7.1.1.
+replaced the call with a thread declaration that we have seen in the [section 'Producer Consumer Example'](#producer-consumer-example).
 
 ```
 50  hls::thread<void> t0(
@@ -1809,8 +1807,7 @@ do not need arbiters to be generated and we can remove them with the
 contention free pragma. Notice on line 34 that the contention free
 pragma is also applied to the input and output valid signals as well
 because there are only two users for each and the users’ writes will
-never overlap, similar to the producer consumer case we saw in Section
-7.1.1.
+never overlap, similar to the producer consumer case we saw in the [section 'Producer Consumer Example'](#producer-consumer-example).
 
 ```
 10  // Tensors outputs of each layer in the CNN.
@@ -1839,7 +1836,7 @@ due to the added handshaking signals and the output FIFO interface.
 ![](.//media/image3.png)You should now click Compile Software to
 Hardware (![](.//media/image54.png)).
 
-For the same reason as our producer consumer example in Section 7.1.1,
+For the same reason as our producer consumer example in the [section 'Producer Consumer Example'](#producer-consumer-example),
 it’s safe to ignore the 11 `printWarningMessageForGlobalArrayReset`
 warning messages generated from the buffer memory instantiations, as
 follows,
@@ -2047,7 +2044,7 @@ custom testbench.
 
 As we have already seen a testbench example before, we will not go into
 detail about this one. The structure is similar to the testbench in
-section 7.3 except for using a RAM interface to provide input. This
+the [section 'Verification: Custom Testbench'](#verification-custom-testbench) except for using a RAM interface to provide input. This
 testbench reads the same digits as the software testbench in hex format
 and then sends them as input to the hardware CNN.
 
@@ -2234,7 +2231,7 @@ schedule.
 
 We can ignore the `printWarningMessageForGlobalArrayReset` warning message
 for global variable a in this example as described in the producer
-consumer example in Section 7.1.1.
+consumer example in the [section 'Producer Consumer Example'](#producer-consumer-example).
 
 The first example we will look at is the `no_dependency` example on line
 8 of `instruction_level_parallelism.cpp` with the code shown in Figure
@@ -2296,7 +2293,7 @@ We have declared all the variables used in this function as
 be updated by something other than the program itself, making sure that
 any operation with these variables do not get optimized away by the
 compiler as every operation matters. An example of where the compiler
-handles this incorrectly is seen in section 7.1.1, where we had to
+handles this incorrectly is seen in the [section 'Producer Consumer Example'](#producer-consumer-example), where we had to
 declare a synchronization signal between two threaded functions as
 volatile. Using volatile is required for toy examples to make sure each
 operation we perform with these variables will be generated in hardware
