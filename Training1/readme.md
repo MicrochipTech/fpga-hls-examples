@@ -197,7 +197,7 @@ Hover over each icon in SmartHLS to find out their meanings.
 <tbody>
 <tr class="odd">
 <td><p align="center"><img src=".//media/image6.png" display:block;margin-left:auto;margin-right: auto;" /></p>
-<p align="center">Figure 3 Sample main.simple.cpp Output</p></td>
+<p align="center">Figure 3: SHLS design flow steps</p></td>
 <td>
 
 Starting from the left of Figure 2, the icons are:
