@@ -1,0 +1,11 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed true             \
+    -update_iostd true
+    
+set_io -port_name USB_ULPI_RESET \
+    -pin_name A5 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    

@@ -1,0 +1,42 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed false             \
+    -update_iostd true
+    
+set_io -port_name mBUS_PWM    \
+    -pin_name E11    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION OUTPUT
+    
+set_io -port_name mBUS_I2C_SCL \
+    -pin_name F12    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT    
+    
+set_io -port_name mBUS_I2C_SDA    \
+    -pin_name F13    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -DIRECTION INOUT
+    
+set_io -port_name mBUS_UART_RX \
+    -pin_name A21    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -DIRECTION INPUT    
+    
+set_io -port_name mBUS_UART_TX    \
+    -pin_name B20    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -DIRECTION OUTPUT
+    
+set_io -port_name mBUS_INT \
+    -pin_name A20    \
+    -fixed true    \
+    -io_std LVCMOS33  \
+    -RES_PULL Down \
+    -DIRECTION INPUT
