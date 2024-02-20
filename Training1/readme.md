@@ -70,8 +70,8 @@ You should download the training design files in advance:
       - ZIP file:
         <https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip>
       - We’ll use the Training1 folder for this training. This folder contains the source files required for this training.
-  - Download the `reference.tar.gz` file from the Release Assets, and un-tar it. This archive contains the pre-compiled binary required for this training.
-  - Alternatively, you can re-generate the bitstream and Libero project from Tcl by following the instructions
+  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
+  - Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
     here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
 
 The following hardware is required:
