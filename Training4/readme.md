@@ -65,8 +65,9 @@ Download the training design files in advance:
         4a1406ba9e764a94026fcea2ee8fbb84f91384e953e7ba6176fcb7dadcbc5522
   - Training design files for the [Running Vector-Add Reference SoC Generation on the Board](#running-vector-add-reference-soc-generation-on-the-board) section can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
   - Training design files for the [Integrating SmartHLS into an Existing SoC design](#integrating-smarthls-into-an-existing-soc-design) section can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
-  - The pre-compiled bitstreams can be found on Github in the release assets.
-      - Alternatively, users may regenerate the bitstreams using a .tcl script by following the instructions in [Compiling the hardware](#compiling-the-hardware).
+  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstreams required for this training.
+  - Alternatively, you can re-generate the bitstreams and Libero project from scratch by following the instructions
+    here: [Compiling the hardware](#compiling-the-hardware).
 
 ## PolarFire® SoC Icicle kit Setup
 
