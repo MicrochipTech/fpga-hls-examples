@@ -95,22 +95,22 @@ Before starting the training, we need to first generate the Libero project.
 
 If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory, e.g.:
 
-```
-> cd C:\Workspace\fpga-hls-examples-main\Training1\Libero
+```bat
+cd C:\Workspace\fpga-hls-examples-main\Training1\Libero
 ```
 
 and run the following script to generate the HLS example designs:
-```
+```bat
 run_shls_on_examples.bat
 ```
 
 If you are using Linux, open a terminal and navigate to the Libero directory, e.g.:
 
-```
-$ cd Workspace/fpga-hls-examples-main/Training1/Libero
+```bash
+cd Workspace/fpga-hls-examples-main/Training1/Libero
 ```
 and run the following script to generate the HLS example designs:
-```
+``` bash
 bash run_shls_on_examples.sh
 ```
 
@@ -604,7 +604,7 @@ etc.).
 <td>CH1_DATA_I</td>
 <td>Input</td>
 <td>24-bits</td>
-<td><p>Channel 1 input data Three 8-bit pixels:</p>
+<td><p>Channel 1 input data, three 8-bit pixels:</p>
 <p>23:16 Red</p>
 <p>15:8 Green</p>
 <p>7:0 Blue</p></td>
@@ -735,7 +735,7 @@ interface of the SmartHLS-generated Verilog file in
 “`alpha_blend_alpha_blend_smarthls.v`” found in the
 `alpha_blend/hls_output/rtl/` directory.
 
-```
+```v
 module alpha_blend_smarthls_top 
 (
     clk,
@@ -763,7 +763,7 @@ We start by looking at the C++ function arguments that SmartHLS will
 turn into the interface in RTL that we described previously. Look at the
 function signature of the top-level function on line 102:
 
-```
+```c
 void alpha_blend_smarthls(hls::FIFO<input_t> &input_fifo,
                           hls::FIFO<rgb_t> &output_fifo) {
 
@@ -778,7 +778,7 @@ the top-level function.
 
 We start with the simpler second argument “`output_fifo`” which has the
 type:
-```
+```c
 hls::FIFO<rgb_t>
 ```
 The \< \> brackets surround the C++ template argument which defines the
@@ -791,7 +791,7 @@ If you scroll to the top of the C++ file you can find the data type
 defined as an arbitrary unsigned integer `ap_uint` with a bitwidth of
 `3*W=24`:
 
-```
+```c
 // bit width of a pixel
 const int W = 8;
 // 24-bit RGB 
@@ -819,7 +819,7 @@ create the `input_fifo` interface we saw in the report file.
 Next, we will look at the internal implementation of the Alpha Blending
 block by looking at the function body.
 
-```
+```c
 void alpha_blend_smarthls(hls::FIFO<input_t> &input_fifo,
                           hls::FIFO<rgb_t> &output_fifo) {
 
@@ -872,7 +872,7 @@ clock cycle.
 In the body of the function, we read from the input FIFO, perform some
 computations, and write to the output FIFO.
 
-```
+```c
 input_t in = input_fifo.read();
 ...
 output_fifo.write(out);
@@ -885,7 +885,7 @@ avoid any floating-point math. Instead, we can add 1 to alpha to make
 the maximum alpha value 256, multiply alpha by the 8-bit pixel
 values, and divide by 256 (equivalent to shifting right 8 bits).
 
-```
+```c
 ap_uint<16> alpha = 1 + in.alpha; 
 rgb_t out; 
 // red 
@@ -896,7 +896,7 @@ The `ap_uint` syntax `out(R1, R2)` is used to write to a specific range of
 bits within `out`'s 24 bits. In this case, we are writing 8 bits to the
 range of bits from 23:16 corresponding to the red pixel. R1 and R2 are
 defined as (R2=16, R1=23):
-```
+```c
 // 23:16 red 
 const int R2 = 2*W;
 const int R1 = R2 + W-1;
@@ -932,7 +932,7 @@ called [LLVM intermediate representation
 LLVM IR is beneficial.
 
 For example, given the 32-bit C++ code:
-```
+```c
 result = a + b – 5
 ```
 
@@ -1109,7 +1109,7 @@ The lines highlighted in gray are disabled (since `FAST_COSIM` is not
 defined). This means that for the software simulation we just ran, we
 used the 1920x1080 bmp image sets.
 
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 //#define FAST_COSIM
 #ifdef FAST_COSIM
@@ -1133,24 +1133,27 @@ In the `main()` function on line 135, we use the helper functions
 read either the 1920x1080 RGB pixels values from the “`toronto.bmp`" or
 the 100x56 values from “`toronto_100x56.bmp`” input file depending on
 whether `FAST_COSIM` is defined or not:
-```
+
+```c
 input_channel1 = read_bmp(INPUT_IMAGE1, &input_channel1_header);
 ```
 Same with the second input channel, which will read either
 “`polarfire.bmp`" or “`polarfire_100x56.bmp`”:
-```
+
+```c
 input_channel2 = read_bmp(INPUT_IMAGE2, &input_channel2_header);
 ```
 The golden expected output will read either “`golden_output.bmp`” or
 “`golden_output_100x56.bmp`”:
-```
+
+```c
 golden_output_image = read_bmp(GOLDEN_OUTPUT, &golden_output_image_header);
 ```
 In our C++ testbench on line 147, we first perform a sanity check test
 based on the waveform in the alpha blending SolutionCore documentation
 ([UG0641](https://www.microsemi.com/document-portal/doc_download/135316-ug0641-alpha-blending-user-guide)
 page 4) shown in Figure 17.
-```
+```c
 // test 1: sanity check from alpha blend IP core documentation
 in.channel1 = ap_uint<24>("0x456712");
 in.channel2 = ap_uint<24>("0x547698");
@@ -1166,7 +1169,7 @@ from the `output_fifo`. Finally, we validate the output was expected. If
 there was a mismatch, we print out the value and then return a non-zero
 value from main so that the co-simulation will `FAIL`. Co-simulation will
 only pass if the main function returns zero.
-```
+```c
 // test 1: sanity check from alpha blend IP core documentation
 in.channel1 = ap_uint<24>("0x456712");
 in.channel2 = ap_uint<24>("0x547698");
@@ -1183,7 +1186,7 @@ if (out != ap_uint<24>("4C6E57")) {
 Next, starting from line 160, we run alpha blending on the two input
 image files. We specify the input alpha value of 50%, which is
 represented by the 8-bit value 127:
-```
+```c
 in.alpha = (int)(255 * 0.5);
 ```
 We loop over each pixel (`WIDTH` x `HEIGHT`) of the input images. When
@@ -1191,7 +1194,7 @@ reading from a BMP image file, consecutive pixels in the same row of the
 image are stored next to each other (row-major order). Therefore, the
 outer loop is over the image `HEIGHT` and the inner loop is over the `WIDTH`
 of the image:
-```
+```c
 for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
 ```
@@ -1204,7 +1207,7 @@ In the loop body, we use the `ap_uint` concatenation operator “`(R, G, B)`”
 to assign the 24-bit input channels. The red pixel will be the
 most-significant 8 bits of the 24-bit input channel and the blue pixel
 will be the least-significant 8 bits.
-```
+```c
 // concatenation operator
 in.channel1 = (ap_uint<8>(input_channel1->r),
 ap_uint<8>(input_channel1->g),
@@ -1214,7 +1217,7 @@ After we write to the `input_fifo` we call the top-level function
 `alpha_blend_smarthls`, and then we read the output from the
 `output_fifo`. We extract out the 8-bit RGB values from the 24-bit
 output:
-```
+```c
 rgb_t rgb = output_fifo.read();
 output_image_ptr->r = rgb(R1, R2);
 output_image_ptr->g = rgb(G1, G2);
@@ -1225,7 +1228,7 @@ from main if there is a mismatch.
 
 At the end of the main function we write the alpha blended image to the
 “`output.bmp`” file:
-```
+```c
 write_bmp("output.bmp", &input_channel1_header, output_image);
 ```
 We reuse the same BMP header data (image properties like width and
@@ -1233,7 +1236,7 @@ height) as the input channel 1 image.
 
 And we print a message and return 0 from the main function to indicate
 to co-simulation that the testbench passed.
-```
+```c
 printf("PASS!\n");
 return 0;
 ```
@@ -1254,7 +1257,7 @@ clicking the plus button.
 The `FAST_COSIM` define will change the input image to be 100x56 bmp
 files (instead of 1080p images). This change will speed up the
 co-simulation time considerably (from 20 min to 2 min):
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
 ```
@@ -1274,7 +1277,6 @@ start co-simulation (![](.//media/image62.png)) which will take a few
 minutes to finish. You should verify that the following results appear
 in the Console:
 ```
-PASS!
 +--------------------------+-----------------+--------------------------+…+ 
 | Top-Level Name           | Number of calls | Simulation time (cycles) |…| 
 +--------------------------+-----------------+--------------------------+…+ 
@@ -1670,7 +1672,7 @@ multiply, and 1 cycle for the store before starting every loop
 iteration. Therefore, the pipeline initiation interval is 3 cycles (1 +
 1 + 1). A diagram of how the pipeline schedule would look is presented
 in Figure 19.
-```
+```c
 void cross_iteration_dependency( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
@@ -1736,7 +1738,7 @@ interval must be 2 due to resource contention on the single multiplier.
 In the schedule of Figure 20, there is only one multiply operation in
 any clock cycle (column). A diagram of how the pipeline would look like
 is presented in Figure 20.
-```
+```c
 void functional_unit_contention( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
@@ -1791,7 +1793,7 @@ until two cycles later. The pipeline initiation interval must be 2 due
 to resource contention on the read/write ports. In the schedule of
 Figure 21 there is only one iteration performing memory operation in any
 clock cycle (column).
-```
+```c
 void memory_contention( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
@@ -1895,7 +1897,9 @@ diagram of the SolutionCore blocks are shown in and the input and output
 interface for the RGB2YCbCr is described in Table 1.
 
 <p align="center"><img src=".//media/image106.png"/></br>
-<img src=".//media/image107.png"/></br></br>
+<img src=".//media/image107.png"/></br></br></p>
+
+<div align ="center">
 
 Table 4: RGB2YCbCr SolutionCore IP Interface
 
@@ -1912,7 +1916,7 @@ Table 4: RGB2YCbCr SolutionCore IP Interface
 | Cr\_OUT\_O      | Output        | 8-bits    | Cr chroma output       |
 | DATA\_VALID\_O  | Output        | 1-bit     | Output data valid      |
 
-</p>
+</div>
 The desired RTL interface splits up the input red, green, blue values
 into three separate 8-bit inputs sharing a data valid. In contrast to
 the Alpha Blend module which combined the RGB 8-bits values into a
@@ -1961,7 +1965,7 @@ interface from Table 4.
 the top-level function “`RGB2YCbCr_smarthls`” on line 27 to see the
 function signature that gets generated into the above interface. This
 function is also pipelined and has two arguments:
-```
+```c
 void RGB2YCbCr_smarthls(hls::FIFO<RGB> &input_fifo,
                         hls::FIFO<YCbCr> &output_fifo) {
 #pragma HLS function top
@@ -1969,7 +1973,7 @@ void RGB2YCbCr_smarthls(hls::FIFO<RGB> &input_fifo,
 ```
 The `input_fifo` argument is of type `hls::FIFO<RGB>`. With the `RGB` type
 is defined above as struct with three 8-bit RGB values:
-```
+```c
 const int RGB_BITWIDTH = 8;
 struct RGB {
     ap_uint<RGB_BITWIDTH> R;
@@ -1979,7 +1983,7 @@ struct RGB {
 ```
 The `output_fifo` argument is of type `hls::FIFO<YCbCr>`. With the `YCbCr`
 type is defined above as struct with three 8-bit YCbCr values:
-```
+```c
 const int YCBCR_BITWIDTH = 8;
 struct YCbCr {
     ap_uint<YCBCR_BITWIDTH> Y;
@@ -1994,7 +1998,7 @@ struct, and all elements will share the same 1-bit valid/ready signals.
 
 Now if we look in the body of the top-level function RGB2YCbCr, the line
 calculating the Y (luma) component corresponds to Equation 1:
-```
+```c
 ycbcr.Y = fixpt_t(16) +
     ((fixpt_t( 65.738)*in.R + fixpt_t(129.057)*in.G + fixpt_t(25.064)*in.B)
     >> 8) + fixpt_t(0.5);
@@ -2007,7 +2011,7 @@ For this computation we are using a 18-bit fixed-point type with 10
 integer bits and 8 fractional bits (Q10.8) as defined below using the
 `ap_fixpt` SmartHLS arbitrary precision fixed-point data type (see
 [SmartHLS documentation](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-61CF52C5-A40E-436D-9E38-AD885C0EF16D.html)):
-```
+```c
 typedef ap_fixpt<18, 10> fixpt_t;
 ```
 ![](.//media/image2.png)Now we will quickly simulate the design in
@@ -2038,7 +2042,7 @@ initialization and the underlying fixed-point representation.
 ![](.//media/image2.png)For example, we can print the fixed point
 representation of `fixpt_t(65.738)` by adding this code in the main
 function on line 104 after the test case validation loop:
-```
+```c
 std::cout << fixpt_t(65.738).to_fixpt_string(10) << std::endl;
 std::cout << "= " << fixpt_t(65.738).to_double() << std::endl;
 ```
@@ -2054,7 +2058,7 @@ right before it prints PASS:
 ![](.//media/image2.png)By default, `ap_fixpt` will truncate bits to
 bring the result closer to negative infinity. If you add `AP_RND` to the
 `fixpt_t` typedef on line 25:
-```
+```c
 typedef ap_fixpt<18, 10, AP_RND> fixpt_t;
 ```
 Then save, recompile and rerun software simulation. You will find the
@@ -2105,7 +2109,7 @@ Figure 23: SW/HW Co-Simulation with Waveforms for RGB2YCbCr SmartHLS Core</p></b
 We can look in the C++ main function for the input test vectors, for
 example on line 80, the 5<sup>th</sup> test input and expected output is
 given below:
-```
+```c
 // test 5
 in.R = 119; in.G = 138; in.B = 152;
 input_fifo.write(in);
@@ -2136,21 +2140,19 @@ PolarFire® FPGA device (click the ![](.//media/image112.png) button).
 This should take about 5 minutes. We check the summary.results.rpt
 report file afterwards:
 ```
-====== 2. Timing Result of HLS-generated IP Core (top-level module: 
-RGB2YCbCr_smarthls_top) ======
+====== 2. Timing Result of HLS-generated IP Core (top-level module: RGB2YCbCr_smarthls_top) ======
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
 | clk          | 10.000 ns     | 100.000 MHz | 7.237 ns    | 2.763 ns | 361.925 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
-The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-
-route timing analysis).
-When the HLS core is integrated into a larger system, the system Fmax
-may be lower depending on the critical path of the system.
+The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route 
+timing analysis).
+When the HLS core is integrated into a larger system, the system Fmax may be lower depending 
+on the critical path of the system.
 
-====== 3. Resource Usage of HLS-generated IP Core (top-level module:
-RGB2YCbCr_smarthls_top) ======
+====== 3. Resource Usage of HLS-generated IP Core (top-level module: RGB2YCbCr_smarthls_top) ======
 
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
@@ -2165,8 +2167,8 @@ RGB2YCbCr_smarthls_top) ======
 +--------------------------+-----------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) +
-(12 * #.uSRAM) = (36 * 0) + (36 * 4) + (12 * 0) = 144.
+Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = 
+(36 * 0) + (36 * 4) + (12 * 0) = 144.
 ```
 
 We can see from section 2 of summary.result.rpt that the minimum period
@@ -2194,7 +2196,7 @@ SmartHLS has a strength reduction optimization that can lower a multiply
 by constant into adds with shifts-by-constant. In this case, we can save
 5 multipliers as shown in Table 6.
 
-<p align="center">
+<div align="center">
 Table 6: SmartHLS Strength Reduction Optimization
 
 | **Multiply by Constant** | **Fixed Point Representation** | **Equivalent shifts-by-constant and adds**             |
@@ -2204,7 +2206,7 @@ Table 6: SmartHLS Strength Reduction Optimization
 | 112.439 (used twice)     | 28,784 x 2<sup>-8</sup>        | \- (1 \<\< 4) + (1 \<\< 7) - (1 \<\< 12) + (1 \<\< 15) |
 | 18.285                   | 4,680 x 2<sup>-8</sup>         | \+ (1 \<\< 3) + (1 \<\< 6) + (1 \<\< 9) + (1 \<\< 12)  |
 
-</p></br>
+</div></br>
 
 We can turn off the SmartHLS strength reduction pass to see the
 difference in resources.
@@ -2244,21 +2246,18 @@ changes. This will turn off (0) the SmartHLS strength reduction
 (![](.//media/image120.png)). Then rerun FPGA synthesis
 (![](.//media/image112.png)). The new resources should be:
 ```
-====== 2. Timing Result of HLS-generated IP Core (top-level module:
-RGB2YCbCr_smarthls_top) ======
+====== 2. Timing Result of HLS-generated IP Core (top-level module: RGB2YCbCr_smarthls_top) ======
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
 | clk          | 10.000 ns     | 100.000 MHz | 7.017 ns    | 2.983 ns | 335.233 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
-The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-
-route timing analysis).
-When the HLS core is integrated into a larger system, the system Fmax may be lower 
-depending on the critical path of the system.
+The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
+When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the 
+critical path of the system.
 
-====== 3. Resource Usage of HLS-generated IP Core (top-level module:
-RGB2YCbCr_smarthls_top) ======
+====== 3. Resource Usage of HLS-generated IP Core (top-level module: RGB2YCbCr_smarthls_top) ======
 
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
@@ -2274,8 +2273,8 @@ RGB2YCbCr_smarthls_top) ======
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
 
-Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) +
-(12 * #.uSRAM) = (36 * 0) + (36 * 4) + (12 * 0) = 144.
+Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = 
+(36 * 0) + (36 * 4) + (12 * 0) = 144.
 ```
 Now close all project files.
 
@@ -2294,7 +2293,7 @@ The top-level function is `YCbCr2RGB_smarthls()` and implements Equation
 
 In this design, the fixed-point type needed 11 integer bits (vs 10
 integer bits for RGB2YCbCr).
-```
+```c
 // Fixed point type: Q11.7
 // 11 integer bits and 7 fractional bits
 typedef ap_fixpt<18, 11> fixpt_t;
@@ -2305,7 +2304,7 @@ in the equations.
 We also need to perform saturation, which converts negative values to 0,
 and values greater than 255 to 255. We can do this using an 8-bit
 unsigned `ap_ufixpt` type with the `AP_SAT` option:
-```
+```c
 // saturate values to [0, 255] range
 rgb.R = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(R);
 rgb.G = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(G);
@@ -2460,7 +2459,7 @@ correspond to a Gaussian distribution centered at the middle element
 sum back to a value between 0 and 255. The values of the filter are
 specifically chosen so that the `DIVISOR` is a power of 2, making the
 hardware implementation of the divide a right-shift instead of a divide.
-```
+```c
 const unsigned int KERNEL_SIZE = 5;
 
 // A Simpler Gaussian Filter for hardware (the divisor is a power of 2)
@@ -2479,7 +2478,7 @@ We will start with a basic implementation of the Gaussian Blur Filter.
 Scroll down to the `gaussian_filter_memory()` function on line 25.
 Notice this function is marked as the top-level function by the function
 top pragma:
-```
+```c
 // Gaussian Filter.
 void gaussian_filter_memory(hls::ap_uint<1> on,
                             unsigned char input_buffer[][WIDTH],
@@ -2491,7 +2490,7 @@ void gaussian_filter_memory(hls::ap_uint<1> on,
 
 There are two array arguments to the top-level function which represents
 the input image and the filtered output image:
-```
+```c
 unsigned char input_buffer[][WIDTH],
 unsigned char output_buffer[][WIDTH]
 ```
@@ -2501,19 +2500,19 @@ specify that these two array arguments of “memory” type interface have a
 certain depth. The depth of the memory must also be specified for the
 co-simulation, since our C++ testbench in `main()` does not use arrays
 with static size.
-```
+```c
 #pragma HLS interface argument(input_buffer) type(memory) num_elements(SIZE)
 #pragma HLS interface argument(output_buffer) type(memory) num_elements(SIZE)
 ```
 There is also a third input called “on” which is an unsigned int of size
 1.
-```
+```c
 hls::ap_uint<1> on,
 ```
 This input will be connected to DIP switch 1 (SW6) in the demo design
 and turns on or off the Gaussian Blur Filter. On line 38, if the switch
 is turned off (\!on) then we will pass the input directly to the output:
-```
+```c
 if (!on || out_of_bounds) {
     output_buffer[i][j] = input_buffer[i][j];
     continue;
@@ -2523,7 +2522,7 @@ The filtering algorithm can be seen in the main loop on line 43. The 5x5
 area around the current pixel under consideration is multiplied with its
 corresponding Gaussian coefficient. The result is summed, normalized
 then stored in the output array.
-```
+```c
 unsigned int sum = 0;
 for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
     for (unsigned int n = 0; n < KERNEL_SIZE; n++) {
@@ -2551,7 +2550,7 @@ The testbench for this design is found in the `main()` function on line
 where a 1920x1080 bmp image is read as input. There is also a golden
 output bmp image used to compare with the pixels generated by the filter
 implementation `gaussian_filter_memory()`.
-```
+```c
 gaussian_filter_memory(on, input_image, output_image_gaussian);
 
 // output validation
@@ -2597,7 +2596,7 @@ this training we will run with a smaller image.
 defined on line 5 and then save the file. The commented out `FAST_COSIM`
 define might be folded into the comment by eclipse and needs to be
 expanded by clicking the plus button.
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
 ```
@@ -2609,7 +2608,7 @@ generating the hardware to be exported to SmartDesign, otherwise the
 generated hardware will be for the incorrect input size. This change is
 necessary as the function depends on the image sizes in the for-loops on
 line 34.
-```
+```c
 for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
 ```
@@ -2702,7 +2701,7 @@ execution.
 ![](.//media/image2.png)A simple case is if your main function ever
 returns a non-zero value in software. For example, change the `main()`
 function to always return 1 on line 129 in `gaussian_filter.cpp`:
-```
+```c
 //return result_incorrect;
 return 1;
 ```
@@ -2716,13 +2715,13 @@ Now undo the change.
 the user specifies an incorrect value in a SmartHLS pragma. For example,
 specifying an incorrect depth on a memory interface such as the
 following on line 29:
-```
+```c
 #pragma HLS interface argument(input_buffer) type(memory)
 num_elements(SIZE)
 ```
 For example, we can try changing the correct SIZE array depth to a wrong
 value like 10:
-```
+```c
 #pragma HLS interface argument(input_buffer) type(memory)
 num_elements(10)
 ```
@@ -2738,12 +2737,12 @@ dimension depth (100).
 We were not able to get to the co-simulation stage, since SmartHLS was
 able to detect that the depth was not a multiple of the `WIDTH` (which is
 100):
-```
+```c
 unsigned char input_buffer[][WIDTH],
 ```
 ![](.//media/image2.png)We can try another wrong array depth which is a
 multiple of 100 to avoid this SmartHLS check:
-```
+```c
 #pragma HLS interface argument(input_buffer) type(memory) num_elements(100)
 ```
 Now rerun SmartHLS to generate the hardware
@@ -2793,7 +2792,7 @@ pragma, the loop body will automatically be partitioned into pipeline
 stages. The module will also only run the pipeline for the number of
 iterations of the loop before requiring the start signal to be
 re-asserted. This optimization should increase throughput considerably.
-```
+```c
 #pragma HLS loop pipeline
 ```
 Note, loop pipelining will flatten the loop body by inlining any
@@ -2805,7 +2804,7 @@ loop body. Not only would this use a massive amount of resources, it
 will also slow down compilation considerably, both of which we want to
 avoid. To work around this, the double for loop can be collapsed into a
 single for loop so that no loop unrolling needs to occur.
-```
+```c
 #pragma HLS loop pipeline
     for (int i = 0; i < (HEIGHT * WIDTH); i++) {
         unsigned int pos_i = i / WIDTH;
@@ -2872,7 +2871,7 @@ line 48 of `gaussian_filter.cpp` but there are only 2 memory ports to use
 (dual-port RAM in FPGA). If we look at line 48 of `gaussian_filter.cpp`
 we find that all the loads come from the image values read from
 `input_buffer` used in calculating the new filtered value.
-```
+```c
 for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
     for (unsigned int n = 0; n < KERNEL_SIZE; n++) {
         sum += ((unsigned int)input_buffer[pos_i + m - center]
@@ -2886,7 +2885,7 @@ also accessed every iteration? Because SmartHLS unrolls the loops and
 realizes that `GAUSSIAN` is a constant array. Therefore, SmartHLS can
 automatically replace `GAUSSIAN` array accesses with constant values,
 becoming equivalent to the following:
-```
+```c
 unsigned int sum = 0;
 sum += ((unsigned int)input_buffer[pos_i + 0 - center]
                                   [pos_j + 0 - center]) *
@@ -2925,7 +2924,7 @@ co-sim we ran used the reduced 100x56 input.
 like before, save, then rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)) and then run co-simulation with ModelSim
 (click the button ![](.//media/image62.png)).
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
 ```
@@ -3021,14 +3020,14 @@ open the `gaussian_filter.cpp` source file.
 Scroll down to the `gaussian_filter_pipelined()` top-level function on
 line 45. Both the `input_fifo` and `output_fifo` function arguments are
 now FIFO interfaces.
-```
+```c
 void gaussian_filter_pipelined(hls::ap_uint<1> on_switch,
                                hls::FIFO<unsigned char> &input_fifo,
                                hls::FIFO<unsigned char> &output_fifo) {
 ```
 Now scroll down to line 58. The loop within
 `gaussian_filter_pipelined()` is still loop pipelined.
-```
+```c
 #pragma HLS loop pipeline
     for (unsigned int i = 0; i < (HEIGHT * WIDTH + LineBufferFillCount); i++) {
 ```
@@ -3036,14 +3035,14 @@ On line 52, the declaration of the LineBuffer takes as C++ template
 arguments: the data type, the width of the image processed and the size
 of the filter. These arguments to tell the LineBuffer how much memory to
 allocate for the internal buffer.
-```
+```c
 hls::LineBuffer<unsigned char, WIDTH, KERNEL_SIZE> line_buffer;
 ```
 Every iteration of the loop, there will be a new pixel that gets shifted
 into the internal array of the LineBuffer. We want to pre-fill the line
 buffer to have all the necessary pixels to filter the first image pixel
 before we start the filtering.
-```
+```c
 line_buffer.ShiftInPixel(input_pixel);
 
 // keep track of how many pixels we have shifted into the line_buffer to
@@ -3055,7 +3054,7 @@ if (!is_filled(KERNEL_SIZE, i)) {
 Once we fill the LineBuffer, we filter the image as normal on line 84 by
 using the *window* member of the LineBuffer which provides the pixels in
 the window of the pixel currently being processed.
-```
+```c
 unsigned int sum = 0;
 for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
     for (unsigned int n = 0; n < KERNEL_SIZE; n++) {
@@ -3142,7 +3141,7 @@ now changed to FIFOs.
 5, save, then rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)) and then run co-simulation with ModelSim
 (click the button ![](.//media/image62.png)).
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
 ```
@@ -3167,7 +3166,7 @@ the version without pipelining (208,437) by 97%.
 ![](.//media/image2.png)Now re-comment FAST\_COSIM in define.hpp, save,
 then rerun SmartHLS (![](.//media/image127.png)) to regenerate the
 hardware for 1920x1080 inputs.
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 // #define FAST_COSIM
 ```
@@ -3182,13 +3181,10 @@ the `summary.results.rpt` file.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | clk          | 10.000 ns     | 100.000 MHz | 4.924 ns    | 5.076 ns | 197.006 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
-```
-The reported Fmax is for the HLS core in isolation (from Libero's
-post-place-and-route timing analysis).
+The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
+When the HLS core is integrated into a larger system, the system Fmax may be lower depending 
+on the critical path of the system.
 
-When the HLS core is integrated into a larger system, the system Fmax
-may be lower depending on the critical path of the system.
-```
 ====== 3. Resource Usage ======
 
 +--------------------------+-------------------+--------+------------+
@@ -3251,7 +3247,7 @@ and is ideal for generating a design where multiple functions are
 connected to operate as a single pipeline. To learn more about the
 dataflow pragma, see the [SmartHLS
 Documentation](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-24B4CBDB-506F-433E-95F9-28FA2811E9CF.html).
-```
+```c
 void canny(hls::FIFO<unsigned char> &input_fifo,
            hls::FIFO<unsigned char> &output_fifo) {
 #pragma HLS function top
@@ -3278,7 +3274,7 @@ Gaussian Filter testbench, however this design has an extra software
 implementation to compare against the hardware optimized version. The
 testbench checks that the software output, hardware output and golden
 output are all equal during co-simulation.
-```
+```c
 // output validation
 for (i = 0; i < HEIGHT; i++) {
     for (j = 0; j < WIDTH; j++) {
@@ -3376,7 +3372,7 @@ click the `canny.cpp` source file.
 
 Notice on line 6 that canny now has 4 additional scalar inputs which
 represents the switch input that in turn goes to each filter.
-```
+```c
 void canny(bool switch_0,
            bool switch_1,
            bool switch_2,
@@ -3405,7 +3401,7 @@ void canny(bool switch_0,
 Inside of the functions, for example on line 37 of
 `hysteresis_filter.cpp` this switch is used to decide whether to pass
 through the pixel or apply filtering.
-```
+```c
 // if filter is off, pass pixel through
 if (!on_switch) {
     output_fifo.write(current_pixel);
@@ -3469,7 +3465,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     functionality of this hardware block depends on knowing the `WIDTH`
     and `HEIGHT` of the input image.  
     <p align="center"><img src=".//media/image137.png"></p></br>
-```
+```c
 // uncomment this line to test on a smaller image for faster co-simulation
 //#define FAST_COSIM
 ```    
