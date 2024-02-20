@@ -329,7 +329,7 @@ the steps below:
 8. Select Project and New Job Project.
 <p align="center"><img src=".//media/image10.png" /></p>
 
-9. Now select the job file “`reference/VIDEO_KIT_TOP.job`” in the folder you downloaded in step 1.
+9. Now select the job file “`Training1/VIDEO_KIT_TOP.job`”  from the release assets folder you downloaded in step 1.
 
 10. Enter a project location. Click OK.
 

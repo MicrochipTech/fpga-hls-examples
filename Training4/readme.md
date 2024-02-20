@@ -2506,7 +2506,7 @@ In the past sections we have only been changing the software, and have
 made no changes regarding the hardware. Now we will change the hardware
 and generate a new bitstream. Alternatively, you can use the
 `INVERT_AND_THRESHOLD_FIFO.job` precompiled bitstream in the
-`precompiled-binaries` folder on Github.
+release assets on Github.
 
 In this example, we will refactor the code and merge the two functions,
 `invert()` and `threshold_to_zero()`, into a single top function called
