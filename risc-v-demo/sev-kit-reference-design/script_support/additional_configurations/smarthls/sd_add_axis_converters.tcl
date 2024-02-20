@@ -2,8 +2,10 @@
 # NOTES:
 #   - Ideally this should go into their own create_hdl_plus_*.tcl files
 #
-
-set base_path [string trimright [file normalize [exec which shls]] /bin/shls]
+set pathList [getHlsPaths]
+set base_path [lindex $pathList 0]
+set base_path "$base_path/SmartHLS"
+puts "base_path: $base_path"
 
 open_smartdesign -sd_name {Video_Pipeline} 
 

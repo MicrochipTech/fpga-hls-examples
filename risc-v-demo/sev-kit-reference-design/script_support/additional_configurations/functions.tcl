@@ -11,14 +11,15 @@
 proc getHlsPaths { } {
     set install_loc [defvar_get -name ACTEL_SW_DIR]
     set OS [lindex $::tcl_platform(os) 0]
-
     set liberoRelease [string trim [string range [get_libero_release] 0 end] "*v" ]
 
+    # set base_path ""
     if {![info exists shls_path]} {catch {set shls_path [exec which shls]}}
-
+    
     if {[info exists shls_path]} {
         set base_path [string trimright $shls_path SmartHLS/bin/shls]
     } else {
+        global shls_path
         if { $OS == "Linux" } {
             set base_path [string cat [string trimright $install_loc Libero]/SmartHLS-$liberoRelease {/}]
             set ::env(PATH) [string cat $::env(PATH) ":" $base_path {SmartHLS/bin}]
@@ -27,7 +28,8 @@ proc getHlsPaths { } {
             set base_path [string cat [string trimright $install_loc Designer]SmartHLS-$liberoRelease {/}]
             set base_path [file normalize $base_path]
             set drive [string range $install_loc 0 0]
-            set shls_path "$base_path/SmartHLS/bin/shls"
+            set shls_path "$base_path/SmartHLS/bin/shls.bat"
+            set shls_path [file normalize $shls_path]
             set ::env(PATH) [string cat $::env(PATH) ";" $base_path {SmartHLS/bin}]
         }
     }
@@ -41,17 +43,10 @@ proc getHlsPaths { } {
         exit 1
     }
 
-    # By default on Linux bash_path is just "bash", but on Windows bash_path points to
-    # the cygwin version
-    catch {set bash_path [exec which bash]}
-    if { $OS != "Linux" } { set bash_path [string cat $base_path {/Cygwin64/bin/bash.exe} ]}
-    puts "bash_path: $bash_path"
-    if { ![file exists "$bash_path"] } {
-        puts "bash NOT found!"
-        exit 1
-    } 
     #return the list of paths
-    set pathList [list $bash_path $shls_path]
+    puts "SHLS PATH $shls_path"
+    puts "BASE PATH $base_path"
+    set pathList [list $base_path $shls_path]
 }
 
 proc create_config {current_config updated_config} {

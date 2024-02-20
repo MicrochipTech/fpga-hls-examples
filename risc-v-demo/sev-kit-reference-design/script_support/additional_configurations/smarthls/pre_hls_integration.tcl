@@ -1,10 +1,9 @@
 puts "TCL_BEGIN: [info script]"
 
 # 
-# Detect where SmartHLS and bash interpreter are located
+# Detect where SmartHLS is located
 #
 set pathList [getHlsPaths]
-set bash_path [lindex $pathList 0]
 set shls_path [lindex $pathList 1]
 
 
