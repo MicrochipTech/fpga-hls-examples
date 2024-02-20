@@ -3,8 +3,8 @@ setlocal EnableDelayedExpansion
 
 REM E.g.:
 REM   cd sev-kit-reference-design/script_support/additional_configurations/smarthls/hls_pipeline
-REM   datapath=fpga arch=riscv_64 compile_and_copy.sh
-REM   datapath=cpu  arch=riscv_64 compile_and_copy.sh 
+REM   compile_and_copy.bat fpga riscv_64 
+REM   compile_and_copy.bat cpu riscv_64 
 
 FOR /F "tokens=*" %%g IN ('where shls.bat') do (SET SHLS_PATH=%%g)
 for %%F in (%SHLS_PATH%) do set SHLS_ROOT_DIR=%%~dpF..\

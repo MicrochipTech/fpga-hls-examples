@@ -39,8 +39,8 @@ proc getHlsPaths { } {
     if {![file exists "$shls_path"]} {
         puts stderr "Error: Cannot find SmartHLS (shls)."
         puts stderr "Please specify a full path to SmartHLS (shls file) using \"shls_path\" parameter in the \"script_args\"."
-        puts stderr "For example: script_args:shls_path:C:/Microchip/SmartHLS-2022.2.1/SmartHLS/bin/shls"
-        #exit 1
+        puts stderr "For example: script_args:shls_path:C:/Microchip/SmartHLS-20XX.Y.Z/SmartHLS/bin/shls"
+        exit 1
     }
 
     #return the list of paths
