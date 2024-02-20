@@ -1999,7 +1999,7 @@ job file* radio button, and navigate to Icicle reference design folder
 to select the generated bitstream from the [previous section](#compiling-the-hardware) `<icicle-kit-reference-design>/Icicle_SoC.job`
 
 If you have skipped the previous section, you can program with the
-precompiled .job file from the release assets `Training4/Jobs/INVERT_AND_THRESHOLD_SIMPLE.job`.
+precompiled .job file from the release assets `Training4/INVERT_AND_THRESHOLD_SIMPLE.job`.
 
 Set your FPExpress project location to wherever you please, then click
 *OK*.
