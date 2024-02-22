@@ -1041,7 +1041,7 @@ prebuilt reference bitstream that ships with SmartHLS (Base SoC) and we
 are only running software on the MSS. The prebuilt FPExpress job file
 for the Base SoC can be found at 
 ```
-<SMARTHLS_INSTALLATION_DIR>\SmartHLS\reference_designs\Icicle_SoC\MPFS_ICICLE_BASE_DESIGN_2023_02.job
+<SMARTHLS_INSTALLATION_DIR>\SmartHLS\reference_designs\Icicle_SoC\MPFS_ICICLE_KIT_BASE_DESIGN_2023_02.job
 ```
 
 *Reference SoC with HLS Accelerator(s)* means that SmartHLS performs
