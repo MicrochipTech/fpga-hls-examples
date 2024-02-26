@@ -6,12 +6,13 @@ compile the application software and update the example webpage on the board.
 
 ## Requirements To Recompile the Example:
 
-- Use Libero/SmartHLS release 2023.2
-- Use Linux as development environment to recompile the example using the provided
-  scripts and commands in this file.
+- Use Libero/SmartHLS release 2024.1
 - Use the PolarFireSoC Video Kit with Production Silicon.  For boards with 
   Engineering Sample silicon you would need to change the project parameters in 
   the `sev-kit-reference-design/MPFS_SEV_KIT_REFERENCE_DESIGN.tcl` file. 
+- Using Linux as development environment is highly recommended, as to use the provided
+  scripts and commands in this file. Provisions have been made for Windows users,
+  although there is a [known issue](#known-issues) with the `run_libero.bat` script.
 
 ## Example Setup
 
@@ -23,10 +24,17 @@ the board.  See [Readme.md](./Readme.md).
 **NOTE:** After the example is up and running, make sure to export the ``BOARD_IP`` 
 variable with the assigned IPv4 value and connect to the right Ethernet port on 
 the board. This will be required to copy files over to the board from your Host PC.
+
+If you are using Linux, open a terminal and run:
 ```
 export BOARD_IP=192.168.2.1
 ```
 
+If you are using Windows, open the command prompt (cmd) and run:
+```
+set BOARD_IP=192.168.2.1
+```
+ 
 ## Source Code Directory Structure
 
 Overall this is the directory tree of the Libero project:
@@ -80,7 +88,7 @@ There are a few things that can be changed in this example:
 ## Compiling the SmartHLS Modules and Libero Project
 
 To compile the example from the command line make sure Libero and SmartHLS are
-in the PATH in your terminal. You can confirm this by typing the following commands:
+in the PATH in your terminal. On Linux, you can confirm this by typing the following commands:
 
 ```
 which shls
@@ -90,16 +98,34 @@ which shls
 which libero 
 ```
 
+On Windows, you can confirm this by typing the following commands:
+```
+where shls.bat
+```
 
-and compile by typing the following commands:
+```
+where libero
+```
+
+
+and compile by typing the following commands.
+
+On Linux, use:
 ```
 cd sev-kit-reference-design
 ./script_support/additional_configurations/smarthls/run_libero.sh
 ```
+
+On Windows, use:
+```
+cd sev-kit-reference-design
+./script_support/additional_configurations/smarthls/run_libero.bat
+```
+
 Notice the relative path from which the script has to be executed.  The compilation
 process may take about 40 min. depending on how fast the machine is. 
 
-The `run_libero.sh` script calls Libero and passes the `MPFS_SEV_KIT_REFERENCE_DESIGN.tcl`
+The `run_libero` script calls Libero and passes the `MPFS_SEV_KIT_REFERENCE_DESIGN.tcl`
 script along with some arguments. It is this TCL file that drives the compilation flow. 
 One of the steps in the flow is to call SmartHLS to compile the C++ code into 
 Verilog and integrate the HLS cores into the overall Libero design. 
@@ -128,12 +154,33 @@ flow through the FPGA fabric. In the CPU data path case, only the get_frame() an
 put_frame() HLS functions are used to move frames to/from DDR. In the FPGA data 
 path all the HLS functions are used.
 
-There is a script that compiles the executables for both paths, just type the 
-following:
+To compile the example from the command line, make sure the RISC-V GNU Cross-Compiler
+is in the PATH. On Linux, you can confirm this by typing the following command:
+```
+which riscv64-unknown-linux-gnu-g++
+```
+
+On Windows, you must also add `<SHLS_INSTALLATION_DIR>\dependencies\lib\cygwin` to your path. 
+Then, also confirm the RISC-V GNU Cross-Compiler is in the PATH:
+```
+where riscv64-unknown-linux-gnu-g++
+```
+
+Now you can run script that compiles the executables for both paths by typing the 
+following.
+
+On Linux, type:
 ```
 cd sev-kit-reference-design/script_support/additional_configurations/smarthls/hls_pipeline
 ./compile_all.sh
 ```
+
+On Windows, type:
+```
+cd sev-kit-reference-design/script_support/additional_configurations/smarthls/hls_pipeline
+compile_all.bat
+```
+
 
 This will compile the code and copy the .elf files over to the board using `scp`. 
 Make sure the `BOARD_IP` environment variable has been setup as described in the 
@@ -142,13 +189,19 @@ Make sure the `BOARD_IP` environment variable has been setup as described in the
 If all goes well, then you should see the text `"ALL_DONE"` at the end.  At this
 point you can click on the `Start` button and the updated .elf files will be used. 
 
-The `compile_all.sh` script calls twice another script (`compile_and_copy.sh`) 
-that actually has all the steps to compile the application. You can use it to
+The `compile_all` script calls twice another script, `compile_and_copy`, 
+that has all the steps to compile the application. You can use it to
 only compile one path. For example, to compile only the FPGA data path type
 this from the command line:
 ```
 datapath=fpga arch=riscv_64 ./compile_and_copy.sh
 ```
+
+or 
+```
+CALL compile_and_copy.bat fpga riscv_64 
+```
+if you're on Windows.
 
 ## Updating the On-board Website
 
@@ -199,10 +252,15 @@ applications that control the video pipeline modules described in C++.
 
 You can change any of these files on the host machine and then copy the updated 
 files to the board. This can be easily done by typing the following command
-(make sure the `BOARD_IP` variable is defined):
+(make sure the `BOARD_IP` variable is defined). If you're using Linux, type:
 ```
 cd sev-kit-reference-design/script_support/additional_configurations/smarthls/www
 ./update_website.sh
+```
+If you're using Windows, type:
+```
+cd sev-kit-reference-design/script_support/additional_configurations/smarthls/www
+update_website.bat
 ```
 
 ## SmartHLS Directory Structure
@@ -289,6 +347,10 @@ Finally, the `common` directory has some common bitmaps and helper code.
 
 ## References:
 
-[SmartHLS User Guide](https://microchiptech.github.io/fpga-hls-docs/)
+[SmartHLS User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-995D69CF-ACC7-4CB0-9635-4434A765470E.html)
 
 [PolarFire_SoC_FPGA_H264_Video_Streaming_Over_Ethernet_Application_Note_AN4529.pdf](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ApplicationNotes/ApplicationNotes/PolarFire_SoC_FPGA_H264_Video_Streaming_Over_Ethernet_Application_Note_AN4529.pdf)
+
+
+## Known Issues:
+`run_libero.bat` does not print anything to `stdout`. This is a known issue with Libero. 

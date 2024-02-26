@@ -1,0 +1,76 @@
+#===========================================================
+# NOTES about this specific file:
+#       In this file, 'ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm', we access FIC3
+#       to toggle GPIO outputs
+#===========================================================                                                                                                    
+#                                                           
+# memmap    resource_name base_address;   
+memmap FIC_3_at_40000000    0x40000000;                 
+#-----------------------------------------------------------
+procedure main;
+#-----------------------------------------------------------
+# START of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  START Running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm'"
+print "MESSAGE:  to access FIC3"
+print "-"
+
+#-----------------------------------------------------------
+# WAIT until RESET is stable, then start BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  WAIT for some TIME after RESET released for Logic to stabilize before bus transactions"
+print "-"
+# Re-define timeout
+#    timeout default is 512 clocks
+#    timeout here is expanded to 10,000 clocks, to allow for longer wait time
+timeout 10000;
+
+#
+# WAIT until simulation time is 1us
+# 
+waitus 1;
+#
+
+#-----------------------------------------------------------
+# TEST CoreGPIO
+#-----------------------------------------------------------
+# Assert CoreGPIO bit 0,1,2,and 3
+# Write to the Output register, and read back that written value
+# Reminder:  CoreGPIO is already configured in hardware(GUI) as 4 outputs bits
+#            So, we only need to write dat to the Output Register
+#------------------------------------------------------------
+print "-"
+print "MESSAGE: TESTING CoreGPIO at base address 0x4000_0100"
+print "-"
+
+
+#command systax
+#write x <address> <address_increment> <32 bit data>
+#read x <address> <address_increment>
+
+#Assert CoreGPIO bit0=1
+write w FIC_3_at_40000000 0x1A0 0x00000001;
+read w FIC_3_at_40000000 0x1A0;
+#Assert CoreGPIO bit1=1
+write w FIC_3_at_40000000 0x1A0 0x00000002;
+read w FIC_3_at_40000000 0x1A0;
+#Assert CoreGPIO bit2=1
+write w FIC_3_at_40000000 0x1A0 0x00000004;
+read w FIC_3_at_40000000 0x1A0;
+#Assert CoreGPIO bit3=1
+write w FIC_3_at_40000000 0x1A0 0x00000008;
+read w FIC_3_at_40000000 0x1A0;
+#Assert CoreGPIO bit3,2,1,0=1
+write w FIC_3_at_40000000 0x1A0 0x0000000f;
+read w FIC_3_at_40000000 0x1A0;
+
+#-----------------------------------------------------------
+# END of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  END running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC3_user.bfm'"
+print "-"
+
+return

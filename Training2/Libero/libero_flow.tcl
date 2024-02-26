@@ -1,5 +1,23 @@
-#Libero project creation
+#Argument Parsing
+if { $::argc > 0 } {
+    set i 1
+    foreach arg $::argv {
+        if {[string match "*:*" $arg]} {
+            set var [string range $arg 0 [string first ":" $arg]-1]
+            set val [string range $arg [string first ":" $arg]+1 end]
+            puts "Setting parameter $var to $val"
+            set $var "$val"
+        } else {
+            set $arg 1
+            puts "set $arg to 1"
+        }
+        incr i
+    }
+} else {
+    puts "no command line argument passed"
+}
 
+#Libero project creation
 new_project -location {./Libero_training2} -name {Libero_training2} -project_description {} -block_mode 0 -hdl Verilog -family {PolarFire} -die {MPF300TS} -package {FCG1152} -speed {-1} -die_voltage {1.0} -part_range {IND} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESERVEMIGRATIONPINS:1} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {TEMPR:IND} -adv_options {UNUSED_MSS_IO_RESISTOR_PULL:None} -adv_options {VCCI_1.2_VOLTR:IND} -adv_options {VCCI_1.5_VOLTR:IND} -adv_options {VCCI_1.8_VOLTR:IND} -adv_options {VCCI_2.5_VOLTR:IND} -adv_options {VCCI_3.3_VOLTR:IND} -adv_options {VOLTR:IND} 
 
 set PF_CCC_version 2.2.220
@@ -60,6 +78,10 @@ organize_tool_files -tool {VERIFYTIMING} -file {./Libero_training2/constraint/us
 
 derive_constraints_sdc
 save_project
+
+if {[info exists GENERATE_ONLY]} {
+        return 0
+}
 
 #Configure and run the tools Synthesize, Place and Route and Verify Timing
 

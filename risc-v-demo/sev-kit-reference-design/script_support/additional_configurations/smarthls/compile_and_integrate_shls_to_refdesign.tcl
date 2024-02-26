@@ -14,10 +14,7 @@ cd $hlsModuleDir
 # Detect where SmartHLS and bash interpreter are located
 #
 set pathList [getHlsPaths]
-set bash_path [lindex $pathList 0]
 set shls_path [lindex $pathList 1]
-
-puts "base_path: $base_path"
 puts "shls_path: $shls_path"
 
 set ::env(SHLS_ROOT_DIR) [file dirname $shls_path]/..
@@ -26,8 +23,14 @@ set ::env(SHLS_ROOT_DIR) [file dirname $shls_path]/..
 # Call SmartHLS.
 #
 # - The file open is just to pipe stdout as SmartHLS compilation advances
-set fid [open "| $bash_path --login -c \"cd $hlsModuleDir ; $shls_path -a hw\"" r]
-while {[gets $fid line] != -1} { puts $line }
+set command "$shls_path -a hw"
+set fid [open "| $command" "r"]
+# Print the result while execution
+while {[gets $fid line] != -1} {
+    # Process each line of output
+    puts $line
+}
+# Close the fid
 close $fid
 
 #

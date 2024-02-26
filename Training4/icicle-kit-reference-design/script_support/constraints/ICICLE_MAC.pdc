@@ -1,0 +1,58 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30 \
+    -fixed true \
+    -update_iostd true
+    
+set_io -port_name VSC_8662_CMODE3 \
+    -pin_name D18 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_CMODE4 \
+    -pin_name A18 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_CMODE5 \
+    -pin_name B18 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_CMODE6 \
+    -pin_name A12 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_CMODE7 \
+    -pin_name B12 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_OSCEN \
+    -pin_name E18 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_PLLMODE \
+    -pin_name D12 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_RESETN \
+    -pin_name C12 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name VSC_8662_SRESET \
+    -pin_name D16 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 

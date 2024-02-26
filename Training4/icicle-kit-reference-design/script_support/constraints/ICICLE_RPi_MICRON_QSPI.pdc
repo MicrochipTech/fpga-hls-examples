@@ -1,0 +1,164 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed true              \
+    -update_iostd true
+	
+set_io -port_name RPi_ID_SC  \
+    -pin_name F10                  \
+    -fixed true                   \
+    -io_std LVCMOS33              \
+    -CLAMP_DIODE OFF              \
+    -RES_PULL None                \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_ID_SD  \
+    -pin_name B9                  \
+    -fixed true                   \
+    -io_std LVCMOS33              \
+    -CLAMP_DIODE OFF              \
+    -RES_PULL None                \
+    -DIRECTION INOUT
+
+set_io -port_name COREI2C_C0_SCL  \
+    -pin_name B8                  \
+    -fixed true                   \
+    -io_std LVCMOS33              \
+    -CLAMP_DIODE OFF              \
+    -RES_PULL None                \
+    -DIRECTION INOUT
+
+set_io -port_name COREI2C_C0_SDA  \
+    -pin_name A8                  \
+    -fixed true                   \
+    -io_std LVCMOS33              \
+    -CLAMP_DIODE OFF              \
+    -RES_PULL None                \
+    -DIRECTION INOUT
+
+set_io -port_name COREUART_RX  \
+    -pin_name H15              \
+    -fixed true                \
+    -io_std LVCMOS33           \
+    -DIRECTION INPUT
+
+set_io -port_name COREUART_TX  \
+    -pin_name A7               \
+    -fixed true                \
+    -io_std LVCMOS33           \
+    -DIRECTION OUTPUT
+
+set_io -port_name QSPI_CLK  \
+    -pin_name C10           \
+    -fixed true             \
+    -io_std LVCMOS33        \
+    -DIRECTION INOUT
+
+set_io -port_name QSPI_DATA_0  \
+    -pin_name D13              \
+    -fixed true                \
+    -io_std LVCMOS33           \
+    -DIRECTION INOUT
+
+set_io -port_name QSPI_DATA_1  \
+    -pin_name G12              \
+    -fixed true                \
+    -io_std LVCMOS33           \
+    -DIRECTION INOUT
+
+set_io -port_name QSPI_DATA_2  \
+    -pin_name C5               \
+    -fixed true                \
+    -io_std LVCMOS33           \
+    -DIRECTION INOUT
+
+set_io -port_name QSPI_DATA_3  \
+    -pin_name G15              \
+    -fixed true                \
+    -io_std LVCMOS33           \
+    -DIRECTION INOUT
+
+set_io -port_name QSPI_SEL  \
+    -pin_name H12           \
+    -fixed true             \
+    -io_std LVCMOS33        \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO12  \
+    -pin_name D9              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO13  \
+    -pin_name D6              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO16  \
+    -pin_name C6              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO17  \
+    -pin_name H17             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO19  \
+    -pin_name B5              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO20  \
+    -pin_name C9              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO21  \
+    -pin_name C4              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO22  \
+    -pin_name F11             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO23  \
+    -pin_name F16             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO24  \
+    -pin_name D14             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO25  \
+    -pin_name E14             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO26  \
+    -pin_name B4              \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+set_io -port_name RPi_GPIO27  \
+    -pin_name G17             \
+    -fixed true               \
+    -io_std LVCMOS33          \
+    -DIRECTION INOUT
+
+

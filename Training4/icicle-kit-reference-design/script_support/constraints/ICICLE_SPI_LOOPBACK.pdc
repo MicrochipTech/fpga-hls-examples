@@ -1,0 +1,28 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed true             \
+    -update_iostd true
+
+set_io -port_name SPI_0_CLK_PAD \
+    -pin_name C10 \
+    -fixed true \
+    -DIRECTION INOUT \
+    -io_std LVCMOS33 
+
+set_io -port_name SPI_0_DO \
+    -pin_name G12 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+
+set_io -port_name SPI_0_DI \
+    -pin_name D13 \
+    -fixed true \
+    -DIRECTION INPUT \
+    -io_std LVCMOS33 
+
+set_io -port_name SPI_0_SS \
+    -pin_name H12 \
+    -fixed true \
+    -DIRECTION INPUT \
+    -io_std LVCMOS33 
