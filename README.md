@@ -5,7 +5,7 @@ The homepage for the Microchip HLS integrated development environment is:
  - https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
 
 You can find the Microchip HLS software user guide here:
- - https://microchiptech.github.io/fpga-hls-docs/
+ - https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest 
 
 ## Tutorials and Trainings
 Example | Description

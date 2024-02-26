@@ -78,12 +78,12 @@ Later parts of the training involve running steps on the Icicle kit board. The f
   - Either a FlashPro6 external programmer or a micro-USB cable for the embedded FlashPro6
   - Ethernet cable for network connection to the board for SSH access
 
-This training will cover the following sections in the [SmartHLS user guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-995D69CF-ACC7-4CB0-9635-4434A765470E.html): [SoC
-Features](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-7324A022-0DE8-45E9-9FF0-E06D6CC7AD40.html),
+This training will cover the following sections in the [SmartHLS user guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest): [SoC
+Features](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_soc_features&redirect=true&version=latest),
 [AXI4 Initiator
-Interface](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-93A05651-C06B-4805-94D3-0443DC0FED4E.html),
-[AXI4Target
-Interface](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-16F30D96-8744-48F6-BD42-AC01ED5460ED.html),
+Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_initiator&redirect=true&version=latest),
+[AXI4 Target
+Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_target&redirect=true&version=latest),
 [Driver Functions for AXI4
 Target](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-7BBF0DBC-AA2A-4593-9B3F-65EDD8520ACE.html),
 and [User-defined
@@ -299,7 +299,7 @@ flow on the C++ (compile/run/debug). Then we apply HLS constraints using
 SmartHLS C++ pragmas. These include HLS constraints covered in previous
 trainings such as the target clock period, loop optimizations, and
 memory configuration. For more details see our [optimization
-guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-8B9C18AF-E1F4-400A-A369-2668F3632CF5.html).
+guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_optimization_ug&redirect=true&version=latest).
 
 There are new SmartHLS **interface** pragmas used to specify the data
 transfer method for each top-level function argument. These pragmas
@@ -308,7 +308,7 @@ of the SoC. Figure 6‑10 below contains a summary of the SmartHLS pragmas
 used in the vector-add example. More details on the interfaces will be
 covered in the [SoC Data Transfer Methods](#soc-data-transfer-methods) section. For a complete pragma reference, see our
 [pragma
-guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-B3D89018-0850-487C-A242-A433094D720F.html).
+guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_transfer&redirect=true&version=latest).
 
 In Figure 6‑9, after specifying the argument interfaces, we can compile
 the software into a hardware IP core using SmartHLS, and review reports
@@ -432,7 +432,7 @@ accelerator will store the data in local memory blocks. The
 `num_elements` field specifies the length of the array that will be
 transferred for each argument. For more information on the required
 pragmas and tradeoffs, please see our [pragma
-manual](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-37FB7C46-32B5-4CAF-8CA2-3B7F37B7E7B9.html).
+manual](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_pragmas&redirect=true&version=latest).
 
 In this example, we separated the core C++ algorithm into the
 `vector_add_sw` function. We can then call this function from multiple
@@ -529,7 +529,7 @@ by both the software testbench and hardware functions. I/O memories
 become memory interfaces of the top-level module for the generated
 hardware. For more information on interfaces, please refer to [Top-Level
 RTL
-Interface](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-E9EA34CC-B155-4F12-AFFC-B972E037469F.html).
+Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_toplevel_rtl&redirect=true&version=latest).
 
 The “I/O Memories” table is shown in Figure 6‑15 and has an entry for
 each top-level function argument, which each have a data width of
@@ -1145,7 +1145,7 @@ to accelerator’s on-chip memory buffer, or the data can be accessed
 directly in DDR by the accelerator. Any access to DDR, whether data is
 copied or accessed directly, goes through the MSS data cache to maintain
 cache coherency. See the [SoC Data Transfer
-Methods](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-212067DF-C1B6-4C22-ADDD-3C306CE990E5.html)
+Methods](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_transfer&redirect=true&version=latest)
 user guide section for further reference.
 
 #### CPU Copy: AXI Target
@@ -1267,7 +1267,7 @@ the data for argument "`a`" with the AXI initiator interface as shown in
 Figure 6‑37. If the `ptr_addr_interface` is not specified, for example
 for argument b, SmartHLS will use the default interface type defined on
 line 123 (`axi_target`). See the [AXI4 Initiator
-Interface](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-93A05651-C06B-4805-94D3-0443DC0FED4E.html)
+Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_initiator&redirect=true&version=latest)
 section of the user guide.
 
 If users specify the `ptr_addr_interface` or any other interface type as
@@ -1388,7 +1388,7 @@ SoC reference project is generated.
 
 ![](.//media/image3.png) To prepare your Icicle kit for use with
 SmartHLS, follow the [Icicle Setup
-Instructions](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html)
+Instructions](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_iciclekit&redirect=true&version=latest)
 and note down the IP of the board.
 
 ![](.//media/image3.png)Create a new file named `Makefile.user` by right
@@ -1622,7 +1622,7 @@ set_parameter SOC_CPU_MEM_SIZE            0x60000000
 <p align="center">Figure 8‑3 Default Parameter Values for Integrating SmartHLS</p>
 
 Users can change the default parameters by [creating a
-*custom\_config.tcl*](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-3636C6BE-3977-4267-A5DF-A514D1A46BE3.html)
+*custom\_config.tcl*](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_constraints&redirect=true&version=latest)
 file inside their HLS project. For example, if we wanted to change the
 `SOC_FABRIC_BASE_ADDRESS` to start at `0x70100000`, we would include the
 following in our *custom\_config.tcl* file:
@@ -1723,7 +1723,7 @@ As in the [Vector Add On-Board section](#running-vector-add-reference-soc-genera
 a Linux image needs to be flashed to the eMMC memory in
 the Icicle board. If users have already flashed the Linux image as
 described in the [Icicle Setup
-Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html),
+Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_iciclekit&redirect=true&version=latest),
 this section may be skipped, and users may move on to [this section](#extract-the-icicle-kit-reference-design-files). A
 similar procedure can be followed for the user’s own Linux image when
 integrating SmartHLS design into their own existing system.
@@ -1736,7 +1736,7 @@ from [PolarFire SoC Yocto BSP
 .
 
 ![](.//media/image3.png)Follow the instructions on [Icicle Setup
-Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html)
+Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_iciclekit&redirect=true&version=latest)
 for setting the Icicle kit. As explained in the guide, when flashing the
 Icicle board (Step 5 in the Icicle Setup Guide), use
 `core-image-minimal-dev-icicle-kit-es.wic.gz` that you have downloaded in
@@ -2028,7 +2028,7 @@ the newly added Linux image.
 
 ![](.//media/image3.png) After the board has successfully booted, you
 can connect using a serial terminal. Connect in the same
-[manner](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-88244281-BA99-4B1D-9E38-43EE07745978.html)
+[manner](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_iciclekit&redirect=true&version=latest)
 as the serial terminal used during the writing of the Linux image,
 except this time using channel 1 (`/dev/ttyUSB1`on Linux,
 and `Interface 1` on Windows), you should see a login screen:

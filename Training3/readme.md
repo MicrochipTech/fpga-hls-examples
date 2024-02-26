@@ -54,7 +54,7 @@ Updated document for SmartHLS™ 2024.1 release.
         generate an arithmetic hardware block with a wide datapath and
         compare to an RTL reference design.
       - Referring to previous SmartHLS trainings.
-      - Referring to the [SmartHLS User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-995D69CF-ACC7-4CB0-9635-4434A765470E.html).
+      - Referring to the [SmartHLS User Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest).
       - Referring to the [SmartHLS Github examples repository](https://github.com/MicrochipTech/fpga-hls-examples).
   - AXI protocol and SmartHLS:
       - SmartHLS AXI target (also called AXI subordinate or slave)
@@ -132,11 +132,11 @@ The following hardware is required:
     ([MPF300-VIDEO-KIT](https://www.microsemi.com/existing-parts/parts/150747)).
   - Monitor with an HDMI input.
 
-In the [SmartHLS user guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-995D69CF-ACC7-4CB0-9635-4434A765470E.html),
-you should read [Section 'SmartHLS C/C++ Library'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-11FC7907-490C-47AB-9DAC-2B20334691D4.html)
-up to and including [Section 'Supported Operations in ap\_\[u\]int/ap\_\[u\]fixpt, and floating-point'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-530A2A58-DEC9-4AAA-9DDC-E07BA18EF9E0.html),
+In the [SmartHLS user guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest),
+you should read [Section 'SmartHLS C/C++ Library'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_c_library&redirect=true&version=latest)
+up to and including [Section 'Supported Operations in ap\_\[u\]int/ap\_\[u\]fixpt, and floating-point'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_supported_operations&redirect=true&version=latest),
 and [Section 'AXI4 Target
-Interface'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-16F30D96-8744-48F6-BD42-AC01ED5460ED.html).
+Interface'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_target&redirect=true&version=latest).
 This knowledge will be directly applied in this training.
 
 We assume some knowledge of the C/C++ programming language for this
@@ -357,19 +357,19 @@ Figure 3: Adding custom SystemVerilog testbench.</p>
 Many methods and libraries used in previous trainings can be applied in
 creating this wide multiply block. Some topics include the C++ arbitrary
 precision library, how top-level function interfaces map to hardware,
-and pipelining. Refer to the [SmartHLS User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-995D69CF-ACC7-4CB0-9635-4434A765470E.html)
+and pipelining. Refer to the [SmartHLS User Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest)
 or [previous trainings](https://microchiptechnology.sharepoint.com/sites/InfoDepot/FPGA_SOC%20LegUp%20Site/SitePages/FAE-Training-Slides-and-Video.aspx)
 for more details on specific topics.
 
 All of the necessary operators to implement the wide multiply operations
-are provided in the arbitrary precision library API. Read [Section 'C++ Arbitrary Precision Data Types Library'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-EA20C103-EBF1-4FEC-9D7C-096162AB657C.html)
+are provided in the arbitrary precision library API. Read [Section 'C++ Arbitrary Precision Data Types Library'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_types&redirect=true&version=latest)
 in the SmartHLS User Guide if you have not already. This section
 provides information about the arbitrary precision library. Keep in mind
 that the operation performed in the divide-by-two operation in the
 original RTL is implemented as an arithmetic right shift-by-one. The
 “\>\>” operator in C++ is a logical right shift and not an arithmetic
 right shift. You must use an arithmetic right shift operation to handle
-signed division properly. See: [Section 'Supported Operations in ap\_\[u\]int/ap\_\[u\]fixpt, and floating-point'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-530A2A58-DEC9-4AAA-9DDC-E07BA18EF9E0.html).
+signed division properly. See: [Section 'Supported Operations in ap\_\[u\]int/ap\_\[u\]fixpt, and floating-point'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_supported_operations&redirect=true&version=latest).
 
 When you use the SmartHLS C++ arbitrary precision library, SmartHLS
 automatically handles sign extension, padding, and shifting when
@@ -599,7 +599,7 @@ in most FPGA use cases.
 ![](.//media/image3.png)In this section, we want you to implement an AXI
 target interface in SmartHLS to communicate with the Mi-V processor.
 
-To start, you should see [Section 'AXI4 Target Interface'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-16F30D96-8744-48F6-BD42-AC01ED5460ED.html)
+To start, you should see [Section 'AXI4 Target Interface'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_target&redirect=true&version=latest)
 in the SmartHLS User Guide if you haven’t already. This section includes
 information on how to create a AXI target interface in SmartHLS. You can
 also start with an example found in the SmartHLS Github [examples repository](https://github.com/MicrochipTech/fpga-hls-examples). Note,
@@ -616,7 +616,7 @@ Note, SmartHLS does not support using C++ arbitrary precision types
 inside of an AXI4 target struct. However, C++ arbitrary precision types
 should still be used for the wide multiply computations. This can be
 achieved by assigning the simple types in the target struct to the
-corresponding slices of the arbitrary precision type. See: [Section 'Selecting and Assigning to a Range of Bits'](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-21FDCBD6-626A-4D3A-AFE3-4A88952293C7.html).
+corresponding slices of the arbitrary precision type. See: [Section 'Selecting and Assigning to a Range of Bits'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_selecting_assigning&redirect=true&version=latest).
 
 Next you will find the *initiator\_layout.txt* file in the template
 project. This gives you the processor side memory map layout for
@@ -1288,7 +1288,7 @@ blocks as delay elements to line up the inputs to the pipeline stages
 where they are used. These were implemented with uSRAM FIFOs. SmartHLS
 2022.3 also uses uSRAM FIFOs for pipeline registers. If you are using an
 older version of SmartHLS, you can set the
-[USE\_FIFO\_FOR\_PIPELINE\_REG](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-EE7D70B4-A250-4503-AFAC-056F88433277.html)
+[USE\_FIFO\_FOR\_PIPELINE\_REG](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_use_fifo_for_pipieline_reg&redirect=true&version=latest)
 parameter to 1 in a custom configuration file to enable this behavior.
 The steps to do this are similar to setting the `STRENGTH_REDUCTION`
 parameter as seen in the RGB2YCbCr section of the [SmartHLS Training 1 document](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/).

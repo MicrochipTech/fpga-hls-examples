@@ -16,7 +16,7 @@ format, implemented by the third party library in half.hpp.
 
 Please follow the user guide to install SmartHLS and learn more about the features of this HLS tool:
  - Homepage: https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
- - User guide: https://microchiptech.github.io/fpga-hls-docs/
+ - User guide: https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest 
 
 After the installation is done, you can try out this example through either GUI
 or command-line. 

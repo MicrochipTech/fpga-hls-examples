@@ -295,7 +295,7 @@ now updated.
 
 **NOTE:** 
 As an additional reference about terminals and the image flashing process,
-you can check the [IcicleKit Setup Instructions](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html). 
+you can check the [IcicleKit Setup Instructions](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_iciclekit&redirect=true&version=latest). 
 It includes instructions and additional screen captures for the PolarFire Icicle 
 kit but the the process is similar in the PolarFire SoC Video Kit, except they 
 use different image files.
