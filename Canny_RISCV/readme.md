@@ -1,20 +1,17 @@
 # Canny with RISC-V
 
-## Introduction
-
-The goal of this example is to demonstrate how a design compiled using the SmartHLS IP Flow can
+The goal of this example is to demonstrate one way a design compiled using the SmartHLS IP Flow can
 be reused to be compiled using the SmartHLS SoC Flow. To do this, we will show how the Canny design in [Training 1](../Training1),
-which you previously compiled using the IP Flow, can be [modified slighty](canny.cpp) such that we can 
+which was originally compiled using the IP Flow, can be [modified slighty](canny.cpp) such that we can 
 compile it using the SoC Flow, and run it on the [Icicle Kit](https://www.microchip.com/en-us/development-tool/mpfs-icicle-kit-es) board.
 
 ## Prerequisites
 - If you haven't already, follow the [Icicle Kit Setup Instructions](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_iciclekit&redirect=true&version=latest) to set up the Icicle Kit.
 - We assume you have already completed [Training 1](../Training1), and understand how the Canny module works,
-as this example will focus on the SoC Flow rather than the Canny design.
+as this example will focus on the SoC Flow rather than the Canny design itself.
 - Having completed [Training 4](../Training4) as a primer on how the SoC Flow works will be useful for this example.
 
-## Overview
-
+## Description
 In [Training 1](../Training1), the implementation of the Canny module is described using the 
 SmartHLS IP flow. This is designed exclusively for generating a Verilog module.
 
@@ -22,12 +19,15 @@ The focus of this example, however, is on the reuse of the same module and its
 compilation using the SoC flow. This process automatically integrates the
 Canny module into the RISC-V subsystem within the MPFS250T FPGA.
 
-Here, a RISC-V processor operating on Linux loads an input image into the DDR memory. 
-This allows the SmartHLS module to access, process, and subsequently write the output back into the DDR.
+Here, the `main()` function is now cross-compiled and executed by the RISC-V processor operating on Linux on the MPFS250T FPGA in the Icicle Kit board.
+The RISC-V processor loads an input image into the DDR memory. 
+This allows the SmartHLS module to access, process, and subsequently write the output back directly into the DDR.
 
 To change the Canny example from Training 1 to be compiled using the SoC flow instead of the IP flow, we have made minor
-changes to [`canny.cpp`](canny.cpp). This Canny example employs the ['axi_initiator'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_initiator&redirect=true&version=latest) argument type to transfer data between the CPU and Fabric, eliminating the need for on-chip buffers.
-Instead of on-chip buffers, we use FIFOs, used in the highly straightforward `write_fifo()` and `read_fifo()` functions:
+changes to [`canny.cpp`](canny.cpp). This Canny example employs the ['axi_initiator'](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_initiator&redirect=true&version=latest) argument type to transfer data between the CPU and fabric. This eliminates the need for on-chip buffers, which would be needed if the argument type was set to `axi_target`. For large images, there may not be enough LSRAM on-chip.
+
+The original Canny IP flow design used FIFOs to stream data in and out of the module. As not to change the module, we added
+the new straightforward `write_fifo()` and `read_fifo()` functions to move the data from and to the CPU:
 
 ```C
 16  void write_fifo(unsigned char *buf, hls::FIFO<unsigned char> &out_fifo, int nWords) {
@@ -95,11 +95,10 @@ This is an image of what the design looks like:
 ```
 
 
-Please note: For the sake of simplicity, all error checks, such as verifying the successful allocation of CPU memory,
+**NOTE:** For the sake of simplicity, all error checks, such as verifying the successful allocation of CPU memory, and comparing against a reference software,
 have been omitted from this example. However, it is advisable to include error checking code.
-
 
 ## References
 
-For a more comprehensive look at the AXI Initator interface, see [Training 4](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4#accelerator-direct-access-axi-initiator).
+For a more comprehensive look at the AXI Initator interface, see [the SmartHLS User Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_initiator&redirect=true&version=latest).
 
