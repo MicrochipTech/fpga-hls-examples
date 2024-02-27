@@ -2,7 +2,7 @@
 ########## If you have your own custom Makefile, please name it Makefile.user. ##########
 NAME = Canny
 LOCAL_CONFIG = -legup-config=config.tcl
-SRCS = canny.cpp gaussian_filter.cpp gf_sw.cpp hf_sw.cpp hysteresis_filter.cpp nm_sw.cpp nonmaximum_suppression.cpp sf_sw.cpp sobel_filter.cpp util.cpp
+SRCS = canny.cpp gaussian_filter.cpp hysteresis_filter.cpp nonmaximum_suppression.cpp sobel_filter.cpp util.cpp
 GUI_BASE_DIR =
 LEVEL = $(SHLS_ROOT_DIR)/examples
 
