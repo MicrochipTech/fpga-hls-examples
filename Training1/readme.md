@@ -2010,7 +2010,7 @@ to the nearest integer.
 For this computation we are using a 18-bit fixed-point type with 10
 integer bits and 8 fractional bits (Q10.8) as defined below using the
 `ap_fixpt` SmartHLS arbitrary precision fixed-point data type (see
-[SmartHLS documentation](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-61CF52C5-A40E-436D-9E38-AD885C0EF16D.html)):
+[SmartHLS documentation](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_fixed_point&redirect=true&version=latest)):
 ```c
 typedef ap_fixpt<18, 10> fixpt_t;
 ```
@@ -2311,7 +2311,7 @@ rgb.G = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(G);
 rgb.B = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(B);
 ```
 From the SmartHLS [user
-guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-61CF52C5-A40E-436D-9E38-AD885C0EF16D.html),
+guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_arbitary_precision&redirect=true&version=latest),
 the `AP_SAT` option means that on positive and negative overflow,
 saturate the result to the maximum or minimum value in the range
 respectively.
@@ -3246,7 +3246,8 @@ dataflow pragma causes the four sub-functions to overlap their execution
 and is ideal for generating a design where multiple functions are
 connected to operate as a single pipeline. To learn more about the
 dataflow pragma, see the [SmartHLS
-Documentation](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-24B4CBDB-506F-433E-95F9-28FA2811E9CF.html).
+Documentation](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_flow&redirect=true&version=latest
+).
 ```c
 void canny(hls::FIFO<unsigned char> &input_fifo,
            hls::FIFO<unsigned char> &output_fifo) {

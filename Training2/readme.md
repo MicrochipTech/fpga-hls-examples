@@ -238,7 +238,7 @@ synthesis.
 
 When designing a hardware block using SmartHLS, parallelism is the main
 way of achieving performance gain. As mentioned in the [SmartHLS user
-guide](https://microchiptech.github.io/fpga-hls-docs/userguide.html#introduction-to-high-level-synthesis),
+guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest),
 there are four main kinds of parallelism in SmartHLS: instruction-level,
 loop-level, thread-level, and dataflow parallelism. These concepts have
 some overlap between them, but they all focus on running as many tasks
@@ -389,7 +389,7 @@ parallel on a data stream. It allows tasks to start executing as soon as
 their prerequisites are ready. Dataflow parallelism was shown in
 Training 1, and more detailed information can be found in the [SmartHLS
 User
-Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-24B4CBDB-506F-433E-95F9-28FA2811E9CF.html).
+Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_flow&redirect=true&version=latest).
 An example using dataflow parallelism will also be discussed in Appendix
 D. For more complex parallelism, e.g., with feedback/cycles between the
 parallel tasks, multi-threading APIs may be needed to explicitly
@@ -420,7 +420,7 @@ Goals of this section:
 Creating parallel modules using threads is easy in SmartHLS. SmartHLS
 comes with a threading library with a simple API for creating threads.
 Detailed information on this API can be found in the [SmartHLS User
-Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-E3BCA8C1-1F5A-41C2-B0A6-F33C48F33FA7.html).
+Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_multi_threading&redirect=true&version=latest).
 SmartHLS previously supported POSIX threads (pthreads) but the pthreads
 API was deprecated in SmartHLS 2022.3 and the SmartHLS thread API is now
 the recommended way to create threads. Here we will present the basics
@@ -512,7 +512,7 @@ contention free to be able to show what the generated arbiter looks like
 in RTL. Note, the contention free pragma must precede the variable
 declaration unlike pragmas such as the function top pragma. For more
 information on where pragmas need to be defined, check the 
-[SmartHLS Pragmas Manual](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-B3D89018-0850-487C-A242-A433094D720F.html).
+[SmartHLS Pragmas Manual](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_pragmas&redirect=true&version=latest).
 
 ![](.//media/image3.png) To check for generated arbiters, compile the
 design to hardware (![](.//media/image28.png)) and open the generated
@@ -718,7 +718,7 @@ in software, the same functionality is replicated by SmartHLS in
 hardware.
 
 A generic example on how to use the mutex can be found in the [User
-Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-AEB83DF1-3E37-4FE5-B386-E2BEBCF7E15E.html),
+Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_thread_apis&redirect=true&version=latest),
 where a global mutex is locked and unlocked to ensure that the function
 body runs atomically.
 
@@ -754,7 +754,7 @@ before the other threads are ready. A barrier can handle any number of
 threads but must be given the number during creation.
 
 A generic example on how to use the barrier can be found in the [User
-Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-AEB83DF1-3E37-4FE5-B386-E2BEBCF7E15E.html),
+Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_thread_apis&redirect=true&version=latest),
 where a global barrier is initiated in main for the two threads that
 will use it. Inside the threaded function, a call to wait is made to
 block the thread until the two threads reach the barrier.

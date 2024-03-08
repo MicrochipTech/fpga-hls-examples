@@ -347,7 +347,7 @@ Finally, the `common` directory has some common bitmaps and helper code.
 
 ## References:
 
-[SmartHLS User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-995D69CF-ACC7-4CB0-9635-4434A765470E.html)
+[SmartHLS User Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest)
 
 [PolarFire_SoC_FPGA_H264_Video_Streaming_Over_Ethernet_Application_Note_AN4529.pdf](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ApplicationNotes/ApplicationNotes/PolarFire_SoC_FPGA_H264_Video_Streaming_Over_Ethernet_Application_Note_AN4529.pdf)
 
