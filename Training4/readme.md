@@ -85,9 +85,9 @@ Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_i
 [AXI4 Target
 Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_target&redirect=true&version=latest),
 [Driver Functions for AXI4
-Target](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-7BBF0DBC-AA2A-4593-9B3F-65EDD8520ACE.html),
+Target](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-7BBF0DBC-AA2A-4593-9B3F-65EDD8520ACE.html),
 and [User-defined
-SmartDesigns](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html).
+SmartDesigns](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html).
 
 
 ![](.//media/image3.png) We will use this cursor symbol throughout this tutorial to indicate sections where you need to perform actions to follow along.
@@ -755,7 +755,7 @@ file implements the driver functions. The driver functions are generated
 for arguments and module control if they are configured to use AXI4
 target interface. Figure 6‑22 summarizes the different categories of
 driver functions. Please visit [Driver Functions for AXI4
-Target](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-7BBF0DBC-AA2A-4593-9B3F-65EDD8520ACE.html)
+Target](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-7BBF0DBC-AA2A-4593-9B3F-65EDD8520ACE.html)
 section of our user guide for a more detailed explanation.
 
 <table>
@@ -1112,7 +1112,7 @@ data transfers between the DDR and the accelerator. Any additional
 accelerators would be connected to the same AXI interconnect. For more
 information on the architecture of the Reference SoC, please see our
 [user
-guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-0B124EE7-BB34-4CF3-A591-9658F121B533.html).
+guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-0B124EE7-BB34-4CF3-A591-9658F121B533.html).
 
 We can simplify the SmartDesign visualization by clicking
 ![](.//media/image38.png)Hide Nets, ![](.//media/image39.png)Compress
@@ -1357,7 +1357,7 @@ Figure 6‑42.
 DMA Copy mode and Accelerator Direct Access require the memory to be
 allocated using the `hls_malloc` function from the [SmartHLS Memory
 Allocation
-Library](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-8246D542-5D26-420C-9418-6D798FDFC215.html)
+Library](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8246D542-5D26-420C-9418-6D798FDFC215.html)
 to keep data in physically contiguous memory for the DMA engine. Using
 `hls_malloc` prevents splitting data across different virtual memory
 pages in physical memory. The accelerators and DMA engine do not perform
@@ -1412,7 +1412,7 @@ SmartHLS reads in `Makefile.user` where users can define and modify
 options such as compiler and linker flags. For example, users can modify
 `USER_CXX_FLAG` to append additional C++ compilation flags for their
 project. Visit the [Makefile
-Variable](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-398C5B20-F31F-4C97-AA81-DDDC0BE0F469.html)
+Variable](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-398C5B20-F31F-4C97-AA81-DDDC0BE0F469.html)
 section of our user guide for a full list of predefined user flags and
 their uses.
 
@@ -2204,7 +2204,7 @@ SoC, we already have [programmed our Custom SoC bitstream to the FPGA](#programm
 `Makefile.user` defines various options related to compiling and running
 the compiled program. Figure 8‑26 is a snippet of `Makefile.user`
 containing the runtime settings. Visit the [Makefile
-Variable](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-398C5B20-F31F-4C97-AA81-DDDC0BE0F469.html)
+Variable](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-398C5B20-F31F-4C97-AA81-DDDC0BE0F469.html)
 section of our user guide for a full list of predefined user flags and
 their uses. Important: Ensure that `SRCS` is set to
 `main_variables/main.simple.cpp`.
@@ -2397,7 +2397,7 @@ Running with hardware module, the CPU utilization is about 11%:
 <p align="center">Figure 8‑33 CPU Usage when Running with Accelerators</p></p>
 
 SmartHLS has a TCL parameter called
-[SOC\_POLL\_DELAY](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html)
+[SOC\_POLL\_DELAY](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html)
 with a value specified in microseconds. This parameter is used for
 controlling how often the hardware driver polls the module to check for
 completion. Sometimes for long running tasks, the MSS only needs to
@@ -2449,7 +2449,7 @@ different call in main.non-blocking.cpp as shown in Figure 8‑34.
 ```
 <p align="center">Figure 8‑34 Main Execution Loop of main.non-blocking.cpp</p>
 
-[HAS\_ACCELERATOR](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-6818975C-389F-427C-B913-65A667001A99.html#GUID-6818975C-389F-427C-B913-65A667001A99__SECTION_YMS_QTJ_NYB)
+[HAS\_ACCELERATOR](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-6818975C-389F-427C-B913-65A667001A99.html#GUID-6818975C-389F-427C-B913-65A667001A99__SECTION_YMS_QTJ_NYB)
 is a SmartHLS defined macro that indicates whether the program is
 compiled with accelerators or not. The `*_write_input_and_start()`
 functions send the data to the hardware accelerator and start the
@@ -2546,7 +2546,7 @@ function is a classic example of the producer-consumer pattern. The in
 data is received from the AXI target interface and passed to each stage
 of the computation, namely `invert` and `threshold_to_zero`. We use a
 thread
-([hls::thread](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-11/GUID-D3311A34-24FB-4A0D-8A49-A0A56F71410F.html))
+([hls::thread](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-D3311A34-24FB-4A0D-8A49-A0A56F71410F.html))
 for each stage as each stage can be run independently as long as there
 are data available. The two stages are connected via a fifo between
 them.
