@@ -17,20 +17,20 @@ proc getHlsPaths { } {
     if {![info exists shls_path]} {catch {set shls_path [exec which shls]}}
     
     if {[info exists shls_path]} {
-        set base_path [string trimright $shls_path SmartHLS/bin/shls]
+        set base_path [string trimright $shls_path bin/shls]
     } else {
         global shls_path
         if { $OS == "Linux" } {
-            set base_path [string cat [string trimright $install_loc Libero]/SmartHLS-$liberoRelease {/}]
-            set ::env(PATH) [string cat $::env(PATH) ":" $base_path {SmartHLS/bin}]
-            set shls_path [string cat $base_path {SmartHLS/bin/shls}]
+            set base_path [string cat [string trimright $install_loc Libero]/SmartHLS-$liberoRelease {/SmartHLS}]
+            set ::env(PATH) [string cat $::env(PATH) ":" $base_path {/bin}]
+            set shls_path [string cat $base_path {/bin/shls}]
         } else {
-            set base_path [string cat [string trimright $install_loc Designer]SmartHLS-$liberoRelease {/}]
+            set base_path [string cat [string trimright $install_loc Designer]SmartHLS-$liberoRelease {/SmartHLS}]
             set base_path [file normalize $base_path]
             set drive [string range $install_loc 0 0]
-            set shls_path "$base_path/SmartHLS/bin/shls.bat"
+            set shls_path "$base_path/bin/shls.bat"
             set shls_path [file normalize $shls_path]
-            set ::env(PATH) [string cat $::env(PATH) ";" $base_path {SmartHLS/bin}]
+            set ::env(PATH) [string cat $::env(PATH) ";" $base_path {bin}]
         }
     }
     puts "base_path: $base_path"
@@ -44,8 +44,6 @@ proc getHlsPaths { } {
     }
 
     #return the list of paths
-    puts "SHLS PATH $shls_path"
-    puts "BASE PATH $base_path"
     set pathList [list $base_path $shls_path]
 }
 

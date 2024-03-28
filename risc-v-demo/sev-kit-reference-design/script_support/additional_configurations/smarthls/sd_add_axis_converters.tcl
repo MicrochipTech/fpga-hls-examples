@@ -1,10 +1,11 @@
+puts "TCL_BEGIN: [info script]"
+
 #
 # NOTES:
 #   - Ideally this should go into their own create_hdl_plus_*.tcl files
 #
 set pathList [getHlsPaths]
 set base_path [lindex $pathList 0]
-set base_path "$base_path/SmartHLS"
 puts "base_path: $base_path"
 
 open_smartdesign -sd_name {Video_Pipeline} 
@@ -126,3 +127,5 @@ sd_invert_pins -sd_name {Video_Pipeline} -pin_names {"AXIS_Video_Converter_0:i_v
 sd_invert_pins -sd_name {Video_Pipeline} -pin_names {"AXIS_Video_Converter_0:i_axis_reset"}
 
 save_smartdesign -sd_name {Video_Pipeline} 
+
+puts "TCL_END: [info script]"
