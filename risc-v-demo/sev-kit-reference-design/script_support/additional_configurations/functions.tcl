@@ -17,7 +17,7 @@ proc getHlsPaths { } {
     if {![info exists shls_path]} {catch {set shls_path [exec which shls]}}
     
     if {[info exists shls_path]} {
-        set base_path [string trimright $shls_path SmartHLS/bin/shls]
+        set base_path [string trimright $shls_path bin/shls]
     } else {
         global shls_path
         if { $OS == "Linux" } {
@@ -44,8 +44,6 @@ proc getHlsPaths { } {
     }
 
     #return the list of paths
-    puts "SHLS PATH $shls_path"
-    puts "BASE PATH $base_path"
     set pathList [list $base_path $shls_path]
 }
 
