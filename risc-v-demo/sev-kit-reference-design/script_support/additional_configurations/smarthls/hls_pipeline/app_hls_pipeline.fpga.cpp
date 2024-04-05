@@ -79,31 +79,31 @@ int main(int argc, char** argv) {
     printf("hls_pipeline - FPGA (%s, %s)\n", __DATE__, __TIME__); fflush(stdout);
     
     printf("Running hls_pipeline_setup function\n"); fflush(stdout);
-    if (hls_pipeline_setup() == 1) {
+    if (!hls_pipeline_setup()) {
         printf("Error: hls_pipeline_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running watermark_setup function\n"); fflush(stdout);
-    if (watermark_setup() == 1) {
+    if (!watermark_setup()) {
         printf("Error: watermark_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running rotozoom_setup function\n"); fflush(stdout);
-    if (rotozoom_setup() == 1) {
+    if (!rotozoom_setup()) {
         printf("Error: rotozoom_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running get_frame_setup function\n"); fflush(stdout);
-    if (get_frame_setup() == 1) {
+    if (!get_frame_setup()) {
         printf("Error: get_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running put_frame_setup function\n"); fflush(stdout);
-    if (put_frame_setup() == 1) {
+    if (!put_frame_setup()) {
         printf("Error: put_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }

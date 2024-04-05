@@ -255,13 +255,13 @@ int main(int argc, char** argv) {
     printf("hls_pipeline - CPU (%s, %s)\n", __DATE__, __TIME__); fflush(stdout);
     
     printf("Running get_frame_setup function\n"); fflush(stdout);
-    if (get_frame_setup() == 1) {
+    if (!get_frame_setup()) {
         printf("Error: get_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running put_frame_setup function\n"); fflush(stdout);
-    if (put_frame_setup() == 1) {
+    if (!put_frame_setup()) {
         printf("Error: put_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
