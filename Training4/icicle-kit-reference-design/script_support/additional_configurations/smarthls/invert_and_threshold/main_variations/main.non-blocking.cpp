@@ -45,6 +45,7 @@ int main(int argc, char **argv) {
 
     int do_invert = atoi(argv[1]);
     int threshold = atoi(argv[2]);
+    void *virt_addr;
     
     printf("\nHere we go!\n");
     printf("N_ROWS:%u, buf_size :%u, do_invert:%d, threshold:%d, mode:%s\n", 
@@ -65,7 +66,8 @@ int main(int argc, char **argv) {
     for(int i = 0; i < HEIGHT/N_ROWS; i++) {
         if (do_invert) {
             #ifdef HAS_ACCELERATOR
-            invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS]);
+            virt_addr = invert_setup();
+            invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], virt_addr);
             #else
             invert((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);
             #endif
@@ -73,7 +75,7 @@ int main(int argc, char **argv) {
         
         if (threshold > 0) {
             #ifdef HAS_ACCELERATOR
-            threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold);
+            threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold, virt_addr);
             #else
             threshold_to_zero((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS], threshold);
             #endif
@@ -81,10 +83,10 @@ int main(int argc, char **argv) {
 
         #ifdef HAS_ACCELERATOR
         if (do_invert)
-            invert_join_and_read_output((uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);
+            invert_join_and_read_output((uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS], virt_addr);
 
         if (threshold > 0)
-            threshold_to_zero_join_and_read_output((uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS]);
+            threshold_to_zero_join_and_read_output((uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS], virt_addr);
         #endif
     }
     double t1 = timestamp();
