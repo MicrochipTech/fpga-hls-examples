@@ -77,33 +77,39 @@ void read_config(std::ifstream &cfgFile, struct cfg_t &cfg) {
 //------------------------------------------------------------------------------
 int main(int argc, char** argv) {
     printf("hls_pipeline - FPGA (%s, %s)\n", __DATE__, __TIME__); fflush(stdout);
+
+    void *hls_pipeline_virt_addr;
+    void *watermark_virt_addr;
+    void *rotozoom_virt_addr;
+    void *get_frame_virt_addr;
+    void *put_frame_virt_addr;
     
     printf("Running hls_pipeline_setup function\n"); fflush(stdout);
-    if (!hls_pipeline_setup()) {
+    if (!(hls_pipeline_virt_addr = hls_pipeline_setup())) {
         printf("Error: hls_pipeline_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running watermark_setup function\n"); fflush(stdout);
-    if (!watermark_setup()) {
+    if (!(watermark_virt_addr = watermark_setup())) {
         printf("Error: watermark_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running rotozoom_setup function\n"); fflush(stdout);
-    if (!rotozoom_setup()) {
+    if (!(rotozoom_virt_addr = rotozoom_setup())) {
         printf("Error: rotozoom_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running get_frame_setup function\n"); fflush(stdout);
-    if (!get_frame_setup()) {
+    if (!(get_frame_virt_addr = get_frame_setup())) {
         printf("Error: get_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running put_frame_setup function\n"); fflush(stdout);
-    if (!put_frame_setup()) {
+    if (!(put_frame_virt_addr = put_frame_setup())) {
         printf("Error: put_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
@@ -144,18 +150,18 @@ int main(int argc, char** argv) {
     read_config(cfgFile, cfg);
 
     cfg.get_frame_enable    = 0; // frames don't go through cpu
-    get_frame_write_nPixels(cfg.nPixels);
-    get_frame_write_enable(cfg.get_frame_enable);
+    get_frame_write_nPixels(cfg.nPixels, get_frame_virt_addr);
+    get_frame_write_enable(cfg.get_frame_enable, get_frame_virt_addr);
     
-    hls_pipeline_write_nPixels(cfg.nPixels);
+    hls_pipeline_write_nPixels(cfg.nPixels, hls_pipeline_virt_addr);
 
     cfg.alpha               = 256 * 0.25;
-    watermark_write_nPixels(cfg.nPixels);
-    watermark_write_buf_ptr_addr(watermark_img.data);
-    watermark_write_alpha(cfg.alpha);
+    watermark_write_nPixels(cfg.nPixels, watermark_virt_addr);
+    watermark_write_buf_ptr_addr(watermark_img.data, watermark_virt_addr);
+    watermark_write_alpha(cfg.alpha, watermark_virt_addr);
 
     cfg.put_frame_enable    = 0; // frames don't go through cpu
-    put_frame_write_enable(cfg.put_frame_enable);
+    put_frame_write_enable(cfg.put_frame_enable, put_frame_virt_addr);
 
 
     hls::sev::RotozoomData rd;
@@ -170,39 +176,39 @@ int main(int argc, char** argv) {
         // Read configuration parameters from the webpage
         read_config(cfgFile, cfg);
 
-        hls_pipeline_write_do_sobel(cfg.do_sobel);
-        hls_pipeline_write_do_invert(cfg.do_invert);
-        hls_pipeline_write_thresh(cfg.thresh);
-        watermark_write_enable(cfg.watermark_enable);
+        hls_pipeline_write_do_sobel(cfg.do_sobel, hls_pipeline_virt_addr);
+        hls_pipeline_write_do_invert(cfg.do_invert, hls_pipeline_virt_addr);
+        hls_pipeline_write_thresh(cfg.thresh, hls_pipeline_virt_addr);
+        watermark_write_enable(cfg.watermark_enable, watermark_virt_addr);
 
         // CPU computes the amount of rotation 
         hls::sev::rotate_points<512, 512, WIDTH, HEIGHT, rotate, scale>(rd);
-        rotozoom_write_enable(cfg.rotozoom_enable);
-        rotozoom_memcpy_write_rd((void *)&rd, sizeof(hls::sev::RotozoomData));
+        rotozoom_write_enable(cfg.rotozoom_enable, rotozoom_virt_addr);
+        rotozoom_memcpy_write_rd((void *)&rd, sizeof(hls::sev::RotozoomData), rotozoom_virt_addr);
 
         // Start the HLS modules
-        get_frame_start();
-        hls_pipeline_start();
-        watermark_start();
-        rotozoom_start();
+        get_frame_start(get_frame_virt_addr);
+        hls_pipeline_start(hls_pipeline_virt_addr);
+        watermark_start(watermark_virt_addr);
+        rotozoom_start(rotozoom_virt_addr);
 
         if (cfg.rotozoom_enable && firstPass) {
             printf("Skipping put_frame_start\n"); fflush(stdout);
         } else {
-            put_frame_start();
+            put_frame_start(put_frame_virt_addr);
         }
 
         // Wait for the HLS modules to complete
-        get_frame_join();
-        hls_pipeline_join();
-        watermark_join();
-        rotozoom_join();
+        get_frame_join(get_frame_virt_addr);
+        hls_pipeline_join(hls_pipeline_virt_addr);
+        watermark_join(watermark_virt_addr);
+        rotozoom_join(rotozoom_virt_addr);
 
         if (cfg.rotozoom_enable && firstPass) {
             printf("Skipping put_frame_join\n"); fflush(stdout);
             firstPass = 0;
         } else {
-            put_frame_join();
+            put_frame_join(put_frame_virt_addr);
         }
 
         // Update the frame counter

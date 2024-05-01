@@ -255,13 +255,17 @@ int main(int argc, char** argv) {
     printf("hls_pipeline - CPU (%s, %s)\n", __DATE__, __TIME__); fflush(stdout);
     
     printf("Running get_frame_setup function\n"); fflush(stdout);
-    if (!get_frame_setup()) {
+
+    void *get_frame_virt_addr;
+    void *put_frame_virt_addr;
+
+    if (!(get_frame_virt_addr = get_frame_setup())) {
         printf("Error: get_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
 
     printf("Running put_frame_setup function\n"); fflush(stdout);
-    if (!put_frame_setup()) {
+    if (!(put_frame_virt_addr = put_frame_setup())) {
         printf("Error: put_frame_setup function failed\n"); fflush(stdout);
         exit(EXIT_FAILURE);
     }
@@ -319,12 +323,12 @@ int main(int argc, char** argv) {
 
     cfg.alpha               = 0.25;
 
-    get_frame_write_buf_ptr_addr(buf1);
-    get_frame_write_nPixels(cfg.nPixels);
-    get_frame_write_enable(cfg.get_frame_enable);
+    get_frame_write_buf_ptr_addr(buf1, get_frame_virt_addr);
+    get_frame_write_nPixels(cfg.nPixels, get_frame_virt_addr);
+    get_frame_write_enable(cfg.get_frame_enable, get_frame_virt_addr);
 
-    put_frame_write_buf_ptr_addr(buf1);
-    put_frame_write_enable(cfg.put_frame_enable);
+    put_frame_write_buf_ptr_addr(buf1, put_frame_virt_addr);
+    put_frame_write_enable(cfg.put_frame_enable, put_frame_virt_addr);
 
     std::thread th[N_THREADS];
 
@@ -334,8 +338,8 @@ int main(int argc, char** argv) {
 
         read_config(cfgFile, cfg);
 
-        get_frame_start();
-        get_frame_join(); // wait for frame to be in DDR
+        get_frame_start(get_frame_virt_addr);
+        get_frame_join(get_frame_virt_addr); // wait for frame to be in DDR
 
         move_image_around(buf1, pip_img);
         
@@ -359,8 +363,8 @@ int main(int argc, char** argv) {
             cv::addWeighted(watermark_img, cfg.alpha, frame, 1.0-cfg.alpha, 0.0, frame);
         }
 
-        put_frame_start();
-        put_frame_join();
+        put_frame_start(put_frame_virt_addr);
+        put_frame_join(put_frame_virt_addr);
 
         if(++frameCnt % 30 == 0) {
             t1 = timestamp();
