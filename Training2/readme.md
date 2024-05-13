@@ -2314,7 +2314,7 @@ code and SmartHLS cannot schedule all instructions in the first cycle.
 
 <p align="center"><img src=".//media/image68.png" /></p>
 
-```
+```c++
 15  void data_dependency() {
 16  #pragma HLS function noinline
 17    e = b + c;
