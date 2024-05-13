@@ -2418,7 +2418,7 @@ resource cannot be scheduled in parallel due to a lack of resources.
 `resource_contention` function on line 30 of
 `instruction_level_parallelism.cpp`.
 
-```
+```c++
 30  void resource_contention() {
 31  #pragma HLS function noinline
 32    e = a[0];
