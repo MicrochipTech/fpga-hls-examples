@@ -2480,10 +2480,9 @@ has no unrolling on the loop and `loop_unroll` unrolls the loop
 completely. This affects the resulting hardware by removing the control
 signals needed to facilitate the loop and combining multiple loop bodies
 into the same basic block, allowing more instructions to be scheduled in
-parallel. The trade-off here is an unrolled loop does not reuse hardware
-resources and can potentially use a lot of resources. However, the
-unrolled loop would finish earlier depending on how inherently parallel
-the loop body is.
+parallel. The trade-off here is that an unrolled loop does not reuse hardware 
+resources and can potentially use a lot of resources, however it will 
+finish earlier depending on how inherently parallel the loop body is.
 
 ![](.//media/image3.png)To see the effects of this, open the Schedule
 Viewer and first click on the `no_loop_unroll` function shown in Figure
