@@ -2299,7 +2299,7 @@ declare a synchronization signal between two threaded functions as
 operation we perform with these variables will be generated in hardware
 and viewable in the Schedule Viewer.
 
-```
+```c++
 4  volatile int a[5] = {0};
 5  volatile int b = 0, c = 0, d = 0;
 6  volatile int e, f, g;
