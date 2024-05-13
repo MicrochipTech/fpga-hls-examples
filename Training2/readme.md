@@ -1579,16 +1579,16 @@ we show the input tensor values and convolution filters involved in the
 computation of the set of colored output tensor values (see Loop 3
 arrow).
 
-Loop 1 and Loop 2 the code traverses along the row and column dimensions
+For Loop 1 and Loop 2, the code traverses along the row and column dimensions
 of the output tensor. Loop 3 traverses along the depth dimension of the
-output tensor, each iteration computes a `PARALLEL_KERNELS` number of
+output tensor, and each iteration computes a total of `PARALLEL_KERNELS`
 outputs. The `accumulated_value` array will hold the partial
 dot-products. Loop 4 traverses along the row and column dimensions of
-the input tensor and convolution filter kernels. Then Loop 5 walks
-through each of the `PARALLEL_KERNELS` number of selected convolution
+the input tensor and convolution filter kernels. Then, Loop 5 walks
+through each of the `PARALLEL_KERNELS` selected convolution
 filters and Loop 6 traverses along the depth dimension of the input
 tensor. Loop 7 and Loop 8 add up the partial sums together with biases
-to produce `PARALLEL_KERNEL` number of outputs.
+to produce `PARALLEL_KERNEL` outputs.
 
 ```C
 const static unsigned PARALLEL_KERNELS = NUM_MACC / INPUT_DEPTH;
