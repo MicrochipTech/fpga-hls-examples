@@ -2336,8 +2336,8 @@ second add is also used in the third add. These are examples of data
 dependencies as later adds use the data result of previous adds. Because
 we must wait for the result `e` to be produced before we can compute `f`,
 and then the result `f` must be produced before we can compute `g`, not all
-instructions can be scheduled immediately. They must wait for their
-dependent instructions to finish executing before they can start, or
+instructions can be scheduled immediately. They must wait for the instructions
+they depend on to finish executing before they can start, or
 they would produce the wrong result.
 
 <p align="center"><img src=".//media/image70.png" /></br>
