@@ -2251,10 +2251,10 @@ The first example we will look at is the `no_dependency` example on line
 <p align="center">Figure 28: Source code and data dependency graph for no_dependency
 function.</p>
 
-In this example, values are loaded from b, c, and d and additions happen
-before storing to *e*, *f*, and *g*. None of the adds use results from
+In this example, values are loaded from `b`, `c`, and `d`, and additions happen
+before storing to `e`, `f`, and `g`. None of the adds use results from
 the previous adds and thus all three adds can happen in parallel. The
-*noinline* pragma is used to prevent SmartHLS from automatically
+`noinline` pragma is used to prevent SmartHLS from automatically
 inlining this small function and making it harder for us to understand
 the schedule. Inlining is when the instructions in the called function
 get copied into the caller, to remove the overhead of the function call
