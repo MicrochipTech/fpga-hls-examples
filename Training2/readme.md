@@ -1126,11 +1126,11 @@ is defined by the number of rows, columns, and the depth.
 Convolution layers are good for extracting geometric features from an
 input tensor. Convolution layers work in the same way as an image
 processing filter (such as the Sobel filter) where a square filter
-(called a **kernel**) is slid across an input image. The **size** of
-filter is equal to the side length of the square filter, and the size of
-the step when sliding the filter is called the **stride**. The values of
-the input tensor under the kernel (called the **window**) and the values
-of the kernel are multiplied and summed at each step, which is also
+(called a **kernel**) is slid across an input image. The **size** of a
+filter is equal to its side length, and the size of the step when sliding 
+the filter is called the **stride**. The values of the input tensor 
+under the kernel (called the **window**) and the values of the 
+kernel are multiplied and summed at each step, which is also
 called a convolution. Figure 13 shows an example of a convolution layer
 processing an input tensor with a depth of 1.
 
