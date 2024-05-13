@@ -2230,7 +2230,7 @@ button (![](.//media/image28.png)) to build the design and generate the
 schedule.
 
 We can ignore the `printWarningMessageForGlobalArrayReset` warning message
-for global variable a in this example as described in the producer
+for global variable `a` in this example as described in the producer
 consumer example in the [section 'Producer Consumer Example'](#producer-consumer-example).
 
 The first example we will look at is the `no_dependency` example on line
