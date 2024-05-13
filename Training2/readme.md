@@ -2374,7 +2374,7 @@ memories.
 
 <p align="center"><img src=".//media/image72.png" /></p>
 
-```
+```c++
 22  void memory_dependency() {
 23  #pragma HLS function noinline
 24    volatile int i = 0;
