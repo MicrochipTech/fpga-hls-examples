@@ -1742,7 +1742,7 @@ is presented in Figure 20.
 void functional_unit_contention( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
 #pragma HLS loop pipeline
-    for (int I = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) {
         int mult1 = coeff1 * coeff1;
         int mult2 = coeff2 * coeff2;
         array[i] = mult1 + mult2;
