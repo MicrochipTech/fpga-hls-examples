@@ -300,7 +300,7 @@ parallel. SmartHLS leverages loop-level parallelism when pipelining a
 loop to allow multiple loop iterations to execute in parallel.
 Pipelining is a common hardware optimization to increase the throughput
 of a circuit that repeatedly processes data in a series of steps and
-achieves higher hardware utilization. We have already seen this kind of
+achieve higher hardware utilization. We have already seen this kind of
 parallelism in the Sobel Filter tutorial as well as in the previous
 training on the Canny Edge Detection Filter.
 
