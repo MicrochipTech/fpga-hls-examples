@@ -2289,13 +2289,13 @@ the store instruction highlighted in yellow depends on the result of the
 add instruction as we expect.
 
 We have declared all the variables used in this function as
-**volatile**. The volatile C/C++ keyword specifies that the variable can
+**volatile**. The `volatile` C/C++ keyword specifies that the variable can
 be updated by something other than the program itself, making sure that
 any operation with these variables do not get optimized away by the
 compiler as every operation matters. An example of where the compiler
 handles this incorrectly is seen in the [section 'Producer Consumer Example'](#producer-consumer-example), where we had to
 declare a synchronization signal between two threaded functions as
-volatile. Using volatile is required for toy examples to make sure each
+`volatile`. Using `volatile` is required for toy examples to make sure each
 operation we perform with these variables will be generated in hardware
 and viewable in the Schedule Viewer.
 
