@@ -2202,7 +2202,7 @@ instructions that always run together with a single entry point at the
 beginning and a single exit point at the end. A basic block in LLVM IR
 always has a label at the beginning and a branching instruction at the
 end (br, ret, etc.). An example of LLVM IR is shown below, where the
-`body.0` basic block performs an addition (add) and subtraction (sub) and
+`body.0` basic block performs an addition (add) and subtraction (sub), and
 then branches unconditionally (br) to another basic block labeled
 `body.1`. Control flow occurs between basic blocks.
 
