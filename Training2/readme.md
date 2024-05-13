@@ -2239,7 +2239,7 @@ The first example we will look at is the `no_dependency` example on line
 
 <p align="center"><img src=".//media/image19.png" /></p>
 
-```
+```c++
  8  void no_dependency() {
  9  #pragma HLS function noinline
 10    e = b + c;
