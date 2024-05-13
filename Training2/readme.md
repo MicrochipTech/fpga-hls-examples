@@ -2451,7 +2451,7 @@ when generating the schedule for a design.
 Next, we will see an example of how loops prevent operations from being
 scheduled in parallel.
 
-```
+```c++
 37  void no_loop_unroll() {
 38  #pragma HLS function noinline
 39    int h = 0;
