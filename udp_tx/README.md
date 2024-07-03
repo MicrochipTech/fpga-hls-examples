@@ -2,7 +2,7 @@ This is an example source code to show how to write an IP block to implement UDP
 
 Please follow the user guide to install SmartHLS and learn more about the features of this HLS tool:
  - Homepage: https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
- - User guide: https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest 
+ - User guide: https://microchiptech.github.io/fpga-hls-docs/
 
 After the installation is done, you can try out this example through either GUI or command-line. 
 

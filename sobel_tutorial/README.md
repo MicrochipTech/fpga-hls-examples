@@ -7,4 +7,4 @@ how to implement and optimize a simple image processing design using SmartHLS.
 
 Please follow the user guide to install SmartHLS and learn more about the features of this HLS tool:
  - Homepage: https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
- - User guide: https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest
+ - User guide: https://microchiptech.github.io/fpga-hls-docs/
