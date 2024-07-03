@@ -1,5 +1,0 @@
-Custom_FPGA_device=false
-FPGA_device=MPFS250T
-FPGA_family=PolarFireSoC
-Hybrid_system=Icicle_SoC
-eclipse.preferences.version=1
