@@ -1,0 +1,23 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed false             \
+    -update_iostd true
+    
+set_io -port_name SDIO_SW_SEL0 \
+    -pin_name D7 \
+    -fixed true \
+    -io_std LVCMOS33 \
+    -DIRECTION OUTPUT
+    
+set_io -port_name SDIO_SW_SEL1 \
+    -pin_name C7 \
+    -fixed true \
+    -io_std LVCMOS33 \
+    -DIRECTION OUTPUT
+    
+set_io -port_name SDIO_SW_EN_N \
+    -pin_name B7 \
+    -fixed true \
+    -io_std LVCMOS33 \
+    -DIRECTION OUTPUT
+    

@@ -1,0 +1,77 @@
+#===========================================================
+# NOTES about this specific file:
+#       In this file, 'ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm', we access FIC0
+#       to perform read and write operation into LSRAM
+#===========================================================                                                                                                    
+#                                                           
+# memmap    resource_name base_address;    
+memmap FIC_0_0x60000000 0x6000_0000;                 
+#-----------------------------------------------------------
+procedure main;
+#-----------------------------------------------------------
+# START of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  START Running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm'"
+print "MESSAGE:  to access FIC0"
+print "-"
+
+#-----------------------------------------------------------
+# WAIT until RESET is stable, then start BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  WAIT for some TIME after RESET released for Logic to stabilize before bus transactions"
+print "-"
+# Re-define timeout
+#    timeout default is 512 clocks
+#    timeout here is expanded to 10,000 clocks, to allow for longer wait time
+timeout 10000;
+
+#
+# WAIT until simulation time is 5us
+# 
+waitus 5;
+#
+
+#-----------------------------------------------------------
+# Perform Read and Write operation into LSRAM Meemory at address 0x6000_0000
+#-----------------------------------------------------------
+
+
+#command syntax
+#write64 x <address> <address_increment> <integer variable for MSB> <integer variable for LSB>
+#read64 x <address> <address_increment>
+
+
+#64 bit read and write command 
+print "MESSAGE:  WRITING 64 bit data to address 0x60000000"
+write64 w FIC_0_0x60000000 0x0 0x10111213 0x20212223;
+print "MESSAGE:  READING 64 bit data from address 0x60000000"
+read64 w FIC_0_0x60000000 0x0;
+
+#32 bit Write and Read command
+print "MESSAGE:  WRITING to address 0x60000008"
+write w FIC_0_0x60000000 0x8 0xecd54431;
+print "MESSAGE:  READING from address 0x60000008"
+read w FIC_0_0x60000000 0x8;
+
+#16 bit Write and Read command
+print "MESSAGE:  WRITING to address 0x6000000C"
+write h FIC_0_0x60000000 0xC 0xcd21;
+print "MESSAGE:  READING from address 0x6000000C"
+read h FIC_0_0x60000000 0xC;
+
+#8 bit Write and Read command
+print "MESSAGE:  WRITING to address 0x6000000E"
+write b FIC_0_0x60000000 0xE 0xd4;
+print "MESSAGE:  READING from address 0x6000000E"
+read b FIC_0_0x60000000 0xE;
+
+#-----------------------------------------------------------
+# END of BFM
+#-----------------------------------------------------------
+print "-"
+print "MESSAGE:  END running BFM file 'ICICLE_MSS_PFSOC_MSS_FIC0_user.bfm'"
+print "-"
+
+return

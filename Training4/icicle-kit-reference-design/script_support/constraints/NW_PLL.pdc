@@ -1,0 +1,11 @@
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_0 -fixed true -x 1303 -y 162
+set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/pll_inst_0_1 -fixed true -x 732 -y 376
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_12 -fixed true -x 1304 -y 162
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/pll_inst_0_DELAY -fixed true -x 739 -y 376
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_4/U0_RGB1 -fixed true -x 726 -y 340
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_0/U0_RGB1 -fixed true -x 731 -y 339
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_4 -fixed true -x 1300 -y 162
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_12/U0_RGB1 -fixed true -x 726 -y 260
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_8/U0_RGB1 -fixed true -x 730 -y 287
+set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/pll_inst_0 -fixed true -x 732 -y 377
+#set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC_FIC_x_CLK/PF_CCC_C0_0/clkint_8 -fixed true -x 1299 -y 162

@@ -1,0 +1,17 @@
+set_iobank -bank_name Bank9  \
+    -vcci 3.30               \
+    -fixed true             \
+    -update_iostd true
+    
+set_io -port_name MMUART_2_TXD_M2F \
+    -pin_name B22 \
+    -fixed true \
+    -DIRECTION OUTPUT \
+    -io_std LVCMOS33 
+    
+set_io -port_name MMUART_2_RXD_F2M \
+    -pin_name C22 \
+    -fixed true \
+    -DIRECTION INPUT \
+    -io_std LVCMOS33 
+    

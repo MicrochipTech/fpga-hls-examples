@@ -5,7 +5,7 @@ The homepage for the Microchip HLS integrated development environment is:
  - https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
 
 You can find the Microchip HLS software user guide here:
- - https://microchiptech.github.io/fpga-hls-docs/
+ - https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest 
 
 ## Tutorials and Trainings
 Example | Description
@@ -22,9 +22,15 @@ Example | Description
 --------|------------
 [axi_initiator](./axi_initiator)|Example of an AXI4-Initiator top-level interface.
 [axi_target](./axi_target)|Example of an AXI4-Target top-level interface.
+[Canny_RISCV](./Canny_RISCV)|Integrating a SmartHLS module created using the IP Flow into the RISC-V subsystem.
 
 ## Simple Examples
 Example | Description
 --------|------------
 [udp_tx](./udp_tx)|Simple UDP Transmit (TX) core from a network stack.
 [fp_mult](./fp_mult)|Arbitrary precision floating-point multiplication core.
+
+## Advanced Examples
+Example | Description
+--------|------------
+[RISC-V example](./risc-v-demo)|End-to-end SmartHLS + RISC-V + H264 over Ethernet Example.

@@ -1,0 +1,8 @@
+.vscode/**
+**/hls_output
+risc-v-demo/precompiled/**/ffmpeg*
+risc-v-demo/precompiled/**/opencv*
+risc-v-demo/sev-kit-reference-design/SEVPFSOC_H264
+risc-v-demo/sev-kit-reference-design/component
+risc-v-demo/sev-kit-reference-design/script_support/additional_configurations/smarthls/hls_pipeline/component
+risc-v-demo/sev-kit-reference-design/script_support/additional_configurations/smarthls/hls_pipeline/*.elf

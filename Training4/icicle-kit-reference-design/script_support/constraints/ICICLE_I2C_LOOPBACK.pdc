@@ -1,0 +1,32 @@
+set_iobank -bank_name Bank1  \
+    -vcci 3.30               \
+    -fixed true             \
+    -update_iostd true
+    
+set_io -port_name mBUS_I2C_SCL \
+    -pin_name C9 \
+    -fixed true \
+    -DIRECTION INOUT \
+    -io_std LVCMOS33 \
+    -RES_PULL UP
+    
+set_io -port_name mBUS_I2C_SDA \
+    -pin_name B5 \
+    -fixed true \
+    -DIRECTION INOUT \
+    -io_std LVCMOS33 \
+    -RES_PULL UP
+    
+set_io -port_name I2C1_SCL \
+    -pin_name D8 \
+    -fixed true \
+    -DIRECTION INOUT \
+    -io_std LVCMOS33 \
+    -RES_PULL UP
+    
+set_io -port_name I2C1_SDA \
+    -pin_name B4 \
+    -fixed true \
+    -DIRECTION INOUT \
+    -io_std LVCMOS33 \
+    -RES_PULL UP

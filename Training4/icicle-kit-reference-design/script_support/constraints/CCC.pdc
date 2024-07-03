@@ -1,0 +1,29 @@
+# Microsemi Physical design constraints file
+
+# Version: v12.6 12.900.20.24
+
+# Design Name: MPFS_ICICLE_KIT_BASE_DESIGN 
+
+# Input Netlist Format: EDIF 
+
+# Family: PolarFireSoC , Die: MPFS250T_ES , Package: FCVG484 , Speed grade: STD 
+
+# Date generated: Thu Jan 28 13:00:47 2021 
+
+
+#
+# Local clock constraints
+#
+
+
+#
+# Region constraints
+#
+
+
+#
+# Core cell constraints
+#
+
+set_location -inst_name CLOCKS_AND_RESETS_inst_0/PCIE_REF_CLK_0/PCIE_REF_CLK_0/I_IO -fixed true -x 2468 -y 236
+set_location -inst_name CLOCKS_AND_RESETS_inst_0/CCC/PF_CCC_C1_0/pll_inst_0 -fixed true -x 0 -y 5

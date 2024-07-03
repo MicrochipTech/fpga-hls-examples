@@ -1,2 +1,5 @@
 # don't modify line endings of bash scripts
 *.sh          text eol=lf
+*.job filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.wic.gz filter=lfs diff=lfs merge=lfs -text
