@@ -61,11 +61,15 @@ int main(int argc, char **argv) {
     bmp_pixel_t *OutBitMap1 = (bmp_pixel_t*)hls_malloc(HEIGHT * WIDTH * sizeof(bmp_pixel_t), HLS_ALLOC_NONCACHED);
     bmp_pixel_t *OutBitMap2 = (bmp_pixel_t*)hls_malloc(HEIGHT * WIDTH * sizeof(bmp_pixel_t), HLS_ALLOC_NONCACHED);
 
+    #ifdef HAS_ACCELERATOR
+    void *invert_virt_addr = invert_setup();
+    void *threshold_to_zero_virt_addr = threshold_to_zero_setup();
+    #endif
     double t0 = timestamp();
     for(int i = 0; i < HEIGHT/N_ROWS; i++) {
         if (do_invert) {
             #ifdef HAS_ACCELERATOR
-            invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS]);
+            invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], invert_virt_addr);
             #else
             invert((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);
             #endif
@@ -73,7 +77,7 @@ int main(int argc, char **argv) {
         
         if (threshold > 0) {
             #ifdef HAS_ACCELERATOR
-            threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold);
+            threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold, threshold_to_zero_virt_addr);
             #else
             threshold_to_zero((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS], threshold);
             #endif
@@ -81,10 +85,10 @@ int main(int argc, char **argv) {
 
         #ifdef HAS_ACCELERATOR
         if (do_invert)
-            invert_join_and_read_output((uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);
+            invert_join_and_read_output((uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS], invert_virt_addr);
 
         if (threshold > 0)
-            threshold_to_zero_join_and_read_output((uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS]);
+            threshold_to_zero_join_and_read_output((uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS], threshold_to_zero_virt_addr);
         #endif
     }
     double t1 = timestamp();
@@ -95,6 +99,10 @@ int main(int argc, char **argv) {
     hls_free(OutBitMap1);
     hls_free(OutBitMap2);
     hls_free(BitMap);
+    #ifdef HAS_ACCELERATOR
+    invert_teardown();
+    threshold_to_zero_teardown();
+    #endif
     return 0;
 }
 
