@@ -1598,7 +1598,7 @@ pragma or the function pipeline pragma:
 ```
 Loop pipelining only applies to a specific loop in a C++ function.
 Meanwhile, function pipelining is applied to an entire C++ function and
-SmartHLS will automatically unrolls all loops in that function.
+SmartHLS will automatically unroll all loops in that function.
 
 ## SmartHLS Pipelining Hazards: Why Initiation Interval Cannot Always Be 1
 
