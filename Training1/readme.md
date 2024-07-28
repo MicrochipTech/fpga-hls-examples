@@ -1008,7 +1008,7 @@ run in the pipeline at each stage. The leftmost column indicates the
 loop iteration for the instructions in the row starting (from Iteration
 0). For function pipelines, Iteration 0 corresponds to the first input.
 
-If you hold you mouse over an instruction you will see more details
+If you hold your mouse over an instruction you will see more details
 about the operation type.
 
 <p align="center"><img src=".//media/image49.png" /></br>Figure 15: SmartHLS Schedule Viewer: Pipeline Viewer</p></br>
