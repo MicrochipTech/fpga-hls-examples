@@ -1569,7 +1569,7 @@ SmartHLS.
 Pipelining is a common HLS optimization used to increase hardware
 throughput and to better utilize FPGA hardware resources. We also
 covered the concept of loop pipelining in the SmartHLS Sobel Filter
-Tutorial. In Figure 18a) shows a loop to be scheduled with 3
+Tutorial. Figure 18a) shows a loop to be scheduled with 3
 single-cycle operations: Load, Comp, Store. We show a comparison of the
 cycle-by-cycle operations when hardware operations in a loop are
 implemented b) sequentially (default) or c) pipelined (with SmartHLS
