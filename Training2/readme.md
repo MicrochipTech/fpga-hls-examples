@@ -584,7 +584,7 @@ performance.
 34  // Pipeline for extra performance.
 35  #pragma HLS loop pipeline
 36        for (int i = 0; i < 100; i++)
-37          sum += buf[i\];
+37          sum += buf[i];
 38        done = false;
 39        output_fifo.write(sum);
 40      }
