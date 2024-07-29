@@ -2716,14 +2716,12 @@ the user specifies an incorrect value in a SmartHLS pragma. For example,
 specifying an incorrect depth on a memory interface such as the
 following on line 29:
 ```c
-#pragma HLS interface argument(input_buffer) type(memory)
-num_elements(SIZE)
+#pragma HLS interface argument(input_buffer) type(memory) num_elements(SIZE)
 ```
 For example, we can try changing the correct SIZE array depth to a wrong
 value like 10:
 ```c
-#pragma HLS interface argument(input_buffer) type(memory)
-num_elements(10)
+#pragma HLS interface argument(input_buffer) type(memory) num_elements(10)
 ```
 
 Now we rerun SmartHLS to generate the hardware
