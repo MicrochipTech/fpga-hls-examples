@@ -782,7 +782,7 @@ int main() {
 
 ## Verification: Co-simulation of Multi-threaded SmartHLS Code
 
-As mentioned before the `producer_consumer` project cannot be simulated
+As mentioned before, the `producer_consumer` project cannot be simulated
 with co-simulation. This is because the `producer_consumer` project has
 threads that run forever and do not finish before the top-level function
 returns. SmartHLS co-simulation supports a single call to the top-level
