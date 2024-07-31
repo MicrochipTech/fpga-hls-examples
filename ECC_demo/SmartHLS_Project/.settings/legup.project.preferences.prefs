@@ -1,0 +1,5 @@
+Custom_FPGA_device=false
+FPGA_device=RTG4-DEV-BOARD
+FPGA_family=RTG4
+Hybrid_system=hw_only
+eclipse.preferences.version=1
