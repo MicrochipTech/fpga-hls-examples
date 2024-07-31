@@ -493,7 +493,7 @@ corresponding to the C++ top-level function as shown below in Figure
 clock and a single AXI4 Target port. Due to the large number of AXI4
 ports in the RTL, SmartHLS uses a wildcard “`axi4target_*`” to
 simplify the table. The “Control AXI4 Target” indicates that
-start/finish control as done using the AXI target interface. Each of the
+start/finish control is done using the AXI target interface. Each of the
 function’s three arguments also use the AXI target interface. The
 address map of the AXI target port is given later in the report.
 
