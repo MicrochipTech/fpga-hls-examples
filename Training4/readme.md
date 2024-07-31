@@ -378,7 +378,7 @@ array.
 
 ```c
 24  // The core logic of this example                                          
-25  void vector_add_sw(int a, int b, int result) { 
+25  void vector_add_sw(int* a, int* b, int* result) { 
 26    for (int i = 0; i < SIZE; i++) {                                  
 27      result[i] = a[i] + b[i];                                             
 28    }                                                                          
