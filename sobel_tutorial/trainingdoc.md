@@ -1146,11 +1146,8 @@ for (int i = 0; i < HEIGHT; i++) {
     }
 ```
 
-![](.//media/image2.png) When we re-run Software to Hardware by clicking
-the ![](.//media/image77.png) icon. The initiation interval of the
-innermost loop is 4 as shown in the summary report:
-
-# TODO: Ask Richella about how to interpret below
+![](.//media/image2.png) Now, re-run Software to Hardware by clicking
+the ![](.//media/image77.png) icon. Notice that the iteration latency of the `for` loop varies from 517 to 2054, depending on the branching done in the inner loop. As a result, the II is undefined (or nondeterministic). However, you *can* see the II of the inner loop for each branching possibility by looking at the two lines for the inner loop. We can see that one branch gives an II of 4, and the other an II of 1
 
 ```
 ====== 2. Function and Loop Scheduling Results ======
