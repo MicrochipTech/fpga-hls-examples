@@ -1166,17 +1166,13 @@ the ![](.//media/image77.png) icon. Notice that the iteration latency of the `fo
 ![](.//media/image2.png) Then we run co-simulation
 ![](.//media/image78.png) and see the following Console output:
 
-# TODO: Ask Richella about how total cycles < 512 x 2052
-
 ```
 Simulation time (cycles): 1,049,599
 SW/HW co-simulation: PASS
 ```
 
 This cycle latency roughly corresponds to 512 (outer loop iterations) x
-2052 (latency of innermost loop pipeline) = 1,050,624 cycles. There are
-some extra cycles for the hardware running before and after the
-pipelined loop.
+2052 (latency of innermost loop pipeline) = 1,050,624 cycles. There are less cycles than the expected because of the branching. 
 
 We can compare this latency to `sobel.cpp` in Part 2 when we pipelined the
 flattened loop:
