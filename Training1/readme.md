@@ -45,7 +45,7 @@ Updated document for SmartHLS™ 2023.2 release. Updated [Gaussian Filter With L
 
 ## Revision 8
 
-Updated document for outdated figures and for SmartHLS™ 2024.2 release.
+Updated document for outdated figures and for SmartHLS™ 2024.1 release.
 
 ## Revision 8
 
