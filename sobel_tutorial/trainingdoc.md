@@ -618,8 +618,7 @@ rectangle on the far right illustrates what the pipeline looks like in
 steady state. In steady state, one iteration (iteration 1 in Figure 18)
 performs two loads per cycle from cycles 4 to 7. Thus, the 8 loads are
 spread out over 4 cycles, making the initiation interval 4.
-# TODO: Font is way too big for 2024.2, impossible to take screenshot in Windows
-<p align="center"><img src=".//media/image46.png" /></br>
+<p align="center"><img src=".//media/sobel_p2_pipeline_viewer.png" /></br>
 Figure 18: Loop Pipeline Schedule for the Sobel Filter </p>
 
 ![](.//media/image2.png) Now, exit the schedule viewer and simulate the
