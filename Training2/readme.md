@@ -1,7 +1,7 @@
 <h1><p align="center">SmartHLS™ Training Session 2:</p></h1>
 <h2><p align="center">Multi-threaded Digit Recognition on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 6.0</br>Jan 31, 2024<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 7.0</br>Aug 9, 2024<br /> <br /> <br /> </p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History

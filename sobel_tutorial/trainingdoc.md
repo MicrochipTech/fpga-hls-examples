@@ -1,6 +1,6 @@
 <h1><p align="center">SmartHLS™ Tutorial for Microchip PolarFire®:</p></h1>
 <h2><p align="center">Sobel Filtering for Image Edge Detection</p></h2>
-<h2><p align="center">Revision 9.0</br>Jan 2024</br></p></h2>
+<h2><p align="center">Revision 10.0</br>Aug 2024</br></p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -16,7 +16,7 @@
 | 7.0          | April, 2023    | Change Part 3 from function pipeline to loop pipeline |
 | 8.0          | August, 2023   | Updates for SmartHLS 2023.2 release                   |
 | 9.0          | Jan, 2024      | Updates for SmartHLS 2024.1 release                   |
-| 9.0          | August, 2024   | Updates for SmartHLS 2024.2 release                   |
+| 10.0         | August, 2024   | Updates for SmartHLS 2024.2 release                   |
 
 # Requirements
 

@@ -2,7 +2,7 @@
 <h1><p align="center">SmartHLS™ Training Session 1:</p></h1>
 <h2><p align="center">Image Processing on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 8</br>Jan 30, 2024<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 9</br>Aug 9, 2024<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
@@ -47,7 +47,7 @@ Updated document for SmartHLS™ 2023.2 release. Updated [Gaussian Filter With L
 
 Updated document for outdated figures and for SmartHLS™ 2024.1 release.
 
-## Revision 8
+## Revision 9
 
 Updated document for outdated figures and for SmartHLS™ 2024.2 release.
 
@@ -1018,9 +1018,7 @@ loop iteration for the instructions in the row starting (from Iteration
 If you hold you mouse over an instruction you will see more details
 about the operation type.
 
-# TODO: Schedule Viewer Screenshot Font Too Big
-
-<p align="center"><img src=".//media/image49.png" /></br>Figure 15: SmartHLS Schedule Viewer: Pipeline Viewer</p></br>
+<p align="center"><img src=".//media/steady_state_alpha_blend_pipeline_viewer.png" /></br>Figure 15: SmartHLS Schedule Viewer: Pipeline Viewer</p></br>
 
 In the pipeline viewer, the right-most column is highlighted with a
 thick black box and shows behavior of the pipeline in steady state as
@@ -1044,7 +1042,7 @@ state after 2 iterations (1+1, since the Iteration index starts at 0)
 for a loop pipeline, or 2 inputs in the case of function pipelining. You
 can scroll to the bottom right to see the instructions scheduled.
 
-<p align="center"><img src=".//media/image51.png" /></br>Figure 16: SmartHLS Scheduler Viewer: Pipeline Viewer. Iteration Where
+<p align="center"><img src=".//media/iteration_1_alpha_blend_pipeline_viewer.png" /></br>Figure 16: SmartHLS Scheduler Viewer: Pipeline Viewer. Iteration Where
 Steady State Reached.</p></br>
 
 The 2 iterations/inputs until steady state corresponds to the Pipeline
@@ -1722,11 +1720,11 @@ instruction (load) depends on the last instruction (store) finishing in
 the previous iteration before it can start.
 
 ![](.//media/image2.png)You can open the schedule viewer
-![](.//media/image43.png) and click on “BB\_3” in the Explorer on the
+![](.//media/image43.png) and click on “BB\_1” in the Explorer on the
 left-hand side to see the `cross_iteration_dependency()` loop pipeline
 schedule:
-# TODO: Schedule Viewer
-<p align="center"><img src=".//media/image95.png"/></p></br>
+
+<p align="center"><img src=".//media/cross_iteration_dependency_pipeline_viewer.png"/></p></br>
 
 The pipeline steady state is highlighted in black, there is no actual
 pipeline parallelism (overlapping iterations).
@@ -1779,13 +1777,11 @@ pipeline. SmartHLS mentions that there are 2 uses of the functional unit
 “`signed_multiply_32`" but only one unit available.
 
 ![](.//media/image2.png)You can open the Schedule Viewer
-![](.//media/image43.png) and click on “BB\_5” in the Explorer on the
+![](.//media/image43.png) and click on “BB\_3” in the Explorer on the
 left-hand side to see the `functional_unit_contention()` loop pipeline
 schedule:
 
-# TODO: Schedule Viewer
-
-<p align="center"><img src=".//media/image98.png"/></p></br>
+<p align="center"><img src=".//media/functional_unit_contention_pipeline_viewer.png"/></p></br>
 
 The pipeline steady state is highlighted in black. In the column for
 cycle 2, one multiply operation occurs (`%mul.i1 = mul`) and in the column
@@ -1847,12 +1843,10 @@ ports available.
 Now close the `pipeline_hazards.cpp` source file.
 
 ![](.//media/image2.png)You can open the Schedule Viewer
-![](.//media/image43.png) and click on “BB\_7” in the Explorer on the
+![](.//media/image43.png) and click on “BB\_5” in the Explorer on the
 left-hand side to see the `memory_contention()` loop pipeline schedule:
 
-# TODO: Schedule Viewer
-
-<p align="center"><img src=".//media/image101.png"/></p></br>
+<p align="center"><img src=".//media/memory_contention_pipeline_viewer.png"/></p></br>
 
 The pipeline steady state is highlighted in black. In the column for
 cycle 0, two loads occur in parallel (dual-port memory), and in the
