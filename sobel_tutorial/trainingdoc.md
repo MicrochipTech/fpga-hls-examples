@@ -1,6 +1,6 @@
 <h1><p align="center">SmartHLS™ Tutorial for Microchip PolarFire®:</p></h1>
 <h2><p align="center">Sobel Filtering for Image Edge Detection</p></h2>
-<h2><p align="center">Revision 9.0</br>Jan 2024</br></p></h2>
+<h2><p align="center">Revision 10.0</br>Aug 2024</br></p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -16,17 +16,18 @@
 | 7.0          | April, 2023    | Change Part 3 from function pipeline to loop pipeline |
 | 8.0          | August, 2023   | Updates for SmartHLS 2023.2 release                   |
 | 9.0          | Jan, 2024      | Updates for SmartHLS 2024.1 release                   |
+| 10.0         | August, 2024   | Updates for SmartHLS 2024.2 release                   |
 
 # Requirements
 
 Before beginning this tutorial, you should install the following
 software:
-  - SmartHLS™ 2024.1 or later: this is packaged with Libero
-  - Libero® SoC 2024.1 or later with Modelsim
+  - SmartHLS™ 2024.2 or later: this is packaged with Libero
+  - Libero® SoC 2024.2 or later with Modelsim
       - [Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
 
-This document uses the Windows versions of Libero® SoC 2024.1 and
-SmartHLS 2024.1. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2024.2 and
+SmartHLS 2024.2. Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -304,7 +305,7 @@ should see the message *PASS\!* appearing in the *Console* window, as
 shown in below output.
 
 ```
-"C:\Microchip\Libero_SoC_v2024.1\SmartHLS-2024.1\SmartHLS\bin\shls.bat" -s sw_run
+"C:\Microchip\Libero_SoC_v2024.2\SmartHLS-2024.2\SmartHLS\bin\shls.bat" -s sw_run
 Info: Running the following targets: sw_run
 PASS!
 
@@ -345,7 +346,7 @@ viewer by clicking on the *Launch Schedule Viewer* icon
 panel of the schedule viewer, you will see the names of the functions
 and basic blocks of each function. In this example, there is only one
 function that was compiled to hardware, `sobel_filter`. In the Explorer
-pane on the left, we see the `sobel_filter` function and 8 basic blocks
+pane on the left, we see the `sobel_filter` function and 12 basic blocks
 within the function that are all prefixed by “`BB_`”.
 
 <p align="center"><img src=".//media/image33.png" /></br>
@@ -360,11 +361,10 @@ depending on the version of SmartHLS you use. The basic block names are
 not easy to relate back to the original C++ code; however, you can
 observe that there are two loops in the control-flow graph, which
 correspond to the two outermost loops in the C++ code for the
-`sobel_filter` function. The inner loop contains basic blocks: `BB_2`,
-`BB_3`, and `BB_4`. Try double clicking on `BB_3` (if the basic block names
-are different from the figure, click on the left-most basic block).
+`sobel_filter` function. The inner loop contains basic blocks: `BB_3`,
+`BB_9`, `BB_11`, `BB_10`, and `BB_12`. Try double clicking on `BB_10`.
 
-![](.//media/image2.png) Figure 14 shows the schedule for `BB_3`, which
+![](.//media/image2.png) Figure 14 shows the schedule for `BB_10`, which
 is the main part of the inner-most loop body. The middle panel shows the
 names of the instructions. The right-most panel shows how the
 instructions are scheduled into states (the figure shows that states 6
@@ -396,17 +396,18 @@ messages near the end of the simulation which will look like this:
 
 ```
 ...
-# sobel_filter_top simulation time (cycles): 2087960
-# ** Note: $finish : cosim_tb.sv(415)
-#    Time: 20879705 ns Iteration: 1 Instance: /cosim_tb
-# End time: 10:40:33 on Feb 06,2024, Elapsed time: 0:00:38
+# sobel_filter_top execution time (cycles):     2088212
+# Number of calls:           1
+# sobel_filter_top simulation time (cycles):     2088213
+# ** Note: $finish    : cosim_tb.sv(427)
+#    Time: 20882235 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 11:43:38 on Aug 07,2024, Elapsed time: 0:00:47
 # Errors: 0, Warnings: 0
 Info: Verifying RTL simulation
-Retrieving hardware outputs from RTL simulation for sobel_filter
-function call 1.
-PASS! 
+Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
+PASS!
 ...
-Simulation time (cycles): 2,087,960
+Simulation time (cycles): 2,088,213
 SW/HW co-simulation: PASS
 ```
 
@@ -463,46 +464,46 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as what is shown below. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2024.1. The timing results and resource usage
+tutorial used Libero® SoC v2024.2. The timing results and resource usage
 might also differ depending on the random seed used in the synthesis
 tool flow.
 
 ```
-====== 2. Timing Result ======
+====== 2. Timing Result of HLS-generated IP Core (top-level module: sobel_filter_top) ======
 
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 7.113 ns    | 2.887 ns | 346.380 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 7.170 ns    | 2.830 ns | 353.357 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
-The reported Fmax is for the HLS core in isolation (from Libero's
-post-place-and-route timing analysis).
-When the HLS core is integrated into a larger system, the system Fmax
-may be lower depending on the critical path of the system.
 
-====== 3. Resource Usage ======
+The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
+When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the critical path of the system.
+
+====== 3. Resource Usage of HLS-generated IP Core (top-level module: sobel_filter_top) ======
 
 +--------------------------+---------------+--------+------------+
 | Resource Type            | Used          | Total  | Percentage |
 +--------------------------+---------------+--------+------------+
-| Fabric + Interface 4LUT* | 626 + 0 = 626 | 299544 | 0.21       |
-| Fabric + Interface DFF*  | 267 + 0 = 267 | 299544 | 0.09       |
-| I/O Register             | 0             | 1536   | 0.00       |
-| User I/O                 | 0             | 512    | 0.00       |
-| uSRAM                    | 0             | 2772   | 0.00       |
-| LSRAM                    | 0             | 952    | 0.00       |
-| Math                     | 0             | 924    | 0.00       |
+| Fabric + Interface 4LUT* | 742 + 0 = 742 | 108600 | 0.68       |
+| Fabric + Interface DFF*  | 451 + 0 = 451 | 108600 | 0.42       |
+| I/O Register             | 0             | 852    | 0.00       |
+| User I/O                 | 0             | 284    | 0.00       |
+| uSRAM                    | 0             | 1008   | 0.00       |
+| LSRAM                    | 0             | 352    | 0.00       |
+| Math                     | 0             | 336    | 0.00       |
 +--------------------------+---------------+--------+------------+
+
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = 
-(36 * 0) + (36 * 0) + (12 * 0) = 0. 
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 0) + (12 * 0) = 0.
+
 ```
 
 Wall-clock time is one of the key performance metrics for an FPGA
 design, computed as the product of the cycle latency and the clock
-period. In this case, our cycle latency was 2,087,960 and the clock
-period was 2.887 ns. The wall-clock time of our implementation is
-therefore 2,087,960 × 2.887 ns = 6.028 ms.
+period. In this case, our cycle latency was 2,088,213 and the clock
+period was 2.830 ns. The wall-clock time of our implementation is
+therefore 2,088,213 × 2.830 ns = 5.90964279 ms.
 
 ![](.//media/image2.png) Now close the project by right clicking on the
 “`sobel_part1`” folder in the Project Explorer pane and click “Close
@@ -571,21 +572,21 @@ following:
 
 ```
 Info: Resource constraint limits initiation interval to 4.
-    Resource '@in_var@_external_memory_port' has 8 uses per cycle but only 2 units available.   
-    +--------------------------------------+---------------------------+---------------------+
-    | Operation                            | Location                  | Competing Use Count |
-    +--------------------------------------+---------------------------+---------------------+
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 1                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 2                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 3                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 4                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 5                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 6                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 7                   |
-    | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 8                   |
-    +--------------------------------------+---------------------------+---------------------+
-    |                                      | Total # of Competing Uses | 8                   |
-    +--------------------------------------+---------------------------+---------------------+
+      Resource '@in_var@_external_memory_port' has 8 uses per cycle but only 2 units available.
+      +--------------------------------------+---------------------------+---------------------+
+      | Operation                            | Location                  | Competing Use Count |
+      +--------------------------------------+---------------------------+---------------------+
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 1                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 2                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 3                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 4                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 5                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 6                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 7                   |
+      | 'load' (8b) operation for array 'in' | line 30 of sobel.cpp      | 8                   |
+      +--------------------------------------+---------------------------+---------------------+
+      |                                      | Total # of Competing Uses | 8                   |
+      +--------------------------------------+---------------------------+---------------------+
 ```
 
 These messages indicate that SmartHLS cannot achieve an II of 1 (highest
@@ -602,7 +603,7 @@ corresponding load are optimized away.
 pipeline using the SmartHLS schedule viewer. Click on the *Launch
 Schedule Viewer* icon ![](.//media/image45.png). Double-click on
 `sobel_filter`, then in the Control Flow Graph, you will see a basic
-block called `BB_1`. Double-click `BB_1` to reveal the loop pipeline
+block called `BB_2`. Double-click `BB_2` to reveal the loop pipeline
 schedule, similar to that shown in Figure 18, Loop Pipeline Schedule for
 the Sobel Filter. Horizontally from left to right shows the operations
 performed on successive clock cycles and vertically going down shows
@@ -617,9 +618,8 @@ rectangle on the far right illustrates what the pipeline looks like in
 steady state. In steady state, one iteration (iteration 1 in Figure 18)
 performs two loads per cycle from cycles 4 to 7. Thus, the 8 loads are
 spread out over 4 cycles, making the initiation interval 4.
-
-<p align="center"><img src=".//media/image46.png" /></br>
-Figure 18: Loop Pipeline Schedule for the Sobel Filter</p>
+<p align="center"><img src=".//media/sobel_p2_pipeline_viewer.png" /></br>
+Figure 18: Loop Pipeline Schedule for the Sobel Filter </p>
 
 ![](.//media/image2.png) Now, exit the schedule viewer and simulate the
 design in ModelSim by clicking the *SW/HW Co-Simulation* icon
@@ -627,13 +627,15 @@ design in ModelSim by clicking the *SW/HW Co-Simulation* icon
 similar to the following:
 
 ```
-# sobel_filter_top simulation time (cycles): 1040408
-# ** Note: $finish : cosim_tb.sv(415)
-#    Time: 10404185 ns Iteration: 1 Instance: /cosim_tb
-# End time: 11:20:24 on Feb 06,2024, Elapsed time: 0:00:34
-# Errors: 0, Warnings: 0
+# sobel_filter_top execution time (cycles):     1040407
+# Number of calls:           1
+# sobel_filter_top simulation time (cycles):     1040408
+# ** Note: $finish    : cosim_tb.sv(427)
+#    Time: 10404195 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 13:22:26 on Aug 07,2024, Elapsed time: 0:00:30
+# Errors: 0, Warnings: 0, Suppressed Warnings: 6
 Info: Verifying RTL simulation
-Retrieving hardware outputs from RTL simulation for sobel_filter function call 1. 
+Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
 PASS!
 ...
 Simulation time (cycles): 1,040,408
@@ -641,7 +643,7 @@ SW/HW co-simulation: PASS
 ```
 
 Observe that loop pipelining has dramatically improved the cycle latency
-for the design, reducing it from 2,087,960 cycles to 1,040,408 cycles in
+for the design, reducing it from 2,088,213 cycles to 1,040,407 cycles in
 total.
 
 ![](.//media/image2.png) Finally, use Microchip’s Libero® to map the
@@ -657,29 +659,28 @@ following:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 7.466 ns    | 2.534 ns | 394.633 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 6.739 ns    | 3.261 ns | 306.654 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
-The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing 
-analysis).
-When the HLS core is integrated into a larger system, the system Fmax may be lower depending on 
-the critical path of the system.
+
+The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
+When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the critical path of the system.
 
 ====== 3. Resource Usage of HLS-generated IP Core (top-level module: sobel_filter_top) ======
 
 +--------------------------+---------------+--------+------------+
 | Resource Type            | Used          | Total  | Percentage |
 +--------------------------+---------------+--------+------------+
-| Fabric + Interface 4LUT* | 773 + 0 = 773 | 299544 | 0.26       |
-| Fabric + Interface DFF*  | 361 + 0 = 361 | 299544 | 0.12       |
-| I/O Register             | 0             | 1536   | 0.00       |
-| User I/O                 | 0             | 512    | 0.00       |
-| uSRAM                    | 0             | 2772   | 0.00       |
-| LSRAM                    | 0             | 952    | 0.00       |
-| Math                     | 0             | 924    | 0.00       |
+| Fabric + Interface 4LUT* | 714 + 0 = 714 | 108600 | 0.66       |
+| Fabric + Interface DFF*  | 350 + 0 = 350 | 108600 | 0.32       |
+| I/O Register             | 0             | 852    | 0.00       |
+| User I/O                 | 0             | 284    | 0.00       |
+| uSRAM                    | 0             | 1008   | 0.00       |
+| LSRAM                    | 0             | 352    | 0.00       |
+| Math                     | 0             | 336    | 0.00       |
 +--------------------------+---------------+--------+------------+
+
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = 
-(36 * 0) + (36 * 0) + (12 * 0) = 0. 
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 0) + (12 * 0) = 0.
 ```
 
 # Part 3: Designing Streaming/Dataflow Hardware
@@ -906,28 +907,28 @@ results similar to the following in the `summary.results.rpt` report file:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 5.218 ns    | 4.782 ns | 209.118 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 5.330 ns    | 4.670 ns | 214.133 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
+
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
-When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the 
-critical path of the system.
+When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the critical path of the system.
 
 ====== 3. Resource Usage of HLS-generated IP Core (top-level module: sobel_filter_top) ======
 
 +--------------------------+----------------+--------+------------+
 | Resource Type            | Used           | Total  | Percentage |
 +--------------------------+----------------+--------+------------+
-| Fabric + Interface 4LUT* | 741 + 36 = 777 | 299544 | 0.26       |
-| Fabric + Interface DFF*  | 512 + 36 = 548 | 299544 | 0.18       |
-| I/O Register             | 0              | 1536   | 0.00       |
-| User I/O                 | 0              | 512    | 0.00       |
-| uSRAM                    | 0              | 2772   | 0.00       |
-| LSRAM                    | 1              | 952    | 0.11       |
-| Math                     | 0              | 924    | 0.00       |
+| Fabric + Interface 4LUT* | 709 + 36 = 745 | 108600 | 0.69       |
+| Fabric + Interface DFF*  | 510 + 36 = 546 | 108600 | 0.50       |
+| I/O Register             | 0              | 852    | 0.00       |
+| User I/O                 | 0              | 284    | 0.00       |
+| uSRAM                    | 0              | 1008   | 0.00       |
+| LSRAM                    | 1              | 352    | 0.28       |
+| Math                     | 0              | 336    | 0.00       |
 +--------------------------+----------------+--------+------------+
+
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = 
-(36 * 1) + (36 * 0) + (12 * 0) = 36. 
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 1) + (36 * 0) + (12 * 0) = 36. 
 ```
 
 SmartHLS also allows the user to give a target clock period constraint,
@@ -958,20 +959,20 @@ constraint that has been set for each target FPGA device. The default
 clock period constraint is 10 ns for the Microchip PolarFire® FPGA.
 
 ![](.//media/image2.png) Now that we lowered the clock period constraint
-to 6 ns, we can recompile software to hardware by clicking the icon
+to 3 ns, we can recompile software to hardware by clicking the icon
 ![](.//media/image64.png). You should see the pipeline length has
-increased from 3 to 4 cycles in the `summary.hls.sobel_filter.rpt` report
+increased from 3 to 7 cycles in the `summary.hls.sobel_filter.rpt` report
 file:
 
 ```
-====== 2. Function and Loop Scheduling Results ====== 
+====== 2. Function and Loop Scheduling Results ======
 
 +------------------------------------------------------------------------------------------------------+
-| Function: sobel_filter takes 262664 cycles                                                           |
+| Function: sobel_filter takes 262667 cycles                                                           |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
 | Loop                    | Location In Source   | Trip Count | Iteration Latency | II | Total Latency |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
-| for.loop:sobel.cpp:28:5 | line 28 of sobel.cpp | 262657     | 4                 | 1  | 262660        |
+| for.loop:sobel.cpp:28:5 | line 28 of sobel.cpp | 262657     | 7                 | 1  | 262663        |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
 ```
 
@@ -1144,35 +1145,33 @@ for (int i = 0; i < HEIGHT; i++) {
     }
 ```
 
-![](.//media/image2.png) When we re-run Software to Hardware by clicking
-the ![](.//media/image77.png) icon. The initiation interval of the
-innermost loop is 4 as shown in the summary report:
+![](.//media/image2.png) Now, re-run Software to Hardware by clicking
+the ![](.//media/image77.png) icon. Notice that the iteration latency of the `for` loop varies from 517 to 2054, depending on the branching done in the inner loop. As a result, the II is undefined (or nondeterministic). However, you *can* see the II of the inner loop for each branching possibility by looking at the two lines for the inner loop. We can see that one branch gives an II of 4, and the other an II of 1
 
 ```
 ====== 2. Function and Loop Scheduling Results ======
 
-+----------------------------------------------------------------------------------------------------------+
-| Function: sobel_filter takes 1050628 cycles                                                              |
-+-----------------------------+----------------------+------------+-------------------+----+---------------+
-| Loop                        | Location In Source   | Trip Count | Iteration Latency | II | Total Latency |
-+-----------------------------+----------------------+------------+-------------------+----+---------------+
-| for.loop:sobel.cpp:17:5     | line 17 of sobel.cpp | 512        | 2052              | -  | 1050624       |
-| └── for.loop:sobel.cpp:19:9 | line 19 of sobel.cpp | 512        | 6                 | 4  | 2050          |
-+-----------------------------+----------------------+------------+-------------------+----+---------------+
++-------------------------------------------------------------------------------------------------------------+
+| Function: sobel_filter                                                                                      |
++-----------------------------+----------------------+------------+-------------------+-------+---------------+
+| Loop                        | Location In Source   | Trip Count | Iteration Latency | II    | Total Latency |
++-----------------------------+----------------------+------------+-------------------+-------+---------------+
+| for.loop:sobel.cpp:17:5     | line 17 of sobel.cpp | undef      | 517 - 2054        | undef | undef         |
+| ├── for.loop:sobel.cpp:19:9 | line 19 of sobel.cpp | 512        | 6                 | 4     | 2050          |
+| └── for.loop:sobel.cpp:19:9 | line 19 of sobel.cpp | 512        | 2                 | 1     | 513           |
++-----------------------------+----------------------+------------+-------------------+-------+---------------+
 ```
 
 ![](.//media/image2.png) Then we run co-simulation
 ![](.//media/image78.png) and see the following Console output:
 
 ```
-Simulation time (cycles): 1,050,629
+Simulation time (cycles): 1,049,599
 SW/HW co-simulation: PASS
 ```
 
 This cycle latency roughly corresponds to 512 (outer loop iterations) x
-2052 (latency of innermost loop pipeline) = 1,050,624 cycles. There are
-some extra cycles for the hardware running before and after the
-pipelined loop.
+2052 (latency of innermost loop pipeline) = 1,050,624 cycles. There are less cycles than the expected because of the branching. 
 
 We can compare this latency to `sobel.cpp` in Part 2 when we pipelined the
 flattened loop:
@@ -1213,10 +1212,10 @@ Simulation time (cycles): 1,040,408
 SW/HW co-simulation: PASS
 ``` 
 
-This cycle latency roughly corresponds to the 1,040,408 latency reported
+This cycle latency roughly corresponds to the 1,040,402 latency reported
 in the last column “Latency” in the pipeline summary report.
 
-Flattening the loop improves the cycle latency from: 1,050,629 to 1,040,408 (1% improvement).
+Flattening the loop improves the cycle latency from: Simulation time (cycles): 1,049,599 to 1,040,408 (0.9% improvement).
 
 In this case, there is not much improvement by loop flattening. But
 depending on the loop nest there can be a big impact.
