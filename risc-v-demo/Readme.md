@@ -351,7 +351,7 @@ has been setup correctly, let's setup the software for the example.
 
 In Section [Setup static IP address](#setup-static-ip-address) the board IPv4 
 address was set to `192.168.2.1`. If you changed that, then open the `setup.sh` 
-or `setup.bat` file, depending on if you're using Linux or Windows, and adjust the `BOARD_IP` 
+or `setup.ps1` file, depending on if you're using Linux or Windows, and adjust the `BOARD_IP` 
 variable accordingly. After that run the setup 
 script from a command-line terminal under the `precompiled` directory. If you are 
 using Linux, run:
@@ -362,7 +362,7 @@ bash> setup.sh
 If you are using Windows, run:
 ```
 cd precompiled
-setup.bat
+.\setup.ps1
 ```
 
 This script will copy the OpenCV and FFMPEG libraries, the files for the control 

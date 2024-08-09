@@ -4,6 +4,8 @@ puts "TCL_BEGIN: [info script]"
 # NOTES:
 #   - Ideally this should go into their own create_hdl_plus_*.tcl files
 #
+puts "TCL_BEGIN: [info script]"
+
 set pathList [getHlsPaths]
 set base_path [lindex $pathList 0]
 puts "base_path: $base_path"

@@ -18,12 +18,12 @@ EXAMPLE_ROOT_DIR=$SCRIPT_DIR/../../../../../../
 
 if [ $arch == "x86_64" ]; then 
     # Paths when running on the host machine
-    OPENCV_PATH=$EXAMPLE_ROOT_DIR/precompiled/shls_sw_dependencies/opencv4.5.4-$arch-linux
-    FFMPEG_PATH=$EXAMPLE_ROOT_DIR/precompiled/shls_sw_dependencies/ffmpeg4.4-$arch-linux
+    OPENCV_PATH=$EXAMPLE_ROOT_DIR/precompiled/shls_sw_dependencies/opencv4.5.4-$arch
+    FFMPEG_PATH=$EXAMPLE_ROOT_DIR/precompiled/shls_sw_dependencies/ffmpeg4.4-$arch
 else
     # Paths when running on-board
-    OPENCV_PATH=`realpath /usr/local/shls_sw_dependencies/opencv4.5.4-$arch-linux`
-    FFMPEG_PATH=`realpath /usr/local/shls_sw_dependencies/ffmpeg4.4-$arch-linux`
+    OPENCV_PATH=`realpath /usr/local/shls_sw_dependencies/opencv4.5.4-$arch`
+    FFMPEG_PATH=`realpath /usr/local/shls_sw_dependencies/ffmpeg4.4-$arch`
 fi
 
 export LD_LIBRARY_PATH=$OPENCV_PATH/lib:$FFMPEG_PATH/lib:$LD_LIBRARY_PATH
