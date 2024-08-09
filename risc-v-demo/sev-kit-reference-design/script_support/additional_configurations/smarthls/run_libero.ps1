@@ -9,8 +9,18 @@ try {
 
 	Write-Output "------[ Identify ]--------"	
 	pushd "./SEVPFSOC_H264/synthesis/"
-	synplify_pro -licensetype synplifypro_actel -batch ..\..\script_support\additional_configurations\smarthls\synplify_enable_dbg_mode.tcl | Write-Output
-	identify_instrumentor_shell "-licensetype" "identinstrumentor_actel" "..\..\script_support\additional_configurations\smarthls\identify_instrument.tcl" | Write-Output
+	# Alternatively, via the Env: *drive*:
+	if (-not (Test-Path env:HLS_SYNPLIFY_PATH)) {
+		$synplify_exe = "synplify_pro"
+		$identify_exe = "identify_instrumentor_shell" 
+	} else {
+		$synplify_exe = $env:HLS_SYNPLIFY_PATH
+		$identify_exe = (Split-Path $env:HLS_SYNPLIFY_PATH -Parent) + "/identify_instrumentor_shell"
+	}
+	Write-Output "Using $synplify_exe, and $identify_exe"
+
+	& $synplify_exe @("-licensetype", "synplifypro_actel", "-batch", "../../script_support/additional_configurations/smarthls/synplify_enable_dbg_mode.tcl") | Write-Output
+	& $identify_exe @("-licensetype", "identinstrumentor_actel", "../../script_support/additional_configurations/smarthls/identify_instrument.tcl") | Write-Output
 	popd
 
 	$args = "SYNTHESIZE+PLACEROUTE+VERIFYTIMING+EXPORT_FPE:$prjDir+EXPORT_SMARTDEBUG:$prjDir+HSS_UPDATE:1"
