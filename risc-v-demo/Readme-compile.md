@@ -58,7 +58,6 @@ Overall this is the directory tree of the Libero project:
     │   ├── ram2port.vhd
     │   └── video_fifo.vhd
     ├── hdl_source.tcl
-    ├── hss-envm-wrapper.mpfs-sev-kit.hex
     └── MSS_SEV
         ├── ENVM.cfg
         └── MSS_SEV.cfg
