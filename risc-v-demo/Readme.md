@@ -126,8 +126,7 @@ to perform the texture map operation.
 # Example Setup
 
 This section includes the instructions on how to setup the PolarFire SoC Video Kit
-board and then how to run the example using the precompiled binaries located under
-the `precompiled` directory. These binaries include the bitstream (.job file), the 
+board and then how to run the example using the precompiled binaries. These binaries include the bitstream (.job file), the 
 Linux image (.wic.gz file), the SmartHLS application executables (.elf files) and 
 FFMPEG and OpenCV libraries, which need to be downloaded first, see [Downloading software dependencies](#downloading-software-dependencies).
 
@@ -143,12 +142,18 @@ update the parameters and recompile the bitstream.**
 
 ## Downloading Software Dependencies
 
-The precompiled libraries are included with your installation of SHLS, under `<SmartHLS INSTALLATION DIR>\smarthls-library\external\vision\precompiled_sw_libraries`.
+Before trying the example, you will need to copy the precompiled FFmpeg and OpenCV libraries to `precompiled/shls_sw_dependencies`. To do this, you can either:
+
+- Run `precompiled/shls_sw_dependencies/download_precompiled_libraries.sh` (or `precompiled/shls_sw_dependencies/download_precompiled_libraries.ps1`, depending on 
+your operating system), which copies the libraries from `<SmartHLS INSTALLATION DIR>\smarthls-library\external\vision\precompiled_sw_libraries`.
+
+- Download the precompiled libraries from the [fpga-hls-libraries](https://github.com/MicrochipTech/fpga-hls-libraries) release assets.
+
 
 ## Board Setup
 
 Before running this SmartHLS example the board needs to be ready by performing the 
-following tasks using the files under the `precompiled` directory:
+following tasks using the files in the fpga-hls-examples release assets:
 
 1. Flash the precompiled Linux image (`core-image-minimal-dev-sev-kit-es.wic.gz`)
 2. Program the precompiled bitstream (`SEVPFSOC_H264.job`)
