@@ -281,8 +281,8 @@ if {[info exists SYNTHESIZE]} {
 }
 
 if {[info exists HSS_UPDATE]} {
-    if !{[file exists "./script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex"]} {
-        if {[catch    {exec wget https://github.com/polarfire-soc/hart-software-services/releases/latest/download/hss-envm-wrapper.mpfs-icicle-kit-es.hex -P ./script_support/} issue]} {
+    if {![file exists "./script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex"] || [file size "./script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex"] == 0} {
+        if {[catch    {exec curl -L https://github.com/polarfire-soc/hart-software-services/releases/latest/download/hss-envm-wrapper.mpfs-icicle-kit-es.hex -o ./script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex} issue]} {
         }
     }
     create_eNVM_config "$local_dir/script_support/components/MSS/ENVM.cfg" "$local_dir/script_support/hss-envm-wrapper.mpfs-icicle-kit-es.hex"
