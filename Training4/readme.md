@@ -1,5 +1,5 @@
 <h1><p align="center">SmartHLS™ Training for Microchip PolarFire® SoC Flow</p></h1>
-<h2><p align="center">Revision 3.0 <br/>January 2024 <br/><br/><br/></p></h2>
+<h2><p align="center">Revision 4.0 <br/>August 2024 <br/><br/><br/></p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -33,6 +33,12 @@
 <td>Jan 22, 2024</td>
 <td>Updated for Libero 2024.1</td>
 </tr>
+<tr class="odd">
+<td>4.0</td>
+<td>Aug 7, 2024</td>
+<td>Updated for Libero 2024.2</td>
+<td><li>Updated details of generated API driver functions for AXI4 Target</li>
+</tr>
 </tbody></table>
 
 # Requirements
@@ -44,13 +50,15 @@ training.
 
 You should install the following software:
 
-  - SmartHLS™ 2024.1 or later: this is packaged with Libero
-  - Libero® SoC 2024.1 (with Modelsim Pro 2021.3) or later
+  - SmartHLS™ 2024.2 or later: this is packaged with Libero
+  - Libero® SoC 2024.2 (with QuestaSim Pro 2021.3) or later
       - [Libero Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
   - A terminal emulator such as PuTTY
       - [Windows Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-This document uses the Windows versions of Libero® SoC 2024.1 and SmartHLS 2024.1. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
+This document uses the Windows versions of Libero® SoC 2024.2 and SmartHLS 2024.2. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
+
+Additionally, while the default simulator for SmartHLS is now QuestaSim, ModelSim will still be supported. Some screenshots of the simulator may have been captured using Modelsim.
 
 ## Download Training Design Files
 
@@ -229,14 +237,13 @@ the project.
 
 
 ![](.//media/image3.png) If this is the first time you are using
-SmartHLS, you will need to set up the paths to ModelSim (and Microsemi
+SmartHLS, you will need to set up the paths to QuestaSim (and Microsemi
 Libero® for later parts of this tutorial). To setup the paths, click on
 *SmartHLS* on the top menu bar, then click on *Tool Path Settings*. Once
-the dialog opens, set the paths for *ModelSim Simulator* and *Microsemi
-Libero® SoC* as shown in Figure 6‑5 and click *OK*.
+the dialog opens, set the paths for *Simulator* and *Microsemi Libero® SoC* as shown in Figure 6‑5 and click *OK*.
 
 <p align="center">
-<img src=".//media/image15.png" />
+<img src=".//media/shls_configure_tool_paths.png" />
 <p align="center">Figure 6‑5 SmartHLS Tool Path Settings</p></p>
 
 An important panel of the SmartHLS IDE is the *Project Explorer* on the
@@ -465,7 +472,7 @@ as shown below.
 
 ```
 13:58:58 **** Build of configuration LegUp for project vector_add_soc ****
-"C:\\Microchip\\SmartHLS-2024.1\\SmartHLS\\bin\\shls.bat" -s sw_compile sw_run 
+"C:\Microchip\SmartHLS-2024.2\SmartHLS\bin\shls.bat" -s sw_compile sw_run 
 Info: Running the following targets: sw_compile sw_run
 Info: Compiling Software...
 RESULT: PASS
@@ -532,11 +539,8 @@ RTL
 Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_toplevel_rtl&redirect=true&version=latest).
 
 The “I/O Memories” table is shown in Figure 6‑15 and has an entry for
-each top-level function argument, which each have a data width of
-32-bits (int). There’s a known issue where the Size and Depth are
-incorrectly shown as 0, which will be fixed in a future SmartHLS
-version. The correct Depth should be 16 (`SIZE`), and “Size \[Bits\]”
-should be 512 bits (16x32).
+each top-level function argument, which each have a "Data Width" of
+32-bits (int), a "Depth" of 16-bits (`SIZE`), and a "Size \[Bits\]” of 512 bits (16x32).
 
 ```
 +------------------------------------------------------------------------------------------------+
@@ -544,9 +548,9 @@ should be 512 bits (16x32).
 +--------+------------------------------+------+-------------+------------+-------+--------------+
 | Name   | Accessing Function(s)        | Type | Size [Bits] | Data Width | Depth | Read Latency |
 +--------+------------------------------+------+-------------+------------+-------+--------------+
-| a      | vector_add_axi_target_memcpy | ROM  | 0           | 32         | 0     | 1            |
-| b      | vector_add_axi_target_memcpy | ROM  | 0           | 32         | 0     | 1            |
-| result | vector_add_axi_target_memcpy | RAM  | 0           | 32         | 0     | 1            |
+| a      | vector_add_axi_target_memcpy | ROM  | 512         | 32         | 16    | 1            |
+| b      | vector_add_axi_target_memcpy | ROM  | 512         | 32         | 16    | 1            |
+| result | vector_add_axi_target_memcpy | RAM  | 512         | 32         | 16    | 1            |
 +--------+------------------------------+------+-------------+------------+-------+--------------+
 ```
 
@@ -603,7 +607,7 @@ hls_output/accelerator_drivers/vector_add_soc_accelerator_driver.[h|cpp]
 ### Generated Verilog Output
 
 You can find the generated Verilog code in
-`hls_output/rtl/vector_add_soc_vector_add_axi_target_memcpy.v.`
+`hls_output/rtl/vector_add_soc_vector_add_axi_target_memcpy.v`.
 
 <p align="center"><img src=".//media/image24.png" /></p>
 <p align="center">Figure 6‑17 Finding the SmartHLS-Generated Verilog in the Project Explorer</p>
@@ -630,19 +634,19 @@ module vector_add_axi_target_memcpy_top
 
 ### Running Co-Simulation
 
-Now we can simulate the Verilog RTL hardware with ModelSim to find out
+Now we can simulate the Verilog RTL hardware with QuestaSim to find out
 the number of cycles needed to execute the circuit – the cycle latency.
 
 ![](.//media/image3.png) Click on the *SW/HW Co-Simulation* icon
 ![](.//media/image26.png) in the toolbar. *SW/HW co-simulation* will
 simulate the generated Verilog module,
-`vector_add_axi_target_memcpy_top`, in RTL using ModelSim, while
+`vector_add_axi_target_memcpy_top`, in RTL using QuestaSim, while
 running the rest of the program, main, in software. The co-simulation
 flow allows us to simulate and verify the SmartHLS-generated hardware
 without writing a custom RTL testbench.
 
 In the *Console* window, you will see various messages printed by
-ModelSim related to loading simulation models for the hardware. The
+QuestaSim related to loading simulation models for the hardware. The
 hardware may take a few minutes to simulate. We want to focus on the
 messages near the end of the simulation which will look like this:
 
@@ -657,28 +661,28 @@ messages near the end of the simulation which will look like this:
 # --- vector_add_axi_target_memcpy_top Call           0: start at cycle =           1
 # Polling AXI target interface CSR for finish signal at cycle =           1
 # ...
-# Received AXI target interface CSR finish signal at cycle =          56
-# --- vector_add_axi_target_memcpy_top Call           0: finish at cycle =          57, total latency =          56
-# Retrieving AXI target output arguments at cycle =          58
-# AXI target retrieval: Reading argument "result" at cycle =          58
+# Received AXI target interface CSR finish signal at cycle =          16
 #           1 /           1 function calls completed.
-# Finished retrieving AXI target output arguments at cycle =          58
-# vector_add_axi_target_memcpy_top execution time (cycles):          56
+# --- vector_add_axi_target_memcpy_top Call           0: finish at cycle =          17, total latency =          16
+# Retrieving AXI target output arguments at cycle =          18
+# AXI target retrieval: Reading argument "result" at cycle =          18
+# Finished retrieving AXI target output arguments at cycle =          18
+# vector_add_axi_target_memcpy_top execution time (cycles):          16
 # Number of calls:           1
-# vector_add_axi_target_memcpy_top simulation time (cycles):          58
-# ** Note: $finish    : cosim_tb.sv(794)
-#    Time: 1265 ns  Iteration: 1  Instance: /cosim_tb
-# End time: 10:31:55 on Jan 31,2024, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
+# vector_add_axi_target_memcpy_top simulation time (cycles):          18
+# ** Note: $finish    : cosim_tb.sv(806)
+#    Time: 865 ns  Iteration: 1  Instance: /cosim_tb
+# End time: 12:23:02 on Aug 07,2024, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 0, Suppressed Warnings: 13
 Info: Verifying RTL simulation
 Retrieving hardware outputs from RTL simulation for vector_add_axi_target_memcpy function call 1.
 RESULT: PASS
 +----------------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name                   | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
 +----------------------------------+-----------------+--------------------------+----------------------------+-----------------------+
-| vector_add_axi_target_memcpy_top | 1               | 58                       | 56 (single call)           | N/A (single call)     |
+| vector_add_axi_target_memcpy_top | 1               | 18                       | 16 (single call)           | N/A (single call)     |
 +----------------------------------+-----------------+--------------------------+----------------------------+-----------------------+
-Simulation time (cycles): 58
+Simulation time (cycles): 18
 SW/HW co-simulation: PASS
 ```
 <p align="center">Figure 6‑19 Sample CoSim Results</p>
@@ -705,34 +709,38 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as shown below in Figure 6‑20. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2024.1. The timing results and resource usage
+tutorial used Libero® SoC v2024.2. The timing results and resource usage
 might also differ depending on the random seed used in the Libero tool
 flow.
 
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: vector_add_axi_target_memcpy_top) ======
+
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 5.000 ns      | 200.000 MHz | 1.622 ns    | 3.378 ns | 296.033 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 6.275 ns    | 3.725 ns | 268.456 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
+
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
 When the HLS core is integrated into a larger system, the system Fmax may be lower depending on the critical path of the system.
 
 ====== 3. Resource Usage of HLS-generated IP Core (top-level module: vector_add_axi_target_memcpy_top) ======
+
 +--------------------------+-------------------+--------+------------+
 | Resource Type            | Used              | Total  | Percentage |
 +--------------------------+-------------------+--------+------------+
-| Fabric + Interface 4LUT* | 1219 + 240 = 1459 | 254196 | 0.57       |
-| Fabric + Interface DFF*  | 397 + 240 = 637   | 254196 | 0.25       |
+| Fabric + Interface 4LUT* | 1246 + 336 = 1582 | 254196 | 0.62       |
+| Fabric + Interface DFF*  | 365 + 336 = 701   | 254196 | 0.28       |
 | I/O Register             | 0                 | 432    | 0.00       |
 | User I/O                 | 0                 | 144    | 0.00       |
-| uSRAM                    | 14                | 2352   | 0.60       |
+| uSRAM                    | 22                | 2352   | 0.94       |
 | LSRAM                    | 2                 | 812    | 0.25       |
 | Math                     | 0                 | 784    | 0.00       |
 +--------------------------+-------------------+--------+------------+
+
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 2) + (36 * 0) + (12 * 14) = 240.
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 2) + (36 * 0) + (12 * 22) = 336.
 ```
 
 <p align="center">Figure 6‑20 Timing and Resource Usage Results</p>
@@ -768,65 +776,66 @@ section of our user guide for a more detailed explanation.
 <tbody>
 <td colspan="2" ><p align="center" ><u >Module Control Driver Functions</u></p></td>
 <tr>
-<td><strong>int</strong> <strong>MyTopFunc_is_idle</strong>();</td>
+<td><strong>int MyTopFunc_is_idle(void *virt_addr)</strong></td>
 <td>Returns 1 if the HLS module is idle (or has finished the last invocation).</td>
 </tr>
 <tr>
-<td><strong>void</strong> <strong>MyTopFunc_start</strong>();</td>
-<td>Starts the HLS module. All other input arguments are expected to have been set when this function is called.</td>
+<td><strong>void MyTopFunc_start(void *virt_addr)</strong></td>
+<td>This function starts the SmartHLS module. Input arguments, including the module's memory-mapped virtual address, are expected to have been set before this function is called.</td>
 </tr>
 <tr>
-<td>RETURN_TYPE <strong>MyTopFunc_join</strong>();</td>
+<td><strong>RETURN_TYPE MyTopFunc_join(void *virt_addr)</strong></td>
 <td>A blocking function that waits for the completion of the HLS module and returns the return value of the HLS module (if not void).</td>
 </tr>
 <tr>
 <td colspan="2"><p align="center"><u>Scalar Argument Driver Functions</u></p></td>
 </tr>
 <tr>
-<td><strong>void</strong> <strong>MyTopFunc_write_MyScalarArg</strong>(<span class="underline">TYPE</span> val);</td>
-<td>Sets the scalar argument MyScalarArg to val.</td>
+<td><strong>void</strong> <strong>MyTopFunc_write_MyScalarArg(<span class="underline">TYPE</span> val, void *virt_addr)</strong></td>
+<td>This function writes the value 'val' to the the scalar argument MyScalarArg. This essentially causes an AXI Memory Map write transaction into the SmartHLS module's on-chip storage. </td>
 </tr>
 <tr>
-<td>TYPE <strong>MyTopFunc_read_MyScalarArg</strong>();</td>
-<td>Retrieves the value of MyScalarArg, that was previously set by the write function above.</td>
+<td><strong>TYPE MyTopFunc_read_MyScalarArg(void *virt_addr)</strong></td>
+<td>	This function reads the value of MyScalarArg.  This is causes an AXI Memory Map read transaction from the SmartHLS module's on-chip storage.</td>
 </tr>
 <tr>
 <td colspan="2"><p align="center"><u>Pointer Argument Driver Functions - memcpy</u></p></td>
 </tr>
 <tr>
-<td><p><strong>void</strong> <strong>MyTopFunc_memcpy_write_MyPtrArg</strong>(<strong>void</strong>* MyPtrArg, uint64_t byte_size);</p>
-<p><strong>void</strong> <strong>MyTopFunc_memcpy_read_MyPtrArg</strong> (<strong>void</strong>* MyPtrArg, uint64_t byte_size);</p></td>
-<td><p>The processor performs memory-mapped write/read operations (using the standard memcpy function) to copy data between the memory at MyPtrArg and the HLS accelerator. The total size to transfer is defined by the byte_size argument.</p></td>
+<td><p><strong>void MyTopFunc_memcpy_write_MyPtrArg (void* MyPtrArg, uint64_t byte_size, void *virt_addr)</strong></p>
+<p><strong>void MyTopFunc_memcpy_read_MyPtrArg (void* MyPtrArg, uint64_t byte_size, void *virt_addr)</strong></p></td>
+<td><p>These functions performs  memory-mapped write/read operations (using the standard memcpy function). It is the CPU who copies the data from its memory as pointed to by MyPtrArg and the SmartHLS module's on-chip storage. The total size to transfer is defined by the 'byte_size' argument. These functions do NOT use DMA.</p></td>
 </tr>
 <tr>
 <td colspan="2"><p align="center"><u>Pointer Argument Driver Functions - DMA</u></p></td>
 </tr>
 <tr>
-<td><p><strong>void</strong> <strong>MyTopFunc_dma_write_MyPtrArg</strong>(<strong>void</strong>* MyPtrArg, uint64_t byte_size);</p>
-<p><strong>void</strong> <strong>MyTopFunc_dma_read_MyPtrArg</strong> (<strong>void</strong>* MyPtrArg, uint64_t byte_size);</p></td>
-<td><p>The processor offloads the data transfer to a DMA engine to move data between the memory at MyPtrArg and the HLS accelerator. The total size to transfer is defined by the byte_size argument.</p></td>
+<td><p><strong>void MyTopFunc_dma_write_MyPtrArg(void* MyPtrArg, uint64_t byte_size, void *virt_addr)</strong></p>
+<p><strong>void MyTopFunc_dma_read_MyPtrArg (void* MyPtrArg, uint64_t byte_size, void *virt_addr)</strong></p></td>
+<td><p>	These functions performs memory-mapped write/read operations using the DMA engine in the HSS to move data between the CPU's memory at MyPtrArg and the SmartHLS module's on-chip storage. The total size to transfer is defined by the 'byte_size' argument. </p></td>
 </tr>
 <tr>
 <td colspan="2"><p align="center"><u>AXI-Initiator Argument’s Pointer Address Driver Function</u></p></td>
 </tr>
 <tr>
-<td><strong>void</strong> <strong>MyTopFunc_write_MyPtrArg_ptr_addr</strong>(<strong>void</strong>* offset);</td>
-<td>Sets pointer address for MyPtrArg</td>
+<td><strong>void MyTopFunc_write_MyPtrArg_ptr_addr(void* arg_virt_addr, void *virt_addr)</strong></td>
+<td>This function sets the address for MyPtrArg using 'arg_virt_addr'. 'arg_virt_addr' is a virtual address and internally it will be mapped to a physical address before sending it to the SmartHLS module, which uses that address to access the content of MyPtrArg. The 'virt_addr' argument is the memory-mapped virtual base address of the top-level module. When the SmartHLS project's type is set to Icicle_SoC, the driver is assumed to run on a Linux Operating System and the CPU's memory referenced by the pointer argument MyPtrArg must be allocated using hls_malloc() function and released using hls_free().</td>
 </tr>
 <tr>
 <td colspan="2"><p align="center"><u>Top-Level Driver Functions</u></p></td>
 </tr>
 <tr>
-<td>RETURN_TYPE <strong>MyTopFunc_hls_driver</strong>(...);</td>
+<td><strong>RETURN_TYPE MyTopFun_hls_driver(..., uint32_t base_addr = MyTopFun_BASE_ADDR)</strong></td>
 <td><p>This blocking function initializes all input argument data, starts the HLS module, waits for its completion, and retrieves output argument data and return value. It can be used as a direct replacement to the original top-level function. The arguments and return type are the same as the top-level function’s.</p></td>
 </tr>
 <tr>
-<td><strong>void</strong> <strong>MyTopFunc_write_input_and_start</strong>(...);</td>
-<td><p>This function initializes all input argument data and starts the HLS module. It starts the HLS module and resume to execute other parts of the software while the HLS module is running, then later call the _join_and_read_output() function below. The arguments are the input arguments of the top-level functions.</p></td>
+<td><strong>void MyTopFun_write_input_and_start(..., void *virt_addr)</strong></td>
+<td><p>	
+This function initializes all input argument data and starts the SmartHLS module. It is a non-blocking call that can be used to start the SmartHLS module and continue to execute other parts of the software while the SmartHLS module is running. The arguments of this function include the input arguments of the top-level function.</p></td>
 </tr>
 <tr>
-<td>RETURN_TYPE <strong>MyTopFunc_join_and_read_output</strong>(...);</td>
-<td><p>This is a blocking function that waits for the HLS module to finish the execution and retrieves output argument data and return value. This function expects _start() or _write_input_and_start() has been called prior to calling this function. The arguments are the output arguments of the top-level functions.</p></td>
+<td><strong>RETURN_TYPE myTopFun_join_and_read_output(..., void *virt_addr)</strong></td>
+<td><p>	This blocking function waits for the SmartHLS module to finish the execution, and retrieves output argument data and return value (if not void). The arguments are the same arguments of the top-level function. </p></td>
 </tr>
 </tbody>
 </table>
@@ -868,7 +877,7 @@ Default base address in reference SoC: 0x70000000.
 <p align="center">Figure 6‑23 Module Base Address and Span in Header File</p>
 
 ![](.//media/image3.png) Open `vector_add_soc_accelerator_driver.cpp`.
-Line 137 to line 165 are the control module functions for the
+Line 207 to line 233 are the control module functions for the
 `vector_add_axi_target_memcpy` top function.
 `vector_add_axi_target_memcpy_start()` writes to the
 `vector_add_axi_target_memcpy` accelerator control register to start
@@ -880,40 +889,38 @@ starting and waiting for the accelerator. They do NOT pass in the
 parameters.
 
 ```c
-137  vector_add_axi_target_memcpy_is_idle() {
-138
-139   volatile int *acc_start_addr =
-140     (volatile int *)(vector_add_axi_target_memcpy_phys_map + 8); // base+8
-141
-142     return *acc_start_addr == 0;
-143   }
-144
-145  // This is a non-blocking function that starts the computation on the accelerator.
-146  // Any arguments, if any, should be written using the write functions given.
-147  // Use vector_add_axi_target_memcpy_join_and_read_output() to wait for the accelerator to finish and return with the result.
-148  void vector_add_axi_target_memcpy_start() {
-149
-150   // Run accelerator
-151   volatile int *acc_start_addr =
-152     (volatile int *)(vector_add_axi_target_memcpy_phys_map + 8); // base+8
-153
-154
-155   *acc_start_addr = 1;
-156  }
-157
-158  // This is a blocking function that waits for the computation started by vector_add_axi_target_memcpy_start() to return.
-159  // The return value is the result computed by the accelerator.
-160  void vector_add_axi_target_memcpy_join() {
-161
-162
-163   // Wait for accelerator to finish, acc_start_addr is set to 1 in the start function
-164   while (!vector_add_axi_target_memcpy_is_idle()) {}
-165  }
+int vector_add_axi_target_memcpy_is_idle(void *virt_addr) {
+
+    volatile int *acc_start_addr =
+        (volatile int *)((char*)virt_addr + 8); // base+8
+
+    return *acc_start_addr == 0;
+}
+
+// This is a non-blocking function that starts the computation on the accelerator.
+// Any arguments, if any, should be written using the write functions given.
+// Use vector_add_axi_target_memcpy_join_and_read_output() to wait for the accelerator to finish and return with the result.
+void vector_add_axi_target_memcpy_start(void *virt_addr) {
+
+    // Run accelerator
+    volatile int *acc_start_addr =
+        (volatile int *)((char*)virt_addr + 8); // base+8
+
+    *acc_start_addr = 1;
+}
+
+// This is a blocking function that waits for the computation started by vector_add_axi_target_memcpy_start() to return.
+// The return value is the result computed by the accelerator.
+void vector_add_axi_target_memcpy_join(void *virt_addr) {
+
+    // Wait for accelerator to finish, acc_start_addr is set to 1 in the start function
+    while (!vector_add_axi_target_memcpy_is_idle(virt_addr)) {}
+}
 ```
 
 <p align="center">Figure 6‑24 Control Module Function of vector_add_axi_target_memcpy Top Module</p>
 
-![](.//media/image3.png)Go to line 168.
+![](.//media/image3.png)Go to line 236.
 `vector_add_axi_target_memcpy_hls_driver()` is the direct
 replacement function for the software version of
 `vector_add_axi_target_memcpy()`. SmartHLS will automatically replace
@@ -925,52 +932,54 @@ parameters as `vector_add_axi_target_memcpy()`, but the parameters are
 casted into void pointers, as void pointers can be used to point to any
 data type.
 ```c
-168  // This is a blocking function that calls and waits for the accelerator to return.                                            
-169  // The return value is the result computed by the accelerator.                                                                
-170  void vector_add_axi_target_memcpy_hls_driver(void* in, void* out) {                                  
-171                                                                                                                                
-172    vector_add_axi_target_memcpy_write_input_and_start(in);                                                               
-173    vector_add_axi_target_memcpy_join_and_read_output(out);                                                               
-174  }                                                                                                                             
-175                                                                                                                                
-176                                                                                                                                
-177  // This is a non-blocking function that starts the computation on the accelerator.                                            
-178  // Use vector_add_axi_target_memcpy_join() to wait for the accelerator to finish and return with the result.             
-179  void vector_add_axi_target_memcpy_write_input_and_start(void* in) {                                      
-180                                                                                                                                
-181  // Run setup function                                                                                                         
-182  if (vector_add_axi_target_memcpy_setup() == 1) {                                                                     
-183  printf("Error: setup function failed for invert");                                                                            
-184  exit(EXIT_FAILURE);                                                                                                          
-185  }                                                                                                                             
-186                                                                                                                                
-187  vector_add_axi_target_memcpy_memcpy_write_a(a, 64);                                                                    
-188  vector_add_axi_target_memcpy_memcpy_write_b(b, 64);                                                                    
-189                                                                                                                                
-190  vector_add_axi_target_memcpy_start();                                                                                    
-191                                                                                                                               
-192  }                                                                                                                             
-193                                                                                                                                
-194                                                                                                                                
-195  // This is a blocking function that waits for the computation started by vector_add_axi_target_memcpy _start() to return. 
-196  // The return value is the result computed by the accelerator.                                                                
-197  void vector_add_axi_target_memcpy_join_and_read_output(void* out) {                                      
-198                                                                                                                                
-199  vector_add_axi_target_memcpy_join();                                                                                     
-200                                                                                                                                
-201  vector_add_axi_target_memcpy_memcpy_read_result(result, 64);                                                           
-202                                                                                                                                
-203  }                                                                                                                             
+
+// This is a blocking function that calls and waits for the accelerator to return.
+// The return value is the result computed by the accelerator.
+void vector_add_axi_target_memcpy_hls_driver(void* a, void* b, void* result, uint32_t base_addr) {
+
+    // Run setup function
+    void *virt_addr = vector_add_axi_target_memcpy_setup(base_addr);
+    if (virt_addr == NULL) {
+        printf("Error: setup function failed for vector_add_axi_target_memcpy");
+        exit(EXIT_FAILURE);
+    }
+
+    vector_add_axi_target_memcpy_write_input_and_start(a, b, virt_addr);
+    vector_add_axi_target_memcpy_join_and_read_output(result, virt_addr);
+    vector_add_axi_target_memcpy_teardown(virt_addr);
+}
+
+
+// This is a non-blocking function that starts the computation on the accelerator.
+// Use vector_add_axi_target_memcpy_join() to wait for the accelerator to finish and return with the result.
+void vector_add_axi_target_memcpy_write_input_and_start(void* a, void* b, void *virt_addr) {
+
+    vector_add_axi_target_memcpy_memcpy_write_a(a, 64, virt_addr);
+    vector_add_axi_target_memcpy_memcpy_write_b(b, 64, virt_addr);
+
+    vector_add_axi_target_memcpy_start(virt_addr);
+
+}
+
+
+// This is a blocking function that waits for the computation started by vector_add_axi_target_memcpy_start() to return.
+// The return value is the result computed by the accelerator.
+void vector_add_axi_target_memcpy_join_and_read_output(void* result, void *virt_addr) {
+
+    vector_add_axi_target_memcpy_join(virt_addr);
+
+    vector_add_axi_target_memcpy_memcpy_read_result(result, 64, virt_addr);
+}                                                                                                  
 ```
 <p align="center">Figure 6‑25 Top-Level Function for vector_add_axi_target_memcpy Top Module</p>
 
-On line 170, `vector_add_axi_target_memcpy_hls_driver()` makes a
+On line 247, `vector_add_axi_target_memcpy_hls_driver()` makes a
 call to the non-blocking
 `vector_add_axi_target_memcpy_write_input_and_start()`
 function that writes the input arguments and starts the accelerator.
 Then, `vector_add_axi_target_memcpy_hls_driver()` calls the
 blocking `vector_add_axi_target_memcpy_join_and_read_output()`
-function on line 173 to wait for and read back the accelerator’s output.
+function on line 448 to wait for and read back the accelerator’s output.
 Users can use
 `vector_add_axi_target_memcpy_write_input_and_start()` to
 start the calculation, then execute other computations on the MSS in
@@ -1288,7 +1297,7 @@ argument interface from AXI target to AXI initiator. Go to line 21 of
 18  #define AXI_INITIATOR 2                                             
 19                                                                            
 20  #ifndef INTERFACE                                                    
-21  #define INTERFACE AXI_TARGET_MEMCPY                            
+21  #define INTERFACE AXI_INITIATOR                           
 22  #endif                                                               
 ```
 <p align="center">Figure 6‑39 Pragma for Choosing Example’s Interface Type</p>
@@ -1412,7 +1421,7 @@ SmartHLS reads in `Makefile.user` where users can define and modify
 options such as compiler and linker flags. For example, users can modify
 `USER_CXX_FLAG` to append additional C++ compilation flags for their
 project. Visit the [Makefile
-Variable](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-398C5B20-F31F-4C97-AA81-DDDC0BE0F469.html)
+Variable](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8246D542-5D26-420C-9418-6D798FDFC215.html)
 section of our user guide for a full list of predefined user flags and
 their uses.
 
@@ -1461,12 +1470,7 @@ correct result should see `RESULT: PASS` as seen on Figure 7‑6.
 
 ```
 Info: Running the following targets: soc_base_proj_run
-----------------------------------------------------------------------------
-Smart High-Level Synthesis Tool Version 2024.1
-Copyright (c) 2015-2023 Microchip Technology Inc. All Rights Reserved.
-For support, please visit https://microchiptech.github.io/fpga-hls-docs/techsupport.html.
-Date: Tue Feb  6 16:32:58 2024
-----------------------------------------------------------------------------
+...
 Info: Checking for SmartHLS feature license.
 Info: SmartHLS feature license was successfully checked out.
 Info: The Programmer ID is not set. All connected programmers will be programmed. If only one of the multiple connected programmers is to be programmed, please specify it using "board.programmerID" in projConfig.json
@@ -1866,11 +1870,8 @@ the bitstream in advance, which can be downloaded from the release assets on Git
 Users can save time by using the precompiled bitstream instead and
 continue onto the [next section](#programming-the-fpga-bitstream).
 
-![](.//media/image2.png)We can compile by either using the Libero GUI or
-by running the `run_libero.sh` script in
-`icicle-kit-reference-design\script_support\additional_configurations\smarthls` (Linux only).
 
-Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`. Otherwise, you will fail to [run shls](#881-chaining-hw-modules-using-cpu-shared-memory-mainsimplecpp)
+![](.//media/image2.png) Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`. 
 
 ```make
 SRCS = main_variations/main.simple.cpp
@@ -1881,6 +1882,11 @@ SRCS = main_variations/main.simple.cpp
 # This option requires bitstream configuration 
 # SRCS = main_variations/main.fifo.cpp
 ```
+
+![](.//media/image2.png)We can compile by either using the Libero GUI, or
+by running the `run_libero.sh` or `run_libero.ps1` (which script you use depends on your OS) script in
+`icicle-kit-reference-design\script_support\additional_configurations\smarthls`.
+
 
 To use the Libero GUI to compile, open Libero. Press Ctrl+U in Libero to
 open the “Execute Script” dialog as shown in Figure 8‑12. In the
@@ -1943,11 +1949,10 @@ still cannot be found, the script will give an error and users will have
 to manually modify the script or add SmartHLS to their PATH environment
 variable.
 
-To use `run_libero.sh` to compile, you will to be able to run `bash` scripts. If you cannot 
-do this, you will need to use the GUI to compile. 
+Alternatively, you can compile using the `run_libero` scripts. If you are using Windows to compile, you will run `run_libero.ps1` in Powershell. If you are using Linux to compile, or can otherwise run bash scripts, you will run `run_libero.sh` to compile. 
 
 First, open your shell and navigate to the `icicle-kit-reference-design folder`. Then run
-`./script_support/additional_configurations/smarthls/run_libero.sh`.
+`./script_support/additional_configurations/smarthls/run_libero.(your extension here)`.
 
 ```bash
 01  #!/bin/bash                                                                          
@@ -2234,9 +2239,12 @@ their uses. Important: Ensure that `SRCS` is set to
 <p align="center">Figure 8‑26 Runtime Settings Section of Makefile.user</p>
 
 If the run was successful, you should see similar output to Figure 8‑27
-Sample Output of Successful Run below.
-<p align="center">
-<img src=".//media/image70.png" />
+Sample Output of Successful Run below. The "Elapsed time" may differ.
+```
+Here we go!
+N_ROWS:45, buf_size :259200, do_invert:1, threshold:200, mode:sw
+Elapsed time: 0.005379 [s]
+```
 <p align="center">Figure 8‑27 Sample Output of Successful Run</p></p>
 
 ![](.//media/image3.png)We can also SSH into the board to run the
@@ -2483,10 +2491,10 @@ shls clean
 ```
 
 For Windows:
-```bat
-shls.bat clean
-compile_sw.shls.bat
-run_sw.shls.bat
+```ps1
+shls clean
+./compile_sw.shls.ps1
+./run_sw.shls.ps1
 ```
 
 <p align="center">
@@ -2736,7 +2744,7 @@ we have shown here and incorporate SmartHLS into your own SoC designs.
 
 # Current limitations of the SoC flow
 
-In the first release of the SmartHLS PolarFire SoC flow there are a few
+In this release of the SmartHLS PolarFire SoC flow there are a few
 limitations:
 
 1)  No AXI streaming arguments

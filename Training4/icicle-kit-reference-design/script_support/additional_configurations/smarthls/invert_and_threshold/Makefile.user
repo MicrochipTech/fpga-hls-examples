@@ -1,14 +1,13 @@
 #-------------------------------------------------
 # Select the souce
 #-------------------------------------------------
-# SRCS = main_variations/main.simple.cpp
+SRCS = main_variations/main.simple.cpp
 # SRCS = main_variations/main.cpu_usage.cpp
 # SRCS = main_variations/main.hls_driver.cpp
 # SRCS = main_variations/main.non-blocking.cpp
 
 # This option requires bitstream configuration 
-SRCS = main_variations/main.fifo.cpp
-
+# SRCS = main_variations/main.fifo.cpp
 
 #-------------------------------------------------
 # Select the SoC design:
