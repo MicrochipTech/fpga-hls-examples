@@ -2,9 +2,6 @@
 
 The goal of this project is to simplify the debugging process of designs that use SmartHLS-generated modules. To simplify the process of instrumentation, this tool generates TCL scripts to instrument the ports and HLS FIFO modules for each top-level function in a SmartHLS project. The auto-generated TCL scripts can be automatically sourced in the SmartHLS SoC Flow, or users can source them manually in their own custom TCL flows for Libero and FPGA Designer. To simply the process of debugging, the tool generates a template for Questasim's waveform viewer that organizes and sorts instrumented signals, and provides an API for long-term FIFO monitoring.
 
-**NOTE:** Libero 2024.2 is shipped with both Modelsim and Questasim. Questasim is the default, but auto-instrumentation will work with both.
-
-
 ### More on the Auto-Instrumentation Flow...
 The flow starts with a user writing C++ code. The SmartHLS compiler uses the C++ code to generate HDL code (Verilog/VHDL) and the compiler can automatically generate an initial high-level specification of all the top-level functions in the HLS project to be instrumented. The user can optionally edit the generated file before proceeding to the instrumentation process. 
 
