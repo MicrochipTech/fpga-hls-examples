@@ -1,0 +1,92 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="_X27mDTQkq1iTdDieQFX">
+        <mxGraphModel dx="724" dy="487" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="750" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-2" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;CPU&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="50" width="400" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-3" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.115;entryY=-0.007;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.11;exitY=1.015;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="g4KGZPHY9IXhdXe7oLol-2" target="g4KGZPHY9IXhdXe7oLol-1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="190" as="sourcePoint"/>
+                        <mxPoint x="250" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-4" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;bufIn&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="g4KGZPHY9IXhdXe7oLol-3" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1374" y="-3" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-5" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0.818;entryY=1.008;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.915;exitY=0.004;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="g4KGZPHY9IXhdXe7oLol-1" target="g4KGZPHY9IXhdXe7oLol-2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="400" y="400" as="sourcePoint"/>
+                        <mxPoint x="640" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-6" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;bufOut&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="g4KGZPHY9IXhdXe7oLol-5" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1806" y="-2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-8" value="writefifo&lt;span style=&quot;background-color: initial;&quot;&gt;:&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;Writes the data from the &quot;bufIn&quot; buffer into the data_in FIFO&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="430" width="120" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-9" value="read_fifo&lt;span style=&quot;background-color: initial;&quot;&gt;:&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;Reads the data int the &quot;bufOut&quot; buffer from the data_out FIFO&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="440" width="120" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="400" width="390" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-11" value="my_wrapper:" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="400" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-12" value="readFunction:&lt;div&gt;Reads from data_in into fifo_1 for n_fwd_1 times, waits n_wait_1 times.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="440" width="120" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-13" value="readFunction:&lt;div&gt;Reads from fifo_1 into data_out for n_fwd_2 cycles, waits n_wait_2 cycles.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="440" width="120" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-14" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.008;exitY=0.585;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="g4KGZPHY9IXhdXe7oLol-8" target="g4KGZPHY9IXhdXe7oLol-12" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="170" y="510" as="sourcePoint"/>
+                        <mxPoint x="220" y="460" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-18" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;data_in&lt;/font&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;FIFO&lt;/font&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="g4KGZPHY9IXhdXe7oLol-14" vertex="1" connectable="0">
+                    <mxGeometry x="0.1044" y="5" relative="1" as="geometry">
+                        <mxPoint x="-9" y="5" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-20" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.008;exitY=0.585;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="g4KGZPHY9IXhdXe7oLol-13" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="370" y="505.5" as="sourcePoint"/>
+                        <mxPoint x="449" y="504.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-23" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;fifo_1&lt;/font&gt;&lt;div style=&quot;font-size: 12px;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;FIFO&lt;/font&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="g4KGZPHY9IXhdXe7oLol-20" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2443" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-24" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.008;exitY=0.585;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="581" y="505.5" as="sourcePoint"/>
+                        <mxPoint x="660" y="504.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-29" value="data_out&lt;div&gt;FIFO&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="g4KGZPHY9IXhdXe7oLol-24" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2655" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="g4KGZPHY9IXhdXe7oLol-30" value="top_level" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="350" width="60" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

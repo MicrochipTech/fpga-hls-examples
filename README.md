@@ -35,3 +35,4 @@ Example | Description
 Example | Description
 --------|------------
 [RISC-V example](./risc-v-demo)|End-to-end SmartHLS + RISC-V + H264 over Ethernet Example.
+[Auto-Instrumentation example](./auto-instrument)|Example showing how to use SmartHLS's Automatic Instrumentation feature.
