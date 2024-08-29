@@ -490,7 +490,7 @@ set iice_list {{IICE_hls 10} {my_IICE 12}}
 :point_right: 3. In `hls_output/scripts/instrument/update_vcd.tcl`, set the `waveFile` variable to the file you just created in the previous step. For example:
 
 ```
-set waveFile /home/jennifermah76/my_test_repo/hls/hls_output/scripts/instrument/my_file.do
+set waveFile my_custom_wave.do
 ```
 
 That's it! Now you can run the monitoring and waveform visualizing programs as normal (see Part 3.)
