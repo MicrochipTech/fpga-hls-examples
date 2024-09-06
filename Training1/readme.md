@@ -514,9 +514,9 @@ directions below.
     looking for Eclipse “.project” files in the subdirectories. Click
     Finish to import.
 
-<p align="center">="center"><img src=".//media/image32.png" /></p></br>
+<p align="center"><img src=".//media/image32.png" /></p></br>
 
-7.  After importing you should see all 9 projects in the Project
+1.  After importing you should see all 9 projects in the Project
     Explorer on the left.
 
 <p align="center"><img src=".//media/image33.png" /></p></br>
