@@ -3489,7 +3489,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
 3.  Launch Libero® SoC 2024.2 and open the project: “`Libero_training1/Libero_training1.prjx`”
 
 4.  Navigate to the Design Hierarchy and search for “canny”. Right click
-    the canny_top design component and select Delete. This is to make
+    the canny_top design component and select Unlink. This is to make
     sure there are no duplicated blocks before importing the new
     canny_top HDL+ block from SmartHLS.
     <p align="center"><img src=".//media/image139.png"></p></br>
@@ -3512,18 +3512,18 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     new selected component.”
 <p align="center"><img src=".//media/image144.png"><img src=".//media/image145.png"></p></br>
 
-8.  After replacing the SmartDesign component, canny_top should no
+1.  After replacing the SmartDesign component, canny_top should no
     longer be red as shown below.
     <p align="center"><img src=".//media/image146.png"></p></br>
 
-9.  Click the “Generate Component” (![](.//media/image88.png)) button in
+2.  Click the “Generate Component” (![](.//media/image88.png)) button in
     the SmartDesign toolbar for `LegUp_Image_Filters` and each parent
     component (`video_pipelining`, `VIDEO_KIT_TOP`).
 
-10. Go to the Design Flow tab and double click Generate FPGA Array Data.
+3.  Go to the Design Flow tab and double click Generate FPGA Array Data.
     This should take 1-2h to finish running.
 
-11. The Mi-V soft processor receives configuration from the Video
+4.  The Mi-V soft processor receives configuration from the Video
     Control GUI running on the PC via the USB-UART. The Mi-V uses this
     configuration to control the Image/Video Processing block. To
     program the executable that runs on the Mi-V, double click

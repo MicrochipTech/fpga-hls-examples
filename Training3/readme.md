@@ -1745,7 +1745,7 @@ Libero SoC 2024.2:
     navigating to and clicking
     `Training3/Libero/Libero_training3/Libero_training3.prjx`.
 2.  Navigate to the Design Hierarchy and search for “`wide_mult`”. Right
-    click the `wide_mult_axi_top` design component and select Delete.
+    click the `wide_mult_axi_top` design component and select Unlink.
     We want to avoid any duplicate blocks when importing the new wide
     multiply design from SmartHLS.
 
