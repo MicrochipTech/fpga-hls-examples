@@ -374,11 +374,6 @@ If you are using Windows, run:
 cd precompiled
 .\setup.ps1
 ```
-Depending on your computer's settings, you may get this error:
-`\setup.ps1 cannot be loaded because running scripts is disabled on this system.`
-To fix it, open up a new powershell in adminstrator mode, run `Set-ExecutionPolicy Unrestricted`, and close the shell. 
-You can verify that the setting has been changed by running `Get-ExecutionPolicy` in your open shell and checking that it returns `Unrestricted`. 
-You may need to restart your shell for the changes to take effect.
 
 This script will copy the OpenCV and FFMPEG libraries, the files for the control 
 web page, the SmartHLS application executables and some configuration files to 
