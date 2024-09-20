@@ -45,6 +45,9 @@ $cmd += ":/srv/www/test"
 Write-Host $cmd
 Invoke-Expression $cmd
 
+# remove dos endings from copied sudoers file
+ssh $SSH_OPT root@$env:BOARD_IP "sed -i 's/\x0D$//' /etc/sudoers.d/0001_daemon"
+
 # Copy HLS binaries
 $cmd = "scp $SSH_OPT "
 $cmd += "./*.elf "
