@@ -516,7 +516,7 @@ directions below.
 
 <p align="center"><img src=".//media/image32.png" /></p></br>
 
-1.  After importing you should see all 9 projects in the Project
+7.  After importing you should see all 9 projects in the Project
     Explorer on the left.
 
 <p align="center"><img src=".//media/image33.png" /></p></br>
@@ -3512,18 +3512,18 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     new selected component.”
 <p align="center"><img src=".//media/image144.png"><img src=".//media/image145.png"></p></br>
 
-1.  After replacing the SmartDesign component, canny_top should no
+8.  After replacing the SmartDesign component, canny_top should no
     longer be red as shown below.
     <p align="center"><img src=".//media/image146.png"></p></br>
 
-2.  Click the “Generate Component” (![](.//media/image88.png)) button in
+9.  Click the “Generate Component” (![](.//media/image88.png)) button in
     the SmartDesign toolbar for `LegUp_Image_Filters` and each parent
     component (`video_pipelining`, `VIDEO_KIT_TOP`).
 
-3.  Go to the Design Flow tab and double click Generate FPGA Array Data.
+10.  Go to the Design Flow tab and double click Generate FPGA Array Data.
     This should take 1-2h to finish running.
 
-4.  The Mi-V soft processor receives configuration from the Video
+11.  The Mi-V soft processor receives configuration from the Video
     Control GUI running on the PC via the USB-UART. The Mi-V uses this
     configuration to control the Image/Video Processing block. To
     program the executable that runs on the Mi-V, double click
