@@ -569,7 +569,7 @@ performance.
 18      if (!done) {
 19  // Pipeline for extra performance.
 20  #pragma HLS loop pipeline
-21        for (int I = 0; i < 100; i++)
+21        for (int i = 0; i < 100; i++)
 22          buf[i] = input_fifo.read();
 23        done = true;
 24      }
@@ -585,7 +585,7 @@ performance.
 34  // Pipeline for extra performance.
 35  #pragma HLS loop pipeline
 36        for (int i = 0; i < 100; i++)
-37          sum += buf[i\];
+37          sum += buf[i];
 38        done = false;
 39        output_fifo.write(sum);
 40      }
