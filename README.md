@@ -24,6 +24,7 @@ Example | Description
 [axi_target](./axi_target)|Example of an AXI4-Target top-level interface.
 [Canny_RISCV](./Canny_RISCV)|Integrating a SmartHLS module created using the IP Flow into the RISC-V subsystem.
 [ECC_demo](./ECC_demo)|Example of Error Correction Code feature.
+[auto-instrument](./auto-instrument/)|Example of Automatic On-Chip Instrumentation feature.
 
 ## Simple Examples
 Example | Description
