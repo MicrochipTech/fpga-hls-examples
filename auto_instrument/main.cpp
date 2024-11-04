@@ -42,7 +42,7 @@ void fifoToFifo(hls::FIFO<int>& inputFifo, hls::FIFO<int>& outputFifo, unsigned 
 
     // Induce a delay of `delay` clock-cycles. 
     #pragma HLS loop pipeline
-    for (unsigned long long int i { 0 }; i < delay; i++) {
+    for (unsigned long long int i = 0; i < delay; i++) {
         // `printf` is a nice way to avoid the loop being optimized away, however,
         // it only executes in software, in hardware it is ignored.
         printf("Stall...\n");  
@@ -67,7 +67,7 @@ void consumer(hls::FIFO<int>& fifo, unsigned long long int delay) {
 
     // Induce a delay of `delay` clock-cycles.
     #pragma HLS loop pipeline
-    for (unsigned long long int i { 0 }; i < delay; i++) {
+    for (unsigned long long int i = 0; i < delay; i++) {
         // `printf` is a nice way to avoid the loop being optimized away, however,
         // it only executes in software, in hardware it is ignored.
         printf("Stall...\n");
@@ -104,7 +104,7 @@ void hlsModule(volatile unsigned char& go,
 //------------------------------------------------------------------------------
 // When compiling for RISC-V CPU (i.e. not generating hardware)
 #ifndef __SYNTHESIS__
-#include "hls_output/accelerator_drivers/auto-instrument_accelerator_driver.h"
+#include "hls_output/accelerator_drivers/auto_instrument_accelerator_driver.h"
 
 // The virtual base address for the HLS module in the RISC-V memory.
 // This is initialized by the hlsModule_setup() function
@@ -126,14 +126,13 @@ int main(int argc, char** argv) {
 
     // The following code uses driver functions to perform the following
     // * Set up the virtual address for the on-chip memory
-    * Write 1 to `go` and all delay values (this will launch the accelerator)
-    */
+    // * Write 1 to `go` and write all delay values (this will launch the accelerator)
     virtualAddress = hlsModule_setup();
     if (virtualAddress == NULL) {
         printf("%s: Error: Could not set up virtual address.\n", argv[0]);
         exit(-1);
     }
-    unsigned char go { 1 };
+    unsigned char go = 1;
     signal(SIGINT, reset);
     printf("Starting the pipeline. Send SIGINT (Ctrl + C) anytime to stop the hardware accelerator.\n");
     hlsModule_write_input_and_start(&go, atoi(argv[1]), atoi(argv[2]), atoi(argv[3]), atoi(argv[4]), virtualAddress);
