@@ -537,10 +537,6 @@ Here are some examples of the bar plot. You should confirm these make sense intu
 
 - When the executable is not running on-board, all FIFOs are empty:
 
-  ```console
-  auto_instrument.accel.elf 0 0 0 0
-  ```
-
   ![alt text](assets/fifo_monitoring_executable_not_running.png)
 
 - When the delays are 20, 40, 80, and 160, respectively:
