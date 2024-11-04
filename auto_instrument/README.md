@@ -76,7 +76,7 @@ Before beginning this tutorial, you should install the following software:
     - **KNOWN ISSUE**: In Windows, SmartHLS includes Python 3 and the binary name is `python.exe`, however, a TCL script in the SmartHLS 2024.2 installation is explicitly calling `python3`, which does not exist. To be able to run the instrumentation example in Windows, just copy the file as follows:
 
     ```console
-    cp "$env:SHLS_ROOT_DIR/dependencies/python.exe" "$env:SHLS_ROOT_DIR/dependencies/python3.exe"
+    cp "$env:SHLS_ROOT_DIR/dependencies/python/python.exe" "$env:SHLS_ROOT_DIR/dependencies/python/python3.exe"
     ```
 
 **NOTE**: The `JTAG_HOST` variable can be set to `127.0.0.1` if the machine that the board is connected to is the same as the machine where the project is being compiled and debugged.
