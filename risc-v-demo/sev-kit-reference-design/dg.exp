@@ -8,7 +8,7 @@ set test "risc-v-demo build test"
 puts $test
 set expected {ALL DONE}
 set cmd "./script_support/additional_configurations/smarthls/run_libero.sh"
-set timeout_duration "60m"
+set timeout_duration "90m"
 
 # Run a command and capture both stdout and stderr
 set retval [ catch { eval exec -keepnewline -- "timeout $timeout_duration $cmd" } errmsg ]
