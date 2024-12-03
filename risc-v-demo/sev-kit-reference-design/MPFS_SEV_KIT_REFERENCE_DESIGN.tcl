@@ -109,7 +109,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     set mipicsi2rxdecoderPF_version     4.4.0
     set PF_CCC_version                  2.2.220
     set PF_CLK_DIV_version              1.0.103
-    set PF_IOD_GENERIC_RX_version       2.1.110
+    set PF_IOD_GENERIC_RX_version       2.1.113
     set PF_OSC_version                  1.0.102
     set RGBtoYCbCr_version              4.4.0
     set PF_XCVR_REF_CLK_version         1.0.103

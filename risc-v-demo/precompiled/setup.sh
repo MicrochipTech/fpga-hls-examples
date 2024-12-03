@@ -19,8 +19,8 @@ eval $cmd
 
 # Now copy the necessary files to the board
 cmd="scp -r $SSH_OPT "
-cmd+=" shls_sw_dependencies/ffmpeg4.4-riscv_64-linux"
-cmd+=" shls_sw_dependencies/opencv4.5.4-riscv_64-linux"
+cmd+=" shls_sw_dependencies/ffmpeg4.4-riscv_64"
+cmd+=" shls_sw_dependencies/opencv4.5.4-riscv_64"
 cmd+=" root@$BOARD_IP:/usr/local/shls_sw_dependencies"
 echo $cmd
 eval $cmd
