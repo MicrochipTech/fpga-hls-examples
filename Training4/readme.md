@@ -385,7 +385,7 @@ array.
 
 ```c
 24  // The core logic of this example                                          
-25  void vector_add_sw(int a, int b, int result) { 
+25  void vector_add_sw(int* a, int* b, int* result) { 
 26    for (int i = 0; i < SIZE; i++) {                                  
 27      result[i] = a[i] + b[i];                                             
 28    }                                                                          
@@ -398,7 +398,7 @@ Now we look on line 70 at the `vector_add_axi_target_memcpy` top-level
 C++ function as shown in Figure 6‑12.
 
 ```c
-70  void vector_add_axi_target_memcpy(int a, int b, int result) { 
+70  void vector_add_axi_target_memcpy(int* a, int* b, int* result) { 
 71  #pragma HLS function top                                                               
 72  #pragma HLS interface control type(axi_target)                                        
 73  #pragma HLS interface argument(a) type(axi_target) num_elements(SIZE)                
@@ -500,7 +500,7 @@ corresponding to the C++ top-level function as shown below in Figure
 clock and a single AXI4 Target port. Due to the large number of AXI4
 ports in the RTL, SmartHLS uses a wildcard “`axi4target_*`” to
 simplify the table. The “Control AXI4 Target” indicates that
-start/finish control as done using the AXI target interface. Each of the
+start/finish control is done using the AXI target interface. Each of the
 function’s three arguments also use the AXI target interface. The
 address map of the AXI target port is given later in the report.
 

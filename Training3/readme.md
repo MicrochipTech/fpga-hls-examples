@@ -2002,7 +2002,7 @@ format to write and read from the addresses that line up with addresses
 in the AXI target interface in the SmartHLS core. For burst mode, the
 processor will also write to and read from addresses corresponding to
 the DDR memory. Note, the pointers are cast as volatile to prevent the
-SoftConsole compiler from optimization away these reads and writes. The
+SoftConsole compiler from optimizating away these reads and writes. The
 Mi-V then asserts the run signal and waits until the accelerator
 de-asserts it, signally the computing is done. The Mi-V then reads from
 the memory to issue read requests and get the results from the

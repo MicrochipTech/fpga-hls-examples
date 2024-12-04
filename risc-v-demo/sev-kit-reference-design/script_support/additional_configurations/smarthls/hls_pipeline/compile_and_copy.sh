@@ -24,8 +24,8 @@ rm -f $ELF
 HLS_DRIVER_PATH="./hls_output/accelerator_drivers"
 
 # Extra defines to include shared opencv/ffmpeg libraries below:
-OPENCV_PATH=$EXAMPLE_ROOT_FOLDER/precompiled/shls_sw_dependencies/opencv4.5.4-$arch-linux
-FFMPEG_PATH=$EXAMPLE_ROOT_FOLDER/precompiled/shls_sw_dependencies/ffmpeg4.4-$arch-linux
+OPENCV_PATH=$EXAMPLE_ROOT_FOLDER/precompiled/shls_sw_dependencies/opencv4.5.4-$arch
+FFMPEG_PATH=$EXAMPLE_ROOT_FOLDER/precompiled/shls_sw_dependencies/ffmpeg4.4-$arch
 
 LD_LIBRARY_PATH=$OPENCV_PATH/lib:$FFMPEG_PATH/lib:$LD_LIBRARY_PATH
 PATH=$FFMPEG_PATH/bin:$PATH

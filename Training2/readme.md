@@ -783,7 +783,7 @@ int main() {
 
 ## Verification: Co-simulation of Multi-threaded SmartHLS Code
 
-As mentioned before the `producer_consumer` project cannot be simulated
+As mentioned before, the `producer_consumer` project cannot be simulated
 with co-simulation. This is because the `producer_consumer` project has
 threads that run forever and do not finish before the top-level function
 returns. SmartHLS co-simulation supports a single call to the top-level
@@ -1127,11 +1127,11 @@ is defined by the number of rows, columns, and the depth.
 Convolution layers are good for extracting geometric features from an
 input tensor. Convolution layers work in the same way as an image
 processing filter (such as the Sobel filter) where a square filter
-(called a **kernel**) is slid across an input image. The **size** of
-filter is equal to the side length of the square filter, and the size of
-the step when sliding the filter is called the **stride**. The values of
-the input tensor under the kernel (called the **window**) and the values
-of the kernel are multiplied and summed at each step, which is also
+(called a **kernel**) is slid across an input image. The **size** of a
+filter is equal to its side length, and the size of the step when sliding 
+the filter is called the **stride**. The values of the input tensor 
+under the kernel (called the **window**) and the values of the 
+kernel are multiplied and summed at each step, which is also
 called a convolution. Figure 13 shows an example of a convolution layer
 processing an input tensor with a depth of 1.
 
@@ -1580,16 +1580,16 @@ we show the input tensor values and convolution filters involved in the
 computation of the set of colored output tensor values (see Loop 3
 arrow).
 
-Loop 1 and Loop 2 the code traverses along the row and column dimensions
+For Loop 1 and Loop 2, the code traverses along the row and column dimensions
 of the output tensor. Loop 3 traverses along the depth dimension of the
-output tensor, each iteration computes a `PARALLEL_KERNELS` number of
+output tensor, and each iteration computes a total of `PARALLEL_KERNELS`
 outputs. The `accumulated_value` array will hold the partial
 dot-products. Loop 4 traverses along the row and column dimensions of
-the input tensor and convolution filter kernels. Then Loop 5 walks
-through each of the `PARALLEL_KERNELS` number of selected convolution
+the input tensor and convolution filter kernels. Then, Loop 5 walks
+through each of the `PARALLEL_KERNELS` selected convolution
 filters and Loop 6 traverses along the depth dimension of the input
 tensor. Loop 7 and Loop 8 add up the partial sums together with biases
-to produce `PARALLEL_KERNEL` number of outputs.
+to produce `PARALLEL_KERNEL` outputs.
 
 ```C
 const static unsigned PARALLEL_KERNELS = NUM_MACC / INPUT_DEPTH;
@@ -2203,7 +2203,7 @@ instructions that always run together with a single entry point at the
 beginning and a single exit point at the end. A basic block in LLVM IR
 always has a label at the beginning and a branching instruction at the
 end (br, ret, etc.). An example of LLVM IR is shown below, where the
-`body.0` basic block performs an addition (add) and subtraction (sub) and
+`body.0` basic block performs an addition (add) and subtraction (sub), and
 then branches unconditionally (br) to another basic block labeled
 `body.1`. Control flow occurs between basic blocks.
 
@@ -2231,7 +2231,7 @@ button (![](.//media/image28.png)) to build the design and generate the
 schedule.
 
 We can ignore the `printWarningMessageForGlobalArrayReset` warning message
-for global variable a in this example as described in the producer
+for global variable `a` in this example as described in the producer
 consumer example in the [section 'Producer Consumer Example'](#producer-consumer-example).
 
 The first example we will look at is the `no_dependency` example on line
@@ -2240,7 +2240,7 @@ The first example we will look at is the `no_dependency` example on line
 
 <p align="center"><img src=".//media/image19.png" /></p>
 
-```
+```c++
  8  void no_dependency() {
  9  #pragma HLS function noinline
 10    e = b + c;
@@ -2252,10 +2252,10 @@ The first example we will look at is the `no_dependency` example on line
 <p align="center">Figure 28: Source code and data dependency graph for no_dependency
 function.</p>
 
-In this example, values are loaded from b, c, and d and additions happen
-before storing to *e*, *f*, and *g*. None of the adds use results from
+In this example, values are loaded from `b`, `c`, and `d`, and additions happen
+before storing to `e`, `f`, and `g`. None of the adds use results from
 the previous adds and thus all three adds can happen in parallel. The
-*noinline* pragma is used to prevent SmartHLS from automatically
+`noinline` pragma is used to prevent SmartHLS from automatically
 inlining this small function and making it harder for us to understand
 the schedule. Inlining is when the instructions in the called function
 get copied into the caller, to remove the overhead of the function call
@@ -2290,17 +2290,17 @@ the store instruction highlighted in yellow depends on the result of the
 add instruction as we expect.
 
 We have declared all the variables used in this function as
-**volatile**. The volatile C/C++ keyword specifies that the variable can
+**volatile**. The `volatile` C/C++ keyword specifies that the variable can
 be updated by something other than the program itself, making sure that
 any operation with these variables do not get optimized away by the
 compiler as every operation matters. An example of where the compiler
 handles this incorrectly is seen in the [section 'Producer Consumer Example'](#producer-consumer-example), where we had to
 declare a synchronization signal between two threaded functions as
-volatile. Using volatile is required for toy examples to make sure each
+`volatile`. Using `volatile` is required for toy examples to make sure each
 operation we perform with these variables will be generated in hardware
 and viewable in the Schedule Viewer.
 
-```
+```c++
 4  volatile int a[5] = {0};
 5  volatile int b = 0, c = 0, d = 0;
 6  volatile int e, f, g;
@@ -2315,7 +2315,7 @@ code and SmartHLS cannot schedule all instructions in the first cycle.
 
 <p align="center"><img src=".//media/image68.png" /></p>
 
-```
+```c++
 15  void data_dependency() {
 16  #pragma HLS function noinline
 17    e = b + c;
@@ -2337,8 +2337,8 @@ second add is also used in the third add. These are examples of data
 dependencies as later adds use the data result of previous adds. Because
 we must wait for the result `e` to be produced before we can compute `f`,
 and then the result `f` must be produced before we can compute `g`, not all
-instructions can be scheduled immediately. They must wait for their
-dependent instructions to finish executing before they can start, or
+instructions can be scheduled immediately. They must wait for the instructions
+they depend on to finish executing before they can start, or
 they would produce the wrong result.
 
 <p align="center"><img src=".//media/image70.png" /></br>
@@ -2375,7 +2375,7 @@ memories.
 
 <p align="center"><img src=".//media/image72.png" /></p>
 
-```
+```c++
 22  void memory_dependency() {
 23  #pragma HLS function noinline
 24    volatile int i = 0;
@@ -2419,7 +2419,7 @@ resource cannot be scheduled in parallel due to a lack of resources.
 `resource_contention` function on line 30 of
 `instruction_level_parallelism.cpp`.
 
-```
+```c++
 30  void resource_contention() {
 31  #pragma HLS function noinline
 32    e = a[0];
@@ -2452,7 +2452,7 @@ when generating the schedule for a design.
 Next, we will see an example of how loops prevent operations from being
 scheduled in parallel.
 
-```
+```c++
 37  void no_loop_unroll() {
 38  #pragma HLS function noinline
 39    int h = 0;
@@ -2481,10 +2481,9 @@ has no unrolling on the loop and `loop_unroll` unrolls the loop
 completely. This affects the resulting hardware by removing the control
 signals needed to facilitate the loop and combining multiple loop bodies
 into the same basic block, allowing more instructions to be scheduled in
-parallel. The trade-off here is an unrolled loop does not reuse hardware
-resources and can potentially use a lot of resources. However, the
-unrolled loop would finish earlier depending on how inherently parallel
-the loop body is.
+parallel. The trade-off here is that an unrolled loop does not reuse hardware 
+resources and can potentially use a lot of resources, however it will 
+finish earlier depending on how inherently parallel the loop body is.
 
 ![](.//media/image3.png)To see the effects of this, open the Schedule
 Viewer and first click on the `no_loop_unroll` function shown in Figure

@@ -1015,7 +1015,7 @@ run in the pipeline at each stage. The leftmost column indicates the
 loop iteration for the instructions in the row starting (from Iteration
 0). For function pipelines, Iteration 0 corresponds to the first input.
 
-If you hold you mouse over an instruction you will see more details
+If you hold your mouse over an instruction you will see more details
 about the operation type.
 
 <p align="center"><img src=".//media/steady_state_alpha_blend_pipeline_viewer.png" /></br>Figure 15: SmartHLS Schedule Viewer: Pipeline Viewer</p></br>
@@ -1577,7 +1577,7 @@ SmartHLS.
 Pipelining is a common HLS optimization used to increase hardware
 throughput and to better utilize FPGA hardware resources. We also
 covered the concept of loop pipelining in the SmartHLS Sobel Filter
-Tutorial. In Figure 18a) shows a loop to be scheduled with 3
+Tutorial. Figure 18a) shows a loop to be scheduled with 3
 single-cycle operations: Load, Comp, Store. We show a comparison of the
 cycle-by-cycle operations when hardware operations in a loop are
 implemented b) sequentially (default) or c) pipelined (with SmartHLS
@@ -1606,7 +1606,7 @@ pragma or the function pipeline pragma:
 ```
 Loop pipelining only applies to a specific loop in a C++ function.
 Meanwhile, function pipelining is applied to an entire C++ function and
-SmartHLS will automatically unrolls all loops in that function.
+SmartHLS will automatically unroll all loops in that function.
 
 ## SmartHLS Pipelining Hazards: Why Initiation Interval Cannot Always Be 1
 
@@ -2710,14 +2710,12 @@ the user specifies an incorrect value in a SmartHLS pragma. For example,
 specifying an incorrect depth on a memory interface such as the
 following on line 29:
 ```c
-#pragma HLS interface argument(input_buffer) type(memory)
-num_elements(SIZE)
+#pragma HLS interface argument(input_buffer) type(memory) num_elements(SIZE)
 ```
 For example, we can try changing the correct SIZE array depth to a wrong
 value like 10:
 ```c
-#pragma HLS interface argument(input_buffer) type(memory)
-num_elements(10)
+#pragma HLS interface argument(input_buffer) type(memory) num_elements(10)
 ```
 
 Now we rerun SmartHLS to generate the hardware
