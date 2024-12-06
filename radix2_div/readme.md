@@ -6,12 +6,12 @@ efficient for hardware implementation.
 
 ## Setup
 
-After cloning the repo, go to the example directory and source the environment script:
-After cloning the repository, navigate to the example directory and source the environment script:
+After cloning the repo, go to the example directory and source the environment 
+script (in the command below adjust the path as needed):
 
 From a Windows PowerShell terminal:
 
-```powershell
+```console
 cd radix2_div
 . C:\Microchip\Libero_SoC_v20XY.Z\SmartHLS-20XY.Z\SmartHLS\bin\setup_shls_path.ps1
 ```
@@ -22,10 +22,9 @@ NOTE: You may need to run following command to allow script execution in PowerSh
 set-ExecutionPolicy Unrestricted
 ```
 
-
 ## Run the example
 
-This will run the software-only run on the host machine:
+This will run software-only on the host machine:
 
 ```console
 shls -a sw
@@ -44,6 +43,20 @@ Test: [PASS] Dividend = 5, Divisor = 10, Quotient = 0, Fractional = 0x80
 Test: [PASS] Dividend = 4294967295, Divisor = 255, Quotient = 16843009, Fractional = 0x0
 Test: [PASS] Dividend = 1234, Divisor = 16, Quotient = 77, Fractional = 0x20
 Test: [PASS] Dividend = 10, Divisor = 3, Quotient = 3, Fractional = 0x55
+```
+
+## Run cosimulation
+
+With cosimulation you can verify the software and hardware match the behavior.
+
+```console
+shls cosim
+```
+
+or if you want to see the waveform using Modelsim:
+
+```console
+shls cosim_wave
 ```
 
 ## Run HW generation & RTL synthesis
