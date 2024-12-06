@@ -1,52 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
   <!-- Background -->
-  <rect x="0" y="0" width="600" height="400" fill="white"/>
+  <rect x="0" y="0" width="800" height="400" fill="white"/>
   
   <!-- Module box -->
-  <rect x="200" y="50" width="200" height="300" fill="white" stroke="black" stroke-width="2"/>
-  <text x="300" y="80" text-anchor="middle" font-family="monospace" font-size="14">radix2_div</text>
+  <rect x="250" y="50" width="200" height="300" fill="white" stroke="black" stroke-width="2"/>
+  <text x="350" y="80" text-anchor="middle" font-family="monospace" font-size="14">radix2_div</text>
   
   <!-- Input signals - left side -->
   <g font-family="monospace" font-size="12">
     <!-- Control signals -->
-    <path d="M150,100 L200,100" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="145" y="105" text-anchor="end">clk</text>
+    <path d="M200,100 L250,100" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="195" y="105" text-anchor="end">clk</text>
     
-    <path d="M150,130 L200,130" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="145" y="135" text-anchor="end">reset</text>
+    <path d="M200,130 L250,130" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="195" y="135" text-anchor="end">reset</text>
     
-    <path d="M150,160 L200,160" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="145" y="165" text-anchor="end">start</text>
+    <path d="M200,160 L250,160" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="195" y="165" text-anchor="end">start</text>
     
     <!-- Data inputs -->
-    <path d="M150,200 L200,200" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="145" y="205" text-anchor="end">dividend[31:0]</text>
+    <path d="M200,200 L250,200" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="195" y="205" text-anchor="end">dividend[31:0]</text>
     
-    <path d="M150,230 L200,230" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="145" y="235" text-anchor="end">divisor[7:0]</text>
+    <path d="M200,230 L250,230" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="195" y="235" text-anchor="end">divisor[7:0]</text>
   </g>
 
   <!-- Output signals - right side -->
   <g font-family="monospace" font-size="12">
     <!-- Control outputs -->
-    <path d="M400,100 L450,100" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="455" y="105" text-anchor="start">ready</text>
+    <path d="M450,100 L500,100" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="505" y="105" text-anchor="start">ready</text>
     
-    <path d="M400,130 L450,130" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="455" y="135" text-anchor="start">finish</text>
+    <path d="M450,130 L500,130" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="505" y="135" text-anchor="start">finish</text>
     
     <!-- Data outputs -->
-    <path d="M400,200 L450,200" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="455" y="205" text-anchor="start">quotient_write_en</text>
+    <path d="M450,200 L500,200" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="505" y="205" text-anchor="start">quotient_write_en</text>
     
-    <path d="M400,230 L450,230" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="455" y="235" text-anchor="start">quotient_write_data[31:0]</text>
+    <path d="M450,230 L500,230" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="505" y="235" text-anchor="start">quotient_write_data[31:0]</text>
     
-    <path d="M400,260 L450,260" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
-    <text x="455" y="265" text-anchor="start">fractional_write_en</text>
+    <path d="M450,260 L500,260" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <text x="505" y="265" text-anchor="start">fractional_write_en</text>
     
-    <path d="M400,290 L450,290" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
-    <text x="455" y="295" text-anchor="start">fractional_write_data[7:0]</text>
+    <path d="M450,290 L500,290" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="505" y="295" text-anchor="start">fractional_write_data[7:0]</text>
   </g>
 
   <!-- Arrow marker definition -->
