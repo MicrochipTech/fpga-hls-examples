@@ -489,7 +489,7 @@ to
 set monitoring_mode 1
 ```
 
-in `hls_output/scripts/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
+in `hls_output/scripts/instrument/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
 Then, open a new terminal and start a monitoring process that periodically captures the data:
 
