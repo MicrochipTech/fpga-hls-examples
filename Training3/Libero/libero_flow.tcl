@@ -23,14 +23,14 @@ new_project -location {./Libero_training3} -name {Libero_training3} -project_des
 #IP core version variables
 set PF_CCC_version 2.2.220
 set CORERESET_PF_version 2.3.100
-set PF_DDR4_version 2.5.111
+set PF_DDR4_version 2.5.113
 set PF_SRAM_AHBL_AXI_version 1.2.111
 set COREFIFO_version 2.7.105
 set COREI2C_version 7.2.101
 set CoreAPB3_version 4.1.100
 set CoreGPIO_version 3.2.102
 set COREJTAGDEBUG_version 3.1.100
-set PF_INIT_MONITOR_version 2.0.307
+set PF_INIT_MONITOR_version 2.0.308
 set MIV_RV32_version 3.0.100
 set CoreUARTapb_version 5.6.102
 set COREAXI4INTERCONNECT_version 2.8.103

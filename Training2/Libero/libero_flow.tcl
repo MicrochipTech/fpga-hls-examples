@@ -24,8 +24,8 @@ set PF_CCC_version 2.2.220
 set Display_Controller_version 3.1.2
 set CORERESET_PF_version 2.2.107
 set CORERXIODBITALIGN_version 2.1.104
-set PF_IOD_GENERIC_RX_version 2.1.110
-set PF_DDR4_version 2.5.111
+set PF_IOD_GENERIC_RX_version 2.1.113
+set PF_DDR4_version 2.5.113
 set PF_SRAM_AHBL_AXI_version 1.2.111
 set mipicsi2rxdecoderPF_version 2.2.5
 set COREAHBTOAPB3_version 3.1.100
@@ -34,7 +34,7 @@ set CoreAPB3_version 4.1.100
 set CoreGPIO_version 3.2.102
 set COREJTAGDEBUG_version 3.1.100
 set CoreAHBLite_version 5.4.102
-set PF_INIT_MONITOR_version 2.0.307
+set PF_INIT_MONITOR_version 2.0.308
 set MIV_RV32IMA_L1_AHB_version 2.3.100
 set COREUART_version 5.6.102
 set Bayer_Interpolation_version 3.0.2
