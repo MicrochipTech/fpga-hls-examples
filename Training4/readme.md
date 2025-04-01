@@ -50,11 +50,11 @@ training.
 
 You should install the following software:
 
-  - SmartHLS™ 2024.2 or later: this is packaged with Libero
-  - Libero® SoC 2024.2 (with QuestaSim Pro 2021.3) or later
-      - [Libero Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - A terminal emulator such as PuTTY
-      - [Windows Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+- SmartHLS™ 2024.2 or later: this is packaged with Libero
+- Libero® SoC 2024.2 (with QuestaSim Pro 2021.3) or later
+  - [Libero Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
+- A terminal emulator such as PuTTY
+  - [Windows Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 This document uses the Windows versions of Libero® SoC 2024.2 and SmartHLS 2024.2. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
 
@@ -64,27 +64,27 @@ Additionally, while the default simulator for SmartHLS is now QuestaSim, ModelSi
 
 Download the training design files in advance:
 
-  - Linux image:
-    [core-image-minimal-dev-icicle-kit-es.wic.gz](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/download/v2023.02.1/core-image-minimal-dev-icicle-kit-es-20230328094718.rootfs.wic.gz)
-    (216MB)
-      - Github:
-        <https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases>
-      - SHA256:
-        4a1406ba9e764a94026fcea2ee8fbb84f91384e953e7ba6176fcb7dadcbc5522
-  - Training design files for the [Running Vector-Add Reference SoC Generation on the Board](#running-vector-add-reference-soc-generation-on-the-board) section can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
-  - Training design files for the [Integrating SmartHLS into an Existing SoC design](#integrating-smarthls-into-an-existing-soc-design) section can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
-  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstreams required for this training.
-  - Alternatively, you can re-generate the bitstreams and Libero project from scratch by following the instructions
-    here: [Compiling the hardware](#compiling-the-hardware).
+- Linux image:
+  [core-image-minimal-dev-icicle-kit-es.wic.gz](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases/download/v2023.02.1/core-image-minimal-dev-icicle-kit-es-20230328094718.rootfs.wic.gz)
+  (216MB)
+  - Github:
+    [https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases)
+  - SHA256:
+    4a1406ba9e764a94026fcea2ee8fbb84f91384e953e7ba6176fcb7dadcbc5522
+- Training design files for the [Running Vector-Add Reference SoC Generation on the Board](#running-vector-add-reference-soc-generation-on-the-board) section can be found on Github under [Training4/vector_add_soc](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/vector_add_soc)
+- Training design files for the [Integrating SmartHLS into an Existing SoC design](#integrating-smarthls-into-an-existing-soc-design) section can be found on Github under [Training4/icicle-kit-reference-design](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training4/icicle-kit-reference-design)
+- Download `precompiled-binaries.tar.gz` from the [Release Assets](https://github.com/MicrochipTech/fpga-hls-examples/releases). This archive contains the pre-compiled bitstreams required for this training.
+- Alternatively, you can re-generate the bitstreams and Libero project from scratch by following the instructions
+  here: [Compiling the hardware](#compiling-the-hardware).
 
 ## PolarFire® SoC Icicle kit Setup
 
 Later parts of the training involve running steps on the Icicle kit board. The following hardware is required:
 
-  - PolarFire® SoC FPGA Icicle Kit ([MPFS-ICICLE-KIT-ES](https://www.microsemi.com/existing-parts/parts/152514))
-  - 2 micro-USB cables for serial communication and flashing the Linux image
-  - Either a FlashPro6 external programmer or a micro-USB cable for the embedded FlashPro6
-  - Ethernet cable for network connection to the board for SSH access
+- PolarFire® SoC FPGA Icicle Kit ([MPFS-ICICLE-KIT-ES](https://www.microsemi.com/existing-parts/parts/152514))
+- 2 micro-USB cables for serial communication and flashing the Linux image
+- Either a FlashPro6 external programmer or a micro-USB cable for the embedded FlashPro6
+- Ethernet cable for network connection to the board for SSH access
 
 This training will cover the following sections in the [SmartHLS user guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest): [SoC
 Features](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_soc_features&redirect=true&version=latest),
@@ -96,7 +96,6 @@ Interface](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_axi4_t
 Target](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-7BBF0DBC-AA2A-4593-9B3F-65EDD8520ACE.html),
 and [User-defined
 SmartDesigns](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html).
-
 
 ![](.//media/image3.png) We will use this cursor symbol throughout this tutorial to indicate sections where you need to perform actions to follow along.
 
@@ -214,7 +213,6 @@ Figure 6‑2.
 <img src=".//media/image12.png" />
 <p align="center">Figure 6‑2 Creating a new SmartHLS C/C++ Project</p></p>
 
-
 ![](.//media/image3.png) For the project name, enter `vector_add_soc`
 and select “Example Project 5: Vector Add” from the list of example
 projects, as shown in Figure 6‑3. Then click on *Next*.
@@ -222,7 +220,6 @@ projects, as shown in Figure 6‑3. Then click on *Next*.
 <p align="center">
 <img src=".//media/image13.png" />
 <p align="center">Figure 6‑3 Creating Vector Add SmartHLS Project</p></p>
-
 
 ![](.//media/image3.png) Finally, to complete the project creation, you
 will choose the FPGA device you intend to target. Use the selections
@@ -234,7 +231,6 @@ the project.
 <p align="center">
 <img src=".//media/image14.png" />
 <p align="center">Figure 6‑4 Choosing FPGA device, select SoC IP Flow</p></p>
-
 
 ![](.//media/image3.png) If this is the first time you are using
 SmartHLS, you will need to set up the paths to QuestaSim (and Microsemi
@@ -259,7 +255,6 @@ appear in the main panel to the right of the *Project Explorer*.
 <p align="center">
 <img src=".//media/image16.png" />
 <p align="center">Figure 6‑6 Project Explorer for browsing source files and reports</p></p>
-
 
 ## SmartHLS IP Flow
 
@@ -340,18 +335,18 @@ step of the workflow, “Generate SoC Project” will be covered in the [SmartHL
 </tr>
 <tr class="even">
 <td><strong>#pragma</strong> HLS interface <strong>default \<br />
-</strong>type(&lt;axi_target|simple&gt;)</td>
+</strong>type(<axi_target|simple>)</td>
 <td>Set the default interface type, including interface type for control and arguments.</td>
 </tr>
 <tr class="odd">
 <td><strong>#pragma</strong> HLS interface control <strong>\<br />
-</strong>type(&lt;axi_target|simple&gt;)</td>
+</strong>type(<axi_target|simple>)</td>
 <td>Set the default module control interface type. The control interface is used for starting the accelerator, reading completion status and retrieving return data.</td>
 </tr>
 <tr class="even">
-<td><strong>#pragma</strong> HLS interface argument(&lt;ARGUMENT_NAME&gt;) \<br />
+<td><strong>#pragma</strong> HLS interface argument(<ARGUMENT_NAME>) \<br />
 type(axi_target) \<br />
-num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;) \<br />
+num_elements(<NUM_ARRAY_ELEMENTS>) \<br />
 dma(<strong>true</strong>|<strong>false</strong>)</td>
 <td><p>Set pointer argument of ARGUMENT_NAME to use axi_target as the interface.<br />
 <br />
@@ -359,17 +354,16 @@ NUM_ARRAY_ELEMENTS indicates the number of elements in the array.</p>
 <p>If dma(true), DMA will be used for transferring data. More details in the DMA Copy: AXI Target with DMA section.</p></td>
 </tr>
 <tr class="odd">
-<td><strong>#pragma</strong> HLS interface argument(&lt;ARGUMENT_NAME&gt;) \<br />
+<td><strong>#pragma</strong> HLS interface argument(<ARGUMENT_NAME>) \<br />
 type(axi_initiator) \<br />
-ptr_addr_interface(&lt;simple|axi_target&gt;) \<br />
-num_elements(&lt;NUM_ARRAY_ELEMENTS&gt;)</td>
+ptr_addr_interface(<simple|axi_target>) \<br />
+num_elements(<NUM_ARRAY_ELEMENTS>)</td>
 <td><p>Set Pointer argument of ARGUMENT_NAME to use axi_initiator as the interface.</p>
 <p>ptr_addr_interface is the interface that receives the address from MSS.</p>
 <p>NUM_ARRAY_ELEMENTS indicates the number of elements in the array.</p></td>
 </tr>
 </tbody>
 </table>
-
 
 <p align="center">Figure 6‑10 Summary of Pragmas Used in Vector-Add</p>
 
@@ -384,12 +378,12 @@ performs a vector addition of `a` and `b` and stores the sum in the `result`
 array.
 
 ```c
-24  // The core logic of this example                                          
+24  // The core logic of this example                                        
 25  void vector_add_sw(int* a, int* b, int* result) { 
-26    for (int i = 0; i < SIZE; i++) {                                  
-27      result[i] = a[i] + b[i];                                             
-28    }                                                                          
-29  }                                                                          
+26    for (int i = 0; i < SIZE; i++) {                                
+27      result[i] = a[i] + b[i];                                           
+28    }                                                                        
+29  }                                                                        
 ```
 
 <p align="center">Figure 6‑11 Core Logic of Vector-Add</p>
@@ -399,13 +393,13 @@ C++ function as shown in Figure 6‑12.
 
 ```c
 70  void vector_add_axi_target_memcpy(int* a, int* b, int* result) { 
-71  #pragma HLS function top                                                               
-72  #pragma HLS interface control type(axi_target)                                        
-73  #pragma HLS interface argument(a) type(axi_target) num_elements(SIZE)                
-74  #pragma HLS interface argument(b) type(axi_target) num_elements(SIZE)                
-75  #pragma HLS interface argument(result) type(axi_target) num_elements(SIZE)           
-76    vector_add_sw(a, b, result);                                                              
-77  }                                                                                           
+71  #pragma HLS function top                                                             
+72  #pragma HLS interface control type(axi_target)                                      
+73  #pragma HLS interface argument(a) type(axi_target) num_elements(SIZE)              
+74  #pragma HLS interface argument(b) type(axi_target) num_elements(SIZE)              
+75  #pragma HLS interface argument(result) type(axi_target) num_elements(SIZE)         
+76    vector_add_sw(a, b, result);                                                            
+77  }                                                                                         
 ```
 
 <p align="center">Figure 6‑12 Accelerator Version of Vector-Add</p>
@@ -576,7 +570,6 @@ address offsets, size, and direction for the Module Control (start and
 finish registers), and the three function arguments which are each 16
 array elements (SIZE) x 4 bytes per element (int) = 64 bytes.
 
-
 ```
 ====== 4. AXI4 Target Interface Address Map ======
 
@@ -612,25 +605,24 @@ You can find the generated Verilog code in
 <p align="center"><img src=".//media/image24.png" /></p>
 <p align="center">Figure 6‑17 Finding the SmartHLS-Generated Verilog in the Project Explorer</p>
 
-
 If you open the Verilog file you will see the `clk`, `reset`, and AXI Target
 interface port (`axi4target`) as shown in Figure 6‑18.
 
 ```v
 module vector_add_axi_target_memcpy_top
-(                                               
-  input  clk,                                           
+(                                             
+  input  clk,                                         
   input  reset,   
 
   output                          axi4target_arready,
   input                           axi4target_arvalid,
   input  [8 - 1:0] axi4target_araddr,
   input  [1 - 1:0] axi4target_arid,
-  input  [1:0]                    axi4target_arburst,                 
-  ...                                                  
+  input  [1:0]                    axi4target_arburst,               
+  ...                                                
 ```
-<p align="center">Figure 6‑18 Snippet of vector_add_soc_vector_add_axi_target_memcpy.v</p>
 
+<p align="center">Figure 6‑18 Snippet of vector_add_soc_vector_add_axi_target_memcpy.v</p>
 
 ### Running Co-Simulation
 
@@ -685,8 +677,8 @@ RESULT: PASS
 Simulation time (cycles): 18
 SW/HW co-simulation: PASS
 ```
-<p align="center">Figure 6‑19 Sample CoSim Results</p>
 
+<p align="center">Figure 6‑19 Sample CoSim Results</p>
 
 The simulation printed “`SW/HW co-simulation: PASS`” which indicates
 that the RTL generated by SmartHLS matches the software model.
@@ -830,7 +822,7 @@ section of our user guide for a more detailed explanation.
 </tr>
 <tr>
 <td><strong>void MyTopFun_write_input_and_start(..., void *virt_addr)</strong></td>
-<td><p>	
+<td><p>
 This function initializes all input argument data and starts the SmartHLS module. It is a non-blocking call that can be used to start the SmartHLS module and continue to execute other parts of the software while the SmartHLS module is running. The arguments of this function include the input arguments of the top-level function.</p></td>
 </tr>
 <tr>
@@ -852,28 +844,29 @@ base address changes.
 <u><p align="center">`vector_add_soc_memory_map.h`</p></u>
 ```c
 10  #define VECTOR_ADD_AXI_TARGET_MEMCPY_BASE_ADDR 0x70000000 
-11  #define VECTOR_ADD_AXI_TARGET_MEMCPY_SPAN_ADDR 0x100      
+11  #define VECTOR_ADD_AXI_TARGET_MEMCPY_SPAN_ADDR 0x100    
 ```
 
-<u><p align="center">`summary.hls.vector_add_axi_target_memcpy.rpt`</p></u>   
+<u><p align="center">`summary.hls.vector_add_axi_target_memcpy.rpt`</p></u>
 
-```                                                                  
-====== 4. AXI4 Target Interface Address Map ======                                  
+```
+====== 4. AXI4 Target Interface Address Map ======                                
 
 Compatibility of HLS accelerator with reference SoC features: Yes. 
-Default base address in reference SoC: 0x70000000.                                                                                             
-                                                 
-+------------------------------------------------------------------------------------+                                              
+Default base address in reference SoC: 0x70000000.                                                                                           
+                                               
++------------------------------------------------------------------------------------+                                            
 | Accelerator Function: vector_add_axi_target_memcpy (Address Space Range: 0x100)    |
 +---------------------+---------------------+-------------------+--------------------+
 | Argument            | Address Offset      | Size [Bytes]      | Direction          |
 +---------------------+---------------------+-------------------+--------------------+   
-| Module Control      | 0x008               | 4                 | inout              |                                         
-| a                   | 0x040               | 64*               | input              |                                                  
-| b                   | 0x080               | 64*               | input              |                                                          
-| result              | 0x0c0               | 64*               |  output            |                                                
+| Module Control      | 0x008               | 4                 | inout              |                                       
+| a                   | 0x040               | 64*               | input              |                                                
+| b                   | 0x080               | 64*               | input              |                                                        
+| result              | 0x0c0               | 64*               |  output            |                                              
 +---------------------+---------------------+-------------------+--------------------+
 ```
+
 <p align="center">Figure 6‑23 Module Base Address and Span in Header File</p>
 
 ![](.//media/image3.png) Open `vector_add_soc_accelerator_driver.cpp`.
@@ -931,6 +924,7 @@ software with accelerators” (covered in the [SmartHLS SoC Flow](#smarthls-soc-
 parameters as `vector_add_axi_target_memcpy()`, but the parameters are
 casted into void pointers, as void pointers can be used to point to any
 data type.
+
 ```c
 
 // This is a blocking function that calls and waits for the accelerator to return.
@@ -969,8 +963,9 @@ void vector_add_axi_target_memcpy_join_and_read_output(void* result, void *virt_
     vector_add_axi_target_memcpy_join(virt_addr);
 
     vector_add_axi_target_memcpy_memcpy_read_result(result, 64, virt_addr);
-}                                                                                                  
+}                                                                                                
 ```
+
 <p align="center">Figure 6‑25 Top-Level Function for vector_add_axi_target_memcpy Top Module</p>
 
 On line 247, `vector_add_axi_target_memcpy_hls_driver()` makes a
@@ -1048,7 +1043,8 @@ There are two options shown in Figure 6-27 under this menu:
 *Base SoC with no HLS Accelerators* means that we are programming the
 prebuilt reference bitstream that ships with SmartHLS (Base SoC) and we
 are only running software on the MSS. The prebuilt FPExpress job file
-for the Base SoC can be found at 
+for the Base SoC can be found at
+
 ```
 <SMARTHLS_INSTALLATION_DIR>\SmartHLS\reference_designs\Icicle_SoC\MPFS_ICICLE_KIT_BASE_DESIGN_2023_02.job
 ```
@@ -1173,6 +1169,7 @@ data travels between the accelerator and the DDR.
 CPU Copy mode occurs when a function argument interface type is AXI
 target, for example in the `vector_add_axi_target_memcpy
 top-level function (see code previously in Figure 6‑12):
+
 ```c
 #pragma HLS interface argument(a) type(axi_target)
 ```
@@ -1197,16 +1194,17 @@ array is only 16 in this example, the data transfer time doesn’t benefit
 from using the DMA. We wrote this function for illustrative purposes.
 
 ```c
-81  void vector_add_axi_target_dma(int *a, int *b, int *result) {       
-82  #pragma HLS function top                                                              
-83  #pragma HLS interface control type(axi_target)                                       
+81  void vector_add_axi_target_dma(int *a, int *b, int *result) {     
+82  #pragma HLS function top                                                            
+83  #pragma HLS interface control type(axi_target)                                     
 84  #pragma HLS interface argument(a) type(axi_target) dma(true) num_elements(SIZE) 
 85  #pragma HLS interface argument(b) type(axi_target) dma(true) num_elements(SIZE) 
 86  #pragma HLS interface argument(result) type(axi_target) dma(true)            \
-87    num_elements(SIZE)                                                                        
-88    vector_add_sw(a, b, result);                                                             
-89  }                                                                                          
+87    num_elements(SIZE)                                                                      
+88    vector_add_sw(a, b, result);                                                           
+89  }                                                                                        
 ```
+
 <p align="center">Figure 6‑35 AXI Target DMA Pragma</p>
 
 #### Accelerator Direct Access: AXI Initiator
@@ -1217,13 +1215,12 @@ Initiator interface does not receive the data directly from the
 processor or the DMA, instead the accelerator will have two AXI
 interfaces:
 
-1)  AXI Target: The accelerator receives a pointer to where the argument
-    is stored (e.g. address in DDR memory) through the
-    `ptr_addr_interface` AXI Target interface from the MSS (Figure
-    6‑36), and then
-
-2)  The accelerator using the AXI initiator interface accesses DDR
-    memory through the MSS cache (Figure 6‑37).
+1) AXI Target: The accelerator receives a pointer to where the argument
+   is stored (e.g. address in DDR memory) through the
+   `ptr_addr_interface` AXI Target interface from the MSS (Figure
+   6‑36), and then
+2) The accelerator using the AXI initiator interface accesses DDR
+   memory through the MSS cache (Figure 6‑37).
 
 The memory accesses are cache coherent between the accelerator and MSS
 since they share the L2 cache, but L1 cache could be invalidated. Since
@@ -1250,18 +1247,19 @@ to either `axi_target` or `axi_initiator`.
 
 ```c
 119  void vector_add_axi_initiator(int *a, int *b, int *result) {   
-120  // Note that both the control and ptr_addr_interface are redundant since the       
-121  // default is already axi_target                                                    
-122  #pragma HLS function top                                                        
-123  #pragma HLS interface default type(axi_target)                             
-124  #pragma HLS interface control type(axi_target)                                 
-125  #pragma HLS interface argument(a) type(axi_initiator)        \                       
-126    ptr_addr_interface(axi_target) num_elements(SIZE)                                
-127  #pragma HLS interface argument(b) type(axi_initiator) num_elements(SIZE)      
+120  // Note that both the control and ptr_addr_interface are redundant since the     
+121  // default is already axi_target                                                  
+122  #pragma HLS function top                                                      
+123  #pragma HLS interface default type(axi_target)                           
+124  #pragma HLS interface control type(axi_target)                               
+125  #pragma HLS interface argument(a) type(axi_initiator)        \                     
+126    ptr_addr_interface(axi_target) num_elements(SIZE)                              
+127  #pragma HLS interface argument(b) type(axi_initiator) num_elements(SIZE)    
 128  #pragma HLS interface argument(result) type(axi_initiator) num_elements(SIZE) 
-129    vector_add_sw(a, b, result);                                                       
-130  }                                                                                    
+129    vector_add_sw(a, b, result);                                                     
+130  }                                                                                  
 ```
+
 <p align="center">Figure 6‑38 AXI Initiator Example</p>
 
 Line 124 specifies the default control type for `axi_target`, which is
@@ -1290,16 +1288,17 @@ argument interface from AXI target to AXI initiator. Go to line 21 of
 `AXI_TARGET_MEMCPY` (highlighted in Figure 6‑39) to `AXI_INITIATOR`.
 
 ```c
-14  // Choose which interface to compile                                      
+14  // Choose which interface to compile                                    
 15  // Possible Values: AXI_TARGET_MEMCPY, AXI_TARGET_DMA, AXI_INITIATOR 
-16  #define AXI_TARGET_MEMCPY 0                                        
-17  #define AXI_TARGET_DMA 1                                           
-18  #define AXI_INITIATOR 2                                             
-19                                                                            
-20  #ifndef INTERFACE                                                    
-21  #define INTERFACE AXI_INITIATOR                           
-22  #endif                                                               
+16  #define AXI_TARGET_MEMCPY 0                                      
+17  #define AXI_TARGET_DMA 1                                         
+18  #define AXI_INITIATOR 2                                           
+19                                                                          
+20  #ifndef INTERFACE                                                  
+21  #define INTERFACE AXI_INITIATOR                         
+22  #endif                                                             
 ```
+
 <p align="center">Figure 6‑39 Pragma for Choosing Example’s Interface Type</p>
 
 ![](.//media/image3.png)Go to SoC pulldown menu
@@ -1322,6 +1321,7 @@ the RTL interface summary (Figure 6‑41) is drastically different from
 are being passed to the accelerator through the `axi_target` interface.
 The accelerator will then read the data from the DDR directly using the
 given address and write the result into the DDR memory directly.
+
 ```
 ====== 1. RTL Interface ======
 
@@ -1345,6 +1345,7 @@ given address and write the result into the DDR memory directly.
 |          | with ptr_addr_interface(axi_target) | axi4target_*                    |                  |                  |
 +----------+-------------------------------------+---------------------------------+------------------+------------------+
 ```
+
 <p align="center">Figure 6-41 An Example RTL Interface Generated Table for AXI Initiator</p>
 
 ## SmartHLS Memory Allocation Library
@@ -1355,12 +1356,13 @@ regions for the data passed to/from the hardware accelerator as shown in
 Figure 6‑42.
 
 ```c
-143  // Allocating memory from DDR memory                                         
-144  int *a = (int *)hls_malloc(SIZE * sizeof(int));          
-145  int *b = (int *)hls_malloc(SIZE * sizeof(int));          
+143  // Allocating memory from DDR memory                                       
+144  int *a = (int *)hls_malloc(SIZE * sizeof(int));        
+145  int *b = (int *)hls_malloc(SIZE * sizeof(int));        
 146  int *result_hw = (int *)hls_malloc(SIZE * sizeof(int)); 
 147  int *result_sw = (int *)hls_malloc(SIZE * sizeof(int)); 
 ```
+
 <p align="center">Figure 6‑42 Allocating Memory in the DDR for Vectors</p>
 
 DMA Copy mode and Accelerator Direct Access require the memory to be
@@ -1412,6 +1414,7 @@ clicking on `vector_add_soc` then *New -\> File* (Figure 7‑1).
 ```make
 BOARD_IP = <Your Board IP> 
 ```
+
 <p align="center">Figure 7‑2 Makefile.user’s Content</p>
 
 Since the `makefile` is freshly regenerated every time the SmartHLS IDE
@@ -1436,7 +1439,6 @@ programmed, you will see the message in Figure 7‑4.
 <img src=".//media/image49.png" />
 <p align="center">Figure 7‑3 Program Board with Prebuilt Bitstream Option Menu</p></p>
 
-
 ```
 programmer '1380218' : device 'MPFS250T_ES' : Executing action PROGRAM PASSED.
 programmer '1380218' : Chain programming PASSED.
@@ -1450,6 +1452,7 @@ Exported log file C:/Developers/hls_workspace/11/hls_output/FPExpress_project/jo
 
 15:32:09 Build Finished (took 1m:13s.617ms)
 ```
+
 <p align="center">Figure 7‑4 Program Board Successful</p>
 
 ![](.//media/image3.png)Users can run their program entirely in software
@@ -1466,7 +1469,6 @@ correct result should see `RESULT: PASS` as seen on Figure 7‑6.
 <p align="center">
 <img src=".//media/image51.png" />
 <p align="center">Figure 7‑5 Run Software without Accelerators Option Menu</p></p>
-
 
 ```
 Info: Running the following targets: soc_base_proj_run
@@ -1492,6 +1494,7 @@ Info: Application finished!
 Info: Copying bin_cl_out.txt from root@10.245.245.188:/home/root/. to C:/Developers/hls_workspace/vector_add_soc/hls_output/files
 Info: [chan 0] sftp session closed.
 ```
+
 <p align="center">Figure 7‑6 Expected Output from Running Software on Board</p>
 
 Now that you have verified that your software program can run correctly
@@ -1562,7 +1565,7 @@ parameter in Figure 8‑1 that needs to be passed on to SmartHLS to be
 able to automatically integrate the generated accelerators into a custom
 SoC.
 
-| **TCL Parameter**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| **TCL Parameter**      | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SOC\_BD\_NAME                | The name of the SmartDesign project into which the SmartHLS IP modules will be integrated.                                                                                                                                                                                                                                                                                                                                                            |
 | SOC\_RESET                   | Identifies the reset signal to be used.                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -1570,7 +1573,7 @@ SoC.
 | SOC\_AXI\_INITIATOR          | Identifies the downstream AXI interface to use. This is used for register control and any data write and read transfers initiated by the CPU down to the SmartHLS IP modules.                                                                                                                                                                                                                                                                         |
 | SOC\_AXI\_TARGET             | Identifies the upstream AXI interface to use. This is used for writing and reading transfer requests issued by the SmartHLS IP modules targeting the CPU memory.                                                                                                                                                                                                                                                                                      |
 | SOC\_CPU\_MEM\_SIZE          | This is size of the CPU memory window used when the SmartHLS IP modules act as AXI initiators.                                                                                                                                                                                                                                                                                                                                                        |
-| SOC\_CPU\_MEM\_BASE\_ADDRESS | This base address identifies the beginning of a memory window in the CPU physical memory address space that the SmartHLS IP modules can use when they are AXI Initiators. This address is used to configure the HLS AXI interconnect and allow transactions to move upstream towards the CPU’s memory.                                                                                                                                                |
+| SOC\_CPU\_MEM\_BASE\_ADDRESS | This base address identifies the beginning of a memory window in the CPU physical memory address space that the SmartHLS IP modules can use when they are AXI Initiators. This address is used to configure the HLS AXI interconnect and allow transactions to move upstream towards the CPU’s memory.                                                                                                                                               |
 | SOC\_FABRIC\_SIZE            | Determines the size of the memory window used for mapping control registers and on-chip buffers for ALL modules in each SmartHLS project instantiated on the fabric. The size can be larger than what a specific function may need. For example, a 2MB memory window could be reserved but the IP module may only use half of if, leaving the other half for future growth. Reserving a larger window does not mean more on-chip memory will be used. |
 | SOC\_FABRIC\_BASE\_ADDRESS   | This is the base address of a memory window in the CPU memory address space that is reserved for all SmartHLS modules instantiated on the FPGA fabric. Control registers and on-chip memory buffers are allocated and mapped from this memory window. This address is also used to configure the HLS AXI interconnect to allow AXI transactions to move downstream from the CPU towards the SmartHLS IP modules.                                      |
 
@@ -1579,13 +1582,13 @@ SoC.
 These parameters allow SmartHLS not just to convert C++ functions into
 IP cores, but also to:
 
-  - Create SmartDesign HDL+ wrappers
-  - Instantiate an AXI interconnect and configure its address decoding
-  - Attach the HDL+ cores to the AXI interconnect
-  - Connect the clock signal (same clock for all HW modules and
-    interconnect)
-  - Connect the reset signal
-  - Connect to the CPU via AXI channels (Initiator & Target)
+- Create SmartDesign HDL+ wrappers
+- Instantiate an AXI interconnect and configure its address decoding
+- Attach the HDL+ cores to the AXI interconnect
+- Connect the clock signal (same clock for all HW modules and
+  interconnect)
+- Connect the reset signal
+- Connect to the CPU via AXI channels (Initiator & Target)
 
 Users can perform these steps by hand in the GUI or using TCL commands.
 However, with SmartHLS it is very easy to add and remove functions to
@@ -1623,6 +1626,7 @@ set_parameter SOC_FABRIC_SIZE             0x400000
 set_parameter SOC_CPU_MEM_BASE_ADDRESS    0x80000000
 set_parameter SOC_CPU_MEM_SIZE            0x60000000
 ```
+
 <p align="center">Figure 8‑3 Default Parameter Values for Integrating SmartHLS</p>
 
 Users can change the default parameters by [creating a
@@ -1630,16 +1634,20 @@ Users can change the default parameters by [creating a
 file inside their HLS project. For example, if we wanted to change the
 `SOC_FABRIC_BASE_ADDRESS` to start at `0x70100000`, we would include the
 following in our *custom\_config.tcl* file:
+
 ```tcl
 set_parameter SOC_FABRIC_BASE_ADDRESS     0x70100000
 ```
+
 <p align="center">Figure 8‑4 Custom Parameter Values for Integrating SmartHLS</p>
 
 Note: If the GUI is not used, users must add the following line to their
 *Makefile.user*:
+
 ```make
 LOCAL_CONFIG += -legup-config=custom_config.tcl
 ```
+
 <p align="center">Figure 8‑5 Additional Makefile Line</p>
 
 This change works with our current *Icicle Kit Reference Design* (though
@@ -1660,7 +1668,7 @@ different tasks, such as synthesis, place and route, etc. The series of
 compilation steps are defined by SmartHLS.
 
 In a custom flow, users are responsible for integrating SmartHLS
-generated subsystem into their own SoC. In this example, **our custom design** based off 
+generated subsystem into their own SoC. In this example, **our custom design** based off
 the PFSoC Icicle Kit Reference Design has a TCL file that drives the overall
 compilation process. The compilation steps are defined in a file called
 *`MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl`* and the compilation steps are
@@ -1713,9 +1721,9 @@ We will be working with two hardware modules: a pixel value inversion
 (i.e. simply flip the bits of every pixel value) and a
 `threshold_to_zero` transformation. The latter is defined as:
 
-$$pixOut(x,y) = \left\{ \begin{matrix}\text{pixIn}\left( x,y \right),\ \ \ \ pixIn\left( x,y \right) > thresh \\0,\ \ otherwise \\\end{matrix} \right.\$$
-
-
+$$
+pixOut(x,y) = \left\{ \begin{matrix}\text{pixIn}\left( x,y \right),\ \ \ \ pixIn\left( x,y \right) > thresh \\0,\ \ otherwise \\\end{matrix} \right.\
+$$
 
 <p align="center">
 <img src=".//media/image57.png" />
@@ -1723,7 +1731,7 @@ $$pixOut(x,y) = \left\{ \begin{matrix}\text{pixIn}\left( x,y \right),\ \ \ \ pix
 
 ## Flashing PolarFire® SoC Icicle Kit Reference Design
 
-As in the [Vector Add On-Board section](#running-vector-add-reference-soc-generation-on-the-board), 
+As in the [Vector Add On-Board section](#running-vector-add-reference-soc-generation-on-the-board),
 a Linux image needs to be flashed to the eMMC memory in
 the Icicle board. If users have already flashed the Linux image as
 described in the [Icicle Setup
@@ -1865,13 +1873,12 @@ In this section, we are going to generate a Libero project and the
 bitstream for the PolarFire SoC Reference Design, but with a SmartHLS
 subsystem that contains an invert function accelerator and a
 `threshold_to_zero` function accelerator connected. We have generated
-the bitstream in advance, which can be downloaded from the release assets on Github 
+the bitstream in advance, which can be downloaded from the release assets on Github
 (see [this section](#download-training-design-files)).
 Users can save time by using the precompiled bitstream instead and
 continue onto the [next section](#programming-the-fpga-bitstream).
 
-
-![](.//media/image2.png) Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`. 
+![](.//media/image2.png) Before generating the bitstream, make sure SRCS is set as below in `icicle-kit-reference-design\script_support\additional_configurations\smarthls\invert_and_threshold\Makefile.user`.
 
 ```make
 SRCS = main_variations/main.simple.cpp
@@ -1887,7 +1894,6 @@ SRCS = main_variations/main.simple.cpp
 by running the `run_libero.sh` or `run_libero.ps1` (which script you use depends on your OS) script in
 `icicle-kit-reference-design\script_support\additional_configurations\smarthls`.
 
-
 To use the Libero GUI to compile, open Libero. Press Ctrl+U in Libero to
 open the “Execute Script” dialog as shown in Figure 8‑12. In the
 “Script” file field, enter the path to the
@@ -1900,8 +1906,7 @@ SMARTHLS:C:/icicle-kit-reference-design/script_support/additional_configurations
 
 The above argument assumes that you have extracted the reference folder
 into `C:\`. Change the path accordingly if you have extracted the folder
-to elsewhere. The first part of the argument, `SMARTHLS:<Path to
-SmartHLS Project>`, informs the script where is the SmartHLS project to
+to elsewhere. The first part of the argument, `SMARTHLS:<Path to SmartHLS Project>`, informs the script where is the SmartHLS project to
 be built and integrated into the Icicle Kit reference design. The second
 part, `EXPORT_FPE:<Path>`, specifies the location of the output .job
 file; the last argument, `HSS_UPDATE:1`, updates the Hart Software
@@ -1916,14 +1921,15 @@ PolarFire SoC.
 generates an Icicle kit reference demo design.
 
 ```tcl
-223  # Compile and integrate the SmartHLS code                                                                    
-224  if {[info exists SMARTHLS]} {                                                                               
-225    # Prepare the SmartDesign for HLS integration                                                                
-226    source ./script_support/additional_configurations/smarthls/pre_hls_integration.tcl                        
-227    # Call SmartHLS tool                                                                                         
+223  # Compile and integrate the SmartHLS code                                                                  
+224  if {[info exists SMARTHLS]} {                                                                             
+225    # Prepare the SmartDesign for HLS integration                                                              
+226    source ./script_support/additional_configurations/smarthls/pre_hls_integration.tcl                      
+227    # Call SmartHLS tool                                                                                       
 228    source ./script_support/additional_configurations/smarthls/compile_and_integrate_shls_to_refdesign.tcl 
-229  }                                                                                                             
+229  }                                                                                                           
 ```
+
 <p align="center">Figure 8‑13 SmartHLS configuration of MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl</p>
 
 Figure 8‑13 shows a snippet of `MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl`.
@@ -1949,40 +1955,41 @@ still cannot be found, the script will give an error and users will have
 to manually modify the script or add SmartHLS to their PATH environment
 variable.
 
-Alternatively, you can compile using the `run_libero` scripts. If you are using Windows to compile, you will run `run_libero.ps1` in Powershell. If you are using Linux to compile, or can otherwise run bash scripts, you will run `run_libero.sh` to compile. 
+Alternatively, you can compile using the `run_libero` scripts. If you are using Windows to compile, you will run `run_libero.ps1` in Powershell. If you are using Linux to compile, or can otherwise run bash scripts, you will run `run_libero.sh` to compile.
 
 First, open your shell and navigate to the `icicle-kit-reference-design folder`. Then run
 `./script_support/additional_configurations/smarthls/run_libero.(your extension here)`.
 
 ```bash
-01  #!/bin/bash                                                                          
-02  #                                                                                     
-03  # Usage:                                                                              
-04  #   cd icicle-kit-reference-design                                                      
-05  #   ./script_support/additional_configurations/smarthls/run_libero.sh               
-06  #                                                                                     
-07  set -e                                                                                 
-08                                                                                         
-09  prjDir=soc                                                                             
-10                                                                                         
+01  #!/bin/bash                                                                        
+02  #                                                                                   
+03  # Usage:                                                                            
+04  #   cd icicle-kit-reference-design                                                    
+05  #   ./script_support/additional_configurations/smarthls/run_libero.sh             
+06  #                                                                                   
+07  set -e                                                                               
+08                                                                                       
+09  prjDir=soc                                                                           
+10                                                                                       
 11  HLS_PATH=./script_support/additional_configurations/smarthls/invert_and_threshold 
-12                                                                                         
-13  #                                                                                     
-14  # Start from a clean state                                                            
-15  #                                                                                     
-16  rm -rf \                                                                              
-17    $HLS_PATH/hls_output \                                                              
-18    $prjDir                                                                                
-19                                                                                         
-20  #                                                                                     
-21  # Compile the Icicle reference design                                                 
-22  #                                                                                     
-23  target=SMARTHLS:$SHLS_PATH+EXPORT_FPE:./$prjDir+HSS_UPDATE:1                        
-24  time libero \                                                                         
-25    script:MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl \                                     
-26    script_args:$target \                                                                
-27    logfile:$prjDir/MPFS_ICICLE_KIT_REFERENCE_DESIGN.log                                          
+12                                                                                       
+13  #                                                                                   
+14  # Start from a clean state                                                          
+15  #                                                                                   
+16  rm -rf \                                                                            
+17    $HLS_PATH/hls_output \                                                            
+18    $prjDir                                                                              
+19                                                                                       
+20  #                                                                                   
+21  # Compile the Icicle reference design                                               
+22  #                                                                                   
+23  target=SMARTHLS:$SHLS_PATH+EXPORT_FPE:./$prjDir+HSS_UPDATE:1                      
+24  time libero \                                                                       
+25    script:MPFS_ICICLE_KIT_REFERENCE_DESIGN.tcl \                                   
+26    script_args:$target \                                                              
+27    logfile:$prjDir/MPFS_ICICLE_KIT_REFERENCE_DESIGN.log                                        
 ```
+
 <p align="center">Figure 8-14 Script: run_libero.sh</p>
 
 This script does essentially the same thing as what a user would do to
@@ -2053,8 +2060,7 @@ address that should have been assigned to the Icicle Kit by the network:
 <p align="center">Figure 8‑19 Getting IP Address from ifconfig</p></p>
 
 Now that the IP address of the board is determined, you can access it
-remotely over the network using SSH with the command `ssh root@[your
-board IP here]`.
+remotely over the network using SSH with the command `ssh root@[your board IP here]`.
 
 ### Chaining HW modules using CPU shared memory (main.simple.cpp)
 
@@ -2114,10 +2120,13 @@ interface. If you are using Windows, open the command prompt (cmd).
 
 Add `<SmartHLS Installation Path>/SmartHLS/bin` your PATH environment variable.
 If you are using Linux, enter the following command:
+
 ```bash
 export PATH=<SmartHLS Installation Path>/SmartHLS/bin:$PATH
 ```
+
 If you are using Windows, enter the following command:
+
 ```bat
 set PATH=<SmartHLS Installation Path>/SmartHLS/bin:%PATH%
 ```
@@ -2127,18 +2136,22 @@ variable, export `BOARD_IP` environment variable so that SmartHLS knows
 the IP address of the Icicle board. Please refer to Figure 8‑19 on
 finding out the IP of the Icicle board. If you are using Linux, enter the
 following command:
+
 ```bash
 export BOARD_IP=<Your Icicle Board IP>
 ```
+
 If you are using Windows, enter the following command:
+
 ```bat
 set BOARD_IP=<Your Icicle Board IP>
 ```
 
 ![](.//media/image2.png)Now that we have finished setting up the
 environment, we can move on compiling and running the software. Go to
-your Icicle Kit Reference Design folder. If you are using Linux, run the following 
+your Icicle Kit Reference Design folder. If you are using Linux, run the following
 commands:
+
 ```bash
 cd script_support/additional_configurations/smarthls/invert_and_threshold
 ./compile_sw.shls.sh
@@ -2146,6 +2159,7 @@ cd script_support/additional_configurations/smarthls/invert_and_threshold
 ```
 
 If you are using Windows, run the following commands:
+
 ```bat
 cd script_support\additional_configurations\smarthls\invert_and_threshold
 compile_sw.shls.bat
@@ -2164,21 +2178,23 @@ drivers* in Figure 7‑7 and Line 13 is equivalent to *Cross-compile
 software for RISC-V* in Figure 7‑5 Run Software without Accelerators
 Option Menu. The `-a` option tells shls to build all dependencies in
 Figure 6‑26 without prompting.
+
 ```bash
-01  #!/bin/bash                                     
-02                                                    
-03  set -eu                                           
-04                                                    
+01  #!/bin/bash                                   
+02                                                  
+03  set -eu                                         
+04                                                  
 05  # Remove binaries and results from previous runs 
 06  ssh root@$BOARD_IP "rm -f output*.bmp *.elf"   
-07  shls clean                                        
-08                                                    
-09  echo "Compiling w/HW module"                      
-10  shls -a soc_sw_compile_accel                   
-11                                                    
-12  echo "Compiling SW-only"                          
-13  shls -a soc_sw_compile_no_accel               
+07  shls clean                                      
+08                                                  
+09  echo "Compiling w/HW module"                    
+10  shls -a soc_sw_compile_accel                 
+11                                                  
+12  echo "Compiling SW-only"                        
+13  shls -a soc_sw_compile_no_accel             
 ```
+
 <p align="center">Figure 8‑24 Compilation Script: compile_sw.shls.sh</p>
 
 The second script, `run_sw.shls.sh` (Figure 8‑25), runs the RISC-V
@@ -2192,18 +2208,19 @@ dependencies because we do not wish to program the board with a SmartHLS
 SoC, we already have [programmed our Custom SoC bitstream to the FPGA](#programming-the-fpga-bitstream).
 
 ```bash
-01  #!/bin/bash                  
-02                                
-03  set -eu                       
-04                                
+01  #!/bin/bash                
+02                              
+03  set -eu                     
+04                              
 05  echo "---------------------"  
-06  echo "Run SW-only"            
+06  echo "Run SW-only"          
 07  shls -s soc_base_proj_run  
-08                                
+08                              
 09  echo "---------------------"  
-10  echo "Run w/HW module"        
+10  echo "Run w/HW module"      
 11  shls -s soc_accel_proj_run 
 ```
+
 <p align="center">Figure 8‑25 Run Program Script: run_sw.shls.sh</p>
 
 `Makefile.user` defines various options related to compiling and running
@@ -2215,47 +2232,50 @@ their uses. Important: Ensure that `SRCS` is set to
 `main_variables/main.simple.cpp`.
 
 ```make
-29  #-------------------------------------------------                       
-30  # Runtime settings                                                      
-31  #-------------------------------------------------                      
-32  # Specify the working directory on the board                           
-33  # All input, output, binaries will be based off this folder.           
-34  BOARD_PATH = ./                                                     
-35                                                                           
-36  # INPUT_FILES_RISCV should use host paths.                            
+29  #-------------------------------------------------                     
+30  # Runtime settings                                                    
+31  #-------------------------------------------------                    
+32  # Specify the working directory on the board                         
+33  # All input, output, binaries will be based off this folder.         
+34  BOARD_PATH = ./                                                   
+35                                                                         
+36  # INPUT_FILES_RISCV should use host paths.                          
 37  # It lists the files, separated by a space, to be copied onto the board 
-38  INPUT_FILES_RISCV = toronto.bmp                                    
-39                                                                           
-40  # OUTPUT_FILES_RISCV should use on-board paths.                       
+38  INPUT_FILES_RISCV = toronto.bmp                                  
+39                                                                         
+40  # OUTPUT_FILES_RISCV should use on-board paths.                     
 41  # It lists the files, separated by a space, to be copied from the board 
-42  OUTPUT_FILES_RISCV = output*.bmp                                  
-43                                                                           
-44  # Arguments to the program                                              
-45  # First argument: <0|1> 0 for skipping invert                         
-46  # 1 for performing invert                                               
+42  OUTPUT_FILES_RISCV = output*.bmp                                
+43                                                                         
+44  # Arguments to the program                                            
+45  # First argument: <0|1> 0 for skipping invert                       
+46  # 1 for performing invert                                             
 47  # Second argument: <0..255> Threshold for not setting pixel to zero   
-48  PROGRAM_ARGUMENTS = 1 200                                                                                                                    
+48  PROGRAM_ARGUMENTS = 1 200                                                                                                                  
 ```
+
 <p align="center">Figure 8‑26 Runtime Settings Section of Makefile.user</p>
 
 If the run was successful, you should see similar output to Figure 8‑27
 Sample Output of Successful Run below. The "Elapsed time" may differ.
+
 ```
 Here we go!
 N_ROWS:45, buf_size :259200, do_invert:1, threshold:200, mode:sw
 Elapsed time: 0.005379 [s]
 ```
+
 <p align="center">Figure 8‑27 Sample Output of Successful Run</p></p>
 
 ![](.//media/image3.png)We can also SSH into the board to run the
-binaries directly. Log onto the board by entering the following command: 
+binaries directly. Log onto the board by entering the following command:
+
 ```make
 ssh root@$BOARD_IP
 ```
 
 There are two `.elf` files in the home directory. They were copied over
-when we ran `run_sw.shls.sh`. The exact location of where `shls
-soc_accel_proj_run` and `shls soc_base_proj_run` are run depends on
+when we ran `run_sw.shls.sh`. The exact location of where `shls soc_accel_proj_run` and `shls soc_base_proj_run` are run depends on
 `BOARD_PATH` defined in `Makefile.user`. We can experiment with running
 either program with various parameters. The accepted range for the
 arguments is explained in the comments of `PROGRAM_ARGUMENTS` in Figure
@@ -2339,6 +2359,7 @@ the other 70% spent performing data transfer.
 | for.loop:main_variations/main.simple.cpp:12:5 | line 12 of main_variations/main.simple.cpp |...| 86403         |
 +-----------------------------------------------+--------------------------------------------+...+---------------+
 ```
+
 <p align="center">Figure 8‑31 Pipeline Result of invert()</p>
 
 Chaining the hardware modules introduces a data dependency because the
@@ -2365,12 +2386,14 @@ see the CPU usage using the Linux `top` command. Think of this loop as a
 sequence of video frames, where the same processing is performed
 repeatedly.
 
-![](.//media/image3.png) Modify `Makefile.user` and select: 
+![](.//media/image3.png) Modify `Makefile.user` and select:
+
 ```make
 SRCS = main_variations/main.cpu_usage.cpp
 ```
 
 Open a terminal on the Icicle board and run the Linux `top` command:
+
 ```bash
 ssh root@$BOARD_IP
 top
@@ -2428,33 +2451,35 @@ on the generated software driver APIs.
 
 Instead of calling `invert()` or `threshold_to_zero()`, we used a
 different call in main.non-blocking.cpp as shown in Figure 8‑34.
+
 ```c
-64  for(int i = 0; i < HEIGHT/N_ROWS; i++) {                                                                            
-65    if (do_invert) {                                                                                                         
-66      #ifdef HAS_ACCELERATOR                                                                                                  
-67        invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS]);                                                
-68      #else                                                                                                                    
-69        invert((uint32_t *)\&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);                         
-70      #endif                                                                                                                   
-71    }                                                                                                                             
-72                                                                                                                                
-73    if (threshold > 0) {                                                                                                     
-74      #ifdef HAS_ACCELERATOR                                                                                                  
-75        threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold);                        
-76      #else                                                                                                                    
+64  for(int i = 0; i < HEIGHT/N_ROWS; i++) {                                                                          
+65    if (do_invert) {                                                                                                       
+66      #ifdef HAS_ACCELERATOR                                                                                                
+67        invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS]);                                              
+68      #else                                                                                                                  
+69        invert((uint32_t *)\&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);                       
+70      #endif                                                                                                                 
+71    }                                                                                                                           
+72                                                                                                                              
+73    if (threshold > 0) {                                                                                                   
+74      #ifdef HAS_ACCELERATOR                                                                                                
+75        threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold);                      
+76      #else                                                                                                                  
 77        threshold_to_zero((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)\&OutBitMap2[i*WIDTH*N_ROWS], threshold); 
-78      #endif                                                                                                                   
-79    }                                                                                                                             
-80                                                                                                                                
-81    #ifdef HAS_ACCELERATOR                                                                                                  
-82      if (do_invert)                                                                                                           
-83        invert_join_and_read_output((uint32_t *)\&OutBitMap1[i*WIDTH*N_ROWS]);                                             
-84                                                                                                                                
-85      if (threshold > 0)                                                                                                       
-86        threshold_to_zero_join_and_read_output((uint32_t *)\&OutBitMap2[i*WIDTH*N_ROWS]);                                
-87    #endif                                                                                                                   
-88  }                                                                                                                            
+78      #endif                                                                                                                 
+79    }                                                                                                                           
+80                                                                                                                              
+81    #ifdef HAS_ACCELERATOR                                                                                                
+82      if (do_invert)                                                                                                         
+83        invert_join_and_read_output((uint32_t *)\&OutBitMap1[i*WIDTH*N_ROWS]);                                           
+84                                                                                                                              
+85      if (threshold > 0)                                                                                                     
+86        threshold_to_zero_join_and_read_output((uint32_t *)\&OutBitMap2[i*WIDTH*N_ROWS]);                              
+87    #endif                                                                                                                 
+88  }                                                                                                                          
 ```
+
 <p align="center">Figure 8‑34 Main Execution Loop of main.non-blocking.cpp</p>
 
 [HAS\_ACCELERATOR](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-6818975C-389F-427C-B913-65A667001A99.html#GUID-6818975C-389F-427C-B913-65A667001A99__SECTION_YMS_QTJ_NYB)
@@ -2479,11 +2504,13 @@ in the next section.
 <p align="center">Figure 8‑35 Data Movement of main.non-blocking.cpp</p></p>
 
 ![](.//media/image2.png) Modify the `Makefile.user` and select:
+
 ```make
 SRCS = main_variations/main.non-blocking.cpp
 ```
 
 Then compile the software and run again. For Linux:
+
 ```bash
 shls clean
 ./compile_sw.shls.sh
@@ -2491,6 +2518,7 @@ shls clean
 ```
 
 For Windows:
+
 ```ps1
 shls clean
 ./compile_sw.shls.ps1
@@ -2534,19 +2562,20 @@ will take care of that integration now automatically. Figure 8‑38 shows
 how this new accelerator is implemented in SmartHLS:
 
 ```c
-27  void invert_and_threshold_to_zero(uint32_t *in, uint32_t *out, int do_invert, uint8_t thres) {                       
-28    #pragma HLS function top                                                                                                              
-29    #pragma HLS interface default type(axi_target)                                                                                   
-30    #pragma HLS interface argument(in) type(axi_target) dma(true) num_elements(WIDTH*N_ROWS)                                      
-31    #pragma HLS interface argument(out) type(axi_target) dma(true) num_elements(WIDTH*N_ROWS)                                     
-32                                                                                                                                             
-33    hls::FIFO<uint32_t> fifo(16);                                                                                                           
-34    hls::thread t1(invert, in, std::ref(fifo), do_invert);          
+27  void invert_and_threshold_to_zero(uint32_t *in, uint32_t *out, int do_invert, uint8_t thres) {                     
+28    #pragma HLS function top                                                                                                            
+29    #pragma HLS interface default type(axi_target)                                                                                 
+30    #pragma HLS interface argument(in) type(axi_target) dma(true) num_elements(WIDTH*N_ROWS)                                    
+31    #pragma HLS interface argument(out) type(axi_target) dma(true) num_elements(WIDTH*N_ROWS)                                   
+32                                                                                                                                           
+33    hls::FIFO<uint32_t> fifo(16);                                                                                                         
+34    hls::thread t1(invert, in, std::ref(fifo), do_invert);        
 35    hls::thread t2(threshold_to_zero, std::ref(fifo), out, thres); 
-36    t1.join();                                                                                                                                 
-37    t2.join();                                                                                                                                 
-38  }                                                                                                                                          
+36    t1.join();                                                                                                                               
+37    t2.join();                                                                                                                               
+38  }                                                                                                                                        
 ```
+
 <p align="center">Figure 8‑38 Thread and FIFO in main.fifo.cpp</p>
 
 The operations performed in the `invert_and_threshold_to_zero()`
@@ -2561,19 +2590,20 @@ them.
 
 By combining the 2 functions into one, we achieved the following:
 
-  - Doubled the performance and half the memory resources as we no
-    longer need the output buffer of `invert()` and the input buffer of
-    `threshold_to_zero()`.
-  - Reduced the runtime by half compared to `main.simple.cpp` because the
-    execution of the two functions is now pipelined. The execution of
-    the two operations almost fully overlapped except for initial DMA
-    transfer and pipeline latency of first module.
-  - The amount of LSRAMs is reduced by half because we only need 2 DMA
-    transfers instead of 4 compared to the simple configuration. The
-    image data stays longer on the fabric increasing the amount of
-    computation per data movement to/from the CPU.
+- Doubled the performance and half the memory resources as we no
+  longer need the output buffer of `invert()` and the input buffer of
+  `threshold_to_zero()`.
+- Reduced the runtime by half compared to `main.simple.cpp` because the
+  execution of the two functions is now pipelined. The execution of
+  the two operations almost fully overlapped except for initial DMA
+  transfer and pipeline latency of first module.
+- The amount of LSRAMs is reduced by half because we only need 2 DMA
+  transfers instead of 4 compared to the simple configuration. The
+  image data stays longer on the fabric increasing the amount of
+  computation per data movement to/from the CPU.
 
-![](.//media/image3.png) Modify the `Makefile.user` and select: 
+![](.//media/image3.png) Modify the `Makefile.user` and select:
+
 ```make
 SRCS = main_variations/main.fifo.cpp
 ```
@@ -2586,6 +2616,7 @@ Alternatively, you can use the `INVERT_AND_THRESHOLD_FIFO.job`
 precompiled bitstream included as a release asset on Github.
 
 Then compile the software and run again. On Linux:
+
 ```bash
 shls clean
 ./compile_sw.shls.sh
@@ -2593,6 +2624,7 @@ shls clean
 ```
 
 On Windows:
+
 ```bat
 shls.bat clean
 compile_sw.shls.bat
@@ -2615,8 +2647,9 @@ accelerator function.
 
 ### Summary
 
-The runtimes of the various implementations that we have explored 
+The runtimes of the various implementations that we have explored
 have been summarized below in Figure 8‑40.
+
 <div align = "center">
 <table>
 <thead>
@@ -2699,42 +2732,42 @@ threshold:200</td>
 
 Several things are of note here:
 
-1.  **DMA transfers dominate the overall runtime when running with
-    accelerators.** When `main.fifo.cpp` consolidated invert and
-    `threshold_to_zero` into a single accelerator, the runtime is
-    effectively halved (57 ms) compared to `main.simple.cpp`’s runtime of
-    performing both transformations (112 ms). Regardless of the
-    complexity of invert, threshold_to_zero, and the combined
-    function, the runtime is about 55 ms for each function called.
-2.  **The DMA is shared and can become the bottleneck when multiple
-    accelerators are accessing at the same time.** `main.non-blocking.cpp`
-    produces an inverted image and a threshold\_to\_zero image in
-    parallel. However, the execution of invert and threshold\_to\_zero
-    functions can only be partially overlapped due to the DMA being
-    shared amongst them. Hence, the runtime is longer (72 ms) than
-    running only one of the transformations (57 ms), but shorter than
-    `main.simple.cpp`’s runtime of performing both transformations (112
-    ms).
-3.  **Saving could be accomplished even for relatively simple functions
-    despite the cost of DMA transfer.** In `main.simple.cpp`, the
-    accelerator version (57 ms) almost breaks even with the simple
-    invert software function (46 ms). Running the accelerator version of
-    threshold\_to\_zero (57 ms) took less than 40% of the pure software
-    runtime (141 ms).
-4.  **Threads are expensive in software but cheap in hardware.**
-    main.fifo.cpp uses `hls::thread` to implement the producer-consumer
-    behaviour. Creating and destroying threads for very simple
-    calculations is costly. Even though the runtime for running with
-    accelerators improved, runtime for pure software on the MSS has
-    increased significantly.
-5.  **Software can be used to save computations.** `main.simple.cpp`
-    performs a check on the argument and does not send the data to the
-    accelerator if calculations were not required, i.e., the argument is
-    zero. On the other hand, `main.fifo.cpp` blindly sends the data to the
-    accelerator to compute. Hence, `main.fifo.cpp` still takes 55
-    microseconds to complete even when the arguments are zero, but
-    `main.simple.cpp` saved time (0 ms) by not doing the unnecessary
-    calculations.
+1. **DMA transfers dominate the overall runtime when running with
+   accelerators.** When `main.fifo.cpp` consolidated invert and
+   `threshold_to_zero` into a single accelerator, the runtime is
+   effectively halved (57 ms) compared to `main.simple.cpp`’s runtime of
+   performing both transformations (112 ms). Regardless of the
+   complexity of invert, threshold_to_zero, and the combined
+   function, the runtime is about 55 ms for each function called.
+2. **The DMA is shared and can become the bottleneck when multiple
+   accelerators are accessing at the same time.** `main.non-blocking.cpp`
+   produces an inverted image and a threshold\_to\_zero image in
+   parallel. However, the execution of invert and threshold\_to\_zero
+   functions can only be partially overlapped due to the DMA being
+   shared amongst them. Hence, the runtime is longer (72 ms) than
+   running only one of the transformations (57 ms), but shorter than
+   `main.simple.cpp`’s runtime of performing both transformations (112
+   ms).
+3. **Saving could be accomplished even for relatively simple functions
+   despite the cost of DMA transfer.** In `main.simple.cpp`, the
+   accelerator version (57 ms) almost breaks even with the simple
+   invert software function (46 ms). Running the accelerator version of
+   threshold\_to\_zero (57 ms) took less than 40% of the pure software
+   runtime (141 ms).
+4. **Threads are expensive in software but cheap in hardware.**
+   main.fifo.cpp uses `hls::thread` to implement the producer-consumer
+   behaviour. Creating and destroying threads for very simple
+   calculations is costly. Even though the runtime for running with
+   accelerators improved, runtime for pure software on the MSS has
+   increased significantly.
+5. **Software can be used to save computations.** `main.simple.cpp`
+   performs a check on the argument and does not send the data to the
+   accelerator if calculations were not required, i.e., the argument is
+   zero. On the other hand, `main.fifo.cpp` blindly sends the data to the
+   accelerator to compute. Hence, `main.fifo.cpp` still takes 55
+   microseconds to complete even when the arguments are zero, but
+   `main.simple.cpp` saved time (0 ms) by not doing the unnecessary
+   calculations.
 
 We have shown how to integrate SmartHLS generated accelerators into your
 own SoC through the AXI interface, how to use non-blocking driver
@@ -2747,11 +2780,11 @@ we have shown here and incorporate SmartHLS into your own SoC designs.
 In this release of the SmartHLS PolarFire SoC flow there are a few
 limitations:
 
-1)  No AXI streaming arguments
-2)  No AXI initiator arguments with burst support
-3)  No arbitrary bit-width types (ap\_\[u\]int) are supported for
-    function arguments
-4)  No variable length transfers
+1) No AXI streaming arguments
+2) No AXI initiator arguments with burst support
+3) No arbitrary bit-width types (ap\_\[u\]int) are supported for
+   function arguments
+4) No variable length transfers
 
 Even though the amount of memory was reduced by half in the main.fifo
 variation, there is still the possibility to eliminate the on-chip
@@ -2778,12 +2811,14 @@ performance would be limited by the memory controller and interconnect.
 <p align="center">Figure 9‑1 Fully Streaming Configuration</p></p>
 
 Also, SmartHLS does not currently support using arbitrary bit-width
-types as function arguments like this: 
+types as function arguments like this:
+
 ```c
 foo(hls::ap_int<24> &in)
 ```
 
-The function would have to be rewritten (padded) like this: 
+The function would have to be rewritten (padded) like this:
+
 ```c
 foo(uint32_t &in)
 ```
@@ -2805,17 +2840,17 @@ data that is processed but not the amount of data that is transferred
 during the DMA transactions.
 
 ```c
-04  void invert(uint32_t *in, uint32_t *out) {                                                 
-05    #pragma HLS function top                                                                          
-06    #pragma HLS interface default type(axi_target)                                               
+04  void invert(uint32_t *in, uint32_t *out) {                                               
+05    #pragma HLS function top                                                                        
+06    #pragma HLS interface default type(axi_target)                                             
 07    #pragma HLS interface argument(in) type(axi_target) dma(true) num_elements(WIDTH*N_ROWS)  
 08    #pragma HLS interface argument(out) type(axi_target) dma(true) num_elements(WIDTH*N_ROWS) 
-09                                                                                                         
-10    #pragma HLS loop pipeline II(1)                                                                   
-11    for (int j = 0; j < WIDTH*N_ROWS; j++) {                                                    
-12      out[j] = ~in[j];                                                                                  
-13    }                                                                                                      
-14  }                                                                                                      
+09                                                                                                       
+10    #pragma HLS loop pipeline II(1)                                                                 
+11    for (int j = 0; j < WIDTH*N_ROWS; j++) {                                                  
+12      out[j] = ~in[j];                                                                                
+13    }                                                                                                    
+14  }                                                                                                    
 ```
-<p align="center">Figure 9‑2 Compile-Time Determination of the Number of Elements to be Processed</p>
 
+<p align="center">Figure 9‑2 Compile-Time Determination of the Number of Elements to be Processed</p>
