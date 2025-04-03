@@ -17,8 +17,9 @@ LOCAL_CONFIG = -legup-config=config.tcl
 #-------------------------------------------------
 # Additional compilation settings
 #-------------------------------------------------
-# To include the bmp.h header
-USER_CXX_FLAG += -I./
+# -O3 to optimize software without accelerators. Default is -O1.
+# -I./ to include the bmp.h header.
+USER_CXX_FLAG += -O3 -I./
 
 #-------------------------------------------------
 # Runtime settings
