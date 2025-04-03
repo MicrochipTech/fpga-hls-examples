@@ -39,6 +39,14 @@
 <td>Updated for Libero 2024.2</td>
 <td><li>Updated details of generated API driver functions for AXI4 Target</li>
 </tr>
+<tr class="even">
+<td>5.0</td>
+<td>Apr 3, 2025</td>
+<td>Updated for Libero 2025.1</td>
+<td>
+<li>Updated source files</li>
+<li>Updated instructions on CPU Usage</li>
+</tr>
 </tbody></table>
 
 # Requirements
@@ -868,10 +876,10 @@ Default base address in reference SoC: 0x70000000.
 +---------------------+---------------------+-------------------+--------------------+
 | Argument            | Address Offset      | Size [Bytes]      | Direction          |
 +---------------------+---------------------+-------------------+--------------------+   
-| Module Control      | 0x008               | 4                 | inout              |                                         
-| a                   | 0x040               | 64*               | input              |                                                  
-| b                   | 0x080               | 64*               | input              |                                                          
-| result              | 0x0c0               | 64*               |  output            |                                                
+| Module Control      | 0x008               | 4                 | inout              |
+| a                   | 0x040               | 64*               | input              |
+| b                   | 0x080               | 64*               | input              |
+| result              | 0x0c0               | 64*               | output             |
 +---------------------+---------------------+-------------------+--------------------+
 ```
 <p align="center">Figure 6‑23 Module Base Address and Span in Header File</p>
@@ -2324,7 +2332,7 @@ Figure 8‑30.
 If we look at the `hls_output/reports/summary.hls.invert.rpt` (Figure
 8‑31), we can see that the invert latency is 86,402 cycles at 125MHz,
 which is 0.7ms. The invert function is called 24 times, which means that
-the invert pipeline total runtime is only about 17ms of the 55.2ms
+the invert pipeline total runtime is only about 17 ms of the 55 ms
 measured runtime. This represents only 30% of the total runtime, with
 the other 70% spent performing data transfer.
 
@@ -2370,6 +2378,17 @@ repeatedly.
 SRCS = main_variations/main.cpu_usage.cpp
 ```
 
+SmartHLS has a TCL parameter called
+[SOC\_POLL\_DELAY](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html)
+with a value specified in microseconds. This parameter is used for
+controlling how often the hardware driver polls the module to check for
+completion. This will free up the MSS to do other tasks.
+
+Modify `config.tcl` and add the following line to the end to set the polling interval to 1000 ms:
+```make
+set_parameter SOC_POLL_DELAY 1000
+```
+
 Open a terminal on the Icicle board and run the Linux `top` command:
 ```bash
 ssh root@$BOARD_IP
@@ -2404,11 +2423,7 @@ Running with hardware module, the CPU utilization is about 11%:
 <img src=".//media/image74.png" />
 <p align="center">Figure 8‑33 CPU Usage when Running with Accelerators</p></p>
 
-SmartHLS has a TCL parameter called
-[SOC\_POLL\_DELAY](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-12/GUID-8CD9C2D1-7FF3-4C70-8CB7-364597AFDAD7.html)
-with a value specified in microseconds. This parameter is used for
-controlling how often the hardware driver polls the module to check for
-completion. Sometimes for long running tasks, the MSS only needs to
+As shown in Figure 8-33, CPU usage is only around 11%. The MSS only needs to
 check occasionally (e.g., every 1 second), instead of many thousands of
 times per second, which frees up the CPU to do other useful work.
 
@@ -2429,31 +2444,31 @@ on the generated software driver APIs.
 Instead of calling `invert()` or `threshold_to_zero()`, we used a
 different call in main.non-blocking.cpp as shown in Figure 8‑34.
 ```c
-64  for(int i = 0; i < HEIGHT/N_ROWS; i++) {                                                                            
-65    if (do_invert) {                                                                                                         
-66      #ifdef HAS_ACCELERATOR                                                                                                  
-67        invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS]);                                                
-68      #else                                                                                                                    
-69        invert((uint32_t *)\&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);                         
-70      #endif                                                                                                                   
-71    }                                                                                                                             
-72                                                                                                                                
-73    if (threshold > 0) {                                                                                                     
-74      #ifdef HAS_ACCELERATOR                                                                                                  
-75        threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold);                        
-76      #else                                                                                                                    
-77        threshold_to_zero((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)\&OutBitMap2[i*WIDTH*N_ROWS], threshold); 
-78      #endif                                                                                                                   
-79    }                                                                                                                             
-80                                                                                                                                
-81    #ifdef HAS_ACCELERATOR                                                                                                  
-82      if (do_invert)                                                                                                           
-83        invert_join_and_read_output((uint32_t *)\&OutBitMap1[i*WIDTH*N_ROWS]);                                             
-84                                                                                                                                
-85      if (threshold > 0)                                                                                                       
-86        threshold_to_zero_join_and_read_output((uint32_t *)\&OutBitMap2[i*WIDTH*N_ROWS]);                                
-87    #endif                                                                                                                   
-88  }                                                                                                                            
+ 71     for(int i = 0; i < HEIGHT/N_ROWS; i++) {
+ 72         if (do_invert) {
+ 73             #ifdef HAS_ACCELERATOR
+ 74             invert_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], invert_virt_addr);
+ 75             #else
+ 76             invert((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS]);
+ 77             #endif
+ 78         }
+ 79
+ 80         if (threshold > 0) {
+ 81             #ifdef HAS_ACCELERATOR
+ 82             threshold_to_zero_write_input_and_start((uint32_t *)&BitMap[i*WIDTH*N_ROWS], threshold, threshold_to_zero_virt_addr);
+ 83             #else
+ 84             threshold_to_zero((uint32_t *)&BitMap[i*WIDTH*N_ROWS], (uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS], threshold);
+ 85             #endif
+ 86         }
+ 87
+ 88         #ifdef HAS_ACCELERATOR
+ 89         if (do_invert)
+ 90             invert_join_and_read_output((uint32_t *)&OutBitMap1[i*WIDTH*N_ROWS], invert_virt_addr);
+ 91
+ 92         if (threshold > 0)
+ 93             threshold_to_zero_join_and_read_output((uint32_t *)&OutBitMap2[i*WIDTH*N_ROWS], threshold_to_zero_virt_addr);
+ 94         #endif
+ 95     }
 ```
 <p align="center">Figure 8‑34 Main Execution Loop of main.non-blocking.cpp</p>
 
@@ -2577,6 +2592,8 @@ By combining the 2 functions into one, we achieved the following:
 ```make
 SRCS = main_variations/main.fifo.cpp
 ```
+
+Remove the `set_parameter SOC_POLL_DELAY 1000` line in `config.tcl`, which was added in the [CPU Usage](#cpu-usage-maincpu_usagecpp) section.
 
 Rerun the entire flow as described in the [Compiling the hardware](#compiling-the-hardware) section
 and the [Programming the FPGA bitstream](#programming-the-fpga-bitstream) because this variation
