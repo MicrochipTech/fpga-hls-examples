@@ -137,13 +137,19 @@ The process follows these steps:
 
 ### Instrumenting the design
 
-First, to enable the Automatic On-Chip Instrumentation feature in the project, the `Makefile` contains the following line:
+First, to enable the Automatic On-Chip Instrumentation feature in the project, the `Makefile` (`<PATH TO fpga-hls-examples>/auto_instrument/Makefile`) contains the following line:
 
 ```Makefile
 HLS_INSTRUMENT_ENABLE=1
 ```
 
-In a new terminal, remove stale files by running
+In a new terminal, navigate to the project directory by running
+
+```bash
+cd <PATH TO fpga-hls-examples>/auto_instrument
+```
+
+Then, remove stale files by running
 
 ```bash
 shls clean
@@ -215,7 +221,7 @@ Next, run Synthesis and Place-and-Route. This can be done with the following com
 shls -a soc_accel_proj_pnr
 ```
 
-Now program the FPGA with the instrumented bitstream file (`hls_output\soc\designer\MPFS_ICICLE_KIT_BASE_DESIGN\Icicle_SoC.job`). You can use the command line to do this (please make sure you have declared the `PROGRAMMER_ID` environment variable):
+Now program the FPGA with the instrumented bitstream file (located under `<PATH TO fpga-hls-examples>/auto_instrument/hls_output\soc\designer\MPFS_ICICLE_KIT_BASE_DESIGN\Icicle_SoC.job`). You can use the command line to do this (please make sure you have declared the `PROGRAMMER_ID` environment variable first):
 
 ```bash
 shls soc_accel_proj_program
@@ -238,13 +244,13 @@ Then copy the binary (`.elf` file) to the board:
 On Linux:
 
 ```bash
-scp hls_output/auto_instrument.accel.elf root@$BOARD_IP:./
+scp <PATH TO fpga-hls-examples>/auto_instrument/hls_output/auto_instrument.accel.elf root@$BOARD_IP:./
 ```
 
 On Windows Powershell
 
 ```powershell
-scp hls_output/auto_instrument.accel.elf root@$env:BOARD_IP:./
+scp <PATH TO fpga-hls-examples>/auto_instrument/hls_output/auto_instrument.accel.elf root@$env:BOARD_IP:./
 ```
 
 Do *NOT* run the `auto_instrument.accel.elf` program on-board yet. Let's first arm the trigger in Identify in the next section.
@@ -272,13 +278,13 @@ Now open an interactive shell for Identify Debugger:
 On Linux, run
 
 ```bash
-identify_debugger_shell -licensetype identdebugger_actel -shell  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+identify_debugger_shell -licensetype identdebugger_actel -shell  <PATH TO fpga-hls-examples>/auto_instrument/hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
 ```
 
 On Windows, run
 
 ```powershell
-identify_debugger_console -licensetype identdebugger_actel  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+identify_debugger_console -licensetype identdebugger_actel  <PATH TO fpga-hls-examples>/auto_instrument/hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
 ```
 
 And then you can connect to the JTAG server using the following commands (make sure to use the same port number as before):
@@ -292,7 +298,7 @@ com check
 
 ### Triggering and Capturing Data
 
-Next, we'll pick a signal to trigger on. As a result from the instrumentation process, you should see that the `Identify Design Constraints` file (`hls_output/soc/synthesis/identify.idc`) has been automatically generated. It contains all the signals that are being instrumented. For example, you may notice the line:
+Next, we'll pick a signal to trigger on. As a result from the instrumentation process, you should see that the `Identify Design Constraints` file (`<PATH TO fpga-hls-examples>/auto_instrument/hls_output/soc/synthesis/identify.idc`) has been automatically generated. It contains all the signals that are being instrumented. For example, you may notice the line:
 
 ```tcl
 {/FIC_0_PERIPHERALS_1/hlsModule_top_0/hlsModule_inst/hlsModule_BB_0_fifo1_inst/genblk1/fwft_fifo_bram_inst/empty}
@@ -336,14 +342,14 @@ Now run the software binary that was copied earlier on-board. The four arguments
 
 You should see in the Identify shell that the trigger has been activated. Let's now write the captured data to a `.vcd` file. First press ENTER, and then execute:
 
-```console
+```tcl
 write vcd "IICE_auto_instrument.vcd" -iice IICE_auto_instrument
 ```
 
 Now in a new terminal window, launch ModelSim by running
 
 ```console
-vsim -do hls_output/scripts/instrument/vsim_keyboard_shortcut
+vsim -do <PATH TO fpga-hls-examples>/auto_instrument/hls_output/scripts/instrument/vsim_keyboard_shortcut
 ```
 
 Now, open the ModelSim window and press Ctrl + R to refresh.
@@ -489,18 +495,18 @@ to
 set monitoring_mode 1
 ```
 
-in `hls_output/scripts/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
+in `<PATH TO fpga-hls-examples>/auto_instrument/hls_output/scripts/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
 Then, open a new terminal and start a monitoring process that periodically captures the data:
 
 ```console
-identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_shell -licensetype identdebugger_actel <PATH TO fpga-hls-examples>/auto_instrument/hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
 ```
 
 Finally, open Modelsim in a new terminal for visualization:
 
 ```console
-vsim -do hls_output/scripts/instrument/update_vcd.tcl
+vsim -do <PATH TO fpga-hls-examples>/auto_instrument/hls_output/scripts/instrument/update_vcd.tcl
 ```
 
 This will launch ModelSim again, but the waveform will update continuously (no need to press `Ctrl+R` to refresh) as soon as Identify provides new captured data periodically.
@@ -516,12 +522,13 @@ The FIFO Monitoring Dashboard aims to show developers, in nearly real-time, how 
 Start the monitoring loop that will generate the periodic captures:
 
 ```console
-identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER ID
+identify_debugger_shell -licensetype identdebugger_actel <PATH TO fpga-hls-examples>/auto_instrument/hls_output/scripts/instrument/monitor.tcl $PROGRAMMER ID
 ```
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:
 
 ```console
+cd <PATH TO fpga-hls-examples>/auto_instrument
 shls -s instrument_monitor_fifos
 ```
 
@@ -560,7 +567,7 @@ Here are some examples of the bar plot. You should confirm these make sense intu
 In this tutorial, we only demonstrated how to set triggers and configure the client-server connection using the Identify shell. However, all of this can also be done with the GUI. You can launch the GUI by opening a new terminal and running
 
 ```console
-identify_debugger -licensetype identdebugger_actel hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+identify_debugger -licensetype identdebugger_actel <PATH TO fpga-hls-examples>/auto_instrument/hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
 ```
 
 Then, you can configure the client-server connection by clicking *`Debugger > Setup debugger...`* dialog, and then visiting the *`Communications`* tab to connect to the JTAG server.
