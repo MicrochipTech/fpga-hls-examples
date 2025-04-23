@@ -1,4 +1,3 @@
-
 <h1><p align="center">SmartHLS™ Training Session 1:</p></h1>
 <h2><p align="center">Image Processing on the PolarFire® Video Kit</p></h2>
 
@@ -56,11 +55,11 @@ Updated document for outdated figures and for SmartHLS™ 2024.2 release.
 Before beginning this training, you should install the following
 software:
 
-  - Libero® SoC 2024.2 (or later) with QuestaSim Pro
-    - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - SmartHLS 2024.2 (or later): this is packaged with Libero
-  - DG0849 Video Control GUI used by the PolarFire board demo
-      - [Download Link](https://www.microchip.com/content/dam/mchp/documents/FPGA/ProductDocuments/socdesignfiles/mpf_dg0849_liberosoc_gui.zip)
+- Libero® SoC 2024.2 (or later) with QuestaSim Pro
+  - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
+- SmartHLS 2024.2 (or later): this is packaged with Libero
+- DG0849 Video Control GUI used by the PolarFire board demo
+  - [Download Link](https://www.microchip.com/content/dam/mchp/documents/FPGA/ProductDocuments/socdesignfiles/mpf_dg0849_liberosoc_gui.zip)
 
 This document uses the Windows versions of Libero® SoC 2024.2 and
 SmartHLS 2024.2. Depending on the version you use, the results generated
@@ -69,22 +68,23 @@ presented in this document.
 
 You should download the training design files in advance:
 
-  - Github link to all SmartHLS trainings and examples:
-    <https://github.com/MicrochipTech/fpga-hls-examples>
-      - ZIP file:
-        <https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip>
-      - We’ll use the Training1 folder for this training. This folder contains the source files required for this training.
-  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
-  - Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
-    here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
+- Github link to all SmartHLS trainings and examples:
+  [https://github.com/MicrochipTech/fpga-hls-examples](https://github.com/MicrochipTech/fpga-hls-examples)
+  - ZIP file:
+    [https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip](https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip)
+  - We’ll use the Training1 folder for this training. This folder contains the source files required for this training.
+- Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
+- Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
+  here: [https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero)
 
 The following hardware is required:
-  - PolarFire FPGA Video and Imaging Kit([MPF300-VIDEO-KIT](https://www.microsemi.com/existing-parts/parts/150747)).
-  - Monitor with an HDMI input.
 
-Make sure the following demo is working on your board: [DG0849: PolarFire FPGA Dual Camera Video Kit Demo Guide](https://www.microsemi.com/document-portal/doc_download/1244036-dg0849-polarfire-fpga-4k-dual-camera-video-kit-demo-guide).
+- PolarFire FPGA Video and Imaging Kit([MPF300-VIDEO-KIT](https://www.microsemi.com/existing-parts/parts/150747)).
+- Monitor with an HDMI input.
 
-We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/Sobel_Tutorial_Microsemi.pdf).
+Make sure the following demo is working on your board: [DG0849: PolarFire FPGA Dual Camera Video Kit Demo Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ApplicationNotes/ApplicationNotes/polarfire_4k_dual_camera_video_kit_dg0849_v5.pdf).
+
+We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](../sobel_tutorial/trainingdoc.md).
 
 We assume some knowledge of the C/C++ programming language for this training.
 
@@ -94,8 +94,7 @@ to follow along.
 
 ## Generating the Libero Project
 
-Before starting the training, we need to first generate the Libero project. 
-
+Before starting the training, we need to first generate the Libero project.
 
 If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory, e.g.:
 
@@ -104,6 +103,7 @@ cd C:\Workspace\fpga-hls-examples-main\Training1\Libero
 ```
 
 and run the following script to generate the HLS example designs:
+
 ```bat
 run_shls_on_examples.bat
 ```
@@ -113,8 +113,10 @@ If you are using Linux, open a terminal and navigate to the Libero directory, e.
 ```bash
 cd Workspace/fpga-hls-examples-main/Training1/Libero
 ```
+
 and run the following script to generate the HLS example designs:
-``` bash
+
+```bash
 bash run_shls_on_examples.sh
 ```
 
@@ -126,49 +128,50 @@ Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 Click 'Run'. This should take about 10 minutes.
 
-
 # Overview
 
 **Time Required:** 3 hours
 
 **Goals of this Training:**
-  - Deeper dive into commonly used features of SmartHLS
-  - Demonstrate a SmartHLS design running on the PolarFire® board
+
+- Deeper dive into commonly used features of SmartHLS
+- Demonstrate a SmartHLS design running on the PolarFire® board
 
 **Training Topics:**
-  - Overview of the SmartHLS tool and design flow
-  - What hardware blocks to design in C++ with SmartHLS vs. RTL?
-  - Overview of the PolarFire board and video kit demo
-  - Walkthrough of image processing hardware blocks designed in C++ with
-    SmartHLS
-      - Alpha Blending
-      - Color Space Conversion: RGB2YCbCr & YCbCr2RGB
-      - Gaussian blur
-      - Canny edge detection
-  - Deeper dive into SmartHLS:
-      - Overview of HLS pipelining
-          - What is the initiation interval?
-          - What impacts the initiation interval?
-      - Verification and Testing:
-          - Writing a C++ testbench
-          - How does co-simulation work?
-          - Showing QuestaSim waveforms during co-simulation
-      - External top-level hardware interface
-          - AXI-Stream interface (data/valid/ready)
-          - Input wires (from switches)
-          - RAM interface
-  - Deeper dive into HLS optimizations:
-      - Function pipelining, loop pipelining, FIFOs for streaming
-      - Canny has 4 filters streamed together using data flow
-  - SmartHLS C++ Library and Data Types:
-      - Arbitrary precision integers (ap\_int/ap\_uint)
-      - Fixed-point data types (ap\_fixpt/ap\_ufixpt)
-      - FIFO
-      - LineBuffer
-  - Export hardware blocks from SmartHLS as SmartDesign IP component
-      - Integration of SmartHLS SmartDesign IP component into PolarFire
-        Design
-      - Running SmartHLS hardware on the PolarFire board
+
+- Overview of the SmartHLS tool and design flow
+- What hardware blocks to design in C++ with SmartHLS vs. RTL?
+- Overview of the PolarFire board and video kit demo
+- Walkthrough of image processing hardware blocks designed in C++ with
+  SmartHLS
+  - Alpha Blending
+  - Color Space Conversion: RGB2YCbCr & YCbCr2RGB
+  - Gaussian blur
+  - Canny edge detection
+- Deeper dive into SmartHLS:
+  - Overview of HLS pipelining
+    - What is the initiation interval?
+    - What impacts the initiation interval?
+  - Verification and Testing:
+    - Writing a C++ testbench
+    - How does co-simulation work?
+    - Showing QuestaSim waveforms during co-simulation
+  - External top-level hardware interface
+    - AXI-Stream interface (data/valid/ready)
+    - Input wires (from switches)
+    - RAM interface
+- Deeper dive into HLS optimizations:
+  - Function pipelining, loop pipelining, FIFOs for streaming
+  - Canny has 4 filters streamed together using data flow
+- SmartHLS C++ Library and Data Types:
+  - Arbitrary precision integers (ap\_int/ap\_uint)
+  - Fixed-point data types (ap\_fixpt/ap\_ufixpt)
+  - FIFO
+  - LineBuffer
+- Export hardware blocks from SmartHLS as SmartDesign IP component
+  - Integration of SmartHLS SmartDesign IP component into PolarFire
+    Design
+  - Running SmartHLS hardware on the PolarFire board
 
 # SmartHLS High-Level Synthesis Overview
 
@@ -203,45 +206,6 @@ Hover over each icon in SmartHLS to find out their meanings.
 <td><p align="center"><img src=".//media/image6.png" display:block;margin-left:auto;margin-right: auto;" /></p>
 <p align="center">Figure 3: SHLS design flow steps</p></td>
 <td>
-
-Starting from the left of Figure 2, the icons are:
-
-1)  **Add Files to Project**
-
-Then icons for the software development flow:
-
-2)  **Compile Software with GCC** 
-
-3)  **Run Software that was compiled**
-
-4)  **Debug Software with gdb**
-
-5)  **Profile Software with gprof**
-
-The hardware development flow icons are:
-
-6)  **Compile Software to Hardware (Software to HDL)**
-
-7)  **Simulate Hardware in QuestaSim with custom testbench**
-
-8)  **Software/Hardware Co-simulation**
-
-9)  **Synthesize Hardware to FPGA (HDL to hardware layout) – RTL Synthesis only for resource results**
-
-10) **Synthesize Hardware to FPGA – RTL Synthesis, place and route for timing and resource results**
-
-11) **Compile Software to Processor/Accelerator SoC**
-
-With the last three icons, you can:
-
-12) **Set HLS Constraints**
-
-13) **Launch Schedule Viewer**
-
-14) **Clean SmartHLS Project**</td>
-</tr>
-</tbody>
-</table>
 
 These SmartHLS commands can also be run from the *SmartHLS* top bar
 menu. Figure 3 summarizes the SmartHLS design flow steps. We create the
@@ -278,7 +242,7 @@ C++ reference implementation and manually convert to RTL, HLS will save
 you a lot of time. If your design is mainly control path and shuffling a
 few bits around, then use RTL.
 
-| **Good fit for SmartHLS**                                                | **Bad fit for HLS (use RTL instead)**                                      |
+| **Good fit for SmartHLS**                                          | **Bad fit for HLS (use RTL instead)**                                |
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
 | Image processing filters (edge detect, blur, noise cancellation)         | Bus controller. Reason: needs precise cycle-accurate behavior              |
 | DSP application (Viterbi Decoder)                                        | FFT. Reason: well-known optimized hardware butterfly structure             |
@@ -316,70 +280,71 @@ SmartHLS generated IP components on to the PolarFire board by following
 the steps below:
 
 1. Connect the USB cable from J12 on the PolarFire® board to your PC.
-
 2. Connect the camera board at J5 and remove the lens caps.
-
 3. Connect the HDMI cable from the PolarFire Video Kit (J2) to your external Monitor.
-
 4. Refer to [DG0849](https://www.microsemi.com/document-portal/doc_download/1244036-dg0849-polarfire-fpga-4k-dual-camera-video-kit-demo-guide) for jumper settings. We use the default jumper settings shipped with the board.
-
 5. Make sure all the DIP switches (SW6) are in the ON position.
-
 6. Connect the AC adapter to the board and power it on (SW4).
-
 7. Open up FlashPro Express (FPExpress v2024.2), which you can find in the Start Menu, listed under “Microchip Libero SoC v2024.2”:
+
 <p align="center"><img src=".//media/image9.png" /></p>
 
 8. Select Project and New Job Project.
+
 <p align="center"><img src=".//media/image10.png" /></p>
 
 9. Now select the job file “`Training1/VIDEO_KIT_TOP.job`”  from the release assets folder you downloaded in step 1.
-
 10. Enter a project location. Click OK.
-
 11. Now the Programmer window will open. If you do not see the Programmer for the MPF300TS PolarFire® FPGA, then click Refresh/Rescan Programmers.
+
 <p align="center"><img src=".//media/image11.png" /></p>
 
 12. Now click the RUN button to program the FPGA.
-
 13. After programming you should see the RUN PASSED. Now power cycle the board and close FlashPro Express.
+
 <p align="center"><img src=".//media/image12.png" /></p>
 
 14. Now you should see two video streams on your monitor, one in the background and then a smaller one moving around in the foreground. If the video streams look blurry, try focusing the camera by rotating the camera lens.
 
->For example, if you hold the quick start card that comes with the PolarFire® board up to the camera:
+> For example, if you hold the quick start card that comes with the PolarFire® board up to the camera:
+
 <p align="center"><img src=".//media/image13.png" /></p>
 
->Then you should see the following output:
+> Then you should see the following output:
+
 <p align="center"><img src=".//media/quick_start_card_output.png" /></p>
 
 15. Launch the “Video Control GUI” from the Windows Start Menu (see prerequisites section if you do not have this program installed):
+
 <p align="center"><img src=".//media/image15.png" /></p>
 
 16. In the top right there is a dropdown to specify the COM port. Select the COM port (if there are multiple then choose the second highest numbered port):
+
 <p align="center"><img src=".//media/image16.png" /></p>
 
 17. Now click the Red image beside the dropdown to connect to the FPGA.
+
 <p align="center"><img src=".//media/image17.png" /></p>
 
 18. The image should turn green to indicate the GUI is now connected to the FPGA and the smaller video feed should become fixed to the top left corner.
+
 <p align="center"><img src=".//media/image18.png" /></p>
 
 19. You can use the “Alpha” slider to test the SmartHLS generated alpha blend core. Changing the alpha affects the transparency of the smaller video feed.
-
 20. Now select the “Edge” checkbox to enable the SmartHLS edge detection filters. The main video feed should turn to grayscale, which has a purple tint due to the default Color Balance settings.
+
 <p align="center"><img src=".//media/image19.png" /></p>
 <p align="center"><img src=".//media/image20.jpg" /></p>
 
 21. Click the push button (SW2) to toggle between 3 modes. The current mode will be displayed on the user defined LED2-4. LED1 should be flashing and shows that the Mi-V is communicating with the FPGA fabric.
 
 > LED1 flashing: Mi-V is communicating with the FPGA.
-> 
+>
 > LED2 on: Grayscale image.
-> 
+>
 > LED3 on: Gaussian blur. Note: blurring effect is very subtle and only
 > noticeable for sharp edges and details.
-> 
+>
 > LED4 on: Canny edge detection.
 
 22. You can turn on/off each of the 4 filters in the Canny edge
@@ -390,14 +355,11 @@ the steps below:
     switch also turns on and off the Gaussian blur filter (LED3 on).
     Tip: use a pen to flip the switches, you may need to break the tape
     covering them first.
-    
-    1.  Gaussian blur
-    
-    2.  Sobel filter
-    
-    3.  Non-maximum suppression
-    
-    4.  Hysteresis
+
+    1. Gaussian blur
+    2. Sobel filter
+    3. Non-maximum suppression
+    4. Hysteresis
 
 > When you hold the same quick start card up to the camera, you should see the Canny Edge detection running on the monitor:
 
@@ -478,46 +440,45 @@ design implementation will be covered in this training session.
 projects used in this training into our SmartHLS workspace. Follow the
 directions below.
 
-1.  Download the design files from github if you have not already (see
-    Prerequisites). We will use
-    the Training1 folder of the extracted content for this training.
-
-2.  Open SmartHLS 2024.2 and choose a workspace.
+1. Download the design files from github if you have not already (see
+   Prerequisites). We will use
+   the Training1 folder of the extracted content for this training.
+2. Open SmartHLS 2024.2 and choose a workspace.
 
 <p align="center"><img src=".//media/image26.png" /></p>
 
->You may want to select a new folder so you can have a blank workspace
->for this training.
- 
->**Warning:** Make sure there are no spaces in your workspace path.
->Otherwise, there will be an error when running synthesis (either one
->of ![](.//media/image28.png)) from SmartHLS.
+> You may want to select a new folder so you can have a blank workspace
+> for this training.
 
-3.  Select File -\> Import...
+> **Warning:** Make sure there are no spaces in your workspace path.
+> Otherwise, there will be an error when running synthesis (either one
+> of ![](.//media/image28.png)) from SmartHLS.
+
+3. Select File -\> Import...
 
 <p align="center"><img src=".//media/image29.png" /></p></br>
 
-4.  In the Import window, select General-\>Existing Projects into
-    Workspace and then click Next.
+4. In the Import window, select General-\>Existing Projects into
+   Workspace and then click Next.
 
 <p align="center"><img src=".//media/image30.png" /></p></br>
 
-5.  In the next step, check off “Copy projects into workspace” and then
-    select “Select root directory” and then click Browse... 
-    
-    In the popup window browse to the Training1 directory and click OK.
+5. In the next step, check off “Copy projects into workspace” and then
+   select “Select root directory” and then click Browse...
+
+   In the popup window browse to the Training1 directory and click OK.
 
 <p align="center"><img src=".//media/image31.png" /></p></br>
 
-6.  Now in the Projects box you should see that all 9 SmartHLS projects
-    have been selected. Note: SmartHLS knows where the projects are by
-    looking for Eclipse “.project” files in the subdirectories. Click
-    Finish to import.
+6. Now in the Projects box you should see that all 9 SmartHLS projects
+   have been selected. Note: SmartHLS knows where the projects are by
+   looking for Eclipse “.project” files in the subdirectories. Click
+   Finish to import.
 
 <p align="center"><img src=".//media/image32.png" /></p></br>
 
-7.  After importing you should see all 9 projects in the Project
-    Explorer on the left.
+7. After importing you should see all 9 projects in the Project
+   Explorer on the left.
 
 <p align="center"><img src=".//media/image33.png" /></p></br>
 
@@ -550,9 +511,17 @@ images is given by an alpha input coefficient. Given an input pixel with
 a red, green, blue (RGB) value, then the alpha blended output for each
 color (RGB) is given by the equation below:
 
-$$R_{out} = R_{channel1} \times \left( 1 - alpha \right) + \ R_{channel2} \times alpha$$
-$$G_{out} = G_{channel1} \times \left( 1 - alpha \right) + \ G_{channel2} \times alpha$$
-$$B_{out} = B_{channel1} \times \left( 1 - alpha \right) + \ B_{channel2} \times alpha$$
+$$
+R_{out} = R_{channel1} \times \left( 1 - alpha \right) + \ R_{channel2} \times alpha
+$$
+
+$$
+G_{out} = G_{channel1} \times \left( 1 - alpha \right) + \ G_{channel2} \times alpha
+$$
+
+$$
+B_{out} = B_{channel1} \times \left( 1 - alpha \right) + \ B_{channel2} \times alpha
+$$
 
 In the equations above, alpha ranges from 0 to 1. But in hardware the
 alpha input is represented by an 8-bit value that ranges from 0 to 255.
@@ -654,32 +623,23 @@ included C++ source files into the equivalent logic in Verilog. Figure
 12 shows the output files and directories generated by SmartHLS after
 compiling to hardware.
 
-1.  Directory holding the initialization .mem files for RAMs.
+1. Directory holding the initialization .mem files for RAMs.
+2. Directory holding reports about the hardware.
 
-2.  Directory holding reports about the hardware.
-    
-    1.  *dot\_graphs* directory holds dot files used by the Schedule
-        Viewer.
-    
-    2.  *hls.log* has the Console output of the last SmartHLS command
-        executed.
-    
-    3.  *pipelining.hls.rpt* has pipeline scheduling information used by
-        Scheduler Viewer.
-    
-    4.  *scheduling.hls.rpt* has scheduling information used by the
-        Scheduler Viewer.
-    
-    5.  *summary.hls.alpha\_blend\_smarthls.rpt* has a summary of the
-        other reports as well as interface and RAM information.
-
-3.  Generated Verilog design.
-
-4.  Generated VHDL wrapper for Verilog design.
-
-5.  TCL script to import Verilog design into SmartDesign.
-
-6.  QuestaSim script to display module ports in a hierarchy.
+   1. *dot\_graphs* directory holds dot files used by the Schedule
+      Viewer.
+   2. *hls.log* has the Console output of the last SmartHLS command
+      executed.
+   3. *pipelining.hls.rpt* has pipeline scheduling information used by
+      Scheduler Viewer.
+   4. *scheduling.hls.rpt* has scheduling information used by the
+      Scheduler Viewer.
+   5. *summary.hls.alpha\_blend\_smarthls.rpt* has a summary of the
+      other reports as well as interface and RAM information.
+3. Generated Verilog design.
+4. Generated VHDL wrapper for Verilog design.
+5. TCL script to import Verilog design into SmartDesign.
+6. QuestaSim script to display module ports in a hierarchy.
 
 <p align="center"><img src=".//media/image40.png" /></br>Figure 12: SmartHLS Output Files</p></br>
 
@@ -688,6 +648,7 @@ compiling to hardware.
 automatically (this can also be found under the reports directory in the
 Project Explorer). We can see the RTL interface of the generated
 SmartHLS Alpha blending block by scrolling down to Section 1:
+
 ```
 ====== 1. RTL Interface ======
 
@@ -775,6 +736,7 @@ void alpha_blend_smarthls(hls::FIFO<input_t> &input_fifo,
 
 #pragma HLS function top
 ```
+
 The top-level C++ function will be compiled by SmartHLS into the
 top-level Verilog module. You can tell that this is the top-level by the
 SmartHLS pragma: “`function top`".
@@ -784,9 +746,11 @@ the top-level function.
 
 We start with the simpler second argument “`output_fifo`” which has the
 type:
+
 ```c
 hls::FIFO<rgb_t>
 ```
+
 The \< \> brackets surround the C++ template argument which defines the
 data type stored in the FIFO. In this case the FIFO holds `rgb_t` data.
 You can mouse over the `rgb_t` to display the type definition:
@@ -903,6 +867,7 @@ The `ap_uint` syntax `out(R1, R2)` is used to write to a specific range of
 bits within `out`'s 24 bits. In this case, we are writing 8 bits to the
 range of bits from 23:16 corresponding to the red pixel. R1 and R2 are
 defined as (R2=16, R1=23):
+
 ```c
 // 23:16 red 
 const int R2 = 2*W;
@@ -911,7 +876,7 @@ const int R1 = R2 + W-1;
 
 Similarly, the `in.channel1(R1, R2)` syntax reads the 8-bit red pixel
 value (23:16) from the 24-bit channel1 input.
- 
+
 ## SmartHLS Schedule Viewer
 
 ![](.//media/image2.png)Now that we have generated the hardware with
@@ -939,15 +904,18 @@ called [LLVM intermediate representation
 LLVM IR is beneficial.
 
 For example, given the 32-bit C++ code:
+
 ```c
 result = a + b – 5
 ```
 
 This C++ code could be represented as instructions in LLVM IR as:
+
 ```
 %0 = add i32 %a, %b
 %result = sub i32 %0, 5
 ```
+
 In LLVM IR, intermediate variables are prefixed with a “%”. Each
 operation (add/sub) includes the bitwidth “`i32`" indicating 32-bit
 integer. The add operands are `%a + %b` and the result is stored in a
@@ -961,6 +929,7 @@ LLVM IR always has a label at the beginning and a branching instruction
 at the end (`br`, `ret`, etc.) Here the `body.0` basic block performs some
 operations and then branches unconditionally to another basic block
 labeled `body.1`. Control flow occurs between basic blocks.
+
 ```
 body.0:
     %0 = add i32 %a, %b
@@ -1048,6 +1017,7 @@ Steady State Reached.</p></br>
 The 2 iterations/inputs until steady state corresponds to the Pipeline
 Depth from the SmartHLS report file
 `summary.hls.alpha_blend_smarthls.rpt` file we saw previously:
+
 ```
 ====== 2. Function and Loop Scheduling Results ======
 
@@ -1093,6 +1063,7 @@ see this output in the Console:
 Alpha = 127 
 PASS!
 ```
+
 The “PASS\!” is printed by our `main()` testbench function on line 204
 when the output image matches the golden expected output image. You can
 visually confirm yourself by clicking on the output image file:
@@ -1145,22 +1116,26 @@ whether `FAST_COSIM` is defined or not:
 ```c
 input_channel1 = read_bmp(INPUT_IMAGE1, &input_channel1_header);
 ```
+
 Same with the second input channel, which will read either
 “`polarfire.bmp`" or “`polarfire_100x56.bmp`”:
 
 ```c
 input_channel2 = read_bmp(INPUT_IMAGE2, &input_channel2_header);
 ```
+
 The golden expected output will read either “`golden_output.bmp`” or
 “`golden_output_100x56.bmp`”:
 
 ```c
 golden_output_image = read_bmp(GOLDEN_OUTPUT, &golden_output_image_header);
 ```
+
 In our C++ testbench on line 147, we first perform a sanity check test
 based on the waveform in the alpha blending SolutionCore documentation
 ([UG0641](https://www.microsemi.com/document-portal/doc_download/135316-ug0641-alpha-blending-user-guide)
 page 4) shown in Figure 17.
+
 ```c
 // test 1: sanity check from alpha blend IP core documentation
 in.channel1 = ap_uint<24>("0x456712");
@@ -1177,6 +1152,7 @@ from the `output_fifo`. Finally, we validate the output was expected. If
 there was a mismatch, we print out the value and then return a non-zero
 value from main so that the co-simulation will `FAIL`. Co-simulation will
 only pass if the main function returns zero.
+
 ```c
 // test 1: sanity check from alpha blend IP core documentation
 in.channel1 = ap_uint<24>("0x456712");
@@ -1191,21 +1167,26 @@ if (out != ap_uint<24>("4C6E57")) {
     return 1;
 }
 ```
+
 Next, starting from line 160, we run alpha blending on the two input
 image files. We specify the input alpha value of 50%, which is
 represented by the 8-bit value 127:
+
 ```c
 in.alpha = (int)(255 * 0.5);
 ```
+
 We loop over each pixel (`WIDTH` x `HEIGHT`) of the input images. When
 reading from a BMP image file, consecutive pixels in the same row of the
 image are stored next to each other (row-major order). Therefore, the
 outer loop is over the image `HEIGHT` and the inner loop is over the `WIDTH`
 of the image:
+
 ```c
 for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
 ```
+
 Note: this loop order does not matter in this example since we do not
 use the `i` or `j` indexes inside the loop body. At the end of the loop, we
 increment all the pointers for each of the images to the next pixel in
@@ -1215,35 +1196,42 @@ In the loop body, we use the `ap_uint` concatenation operator “`(R, G, B)`”
 to assign the 24-bit input channels. The red pixel will be the
 most-significant 8 bits of the 24-bit input channel and the blue pixel
 will be the least-significant 8 bits.
+
 ```c
 // concatenation operator
 in.channel1 = (ap_uint<8>(input_channel1->r),
 ap_uint<8>(input_channel1->g),
 ap_uint<8>(input_channel1->b));
 ```
+
 After we write to the `input_fifo` we call the top-level function
 `alpha_blend_smarthls`, and then we read the output from the
 `output_fifo`. We extract out the 8-bit RGB values from the 24-bit
 output:
+
 ```c
 rgb_t rgb = output_fifo.read();
 output_image_ptr->r = rgb(R1, R2);
 output_image_ptr->g = rgb(G1, G2);
 output_image_ptr->b = rgb(B1, B2);
 ```
+
 Then we verify the output pixel matches the expected pixel. We return 1
 from main if there is a mismatch.
 
 At the end of the main function we write the alpha blended image to the
 “`output.bmp`” file:
+
 ```c
 write_bmp("output.bmp", &input_channel1_header, output_image);
 ```
+
 We reuse the same BMP header data (image properties like width and
 height) as the input channel 1 image.
 
 And we print a message and return 0 from the main function to indicate
 to co-simulation that the testbench passed.
+
 ```c
 printf("PASS!\n");
 return 0;
@@ -1265,17 +1253,21 @@ clicking the plus button.
 The `FAST_COSIM` define will change the input image to be 100x56 bmp
 files (instead of 1080p images). This change will speed up the
 co-simulation time considerably (from 20 min to 2 min):
+
 ```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
 ```
+
 ![](.//media/image2.png)Since the code changed, we should recompile
 (![](.//media/image59.png)) and rerun (![](.//media/image60.png)) the
 software verify that the software still passes on this new input:
+
 ```
 Alpha = 127
 PASS!
 ```
+
 If you open the `output.bmp` image, you will notice the dimensions are now
 much smaller.
 
@@ -1284,6 +1276,7 @@ SmartHLS (![](.//media/image61.png)) to regenerate the hardware. Now, we
 start co-simulation (![](.//media/image62.png)) which will take a few
 minutes to finish. You should verify that the following results appear
 in the Console:
+
 ```
 +--------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name           | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
@@ -1296,22 +1289,23 @@ SW/HW co-simulation: PASS
 
 16:45:59 Build Finished (took 1m:4s.590ms)
 ```
+
 The “`SW/HW co-simulation: PASS`” indicates that the simulation was
 successful and the `main()` testbench function returned 0.
 
 The SmartHLS co-simulation flow performs the following 3 steps
 automatically:
 
-1.  SmartHLS runs your `main()` testbench function in software. All inputs
-    to the top-level function are saved in input test vector files.
-2.  SmartHLS generates an RTL testbench that will read the input test
-    vector files from step 1. SmartHLS uses QuestaSim to simulate the RTL
-    testbench and SmartHLS-generated Verilog. The module outputs are
-    saved into output simulation files.
-3.  SmartHLS reruns your `main()` testbench function in software but
-    replaces the top-level function calls with the return value from the
-    output simulation files from step 2. If the hardware outputs are
-    correct then the `main()` function will still return 0 (`PASS`).
+1. SmartHLS runs your `main()` testbench function in software. All inputs
+   to the top-level function are saved in input test vector files.
+2. SmartHLS generates an RTL testbench that will read the input test
+   vector files from step 1. SmartHLS uses QuestaSim to simulate the RTL
+   testbench and SmartHLS-generated Verilog. The module outputs are
+   saved into output simulation files.
+3. SmartHLS reruns your `main()` testbench function in software but
+   replaces the top-level function calls with the return value from the
+   output simulation files from step 2. If the hardware outputs are
+   correct then the `main()` function will still return 0 (`PASS`).
 
 The co-simulation flow is useful to run as a sanity check that the
 SmartHLS generated hardware is correct and to report the number of clock
@@ -1334,14 +1328,14 @@ We are targeting PolarFire® MPF300TS device. Click OK:
 
 The SmartHLS project device setting does a few things:
 
-1)  Sets up internal operator delay models for the target family. These
-    delay models are used by SmartHLS to decide how much pipelining to
-    add in the circuit to meet the Fmax constraint.
-2)  Passes the part number to Libero® SoC when running FPGA synthesis,
-    place, and route (![](.//media/image65.png)) to get resource/Fmax
-    results.
-3)  Account for FPGA family-specific issues – for example SmartFusion2
-    RAMs do not support power-up initialization.
+1) Sets up internal operator delay models for the target family. These
+   delay models are used by SmartHLS to decide how much pipelining to
+   add in the circuit to meet the Fmax constraint.
+2) Passes the part number to Libero® SoC when running FPGA synthesis,
+   place, and route (![](.//media/image65.png)) to get resource/Fmax
+   results.
+3) Account for FPGA family-specific issues – for example SmartFusion2
+   RAMs do not support power-up initialization.
 
 ## Design FPGA Implementation: Resources and Timing
 
@@ -1389,6 +1383,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 6) + (12 * 0) = 216.
 ```
+
 The demo design we want to integrate this block into has a required
 clock period of 6.734 ns. This means the synthesized period of the Alpha
 Blending block must be at most 6.734 ns.
@@ -1431,9 +1426,11 @@ Browse.
 <p align="center"><img src=".//media/image72.png"/></p></br>
 
 Now navigate to your `Libero.exe`, for example:
+
 ```
 C:\Microchip\Libero_SoC_2024.2\Designer\bin\libero.exe
 ```
+
 Click OK.
 
 <p align="center"><img src=".//media/image73.png"/></p></br>
@@ -1471,15 +1468,14 @@ SolutionCore to only consider Fabric resources in Table 3.
 Interface LUTs/DFFs)</p>
 <p align="center">
 
-|                  | **SmartHLS Alpha Blend** | **SolutionCore Alpha Blend** |
-| ---------------- | ------------------------ | ---------------------------- |
-| **Fabric 4LUTs** | 153                      | 273                          |
-| **Fabric DFFs**  | 12                       | 242                          |
+|                        | **SmartHLS Alpha Blend** | **SolutionCore Alpha Blend** |
+| ---------------------- | ------------------------------ | ---------------------------------- |
+| **Fabric 4LUTs** | 153                            | 273                                |
+| **Fabric DFFs**  | 12                             | 242                                |
 
 </p></br>
 
-
-## SmartHLS Design Complexity vs SolutionCore RTL 
+## SmartHLS Design Complexity vs SolutionCore RTL
 
 We can now compare the complexity of the original alpha blend
 SolutionCore Verilog design and the SmartHLS C++ design. We have
@@ -1514,55 +1510,57 @@ SmartHLS-generated Alpha Blend block and import the IP component into
 SmartDesign. This will showcase the design flow for integrating SmartHLS
 generated Verilog Cores into Libero® SoC SmartDesign.
 
-1.  Open the `alpha_blend.cpp` source file in the `alpha_blend` project in
-    the Project Explorer.  
-    <p align="center"><img src=".//media/image79.png"/></p></br>
-2.  Click the “Compile Software to Hardware” button
-    ![](.//media/image80.png) on the top toolbar.
-3.  Launch Libero SoC 2024.2 and open the project: “`Libero/Libero_training1/Libero_training1.prjx`” you generated as part of the [prerequisites](#generating-the-libero-project) .
-    On Windows, if you see errors about missing files or errors in Synthesis, you will need to move the project to a directory with a short name (such as `C:\Downloads` or `C:\Workspace`) to avoid issues with long filenames.
-    
-    Note: The Libero project was created when SmartHLS still had the
-    name “LegUp”, so you might see some places with the word LegUp. This
-    will be addressed in a future version of the training.
+1. Open the `alpha_blend.cpp` source file in the `alpha_blend` project in
+   the Project Explorer.
 
-4.  Navigate to the Design Hierarchy and search for “`alpha_blend`”.
-    Right click the `alpha_blend_top` design component and select Remove
-    Core Definition, then right click again and Unlink. We want to avoid
-    any duplicate blocks when importing the new `alpha_blend_top` HDL+
-    block from SmartHLS.
+   <p align="center"><img src=".//media/image79.png"/></p></br>
+2. Click the “Compile Software to Hardware” button
+   ![](.//media/image80.png) on the top toolbar.
+3. Launch Libero SoC 2024.2 and open the project: “`Libero/Libero_training1/Libero_training1.prjx`” you generated as part of the [prerequisites](#generating-the-libero-project) .
+   On Windows, if you see errors about missing files or errors in Synthesis, you will need to move the project to a directory with a short name (such as `C:\Downloads` or `C:\Workspace`) to avoid issues with long filenames.
+
+   Note: The Libero project was created when SmartHLS still had the
+   name “LegUp”, so you might see some places with the word LegUp. This
+   will be addressed in a future version of the training.
+4. Navigate to the Design Hierarchy and search for “`alpha_blend`”.
+   Right click the `alpha_blend_top` design component and select Remove
+   Core Definition, then right click again and Unlink. We want to avoid
+   any duplicate blocks when importing the new `alpha_blend_top` HDL+
+   block from SmartHLS.
+
 <p align="center"><img src=".//media/image81.png"/></p></br>
 
-5.  Without clearing the search, double click the `video_pipelining`
-    SmartDesign file to open the `video_pipelining` SmartDesign Canvas.
+5. Without clearing the search, double click the `video_pipelining`
+   SmartDesign file to open the `video_pipelining` SmartDesign Canvas.
+
 <p align="center"><img src=".//media/image82.png"/></p></br>
 
-6.  Find the `alpha_blend_top` module which should now be red.
+6. Find the `alpha_blend_top` module which should now be red.
+
 <p align="center"><img src=".//media/image83.png"/></p></br>
 
-7.  On the top toolbar, click Project-\>Execute Script... and run the
-    `create_hdl_plus.tcl` file in the
-    `alpha_blend\hls_output\scripts\libero` SmartHLS project directory.
-    SmartDesign will open a report window when it finishes. Make sure
-    the script executed successfully and close the report window.  
-    <p align="center"><img src=".//media/image84.png"/></p></br>
-    The tcl script may replace the component and the module will no longer be red.
-    If the block is still red, follow step 8.
+7. On the top toolbar, click Project-\>Execute Script... and run the
+   `create_hdl_plus.tcl` file in the
+   `alpha_blend\hls_output\scripts\libero` SmartHLS project directory.
+   SmartDesign will open a report window when it finishes. Make sure
+   the script executed successfully and close the report window.
 
-8.  Right click the red `alpha_blend_top_0` block and select Replace
-    Component… to replace the block with the newly imported
-    `alpha_blend_top`.
+   <p align="center"><img src=".//media/image84.png"/></p></br>
+   The tcl script may replace the component and the module will no longer be red.
+   If the block is still red, follow step 8.
+8. Right click the red `alpha_blend_top_0` block and select Replace
+   Component… to replace the block with the newly imported
+   `alpha_blend_top`.
 
-    <p align="center"><img src=".//media/image86.png"/>   <img src=".//media/image85.png"/></p></br>
+   <p align="center"><img src=".//media/image86.png"/>   <img src=".//media/image85.png"/></p></br>
 
-    If this component is not in the list, you can instantiate it manually from the Design Hierarchy:
-    <p align="center"><img src=".//media/image87.png"/></p></br>
-    And then connect it manually to replace the red module.
+   If this component is not in the list, you can instantiate it manually from the Design Hierarchy:
 
-9.  Click the “Generate Component” (![](.//media/image88.png)) button in
-    the SmartDesign toolbar for video\_pipelining and its parent
-    component VIDEO\_KIT\_TOP.
-
+   <p align="center"><img src=".//media/image87.png"/></p></br>
+   And then connect it manually to replace the red module.
+9. Click the “Generate Component” (![](.//media/image88.png)) button in
+   the SmartDesign toolbar for video\_pipelining and its parent
+   component VIDEO\_KIT\_TOP.
 10. The alpha\_blend block has now been integrated and the project is
     ready for synthesis, place, and route. We skip this step for now
     since this will take 1-2 hours.
@@ -1587,9 +1585,10 @@ In the pipeline schedule, the circuit can finish in 5 cycles and starts
 a new load every clock cycle. On cycle 3, the pipelined circuit is
 executing a Load, Comp, and Store from three different loop iterations
 in parallel, fully utilizing the FPGA hardware resources.
+
 <p align="center"><img src=".//media/image89.png"/>   <img src=".//media/image90.png"/></br>
 
-Figure 18: Comparing sequential versus pipelined hardware operations.</p>
+Figure 18: Comparing sequential versus pipelined hardware operations.`</p>`
 
 When pipelining, SmartHLS will automatically analyze dependencies and
 partition operations into pipeline stages to minimize the ***initiation
@@ -1600,10 +1599,12 @@ into the pipeline every clock cycle.
 
 Loop pipelining can be achieved in SmartHLS with the loop pipeline
 pragma or the function pipeline pragma:
+
 ```
 #pragma HLS loop pipeline
 #pragma HLS function pipeline
 ```
+
 Loop pipelining only applies to a specific loop in a C++ function.
 Meanwhile, function pipelining is applied to an entire C++ function and
 SmartHLS will automatically unroll all loops in that function.
@@ -1618,6 +1619,7 @@ examples of pipelines where the initiation interval cannot be 1.
 
 ![](.//media/image2.png)In the Project Explorer tab, click the project
 `pipeline_hazards` and open `pipeline_hazards.cpp`.
+
 <p align="center"><img src=".//media/image91.png"/></p></br>
 
 ![](.//media/image2.png)There are three functions in this file
@@ -1626,6 +1628,7 @@ Before we look at the functions, compile the project to hardware
 ![](.//media/image80.png) to verify that the pipelines generated have II
 greater than 1. Near the bottom of the Console output, you should find
 the following:
+
 ```
 Info: Generating pipeline for loop on line 10 of pipeline_hazards.cpp with label "for_loop_pipeline_hazards_cpp_10_2".
       Pipeline initiation interval = 3.
@@ -1634,12 +1637,14 @@ Info: Generating pipeline for loop on line 18 of pipeline_hazards.cpp with label
 Info: Generating pipeline for loop on line 28 of pipeline_hazards.cpp with label "for_loop_pipeline_hazards_cpp_28_2".
       Pipeline initiation interval = 2.
 ```
+
 SmartHLS prints out pipelining information for each loop in the Console.
 This confirms that the three pipelines in the three examples have II
 greater than 1.
 
 SmartHLS also prints this information to the `summary.hls.main.rpt` file
 found in the reports directory.
+
 <p align="center"><img src=".//media/image92.png"/></p></br>
 
 ![](.//media/image2.png)Double click summary.hls.main.rpt to open it and
@@ -1647,6 +1652,7 @@ then scroll down to section 2: Function and Loop Scheduling Results.
 Scroll to the right to see the same loop pipelining information. Notice
 there is more information here than in the Console output, such as the
 pipeline length. Now close the file.
+
 ```
 ====== 2. Function and Loop Scheduling Results ======
 +-----------------------------------------------------------+
@@ -1677,6 +1683,7 @@ multiply, and 1 cycle for the store before starting every loop
 iteration. Therefore, the pipeline initiation interval is 3 cycles (1 +
 1 + 1). A diagram of how the pipeline schedule would look is presented
 in Figure 19.
+
 ```c
 void cross_iteration_dependency( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
@@ -1686,6 +1693,7 @@ void cross_iteration_dependency( volatile int array[N] ) {
     }
 }
 ```
+
 <p align="center"><img src=".//media/image93.png"/></br>Figure 19: Example of initiation interval of 3 due to cross-iteration
 dependency.</p></br>
 
@@ -1693,6 +1701,7 @@ dependency.</p></br>
 generated from compiling the project to hardware in the previous step.
 Near the bottom of the Console there is the following output. You might
 need to scroll up a bit to see it.
+
 ```
 Info: Cross-iteration dependency does not allow initiation interval (II) of 1.
     Dependency (distance = 1) from 'store' operation for array 'array' (at line 11 of pipeline_hazards.cpp) to
@@ -1743,6 +1752,7 @@ interval must be 2 due to resource contention on the single multiplier.
 In the schedule of Figure 20, there is only one multiply operation in
 any clock cycle (column). A diagram of how the pipeline would look like
 is presented in Figure 20.
+
 ```c
 void functional_unit_contention( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
@@ -1754,11 +1764,13 @@ void functional_unit_contention( volatile int array[N] ) {
     }
 }
 ```
+
 <p align="center"><img src=".//media/image96.png"/></br>Figure 20: Example of functional unit contention in a loop pipeline</p></br>
 
 ![](.//media/image2.png)In the Console output, find the messages about
 resource constraints generated for this pipeline. This should be above
 the messages generated for the pipeline in the previous example.
+
 ```
 Info: Resource constraint limits initiation interval to 2.
     Resource 'signed_multiply_32' has 2 uses per cycle but only 1 units
@@ -1772,6 +1784,7 @@ available.
 |                       | Total # of Competing Uses       | 2                   |
 +-----------------------+---------------------------------+---------------------+
 ```
+
 This table shows the operations that caused resource contention in the
 pipeline. SmartHLS mentions that there are 2 uses of the functional unit
 “`signed_multiply_32`" but only one unit available.
@@ -1798,6 +1811,7 @@ until two cycles later. The pipeline initiation interval must be 2 due
 to resource contention on the read/write ports. In the schedule of
 Figure 21 there is only one iteration performing memory operation in any
 clock cycle (column).
+
 ```c
 void memory_contention( volatile int array[N] ) {
 #pragma HLS loop unroll factor(1)
@@ -1807,6 +1821,7 @@ void memory_contention( volatile int array[N] ) {
     }
 }
 ```
+
 <p align="center"><img src=".//media/image99.png"/></p></br>
 
 Figure 21: Example of memory contention in a loop pipeline. Two loads
@@ -1820,6 +1835,7 @@ will then dictate the II of the entire pipeline.
 ![](.//media/image2.png)In the Console output, find the messages about
 resource constraints generated for this pipeline. This should be above
 the messages generated for the pipeline in the previous example.
+
 ```
 Info: Resource constraint limits initiation interval to 2.
     Resource '@main_entry_array@_local_memory_port' has 3 uses per
@@ -1908,18 +1924,18 @@ interface for the RGB2YCbCr is described in Table 1.
 
 Table 4: RGB2YCbCr SolutionCore IP Interface
 
-| **Signal Name** | **Direction** | **Width** | **Description**        |
-| --------------- | ------------- | --------- | ---------------------- |
-| RESETN\_I       | Input         | 1-bit     | Active low async reset |
-| SYS\_CLK\_I     | Input         | 1-bit     | System Clock           |
-| RED\_I          | Input         | 8-bits    | Red input pixel        |
-| GREEN\_I        | Input         | 8-bits    | Green input pixel      |
-| BLUE\_I         | Input         | 8-bits    | Blue input pixel       |
-| DATA\_VALID\_I  | Input         | 1-bit     | Input data valid       |
-| Y\_OUT\_O       | Output        | 8-bits    | Y luma output          |
-| Cb\_OUT\_O      | Output        | 8-bits    | Cb chroma output       |
-| Cr\_OUT\_O      | Output        | 8-bits    | Cr chroma output       |
-| DATA\_VALID\_O  | Output        | 1-bit     | Output data valid      |
+| **Signal Name** | **Direction** | **Width** | **Description**  |
+| --------------------- | ------------------- | --------------- | ---------------------- |
+| RESETN\_I             | Input               | 1-bit           | Active low async reset |
+| SYS\_CLK\_I           | Input               | 1-bit           | System Clock           |
+| RED\_I                | Input               | 8-bits          | Red input pixel        |
+| GREEN\_I              | Input               | 8-bits          | Green input pixel      |
+| BLUE\_I               | Input               | 8-bits          | Blue input pixel       |
+| DATA\_VALID\_I        | Input               | 1-bit           | Input data valid       |
+| Y\_OUT\_O             | Output              | 8-bits          | Y luma output          |
+| Cb\_OUT\_O            | Output              | 8-bits          | Cb chroma output       |
+| Cr\_OUT\_O            | Output              | 8-bits          | Cr chroma output       |
+| DATA\_VALID\_O        | Output              | 1-bit           | Output data valid      |
 
 </div>
 The desired RTL interface splits up the input red, green, blue values
@@ -1927,7 +1943,11 @@ into three separate 8-bit inputs sharing a data valid. In contrast to
 the Alpha Blend module which combined the RGB 8-bits values into a
 single 24-bit input.
 
-## RGB2YCbCr Block
+
+The desired RTL interface splits up the input red, green, blue values
+into three separate 8-bit inputs sharing a data valid. In contrast to
+the Alpha Blend module which combined the RGB 8-bits values into a
+single 24-bit input.## RGB2YCbCr Block
 
 ![](.//media/image2.png)In the SmartHLS project explorer, double click
 the “RGB2YCbCr” project and open up the `RGB2YCbCr.cpp` file.
@@ -1937,6 +1957,7 @@ the “RGB2YCbCr” project and open up the `RGB2YCbCr.cpp` file.
 ![](.//media/image2.png)Now run SmartHLS Compile Software to Hardware
 (click the ![](.//media/image39.png) button) and look at the
 `summary.hls.RGB2YCbCr_smarthls.rpt` in section 1 for the RTL interface:
+
 ```
 ====== 1. RTL Interface ======
 
@@ -1968,6 +1989,7 @@ the “RGB2YCbCr” project and open up the `RGB2YCbCr.cpp` file.
 The Verilog top-level module ports that are not listed in the above table are unused. Please tie the unused input ports to 0.
 
 ```
+
 The SmartHLS generated top-level interface matches our desired RTL
 interface from Table 4.
 
@@ -1975,14 +1997,17 @@ interface from Table 4.
 the top-level function “`RGB2YCbCr_smarthls`” on line 27 to see the
 function signature that gets generated into the above interface. This
 function is also pipelined and has two arguments:
+
 ```c
 void RGB2YCbCr_smarthls(hls::FIFO<RGB> &input_fifo,
                         hls::FIFO<YCbCr> &output_fifo) {
 #pragma HLS function top
 #pragma HLS function pipeline
 ```
+
 The `input_fifo` argument is of type `hls::FIFO<RGB>`. With the `RGB` type
 is defined above as struct with three 8-bit RGB values:
+
 ```c
 const int RGB_BITWIDTH = 8;
 struct RGB {
@@ -1991,8 +2016,10 @@ struct RGB {
     ap_uint<RGB_BITWIDTH> B;
 };
 ```
+
 The `output_fifo` argument is of type `hls::FIFO<YCbCr>`. With the `YCbCr`
 type is defined above as struct with three 8-bit YCbCr values:
+
 ```c
 const int YCBCR_BITWIDTH = 8;
 struct YCbCr {
@@ -2008,11 +2035,13 @@ struct, and all elements will share the same 1-bit valid/ready signals.
 
 Now if we look in the body of the top-level function RGB2YCbCr, the line
 calculating the Y (luma) component corresponds to Equation 1:
+
 ```c
 ycbcr.Y = fixpt_t(16) +
     ((fixpt_t( 65.738)*in.R + fixpt_t(129.057)*in.G + fixpt_t(25.064)*in.B)
     >> 8) + fixpt_t(0.5);
 ```
+
 The right shift by 8 corresponds to the divide by 256 in Equation 1. The
 final addition of 0.5 is for rounding since C/C++ will always round down
 to the nearest integer.
@@ -2021,13 +2050,16 @@ For this computation we are using a 18-bit fixed-point type with 10
 integer bits and 8 fractional bits (Q10.8) as defined below using the
 `ap_fixpt` SmartHLS arbitrary precision fixed-point data type (see
 [SmartHLS documentation](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_fixed_point&redirect=true&version=latest)):
+
 ```c
 typedef ap_fixpt<18, 10> fixpt_t;
 ```
+
 ![](.//media/image2.png)Now we will quickly simulate the design in
 software (![](.//media/image59.png) and ![](.//media/image60.png)) to
 verify its functionality. You should see the following output in the
 Console meaning that the software simulation has passed:
+
 ```
 Expected: Y=16 Cb=128 Cr=128 
 Actual: Y=16 Cb=128 Cr=128 
@@ -2043,6 +2075,7 @@ PASS
  
 22:43:07 Build Finished (took 29s.345ms)
 ```
+
 Using SmartHLS fixed-point data types can improve productivity by
 avoiding error prone RTL code that requires the designer to manually
 keep track of the decimal place location after various operations.
@@ -2052,6 +2085,7 @@ initialization and the underlying fixed-point representation.
 ![](.//media/image2.png)For example, we can print the fixed point
 representation of `fixpt_t(65.738)` by adding this code in the main
 function on line 104 after the test case validation loop:
+
 ```c
 std::cout << fixpt_t(65.738).to_fixpt_string(10) << std::endl;
 std::cout << "= " << fixpt_t(65.738).to_double() << std::endl;
@@ -2061,28 +2095,35 @@ Now recompile (![](.//media/image59.png)) and rerun
 (![](.//media/image60.png)) the software. The Console will print out the
 fixed-point underlying 18-bit decimal value of 16,828 which represents
 right before it prints PASS:
+
 ```
 16828 * 2^-8
 = 65.7344
 ```
+
 ![](.//media/image2.png)By default, `ap_fixpt` will truncate bits to
 bring the result closer to negative infinity. If you add `AP_RND` to the
 `fixpt_t` typedef on line 25:
+
 ```c
 typedef ap_fixpt<18, 10, AP_RND> fixpt_t;
 ```
+
 Then save, recompile and rerun software simulation. You will find the
 fixed-point representation will get closer to the desired 65.738 value:
+
 ```
 16829 * 2^-8
 = 65.7383
 ```
+
 For this hardware block, more precise rounding is not necessary so
 remove this change and save.
 
 ![](.//media/image2.png)Undo the above changes, and run the
 Co-simulation to verify that the generated RTL is correct, you should
 see this output in the Console:
+
 ```
 +------------------------+-----------------+--------------------------+... 
 | Top-Level Name         | Number of calls | Simulation time (cycles) |... 
@@ -2117,8 +2158,9 @@ waveforms:
 Figure 23: SW/HW Co-Simulation with Waveforms for RGB2YCbCr SmartHLS Core</p></br>
 
 We can look in the C++ main function for the input test vectors, for
-example on line 80, the 5<sup>th</sup> test input and expected output is
+example on line 80, the 5`<sup>`th`</sup>` test input and expected output is
 given below:
+
 ```c
 // test 5
 in.R = 119; in.G = 138; in.B = 152;
@@ -2126,8 +2168,9 @@ input_fifo.write(in);
 expected.Y = 131; expected.Cb = 137; expected.Cr = 119;
 expected_fifo.write(expected);
 ```
+
 In the waveforms in Figure 23, the first cursor highlights when the
-5<sup>th</sup> test vector is input to the design under test (DUT) on
+5`<sup>`th`</sup>` test vector is input to the design under test (DUT) on
 clock cycle 5 (see `cycle_count` signal). The correct output is received
 on clock cycle 7 as highlighted by the second cursor. Therefore, the
 hardware pipeline has a latency of 2 clock cycles (7 – 5 = 2). You can
@@ -2139,6 +2182,7 @@ every clock cycle, indicating a pipeline initiation interval of 1.
 latency reported is 4 cycles. The various reports may differ by 1-2
 cycles due to handshaking start/finish signals with the instantiating
 module.
+
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: RGB2YCbCr_smarthls_top) ======
 
@@ -2197,14 +2241,15 @@ by constant into adds with shifts-by-constant. In this case, we can save
 <div align="center">
 Table 6: SmartHLS Strength Reduction Optimization
 
-| **Multiply by Constant** | **Fixed Point Representation** | **Equivalent shifts-by-constant and adds**             |
-| ------------------------ | ------------------------------ | ------------------------------------------------------ |
-| 129.057                  | 33,038 x 2<sup>-8</sup>        | \- (1 \<\< 1) + (1 \<\< 4) + (1 \<\< 8) + (1 \<\< 15)  |
-| 25.064                   | 6,416 x 2<sup>-8</sup>         | \+ (1 \<\< 4) + (1 \<\< 8) + (1 \<\< 11) + (1 \<\< 12) |
-| 112.439 (used twice)     | 28,784 x 2<sup>-8</sup>        | \- (1 \<\< 4) + (1 \<\< 7) - (1 \<\< 12) + (1 \<\< 15) |
-| 18.285                   | 4,680 x 2<sup>-8</sup>         | \+ (1 \<\< 3) + (1 \<\< 6) + (1 \<\< 9) + (1 \<\< 12)  |
+| **Multiply by Constant** | **Fixed Point Representation** | **Equivalent shifts-by-constant and adds**       |
+| ------------------------------ | ------------------------------------ | ------------------------------------------------------ |
+| 129.057                        | 33,038 x 2`<sup>`-8`</sup>`      | \- (1 \<\< 1) + (1 \<\< 4) + (1 \<\< 8) + (1 \<\< 15)  |
+| 25.064                         | 6,416 x 2`<sup>`-8`</sup>`       | \+ (1 \<\< 4) + (1 \<\< 8) + (1 \<\< 11) + (1 \<\< 12) |
+| 112.439 (used twice)           | 28,784 x 2`<sup>`-8`</sup>`      | \- (1 \<\< 4) + (1 \<\< 7) - (1 \<\< 12) + (1 \<\< 15) |
+| 18.285                         | 4,680 x 2`<sup>`-8`</sup>`       | \+ (1 \<\< 3) + (1 \<\< 6) + (1 \<\< 9) + (1 \<\< 12)  |
 
 </div></br>
+
 
 We can turn off the SmartHLS strength reduction pass to see the
 difference in resources.
@@ -2230,6 +2275,7 @@ Now in the Project Explorer, right click and select New -\> File:
 
 Enter the file name of “`custom_config.tcl`”. This should match the file
 name entered in the Set HLS Constraints previously. Click Finish:
+
 <p align="center"><img src=".//media/image118.png"/></p></br>
 
 The custom Tcl file allows us to enter advanced SmartHLS Tcl
@@ -2243,6 +2289,7 @@ changes. This will turn off (0) the SmartHLS strength reduction
 ![](.//media/image2.png)Now rerun compile software to hardware
 (![](.//media/image120.png)). Then rerun FPGA synthesis
 (![](.//media/image112.png)). The new resources should be:
+
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: RGB2YCbCr_smarthls_top) ======
 
@@ -2272,6 +2319,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 5) + (12 * 0) = 180.
 ```
+
 Now close all project files.
 
 ## YCbCr2RGB Block
@@ -2285,27 +2333,32 @@ the “YCbCr2RGB” project and open up the `YCbCr2RGB.cpp` file.
 
 The top-level function is `YCbCr2RGB_smarthls()` and implements Equation
 2 in fixed-point math:
+
 <p align="center"><img src=".//media/image121.png"/></p></br>
 
 In this design, the fixed-point type needed 11 integer bits (vs 10
 integer bits for RGB2YCbCr).
+
 ```c
 // Fixed point type: Q11.7
 // 11 integer bits and 7 fractional bits
 typedef ap_fixpt<18, 11> fixpt_t;
 ```
+
 Why was this change needed? To avoid overflow caused by larger numbers
 in the equations.
 
 We also need to perform saturation, which converts negative values to 0,
 and values greater than 255 to 255. We can do this using an 8-bit
 unsigned `ap_ufixpt` type with the `AP_SAT` option:
+
 ```c
 // saturate values to [0, 255] range
 rgb.R = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(R);
 rgb.G = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(G);
 rgb.B = ap_ufixpt<8, 8, AP_TRN, AP_SAT>(B);
 ```
+
 From the SmartHLS [user
 guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_arbitary_precision&redirect=true&version=latest),
 the `AP_SAT` option means that on positive and negative overflow,
@@ -2315,6 +2368,7 @@ respectively.
 ![](.//media/image2.png)Compile (![](.//media/image59.png)) and run
 (![](.//media/image60.png)) the software to verify software correctness.
 You should see “PASS” printed in the Console:
+
 ```
 Expected: R=0 G=136 B=0
 Actual: R=0 G=136 B=0
@@ -2334,9 +2388,11 @@ PASS
 
 23:17:16 Build Finished (took 1s.0ms)
 ```
+
 ![](.//media/image2.png)After compiling software to hardware
 (![](.//media/image122.png)) the following RTL interface should be shown
 in the `summary.hls.YCbCr2RGB_smarthls.rpt` file:
+
 ```
 ====== 1. RTL Interface ======
 
@@ -2365,9 +2421,11 @@ in the `summary.hls.YCbCr2RGB_smarthls.rpt` file:
 |             |                | output_fifo_G                   | 8                | output           |
 +-------------+----------------+---------------------------------+------------------+------------------+
 ```
+
 ![](.//media/image2.png)After running SmartHLS co-simulation
 (![](.//media/image123.png)) you should see the hardware passes all
 tests with the following output in the Console:
+
 ```
 +------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name         | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
@@ -2377,9 +2435,11 @@ tests with the following output in the Console:
 Simulation time (cycles): 11
 SW/HW co-simulation: PASS
 ```
+
 ![](.//media/image2.png)Finally, if you run FPGA synthesis
 (![](.//media/image112.png)) you should see the following expected
 output in `summary.results.rpt`:
+
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: YCbCr2RGB_smarthls_top) ======
 
@@ -2409,6 +2469,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 5) + (12 * 0) = 180.
 ```
+
 Now close all project files.
 
 # Gaussian Blur Filter Block
@@ -2451,6 +2512,7 @@ correspond to a Gaussian distribution centered at the middle element
 sum back to a value between 0 and 255. The values of the filter are
 specifically chosen so that the `DIVISOR` is a power of 2, making the
 hardware implementation of the divide a right-shift instead of a divide.
+
 ```c
 const unsigned int KERNEL_SIZE = 5;
 
@@ -2470,6 +2532,7 @@ We will start with a basic implementation of the Gaussian Blur Filter.
 Scroll down to the `gaussian_filter_memory()` function on line 25.
 Notice this function is marked as the top-level function by the function
 top pragma:
+
 ```c
 // Gaussian Filter.
 void gaussian_filter_memory(hls::ap_uint<1> on,
@@ -2482,6 +2545,7 @@ void gaussian_filter_memory(hls::ap_uint<1> on,
 
 There are two array arguments to the top-level function which represents
 the input image and the filtered output image:
+
 ```c
 unsigned char input_buffer[][WIDTH],
 unsigned char output_buffer[][WIDTH]
@@ -2492,28 +2556,35 @@ specify that these two array arguments of “memory” type interface have a
 certain depth. The depth of the memory must also be specified for the
 co-simulation, since our C++ testbench in `main()` does not use arrays
 with static size.
+
 ```c
 #pragma HLS interface argument(input_buffer) type(memory) num_elements(SIZE)
 #pragma HLS interface argument(output_buffer) type(memory) num_elements(SIZE)
 ```
+
 There is also a third input called “on” which is an unsigned int of size
 1.
+
 ```c
 hls::ap_uint<1> on,
 ```
+
 This input will be connected to DIP switch 1 (SW6) in the demo design
 and turns on or off the Gaussian Blur Filter. On line 38, if the switch
 is turned off (\!on) then we will pass the input directly to the output:
+
 ```c
 if (!on || out_of_bounds) {
     output_buffer[i][j] = input_buffer[i][j];
     continue;
 }
 ```
+
 The filtering algorithm can be seen in the main loop on line 43. The 5x5
 area around the current pixel under consideration is multiplied with its
 corresponding Gaussian coefficient. The result is summed, normalized
 then stored in the output array.
+
 ```c
 unsigned int sum = 0;
 for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
@@ -2533,15 +2604,18 @@ output_buffer[i][j] = (unsigned char)sum;
 (![](.//media/image54.png)) on the top bar and then click the run
 software (![](.//media/image55.png)) button. You should see the output
 in the Console stating that it passed:
+
 ```
 Result: 2073600
 RESULT: PASS
 ```
+
 The testbench for this design is found in the `main()` function on line
 59. This is very similar to the testbench of the Alpha Blending design
 where a 1920x1080 bmp image is read as input. There is also a golden
 output bmp image used to compare with the pixels generated by the filter
 implementation `gaussian_filter_memory()`.
+
 ```c
 gaussian_filter_memory(on, input_image, output_image_gaussian);
 
@@ -2553,14 +2627,14 @@ for (i = 0; i < HEIGHT; i++) {
         output_image_ptr->r = hw;
         output_image_ptr->g = hw;
         output_image_ptr->b = hw;  
-        
+      
         if (hw != gold) {
             printf("ERROR: ");
             printf("i = %d j = %d gold = %d hw = %d\n", i, j, gold, hw);
         } else {
             matching++;
         }
-    
+  
         output_image_ptr++;
         golden_output_image++;
     }
@@ -2588,6 +2662,7 @@ this training we will run with a smaller image.
 defined on line 5 and then save the file. The commented out `FAST_COSIM`
 define might be folded into the comment by eclipse and needs to be
 expanded by clicking the plus button.
+
 ```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
@@ -2600,22 +2675,27 @@ generating the hardware to be exported to SmartDesign, otherwise the
 generated hardware will be for the incorrect input size. This change is
 necessary as the function depends on the image sizes in the for-loops on
 line 34.
+
 ```c
 for (int i = 0; i < HEIGHT; i++) {
     for (int j = 0; j < WIDTH; j++) {
 ```
+
 ![](.//media/image2.png)You can recompile (![](.//media/image59.png))
 and rerun (![](.//media/image60.png)) the software to verify correctness
 on the new input:
+
 ```
 Result: 5600 
 RESULT: PASS 
 21:58:06 Build Finished (took 5s.849ms)
 ```
+
 ![](.//media/image2.png)Now rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)) and then run co-simulation with QuestaSim
 (click the button ![](.//media/image62.png)). You should see the
 following output in the Console stating that the co-sim has passed:
+
 ```
 +----------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name             | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
@@ -2628,6 +2708,7 @@ SW/HW co-simulation: PASS
 
 09:54:26 Build Finished (took 37s.205ms)
 ```
+
 This version of the Gaussian filter is very similar to a software
 implementation of a Gaussian filter. However, there are multiple ways to
 improve C++ code to get better hardware performance.
@@ -2650,6 +2731,7 @@ to be external to the SmartHLS block itself and only provides the
 control signals to read and write to the memory based on the loads and
 stores from inside the function. Also notice that the `ap_uint` argument
 becomes a single input wire at the interface:
+
 ```
 +---------------------------------------------------------------------------------------------------------+
 | RTL Interface Generated by SmartHLS                                                                     |
@@ -2695,48 +2777,61 @@ execution.
 ![](.//media/image2.png)A simple case is if your main function ever
 returns a non-zero value in software. For example, change the `main()`
 function to always return 1 on line 129 in `gaussian_filter.cpp`:
+
 ```c
 //return result_incorrect;
 return 1;
 ```
+
 Now run co-simulation and you will see the output:
+
 ```
 Error: Running C testbench failed. Make sure main() returns 0.
 ```
+
 Now undo the change.
 
 ![](.//media/image2.png)Another time that co-simulation could fail is if
 the user specifies an incorrect value in a SmartHLS pragma. For example,
 specifying an incorrect depth on a memory interface such as the
 following on line 29:
+
 ```c
 #pragma HLS interface argument(input_buffer) type(memory) num_elements(SIZE)
 ```
+
 For example, we can try changing the correct SIZE array depth to a wrong
 value like 10:
+
 ```c
 #pragma HLS interface argument(input_buffer) type(memory) num_elements(10)
 ```
 
 Now we rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)):
+
 ```
 Error: Expect the specified depth (10) for argument 'input_buffer' to
 be a multiple of the combined depth of the inner dimensions (100).
 Please change the specified depth to a multiple of the combined inner
 dimension depth (100).
 ```
+
 We were not able to get to the co-simulation stage, since SmartHLS was
 able to detect that the depth was not a multiple of the `WIDTH` (which is
 100):
+
 ```c
 unsigned char input_buffer[][WIDTH],
 ```
+
 ![](.//media/image2.png)We can try another wrong array depth which is a
 multiple of 100 to avoid this SmartHLS check:
+
 ```c
 #pragma HLS interface argument(input_buffer) type(memory) num_elements(100)
 ```
+
 Now rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)). Since SmartHLS relies on the user to set
 the correct depth value, SmartHLS does not realize the depth is wrong
@@ -2744,6 +2839,7 @@ and will not give an error message.
 
 Now when we rerun co-simulation (![](.//media/image128.png)) we will see
 that co-simulation fails:
+
 ```
 +----------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name             | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
@@ -2753,6 +2849,7 @@ that co-simulation fails:
 Simulation time (cycles): 88,021
 SW/HW co-simulation: FAIL
 ```
+
 In this case, the generated circuit is still correct, but SmartHLS’s
 automatically generated co-simulation testbench is incorrect. Because we
 specified the wrong depth, the co-simulation testbench is now missing
@@ -2772,7 +2869,7 @@ project files.
 
 We will continue trying to improve the base Gaussian Filter design.
 
-![](.//media/image2.png)Open the `Gaussian_Memory_Interface_Pipelined` 
+![](.//media/image2.png)Open the `Gaussian_Memory_Interface_Pipelined`
 project and then open the `gaussian_filter.cpp` source file.
 
 <p align="center"><img src=".//media/image129.png"/></p></br>
@@ -2783,9 +2880,11 @@ pragma, the loop body will automatically be partitioned into pipeline
 stages. The module will also only run the pipeline for the number of
 iterations of the loop before requiring the start signal to be
 re-asserted. This optimization should increase throughput considerably.
+
 ```c
 #pragma HLS loop pipeline
 ```
+
 Note, loop pipelining will flatten the loop body by inlining any
 functions and unrolling any loops. This is to make sure the loop body
 can be properly analyzed and partitioned into pipeline stages. As the
@@ -2795,26 +2894,31 @@ loop body. Not only would this use a massive amount of resources, it
 will also slow down compilation considerably, both of which we want to
 avoid. To work around this, the double for loop can be collapsed into a
 single for loop so that no loop unrolling needs to occur.
+
 ```c
 #pragma HLS loop pipeline
     for (int i = 0; i < (HEIGHT * WIDTH); i++) {
         unsigned int pos_i = i / WIDTH;
         unsigned int pos_j = i % WIDTH;
 ```
+
 ![](.//media/image2.png)Now run “Compile Software to Hardware” (click
 the ![](.//media/image39.png) button).
 
 Look in the Console to find the message about loop pipelining. This
 message states that the initiation interval of the pipeline is 13 and
 the number of stages is 23.
+
 ```
 Info: Done pipelining the loop on line 35 of gaussian_filter.cpp with
 label "for_loop_gaussian_filter_cpp_35_5".
     Pipeline Initiation Interval (II) = 13. Pipeline length = 18.
 ```
+
 We can see that there is memory contention within the loop pipeline that
 prevents the initiation interval from becoming 1 in the SmartHLS Info
 message:
+
 ```
 Info: Pipelining the loop on line 35 of gaussian_filter.cpp with label "for.loop:gaussian_filter.cpp:35:5".
 Info: Assigning new label to the loop on line 35 of gaussian_filter.cpp with label "for_loop_gaussian_filter_cpp_35_5"
@@ -2860,6 +2964,7 @@ line 48 of `gaussian_filter.cpp` but there are only 2 memory ports to use
 (dual-port RAM in FPGA). If we look at line 48 of `gaussian_filter.cpp`
 we find that all the loads come from the image values read from
 `input_buffer` used in calculating the new filtered value.
+
 ```c
 for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
     for (unsigned int n = 0; n < KERNEL_SIZE; n++) {
@@ -2869,11 +2974,13 @@ for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
     }
 }
 ```
+
 Why is there no memory contention for the `GAUSSIAN` 5x5 array which is
 also accessed every iteration? Because SmartHLS unrolls the loops and
 realizes that `GAUSSIAN` is a constant array. Therefore, SmartHLS can
 automatically replace `GAUSSIAN` array accesses with constant values,
 becoming equivalent to the following:
+
 ```c
 unsigned int sum = 0;
 sum += ((unsigned int)input_buffer[pos_i + 0 - center]
@@ -2898,6 +3005,7 @@ Note, the Iteration Count and Latency are much larger than the ones we
 saw when running co-sim in the design without pipelining, but this is
 due to the design being generated for the full 1920x1080 input while the
 co-sim we ran used the reduced 100x56 input.
+
 ```
 ====== 2. Function and Loop Scheduling Results ======
 
@@ -2909,15 +3017,19 @@ co-sim we ran used the reduced 100x56 input.
 | for.loop:gaussian_filter.cpp:35:5 | line 35 of gaussian_filter.cpp | 2073600    | 16                | 13 | 26956803      |
 +-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
 ```
+
 ![](.//media/image2.png)Now uncomment `FAST_COSIM` on `define.hpp` line 5, save, then rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)) and then run co-simulation with QuestaSim
 (click the button ![](.//media/image62.png)).
+
 ```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
 ```
+
 Once co-sim finishes, you should see the following output in the
 Console:
+
 ```
 +--------------------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name                       | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
@@ -2930,9 +3042,9 @@ SW/HW co-simulation: PASS
 
 10:18:42 Build Finished (took 1m:13s.112ms)
 ```
+
 With this pipeline optimization and pipeline length reduced to 16, the
-time to process one frame becomes approximately `HEIGHT * WIDTH * 13 +
-LATENCY` (100\*56\*13+16 = 72,816), which is a significant improvement
+time to process one frame becomes approximately `HEIGHT * WIDTH * 13 + LATENCY` (100\*56\*13+16 = 72,816), which is a significant improvement
 over the previous design. We can see that this has reduced the cycle
 latency from 88,021 to 72,816 which is a ~17% reduction in latency.
 
@@ -3009,28 +3121,35 @@ open the `gaussian_filter.cpp` source file.
 Scroll down to the `gaussian_filter_pipelined()` top-level function on
 line 45. Both the `input_fifo` and `output_fifo` function arguments are
 now FIFO interfaces.
+
 ```c
 void gaussian_filter_pipelined(hls::ap_uint<1> on_switch,
                                hls::FIFO<unsigned char> &input_fifo,
                                hls::FIFO<unsigned char> &output_fifo) {
 ```
+
 Now scroll down to line 58. The loop within
 `gaussian_filter_pipelined()` is still loop pipelined.
+
 ```c
 #pragma HLS loop pipeline
     for (unsigned int i = 0; i < (HEIGHT * WIDTH + LineBufferFillCount); i++) {
 ```
+
 On line 52, the declaration of the LineBuffer takes as C++ template
 arguments: the data type, the width of the image processed and the size
 of the filter. These arguments to tell the LineBuffer how much memory to
 allocate for the internal buffer.
+
 ```c
 hls::LineBuffer<unsigned char, WIDTH, KERNEL_SIZE> line_buffer;
 ```
+
 Every iteration of the loop, there will be a new pixel that gets shifted
 into the internal array of the LineBuffer. We want to pre-fill the line
 buffer to have all the necessary pixels to filter the first image pixel
 before we start the filtering.
+
 ```c
 line_buffer.ShiftInPixel(input_pixel);
 
@@ -3040,9 +3159,11 @@ if (!is_filled(KERNEL_SIZE, i)) {
     continue;
 }
 ```
+
 Once we fill the LineBuffer, we filter the image as normal on line 84 by
 using the *window* member of the LineBuffer which provides the pixels in
 the window of the pixel currently being processed.
+
 ```c
 unsigned int sum = 0;
 for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
@@ -3054,6 +3175,7 @@ for (unsigned int m = 0; m < KERNEL_SIZE; m++) {
 sum /= DIVISOR;
 output_fifo.write((unsigned char)sum);
 ```
+
 ![](.//media/image2.png)Using FIFOs and the LineBuffer data structure,
 we can reduce the initiation interval of the pipeline to 1 and process
 one pixel every single cycle. To see this, compile the design to
@@ -3061,15 +3183,18 @@ hardware (![](.//media/image39.png)).
 
 Upon successful pipelining, you should find the following message in the
 Console output stating that the pipeline initiation interval is 1:
+
 ```
 Info: Generating pipeline for loop on line 59 of gaussian_filter.cpp
 with label "for_loop_gaussian_filter_cpp_59_5".
     Pipeline initiation interval = 1. 
 ```
+
 This result can also be found in the
 summary.hls.gaussian\_filter\_pipelined.rpt under section 2. Find
 *gaussian\_filter\_pipelined* and scroll to the right to see the
 pipeline result information.
+
 ```
 ====== 2. Function and Loop Scheduling Results ======
 
@@ -3081,15 +3206,19 @@ pipeline result information.
 | for.loop:gaussian_filter.cpp:59:5 | line 59 of gaussian_filter.cpp | 2077442    | 3                 | 1  | 2077444       |
 +-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
 ```
+
 Also note, further up in the Console output you can find a console
 message stating that a LineBuffer memory has been partitioned.
+
 ```
 Info: Partitioning memory: line_buffer into 30 partitions.
 ```
+
 ![](.//media/image2.png)Go to
 `summary.hls.gaussian_filter_pipelined.rpt` and scroll to section 3. There
 are additional partitioned memories that can be found here that are not
 mentioned in the Console.
+
 ```
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 | Local Memories                                                                                                                            |
@@ -3102,8 +3231,10 @@ mentioned in the Console.
 | gaussian_filter_pipelined_BB_0_line_buffer_prev_ro_2 | gaussian_filter_pipelined | RAM  | 15360       | 8          | 1920  | 1            |
 +------------------------------------------------------+---------------------------+------+-------------+------------+-------+--------------+
 ```
+
 See section 1 of the reports to verify the interface ports which have
 now changed to FIFOs.
+
 ```
 ====== 1. RTL Interface ======
 
@@ -3130,10 +3261,12 @@ now changed to FIFOs.
 | on_switch   | Scalar Argument    | on_switch                       | 1                | input            |
 +-------------+--------------------+---------------------------------+------------------+------------------+
 ```
+
 ![](.//media/image2.png)Again, uncomment `FAST_COSIM` in `define.hpp` line
 5, save, then rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)) and then run co-simulation with QuestaSim
 (click the button ![](.//media/image62.png)).
+
 ```c
 // uncomment this line to test on a smaller image for faster co-simulation
 #define FAST_COSIM
@@ -3155,6 +3288,7 @@ SW/HW co-simulation: PASS
 
 10:33:51 Build Finished (took 1m:12s.814ms)
 ```
+
  
 Notice that the cycle latency has been further reduced to 5,809. This
 can be found roughly by `HEIGHT * WIDTH + LATENCY` (100\*56+6=5606). This
@@ -3164,13 +3298,16 @@ the version without pipelining (88,021) by 93%.
 ![](.//media/image2.png)Now re-comment FAST\_COSIM in define.hpp, save,
 then rerun SmartHLS (![](.//media/image127.png)) to regenerate the
 hardware for 1920x1080 inputs.
+
 ```c
 // uncomment this line to test on a smaller image for faster co-simulation
 // #define FAST_COSIM
 ```
+
 ![](.//media/image2.png)Synthesize to design to FPGA
 (![](.//media/image112.png)) and check the FMAX and resource usage in
 the `summary.results.rpt` file.
+
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: gaussian_filter_pipelined_top) ======
 
@@ -3200,6 +3337,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 4) + (36 * 0) + (12 * 0) = 144.
 ```
+
 We can see from section 2 of summary.result.rpt that the minimum period
 for the synthesized block is 4.632 ns, which is below the threshold of
 6.353 ns from the demo design. This means we can safely integrate this
@@ -3215,6 +3353,7 @@ an image, as shown in Figure 26: Side-by-side comparison of original
 (left) and Canny Edge Filtered (right) image. The left image is the
 original, and the right image is after running the Canny edge detection
 filter.
+
 <p align="center"><img src=".//media/image132.jpeg"> <img src=".//media/image133.png">
 Figure 26: Side-by-side comparison of original (top) and Canny Edge
 Filtered (left) images</p></br>
@@ -3247,8 +3386,8 @@ dataflow pragma causes the four sub-functions to overlap their execution
 and is ideal for generating a design where multiple functions are
 connected to operate as a single pipeline. To learn more about the
 dataflow pragma, see the [SmartHLS
-Documentation](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_flow&redirect=true&version=latest
-).
+Documentation](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_flow&redirect=true&version=latest).
+
 ```c
 void canny(hls::FIFO<unsigned char> &input_fifo,
            hls::FIFO<unsigned char> &output_fifo) {
@@ -3271,11 +3410,13 @@ void canny(hls::FIFO<unsigned char> &input_fifo,
     hysteresis_filter(output_fifo_nm, output_fifo);
 }
 ```
+
 The testbench for the Canny design on line 108 is similar to the
 Gaussian Filter testbench, however this design has an extra software
 implementation to compare against the hardware optimized version. The
 testbench checks that the software output, hardware output and golden
 output are all equal during co-simulation.
+
 ```c
 // output validation
 for (i = 0; i < HEIGHT; i++) {
@@ -3301,12 +3442,14 @@ for (i = 0; i < HEIGHT; i++) {
     }
 }
 ```
+
 ![](.//media/image2.png)Now generate the hardware
 (![](.//media/image127.png)) and then open the summary.hls.canny.rpt
 file, go to section 2 and scroll to the right to verify that all of the
 four filter functions have an initiation interval of 1. As every filter
 in the top level function has an initiation interval of 1, the entire
 pipeline then has an initiation interval of 1 as well.
+
 ```
 ====== 2. Function and Loop Scheduling Results ======
 
@@ -3346,11 +3489,13 @@ pipeline then has an initiation interval of 1 as well.
 +-------------------------------------+----------------------------------+------------+-------------------+----+---------------+
 
 ```
+
 ![](.//media/image2.png)Now we uncomment `FAST_COSIM` in `define.hpp`,
 save, then rerun SmartHLS to generate the hardware
 (![](.//media/image127.png)) and then run co-simulation with QuestaSim
 (![](.//media/image62.png)). You should see the following output in the
 Console:
+
 ```
 Retrieving hardware outputs from RTL simulation for canny function call 1.
 Result: 5600
@@ -3359,6 +3504,7 @@ RESULT: PASS
 Simulation time (cycles): 6,119
 SW/HW co-simulation: PASS
 ```
+
 Notice that although the pipeline is longer for Canny, the cycle latency
 of the simulation is about the same as that of the pipelined Gaussian
 design. This is because extra latency in a pipeline with initiation
@@ -3380,6 +3526,7 @@ click the `canny.cpp` source file.
 
 Notice on line 6 that canny now has 4 additional scalar inputs which
 represents the switch input that in turn goes to each filter.
+
 ```c
 void canny(bool switch_0,
            bool switch_1,
@@ -3406,9 +3553,11 @@ void canny(bool switch_0,
     hysteresis_filter(switch_3, output_fifo_nm, output_fifo);
 } 
 ```
+
 Inside of the functions, for example on line 37 of
 `hysteresis_filter.cpp` this switch is used to decide whether to pass
 through the pixel or apply filtering.
+
 ```c
 // if filter is off, pass pixel through
 if (!on_switch) {
@@ -3416,10 +3565,12 @@ if (!on_switch) {
     continue;
 }
 ```
+
 ![](.//media/image2.png)Run “Compile Software to Hardware” (click the
 ![](.//media/image39.png) button). Open the `summary.hls.canny.rpt` file
 and verify that there are now four more scalar interfaces for each of
 the switches in section 1.
+
 ```
 +-------------+--------------------+-------------+------------------+------------------+
 | switch_0    | Scalar Argument    | switch_0    | 1                | input            |
@@ -3431,8 +3582,10 @@ the switches in section 1.
 | switch_3    | Scalar Argument    | switch_3    | 1                | input            |
 +-------------+--------------------+-------------+------------------+------------------+
 ```
+
 ![](.//media/image2.png)Synthesize to FPGA (![](.//media/image112.png))
 and check the Fmax and resource usage.
+
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: canny_top) ======
 
@@ -3460,6 +3613,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-------------------+--------+------------+
 
 ```
+
 We can see from section 2 of `summary.result.rpt` that the minimum period
 for the synthesized block is 6.092 ns, which is below the threshold of
 6.734 ns from the demo design. This means we can safely integrate this
@@ -3472,56 +3626,56 @@ SmartHLS generated Canny Edge Detection block and import it into
 SmartDesign. This will showcase the flow for integrating SmartHLS
 generated Verilog Cores into Libero® SoC SmartDesign.
 
-1.  Open `define.hpp` in the `Canny_FIFO_Switch` project in the Project
-    Explorer and check that `FAST_COSIM` is commented out. The
-    functionality of this hardware block depends on knowing the `WIDTH`
-    and `HEIGHT` of the input image.  
-    <p align="center"><img src=".//media/image137.png"></p></br>
+1. Open `define.hpp` in the `Canny_FIFO_Switch` project in the Project
+   Explorer and check that `FAST_COSIM` is commented out. The
+   functionality of this hardware block depends on knowing the `WIDTH`
+   and `HEIGHT` of the input image.
+   <p align="center"><img src=".//media/image137.png"></p></br>
+
 ```c
 // uncomment this line to test on a smaller image for faster co-simulation
 //#define FAST_COSIM
-```    
-2.  Click the “Compile Software to Hardware” button
-    ![](.//media/image80.png) on the top toolbar.
+```
 
-3.  Launch Libero® SoC 2024.2 and open the project: “`Libero_training1/Libero_training1.prjx`”
+2. Click the “Compile Software to Hardware” button
+   ![](.//media/image80.png) on the top toolbar.
+3. Launch Libero® SoC 2024.2 and open the project: “`Libero_training1/Libero_training1.prjx`”
+4. Navigate to the Design Hierarchy and search for “canny”. Right click
+   the canny_top design component and select Unlink. This is to make
+   sure there are no duplicated blocks before importing the new
+   canny_top HDL+ block from SmartHLS.
 
-4.  Navigate to the Design Hierarchy and search for “canny”. Right click
-    the canny_top design component and select Unlink. This is to make
-    sure there are no duplicated blocks before importing the new
-    canny_top HDL+ block from SmartHLS.
-    <p align="center"><img src=".//media/image139.png"></p></br>
-5.  Without clearing the search, double click the `LegUp_Image_Filters`
-    SmartDesign file to open it in the SmartDesign Canvas. Then find the
-    `canny_top_0` block which should now be missing and colored red.  
-    <p align="center"><img src=".//media/image141.png"></p></br>
-    <p align="center"><img src=".//media/image142.png"></p></br>
+   <p align="center"><img src=".//media/image139.png"></p></br>
+5. Without clearing the search, double click the `LegUp_Image_Filters`
+   SmartDesign file to open it in the SmartDesign Canvas. Then find the
+   `canny_top_0` block which should now be missing and colored red.
 
-6.  On the top toolbar, click Project-\>Execute Script... and run the
-    `create_hdl_plus.tcl` file from the `Canny_FIFO_Switch` SmartHLS
-    project directory which will import the new canny_top into the
-    design hierarchy. This will open a report window when it finishes.
-    Make sure there are no errors and close the report window.
-    <p align="center"><img src=".//media/image143.png"></p></br>
+   <p align="center"><img src=".//media/image141.png"></p></br>
+   <p align="center"><img src=".//media/image142.png"></p></br>
+6. On the top toolbar, click Project-\>Execute Script... and run the
+   `create_hdl_plus.tcl` file from the `Canny_FIFO_Switch` SmartHLS
+   project directory which will import the new canny_top into the
+   design hierarchy. This will open a report window when it finishes.
+   Make sure there are no errors and close the report window.
 
-7.  Right click on the `canny_top_0` component, select “Replace
-    Component…” and then replace it with the newly imported `canny_top`.
-    Make sure to check “Replace all instances using ‘canny_top’ with
-    new selected component.”
+   <p align="center"><img src=".//media/image143.png"></p></br>
+7. Right click on the `canny_top_0` component, select “Replace
+   Component…” and then replace it with the newly imported `canny_top`.
+   Make sure to check “Replace all instances using ‘canny_top’ with
+   new selected component.”
+
 <p align="center"><img src=".//media/image144.png"><img src=".//media/image145.png"></p></br>
 
-8.  After replacing the SmartDesign component, canny_top should no
-    longer be red as shown below.
-    <p align="center"><img src=".//media/image146.png"></p></br>
+8. After replacing the SmartDesign component, canny_top should no
+   longer be red as shown below.
 
-9.  Click the “Generate Component” (![](.//media/image88.png)) button in
-    the SmartDesign toolbar for `LegUp_Image_Filters` and each parent
-    component (`video_pipelining`, `VIDEO_KIT_TOP`).
-
-10.  Go to the Design Flow tab and double click Generate FPGA Array Data.
+   <p align="center"><img src=".//media/image146.png"></p></br>
+9. Click the “Generate Component” (![](.//media/image88.png)) button in
+   the SmartDesign toolbar for `LegUp_Image_Filters` and each parent
+   component (`video_pipelining`, `VIDEO_KIT_TOP`).
+10. Go to the Design Flow tab and double click Generate FPGA Array Data.
     This should take 1-2h to finish running.
-
-11.  The Mi-V soft processor receives configuration from the Video
+11. The Mi-V soft processor receives configuration from the Video
     Control GUI running on the PC via the USB-UART. The Mi-V uses this
     configuration to control the Image/Video Processing block. To
     program the executable that runs on the Mi-V, double click
@@ -3534,6 +3688,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
 12. Check the “Filter out Inferred RAMs” checkbox and look for
     `PROC_SUBSYSTEM_0/PF_SRAM_AHBL_AXI_C0_0`. It should be Logical
     Instance 8. Double click on it.
+
 <p align="center"><img src=".//media/image149.png"></p></br>
 <p align="center"><img src=".//media/image150.png"></p></br>
 
@@ -3543,16 +3698,14 @@ generated Verilog Cores into Libero® SoC SmartDesign.
 
     Remember to select the “Use relative path” option when browsing to the
     memory file:
+
 <p align="center"><img src=".//media/image153.png"></p></br>
 
 14. Click OK, then click “Apply” in the Design and Memory Initialization
     tab.
-
 15. Under “Design Flow” double-click “Generate Bitstream”.
-
 16. With the same setup as [Programming and Running Design on the PolarFire® Kit](#programming-and-running-design-on-the-polarfire-kit), double
     click “Run PROGRAM Action” to program the board.
-
 17. You can also double-click “Export FlashPro Express job” to create an
     updated .job file.
 

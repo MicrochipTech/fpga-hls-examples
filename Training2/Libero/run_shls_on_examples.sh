@@ -6,19 +6,19 @@ echo ""
 echo "Running shls hw on digit_recognition"
 echo ""
 cd ../digit_recognition
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on RGB2YCbCr"
 echo ""
 cd ../../Training1/RGB2YCbCr
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on alpha_blend"
 echo ""
 cd ../alpha_blend
-shls hw
+shls -a hw
 
 cd ../../Training2/Libero/
 

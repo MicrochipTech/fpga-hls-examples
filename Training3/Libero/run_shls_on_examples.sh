@@ -6,13 +6,13 @@ echo ""
 echo "Running shls hw on wide_mult_axi"
 echo ""
 cd ../wide_mult_axi
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on texture_mapper"
 echo ""
 cd ../texture_mapper
-shls hw
+shls -a hw
 
 cd ../Libero/
 
