@@ -8,7 +8,11 @@
 #ifndef SINCOSTABLES_H_
 #define SINCOSTABLES_H_
 
-// 1.0 = 32768
+/* 1.0 = 0x8000 (k)
+ * sin = k*sin(angle*pi/180)
+ * cos = k*cos(angle*pi/180)
+ */
+
 int g_sin_table[360]=
 {0	,
 571	,

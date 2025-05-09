@@ -147,7 +147,7 @@ Before trying the example, you will need to copy the precompiled FFmpeg and Open
 - Run `precompiled/shls_sw_dependencies/download_precompiled_libraries.sh` (or `precompiled/shls_sw_dependencies/download_precompiled_libraries.ps1`, depending on 
 your operating system), which copies the libraries from `<SmartHLS INSTALLATION DIR>\smarthls-library\external\vision\precompiled_sw_libraries`.
 
-- Download the precompiled libraries from the [fpga-hls-libraries](https://github.com/MicrochipTech/fpga-hls-libraries) release assets.
+- Download the precompiled libraries from the [fpga-hls-libraries](https://github.com/MicrochipTech/fpga-hls-libraries) release assets or follow the "Note" from the main page (<https://github.com/MicrochipTech/fpga-hls-examples/tree/main>).
 
 If you are on Windows, depending on your computer's settings you may get this error:
 `\setup.ps1 cannot be loaded because running scripts is disabled on this system.`

@@ -1,6 +1,6 @@
 <h1><p align="center">SmartHLS™ Tutorial for Microchip PolarFire®:</p></h1>
 <h2><p align="center">Sobel Filtering for Image Edge Detection</p></h2>
-<h2><p align="center">Revision 10.0</br>Aug 2024</br></p></h2>
+<h2><p align="center">Revision 11.0</br>May 2025</br></p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -17,17 +17,18 @@
 | 8.0          | August, 2023   | Updates for SmartHLS 2023.2 release                   |
 | 9.0          | Jan, 2024      | Updates for SmartHLS 2024.1 release                   |
 | 10.0         | August, 2024   | Updates for SmartHLS 2024.2 release                   |
+| 11.0         | May , 2025     | Updates for SmartHLS 2025.1 release                   |
 
 # Requirements
 
 Before beginning this tutorial, you should install the following
 software:
-  - SmartHLS™ 2024.2 or later: this is packaged with Libero
-  - Libero® SoC 2024.2 or later with Modelsim
+  - SmartHLS™ 2025.1 or later: this is packaged with Libero
+  - Libero® SoC 2025.1 or later with Modelsim
       - [Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
 
-This document uses the Windows versions of Libero® SoC 2024.2 and
-SmartHLS 2024.2. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2025.1 and
+SmartHLS 2025.1 Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -305,7 +306,7 @@ should see the message *PASS\!* appearing in the *Console* window, as
 shown in below output.
 
 ```
-"C:\Microchip\Libero_SoC_v2024.2\SmartHLS-2024.2\SmartHLS\bin\shls.bat" -s sw_run
+"C:\Microchip\Libero_SoC_v2025.1\SmartHLS\SmartHLS\bin\shls.bat" -s sw_run
 Info: Running the following targets: sw_run
 PASS!
 
@@ -401,7 +402,7 @@ messages near the end of the simulation which will look like this:
 # sobel_filter_top simulation time (cycles):     2088213
 # ** Note: $finish    : cosim_tb.sv(427)
 #    Time: 20882235 ns  Iteration: 1  Instance: /cosim_tb
-# End time: 11:43:38 on Aug 07,2024, Elapsed time: 0:00:47
+# End time: 11:43:38 on May 30,2025, Elapsed time: 0:00:47
 # Errors: 0, Warnings: 0
 Info: Verifying RTL simulation
 Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
@@ -464,7 +465,7 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as what is shown below. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2024.2. The timing results and resource usage
+tutorial used Libero® SoC v2025.1. The timing results and resource usage
 might also differ depending on the random seed used in the synthesis
 tool flow.
 
@@ -474,7 +475,7 @@ tool flow.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 7.170 ns    | 2.830 ns | 353.357 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 8.224 ns    | 1.776 ns | 563.063 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -485,13 +486,12 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+---------------+--------+------------+
 | Resource Type            | Used          | Total  | Percentage |
 +--------------------------+---------------+--------+------------+
-| Fabric + Interface 4LUT* | 742 + 0 = 742 | 108600 | 0.68       |
-| Fabric + Interface DFF*  | 451 + 0 = 451 | 108600 | 0.42       |
-| I/O Register             | 0             | 852    | 0.00       |
-| User I/O                 | 0             | 284    | 0.00       |
-| uSRAM                    | 0             | 1008   | 0.00       |
-| LSRAM                    | 0             | 352    | 0.00       |
-| Math                     | 0             | 336    | 0.00       |
+| Fabric + Interface 4LUT* | 611 + 0 = 611 | 299544 | 0.20       |
+| Fabric + Interface DFF*  | 327 + 0 = 327 | 299544 | 0.11       |
+| User I/O                 | 0             |  512   | 0.00       |
+| uSRAM                    | 0             | 2772   | 0.00       |
+| LSRAM                    | 0             | 952    | 0.00       |
+| Math                     | 0             | 924    | 0.00       |
 +--------------------------+---------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
@@ -632,7 +632,7 @@ similar to the following:
 # sobel_filter_top simulation time (cycles):     1040408
 # ** Note: $finish    : cosim_tb.sv(427)
 #    Time: 10404195 ns  Iteration: 1  Instance: /cosim_tb
-# End time: 13:22:26 on Aug 07,2024, Elapsed time: 0:00:30
+# End time: 13:22:26 on May 30 07,2025, Elapsed time: 0:00:30
 # Errors: 0, Warnings: 0, Suppressed Warnings: 6
 Info: Verifying RTL simulation
 Retrieving hardware outputs from RTL simulation for sobel_filter function call 1.
@@ -659,7 +659,7 @@ following:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 6.739 ns    | 3.261 ns | 306.654 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 7.276 ns    | 2.724 ns | 367.107 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -670,13 +670,12 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+---------------+--------+------------+
 | Resource Type            | Used          | Total  | Percentage |
 +--------------------------+---------------+--------+------------+
-| Fabric + Interface 4LUT* | 714 + 0 = 714 | 108600 | 0.66       |
-| Fabric + Interface DFF*  | 350 + 0 = 350 | 108600 | 0.32       |
-| I/O Register             | 0             | 852    | 0.00       |
-| User I/O                 | 0             | 284    | 0.00       |
-| uSRAM                    | 0             | 1008   | 0.00       |
-| LSRAM                    | 0             | 352    | 0.00       |
-| Math                     | 0             | 336    | 0.00       |
+| Fabric + Interface 4LUT* | 709 + 0 = 709 | 299544 | 0.24       |
+| Fabric + Interface DFF*  | 336 + 0 = 336 | 299544 | 0.11       |
+| User I/O                 | 0             | 512    | 0.00       |
+| uSRAM                    | 0             | 2772   | 0.00       |
+| LSRAM                    | 0             | 952    | 0.00       |
+| Math                     | 0             | 924    | 0.00       |
 +--------------------------+---------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
@@ -907,7 +906,7 @@ results similar to the following in the `summary.results.rpt` report file:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 5.330 ns    | 4.670 ns | 214.133 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 5.239 ns    | 4.761 ns | 210.040 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -918,13 +917,12 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+----------------+--------+------------+
 | Resource Type            | Used           | Total  | Percentage |
 +--------------------------+----------------+--------+------------+
-| Fabric + Interface 4LUT* | 709 + 36 = 745 | 108600 | 0.69       |
-| Fabric + Interface DFF*  | 510 + 36 = 546 | 108600 | 0.50       |
-| I/O Register             | 0              | 852    | 0.00       |
-| User I/O                 | 0              | 284    | 0.00       |
-| uSRAM                    | 0              | 1008   | 0.00       |
-| LSRAM                    | 1              | 352    | 0.28       |
-| Math                     | 0              | 336    | 0.00       |
+| Fabric + Interface 4LUT* | 691 + 36 = 727 | 299544 | 0.24       |
+| Fabric + Interface DFF*  | 491 + 36 = 527 | 299544 | 0.18       |
+| User I/O                 | 0              | 512    | 0.00       |
+| uSRAM                    | 0              | 2772   | 0.00       |
+| LSRAM                    | 1              | 952    | 0.11       |
+| Math                     | 0              | 924    | 0.00       |
 +--------------------------+----------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
@@ -972,7 +970,7 @@ file:
 +-------------------------+----------------------+------------+-------------------+----+---------------+
 | Loop                    | Location In Source   | Trip Count | Iteration Latency | II | Total Latency |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
-| for.loop:sobel.cpp:28:5 | line 28 of sobel.cpp | 262657     | 7                 | 1  | 262663        |
+| for.loop:sobel.cpp:28:5 | line 28 of sobel.cpp | 262657     | 3                 | 1  | 262659        |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
 ```
 

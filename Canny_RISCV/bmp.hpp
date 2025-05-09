@@ -59,18 +59,21 @@ struct bmp_header_t {
 
 bmp_pixel_t *read_bmp(const char *filename, bmp_header_t *header) {
     FILE *file = fopen(filename, "rb");
-    if (!file) return NULL;
+    if (!file) {
+        fprintf(stderr, "Error: Could not open input image file '%s'\n", filename);
+        return nullptr;
+    }
 
     // read BMP header and verify width/height
-    if (fread(header, sizeof(bmp_header_t), 1, file) != 1) return NULL;
+    if (fread(header, sizeof(bmp_header_t), 1, file) != 1) return nullptr;
     if (header->offset != sizeof(bmp_header_t) ||
-        header->width != WIDTH || header->height != HEIGHT) return NULL;
+        header->width != WIDTH || header->height != HEIGHT) return nullptr;
 
     // allocate image buffer
     bmp_pixel_t *image = (bmp_pixel_t*)malloc(SIZE * sizeof(bmp_pixel_t));
 
     // read BMP image
-    if (fread(image, sizeof(bmp_pixel_t), SIZE, file) != SIZE) return NULL;
+    if (fread(image, sizeof(bmp_pixel_t), SIZE, file) != SIZE) return nullptr;
 
     fclose(file);
     return image;

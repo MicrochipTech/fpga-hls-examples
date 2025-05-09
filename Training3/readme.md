@@ -1,7 +1,7 @@
 <h1><p align="center">SmartHLS™ Training Session 3:</p></h1>
 <h2><p align="center">AXI Interfaces to DDR & Mi-V Soft Processor on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 8.0</br>Aug 7, 2024<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 9.0</br>May 30, 2025<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
@@ -42,6 +42,10 @@ Updated document for SmartHLS™ 2024.1 release.
 ## Revision 8.0
 
 Updated document for SmartHLS™ 2024.2 release.
+
+## Revision 9.0
+
+Updated document for SmartHLS™ 2025.1 release.
 
 # Overview
 
@@ -105,14 +109,14 @@ the clock network, clock domain crossing, Triple Modular Redundancy
 
 Before beginning this training, you should install the following
 software:
-  - Libero® SoC 2024.2 (or later) with QuestaSim
+  - Libero® SoC 2025.1 (or later) with QuestaSim
       - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - SmartHLS 2024.2 (or later): this is packaged with Libero
+  - SmartHLS 2025.1 (or later): this is packaged with Libero
   - A terminal emulator such as PuTTY
       - [Windows Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-This document uses the Windows versions of Libero® SoC 2024.2 and
-SmartHLS 2024.2. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2025.1 and
+SmartHLS 2025.1. Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -124,11 +128,11 @@ You should download the training design files in advance:
       - ZIP file:
         <https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip>
       - We’ll use the Training3 folder for this training.
-  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
+  - Download `precompiled-binaries.zip` from the Release Assets following the "Note" on the main page <https://github.com/MicrochipTech/fpga-hls-examples/tree/main>. This archive contains the pre-compiled bitstream required for this training.
   - Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
     here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training3/Libero>
 
-In Libero SoC 2024.2 you should download the following IPs in the IP
+In Libero SoC 2025.1 you should download the following IPs in the IP
 Catalog as their configurators will be used in this training:
   - Mi-V RV32 version 3.0.100
   - CoreAXI4Interconnect version 2.8.103
@@ -159,8 +163,8 @@ Generate the Libero project in advance.
   * If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory. Then run `run_shls_on_examples.ps1` to generate the HLS example designs. e.g.:
 
 ```ps1
-cd C:\Workspace\fpga-hls-examples-main\Training2\Libero
-./run_shls_on_examples.ps1
+cd C:\Workspace\fpga-hls-examples-main\Training3\Libero
+.\run_shls_on_examples.ps1
 ```
 
   * If you are using Linux, open a terminal and navigate to the Libero directory. Then run `run_shls_on_examples.sh` to generate the HLS example designs. e.g.:
@@ -170,7 +174,9 @@ cd Workspace/fpga-hls-examples-main/Training3/Libero
 bash run_shls_on_examples.sh
 ```
 
-  * When this completes, use Libero to generate the project. Open Libero 2024.2, and go to File -> Execute Script.
+  * When working with windows, make sure to set the execution policy to Unrestricted in order to run the script.
+
+  * When this completes, use Libero to generate the project. Open Libero 2025.1, and go to Project -> Execute Script.
 Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
@@ -234,8 +240,8 @@ synthesis.
     > set to:
 
 ```console
- C:\Microchip\Libero_SoC_v2024.2\QuestaSim\questasim_mcoem\win64\vsim.exe
-C:\Microchip\Libero_SoC_v2024.2\Designer\bin\libero.exe
+ C:\Microchip\Libero_SoC_v2025.1\QuestaSim\questasim_mcoem\win64\vsim.exe
+C:\Microchip\Libero_SoC_v2025.1\Designer\bin\libero.exe
 ```
 
 Note: update these tool paths if your Libero is installed in a
@@ -1117,15 +1123,15 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
     external Monitor.
 
 4.  Refer to
-    [DG0849](https://www.microsemi.com/document-portal/doc_download/1244036-dg0849-polarfire-fpga-4k-dual-camera-video-kit-demo-guide)
-    and the [Video Kit schematics](https://www.microsemi.com/document-portal/doc_download/1244224-polarfire-video-kit-schematics-for-mpf300t-device)
+    [AN5270 (Earrlier DG0849)](https://www.microchip.com/en-us/application-notes/an5270)
+    and the [Video Kit schematics](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ApplicationNotes/ApplicationNotes/polarfire_4k_dual_camera_video_kit_dg0849_v5.pdf)
     for jumper settings. We use the default jumper settings shipped with
     the board.
 
 5.  Connect the AC adapter to the board and power it on (SW4).
 
-6.  Open up FlashPro Express (FPExpress v2024.2), which you can find in
-    the Start Menu, listed under “Microchip Libero SoC v2024.2”:
+6.  Open up FlashPro Express (FPExpress v2025.1), which you can find in
+    the Start Menu, listed under “Microchip Libero SoC v2025.1”:
 
 <p align="center"><img src=".//media/image32.png" /></br>
 
@@ -1133,7 +1139,7 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 
 <p align="center"><img src=".//media/image33.png" /></br>
 
-8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” downloaded from the release assets.
+8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” in the precompiled-binaries downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [prerequisites](#generating-the-libero-project) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
 
@@ -1441,7 +1447,7 @@ should find something similar to the following:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 3.677 ns    | 6.323 ns | 158.153 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 3.507 ns    | 6.493 ns | 154.012 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -1452,8 +1458,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+--------------------+--------+------------+
 | Resource Type            | Used               | Total  | Percentage |
 +--------------------------+--------------------+--------+------------+
-| Fabric + Interface 4LUT* | 4840 + 2880 = 7720 | 299544 | 2.58       |
-| Fabric + Interface DFF*  | 2381 + 2880 = 5261 | 299544 | 1.76       |
+| Fabric + Interface 4LUT* | 4827 + 2880 = 7707 | 299544 | 2.57       |
+| Fabric + Interface DFF*  | 2306 + 2880 = 5186 | 299544 | 1.73       |
 | I/O Register             | 0                  | 1536   | 0.00       |
 | User I/O                 | 0                  | 512    | 0.00       |
 | uSRAM                    | 0                  | 2772   | 0.00       |
@@ -1466,7 +1472,7 @@ The results for this design might vary quite a bit. It is normal to see
 somewhat higher Fmax and somewhat higher DFF usage in your synthesis
 run.
 
-The Fmax for this synthesis run was 156.666 MHz, which is similar to the
+The Fmax for this synthesis run was 154.012 MHz, which is similar to the
 required 156.25 MHz. The 4LUT and DFF usage are different from the
 original RTL implementation. The design uses the same number of MACCs as
 the RTL implementation thanks to SmartHLS generating the multiplies as
@@ -1479,7 +1485,7 @@ Table 2: Resource comparison between RTL and SmartHLS
 | **Implementation**      | **Fabric + Interface 4LUT** | **Fabric + Interface DFF** | **uSRAM** | **MACC** |
 | ----------------------- | --------------------------- | -------------------------- | --------- | -------- |
 | **RTL**                 | 1958 + 3288 (5246)          | 10839 + 3288 (14127)       | 34        | 80       |
-| **SmartHLS with uSRAM** | 4840 + 2880 (7720)          | 2381 + 2880 (5261)         | 0         | 80       |
+| **SmartHLS with uSRAM** | 4827 + 2880 (7707)          | 2306 + 2880 (5186)         | 0         | 80       |
 </div>
 
 Table 3 shows the number of lines of code required to implement this
@@ -1662,7 +1668,7 @@ return mismatch_cnt;
 Mismatches: 0
 PASS
 ...
-Simulation time (cycles): 2,585
+Simulation time (cycles): 705
 SW/HW co-simulation: PASS
 ```
 
@@ -1739,9 +1745,9 @@ SmartHLS-generated wide multiply block.
 Figure 9: Block Diagram of the SmartHLS-generated wide multiply block</p>
 
 ![](.//media/image3.png)To integrate the PolarFire® Video Kit design in
-Libero SoC 2024.2:
+Libero SoC 2025.1:
 
-1. Launch Libero SoC 2024.2 and open the SmartHLS_Training3 project by
+1. Launch Libero SoC 2025.1 and open the SmartHLS_Training3 project by
     navigating to and clicking
     `Training3/Libero/Libero_training3/Libero_training3.prjx`.
 2.  Navigate to the Design Hierarchy and search for “`wide_mult`”. Right
@@ -2214,14 +2220,14 @@ volatile uint64 texture_frame[texture_size * texture_size / 8];
 In the form of a global array, the texture frame memory will be
 automatically initialized to all zero in C++. Therefore, we must mark
 the array as volatile to prevent SmartHLS from optimizing away the
-computation. If you are using a version of SmartHLS older than 2024.2, you should expect to see the
+computation. If you are using a version of SmartHLS older than 2025.1, you should expect to see the
 ‘printWarningMessageForGlobalArrayReset’ warning message about
 *texture_frame* when running Compile Software to Hardware
 (![](.//media/image77.png)), and it’s safe to ignore. More detailed
 discussion about this warning can be found in
 [Training 2](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training2).
 
-You may have also noticed the `set_parameter READONLY_RAM_TO_ROM 0` constraint set in `config.tcl`. (The `READONLY_RAM_TO_ROM` constraint was added in SmartHLS 2024.2, meaning if you are using an older version of SmartHLS, you may need to comment out that line.) Since we will use Libero to initialize the RAM instead of SmartHLS, from SmartHLS's point of view, `texture_mapper` is a read-only memory. SmartHLS will turn read-only RAMs into ROMs by default (e.g. `READONLY_RAM_TO_ROM` is 1.) We need to tell SmartHLS not to do this, since if this memory is implemented as a ROM, the synthesis tool may think the content inside the memory is compile time static. It may then decide to absorb the constant values into the logic and optimize the entire ROM away, meaning we can't flash in the memory content (Lena.) 
+You may have also noticed the `set_parameter READONLY_RAM_TO_ROM 0` constraint set in `config.tcl`. (The `READONLY_RAM_TO_ROM` constraint was added in SmartHLS 2025.1, meaning if you are using an older version of SmartHLS, you may need to comment out that line.) Since we will use Libero to initialize the RAM instead of SmartHLS, from SmartHLS's point of view, `texture_mapper` is a read-only memory. SmartHLS will turn read-only RAMs into ROMs by default (e.g. `READONLY_RAM_TO_ROM` is 1.) We need to tell SmartHLS not to do this, since if this memory is implemented as a ROM, the synthesis tool may think the content inside the memory is compile time static. It may then decide to absorb the constant values into the logic and optimize the entire ROM away, meaning we can't flash in the memory content (Lena.) 
 
 Then we must specify the RAM initialization in Libero by going to
 Configure Design Initialization Data and Memories -\> Fabric RAMs. As
@@ -2335,7 +2341,7 @@ then writing to it.
 If you make changes to the software for the MiV, follow these steps to
 generate a new .hex file:
 
-1. Open SoftConsole
+1. Open SoftConsole (Download from the microchip website)
 2. Open the `RV32_simple_gpio` project under `Training3/Libero/softconsole/`
 <p align="center"><img src=".//media/image79.png" /></p>
 <p align="center"><img src=".//media/image80.png" /></p>

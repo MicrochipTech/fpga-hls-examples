@@ -16,7 +16,7 @@ After the installation is done, you can try out this example through either GUI 
 3. Try "Run Software", "Compile to Hardware", and "SW/HW Co-simulation".
 
 # Using SmartHLS Commandline
-1. Make sure $(SMARTHLS_INSTALLATION_DIR)/SmartHLS/bin is on the $(PATH) environment variable to get access to the "shls" script.
+1. Make sure "$(SMARTHLS_INSTALLATION_DIR)/SmartHLS/bin is on the $(PATH)" environment variable to get access to the "shls" script.
 2. run "shls sw" to run software.
 3. run "shls hw" to compile to hardware.
 4. run "shls cosim" to run sw/hw co-simulation.

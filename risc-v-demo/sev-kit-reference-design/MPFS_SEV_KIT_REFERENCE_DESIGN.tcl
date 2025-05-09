@@ -105,7 +105,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     set Gamma_Correction_version        4.3.0
     set Image_Enhancement_version       4.4.0
     set IMAGE_SCALER_version            4.1.0
-    set PFSOC_INIT_MONITOR_version      1.0.307
+    set PFSOC_INIT_MONITOR_version      1.0.309
     set mipicsi2rxdecoderPF_version     4.4.0
     set PF_CCC_version                  2.2.220
     set PF_CLK_DIV_version              1.0.103
