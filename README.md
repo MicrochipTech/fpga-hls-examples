@@ -16,7 +16,8 @@ Linux:
 Windows:
 <pre> ./setup.ps1 </pre>
 
-#(if needed)
+(**if needed**)
+
 By default, Windows restricts script execution. To allow scripts, right-click the PowerShell icon and select "Run as administrator" then run
 <pre> Set-ExecutionPolicy Unrestricted </pre>
 or set execution policy for current user only
