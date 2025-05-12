@@ -7,8 +7,9 @@ The homepage for the Microchip HLS integrated development environment is:
 You can find the Microchip HLS software user guide here:
  - https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest
 
-# NOTE:
-To download the precompiled binaries, go to Releases then Assets or run the following code
+# Note:
+To download the precompiled binaries, go to "Releases" then "Assets" or run the following code
+
 Linux:
 <pre> bash setup.sh </pre>
 
