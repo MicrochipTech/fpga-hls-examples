@@ -74,7 +74,7 @@ You should download the training design files in advance:
       - ZIP file:
         <https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip>
       - We’ll use the Training1 folder for this training. This folder contains the source files required for this training.
-  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
+  - Download precompiled-binaries.zip from the Release Assets following the "Note" on the main page https://github.com/MicrochipTech/fpga-hls-examples/tree/main. This archive contains the pre-compiled bitstream required for this training.
   - Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
     here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
 
@@ -95,6 +95,7 @@ to follow along.
 ## Generating the Libero Project
 
 Before starting the training, we need to first generate the Libero project. 
+Ensure to seup the liscence and the shls and libero paths 
 
 
 If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory, e.g.:
@@ -105,7 +106,7 @@ cd C:\Workspace\fpga-hls-examples-main\Training1\Libero
 
 and run the following script to generate the HLS example designs:
 ```bat
-run_shls_on_examples.bat
+run_shls_on_examples.ps1
 ```
 
 If you are using Linux, open a terminal and navigate to the Libero directory, e.g.:
