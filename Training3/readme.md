@@ -1133,7 +1133,7 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 
 <p align="center"><img src=".//media/image33.png" /></br>
 
-8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” downloaded from the release assets.
+8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” in the precompiled-binaries downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [prerequisites](#generating-the-libero-project) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
 
