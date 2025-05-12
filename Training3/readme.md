@@ -124,7 +124,7 @@ You should download the training design files in advance:
       - ZIP file:
         <https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip>
       - We’ll use the Training3 folder for this training.
-  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
+  - Download `precompiled-binaries.zip` from the Release Assets following the "Note" on the main page <https://github.com/MicrochipTech/fpga-hls-examples/tree/remove_lfs_Dhee>. This archive contains the pre-compiled bitstream required for this training.
   - Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
     here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training3/Libero>
 
