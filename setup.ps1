@@ -18,7 +18,10 @@ if (-not $DownloadUrl) {
     Write-Host "Failed to find asset download URL."
     exit 1
 }
-Invoke-WebRequest -Uri $DownloadUrl -OutFile $ASSET_PATH
+
+$ProgressPreference = 'SilentlyContinue'
+
+curl.exe -L -o $ASSET_PATH $DownloadUrl
 
 Write-Host "Unzipping $ASSET_PATH"
 Expand-Archive -Path $ASSET_PATH -DestinationPath "." -Force
