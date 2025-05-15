@@ -1790,8 +1790,8 @@ schedule:
 <p align="center"><img src=".//media/functional_unit_contention_pipeline_viewer.png"/></p></br>
 
 The pipeline steady state is highlighted in black. In the column for
-cycle 2, one multiply operation occurs (`%mul.i1 = mul`) and in the column
-for cycle 3 another multiply operation occurs (`%mul1.i = mul`), showing
+cycle 2, one multiply operation occurs (`%mul16 = mul`) and in the column
+for cycle 3 another multiply operation occurs (`%mul19 = mul`), showing
 the resource contention.
 
 Now scroll to line 25 and look at the function `memory_contention()`.
@@ -2112,7 +2112,7 @@ from the SmartHLS menu:
 
 <p align="center"><img src=".//media/image109.png"/></p></br>
 
-Make sure to say “No” when QuestaSim prompts you to finish:
+Make sure to say “No” when ModelSim prompts you to finish:
 
 <p align="center"><img src=".//media/image110.png"/></p></br>
 
@@ -2266,7 +2266,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
 +--------------------------+-----------------+--------+------------+
-| Fabric + Interface 4LUT* | 368 + 180 = 548 | 299544 | 0.18       |
+| Fabric + Interface 4LUT* | 362 + 180 = 542 | 299544 | 0.18       |
 | Fabric + Interface DFF*  | 89 + 180 = 269  | 299544 | 0.09       |
 | I/O Register             | 0               | 1536   | 0.00       |
 | User I/O                 | 0               | 512    | 0.00       |
@@ -2403,8 +2403,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
 +--------------------------+-----------------+--------+------------+
-| Fabric + Interface 4LUT* | 248 + 180 = 428 | 299544 | 0.14       |
-| Fabric + Interface DFF*  | 4 + 180 = 184   | 299544 | 0.06       |
+| Fabric + Interface 4LUT* | 240 + 180 = 420 | 299544 | 0.18       |
+| Fabric + Interface DFF*  | 89 + 180 = 269  | 299544 | 0.09       |
 | I/O Register             | 0               | 1536   | 0.00       |
 | User I/O                 | 0               | 512    | 0.00       |
 | uSRAM                    | 0               | 2772   | 0.00       |
@@ -2421,8 +2421,8 @@ Now close all project files.
 
 Gaussian blur is widely used in image processing for blurring or
 smoothing an input image to remove noise and reduce detail from an
-image. An example is shown Figure 24, where the left image is the
-original and the right image is after applying the Gaussian Blur Filter.
+image. An example is shown Figure 24, where the top image is the
+original and the bottom image is after applying the Gaussian Blur Filter.
 The Gaussian blur is also the first filter stage of the Canny Edge
 Filter.
 
@@ -2700,7 +2700,7 @@ execution.
 
 ![](.//media/image2.png)A simple case is if your main function ever
 returns a non-zero value in software. For example, change the `main()`
-function to always return 1 on line 129 in `gaussian_filter.cpp`:
+function to always return 1 on line 136 in `gaussian_filter.cpp`:
 ```c
 //return result_incorrect;
 return 1;
@@ -3174,7 +3174,7 @@ hardware for 1920x1080 inputs.
 // uncomment this line to test on a smaller image for faster co-simulation
 // #define FAST_COSIM
 ```
-![](.//media/image2.png)Synthesize to design to FPGA
+![](.//media/image2.png)Synthesize design to FPGA
 (![](.//media/image112.png)) and check the FMAX and resource usage in
 the `summary.results.rpt` file.
 ```
@@ -3218,7 +3218,7 @@ the usage for fabric and interface 4LUTs and DFFs separately.
 
 Canny Edge detection is an image processing filter to get the edges of
 an image, as shown in Figure 26: Side-by-side comparison of original
-(left) and Canny Edge Filtered (right) image. The left image is the
+(top) and Canny Edge Filtered (bottom) image. The left image is the
 original, and the right image is after running the Canny edge detection
 filter.
 <p align="center"><img src=".//media/image132.jpeg"> <img src=".//media/image133.png">
@@ -3445,7 +3445,7 @@ and check the Fmax and resource usage.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 3.791 ns    | 6.209 ns | 161.057 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 3.610 ns    | 6.290 ns | 156.495 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -3456,8 +3456,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-------------------+--------+------------+
 | Resource Type            | Used              | Total  | Percentage |
 +--------------------------+-------------------+--------+------------+
-| Fabric + Interface 4LUT* | 4280 + 396 = 4676 | 299544 | 1.56       |
-| Fabric + Interface DFF*  | 2966 + 396 = 3362 | 299544 | 1.12       |
+| Fabric + Interface 4LUT* | 3168 + 396 = 3564 | 299544 | 1.19       |
+| Fabric + Interface DFF*  | 2149 + 396 = 2545 | 299544 | 0.85       |
 | I/O Register             | 0                 | 1536   | 0.00       |
 | User I/O                 | 0                 | 512    | 0.00       |
 | uSRAM                    | 3                 | 2772   | 0.11       |
