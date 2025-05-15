@@ -2,7 +2,7 @@
 <h1><p align="center">SmartHLS™ Training Session 1:</p></h1>
 <h2><p align="center">Image Processing on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 9</br>Aug 9, 2024<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 9</br>Aug 9, 2025<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
@@ -51,19 +51,23 @@ Updated document for outdated figures and for SmartHLS™ 2024.1 release.
 
 Updated document for outdated figures and for SmartHLS™ 2024.2 release.
 
+## Revision 10
+
+Updated document for outdated figures and for SmartHLS™ 2025.1 release.
+
 # Prerequisites
 
 Before beginning this training, you should install the following
 software:
 
-  - Libero® SoC 2024.2 (or later) with QuestaSim Pro
+  - Libero® SoC 2025.1 (or later) with QuestaSim Pro
     - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - SmartHLS 2024.2 (or later): this is packaged with Libero
-  - DG0849 Video Control GUI used by the PolarFire board demo
-      - [Download Link](https://www.microchip.com/content/dam/mchp/documents/FPGA/ProductDocuments/socdesignfiles/mpf_dg0849_liberosoc_gui.zip)
+  - SmartHLS 2025.1 (or later): this is packaged with Libero
+  - AN5270 (EARLIER DG0849) Video Control GUI used by the PolarFire board demo
+      - [Download Link](https://www.microchip.com/en-us/application-notes/an5270)
 
-This document uses the Windows versions of Libero® SoC 2024.2 and
-SmartHLS 2024.2. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2025.1 and
+SmartHLS 2025.1. Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -82,7 +86,7 @@ The following hardware is required:
   - PolarFire FPGA Video and Imaging Kit([MPF300-VIDEO-KIT](https://www.microsemi.com/existing-parts/parts/150747)).
   - Monitor with an HDMI input.
 
-Make sure the following demo is working on your board: [DG0849: PolarFire FPGA Dual Camera Video Kit Demo Guide](https://www.microsemi.com/document-portal/doc_download/1244036-dg0849-polarfire-fpga-4k-dual-camera-video-kit-demo-guide).
+Make sure the following demo is working on your board: [DG0849: PolarFire FPGA Dual Camera Video Kit Demo Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ApplicationNotes/ApplicationNotes/polarfire_4k_dual_camera_video_kit_dg0849_v5.pdf).
 
 We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/Sobel_Tutorial_Microsemi.pdf).
 
@@ -118,8 +122,9 @@ and run the following script to generate the HLS example designs:
 ``` bash
 bash run_shls_on_examples.sh
 ```
+When working with windows, make sure to set the execution policy to Unrestricted in order to run the script.
 
-When this completes, use Libero to generate the project. Open Libero 2024.2, and go to File -> Execute Script.
+When this completes, use Libero to generate the project. Open Libero 2025.1, and go to Project -> Execute Script.
 Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
@@ -328,7 +333,7 @@ the steps below:
 
 6. Connect the AC adapter to the board and power it on (SW4).
 
-7. Open up FlashPro Express (FPExpress v2024.2), which you can find in the Start Menu, listed under “Microchip Libero SoC v2024.2”:
+7. Open up FlashPro Express (FPExpress v2025.1), which you can find in the Start Menu, listed under “Microchip Libero SoC v2025.1”:
 <p align="center"><img src=".//media/image9.png" /></p>
 
 8. Select Project and New Job Project.
@@ -363,7 +368,7 @@ the steps below:
 17. Now click the Red image beside the dropdown to connect to the FPGA.
 <p align="center"><img src=".//media/image17.png" /></p>
 
-18. The image should turn green to indicate the GUI is now connected to the FPGA and the smaller video feed should become fixed to the top left corner.
+18. The image should turn green to indicate the GUI is now connected to the FPGA.
 <p align="center"><img src=".//media/image18.png" /></p>
 
 19. You can use the “Alpha” slider to test the SmartHLS generated alpha blend core. Changing the alpha affects the transparency of the smaller video feed.
@@ -483,7 +488,7 @@ directions below.
     Prerequisites). We will use
     the Training1 folder of the extracted content for this training.
 
-2.  Open SmartHLS 2024.2 and choose a workspace.
+2.  Open SmartHLS 2025.1 and choose a workspace.
 
 <p align="center"><img src=".//media/image26.png" /></p>
 
@@ -566,7 +571,7 @@ hardware.
 For this demo we created an Alpha Blending block in SmartHLS. Our goal
 was to use the SmartHLS generated SmartDesign IP component as a drop-in
 replacement for the Alpha Blending SolutionCore previously used in the
-PolarFire® Video Kit demo design, see [UG0641 User Guide Alpha Blending](https://www.microsemi.com/document-portal/doc_download/135316-ug0641-alpha-blending-user-guide).
+PolarFire® Video Kit demo design, see [UG0641 User Guide Alpha Blending](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/UserGuides/microsemi_smartfusion2_polarfire_alpha_blending_user_guide_ug0641_v5.pdf)
 
 The block diagram of the Alpha Blending SolutionCore is shown in Figure
 11 and the input and output interface are described in Table 1. Our
@@ -666,10 +671,10 @@ compiling to hardware.
         executed.
     
     3.  *pipelining.hls.rpt* has pipeline scheduling information used by
-        Scheduler Viewer.
+        Schedule viewer.
     
     4.  *scheduling.hls.rpt* has scheduling information used by the
-        Scheduler Viewer.
+        Schedule viewer.
     
     5.  *summary.hls.alpha\_blend\_smarthls.rpt* has a summary of the
         other reports as well as interface and RAM information.
@@ -969,7 +974,7 @@ body.0:
     br label %body.1
 ```
 
-All of the basic blocks and instructions shown in the Scheduler Viewer
+All of the basic blocks and instructions shown in the Schedule viewer
 are directly from the LLVM IR optimized by SmartHLS before being
 compiled into Verilog.
 
@@ -1043,7 +1048,7 @@ state after 2 iterations (1+1, since the Iteration index starts at 0)
 for a loop pipeline, or 2 inputs in the case of function pipelining. You
 can scroll to the bottom right to see the instructions scheduled.
 
-<p align="center"><img src=".//media/iteration_1_alpha_blend_pipeline_viewer.png" /></br>Figure 16: SmartHLS Scheduler Viewer: Pipeline Viewer. Iteration Where
+<p align="center"><img src=".//media/iteration_1_alpha_blend_pipeline_viewer.png" /></br>Figure 16: SmartHLS Schedule viewer: Pipeline Viewer. Iteration Where
 Steady State Reached.</p></br>
 
 The 2 iterations/inputs until steady state corresponds to the Pipeline
@@ -1066,7 +1071,7 @@ tab and which cycle they are scheduled for in hardware after the *start*
 signal is asserted. However, recall the SmartHLS pragma “function
 pipeline” on line 106 of `alpha_blend.cpp`. Because this function is
 pipelined, the Schedule Chart view is empty and you should refer to the
-Pipeline Viewer instead.
+Pipeline Viewer instead (note: in the latest version of SmartHLS, if the Schedule view chart is empty, the tab may not be opened).
 
 <p align="center"><img src=".//media/image53.png" /></br>Figure 17: Empty Pipeline Viewer</p></br>
 
@@ -1158,9 +1163,9 @@ The golden expected output will read either “`golden_output.bmp`” or
 ```c
 golden_output_image = read_bmp(GOLDEN_OUTPUT, &golden_output_image_header);
 ```
-In our C++ testbench on line 147, we first perform a sanity check test
+In our C++ testbench on line 156, we first perform a sanity check test
 based on the waveform in the alpha blending SolutionCore documentation
-([UG0641](https://www.microsemi.com/document-portal/doc_download/135316-ug0641-alpha-blending-user-guide)
+([UG0641](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/UserGuides/microsemi_smartfusion2_polarfire_alpha_blending_user_guide_ug0641_v5.pdf)
 page 4) shown in Figure 17.
 ```c
 // test 1: sanity check from alpha blend IP core documentation
@@ -1192,7 +1197,7 @@ if (out != ap_uint<24>("4C6E57")) {
     return 1;
 }
 ```
-Next, starting from line 160, we run alpha blending on the two input
+Next, starting from line 169, we run alpha blending on the two input
 image files. We specify the input alpha value of 50%, which is
 represented by the 8-bit value 127:
 ```c
@@ -1433,7 +1438,7 @@ Browse.
 
 Now navigate to your `Libero.exe`, for example:
 ```
-C:\Microchip\Libero_SoC_2024.2\Designer\bin\libero.exe
+C:\Microchip\Libero_SoC_2025.1\Designer\bin\libero.exe
 ```
 Click OK.
 
@@ -1456,9 +1461,9 @@ report:
 <p align="center"><img src=".//media/image75.png"/></p></br>
 
 In the resource report we notice that SmartHLS is including the
-“Interface 4LUTs” when reporting 388 4LUTs (172 Fabric 4LUTs + 216
+“Interface 4LUTs” when reporting 371 4LUTs (155 Fabric 4LUTs + 216
 Interface 4LUTs). SmartHLS is also including “Interface DFFs” when
-reporting 276 DFFs (60 Fabric DFFs + 216 Interface DFFs). On PolarFire
+reporting 228 DFFs (12 Fabric DFFs + 216 Interface DFFs). On PolarFire
 FPGAs, “Interface” 4LUTs/DFFs are only required by DSP blocks and RAM
 blocks used in the design. All normal user logic is implemented in
 “Fabric” 4LUTs/DFFs.
@@ -1474,7 +1479,7 @@ Interface LUTs/DFFs)</p>
 
 |                  | **SmartHLS Alpha Blend** | **SolutionCore Alpha Blend** |
 | ---------------- | ------------------------ | ---------------------------- |
-| **Fabric 4LUTs** | 153                      | 273                          |
+| **Fabric 4LUTs** | 155                      | 273                          |
 | **Fabric DFFs**  | 12                       | 242                          |
 
 </p></br>
@@ -1520,7 +1525,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     <p align="center"><img src=".//media/image79.png"/></p></br>
 2.  Click the “Compile Software to Hardware” button
     ![](.//media/image80.png) on the top toolbar.
-3.  Launch Libero SoC 2024.2 and open the project: “`Libero/Libero_training1/Libero_training1.prjx`” you generated as part of the [prerequisites](#generating-the-libero-project) .
+3.  Launch Libero SoC 2025.1 and open the project: “`Libero/Libero_training1/Libero_training1.prjx`” you generated as part of the [prerequisites](#generating-the-libero-project) .
     On Windows, if you see errors about missing files or errors in Synthesis, you will need to move the project to a directory with a short name (such as `C:\Downloads` or `C:\Workspace`) to avoid issues with long filenames.
     
     Note: The Libero project was created when SmartHLS still had the
@@ -1629,7 +1634,7 @@ greater than 1. Near the bottom of the Console output, you should find
 the following:
 ```
 Info: Generating pipeline for loop on line 10 of pipeline_hazards.cpp with label "for_loop_pipeline_hazards_cpp_10_2".
-      Pipeline initiation interval = 3.
+      Pipeline initiation interval = 4.
 Info: Generating pipeline for loop on line 18 of pipeline_hazards.cpp with label "for_loop_pipeline_hazards_cpp_18_2".
       Pipeline initiation interval = 2.
 Info: Generating pipeline for loop on line 28 of pipeline_hazards.cpp with label "for_loop_pipeline_hazards_cpp_28_2".
@@ -1655,8 +1660,8 @@ pipeline length. Now close the file.
 +------------------------------------+…+----+---------------+
 | Loop                               |…| II | Total Latency |
 +------------------------------------+…+----+---------------+
-| for.loop:pipeline_hazards.cpp:10:2 |…| 3  | 28            |
-| for.loop:pipeline_hazards.cpp:18:2 |…| 2  | 22            |
+| for.loop:pipeline_hazards.cpp:10:2 |…| 4  | 37            |
+| for.loop:pipeline_hazards.cpp:18:2 |…| 2  | 23            |
 | for.loop:pipeline_hazards.cpp:28:2 |…| 2  | 19            |
 +------------------------------------+…+----+---------------+
 ```
@@ -1673,10 +1678,10 @@ iteration is done computing `array[i]`. Therefore, there is a
 *recurrence* where the current loop iteration is waiting for the
 previous iteration, but the next iteration is also waiting for the
 current iteration. We cannot parallelize any operations along this
-recurrence, so we need to wait 1 cycle for the load, 1 cycle for the
-multiply, and 1 cycle for the store before starting every loop
+recurrence, so we need to wait 1 cycle for the load, 2 cycles for the
+multiply (due to internal hardware constraints in the multiply unit it is 2 cycles instead of 1), and 1 cycle for the store before starting every loop
 iteration. Therefore, the pipeline initiation interval is 3 cycles (1 +
-1 + 1). A diagram of how the pipeline schedule would look is presented
+2 + 1). A diagram of how the pipeline schedule would look is presented
 in Figure 19.
 ```c
 void cross_iteration_dependency( volatile int array[N] ) {
@@ -3204,7 +3209,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 We can see from section 2 of summary.result.rpt that the minimum period
 for the synthesized block is 4.632 ns, which is below the threshold of
 6.353 ns from the demo design. This means we can safely integrate this
-block into the demo design and meet timing. SmartHLS 2024.2 also reports
+block into the demo design and meet timing. SmartHLS 2025.1 also reports
 the usage for fabric and interface 4LUTs and DFFs separately.
 
 ![](.//media/image2.png)Now close all project files.
@@ -3485,7 +3490,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
 2.  Click the “Compile Software to Hardware” button
     ![](.//media/image80.png) on the top toolbar.
 
-3.  Launch Libero® SoC 2024.2 and open the project: “`Libero_training1/Libero_training1.prjx`”
+3.  Launch Libero® SoC 2025.1 and open the project: “`Libero_training1/Libero_training1.prjx`”
 
 4.  Navigate to the Design Hierarchy and search for “canny”. Right click
     the canny_top design component and select Unlink. This is to make
