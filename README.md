@@ -5,7 +5,25 @@ The homepage for the Microchip HLS integrated development environment is:
  - https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/smarthls-compiler
 
 You can find the Microchip HLS software user guide here:
- - https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest 
+ - https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=fpgahls&redirect=true&version=latest
+
+# Note:
+To download the precompiled binaries, go to "Releases" then "Assets" or run the following code
+
+Linux:
+<pre> bash setup.sh </pre>
+
+Windows:
+<pre> ./setup.ps1 </pre>
+
+(**if needed**)
+
+By default, Windows restricts script execution. To allow scripts, right-click the PowerShell icon and select "Run as administrator" then run
+<pre> Set-ExecutionPolicy Unrestricted </pre>
+or set execution policy for current user only
+<pre> Set-ExecutionPolicy Unrestricted -Scope CurrentUser </pre>
+
+
 
 ## Tutorials and Trainings
 Example | Description
