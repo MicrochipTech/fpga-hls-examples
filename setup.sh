@@ -14,7 +14,14 @@ ASSET_PATH="$DOWNLOAD_DIR/$ASSET_NAME"
 echo "Downloading the release asset $ASSET_NAME for tag $TAG"
 mkdir -p "$DOWNLOAD_DIR"
 GITHUB_API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/tags/$TAG"
-DOWNLOAD_URL=$(curl -s "$GITHUB_API_URL" | jq -r ".assets[] | select(.name == \"$ASSET_NAME\") | .browser_download_url")
+DOWNLOAD_URL=$(curl -s "$GITHUB_API_URL" | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+for asset in data.get('assets', []):
+    if asset.get('name') == '$ASSET_NAME':
+        print(asset.get('browser_download_url', ''))
+        break
+")
 if [ -z "$DOWNLOAD_URL" ]; then
     echo "Failed to find asset download URL."
     exit 1
