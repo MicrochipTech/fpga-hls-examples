@@ -24,8 +24,8 @@ set PF_CCC_version 2.2.220
 set Display_Controller_version 3.1.2
 set CORERESET_PF_version 2.2.107
 set CORERXIODBITALIGN_version 2.1.104
-set PF_IOD_GENERIC_RX_version 2.1.110
-set PF_DDR4_version 2.5.111
+set PF_IOD_GENERIC_RX_version 2.1.113
+set PF_DDR4_version 2.5.113
 set PF_SRAM_AHBL_AXI_version 1.2.111
 set mipicsi2rxdecoderPF_version 2.2.5
 set COREAHBTOAPB3_version 3.1.100
