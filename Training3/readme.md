@@ -124,7 +124,7 @@ You should download the training design files in advance:
       - ZIP file:
         <https://github.com/MicrochipTech/fpga-hls-examples/archive/refs/heads/main.zip>
       - We’ll use the Training3 folder for this training.
-  - Download `precompiled-binaries.tar.gz` from the Release Assets. This archive contains the pre-compiled bitstream required for this training.
+  - Download `precompiled-binaries.zip` from the Release Assets following the "Note" on the main page <https://github.com/MicrochipTech/fpga-hls-examples/tree/main>. This archive contains the pre-compiled bitstream required for this training.
   - Alternatively, you can re-generate the bitstream and Libero project from scratch by following the instructions
     here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training3/Libero>
 
@@ -1133,7 +1133,7 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 
 <p align="center"><img src=".//media/image33.png" /></br>
 
-8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” downloaded from the release assets.
+8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” in the precompiled-binaries downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [prerequisites](#generating-the-libero-project) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
 
