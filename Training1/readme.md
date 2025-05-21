@@ -2,7 +2,7 @@
 <h1><p align="center">SmartHLS™ Training Session 1:</p></h1>
 <h2><p align="center">Image Processing on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 9</br>Aug 9, 2025<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 10</br>May 30, 2025<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
@@ -63,7 +63,7 @@ software:
   - Libero® SoC 2025.1 (or later) with QuestaSim Pro
     - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
   - SmartHLS 2025.1 (or later): this is packaged with Libero
-  - AN5270 (EARLIER DG0849) Video Control GUI used by the PolarFire board demo
+  - AN5270 (Earrlier DG0849) Video Control GUI used by the PolarFire board demo
       - [Download Link](https://www.microchip.com/en-us/application-notes/an5270)
 
 This document uses the Windows versions of Libero® SoC 2025.1 and
@@ -86,7 +86,7 @@ The following hardware is required:
   - PolarFire FPGA Video and Imaging Kit([MPF300-VIDEO-KIT](https://www.microsemi.com/existing-parts/parts/150747)).
   - Monitor with an HDMI input.
 
-Make sure the following demo is working on your board: [DG0849: PolarFire FPGA Dual Camera Video Kit Demo Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ApplicationNotes/ApplicationNotes/polarfire_4k_dual_camera_video_kit_dg0849_v5.pdf).
+Make sure the following demo is working on your board: [AN5270 (Earlier DG0849): PolarFire FPGA Dual Camera Video Kit Demo Guide]([Download Link](https://www.microchip.com/en-us/application-notes/an5270)).
 
 We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/Sobel_Tutorial_Microsemi.pdf).
 
@@ -327,7 +327,7 @@ the steps below:
 
 3. Connect the HDMI cable from the PolarFire Video Kit (J2) to your external Monitor.
 
-4. Refer to [DG0849](https://www.microsemi.com/document-portal/doc_download/1244036-dg0849-polarfire-fpga-4k-dual-camera-video-kit-demo-guide) for jumper settings. We use the default jumper settings shipped with the board.
+4. Refer to [AN5270 (Earlier DG0849): PolarFire FPGA Dual Camera Video Kit Demo Guide]([Download Link](https://www.microchip.com/en-us/application-notes/an5270)) for jumper settings. We use the default jumper settings shipped with the board.
 
 5. Make sure all the DIP switches (SW6) are in the ON position.
 
@@ -428,7 +428,7 @@ Control GUI to change the location of this window as shown in Figure 6.
 
 # Design Architecture
 
-We will give an overview of the design. For more details see [AC469 Application Note PolarFire FPGA](https://www.microsemi.com/document-portal/doc_download/1243202-ac469-polarfire-fpga-video-and-imaging-solution-application-note),
+We will give an overview of the design. For more details see [AC469 Application Note PolarFire FPGA](https://ww1.microchip.com/downloads/aemdocuments/documents/fpga/ApplicationNotes/ApplicationNotes/microsemi_polarfire_fpga_video_imaging_solution_application_note_ac469_v1.pdf),
 which is a similar demo for the PolarFire® Eval Kit. Figure 7 shows the
 high-level hardware blocks in the design. The *Sensor Interface* block
 deserializes and decodes data from the dual camera sensors and then
