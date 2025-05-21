@@ -1,7 +1,7 @@
 <h1><p align="center">SmartHLS™ Training Session 2:</p></h1>
 <h2><p align="center">Multi-threaded Digit Recognition on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 7.0</br>Aug 9, 2024<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 8.0</br>May 30, 2025<br /> <br /> <br /> </p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -38,6 +38,9 @@ Updated document for SmartHLS™ 2024.1 release.
 
 ## Revision 7.0
 Updated document for SmartHLS™ 2024.2 release.
+
+## Revision 8.0
+Updated document for SmartHLS™ 2025.1 release.
 
 # Overview
 
@@ -109,12 +112,12 @@ PolarFire FPGA</p></br>
 Before beginning this training, you should install the following
 software:
 
-  - Libero® SoC 2024.2 (or later) with QuestaSim
+  - Libero® SoC 2025.1 (or later) with QuestaSim
     - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - SmartHLS 2024.2 (or later): this is packaged with Libero
+  - SmartHLS 2025.1 (or later): this is packaged with Libero
 
-This document uses the Windows versions of Libero® SoC 2024.2 and
-SmartHLS 2024.2. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2025.1 and
+SmartHLS 2025.1. Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -144,11 +147,11 @@ to follow along.
 If you plan on following [Appendix B: Integrating into SmartDesign](#appendix-b-integrating-into-smartdesign),
 generate the Libero project in advance. 
 
-  * If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory. Then run `run_shls_on_examples.bat` to generate the HLS example designs. e.g.:
+  * If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory. Then run `run_shls_on_examples.ps1` to generate the HLS example designs. e.g.:
 
 ```bat
 cd C:\Workspace\fpga-hls-examples-main\Training2\Libero
-run_shls_on_examples.bat
+run_shls_on_examples.ps1
 ```
 
   * If you are using Linux, open a terminal and navigate to the Libero directory. Then run `run_shls_on_examples.sh` to generate the HLS example designs. e.g.:
@@ -157,8 +160,9 @@ run_shls_on_examples.bat
 cd Workspace/fpga-hls-examples-main/Training1/Libero
 bash run_shls_on_examples.sh
 ```
+  * When working with windows, make sure to set the execution policy to Unrestricted in order to run the script.
 
-  * When this completes, use Libero to generate the project. Open Libero 2024.2, and go to File -> Execute Script.
+  * When this completes, use Libero to generate the project. Open Libero 2025.1, and go to Project -> Execute Script.
 Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
@@ -170,12 +174,12 @@ Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1
 # Setting up SmartHLS
 
 In this section we will set up the workspace and projects for SmartHLS
-2024.2 used in this tutorial, as well as tool paths. We assume that
-SmartHLS 2024.2 and Libero® SoC 2024.2 have already been installed prior
+2025.1 used in this tutorial, as well as tool paths. We assume that
+SmartHLS 2025.1 and Libero® SoC 2025.1 have already been installed prior
 to this training. A Libero SoC install is needed for SmartHLS to run
 synthesis.
 
-![](.//media/image3.png) To set up SmartHLS 2024.2:
+![](.//media/image3.png) To set up SmartHLS 2025.1:
 
 1.  Download the zip file from github if you have not already (see
     Prerequisites). Extract the contents of the zip file. We will use
@@ -183,7 +187,7 @@ synthesis.
     **Warning:** Make sure to extract to a directory with a short path
     to avoid long path issues.
 
-2.  Open SmartHLS 2024.2 and choose a workspace.
+2.  Open SmartHLS 2025.1 and choose a workspace.
 
 <p align="center"><img src=".//media/image9.png" /></p></br>
 
@@ -225,9 +229,9 @@ synthesis.
 9.  Make sure the tool paths to vsim.exe and libero.exe are properly set
     to:
 
-    `C:\Microchip\Libero_SoC_v2024.2\QuestaSim\win32acoem\vsim.exe`
+    `C:\Microchip\Libero_SoC_v2025.1\QuestaSim\win32acoem\vsim.exe`
 
-    `C:\Microchip\Libero_SoC_v2024.2\Designer\bin\libero.exe`
+    `C:\Microchip\Libero_SoC_v2025.1\Designer\bin\libero.exe`
 
     Note: update these tool paths if your Libero is installed in a
     different location.
@@ -1000,7 +1004,7 @@ output which indicates that the design passed the test.
 # At cycle 2083: PASS
 # ** Note: $finish : ../custom_tb.v(98)
 #    Time: 20855 ns Iteration: 1 Instance: /custom\_tb
-# End time: 17:34:52 on Feb 06,2024, Elapsed time: 0:00:24 
+# End time: 17:34:52 on Feb 06,2025, Elapsed time: 0:00:24 
 # Errors: 0, Warnings: 0
 ```
 
@@ -2126,9 +2130,8 @@ below 8% of the PolarFire FPGA and is acceptable.
 +--------------------------+--------------------+--------+------------+
 | Resource Type            | Used               | Total  | Percentage |
 +--------------------------+--------------------+--------+------------+
-| Fabric + Interface 4LUT* | 5822 + 1536 = 7358 | 299544 | 2.46       |
-| Fabric + Interface DFF*  | 3400 + 1536 = 4936 | 299544 | 1.65       |
-| I/O Register             | 0                  | 1536   | 0.00       |
+| Fabric + Interface 4LUT* | 5730 + 1536 = 7266 | 299544 | 2.43       |
+| Fabric + Interface DFF*  | 3196 + 1536 = 4730 | 299544 | 1.58       |
 | User I/O                 | 0                  | 512    | 0.00       |
 | uSRAM                    | 44                 | 2772   | 1.59       |
 | LSRAM                    | 8                  | 952    | 0.84       |
@@ -2562,9 +2565,9 @@ Figure 40: Block Diagram of Custom Wrapper for SmartHLS-generated CNN
 block</p>
 
 ![](.//media/image3.png)To integrate the PolarFire® Video Kit design in
-Libero SoC 2024.2:
+Libero SoC 2025.1:
 
-1.  Launch Libero SoC 2024.2 and open the Digit Recognition project created 
+1.  Launch Libero SoC 2025.1 and open the Digit Recognition project created 
     in the [Prerequisites section](#generating-the-libero-project) by navigating to and click on: `Training2\Libero\Libero_training2\Libero_training2.prjx.`
 
 2.  Navigate to the Design Hierarchy and search for “`custom_wrapper`”.
@@ -2647,8 +2650,8 @@ Figure 41: PolarFire® Video and Imaging Kit Peripherals</p>
 
 5.  Connect the AC adapter to the board and power it on (SW4).
 
-6.  Open up FlashPro Express (FPExpress v2024.2), which you can find in
-    the Start Menu, listed under “Microchip Libero SoC v2024.2”:
+6.  Open up FlashPro Express (FPExpress v2025.1), which you can find in
+    the Start Menu, listed under “Microchip Libero SoC v2025.1”:
 
 <p align="center"><img src=".//media/image98.png" /></p>
 
@@ -2841,6 +2844,8 @@ variables, and call ClassifierPipeline on each input image.
 Run Compile Software (![](.//media/image29.png)) and Run Software
 (![](.//media/image30.png)) to execute the software simulation. You
 should see the following console output indicating that the test passed.
+
+note: The order of thread execution is non-deterministic, hence the output you see might be ordered differently from the given.
 
 ```console
 Info: Running the following targets: sw_compile sw
