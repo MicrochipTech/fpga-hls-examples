@@ -1,7 +1,7 @@
 <h1><p align="center">SmartHLS™ Training Session 3:</p></h1>
 <h2><p align="center">AXI Interfaces to DDR & Mi-V Soft Processor on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 8.0</br>May 30, 2025<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 9.0</br>May 30, 2025<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
