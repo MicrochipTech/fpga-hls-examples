@@ -13,7 +13,7 @@ This SmartHLS project implements a basic interrupt generator that triggers an in
 ## Functionality
 
 The interrupt generator module:
-- Generates an interrupt pulse evin a for loop after every 20 iterations
+- Generates an interrupt pulse in a for loop after every 20 iterations
 - Resets the counter after each interrupt
 
 ## Usage
