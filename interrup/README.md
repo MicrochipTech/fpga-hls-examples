@@ -1,6 +1,6 @@
 # Interrupt Generator Module
 
-This SmartHLS project implements a basic interrupt generator that triggers an interrupt signal every second.
+This SmartHLS project implements a basic interrupt generator that triggers an interrupt signal for every 20 iterations.
 
 ## Files
 
