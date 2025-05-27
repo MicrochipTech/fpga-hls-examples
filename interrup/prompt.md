@@ -1,2 +1,0 @@
--write a basic HLS module that generates an interrupt every second
--frequency is 50Mhz
