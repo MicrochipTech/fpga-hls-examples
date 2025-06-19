@@ -1438,7 +1438,7 @@ Browse.
 
 Now navigate to your `Libero.exe`, for example:
 ```
-C:\Microchip\Libero_SoC_2025.1\Designer\bin\libero.exe
+C:\Microchip\Libero_SoC_2025.1\Libero_SoC\Designer\bin\libero.exe
 ```
 Click OK.
 

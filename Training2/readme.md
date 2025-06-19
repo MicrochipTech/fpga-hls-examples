@@ -229,9 +229,9 @@ synthesis.
 9.  Make sure the tool paths to vsim.exe and libero.exe are properly set
     to:
 
-    `C:\Microchip\Libero_SoC_v2025.1\QuestaSim\win32acoem\vsim.exe`
+    `C:\Microchip\Libero_SoC_2025.1\QuestaSim\win32acoem\vsim.exe`
 
-    `C:\Microchip\Libero_SoC_v2025.1\Designer\bin\libero.exe`
+    `C:\Microchip\Libero_SoC_2025.1\Libero_SoC\Designer\bin\libero.exe`
 
     Note: update these tool paths if your Libero is installed in a
     different location.

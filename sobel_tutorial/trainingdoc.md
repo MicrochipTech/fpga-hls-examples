@@ -306,7 +306,7 @@ should see the message *PASS\!* appearing in the *Console* window, as
 shown in below output.
 
 ```
-"C:\Microchip\Libero_SoC_v2025.1\SmartHLS\SmartHLS\bin\shls.bat" -s sw_run
+"C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\bin\shls.bat" -s sw_run
 Info: Running the following targets: sw_run
 PASS!
 

@@ -9,11 +9,11 @@ shls -a hw
 
 Write-Host "Running shls hw on Gaussian_FIFO_Pipelined"
 cd ../Gaussian_FIFO_Pipelined
-shls-a hw
+shls -a hw
 
 Write-Host "Running shls hw on RGB2YCbCr"
 cd ../RGB2YCbCr
-shls-a hw
+shls -a hw
 
 Write-Host "Running shls hw on YCbCr2RGB"
 cd ../YCbCr2RGB

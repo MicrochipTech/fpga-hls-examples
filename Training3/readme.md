@@ -240,8 +240,8 @@ synthesis.
     > set to:
 
 ```console
- C:\Microchip\Libero_SoC_v2025.1\QuestaSim\questasim_mcoem\win64\vsim.exe
-C:\Microchip\Libero_SoC_v2025.1\Designer\bin\libero.exe
+ C:\Microchip\Libero_SoC_2025.1\QuestaSim\questasim_mcoem\win64\vsim.exe
+C:\Microchip\Libero_SoC_2025.1\Libero_SoC\Designer\bin\libero.exe
 ```
 
 Note: update these tool paths if your Libero is installed in a
@@ -1668,7 +1668,7 @@ return mismatch_cnt;
 Mismatches: 0
 PASS
 ...
-Simulation time (cycles): 705
+Simulation time (cycles): 1659
 SW/HW co-simulation: PASS
 ```
 
