@@ -47,6 +47,10 @@ int main() {
     input_channel_sw = input_channel;
 
     golden_output_image = read_bmp(GOLDEN_OUTPUT, &golden_output_image_header);
+
+    output_image = (bmp_pixel_t*)malloc(SIZE * sizeof(bmp_pixel_t));
+    output_image_ptr = output_image;
+
     if (!golden_output_image){
     	printf( "Error: Unable to open the file %s \n",GOLDEN_OUTPUT);
     	return 1;
