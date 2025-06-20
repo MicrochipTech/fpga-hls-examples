@@ -6,31 +6,31 @@ echo ""
 echo "Running shls hw on Canny_FIFO_Switch"
 echo ""
 cd ../Canny_FIFO_Switch
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on Gaussian_FIFO_Pipelined"
 echo ""
 cd ../Gaussian_FIFO_Pipelined
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on RGB2YCbCr"
 echo ""
 cd ../RGB2YCbCr
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on YCbCr2RGB"
 echo ""
 cd ../YCbCr2RGB
-shls hw
+shls -a hw
 
 echo ""
 echo "Running shls hw on alpha_blend"
 echo ""
 cd ../alpha_blend
-shls hw
+shls -a hw
 
 cd ../Libero/
 

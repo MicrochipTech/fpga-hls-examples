@@ -14,15 +14,9 @@ ASSET_PATH="$DOWNLOAD_DIR/$ASSET_NAME"
 echo "Downloading the release asset $ASSET_NAME for tag $TAG"
 mkdir -p "$DOWNLOAD_DIR"
 GITHUB_API_URL="https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/tags/$TAG"
-DOWNLOAD_URL=$(curl -s "$GITHUB_API_URL" | \
-    awk -v name="$ASSET_NAME" '
-        $0 ~ "\"name\": \""name"\"" {found=1}
-        found && /"browser_download_url"/ {
-            match($0, /https:\/\/[^\"]+/)
-            print substr($0, RSTART, RLENGTH)
-            exit
-        }
-    ')
+
+DOWNLOAD_URL=$(curl -s "$GITHUB_API_URL" | jq -r ".assets[] | select(.name == \"$ASSET_NAME\") | .browser_download_url")
+
 if [ -z "$DOWNLOAD_URL" ]; then
     echo "Failed to find asset download URL."
     exit 1

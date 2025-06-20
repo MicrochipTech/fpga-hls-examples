@@ -43,7 +43,7 @@ To minimize area overhead, users can control instrumentation scope through confi
 
 Before beginning this tutorial, you should install the following software:
 
-- Libero® SoC 2024.2 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
+- Libero® SoC 2025.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
 
 - The following hardware is required:
   - PolarFire® SoC FPGA Icicle Kit. Please follow [this link](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html) to set up your Icicle Kit and make sure Linux boots-up and that the board has an IP network address assigned to it.
@@ -73,7 +73,7 @@ Before beginning this tutorial, you should install the following software:
     $env:PROGRAMMER_ID="<YOUR PROGRAMMER ID HERE>" # Available from FPExpress
     ```
 
-    - **KNOWN ISSUE**: In Windows, SmartHLS includes Python 3 and the binary name is `python.exe`, however, a TCL script in the SmartHLS 2024.2 installation is explicitly calling `python3`, which does not exist. To be able to run the instrumentation example in Windows, just copy the file as follows:
+    - **KNOWN ISSUE**: In Windows, SmartHLS includes Python 3 and the binary name is `python.exe`, however, a TCL script in the SmartHLS 2025.1 installation is explicitly calling `python3`, which does not exist. To be able to run the instrumentation example in Windows, just copy the file as follows:
 
     ```console
     cp "$env:SHLS_ROOT_DIR/dependencies/python/python.exe" "$env:SHLS_ROOT_DIR/dependencies/python/python3.exe"
@@ -321,6 +321,7 @@ Running...
 This will wait until `inputFifo`'s `empty` signal becomes low. But to get it to become low, we need to run the `auto_instrument.accel.elf` binary that was compiled earlier on-board.
 
 ### Running the Software
+**NOTE:** if Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\Libero_SoC\SmartHLS-2025.1\SmartHLS\examples\scripts\utils\instrument and go to line 198. Here, change "$merged_file" to "$vcdFile"
 
 Now, to run the design on the board, open an `ssh` session to the Icicle Kit board:
 
@@ -349,6 +350,8 @@ vsim -do hls_output/scripts/instrument/vsim_keyboard_shortcut
 Now, open the ModelSim window and press Ctrl + R to refresh.
 
 You should see the signals for FIFOs arranged and grouped in an intuitive manner. You can expand the `User_Defined_FIFOs` group to see the signals for the FIFOs in the design. For example, here's the grouped signals for `fifo1` (after toggling on leaf names):
+
+**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. to solve this issue, go to line 257 of "C:\Microchip\Libero_SoC_2025.1\Libero_SoC\SmartHLS-2025.1\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$"
 
 ![alt text](assets/wave_template_grouping.png)
 
@@ -491,10 +494,17 @@ set monitoring_mode 1
 
 in `hls_output/scripts/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
-Then, open a new terminal and start a monitoring process that periodically captures the data:
+Then, open a new terminal on the build host and start a monitoring process that periodically captures the data (this is done instead of using the GUI):
 
-```console
+- On Linux:
+
+```bash
 identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+```
+  
+- On Windows:
+```console
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
 ```
 
 Finally, open Modelsim in a new terminal for visualization:
@@ -515,8 +525,15 @@ The FIFO Monitoring Dashboard aims to show developers, in nearly real-time, how 
 
 Start the monitoring loop that will generate the periodic captures:
 
-```console
+- On Linux:
+  
+```bash
 identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER ID
+```
+
+- On Windows:
+```console
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
 ```
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:
@@ -531,7 +548,7 @@ The bar graph should periodically change as it receives data from the monitoring
 
 You might notice a few shallow FIFOs on the left of the screen with very long names. These are infrastructure FIFOs, and are part of SmartHLS's AXI hardware design IP. The rightmost four FIFOs are the user-defined FIFOs, and are the ones described in the C++ code and the ones you'll want to pay attention to.
 
-**NOTE**: Please be advised that the FIFO Dashboard feature is currently in an experimental phase. Please use it with caution and anticipate potential minor issues
+**NOTE**: Please be advised that the FIFO Dashboard feature is currently in an experimental phase. Expect a minute to two minutes delay in updating the FIFO value. Please use it with caution and anticipate potential minor issues. 
 
 Here are some examples of the bar plot. You should confirm these make sense intuitively.
 

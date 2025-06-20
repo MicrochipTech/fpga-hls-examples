@@ -11,12 +11,15 @@ Set-StrictMode -Version Latest
 
 # Determine the location of SmartHLS
 $SHLS_ROOT_DIR = Split-Path -Parent (Split-Path -Parent (Get-Command shls).Source)
+Write-Host  "SmartHLS root directory: $SHLS_ROOT_DIR"
 
 $EXAMPLE_ROOT_FOLDER = Join-Path -Path $PSScriptRoot -ChildPath './../../../../../'
+Write-Host "Example root folder: $EXAMPLE_ROOT_FOLDER"
 
 $MODULE = 'hls_pipeline'
 
 $ELF = ".\app_${MODULE}.${datapath}.elf"
+Write-Host "Output ELF file: $ELF"
 Remove-Item -Path $ELF -ErrorAction SilentlyContinue
 
 $HLS_DRIVER_PATH = "hls_output\accelerator_drivers\"
@@ -81,6 +84,8 @@ if ($arch -eq "riscv_64") {
 
 $COMMAND_ARGS += "-o"
 $COMMAND_ARGS += $ELF
+
+Write-Host "$CXX $COMMAND_ARGS"
 
 & $CXX $COMMAND_ARGS
 

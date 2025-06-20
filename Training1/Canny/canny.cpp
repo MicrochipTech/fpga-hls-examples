@@ -39,15 +39,23 @@ int main() {
 
     // read inputs from file
     input_channel = read_bmp(INPUT_IMAGE, &input_channel_header);
-    if (!input_channel) return 1;
+    if (!input_channel){
+    	printf( "Error: Unable to open the file %s \n",INPUT_IMAGE);
+    	return 1;
+    }
+
     input_channel_sw = input_channel;
 
     golden_output_image = read_bmp(GOLDEN_OUTPUT, &golden_output_image_header);
-    if (!golden_output_image) return 1;
 
     output_image = (bmp_pixel_t*)malloc(SIZE * sizeof(bmp_pixel_t));
     output_image_ptr = output_image;
 
+    if (!golden_output_image){
+    	printf( "Error: Unable to open the file %s \n",GOLDEN_OUTPUT);
+    	return 1;
+    }
+           
     // convert image to grayscale and write to input array
     unsigned char (*input_image)[WIDTH] = new unsigned char[HEIGHT][WIDTH];
     for (i = 0; i < HEIGHT; i++) {

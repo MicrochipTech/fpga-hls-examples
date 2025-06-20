@@ -39,10 +39,6 @@ create_and_configure_core -core_vlnv Actel:SystemBuilder:PF_DDR4:$PF_DDR4_versio
 "MEMCTRLR_INST_NO:0" \
 "MEMORY_FORMAT:COMPONENT" \
 "MINIMUM_READ_IDLE:1" \
-"ODT_ENABLE_RD_RNK0_ODT0:false" \
-"ODT_ENABLE_RD_RNK0_ODT1:false" \
-"ODT_ENABLE_RD_RNK1_ODT0:false" \
-"ODT_ENABLE_RD_RNK1_ODT1:false" \
 "ODT_ENABLE_WR_RNK0_ODT0:true" \
 "ODT_ENABLE_WR_RNK0_ODT1:false" \
 "ODT_ENABLE_WR_RNK1_ODT0:false" \
