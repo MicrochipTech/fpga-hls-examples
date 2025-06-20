@@ -315,7 +315,7 @@ Running...
 This will wait until `inputFifo`'s `empty` signal becomes low. But to get it to become low, we need to run the `auto_instrument.accel.elf` binary that was compiled earlier on-board.
 
 ### Running the Software
-**NOTE:** this is a known issue. If Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\Libero_SoC\SmartHLS-2025.1\SmartHLS\examples\scripts\utils\instrument and go to line 198. Here, change "$merged_file" to "$vcdFile". This issue will be fixed for the next release of Libero.
+**NOTE:** this is a known issue. If Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\examples\scripts\utils\instrument and go to line 198 of update_vcd.tcl. Here, change "$merged_file" to "$vcdFile". This issue will be fixed for the next release of Libero.
 
 Now, to run the design on the board, open an `ssh` session to the Icicle Kit board:
 
@@ -345,7 +345,7 @@ Now, open the ModelSim window and press Ctrl + R to refresh.
 
 You should see the signals for FIFOs arranged and grouped in an intuitive manner. You can expand the `User_Defined_FIFOs` group to see the signals for the FIFOs in the design. For example, here's the grouped signals for `fifo1` (after toggling on leaf names):
 
-**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. This is a known issue. To solve this issue, go to line 257 of "C:\Microchip\Libero_SoC_2025.1\Libero_SoC\SmartHLS-2025.1\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$". This issue will be fixed for the next release of Libero.
+**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. This is a known issue. To solve this issue, go to line 257 of "C:\Microchip\Libero_SoC\SmartHLS\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$". This issue will be fixed for the next release of Libero.
 
 ![alt text](assets/wave_template_grouping.png)
 
