@@ -5,7 +5,7 @@ set -e
 REPO_OWNER="MicrochipTech"
 REPO_NAME="fpga-hls-examples"
 ASSET_NAME="precompiled-binaries.zip"
-TAG="2024.1"
+TAG="2025.1"
 
 DOWNLOAD_DIR=".precompiled-binaries_cache"
 
