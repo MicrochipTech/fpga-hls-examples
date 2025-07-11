@@ -75,6 +75,8 @@ Before beginning this tutorial, you should install the following software:
 
 **NOTE**: The `JTAG_HOST` variable can be set to `127.0.0.1` if the machine that the board is connected to is the same as the machine where the project is being compiled and debugged.
 
+- Required License: to successfully run this project, a floating license is required. A node-locked (NL) Silver license will not be sufficient. Such a floating license can be requested [here](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions).
+
 ## Explanation of the Example Design
 
 We have created a simple, yet general example that describes a streaming design pattern to showcase how the SmartHLS Automatic On-Chip Instrumentation feature works. The following is a block diagram of the example architecture where the red dots represent the instrumentation probes that are automatically inserted:
