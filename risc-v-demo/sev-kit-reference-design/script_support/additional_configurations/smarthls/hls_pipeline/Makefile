@@ -1,7 +1,7 @@
 NAME=hls_pipeline
 SRCS=hls_pipeline.cpp
 BOARD_PATH=tests/hls_pipeline
-LOCAL_CONFIG = -legup-config=config.tcl
+LOCAL_CONFIG = -shls-config=config.tcl
 SHLS_ROOT_DIR ?= $(shell basename `which shls`)
 LEVEL = $(SHLS_ROOT_DIR)/examples
 
