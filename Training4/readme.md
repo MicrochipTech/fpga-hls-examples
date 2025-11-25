@@ -1646,7 +1646,7 @@ set_parameter SOC_FABRIC_BASE_ADDRESS     0x70100000
 Note: If the GUI is not used, users must add the following line to their
 *Makefile.user*:
 ```make
-LOCAL_CONFIG += -legup-config=custom_config.tcl
+LOCAL_CONFIG += -shls-config=custom_config.tcl
 ```
 <p align="center">Figure 8‑5 Additional Makefile Line</p>
 
