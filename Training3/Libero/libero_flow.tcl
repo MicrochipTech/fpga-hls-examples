@@ -21,10 +21,10 @@ if { $::argc > 0 } {
 new_project -location {./Libero_training3} -name {Libero_training3} -project_description {} -block_mode 0 -hdl Verilog -family {PolarFire} -die {MPF300T} -package {FCG1152} -speed {-1} -die_voltage {1.0} -part_range {EXT} -adv_options {IO_DEFT_STD:LVCMOS 1.8V} -adv_options {RESERVEMIGRATIONPINS:1} -adv_options {RESTRICTPROBEPINS:1} -adv_options {RESTRICTSPIPINS:0} -adv_options {TEMPR:EXT} -adv_options {UNUSED_MSS_IO_RESISTOR_PULL:None} -adv_options {VCCI_1.2_VOLTR:EXT} -adv_options {VCCI_1.5_VOLTR:EXT} -adv_options {VCCI_1.8_VOLTR:EXT} -adv_options {VCCI_2.5_VOLTR:EXT} -adv_options {VCCI_3.3_VOLTR:EXT} -adv_options {VOLTR:EXT} 
 
 #IP core version variables
-set PF_CCC_version 2.2.220
+set PF_CCC_version 2.2.222
 set CORERESET_PF_version 2.3.100
 set PF_DDR4_version 2.5.120
-set PF_SRAM_AHBL_AXI_version 1.2.111
+set PF_SRAM_AHBL_AXI_version 1.2.115
 set COREFIFO_version 2.7.105
 set COREI2C_version 7.2.101
 set CoreAPB3_version 4.1.100
