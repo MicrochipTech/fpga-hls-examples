@@ -43,7 +43,7 @@ To minimize area overhead, users can control instrumentation scope through confi
 
 Before beginning this tutorial, you should install the following software:
 
-- Libero® SoC 2025.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
+- Libero® SoC 2025.2 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
 
 - The following hardware is required:
   - PolarFire® SoC FPGA Icicle Kit. Please follow [this link](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html) to set up your Icicle Kit and make sure Linux boots-up and that the board has an IP network address assigned to it.
@@ -71,6 +71,12 @@ Before beginning this tutorial, you should install the following software:
     $env:BOARD_IP="<YOUR ICICLE KIT BOARD IP HERE>"
     $env:JTAG_HOST="<YOUR JTAG HOST IP HERE>" # For local JTAG debug, use 127.0.0.1
     $env:PROGRAMMER_ID="<YOUR PROGRAMMER ID HERE>" # Available from FPExpress
+    ```
+
+    - **KNOWN ISSUE**: In Windows, SmartHLS includes Python 3 and the binary name is `python.exe`, however, a TCL script in the SmartHLS 2025.2 installation is explicitly calling `python3`, which does not exist. To be able to run the instrumentation example in Windows, just copy the file as follows:
+
+    ```console
+    cp "$env:SHLS_ROOT_DIR/dependencies/python/python.exe" "$env:SHLS_ROOT_DIR/dependencies/python/python3.exe"
     ```
 
 **NOTE**: The `JTAG_HOST` variable can be set to `127.0.0.1` if the machine that the board is connected to is the same as the machine where the project is being compiled and debugged.
@@ -188,7 +194,7 @@ void hlsModule(volatile unsigned char& go,
 }
 ```
 
-A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-F622374A-37E3-440B-922A-7980536D3130).
+A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-17/Chunk684686268.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-F622374A-37E3-440B-922A-7980536D3130).
 
 **NOTE:** Make sure to clean your project and re-run `shls -a instrument_init` if you modify the top-level modules of your design, for example, if you want to add a new top-level function.
 
@@ -317,7 +323,6 @@ Running...
 This will wait until `inputFifo`'s `empty` signal becomes low. But to get it to become low, we need to run the `auto_instrument.accel.elf` binary that was compiled earlier on-board.
 
 ### Running the Software
-**NOTE:** this is a known issue. If Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\examples\scripts\utils\instrument and go to line 198 of update_vcd.tcl. Here, change "$merged_file" to "$vcdFile". This issue will be fixed for the next release of Libero.
 
 Now, to run the design on the board, open an `ssh` session to the Icicle Kit board:
 
@@ -346,8 +351,6 @@ vsim -do hls_output/scripts/instrument/vsim_keyboard_shortcut
 Now, open the ModelSim window and press Ctrl + R to refresh.
 
 You should see the signals for FIFOs arranged and grouped in an intuitive manner. You can expand the `User_Defined_FIFOs` group to see the signals for the FIFOs in the design. For example, here's the grouped signals for `fifo1` (after toggling on leaf names):
-
-**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. This is a known issue. To solve this issue, go to line 257 of "C:\Microchip\Libero_SoC\SmartHLS\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$". This issue will be fixed for the next release of Libero.
 
 ![alt text](assets/wave_template_grouping.png)
 
@@ -488,7 +491,7 @@ to
 set monitoring_mode 1
 ```
 
-in `hls_output/scripts/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
+in `hls_output/scripts/instrument/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
 Then, open a new terminal on the build host and start a monitoring process that periodically captures the data (this is done instead of using the GUI):
 
@@ -500,8 +503,47 @@ identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/in
   
 - On Windows:
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
+
+**KNOWN ISSUE:** If you are using Identify 2025.2 and your board is __not__ connected to the build host, you may need to manually load the activation created in the previous section. To do so, in `hls_output/scripts/instrument/monitor.tcl`, load the activation before the `source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl` command, such that your `monitor.tcl` script looks like this:
+
+```
+### Previous commands here...
+
+17 set prj_file [glob $synthesisPath/*.prj]
+18 set prj_basename [file rootname [file tail $prj_file]]
+19 project open $synthesisPath/$prj_basename.prj
+20 activation load $synthesisPath/last_run.adc
+21
+22 source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl
+```
+
+If an activation was not automatically created in the previous section (i.e., the `hls_output/soc/synthesis/last_run.adc` file does not exist), you will have to create it manually. First, open the synthesis project in Identify.
+
+On Linux, run
+
+```bash
+identify_debugger_shell -licensetype identdebugger_actel -shell  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+On Windows, run
+
+```powershell
+identify_debugger_console -licensetype identdebugger_actel  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+Then set the JTAG server and programmer ID, and then save the activation.
+
+```
+server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
+com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
+activation save [PATH TO THE AUTO INSTRUMENT EXAMPLE HERE]/hls_output/soc/synthesis/last_run.adc
+```
+
+With `last_run.adc` and the code changes, you should now be able to run `monitor.tcl`, and proceed with the tutorial.
+
+</br>
 
 Finally, open Modelsim in a new terminal for visualization:
 
@@ -524,12 +566,12 @@ Start the monitoring loop that will generate the periodic captures:
 - On Linux:
   
 ```bash
-identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER ID
+identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
 ```
 
 - On Windows:
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:
