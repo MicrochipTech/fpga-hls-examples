@@ -4,7 +4,6 @@ NAME = Gaussian_Memory_Interface_Pipelined
 LOCAL_CONFIG = -shls-config=config.tcl
 SRCS = gaussian_filter.cpp
 GUI_BASE_DIR =
-LEVEL = $(SHLS_ROOT_DIR)/examples
 
 
 USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -I$(SHLS_ROOT_DIR)/smarthls-library
@@ -12,5 +11,4 @@ USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unkno
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user
 endif
-include $(LEVEL)/Makefile.common
 

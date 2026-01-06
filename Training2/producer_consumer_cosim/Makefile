@@ -4,7 +4,6 @@ NAME = producer_consumer_cosim
 LOCAL_CONFIG = -shls-config=config.tcl
 SRCS = producer_consumer.cpp
 GUI_BASE_DIR =
-LEVEL = $(SHLS_ROOT_DIR)/examples
 
 
 USER_CXX_FLAG += -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1 -I$(SHLS_ROOT_DIR)/smarthls-library
@@ -12,5 +11,4 @@ USER_CXX_FLAG += -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-p
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user
 endif
-include $(LEVEL)/Makefile.common
 
