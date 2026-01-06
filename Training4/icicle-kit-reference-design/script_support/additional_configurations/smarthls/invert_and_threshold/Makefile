@@ -2,7 +2,6 @@
 ########## If you have your own custom Makefile, please name it Makefile.user. ##########
 NAME = invert_and_threshold
 GUI_BASE_DIR = 
-LEVEL = $(SHLS_ROOT_DIR)/examples
 
 
 USER_CXX_FLAG += -pg -Wall -std=c++0x -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1 -I$(SHLS_ROOT_DIR)/smarthls-library 
@@ -10,4 +9,3 @@ USER_CXX_FLAG += -pg -Wall -std=c++0x -Wno-strict-aliasing -Wno-unused-label -Wn
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user
 endif
-include $(LEVEL)/Makefile.common
