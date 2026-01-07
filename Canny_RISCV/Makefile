@@ -6,7 +6,7 @@ SRCS = canny.cpp gaussian_filter.cpp hysteresis_filter.cpp nonmaximum_suppressio
 GUI_BASE_DIR =
 
 
-USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -I$(SHLS_ROOT_DIR)/smarthls-library
+USER_CXX_FLAG += -O3 -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes
 
 INPUT_FILES_RISCV += toronto.bmp
 OUTPUT_FILES_RISCV += output.bmp
