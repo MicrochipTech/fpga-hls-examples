@@ -6,7 +6,7 @@ SRCS = udp_tx.cpp
 GUI_BASE_DIR =
 
 
-USER_CXX_FLAG += -pg -Wall -std=c++0x -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1 -I$(SHLS_ROOT_DIR)/smarthls-library
+USER_CXX_FLAG += -pg -Wall -std=c++0x -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1
 
 ifneq ("$(wildcard $(GUI_BASE_DIR)Makefile.user)","")
 include $(GUI_BASE_DIR)Makefile.user

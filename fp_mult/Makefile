@@ -5,7 +5,7 @@ LOCAL_CONFIG = -shls-config=config.tcl
 SRCS = fmult_test.cpp
 GUI_BASE_DIR =
 
-USER_CXX_FLAG += -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1 -I$(SHLS_ROOT_DIR)/smarthls-library
+USER_CXX_FLAG += -pg -Wall -Wno-strict-aliasing -Wno-unused-label -Wno-unknown-pragmas -Wno-attributes -O1
 
 ## ignore 'mismatched-tags' warning about 'numeric_limits' generated from half.hpp
 USER_CXX_FLAG += -Wno-mismatched-tags
