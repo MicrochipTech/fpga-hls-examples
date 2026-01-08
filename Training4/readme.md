@@ -1,5 +1,5 @@
 <h1><p align="center">SmartHLS™ Training for Microchip PolarFire® SoC Flow</p></h1>
-<h2><p align="center">Revision 5.0 <br/>June 2025 <br/><br/><br/></p></h2>
+<h2><p align="center">Revision 6.0 <br/>Jan 2025 <br/><br/><br/></p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -47,6 +47,12 @@
 <li>Updated source files</li>
 <li>Updated instructions on CPU Usage</li>
 </tr>
+<tr class="even">
+<td>6.0</td>
+<td>Jan 6, 2025</td>
+<td>Updated for Libero 2025.2</td>
+<td></td>
+</tr>
 </tbody></table>
 
 # Requirements
@@ -58,13 +64,13 @@ training.
 
 You should install the following software:
 
-  - SmartHLS™ 2025.1 or later: this is packaged with Libero
-  - Libero® SoC 2025.1 (with QuestaSim Pro 2021.3) or later
+  - SmartHLS™ 2025.2 or later: this is packaged with Libero
+  - Libero® SoC 2025.2 (with QuestaSim Pro 2021.3) or later
       - [Libero Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
   - A terminal emulator such as PuTTY
       - [Windows Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-This document uses the Windows versions of Libero® SoC 2025.1 and SmartHLS 2025.1. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
+This document uses the Windows versions of Libero® SoC 2025.2 and SmartHLS 2025.2. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
 
 Additionally, while the default simulator for SmartHLS is now QuestaSim, ModelSim will still be supported. Some screenshots of the simulator may have been captured using Modelsim.
 
@@ -480,7 +486,7 @@ as shown below.
 
 ```
 13:58:58 **** Build of configuration LegUp for project vector_add_soc ****
-"C:\Microchip\SmartHLS-2025.1\SmartHLS\bin\shls.bat" -s sw_compile sw_run 
+"C:\Microchip\SmartHLS-2025.2\SmartHLS\bin\shls.bat" -s sw_compile sw_run 
 Info: Running the following targets: sw_compile sw_run
 Info: Compiling Software...
 RESULT: PASS
@@ -717,7 +723,7 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as shown below in Figure 6‑20. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2025.1. The timing results and resource usage
+tutorial used Libero® SoC v2025.2. The timing results and resource usage
 might also differ depending on the random seed used in the Libero tool
 flow.
 
@@ -727,7 +733,7 @@ flow.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 6.696 ns    | 3.304 ns | 302.633 MHz |
+| clk          | 5.000 ns      | 200.000 MHz | 1.492 ns    | 3.508 ns | 285.063 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -738,9 +744,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-------------------+--------+------------+
 | Resource Type            | Used              | Total  | Percentage |
 +--------------------------+-------------------+--------+------------+
-| Fabric + Interface 4LUT* | 1241 + 336 = 1577 | 254196 | 0.62       |
-| Fabric + Interface DFF*  | 349 + 336 = 685   | 254196 | 0.28       |
-| I/O Register             | 0                 | 432    | 0.00       |
+| Fabric + Interface 4LUT* | 1286 + 336 = 1622 | 254196 | 0.64       |
+| Fabric + Interface DFF*  | 371 + 336 = 707   | 254196 | 0.28       |
 | User I/O                 | 0                 | 144    | 0.00       |
 | uSRAM                    | 22                | 2352   | 0.94       |
 | LSRAM                    | 2                 | 812    | 0.25       |
@@ -1953,7 +1958,7 @@ takes in a SmartHLS project and calls SmartHLS to generate HDL from C++
 and integrate the modules into the SoC. This script attempts to obtain
 the path to SmartHLS based on the user’s PATH. If the script cannot find
 SmartHLS, the script will attempt to look in the default
-`C:Microchip\SmartHLS-v2025.1` installation path for Windows. If SmartHLS
+`C:Microchip\SmartHLS-v2025.2` installation path for Windows. If SmartHLS
 still cannot be found, the script will give an error and users will have
 to manually modify the script or add SmartHLS to their PATH environment
 variable.
