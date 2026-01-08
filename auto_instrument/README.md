@@ -503,10 +503,10 @@ identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/in
   
 - On Windows:
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
 
-**NOTE:** If you are using Identify 2025.2 and your board is __not__ connected to the build host, you may need to manually load the activation created in the previous section. To do so, in `hls_output/scripts/instrument/monitor.tcl`, load the activation before the `source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl` command, such that your `monitor.tcl` script looks like this:
+**KNOWN ISSUE:** If you are using Identify 2025.2 and your board is __not__ connected to the build host, you may need to manually load the activation created in the previous section. To do so, in `hls_output/scripts/instrument/monitor.tcl`, load the activation before the `source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl` command, such that your `monitor.tcl` script looks like this:
 
 ```
 ### Previous commands here...
@@ -518,6 +518,32 @@ identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/
 21
 22 source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl
 ```
+
+If an activation was not automatically created in the previous section (i.e., the `hls_output/soc/synthesis/last_run.adc` file does not exist), you will have to create it manually. First, open the synthesis project in Identify.
+
+On Linux, run
+
+```bash
+identify_debugger_shell -licensetype identdebugger_actel -shell  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+On Windows, run
+
+```powershell
+identify_debugger_console -licensetype identdebugger_actel  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+Then set the JTAG server and programmer ID, and then save the activation.
+
+```
+server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
+com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
+activation save [PATH TO THE AUTO INSTRUMENT EXAMPLE HERE]/hls_output/soc/synthesis/last_run.adc
+```
+
+With `last_run.adc` and the code changes, you should now be able to run `monitor.tcl`, and proceed with the tutorial.
+
+</br>
 
 Finally, open Modelsim in a new terminal for visualization:
 
@@ -545,7 +571,7 @@ identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/inst
 
 - On Windows:
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:
