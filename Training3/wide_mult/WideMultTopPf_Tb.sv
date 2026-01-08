@@ -66,6 +66,10 @@ assign sigout = sr[STAGES-1];
 
 endmodule
 
+// WIDE_MULT_LATENCY is assumed to be >= 2
+`ifndef WIDE_MULT_LATENCY
+    `define WIDE_MULT_LATENCY  7
+`endif
 
 module WideMultTopPf_Tb;
 
@@ -254,7 +258,7 @@ assign result_widemult = astim_r + {bstim_r,{64{1'b0}}} + result_192x64;
 
 // shift register block to add delay to match input to multiplier
 // pipeline stages require to meet timing.
-shiftdelay #(.STAGES(6), .WIDTH(256)) shiftdelay_inst3(
+shiftdelay #(.STAGES(`WIDE_MULT_LATENCY-1), .WIDTH(256)) shiftdelay_inst3(
      .resetn    (NSYSRESET ),
      .clock     (SYSCLK ),
      .sigin     (result_widemult ),
@@ -262,31 +266,31 @@ shiftdelay #(.STAGES(6), .WIDTH(256)) shiftdelay_inst3(
 );
 
 // print out the inputs for debugging purposes
-shiftdelay #(.STAGES(6), .WIDTH(128)) shiftdelay_inst5(
+shiftdelay #(.STAGES(`WIDE_MULT_LATENCY-1), .WIDTH(128)) shiftdelay_inst5(
      .resetn    (NSYSRESET ),
      .clock     (SYSCLK ),
      .sigin     (astim_r ),
      .sigout    (astim_r_delayed )
 );
-shiftdelay #(.STAGES(6), .WIDTH(64)) shiftdelay_inst6(
+shiftdelay #(.STAGES(`WIDE_MULT_LATENCY-1), .WIDTH(64)) shiftdelay_inst6(
      .resetn    (NSYSRESET ),
      .clock     (SYSCLK ),
      .sigin     (bstim_r ),
      .sigout    (bstim_r_delayed )
 );
-shiftdelay #(.STAGES(6), .WIDTH(64)) shiftdelay_inst7(
+shiftdelay #(.STAGES(`WIDE_MULT_LATENCY-1), .WIDTH(64)) shiftdelay_inst7(
      .resetn    (NSYSRESET ),
      .clock     (SYSCLK ),
      .sigin     (cstim_r ),
      .sigout    (cstim_r_delayed )
 );
-shiftdelay #(.STAGES(6), .WIDTH(128)) shiftdelay_inst8(
+shiftdelay #(.STAGES(`WIDE_MULT_LATENCY-1), .WIDTH(128)) shiftdelay_inst8(
      .resetn    (NSYSRESET ),
      .clock     (SYSCLK ),
      .sigin     (dstim_r ),
      .sigout    (dstim_r_delayed )
 );
-shiftdelay #(.STAGES(6), .WIDTH(128)) shiftdelay_inst9(
+shiftdelay #(.STAGES(`WIDE_MULT_LATENCY-1), .WIDTH(128)) shiftdelay_inst9(
      .resetn    (NSYSRESET ),
      .clock     (SYSCLK ),
      .sigin     (estim_r ),
@@ -308,7 +312,7 @@ always @ (result) begin
     end
     $display("");
     if (num_res == 46) begin
-        $display ("This testbench expects a pipelined wide multiply with initiation interval of 1 and pipeline latency of 7.");
+        $display ("This testbench expects a pipelined wide multiply with initiation interval of 1 and pipeline latency of %0d.", `WIDE_MULT_LATENCY);
         $display ("If there are mismatches in this testbench but not in co-simulation, check your pipeline results.");
         $display ("Simulation finished! %d mismatches.", num_mismatch);
         if (num_mismatch)
