@@ -2071,7 +2071,7 @@ representation of `fixpt_t(65.738)` by adding this code in the main
 function on line 104 after the test case validation loop:
 ```c
 std::cout << fixpt_t(65.738).to_fixpt_string(10) << std::endl;
-std::cout << "= " << fixpt_t(65.738).to_double() << std::endl;
+std::cout << "= " << (double)fixpt_t(65.738) << std::endl;
 ```
 
 Now recompile (![](.//media/image59.png)) and rerun
