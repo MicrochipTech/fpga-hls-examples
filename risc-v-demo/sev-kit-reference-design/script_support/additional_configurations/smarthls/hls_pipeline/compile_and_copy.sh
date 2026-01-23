@@ -8,6 +8,11 @@ set -e
 # Determine the location of SmartHLS
 SHLS_ROOT_DIR=$(dirname $(which shls))/..
 
+if [ ! $(which riscv64-unknown-linux-gnu-g++)]; then 
+        echo "Caution: riscv64-unknown-linux-gnu-g++ not found, adding $SHLS_ROOT_DIR/swtools/binutils/riscv-gnu-toolchain/bin to PATH. Please check this!"
+        export PATH=$PATH:$SHLS_ROOT_DIR/swtools/binutils/riscv-gnu-toolchain/bin
+fi
+
 EXAMPLE_ROOT_FOLDER=./../../../../../
 
 MODULE=hls_pipeline
