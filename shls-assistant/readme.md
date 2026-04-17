@@ -20,7 +20,6 @@ intelligent assistance for FPGA development using SmartHLS.
       - [Step 1: Launch Claude Code](#step-1-launch-claude-code)
       - [Step 2: Add the SmartHLS Marketplace and Plugin](#step-2-add-the-smarthls-marketplace-and-plugin)
       - [Step 3: Run SmartHLS Plugin Additional Setup](#step-3-run-smarthls-plugin-additional-setup)
-    - [5. Set the Anthropic API Key](#5-set-the-anthropic-api-key)
   - [Verifying the shls-mcp connection](#verifying-the-shls-mcp-connection)
     - [1. Check the Plugin Indicator (Do Not Skip)](#1-check-the-plugin-indicator-do-not-skip)
     - [2. Test shls-mcp functionality](#2-test-shls-mcp-functionality)
@@ -160,10 +159,18 @@ You have two options:
   1. Create a system environment variable to place your Anthropic Key
 
   ```console
-  ANTHROPIC_API_KEY = "<you anthropic api key>"
+  ANTHROPIC_API_KEY = "sk-..."
   ```
 
-  2. After installing the plugin (see [Plugin installation](#4-install-the-smarthls-coding-assistant-claude-code-plugin)), create `.env` file under `$HOME/.claude/plugins/data/shls_coding_assistant-mchp_hls_marketplace/shls-mcp` and write the key there.
+  2. Add the key in your `.claude/settings.local.json` file:
+
+  ```json
+  {
+    "env": {
+      "ANTHROPIC_API_KEY": "sk-...",
+    }
+  }
+  ```
 
 **Note:** If the API key is missing or invalid, the `shls-mcp` server will fail to start.
 
@@ -207,26 +214,8 @@ The following command prompts Claude Code to run a script that downloads the IBM
 artifacts, placing them in the appropriate locations.
 
 ```text
-/shls_plugin_setup
+/shls_plugin_setup 2025.2.1
 ```
-
-### 5. Set the Anthropic API Key
-
-Create a system environment variable for your Anthropic API key:
-
-```console
-ANTHROPIC_API_KEY="<your-anthropic-api-key>"
-```
-
-Replace `<your-anthropic-api-key>` with your actual API key from the
-[Anthropic Console](https://console.anthropic.com/).
-
-**Important:**
-
-- If the API key is missing or invalid, the MCP server will fail to start.
-- Logs are written to `shls-server.log` in the MCP server directory.
-
-Once the API key is set, proceed to verify that the MCP connection is working.
 
 ---
 
