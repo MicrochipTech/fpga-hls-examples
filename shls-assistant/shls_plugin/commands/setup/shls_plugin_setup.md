@@ -18,7 +18,7 @@ Follow these steps exactly:
 1. Run the download python script:
 
    ```bash
-   python "${CLAUDE_PLUGIN_ROOT}/commands/setup/download_model.py ${SHLS-MCP-VERSION}"
+   python "${CLAUDE_PLUGIN_ROOT}/commands/setup/download_model.py" "${SHLS-MCP-VERSION}"
    ```
 
 2. When the script finishes:
