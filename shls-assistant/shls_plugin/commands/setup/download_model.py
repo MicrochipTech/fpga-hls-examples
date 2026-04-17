@@ -350,8 +350,8 @@ def install_shls_mcp(extract_dir: Path, plugin_root: Path) -> None:
         print(f"ERROR: Failed to move shls-mcp to {dest}: {exc}", file=sys.stderr)
         sys.exit(1)
 
-    if platform.system().lower() != "windows":
-        executable = dest / "shls_mcp"
+    if platform.system().lower() == "linux":
+        executable = dest / "shls-mcp.exe"
         if not executable.exists():
             print(
                 f"ERROR: Expected executable not found at '{executable}' after installation.",
