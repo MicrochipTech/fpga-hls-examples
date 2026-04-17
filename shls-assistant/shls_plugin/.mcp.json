@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "shls_mcp": {
+      "type": "stdio",
+      "command": "${CLAUDE_PLUGIN_ROOT}/../../../../data/shls_coding_assistant-mchp_hls_marketplace/shls-mcp/shls-mcp.exe",
+      "args": [],
+      "env":  {
+      }
+    }
+  }
+}

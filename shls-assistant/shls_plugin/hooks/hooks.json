@@ -1,0 +1,16 @@
+{
+    "description": "Log mcp rag queries and results",
+    "hooks": {
+      "PostToolUse": [
+        {
+          "matcher": "mcp__plugin_shls_coding_assistant_shls_mcp__.*",
+          "hooks": [
+            {
+              "type": "command",
+              "command": "python ${CLAUDE_PLUGIN_ROOT}/hooks/log_mcp_rag.py"
+            }
+          ]
+        }
+      ]
+    }
+  }
