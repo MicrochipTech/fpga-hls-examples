@@ -161,6 +161,9 @@ You have two options:
   ```console
   ANTHROPIC_API_KEY = "sk-..."
   ```
+or ```powershell
+   $env:ANTHROPIC_API_KEY = "sk-..."
+   ```
 
   2. Add the key in your `.claude/settings.local.json` file:
 
