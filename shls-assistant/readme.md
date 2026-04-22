@@ -158,9 +158,16 @@ You have two options:
 
   1. Create a system environment variable to place your Anthropic Key
 
+on Linux
+
   ```console
   ANTHROPIC_API_KEY = "sk-..."
   ```
+on Windows 
+
+```powershell
+$env:ANTHROPIC_API_KEY = "sk-..."
+   ```
 
   2. Add the key in your `.claude/settings.local.json` file:
 
