@@ -4,6 +4,7 @@ PostToolUse hook — logs SmartHLS MCP RAG queries and results
 to <workspace>/mcp-rag-log.md in a human-readable format.
 """
 
+import io
 import json
 import sys
 import os
@@ -11,7 +12,7 @@ from datetime import datetime
 
 
 def main():
-    data = json.load(sys.stdin)
+    data = json.load(io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8'))
 
     query = data.get("tool_input", {}).get("query", "N/A")
     raw_result = data.get("tool_response", {})
@@ -33,6 +34,19 @@ def main():
         # Fallback for any other type (int, list, etc.)
         result_text = str(raw_result)
 
+    # Normalise to a plain string — MCP responses can be a list of content
+    # blocks [{"type": "text", "text": "..."}] or some other non-str value.
+    if isinstance(result_text, list):
+        parts = []
+        for item in result_text:
+            if isinstance(item, dict):
+                parts.append(item.get("text", json.dumps(item)))
+            else:
+                parts.append(str(item))
+        result_text = "\n".join(parts)
+    elif not isinstance(result_text, str):
+        result_text = str(result_text)
+
     # Unescape literal \n sequences into real newlines
     result_text = result_text.replace("\\n", "\n")
 
@@ -48,20 +62,17 @@ def main():
     log_path = os.path.join(cwd, "shls-assistant-rag-log.md")
 
     entry = (
-        f"{'=' * 60}\n"
-        f"[{ts}]  {method}\n"
-        f"{'=' * 60}\n"
+        f"{chr(0x2500) * 60}\n"
+        f" # Query Log - {ts} \n"
         f"\n"
-        f"**Query:**\n"
+        f"## Query\n"
         f"{query}\n"
         f"\n"
-        f"{chr(0x2500) * 60}\n"
+        f"## shls_mcp response\n"
         f"\n"
-        f"**Result:**\n"
-        f"\n"
-        f"```\n"
+        f"````verbatim\n"
         f"{result_text}\n"
-        f"```\n"
+        f"````\n"
         f"\n\n"
     )
 
