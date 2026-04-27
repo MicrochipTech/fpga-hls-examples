@@ -52,3 +52,9 @@ Example | Description
 Example | Description
 --------|------------
 [RISC-V example](./risc-v-demo)|End-to-end SmartHLS + RISC-V + H264 over Ethernet Example.
+
+## SmartHLS Coding Assistant
+
+| Example | Description |
+| --- | --- |
+| [shls-assistant](./shls-assistant) | Claude Code-based AI coding assistant for SmartHLS. It integrates Anthropic's Claude with a Model Context Protocol (MCP) server and RAG to help generate, optimize, and test SmartHLS C++ code for Microchip FPGAs. |
