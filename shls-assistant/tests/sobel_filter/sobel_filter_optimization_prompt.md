@@ -1,7 +1,7 @@
 # HLS Performance Optimization Guide
 
-**project directory:** `shls-assistant/tests/sobel_filter_pipelined`
--Generate all the files under `shls-assistant/tests/sobel_filter_pipelined/work`.
+**project directory:** `shls-assistant/tests/sobel_filter`
+-Generate all the files under `shls-assistant/tests/sobel_filter/work`.
 -**Do not browse the file system outside the current working directory for reference code or patterns.** All SmartHLS implementation knowledge must
 come exclusively from the `smarthls_info` MCP tool. Do not use Glob, Grep, or Read tools to search parent directories or unrelated projects for
 examples.
@@ -18,8 +18,6 @@ Look for these performance bottlenecks:
 - Boundary checking that interrupts the main computation
 - Apply HLS pragmas - Where should pipelining be enabled?
 - Measure improvement - Compare cycle counts and throughput
-
--create the new cpp implementation within the same sobel_filter folder.
 
 - Use input.h (contains elaine_512_input array)
 - Use golden_output.h (contains elaine_512_golden_output array) for verification
