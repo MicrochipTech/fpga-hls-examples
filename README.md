@@ -52,3 +52,4 @@ Example | Description
 Example | Description
 --------|------------
 [RISC-V example](./risc-v-demo)|End-to-end SmartHLS + RISC-V + H264 over Ethernet Example.
+[shls-assistant](./shls-assistant)|SmartHLS development using claude code + shls_assistant plugin
