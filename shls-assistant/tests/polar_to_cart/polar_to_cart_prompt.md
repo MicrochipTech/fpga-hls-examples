@@ -1,11 +1,13 @@
 # Coordinate Conversion Project
 
 Create a SmartHLS project that implements coordinate conversion functions between
-polar and cartesian coordinate systems. 
+polar and cartesian coordinate systems.
 
-Generate all the files under a directory called "work".
-
-**project name:**polar_to_cart
+**project directory:** `shls-assistant/tests/polar_to_cart`
+-Generate all the files under `shls-assistant/tests/polar_to_cart/work`.
+-**Do not browse the file system outside the current working directory for reference code or patterns.** All SmartHLS implementation knowledge must
+come exclusively from the `smarthls_info` MCP tool. Do not use Glob, Grep, or Read tools to search parent directories or unrelated projects for
+examples.
 
 ## Core Functionality
 
