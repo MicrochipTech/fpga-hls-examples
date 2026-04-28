@@ -92,7 +92,7 @@ invoke it from any project folder.
 
 Before starting, ensure you have the following installed:
 
-- **Windows 10/11** (PowerShell required)
+- **Windows 10/11** (PowerShell required) or **Linux**
 - **Python 3.10 -- 3.12**
 - **UV** (Python package and project manager)
 - **SmartHLS** (Microchip's High-Level Synthesis tool)
@@ -107,13 +107,17 @@ Before starting, ensure you have the following installed:
 
 ## Installation and Setup
 
-### 1. Clone the HLS Libraries
+### 1. Clone the Repository and HLS Libraries
+
+```console
+git clone -b shls_assistant https://github.com/MicrochipTech/fpga-hls-examples.git
+```
 
 Clone the HLS libraries repository into the `shls-assistant` directory. The
 examples in this project use these libraries.
 
 ```console
-cd shls-assistant
+cd fpga-hls-examples/shls-assistant
 ```
 
 ```console
