@@ -3,7 +3,7 @@
 **project directory:** `shls-assistant/tests/sobel_filter`
 -Generate all the files under `shls-assistant/tests/sobel_filter/work`.
 -**Do not browse the file system outside the current working directory for reference code or patterns.** All SmartHLS implementation knowledge must
-come exclusively from the `smarthls_info` MCP tool. Do not use Glob, Grep, or Read tools to search parent directories or unrelated projects for
+come exclusively from the `smarthls_info` MCP tool. Do not use any Read tools to search parent directories or unrelated projects for
 examples.
 
 ## Your Task

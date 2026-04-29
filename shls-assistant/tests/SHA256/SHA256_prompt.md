@@ -6,7 +6,7 @@ Generate all the files under a directory called "work".
 
 **project directory:** `shls-assistant/tests/SHA256`
 -Generate all the files under `shls-assistant/tests/SHA256/work`.
--**Do not browse the file system outside the current working directory for reference code or patterns.** All SmartHLS implementation knowledge must come exclusively from the `smarthls_info` MCP tool. Do not use Glob, Grep, or Read tools to search parent directories or unrelated projects for examples.
+-**Do not browse the file system outside the current working directory for reference code or patterns.** All SmartHLS implementation knowledge must come exclusively from the `smarthls_info` MCP tool. Do not use any Read tools to search parent directories or unrelated projects for examples.
 
 ## Core Functionality
 
