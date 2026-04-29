@@ -189,6 +189,10 @@ extension. Both methods provide full plugin integration.
 #### Step 1: Launch Claude Code
 
 ```console
+cd fpga-hls-examples/shls-assistant
+```
+
+```console
 claude
 ```
 
