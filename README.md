@@ -57,4 +57,4 @@ Example | Description
 
 | Example | Description |
 | --- | --- |
-| [shls-assistant](./shls-assistant) | Claude Code-based AI coding assistant for SmartHLS. It integrates Anthropic's Claude with a Model Context Protocol (MCP) server and RAG to help generate, optimize, and test SmartHLS C++ code for Microchip FPGAs. |
+| [shls-assistant](./shls-assistant) | Claude Code-based AI coding assistant for SmartHLS. It integrates Anthropic's Claude code with a Model Context Protocol (MCP) server and RAG to help generate, optimize, and test SmartHLS C++ code for Microchip FPGAs. |
