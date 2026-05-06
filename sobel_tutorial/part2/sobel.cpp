@@ -15,31 +15,37 @@ void sobel_filter(unsigned char in[HEIGHT][WIDTH],
     const static int gy[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
 
     int x = 0;
-    int y = 1;
+    int y = 0;
 #pragma HLS loop pipeline
-    for (int i = 0; i < (HEIGHT - 2) * (WIDTH - 2); i++) {
-        // increment row when column reaches end of row
-        y = (x == WIDTH - 2) ? y + 1 : y;
-        // increment column until end of row
-        x = (x == WIDTH - 2) ? 1 : x + 1;
+    for (int i = 0; i < HEIGHT * WIDTH; i++) {
+        // Output '0' when receptive field is not in bound
+        int sum = 0;
 
-        // Apply the sobel filter at the current "receptive field".
-        int gx_sum = 0, gy_sum = 0;
-        for (int m = -1; m <= 1; m++) {
-            for (int n = -1; n <= 1; n++) {
-                int pixel = in[y + m][x + n];
-                gx_sum += pixel * gx[m + 1][n + 1];
-                gy_sum += pixel * gy[m + 1][n + 1];
+        // if the receptive field is in bound
+        if ((x <  WIDTH - 1) && (x >= 1) && (y < HEIGHT - 1) && (y >= 1)) {
+            // Apply the sobel filter at the current "receptive field".
+            int gx_sum = 0, gy_sum = 0;
+            for (int m = -1; m <= 1; m++) {
+                for (int n = -1; n <= 1; n++) {
+                    int pixel = in[y + m][x + n];
+                    gx_sum += pixel * gx[m + 1][n + 1];
+                    gy_sum += pixel * gy[m + 1][n + 1];
+                }
             }
+
+            gx_sum = (gx_sum < 0) ? -gx_sum : gx_sum;
+            gy_sum = (gy_sum < 0) ? -gy_sum : gy_sum;
+
+            sum = gx_sum + gy_sum;
+            sum = (sum > 255) ? 255 : sum;
         }
 
-        gx_sum = (gx_sum < 0) ? -gx_sum : gx_sum;
-        gy_sum = (gy_sum < 0) ? -gy_sum : gy_sum;
-
-        int sum = gx_sum + gy_sum;
-        sum = (sum > 255) ? 255 : sum;
-
         out[y][x] = (unsigned char)sum;
+
+        // increment row when column reaches end of row
+        y = (x == WIDTH - 1) ? y + 1 : y;
+        // increment column until end of row
+        x = (x == WIDTH - 1) ? 0 : x + 1;
     }
 }
 
@@ -50,8 +56,8 @@ int main() {
 
     int mismatch_count = 0;
 
-    for (int i = 1; i < HEIGHT - 1; i++) {
-        for (int j = 1; j < WIDTH - 1; j++) {
+    for (int i = 0; i < HEIGHT; i++) {
+        for (int j = 0; j < WIDTH; j++) {
             if (sobel_output[i][j] != elaine_512_golden_output[i][j])
                 mismatch_count++;
         }
