@@ -77,11 +77,17 @@ void nonmaximum_suppression(hls::FIFO<unsigned short> &input_fifo,
         // (suppress)
         int output = current_pixel;
 
+        #if defined(__GNUC__) && !defined(__clang__)
         #pragma GCC diagnostic push
         #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+        #endif
+
         output = (output >= avg1) ? output : 0;
         output = (output >= avg2) ? output : 0;
+
+        #if defined(__GNUC__) && !defined(__clang__)
         #pragma GCC diagnostic pop
+        #endif
 
         output_fifo.write(output);
     }
