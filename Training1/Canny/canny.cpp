@@ -11,9 +11,9 @@ void canny(hls::FIFO<unsigned char> &input_fifo,
 
 #ifndef __SYNTHESIS__
     // For software, the fifo depth has to be larger.
-    hls::FIFO<unsigned char> output_fifo_gf(WIDTH * HEIGHT * 2);
-    hls::FIFO<unsigned short> output_fifo_sf(WIDTH * HEIGHT * 2);
-    hls::FIFO<unsigned char> output_fifo_nm(WIDTH * HEIGHT * 2);
+    hls::FIFO<unsigned char> output_fifo_gf(WIDTH * HEIGHT);
+    hls::FIFO<unsigned short> output_fifo_sf(WIDTH * HEIGHT);
+    hls::FIFO<unsigned char> output_fifo_nm(WIDTH * HEIGHT);
 #else
     hls::FIFO<unsigned char> output_fifo_gf(/* depth = */ 2);
     hls::FIFO<unsigned short> output_fifo_sf(/* depth = */ 2);
@@ -28,8 +28,8 @@ void canny(hls::FIFO<unsigned char> &input_fifo,
 int main() {
     unsigned int i, j;
 
-    hls::FIFO<unsigned char> input_fifo(/* depth = */ WIDTH * HEIGHT * 2);
-    hls::FIFO<unsigned char> output_fifo(/* depth = */ WIDTH * HEIGHT * 2);
+    hls::FIFO<unsigned char> input_fifo(/* depth = */ WIDTH * HEIGHT);
+    hls::FIFO<unsigned char> output_fifo(/* depth = */ WIDTH * HEIGHT);
 
     bmp_header_t input_channel_header, golden_output_image_header;
     bmp_pixel_t *input_channel_sw, *input_channel, *golden_output_image,
@@ -92,11 +92,6 @@ int main() {
             input_fifo.write(grayscale);
             input_channel++;
         }
-    }
-
-    // Give more inputs to flush out all pixels.
-    for (i = 0; i < GF_KERNEL_SIZE * WIDTH + GF_KERNEL_SIZE; i++) {
-        input_fifo.write(0);
     }
 
     canny(input_fifo, output_fifo);
