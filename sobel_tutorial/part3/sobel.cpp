@@ -71,8 +71,8 @@ void sobel_filter(FIFO<unsigned char> &input_fifo,
 }
 
 int main() {
-    FIFO<unsigned char> input_fifo(/* depth: */ WIDTH * HEIGHT * 2);
-    FIFO<unsigned char> output_fifo(/* depth: */ WIDTH * HEIGHT * 2);
+    FIFO<unsigned char> input_fifo(/* depth: */ WIDTH * HEIGHT);
+    FIFO<unsigned char> output_fifo(/* depth: */ WIDTH * HEIGHT);
 
     // Write input pixels and run the hardware model.
     for (int i = 0; i < HEIGHT; i++) {
