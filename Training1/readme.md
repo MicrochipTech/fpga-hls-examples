@@ -116,7 +116,7 @@ run_shls_on_examples.ps1
 If you are using Linux, open a terminal and navigate to the Libero directory, e.g.:
 
 ```bash
-cd Workspace/fpga-hls-examples-main/Training1/Libero
+cd Workspace/fpga-hls-examples/Training1/Libero
 ```
 and run the following script to generate the HLS example designs:
 ``` bash
@@ -1356,8 +1356,9 @@ PolarFire FPGA device by clicking on the ![](.//media/image65.png). This
 will launch Libero SoC in the background and run synthesis, place, and
 route. This should take 5 minutes and generate the “synthesis” directory
 which holds the Libero SoC project directory, and the
-summary.results.rpt file. This will give both the timing and the
-resource results. Note that if you only want the resource result, you
+summary.results.rpt file (note that all of those files/directories are 
+located under the directory "hls_output"). This will give both the timing 
+and the resource results. Note that if you only want the resource result, you
 can click on ![](.//media/image66.png), which will run synthesis only
 with no place and route.
 
