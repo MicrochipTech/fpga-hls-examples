@@ -530,7 +530,7 @@ information on where pragmas need to be defined, check the
 
 ![](.//media/image3.png) To check for generated arbiters, compile the
 design to hardware (![](.//media/image28.png)) and open the generated
-Verilog file "`producer_consumer.v`". This file can be found under the
+Verilog file "`producer_consumer_top.v`". This file can be found under the
 directory `producer_consumer/hls_output/rtl/`. On line 213, you will
 find an instantiation for a round robin arbiter for the variable done.
 If you search for “`round_robin_arbiter`” and cycle through the results,
@@ -538,7 +538,7 @@ you will find that no such arbiter has been generated for buf which we
 declared as contention free.
 
 ```C
-214  top_round_robin_arbiter round_robin_arbiter_inst_arbiter_done_a (
+213  top_round_robin_arbiter round_robin_arbiter_inst_arbiter_done_a (
        ...
 219  );
 ```
