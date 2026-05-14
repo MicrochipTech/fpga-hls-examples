@@ -116,7 +116,7 @@ run_shls_on_examples.ps1
 If you are using Linux, open a terminal and navigate to the Libero directory, e.g.:
 
 ```bash
-cd Workspace/fpga-hls-examples-main/Training1/Libero
+cd Workspace/fpga-hls-examples/Training1/Libero
 ```
 and run the following script to generate the HLS example designs:
 ``` bash
@@ -1356,8 +1356,9 @@ PolarFire FPGA device by clicking on the ![](.//media/image65.png). This
 will launch Libero SoC in the background and run synthesis, place, and
 route. This should take 5 minutes and generate the “synthesis” directory
 which holds the Libero SoC project directory, and the
-summary.results.rpt file. This will give both the timing and the
-resource results. Note that if you only want the resource result, you
+summary.results.rpt file (note that all of those files/directories are 
+located under the directory "hls_output"). This will give both the timing 
+and the resource results. Note that if you only want the resource result, you
 can click on ![](.//media/image66.png), which will run synthesis only
 with no place and route.
 
@@ -1680,7 +1681,7 @@ previous iteration, but the next iteration is also waiting for the
 current iteration. We cannot parallelize any operations along this
 recurrence, so we need to wait 1 cycle for the load, 2 cycles for the
 multiply (due to internal hardware constraints in the multiply unit it is 2 cycles instead of 1), and 1 cycle for the store before starting every loop
-iteration. Therefore, the pipeline initiation interval is 3 cycles (1 +
+iteration. Therefore, the pipeline initiation interval is 4 cycles (1 +
 2 + 1). A diagram of how the pipeline schedule would look is presented
 in Figure 19.
 ```c
@@ -1692,7 +1693,7 @@ void cross_iteration_dependency( volatile int array[N] ) {
     }
 }
 ```
-<p align="center"><img src=".//media/image93.png"/></br>Figure 19: Example of initiation interval of 3 due to cross-iteration
+<p align="center"><img src=".//media/image93.png"/></br>Figure 19: Example of initiation interval of 4 due to cross-iteration
 dependency.</p></br>
 
 ![](.//media/image2.png)In the Console output, find the messages
@@ -1700,22 +1701,21 @@ generated from compiling the project to hardware in the previous step.
 Near the bottom of the Console there is the following output. You might
 need to scroll up a bit to see it.
 ```
-Info: Cross-iteration dependency does not allow initiation interval (II) of 1.
-    Dependency (distance = 1) from 'store' operation for array 'array' (at line 11 of pipeline_hazards.cpp) to
-'load' (32b) operation for array 'array' (at line 11 of pipeline_hazards.cpp)
-    Recurrence path:
-+------------------------------------------+---------------------------------+---------------+------------+
-| Operation                                | Location                        | Cycle Latency | Delay [ns] |
-+------------------------------------------+---------------------------------+---------------+------------+
-| 'load' (32b) operation for array 'array' | line 11 of pipeline_hazards.cpp | 1             | 0.00       |
-| 'mul' (32b) operation                    | line 11 of pipeline_hazards.cpp | 1             | 3.70       |
-| 'store' operation for array 'array'      | line 11 of pipeline_hazards.cpp | 1             | 0.00       |
-+------------------------------------------+---------------------------------+---------------+------------+
-|                                          | Total                           | 3             | 3.70       |
-+------------------------------------------+---------------------------------+---------------+------------+
-
-Total required latency = 3. Maximum allowed latency = distance x II = 1 x 1 = 1.
-Total required latency > Maximum allowed latency, we must increase II.
+Info: Cross-iteration dependency does not allow initiation interval (II) of 3.
+      Dependency (distance = 1) from 'store' operation for array 'array' (at line 11 of pipeline_hazards.cpp) to 'load' (32b) operation for array 'array' (at line 11 of pipeline_hazards.cpp)
+      Recurrence path:
+      +------------------------------------------+---------------------------------+---------------+------------+
+      | Operation                                | Location                        | Cycle Latency | Delay [ns] |
+      +------------------------------------------+---------------------------------+---------------+------------+
+      | 'load' (32b) operation for array 'array' | line 11 of pipeline_hazards.cpp | 1             | 0.00       |
+      | 'mul' (32b) operation                    | line 11 of pipeline_hazards.cpp | 2             | 3.70       |
+      | 'store' operation for array 'array'      | line 11 of pipeline_hazards.cpp | 1             | 0.00       |
+      +------------------------------------------+---------------------------------+---------------+------------+
+      |                                          | Total                           | 4             | 3.70       |
+      +------------------------------------------+---------------------------------+---------------+------------+
+      
+      Total required latency = 4. Maximum allowed latency = distance x II = 1 x 3 = 3.
+      Total required latency > Maximum allowed latency, we must increase II.
 ```
 
 SmartHLS automatically prints out a table specifying which instructions
