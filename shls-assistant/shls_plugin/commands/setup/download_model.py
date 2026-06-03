@@ -178,49 +178,10 @@ def get_os_asset_name() -> str:
         sys.exit(1)
 
 
+
 def get_release_asset_url(version: str, asset_name: str) -> str:
-    """Query the GitHub API and return the download URL for the given asset."""
-    print(f"\nLooking up GitHub release '{version}' for asset '{asset_name}'...")
-
-    api_url = f"{GITHUB_API_BASE}/releases/tags/{version}"
-    req = urllib.request.Request(
-        api_url,
-        headers={"User-Agent": "shls-setup-script/1.0"},
-    )
-    try:
-        with urllib.request.urlopen(req) as response:
-            release_data = json.loads(response.read().decode())
-    except urllib.error.HTTPError as exc:
-        print(
-            f"ERROR: GitHub API returned HTTP {exc.code} for release '{version}'.\n"
-            f"  URL: {api_url}\n"
-            f"  Make sure the release tag exists on https://github.com/{GITHUB_REPO}/releases",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-    except Exception as exc:
-        print(f"ERROR: Failed to contact GitHub API: {exc}", file=sys.stderr)
-        sys.exit(1)
-
-    assets = release_data.get("assets", [])
-    for asset in assets:
-        if asset["name"] == asset_name:
-            url = asset["browser_download_url"]
-            print(f"Found asset: {asset_name} -> {url}")
-            return url
-
-    available = [a["name"] for a in assets]
-    print(
-        f"ERROR: Asset '{asset_name}' was not found in release '{version}'.\n"
-        f"  Available assets: {available}",
-        file=sys.stderr,
-    )
-    sys.exit(1)
-
-
-def get_prerelease_asset_url(version: str, asset_name: str) -> str:
     """Query the GitHub API and return the download URL for the given asset from a pre-release."""
-    print(f"\nLooking up GitHub pre-release '{version}' for asset '{asset_name}'...")
+    print(f"\nLooking up GitHub release '{version}' for asset '{asset_name}'...")
 
     api_url = f"{GITHUB_API_BASE}/releases"
     req = urllib.request.Request(
@@ -242,21 +203,21 @@ def get_prerelease_asset_url(version: str, asset_name: str) -> str:
         print(f"ERROR: Failed to contact GitHub API: {exc}", file=sys.stderr)
         sys.exit(1)
 
-    prerelease = next(
-        (r for r in releases if r.get("prerelease") and r.get("tag_name") == version),
+    release = next(
+        (r for r in releases if r.get("tag_name") == version),
         None,
     )
-    if prerelease is None:
-        available = [r["tag_name"] for r in releases if r.get("prerelease")]
+    if release is None:
+        available = [r["tag_name"] for r in releases]
         print(
-            f"ERROR: No pre-release with tag '{version}' was found on "
+            f"ERROR: No release with tag '{version}' was found on "
             f"https://github.com/{GITHUB_REPO}/releases\n"
-            f"  Available pre-releases: {available}",
+            f"  Available releases: {available}",
             file=sys.stderr,
         )
         sys.exit(1)
 
-    assets = prerelease.get("assets", [])
+    assets = release.get("assets", [])
     for asset in assets:
         if asset["name"] == asset_name:
             url = asset["browser_download_url"]
@@ -377,7 +338,7 @@ def download_and_install_assistant(version: str = None):
     version_installed = get_shls_version() 
   
     if version is not None:
-        version_match = re.fullmatch(r"(\d{4}\.\d+)\.\d+", version)
+        version_match = re.fullmatch(r"(\d{4}\.\d+)(\.\d+)?", version)
         if not version_match or version_match.group(1) != version_installed:
             print(
                 f"ERROR: Version '{version}' is not compatible with the locally installed "
@@ -394,8 +355,7 @@ def download_and_install_assistant(version: str = None):
     print(f"Downloading release assets for version: {version} ...")
     
     asset_name = get_os_asset_name()
-    #download_url = get_release_asset_url(version, asset_name)
-    download_url = get_prerelease_asset_url(version, asset_name)
+    download_url = get_release_asset_url(version, asset_name)
 
     # Download into a temporary directory next to the plugin root
     tmp_dir = plugin_root / "_shls_assistant_tmp"
