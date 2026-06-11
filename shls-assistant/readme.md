@@ -110,7 +110,7 @@ Before starting, ensure you have the following installed:
 ### 1. Clone the Repository and HLS Libraries
 
 ```console
-git clone -b shls_assistant https://github.com/MicrochipTech/fpga-hls-examples.git
+git clone https://github.com/MicrochipTech/fpga-hls-examples.git
 ```
 
 Clone the HLS libraries repository into the `shls-assistant` directory. The
@@ -212,7 +212,7 @@ Navigate to **Marketplaces** and add a new marketplace. In the input box, enter
 the following GitHub URL:
 
 ```text
-https://github.com/MicrochipTech/fpga-hls-examples#shls_assistant
+https://github.com/MicrochipTech/fpga-hls-examples
 ```
 
 Press `<Enter>`, then select **Browse Plugins**. The SmartHLS Coding Assistant
