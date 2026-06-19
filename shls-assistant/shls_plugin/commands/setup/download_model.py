@@ -14,8 +14,8 @@ import zipfile
 from pathlib import Path
 
 
-MODEL_NAME = "ibm-granite/granite-embedding-278m-multilingual"
-CACHE_DIR = Path.home() / ".claude" / "plugins" / "data" / "hf"
+MODEL_NAME = "ibm-granite/granite-embedding-97m-multilingual-r2"
+CACHE_DIR = Path.home() / ".claude" / "plugins" / "data" / "hf" / "hub"
 GITHUB_REPO = "MicrochipTech/fpga-hls-examples"
 GITHUB_API_BASE = f"https://api.github.com/repos/{GITHUB_REPO}"
 PLUGIN_DATA_DIR = Path.home() / ".claude" / "plugins" / "data" / "shls_coding_assistant-mchp_hls_marketplace"
@@ -68,7 +68,6 @@ print(f"Target cache directory: {{cache_dir}}")
 print("\\nDownloading model snapshot from Hugging Face...")
 downloaded_path = snapshot_download(
     repo_id=model_name,
-    cache_dir=cache_dir,
     resume_download=True,
     local_files_only=False,
 )

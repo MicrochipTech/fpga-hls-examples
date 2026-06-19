@@ -11,7 +11,7 @@ Parse `$ARGUMENTS` as space-separated positional values:
 
 # Download SmartHLS Embedding Model
 
-Download the IBM Granite embedding model (`ibm-granite/granite-embedding-278m-multilingual`) to `$HOME/.claude/plugin/data/hf`.
+Download the IBM Granite embedding model (`ibm-granite/granite-embedding-97m-multilingual-r2`) to `$HOME/.claude/plugin/data/hf`.
 
 Follow these steps exactly:
 
