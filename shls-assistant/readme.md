@@ -374,6 +374,7 @@ basic Sobel edge detection filter into a high-performance pipelined version.
 **What it demonstrates:**
 
 - Performance optimization over existing code
+   - Note that we do not specify what the target II for the optimization should be. Once the Coding Assistant creates the optimized Sobel filter, you can ask it to further optimize the design to achieve an II of 1.
 - Comparison of resource usage against a baseline
 
 **Files:**
