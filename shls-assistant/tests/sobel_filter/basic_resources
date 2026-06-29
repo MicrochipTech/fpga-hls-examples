@@ -1,0 +1,15 @@
+====== 3. Resource Usage of HLS-generated IP Core (top-level module: sobel_filter_top) ======
+
++--------------------------+---------------+--------+------------+
+| Resource Type            | Used          | Total  | Percentage |
++--------------------------+---------------+--------+------------+
+| Fabric + Interface 4LUT* | 611 + 0 = 611 | 299544 | 0.20       |
+| Fabric + Interface DFF*  | 327 + 0 = 327 | 299544 | 0.11       |
+| User I/O                 | 0             |  512   | 0.00       |
+| uSRAM                    | 0             | 2772   | 0.00       |
+| LSRAM                    | 0             | 952    | 0.00       |
+| Math                     | 0             | 924    | 0.00       |
++--------------------------+---------------+--------+------------+
+
+* Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 0) + (12 * 0) = 0.
