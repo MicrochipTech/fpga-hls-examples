@@ -127,15 +127,15 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {H264_DDR_WRITE} -i
 
 
 
-# Add H264_Iframe_Encoder_C0_0 instance
-sd_instantiate_component -sd_name ${sd_name} -component_name {H264_Iframe_Encoder_C0} -instance_name {H264_Iframe_Encoder_C0_0}
+# Add H264_Encoder_C0_0 instance
+sd_instantiate_component -sd_name ${sd_name} -component_name {H264_Encoder_C0} -instance_name {H264_Encoder_C0_0}
 
 
 
 # Add scalar net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_0:A" "resetn_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_0:B" "H264_DDR_WRITE_64:h264_encoder_en_i" "h264_encoder_en" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_0:Y" "H264_Iframe_Encoder_C0_0:RESET_N" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_0:Y" "H264_Encoder_C0_0:RESET_N" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:ddr_ctrl_ready_i" "ddr_ctrl_ready_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:reset_i" "H264_DDR_WRITE_64:reset_i" "read_reset_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:sys_clk_i" "H264_DDR_WRITE_64:ddr_clk_i" "fic_clk" }
@@ -144,26 +144,27 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_dat
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_done_o" "H264_DDR_WRITE_64:write_done_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_req_i" "H264_DDR_WRITE_64:write_req_o" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:clr_intr_i" "clr_intr_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:data_valid_i" "H264_Iframe_Encoder_C0_0:DATA_VALID_O" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_end_i" "H264_Iframe_Encoder_C0_0:FRAME_END_I" "eof_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:data_valid_i" "H264_Encoder_C0_0:DATA0_VALID_O" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_end_i" "eof_i" }
+sd_connect_pins_to_constant -sd_name ${sd_name} -pin_names {H264_Encoder_C0_0:ENABLE_I} -value {VCC}
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frm_interrupt_o" "frm_interrupt_o" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:h264_clk_i" "H264_Iframe_Encoder_C0_0:PIX_CLK" "sys_clk_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:DATA_VALID_I" "data_valid_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:FRAME_START_I" "frame_valid_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:h264_clk_i" "H264_Encoder_C0_0:PIX_CLK_I" "sys_clk_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:DATA_VALID_I" "data_valid_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:FRAME_START_I" "frame_valid_i" }
 
 # Add bus net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_burst_size_i" "H264_DDR_WRITE_64:write_length_o" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_data_i" "H264_DDR_WRITE_64:rdata_o" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_wstart_addr_i" "H264_DDR_WRITE_64:write_start_addr_o" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:data_i" "H264_Iframe_Encoder_C0_0:DATA_O" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:data_i" "H264_Encoder_C0_0:DATA0_O" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_bytes_o" "frame_bytes_o" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_ddr_addr_i" "frame_ddr_addr_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_index_o" "frame_index_o" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:DATA_C_I" "data_c_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:DATA_Y_I" "data_y_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:HRES_I" "hres_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:QP_I" "qp_i" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Iframe_Encoder_C0_0:VRES_I" "vres_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:DATA_C_I" "data_c_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:DATA_Y_I" "data_y_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:HRES_I" "hres_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:QP_I" "qp_i" }
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:VRES_I" "vres_i" }
 
 # Add bus interface net connections
 sd_connect_pins -sd_name ${sd_name} -pin_names {"BIF_1" "DDR_AXI4_ARBITER_PF_C0_0:MIRRORED_SLAVE_AXI4" }

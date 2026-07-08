@@ -114,7 +114,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     set RGBtoYCbCr_version              4.4.0
     set PF_XCVR_REF_CLK_version         1.0.103
     set DDR_AXI4_ARBITER_PF_version     2.1.0
-    set H264_Iframe_Encoder_version     1.3.0 
+    set H264_Encoder_version            2.0.1
     # The interconnect is needed in HLS integration scripts, which still use the "*" convention
     set COREAXI4INTERCONNECT_version    *
 
@@ -135,7 +135,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     download_core -vlnv Microsemi:SolutionCore:RGBtoYCbCr:$RGBtoYCbCr_version -location {www.microchip-ip.com/repositories/DirectCore}
     download_core -vlnv Actel:SgCore:PF_XCVR_REF_CLK:$PF_XCVR_REF_CLK_version -location {www.microchip-ip.com/repositories/SgCore}
     download_core -vlnv Microsemi:SolutionCore:DDR_AXI4_ARBITER_PF:$DDR_AXI4_ARBITER_PF_version -location {www.microchip-ip.com/repositories/DirectCore}
-    download_core -vlnv Microchip:SolutionCore:H264_Iframe_Encoder:$H264_Iframe_Encoder_version -location {www.microchip-ip.com/repositories/DirectCore}
+    download_core -vlnv Microchip:SolutionCore:H264_Encoder:$H264_Encoder_version -location {www.microchip-ip.com/repositories/DirectCore}
     download_core -vlnv Actel:DirectCore:COREAXI4INTERCONNECT:$COREAXI4INTERCONNECT_version -location {www.microchip-ip.com/repositories/DirectCore}
 
     #
@@ -186,7 +186,7 @@ if { [file exists $project_dir/$project_name.prjx] } {
     source ${src_path}/components/H264/FIC_CONVERTER.tcl
     source ${src_path}/components/CAM_IOD_TIP_TOP.tcl
     source ${src_path}/components/IMX334_IF_TOP.tcl
-    source ${src_path}/components/H264/H264_Iframe_Encoder_C0.tcl
+    source ${src_path}/components/H264/H264_Encoder_C0.tcl
     source ${src_path}/components/H264/H264_DDR_WRITE.tcl
     source ${src_path}/components/H264/h264_top.tcl
     source ${src_path}/components/video_processing.tcl

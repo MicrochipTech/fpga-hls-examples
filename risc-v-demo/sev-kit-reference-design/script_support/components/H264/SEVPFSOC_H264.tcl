@@ -242,11 +242,11 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"FIC_CONVERTER_0:FIC3_APB3_maste
 sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_1_AXI4_TARGET" "Video_Pipeline_0:BIF_1" }
 
 # FIC 0 interface and clock
-sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_125MHz" "MSS:FIC_0_ACLK"}
+# sd_connect_pins -sd_name ${sd_name} -pin_names {"CLOCKS_AND_RESETS:CLK_125MHz" "MSS:FIC_0_ACLK"}
 
 # sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_1_DLL_LOCK_M2F" "CLOCKS_AND_RESETS:MSS_PLL_LOCKS"}
 
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_DLL_LOCK_M2F}
+# sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_DLL_LOCK_M2F}
 # sd_mark_pins_unused -sd_name ${sd_name} -pin_names {Video_Pipeline_0:CAMCLK_RESET_N}
 
 # sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND2} -instance_name {AND2_MSS_DLL_LOCKS}
@@ -254,8 +254,8 @@ sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_DLL_LOCK_M2F}
 # sd_connect_pins -sd_name ${sd_name} -pin_names {"MSS:FIC_1_DLL_LOCK_M2F" "AND2_MSS_DLL_LOCKS:B"}
 # sd_connect_pins -sd_name ${sd_name} -pin_names {"AND2_MSS_DLL_LOCKS:Y" "CLOCKS_AND_RESETS:MSS_PLL_LOCKS"}
 
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_AXI4_TARGET}
-sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_AXI4_INITIATOR}
+# sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_AXI4_TARGET}
+# sd_mark_pins_unused -sd_name ${sd_name} -pin_names {MSS:FIC_0_AXI4_INITIATOR}
 
 
 # Re-enable auto promotion of pins of type 'pad'
