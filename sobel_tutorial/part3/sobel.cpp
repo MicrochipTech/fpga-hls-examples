@@ -25,7 +25,7 @@ void sobel_filter(FIFO<unsigned char> &input_fifo,
     int x = 0;
     int y = 0;
 #pragma HLS loop pipeline
-    for (int i = 0; i < (HEIGHT * WIDTH + LineBufferFillCount); i++) {
+    for (unsigned i = 0; i < (HEIGHT * WIDTH + LineBufferFillCount); i++) {
 
         // Read input pixel from FIFO and put into the line buffer.
         unsigned char input_pixel = 0;
