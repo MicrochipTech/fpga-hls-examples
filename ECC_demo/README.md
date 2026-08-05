@@ -11,7 +11,7 @@ This example illustrates a simple ECC demo that is built based on [AN4891: Error
 - Python 3.11.9 and install required packages
     - run `pip install -r requirements.txt` in `ECC_demo` folder
 
-This document uses the Windows versions of Libero® SoC 2024.2 and SmartHLS 2024.2. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
+This document uses the Windows versions of Libero® SoC 2026.1 and SmartHLS 2026.1. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
 
 We assume you have already completed some of the HLS trainings, understand how to create a SmartHLS project, and knows how to generate an HLS module from C++ source code. We highly recommand you to read through the ECC related sections in [SmartHLS User Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_ug&redirect=true&version=latest):
 - [Error Correction Code](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_ecc&redirect=true&version=latest)
@@ -102,7 +102,7 @@ We also included `set_parameter ECC_ERROR_INJECTION_ON 1` in configuration to en
 # Running the Example
 
 ## 1. Generate and Verify the HLS Module
-Open SmartHLS 2024.2. Import `SmartHLS_Project` into SmartHLS. Refer to [Import the SmartHLS Projects into SmartHLS](../Training1/readme.md/#import-the-smarthls-projects-into-smarthls) from Training 1 for how to import projects.
+Open SmartHLS 2026.1. Import `SmartHLS_Project` into SmartHLS. Refer to [Import the SmartHLS Projects into SmartHLS](../Training1/readme.md/#import-the-smarthls-projects-into-smarthls) from Training 1 for how to import projects.
 
 
 The error injection operations are simulation-only and are wrapped with predefined macro `SIMULATION`. Depending on the memory access pattern, ECC error injection calls may have effect on number of simulation cycles. To avoid any effects on simulation cycles, you should comment out line 8, `#define SIMULATION`, when generating the final RTL that will be programmed to the FPGA board. 
@@ -148,14 +148,14 @@ PASS!
 +----------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
 +----------------+-----------------+--------------------------+----------------------------+-----------------------+
-| RAM_OP_top     | 7               | 833                      | 7 / 266 / 118.86           | 7 / 266 / 94.33       |
+| RAM_OP_top     | 7               | 833                      | 6 / 265 / 117.86           | 7 / 266 / 94.33       |
 +----------------+-----------------+--------------------------+----------------------------+-----------------------+
 Simulation time (cycles): 833
 SW/HW co-simulation: PASS
 ```
 
 ## 2. Generate Libero Project
-Open Libero v2024.2, and go to `Project -> Execute Script`. Choose `/libero_scripts/script.tcl` as the script file and and leave arguments empty. Running the script will generate the Libero project with required modules (HLS module, clocking and reset, etc.), imports all the constraints, runs synthesis, place & route, and verify timing, and creates the programming job file.
+Open Libero v2026.1, and go to `Project -> Execute Script`. Choose `/libero_scripts/script.tcl` as the script file and and leave arguments empty. Running the script will generate the Libero project with required modules (HLS module, clocking and reset, etc.), imports all the constraints, runs synthesis, place & route, and verify timing, and creates the programming job file.
 
 The programming job file can be found at `Libero_Project/designer/top/export/top.job`. Follow the instructions in [Appendix B: Program the Board using FlashPro Express](README.md/#appendix-b-program-the-board-using-flashpro-express) to program RTG4 board with the generated job file.
 
