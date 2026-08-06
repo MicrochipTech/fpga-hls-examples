@@ -18,17 +18,17 @@
 | 9.0          | Jan, 2024      | Updates for SmartHLS 2024.1 release                   |
 | 10.0         | August, 2024   | Updates for SmartHLS 2024.2 release                   |
 | 11.0         | May , 2025     | Updates for SmartHLS 2025.1 release                   |
-
+| 12.0         | August, 2026   | Updates for SmartHLS 2026.1 release                   |
 # Requirements
 
 Before beginning this tutorial, you should install the following
 software:
-  - SmartHLS™ 2025.1 or later: this is packaged with Libero
-  - Libero® SoC 2025.1 or later with Modelsim
+  - SmartHLS™ 2026.1 or later: this is packaged with Libero
+  - Libero® SoC 2026.1 or later with Modelsim
       - [Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
 
-This document uses the Windows versions of Libero® SoC 2025.1 and
-SmartHLS 2025.1 Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2026.1 and
+SmartHLS 2026.1 Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -306,7 +306,7 @@ should see the message *PASS\!* appearing in the *Console* window, as
 shown in below output.
 
 ```
-"C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\bin\shls.bat" -s sw_run
+"C:\Microchip\Libero_SoC_2026.1\SmartHLS\SmartHLS\bin\shls.bat" -s sw_run
 Info: Running the following targets: sw_run
 PASS!
 
@@ -465,7 +465,7 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as what is shown below. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2025.1. The timing results and resource usage
+tutorial used Libero® SoC v2026.1. The timing results and resource usage
 might also differ depending on the random seed used in the synthesis
 tool flow.
 
