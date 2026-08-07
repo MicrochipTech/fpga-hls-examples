@@ -1,3 +1,4 @@
+puts "TCL_BEGIN: [info script]"
 # Creating SmartDesign H264_DDR_WRITE
 set sd_name {H264_DDR_WRITE}
 create_smartdesign -sd_name ${sd_name}
@@ -22,7 +23,7 @@ sd_create_scalar_port -sd_name ${sd_name} -port_name {write_req_o} -port_directi
 
 
 # Create top level Bus Ports
-sd_create_bus_port -sd_name ${sd_name} -port_name {data_i} -port_direction {IN} -port_range {[7:0]}
+sd_create_bus_port -sd_name ${sd_name} -port_name {data_i} -port_direction {IN} -port_range {[15:0]}
 sd_create_bus_port -sd_name ${sd_name} -port_name {frame_ddr_addr_i} -port_direction {IN} -port_range {[9:0]}
 
 sd_create_bus_port -sd_name ${sd_name} -port_name {frame_bytes_o} -port_direction {OUT} -port_range {[31:0]}
@@ -41,7 +42,7 @@ sd_instantiate_macro -sd_name ${sd_name} -macro_name {AND2} -instance_name {AND2
 sd_instantiate_hdl_core -sd_name ${sd_name} -hdl_core_name {data_packer_h264} -instance_name {data_packer_h264_0}
 # Exporting Parameters of instance data_packer_h264_0
 sd_configure_core_instance -sd_name ${sd_name} -instance_name {data_packer_h264_0} -params {\
-"g_IP_DW:8" \
+"g_IP_DW:16" \
 "g_OP_DW:64" }\
 -validate_rules 0
 sd_save_core_instance_config -sd_name ${sd_name} -instance_name {data_packer_h264_0}
@@ -105,3 +106,4 @@ auto_promote_pad_pins -promote_all 1
 save_smartdesign -sd_name ${sd_name}
 # Generate SmartDesign H264_DDR_WRITE
 generate_component -component_name ${sd_name}
+puts "TCL_END: [info script]"
