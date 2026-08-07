@@ -1,3 +1,4 @@
+puts "TCL_BEGIN: [info script]"
 # Creating SmartDesign Video_Pipeline
 set sd_name {Video_Pipeline}
 create_smartdesign -sd_name ${sd_name}
@@ -162,6 +163,7 @@ sd_instantiate_component -sd_name ${sd_name} -component_name {RGBtoYCbCr_C0} -in
 
 # Add video_processing_0 instance
 sd_instantiate_component -sd_name ${sd_name} -component_name {video_processing} -instance_name {video_processing_0}
+sd_mark_pins_unused -sd_name ${sd_name} -pin_names {video_processing_0:eof_encoder_o}
 
 
 
@@ -219,3 +221,4 @@ auto_promote_pad_pins -promote_all 1
 save_smartdesign -sd_name ${sd_name}
 # Generate SmartDesign Video_Pipeline
 generate_component -component_name ${sd_name}
+puts "TCL_BEGIN: [info script]"

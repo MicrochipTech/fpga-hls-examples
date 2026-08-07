@@ -1,3 +1,4 @@
+puts "TCL_BEGIN: [info script]"
 # Creating SmartDesign SEVPFSOC_TOP
 set sd_name {SEVPFSOC_TOP}
 create_smartdesign -sd_name ${sd_name}
@@ -264,3 +265,4 @@ auto_promote_pad_pins -promote_all 1
 save_smartdesign -sd_name ${sd_name}
 # Generate SmartDesign SEVPFSOC_TOP
 generate_component -component_name ${sd_name}
+puts "TCL_END: [info script]"
