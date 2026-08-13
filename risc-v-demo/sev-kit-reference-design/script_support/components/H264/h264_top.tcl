@@ -146,7 +146,7 @@ sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_don
 sd_connect_pins -sd_name ${sd_name} -pin_names {"DDR_AXI4_ARBITER_PF_C0_0:w0_req_i" "H264_DDR_WRITE_64:write_req_o" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:clr_intr_i" "clr_intr_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:data_valid_i" "H264_Encoder_C0_0:DATA0_VALID_O" }
-sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_end_i" "H264_Encoder_C0_0:FRAME_START_O" "eof_i"}
+sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frame_end_i" "H264_Encoder_C0_0:FRAME_START_O" "eof_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:frm_interrupt_o" "frm_interrupt_o" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_DDR_WRITE_64:h264_clk_i" "H264_Encoder_C0_0:PIX_CLK_I" "sys_clk_i" }
 sd_connect_pins -sd_name ${sd_name} -pin_names {"H264_Encoder_C0_0:DATA_VALID_I" "data_valid_i" }
