@@ -356,7 +356,7 @@ instantiate into this design.
 SmartHLS generated IP components on to the PolarFire board by following
 the steps below:
 
-1. Connect the USB cable from J12 on the PolarFire® board to your PC.
+1. Connect the JTAG Programing Header from J18 and the USB cable from J12 on the PolarFire® board to your PC.
 
 2. Connect the camera board at J5 and remove the lens caps.
 
@@ -374,7 +374,11 @@ the steps below:
 8. Select Project and New Job Project.
 <p align="center"><img src=".//media/image10.png" /></p>
 
-9. Now select the job file “`Training1/VIDEO_KIT_TOP.job`”  from the release assets folder you downloaded in step 1.
+9. Now select the job file “`Training1/VIDEO_KIT_TOP.job`”.
+
+Note: as step 1 documented, to obtain this .job file, you can either: 
+- Run `./setup.ps1` under `\fpga-hls-examples\` directory, to obtain pre-compiled binary. OR
+- re-generate the bitstream and Libero project from scratch by following the instructions here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
 
 10. Enter a project location. Click OK.
 

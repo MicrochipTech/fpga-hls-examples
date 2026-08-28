@@ -8,9 +8,12 @@
   - [Instrument and Compile](#instrument-and-compile)
     - [Instrumenting the design](#instrumenting-the-design)
     - [Compile \& Program Hardware](#compile--program-hardware)
+      - [Programming a `.job` File From Any Location](#programming-a-job-file-from-any-location)
+      - [Identifying the Correct `.job` File on a Remote JTAG Host](#identifying-the-correct-job-file-on-a-remote-jtag-host)
     - [Compiling the software](#compiling-the-software)
   - [Part 1: Debugging Mode](#part-1-debugging-mode)
     - [Connecting to the JTAG Cable](#connecting-to-the-jtag-cable)
+      - [Restarting the JTAG Server](#restarting-the-jtag-server)
     - [Triggering and Capturing dDta](#triggering-and-capturing-data)
     - [Running the Software](#running-the-software)
       - [Exercise 1 - Examine the Submodule Delays](#exercise-1---examine-the-submodule-delays)
@@ -43,7 +46,7 @@ To minimize area overhead, users can control instrumentation scope through confi
 
 Before beginning this tutorial, you should install the following software:
 
-- Libero® SoC 2025.2 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
+- Libero® SoC 2025.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
 
 - The following hardware is required:
   - PolarFire® SoC FPGA Icicle Kit. Please follow [this link](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html) to set up your Icicle Kit and make sure Linux boots-up and that the board has an IP network address assigned to it.
@@ -71,12 +74,6 @@ Before beginning this tutorial, you should install the following software:
     $env:BOARD_IP="<YOUR ICICLE KIT BOARD IP HERE>"
     $env:JTAG_HOST="<YOUR JTAG HOST IP HERE>" # For local JTAG debug, use 127.0.0.1
     $env:PROGRAMMER_ID="<YOUR PROGRAMMER ID HERE>" # Available from FPExpress
-    ```
-
-    - **KNOWN ISSUE**: In Windows, SmartHLS includes Python 3 and the binary name is `python.exe`, however, a TCL script in the SmartHLS 2025.2 installation is explicitly calling `python3`, which does not exist. To be able to run the instrumentation example in Windows, just copy the file as follows:
-
-    ```console
-    cp "$env:SHLS_ROOT_DIR/dependencies/python/python.exe" "$env:SHLS_ROOT_DIR/dependencies/python/python3.exe"
     ```
 
 **NOTE**: The `JTAG_HOST` variable can be set to `127.0.0.1` if the machine that the board is connected to is the same as the machine where the project is being compiled and debugged.
@@ -194,7 +191,7 @@ void hlsModule(volatile unsigned char& go,
 }
 ```
 
-A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-17/Chunk684686268.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-F622374A-37E3-440B-922A-7980536D3130).
+A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-F622374A-37E3-440B-922A-7980536D3130).
 
 **NOTE:** Make sure to clean your project and re-run `shls -a instrument_init` if you modify the top-level modules of your design, for example, if you want to add a new top-level function.
 
@@ -224,6 +221,113 @@ shls soc_accel_proj_program
 ```
 
 Alternatively, you can also use FlashPro Express. If you do, please make sure you close FPExpress after flashing the bitstream, as it may interfere with the debugging process.
+
+#### Programming a `.job` File From Any Location
+
+`shls soc_accel_proj_program` only ever programs the `.job` file at the one fixed path
+inside the current project's `hls_output/`. That path is hard-coded — there is no command
+line option to point it elsewhere — and the command always programs through a *locally*
+attached programmer. So if you have copied the `.job` file to another directory, or to the
+`JTAG_HOST` machine, this command cannot flash it.
+
+Invoke the underlying TCL script directly instead. It accepts any `.job` path, and it also
+supports remote programming:
+
+```text
+<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/libero/FPExpress_program.tcl
+```
+
+It takes four mandatory positional arguments, in this order, followed by optional
+`name:value` arguments:
+
+| Argument | Value for this design | Notes |
+| --- | --- | --- |
+| 1. job file | path to your `.job` | Any location. |
+| 2. `useSPI` | `1` | `1` programs the SPI image *and* the FPGA bitstream. Use `1` whenever the design's `MPFS_ICICLE_KIT_BASE_DESIGN_RAM.new.cfg` contains `-storage_type {SPI}`, as this one does. |
+| 3. project location | e.g. `FPExpress_project` | Output directory for the FlashPro Express project. **Create it first** — the script does not, and fails with `Error: Folder '<path>' doesn't exist.` |
+| 4. device name | `MPFS250T_ES` | The Icicle Kit default. |
+| `jtagId:<id>` | `jtagId:$PROGRAMMER_ID` | Optional. Omit to let FlashPro Express choose. |
+| `remoteHostName:<host>` | `remoteHostName:$JTAG_HOST` | Optional. Requires `ENABLE_REMOTE_SOLUTION:1` as well. |
+
+The FlashPro Express executable is under the Libero installation, and note that the
+directory and capitalisation differ by platform:
+
+| Platform | Path |
+| --- | --- |
+| Windows | `<LIBERO_INSTALLATION_DIRECTORY>\Designer\bin\FPExpress.exe` |
+| Linux | `<LIBERO_INSTALLATION_DIRECTORY>/Designer/bin64/FPExpress` |
+
+On Linux the executable is `FPExpress`, spelled with capitals; there is no `fpexpress`.
+
+To program locally, from any `.job` location:
+
+```powershell
+mkdir FPExpress_project
+& "<LIBERO_INSTALLATION_DIRECTORY>\Designer\bin\FPExpress.exe" `
+    "script:<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/libero/FPExpress_program.tcl" `
+    "script_args:<path-to>/Icicle_SoC.job 1 FPExpress_project MPFS250T_ES jtagId:$env:PROGRAMMER_ID" `
+    "logfile:fpexpress_job.log"
+```
+
+To program a board attached to a remote `JTAG_HOST` from the build host, add
+`remoteHostName:` and `ENABLE_REMOTE_SOLUTION:1`. This requires a FlashPro Express
+programmer server running on that host:
+
+```powershell
+& "<LIBERO_INSTALLATION_DIRECTORY>\Designer\bin\FPExpress.exe" `
+    "script:<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/libero/FPExpress_program.tcl" `
+    "script_args:<path-to>/Icicle_SoC.job 1 FPExpress_project MPFS250T_ES jtagId:$env:PROGRAMMER_ID remoteHostName:$env:JTAG_HOST" `
+    "logfile:fpexpress_job.log" `
+    "ENABLE_REMOTE_SOLUTION:1"
+```
+
+Alternatively, copy the `.job` file to the `JTAG_HOST` and run the local form of the command
+there, which avoids needing the programmer server.
+
+Always pass all four mandatory arguments. With fewer, the script's usage message itself has
+a quoting defect and you get a confusing TCL parse error rather than the intended help
+text. Check `fpexpress_job.log` for results; SPI programming takes noticeably longer than
+the FPGA bitstream, so allow several minutes before assuming it has hung.
+
+#### Identifying the Correct `.job` File on a Remote JTAG Host
+
+If the board is attached to a different machine, the `.job` file has to be copied over
+before FlashPro Express can flash it, and on a shared `JTAG_HOST` you will likely find
+several `.job` files sitting there from other people and earlier runs. **Every one of them
+is named after its Libero project**, so on this design they are all called `Icicle_SoC.job`
+— the filename tells you nothing, and neither does the timestamp if someone else built at
+around the same time. Flashing the wrong one silently gives you a bitstream with no IICE
+in it, and the failure only shows up much later, as `run -iice` not finding the IICE.
+
+Identify the file by its content instead. Compute a hash of your local build:
+
+| Where | Command |
+| --- | --- |
+| Build host (Windows) | `Get-FileHash hls_output\soc\designer\MPFS_ICICLE_KIT_BASE_DESIGN\Icicle_SoC.job -Algorithm MD5` |
+| Build host (Linux) | `md5sum hls_output/soc/designer/MPFS_ICICLE_KIT_BASE_DESIGN/Icicle_SoC.job` |
+| `JTAG_HOST`, for each candidate | `md5sum *.job` |
+
+Only a file whose hash matches your local build is the one you just compiled.
+
+For a quicker first pass, note that a `.job` file contains its SmartHLS project name as
+plain text, so you can filter out other people's files without hashing anything:
+
+```bash
+grep -a -c auto_instrument *.job
+```
+
+Files that report `0` did not come from this example. This narrows the candidates, but it
+does not distinguish your build from an older build of the same example — confirm with the
+hash.
+
+The underlying problem is worth avoiding rather than repeatedly diagnosing. When copying
+the file over, give it a name that identifies the build, or put it in a directory of your
+own:
+
+```bash
+scp hls_output/soc/designer/MPFS_ICICLE_KIT_BASE_DESIGN/Icicle_SoC.job \
+    <user>@<JTAG_HOST>:~/my_builds/auto_instrument_instrumented.job
+```
 
 At this point the FPGA has been programmed with the instrumented design. Now let's compile the software.
 
@@ -268,6 +372,91 @@ Get-Command acteljtag
 ```
 
 *NOTE*: Keep the `acteljtag` server terminal open as occasionally it may get disconnected and may need to be started again.
+
+The server exiting is a common cause of otherwise baffling failures later on, and the
+error messages never name it as the reason. Before blaming anything else, confirm the
+server is both **running** and **reachable**:
+
+| Where | Command |
+| --- | --- |
+| On the `JTAG_HOST` machine | `ss -ltnp \| grep <port>` |
+| From the build host (Windows) | `Test-NetConnection -ComputerName $env:JTAG_HOST -Port $env:JTAG_PORT` |
+| From the build host (Linux) | `nc -z $JTAG_HOST $JTAG_PORT && echo reachable` |
+
+A `LISTEN` line you saw earlier is not evidence that the server is still alive; re-run the
+check. Note also that the PID in a stale `ss` snapshot may already be gone, in which case
+`kill <pid>` reports `No such process`.
+
+To keep the server alive across dropped SSH sessions, start it detached rather than in a
+foreground terminal:
+
+```bash
+nohup acteljtag -p <port> > ~/acteljtag.log 2>&1 &
+```
+
+Invoke `acteljtag` by name, so that the `PATH` resolves it to the wrapper script in the
+Identify installation's `bin` directory. That wrapper sets `LD_LIBRARY_PATH` before
+execing the real executable. Calling the executable directly fails:
+
+```text
+.../Identify/linux_a_64/acteljtag: error while loading shared libraries:
+libcyusb.so: cannot open shared object file: No such file or directory
+```
+
+This is an easy mistake to make, because `ps -ef` displays the wrapper's *exec target*
+(`.../linux_a_64/acteljtag`) rather than the wrapper path you actually ran.
+
+#### Restarting the JTAG Server
+
+Restarting `acteljtag` re-initializes the programmer, and is the standard recovery step
+whenever the debugger reports that it cannot open or enable the programmer, for example:
+
+```text
+Error:  Programmer Port Initialization failed for port '<PROGRAMMER_ID>':  (Can not connect to the programmer) !
+Error:  Unable to Enable Programmer:  (Error: Failed to enable FP6 programmer) !
+```
+
+A debugger session that crashed can leave the programmer in a state that no amount of
+retrying from the build host will clear, so restart the server rather than relaunching the
+debugger repeatedly. On the `JTAG_HOST` machine:
+
+```bash
+# 1. Find the current PID, and check that nothing else is holding the programmer.
+ps -ef | grep -iE 'acteljtag|FPExpress|prgsrv|fpcommserv' | grep -v grep
+
+# 2. Stop it, using the PID from step 1.
+kill <PID>
+
+# 3. Confirm the port is released. This should print nothing.
+ss -ltnp | grep <port>
+
+# 4. Start a fresh server.
+nohup acteljtag -p <port> > ~/acteljtag.log 2>&1 &
+
+# 5. Confirm it is listening, and note that the PID has changed.
+ss -ltnp | grep <port>
+cat ~/acteljtag.log
+```
+
+Step 5 matters: confirming a `LISTEN` line is not enough on its own, because the wedged
+old process also holds the port and looks identical. Check that the PID is **new**.
+
+These two messages in `~/acteljtag.log` at start-up are harmless and can be ignored. They
+come from probing the *embedded* FP6, which is a separate device from a standalone FP6
+programmer:
+
+```text
+DEF0012: Unable to open file "/data/sysvr.def" (`DEFSYS')
+Failed to open eFP6 HID handle.
+```
+
+If the programmer still cannot be opened after a clean restart, power-cycle the board. The
+programmer is a USB device on the board, so its state is tied to board power and cannot
+always be cleared in software. Sequence: stop `acteljtag`, power-cycle the board, wait for
+Linux to boot and become reachable over SSH, then start `acteljtag` again.
+
+Note also that on a shared `JTAG_HOST` the programmer may legitimately be in use by
+someone else's FlashPro Express or debugger session — step 1 above will show it.
 
 Now open an interactive shell for Identify Debugger:
 
@@ -323,6 +512,7 @@ Running...
 This will wait until `inputFifo`'s `empty` signal becomes low. But to get it to become low, we need to run the `auto_instrument.accel.elf` binary that was compiled earlier on-board.
 
 ### Running the Software
+**NOTE:** this is a known issue. If Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\examples\scripts\utils\instrument and go to line 198 of update_vcd.tcl. Here, change "$merged_file" to "$vcdFile". This issue will be fixed for the next release of Libero.
 
 Now, to run the design on the board, open an `ssh` session to the Icicle Kit board:
 
@@ -352,6 +542,8 @@ Now, open the ModelSim window and press Ctrl + R to refresh.
 
 You should see the signals for FIFOs arranged and grouped in an intuitive manner. You can expand the `User_Defined_FIFOs` group to see the signals for the FIFOs in the design. For example, here's the grouped signals for `fifo1` (after toggling on leaf names):
 
+**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. This is a known issue. To solve this issue, go to line 257 of "C:\Microchip\Libero_SoC\SmartHLS\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$". This issue will be fixed for the next release of Libero.
+
 ![alt text](assets/wave_template_grouping.png)
 
 #### Exercise 1 - Examine the Submodule Delays
@@ -360,7 +552,7 @@ Let's take a look at the `empty` and `write_data` signals for `fifo1`, and compa
 
 ![alt text](assets/empty_signals_delay_0.png)
 
-Notice that the delay between the falling edges is 60ns. Since a clock cycle is 10ns, 60ns is 6 clock cycles. The reason for this offset in delay is due to some of the control logic in the generated Verilog code. In general, expect
+Notice that the delay between the falling edges is 120ns. Since `set waveform_period 10` sets the clock's half-period, a clock cycle is 20ns, so 120ns is 6 clock cycles. The reason for this offset in delay is due to some of the control logic in the generated Verilog code. In general, expect
 
 - A 6-cycle delay when the delay is 0
 - An (9 + N)-cycle delay when the delay is N, for some positive integer N.
@@ -493,67 +685,249 @@ set monitoring_mode 1
 
 in `hls_output/scripts/instrument/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
-Then, open a new terminal on the build host and start a monitoring process that periodically captures the data (this is done instead of using the GUI):
+### How the Two Processes Communicate
 
-- On Linux:
+The monitoring process and the visualizing process hand data to each other through a
+semaphore file, `hls_output/scripts/instrument/test`. The handshake is **blocking in
+both directions**:
 
-```bash
-identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
-```
-  
-- On Windows:
+- `monitor.tcl` truncates the file, captures a buffer, writes the `.vcd`, writes `1`
+  to the file, and then **busy-waits** until the file reads `0`.
+- `update_vcd.tcl` in ModelSim polls the file once per second. When it reads `1` it
+  merges the new samples onto the end of the waveform, reloads the dataset, and writes
+  `0` back.
+
+Two consequences follow from this, and they determine the start-up and shutdown orders
+below:
+
+- ModelSim must already be running before the monitoring process finishes its first
+  capture. Otherwise the monitoring process writes `1` and waits forever.
+- ModelSim opens the semaphore file in `r+` mode, so the file must already exist when
+  ModelSim starts.
+
+### Start-up Order
+
+**Step 1 — start the JTAG server** on the `JTAG_HOST` machine, if it is not already
+running (see [Connecting to the JTAG Cable](#connecting-to-the-jtag-cable)).
+
+**Step 2 — start the executable on the board** and leave it running:
+
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
+./auto_instrument.accel.elf 20 20 20 20
 ```
 
-**KNOWN ISSUE:** If you are using Identify 2025.2 and your board is __not__ connected to the build host, you may need to manually load the activation created in the previous section. To do so, in `hls_output/scripts/instrument/monitor.tcl`, load the activation before the `source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl` command, such that your `monitor.tcl` script looks like this:
+Without a running executable the FIFOs stay idle and every capture is a flat line.
+Larger delays make the occupancy easier to see.
 
-```
-### Previous commands here...
+**Step 3 — create the semaphore file** so that ModelSim can start in any order
+relative to the monitoring process:
 
-17 set prj_file [glob $synthesisPath/*.prj]
-18 set prj_basename [file rootname [file tail $prj_file]]
-19 project open $synthesisPath/$prj_basename.prj
-20 activation load $synthesisPath/last_run.adc
-21
-22 source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl
-```
+| Windows (PowerShell) | Linux (bash) |
+| --- | --- |
+| `Set-Content hls_output\scripts\instrument\test "0"` | `echo 0 > hls_output/scripts/instrument/test` |
 
-If an activation was not automatically created in the previous section (i.e., the `hls_output/soc/synthesis/last_run.adc` file does not exist), you will have to create it manually. First, open the synthesis project in Identify.
+**Step 4 — clear any stray local JTAG helper.** Each `server start` launches a local
+`acteljtag` helper on the build host that binds the same port number as the remote
+server. If a previous debugger session exited abnormally without taking that helper
+with it, the next `server start` collides with it and reports the misleading error
+`Server not started or connection failed due to conflicting port assignment`, or fails
+later at `run` with `Unable to create JTAG session`:
 
-On Linux, run
+| Windows (PowerShell) | Linux (bash) |
+| --- | --- |
+| `Get-Process -Name acteljtag -ErrorAction SilentlyContinue \| Stop-Process -Force` | `pkill -f acteljtag` |
+| `Get-Process \| Where-Object { $_.ProcessName -match 'identify' } \| Stop-Process -Force` | `pkill -f identify_debugger` |
 
-```bash
-identify_debugger_shell -licensetype identdebugger_actel -shell  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
-```
-
-On Windows, run
-
-```powershell
-identify_debugger_console -licensetype identdebugger_actel  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
-```
-
-Then set the JTAG server and programmer ID, and then save the activation.
-
-```
-server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
-com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
-activation save [PATH TO THE AUTO INSTRUMENT EXAMPLE HERE]/hls_output/soc/synthesis/last_run.adc
-```
-
-With `last_run.adc` and the code changes, you should now be able to run `monitor.tcl`, and proceed with the tutorial.
-
-</br>
-
-Finally, open Modelsim in a new terminal for visualization:
+**Step 5 — open ModelSim for visualization.** This must come *before* Step 6:
 
 ```console
 vsim -do hls_output/scripts/instrument/update_vcd.tcl
 ```
 
-This will launch ModelSim again, but the waveform will update continuously (no need to press `Ctrl+R` to refresh) as soon as Identify provides new captured data periodically.
+The Wave window will be empty at this point. That is expected — it is polling the
+semaphore file and waiting for the first capture.
 
-Now close ModelSim and the Identify Debugger console.
+**Step 6 — patch `monitor.tcl` so that it connects to the JTAG server.** This is a
+one-time edit, required only if the board is *not* attached to the build host.
+
+As shipped, `monitor.tcl` issues only `com cabletype` and `com cableoption`; it never
+opens a connection to the JTAG server. That is sufficient for a directly attached cable,
+but on a remote setup its capture loop fails at `run -iice ... -wait` with:
+
+```text
+Error: No programmer found for port '<PROGRAMMER_ID>':  !
+  at line 60 of <SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/utils/instrument/monitor.tcl
+```
+
+Open that same file:
+
+```text
+<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/utils/instrument/monitor.tcl
+```
+
+Locate these lines (around lines 27-29) — `project open` immediately followed by
+`com cabletype`:
+
+```tcl
+project open $synthesisPath/$prj_basename.prj
+
+com cabletype Microsemi_BuiltinJTAG
+```
+
+Insert the following block **between** them:
+
+```tcl
+## Connect to the acteljtag server. Required when the JTAG cable is attached to a
+## different machine than the one running the debugger. Skipped when JTAG_HOST is
+## unset, so a locally attached cable continues to work unchanged.
+if {[info exists ::env(JTAG_HOST)] && $::env(JTAG_HOST) ne ""} {
+    set jtag_port 57123
+    if {[info exists ::env(JTAG_PORT)] && $::env(JTAG_PORT) ne ""} {
+        set jtag_port $::env(JTAG_PORT)
+    }
+    puts "Connecting to acteljtag at $::env(JTAG_HOST):$jtag_port"
+    server set -addr $::env(JTAG_HOST) -port $jtag_port -cabletype Microsemi_BuiltinJTAG
+    server start
+    ## The server start handshake completes on the Tcl event loop. An interactive
+    ## prompt yields to that loop between commands, but a sourced script does not,
+    ## and `run` would then fail with "Unable to create JTAG session".
+    after 3000
+    catch {update}
+}
+```
+
+A second, one-line edit is also needed. Find the end of the `com cableoption` block that
+follows, a few lines below:
+
+```tcl
+com cabletype Microsemi_BuiltinJTAG
+if {$programmer_id != ""} {
+	com cableoption Microsemi_BuiltinJTAG_port $programmer_id
+}
+```
+
+and add `com check` immediately after its closing brace:
+
+```tcl
+## Establish and verify the JTAG session. This is not merely a diagnostic: without
+## it, `run -iice ... -wait` below fails with "Unable to create JTAG session".
+com check
+```
+
+Four details matter across these two edits, each corresponding to a distinct failure:
+
+| Detail | Error if omitted |
+| --- | --- |
+| Insert the first block *after* `project open` | `This operation can't be performed. A design must first be loaded.` at `server set` |
+| `server set` and `server start` | `No programmer found for port '<PROGRAMMER_ID>'` at `run` |
+| `after 3000` plus `update` | `Unable to create JTAG session` at `server start` |
+| `com check`, *after* `com cableoption` | `Unable to create JTAG session` at `run` |
+
+The first block reads `JTAG_HOST` and the optional `JTAG_PORT` from the environment
+variables set up in [Requirements](#requirements). `JTAG_PORT` defaults to `57123`; **set
+it if you started `acteljtag` on a different port**, otherwise the connection attempt
+goes to a port where nothing is listening and, after a 15-second timeout, reports the
+misleading `conflicting port assignment` error described below. Because the block is
+skipped when `JTAG_HOST` is unset, the patched file remains correct for local setups.
+
+Note that this file lives in the SmartHLS installation, not in `hls_output/`, so both
+edits survive rebuilds — but they will be lost if SmartHLS is reinstalled or upgraded.
+
+The error `Server not started or connection failed due to conflicting port assignment`
+has two unrelated causes, so check both:
+
+1. Nothing is listening on the port the debugger printed in its
+   `Connecting to acteljtag at <host>:<port>` line. Verify with
+   `Test-NetConnection -ComputerName <host> -Port <port>` on Windows, or
+   `ss -ltnp | grep <port>` on the JTAG host.
+2. A stray local `acteljtag` helper is holding the port on the build host — see Step 4.
+
+**Step 7 — start the monitoring process** in a new terminal (this is done instead of
+using the GUI):
+
+| Windows (PowerShell) | Linux (bash) |
+| --- | --- |
+| `identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID` | `identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID` |
+
+A successful start prints `Connecting to acteljtag at ...`, then the device chain, then
+`DI179 IICE '<IICE_NAME>' configured. Waiting for trigger.` The waveform will then update
+continuously (no need to press `Ctrl+R` to refresh) as soon as Identify provides new
+captured data periodically.
+
+To confirm progress without watching the GUI, note that
+`hls_output/soc/synthesis/identify.vcd` grows by roughly one buffer's worth of data per
+capture, and `hls_output/scripts/instrument/wave.do` appearing means the waveform
+template has been applied. In monitoring mode that template is
+`fifo_dashboard_wave_template.do`; delete any `wave.do` left over from Part 1, or it
+will be reused instead.
+
+You can change the delays at any time by restarting the executable on the board. There
+is no need to restart ModelSim or the monitoring process.
+
+### Recovering from Capture-Loop Failures
+
+The capture loop re-establishes the full hardware connection on **every** iteration — each
+round logs `Connect to hardware...`, `Auto-detecting port names...`, and
+`Checking communication with the ... cable and the hardware...` again. Over many rounds
+this repeated connect/disconnect cycle is hard on the programmer, and the loop can stop
+for reasons that have nothing to do with your configuration. Two failures observed in
+practice, both *after* the loop had already captured successfully for several rounds:
+
+```text
+@E::Signal 000 error in identify_debugger_shell.exe
+Stack trace
+...
+Please open a web case about this problem. A Synopsys CAE will then contact you.
+```
+
+```text
+Error:   Unable to Navigate to JTAG Reset State:  (Error: FP6 connection failed.) !
+Error:  Unable to Enable Programmer:  (Error: Failed to enable FP6 programmer) !
+```
+
+The first is an internal crash in the Identify debugger itself. The second means the
+programmer stopped responding — often a lingering after-effect of the first, because a
+crashed debugger can leave the programmer in a bad state.
+
+Neither is fixed by editing scripts or environment variables. Recover in this order, and
+only escalate if the previous step does not help:
+
+1. Clear the stray local `acteljtag` helper and any debugger remnants on the build host,
+   as in Step 4. A crashed debugger leaves both behind.
+2. [Restart `acteljtag`](#restarting-the-jtag-server) on the `JTAG_HOST` machine. This
+   re-initializes the programmer, and is usually what actually clears
+   `Failed to enable FP6 programmer`.
+3. Power-cycle the board, then restart `acteljtag` again.
+
+Because each recovery costs a restart, prefer to keep monitoring sessions short and
+targeted: start the loop, observe the behaviour you are interested in, then shut down. If
+you need many rounds, expect to restart the loop occasionally — the accumulated waveform
+in `identify.vcd` is preserved across restarts of the monitoring process, since only
+ModelSim appends to it.
+
+### Shutdown Order
+
+Shut down in the reverse of the start-up order. **The order matters**: if ModelSim is
+closed first, the monitoring process is left spinning in its busy-wait loop, which
+never terminates and saturates a CPU core.
+
+**Step 1 — stop the monitoring process.** Press `Ctrl + C` in its terminal, or:
+
+| Windows (PowerShell) | Linux (bash) |
+| --- | --- |
+| `Get-Process \| Where-Object { $_.ProcessName -match 'identify' } \| Stop-Process -Force` | `pkill -f identify_debugger` |
+
+**Step 2 — close ModelSim.**
+
+**Step 3 — clear the local JTAG helper** left behind by `server start`:
+
+| Windows (PowerShell) | Linux (bash) |
+| --- | --- |
+| `Get-Process -Name acteljtag -ErrorAction SilentlyContinue \| Stop-Process -Force` | `pkill -f acteljtag` |
+
+**Step 4 — stop the executable on the board** with `Ctrl + C`.
+
+**Step 5 — stop the JTAG server** on the `JTAG_HOST` machine, if you no longer need it.
 
 ## Part 3: Monitoring Mode with FIFO Dashboard
 
@@ -561,18 +935,15 @@ When writing C++ to design a hardware module, it may not be clear at first how d
 
 The FIFO Monitoring Dashboard aims to show developers, in nearly real-time, how filled up their FIFOs are getting as their program executes. It does so in an intuitive manner using a bar graph, where each bar represents a FIFO.
 
-Start the monitoring loop that will generate the periodic captures:
+Start the monitoring loop that will generate the periodic captures. Follow the same
+[Start-up Order](#start-up-order) as Part 2, except that the dashboard replaces ModelSim
+as the visualizing process. If the board is not attached to the build host, `monitor.tcl`
+must already carry the JTAG server patch from Step 6 of that section, or the loop fails
+with `No programmer found for port '<PROGRAMMER_ID>'`:
 
-- On Linux:
-  
-```bash
-identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
-```
-
-- On Windows:
-```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
-```
+| Windows (PowerShell) | Linux (bash) |
+| --- | --- |
+| `identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID` | `identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID` |
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:
 
@@ -581,6 +952,32 @@ shls -s instrument_monitor_fifos
 ```
 
 Now, when you run the `auto_instrument.accel.elf` executable on-board, you should see the bar graph changing according to how full the FIFOs are. Try playing around with different delays and see how this affects the bar graphs. The occupancies should match the values you see for the `usedw` signal in ModelSim, for the FIFO dashboard is simply a python-based visualization of this signal!
+
+### Reading the Bar Graph
+
+Each FIFO is drawn as three overlaid bars, so a bar that looks like an empty white
+outline is not a failure to plot:
+
+| Layer | Meaning | Appearance |
+| --- | --- | --- |
+| Bottom | FIFO **depth** (its capacity) | Hollow — white fill, black edge |
+| Middle | **Peak** occupancy | Translucent gray |
+| Top | **Average** occupancy | Solid, colour-coded by how full the FIFO is |
+
+The four user FIFOs in this design are declared with `FIFO1_DEPTH` .. `FIFO4_DEPTH` set
+to `256` in `main.cpp`, so their white outlines are drawn at 256. With small delays the
+steady-state occupancy is only around `N + 8` elements, which at 9/256 (3.5%) is a
+sliver barely visible at the base of the bar. This is correct behaviour, not a missing
+plot — to make the coloured occupancy layer clearly visible, rerun the executable with
+much larger delays:
+
+```console
+./auto_instrument.accel.elf 200 200 200 200
+```
+
+The shorter bars on the left are internal scalar FIFOs, whose depths are only 1, 8, or
+64, so they appear proportionally much fuller. Each bar is also captioned with
+`average/depth (percent)`.
 
 The bar graph should periodically change as it receives data from the monitoring process. The timestamp at the top of the plot indicates the time the plotted data was created by the monitoring process.
 

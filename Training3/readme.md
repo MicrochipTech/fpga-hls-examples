@@ -1153,7 +1153,7 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 1.  If you have not already, download a terminal emulator like PuTTY. We
     will use this to communicate with the Mi-V via UART.
 
-2.  Connect the USB cable from J12 on the PolarFire® board to your PC.
+2.  Connect the JTAG Programing Header from J18 and the USB cable from J12 on the PolarFire® board to your PC.
 
 3.  Connect the HDMI cable from the PolarFire Video Kit (J2) to your
     external Monitor.
@@ -1178,6 +1178,10 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 8. Now select the job file “`Training3/VIDEO_KIT_TOP.job`” in the precompiled-binaries downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [prerequisites](#generating-the-libero-project) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
+
+Note: as step 1 documented, to obtain this .job file, you can either: 
+- Run `./setup.ps1` under `\fpga-hls-examples\` directory, to obtain pre-compiled binary. OR
+- re-generate the bitstream and Libero project from scratch by following the instructions here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
 
 10. Enter a project location. Click OK.
 

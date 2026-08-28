@@ -2679,7 +2679,7 @@ Figure 41: PolarFire® Video and Imaging Kit Peripherals</p>
 ![](.//media/image3.png)To program the design to the PolarFire board:
 
 
-1.  Connect the USB cable from J12 on the PolarFire® board to your PC.
+1.  Connect the JTAG Programing Header from J18 and the USB cable from J12 on the PolarFire® board to your PC.
 
 2.  Connect the camera board at J5 and remove the lens caps.
 
@@ -2707,6 +2707,10 @@ Figure 41: PolarFire® Video and Imaging Kit Peripherals</p>
 8. Now select the job file “`Training2/VIDEO_KIT_TOP.job`” downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [previous section](#appendix-b-integrating-into-smartdesign) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
+
+Note: as step 1 documented, to obtain this .job file, you can either: 
+- Run `./setup.ps1` under `\fpga-hls-examples\` directory, to obtain pre-compiled binary. OR
+- re-generate the bitstream and Libero project from scratch by following the instructions here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
 
 9. Enter a project location. Click OK.
 
