@@ -133,7 +133,7 @@ If you are using Windows, open a PowerShell terminal, set up the paths as descri
 and navigate to the Libero directory, e.g.:
 
 ```powershell
-cd C:\Workspace\fpga-hls-examples-main\Training1\Libero
+cd C:\Workspace\fpga-hls-examples\Training1\Libero
 ```
 
 and run the following script to generate the HLS example designs:
