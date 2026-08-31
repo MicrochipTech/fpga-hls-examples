@@ -72,6 +72,8 @@ You should install the following software:
 
 This document uses the Windows versions of Libero® SoC 2025.2 and SmartHLS 2025.2. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
 
+**NOTE:** If you are using Libero 2026.1 on Ubuntu 22.04, there is a known issue that causes the Libero script in this example to fail with `cat: /etc/redhat-release: No such file or directory`. To workaround this issue, follow the instructions in this Knowledge Base article: [https://support.microchip.com/s/article/SmartHLS-v2026-1-Generate-Libero-Design-Fails-on-Ubuntu-22-04-3-LTS](https://support.microchip.com/s/article/SmartHLS-v2026-1-Generate-Libero-Design-Fails-on-Ubuntu-22-04-3-LTS). This issue will be fixed in the next release of Libero.
+
 Additionally, while the default simulator for SmartHLS is now QuestaSim, ModelSim will still be supported. Some screenshots of the simulator may have been captured using Modelsim.
 
 ## Download Training Design Files

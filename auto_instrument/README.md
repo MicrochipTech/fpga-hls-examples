@@ -45,6 +45,8 @@ Before beginning this tutorial, you should install the following software:
 
 - Libero® SoC 2025.2 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
 
+**NOTE:** If you are using Libero 2026.1 on Ubuntu 22.04, there is a known issue that causes the Libero script in this example to fail with `cat: /etc/redhat-release: No such file or directory`. To workaround this issue, follow the instructions in this Knowledge Base article: [https://support.microchip.com/s/article/SmartHLS-v2026-1-Generate-Libero-Design-Fails-on-Ubuntu-22-04-3-LTS](https://support.microchip.com/s/article/SmartHLS-v2026-1-Generate-Libero-Design-Fails-on-Ubuntu-22-04-3-LTS). This issue will be fixed in the next release of Libero.
+
 - The following hardware is required:
   - PolarFire® SoC FPGA Icicle Kit. Please follow [this link](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html) to set up your Icicle Kit and make sure Linux boots-up and that the board has an IP network address assigned to it.
   - This example can be used in a local or remote configuration depending on where the Icicle Kit board is connected to via JTAG. The *JTAG host* is the machine that is connected to the board and the *build host* is the machine where the project is compiled. See the following diagram:
