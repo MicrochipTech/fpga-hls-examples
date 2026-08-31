@@ -2,4 +2,4 @@
 ########## If you have your own constraints tcl file, please add it to the project ##########
 ########## by using the "Set custom config file" constraint in the HLS Constraints dialog. ##########
 source $env(SHLS_ROOT_DIR)/examples/shls.tcl
-set_project PolarFire MPF300 MiV_SoC
+set_project PolarFire MPF300 hw_only
