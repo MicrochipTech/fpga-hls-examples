@@ -2,7 +2,7 @@
 <h1><p align="center">SmartHLS™ Training Session 1:</p></h1>
 <h2><p align="center">Image Processing on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 11</br>August, 2026<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 12</br>August, 2026<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
@@ -53,9 +53,13 @@ Updated document for outdated figures and for SmartHLS™ 2024.2 release.
 
 ## Revision 10
 
-Updated document for outdated figures and for SmartHLS™ 2026.1 release.
+Updated document for outdated figures and for SmartHLS™ 2025.1 release.
 
-## Revision 1
+## Revision 11
+
+Updated document for outdated figures and for SmartHLS™ 2025.2 release.
+
+## Revision 12
 
 Updated document for outdated figures and for SmartHLS™ 2026.1 release.
 
@@ -92,7 +96,7 @@ The following hardware is required:
 
 Make sure the following demo is working on your board: [AN5270 (Earlier DG0849): PolarFire FPGA Dual Camera Video Kit Demo Guide]([Download Link](https://www.microchip.com/en-us/application-notes/an5270)).
 
-We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/Sobel_Tutorial_Microsemi.pdf).
+
 
 We assume some knowledge of the C/C++ programming language for this training.
 
@@ -103,34 +107,14 @@ to follow along.
 ## Generating the Libero Project
 
 Before starting the training, we need to first generate the Libero project. 
-Ensure that you have a valid SmartHLS/Libero license, and that the `shls` and `libero`
-commands are available on your PATH.
 
-Neither command is on your PATH by default. Libero SoC ships a setup script that adds
-them; it has to be run once in every new terminal, before any of the commands below.
-
-On Windows, dot-source `setup_shls_path.ps1` from your Libero SoC installation:
-
-```powershell
-. "C:\Microchip\Libero_SoC_2026.1\SmartHLS\SmartHLS\bin\setup_shls_path.ps1"
-```
-
-Note the leading `. ` (a dot followed by a space). Without it the PATH changes are
-discarded as soon as the script exits, and `shls` will still not be found. Adjust the
-path if Libero SoC is installed somewhere other than `C:\Microchip`.
-
-On Linux, source `setup_shls_path.sh` instead:
+If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
 ```bash
-source <Libero install>/SmartHLS/SmartHLS/bin/setup_shls_path.sh
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
-Verify that both tools resolve before continuing — `Get-Command shls, libero` on
-Windows, `which shls libero` on Linux. 
-
-
-If you are using Windows, open a PowerShell terminal, set up the paths as described above,
-and navigate to the Libero directory, e.g.:
+Then, navigate to the Libero directory, e.g.:
 
 ```powershell
 cd C:\Workspace\fpga-hls-examples\Training1\Libero
@@ -356,7 +340,7 @@ instantiate into this design.
 SmartHLS generated IP components on to the PolarFire board by following
 the steps below:
 
-1. Connect the JTAG Programing Header from J18 and the USB cable from J12 on the PolarFire® board to your PC.
+1. Connect the USB cable from J12 on the PolarFire® board to your PC.
 
 2. Connect the camera board at J5 and remove the lens caps.
 
@@ -374,11 +358,7 @@ the steps below:
 8. Select Project and New Job Project.
 <p align="center"><img src=".//media/image10.png" /></p>
 
-9. Now select the job file “`Training1/VIDEO_KIT_TOP.job`”.
-
-Note: as step 1 documented, to obtain this .job file, you can either: 
-- Run `./setup.ps1` under `\fpga-hls-examples\` directory, to obtain pre-compiled binary. OR
-- re-generate the bitstream and Libero project from scratch by following the instructions here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
+9. Now select the job file “`Training1/VIDEO_KIT_TOP.job`”  from the release assets folder you downloaded in step 1.
 
 10. Enter a project location. Click OK.
 
@@ -2098,7 +2078,7 @@ representation of `fixpt_t(65.738)` by adding this code in the main
 function on line 104 after the test case validation loop:
 ```c
 std::cout << fixpt_t(65.738).to_fixpt_string(10) << std::endl;
-std::cout << "= " << fixpt_t(65.738).to_double() << std::endl;
+std::cout << "= " << (double)fixpt_t(65.738) << std::endl;
 ```
 
 Now recompile (![](.//media/image59.png)) and rerun

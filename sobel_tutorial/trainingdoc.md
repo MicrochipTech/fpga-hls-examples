@@ -949,7 +949,7 @@ but can also have less area.
 icon ![](.//media/image61.png) where we can change the target clock
 period constraint. As shown in Figure 21, select “Set target clock
 period” for *Constraint Type* and set *Constraint Value* to the desired
-clock period in nanoseconds: “3”. Then you must click the “Add” button.
+clock period in nanoseconds: “6”. Then you must click the “Add” button.
 After pressing Add, the constraint will appear in the list of active HLS
 constraints. Then click OK.
 
@@ -971,11 +971,11 @@ file:
 ====== 2. Function and Loop Scheduling Results ======
 
 +------------------------------------------------------------------------------------------------------+
-| Function: sobel_filter takes 262667 cycles                                                           |
+| Function: sobel_filter takes 262663 cycles                                                           |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
 | Loop                    | Location In Source   | Trip Count | Iteration Latency | II | Total Latency |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
-| for.loop:sobel.cpp:28:5 | line 28 of sobel.cpp | 262657     | 7                 | 1  | 262663        |
+| for.loop:sobel.cpp:28:5 | line 28 of sobel.cpp | 262657     | 3                 | 1  | 262659        |
 +-------------------------+----------------------+------------+-------------------+----+---------------+
 ```
 

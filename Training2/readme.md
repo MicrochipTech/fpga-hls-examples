@@ -42,7 +42,7 @@ Updated document for SmartHLS™ 2024.2 release.
 ## Revision 8.0
 Updated document for SmartHLS™ 2025.1 release.
 
-## Revision 8.0
+## Revision 9.0
 Updated document for SmartHLS™ 2026.1 release.
 
 # Overview
@@ -149,37 +149,17 @@ to follow along.
 ## Generating the Libero Project
 
 Before starting the training, we need to first generate the Libero project. 
-Ensure that you have a valid SmartHLS/Libero license, and that the `shls` and `libero`
-commands are available on your PATH.
 
-Neither command is on your PATH by default. Libero SoC ships a setup script that adds
-them; it has to be run once in every new terminal, before any of the commands below.
-
-On Windows, dot-source `setup_shls_path.ps1` from your Libero SoC installation:
-
-```powershell
-. "C:\Microchip\Libero_SoC_2026.1\SmartHLS\SmartHLS\bin\setup_shls_path.ps1"
-```
-
-Note the leading `. ` (a dot followed by a space). Without it the PATH changes are
-discarded as soon as the script exits, and `shls` will still not be found. Adjust the
-path if Libero SoC is installed somewhere other than `C:\Microchip`.
-
-On Linux, source `setup_shls_path.sh` instead:
+If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
 ```bash
-source <Libero install>/SmartHLS/SmartHLS/bin/setup_shls_path.sh
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
-Verify that both tools resolve before continuing — `Get-Command shls, libero` on
-Windows, `which shls libero` on Linux. 
-
-
-If you are using Windows, open a PowerShell terminal, set up the paths as described above,
-and navigate to the Libero directory, e.g.:
+Then, navigate to the Libero directory, e.g.:
 
 ```powershell
-cd C:\Workspace\fpga-hls-examples-main\Training2\Libero
+cd C:\Workspace\fpga-hls-examples\Training1\Libero
 ```
 
 and run the following script to generate the HLS example designs:
@@ -399,7 +379,7 @@ using dataflow parallelism and require almost no code changes.
 
 Dataflow parallelism has two main uses: to overlap functions which run
 in sequence, or to run independent functions in parallel. An example of
-overlapping functions which run in sequence was shown in Training 2 with
+overlapping functions which run in sequence was shown in Training 1 with
 the Canny Edge Detection design. The Canny Edge filter can be broken
 into four tasks corresponding to the Gaussian blur, Sobel filter,
 non-maximum suppression, and hysteresis filters. Each of these tasks run
@@ -1128,7 +1108,7 @@ stream output of Alpha Blend goes to the Monitor display.
 In this section, we will go over the design process and implementation
 of the SmartHLS generated Digit Recognition CNN block. We will follow an
 approach that is suitable for a port of an existing hardware block to
-SmartHLS, as opposed to SmartHLS Training 2 where we used an approach
+SmartHLS, as opposed to SmartHLS Training 1 where we used an approach
 suitable for porting a software implementation to SmartHLS. Many steps
 are similar.
 
@@ -2583,7 +2563,7 @@ adding much area, the number of resources used will be replicated with
 each iteration of the loop that gets unrolled. This can make it
 unreasonable to unroll large loops, for example unrolling the nested
 loops that processes every pixel of the 1920x1080 frame in the Canny
-design from Training 2.
+design from Training 1.
 
 SmartHLS offers some alternatives that can be used to increase
 performance without causing a large increase in resource usage. The
@@ -2679,7 +2659,7 @@ Figure 41: PolarFire® Video and Imaging Kit Peripherals</p>
 ![](.//media/image3.png)To program the design to the PolarFire board:
 
 
-1.  Connect the JTAG Programing Header from J18 and the USB cable from J12 on the PolarFire® board to your PC.
+1.  Connect the USB cable from J12 on the PolarFire® board to your PC.
 
 2.  Connect the camera board at J5 and remove the lens caps.
 
@@ -2693,42 +2673,38 @@ Figure 41: PolarFire® Video and Imaging Kit Peripherals</p>
 
 5.  Make sure all the DIP switches (SW6) are in the ON position.
 
-5.  Connect the AC adapter to the board and power it on (SW4).
+6.  Connect the AC adapter to the board and power it on (SW4).
 
-6.  Open up FlashPro Express (FPExpress v2026.1), which you can find in
+7.  Open up FlashPro Express (FPExpress v2026.1), which you can find in
     the Start Menu, listed under “Microchip Libero SoC v2026.1”:
 
 <p align="center"><img src=".//media/image98.png" /></p>
 
-7. Select Project and New Job Project.
+8. Select Project and New Job Project.
 
 <p align="center"><img src=".//media/image99.png" /></p>
 
-8. Now select the job file “`Training2/VIDEO_KIT_TOP.job`” downloaded from the release assets.
+9. Now select the job file “`Training2/VIDEO_KIT_TOP.job`” downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [previous section](#appendix-b-integrating-into-smartdesign) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
 
-Note: as step 1 documented, to obtain this .job file, you can either: 
-- Run `./setup.ps1` under `\fpga-hls-examples\` directory, to obtain pre-compiled binary. OR
-- re-generate the bitstream and Libero project from scratch by following the instructions here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
+10. Enter a project location. Click OK.
 
-9. Enter a project location. Click OK.
-
-10. Now the Programmer window will open. If you do not see the
+11. Now the Programmer window will open. If you do not see the
     Programmer for the MPF300TS PolarFire® FPGA, then click
     Refresh/Rescan Programmers.
 
 <p align="center"><img src=".//media/image100.png" /></p>
 
-11. Now click the RUN button to program the FPGA.
+12. Now click the RUN button to program the FPGA.
 
-12. After programming you should see the RUN PASSED. Now power cycle the
+13. After programming you should see the RUN PASSED. Now power cycle the
     board, then **make sure to press the user reset switch**, and close
     FlashPro Express.
 
 <p align="center"><img src=".//media/image101.png" /></p>
 
-13. Now you should see two video streams on your monitor, one smaller
+14. Now you should see two video streams on your monitor, one smaller
     picture in picture on the top left and then the background. If the
     video streams look blurry, try focusing the camera by rotating the
     camera lens. You should also see a downscaled greyscale version of
@@ -2744,13 +2720,13 @@ Note: as step 1 documented, to obtain this .job file, you can either:
     reprogrammed until the wrapping goes away. The top-left camera view
     being purple does not affect the classification.
 
-14. Using your smartphone, open this document and zoom in on the example
+15. Using your smartphone, open this document and zoom in on the example
     handwritten digits shown in Figure 42.
 
 <p align="center"><img src=".//media/image102.png" /></br>
 Figure 42: Example Handwritten Digits</p>
 
-18. Now hold your smartphone screen up the PolarFire® Video Kit camera
+16. Now hold your smartphone screen up the PolarFire® Video Kit camera
     and move your phone until the picture in picture shows only one
     digit. For example, if you hold the “5” digit from Figure 42 up to
     the camera, you should see the output on the top left of the monitor
@@ -2760,7 +2736,7 @@ Figure 42: Example Handwritten Digits</p>
 <p align="center"><img src=".//media/image103.jpeg" /></br>
 Figure 43: Expected output on Monitor for “5” digit</p>
 
-19. Below the picture in picture, as shown in Figure 44, you will see a
+17. Below the picture in picture, as shown in Figure 44, you will see a
     small 28x28 green image which shows the downscaled greyscale image
     seen by the digit recognition CNN hardware block. On the right is
     the digit predicted by the hardware, in this case the prediction was
@@ -2771,7 +2747,7 @@ Figure 43: Expected output on Monitor for “5” digit</p>
 <p align="center"><img src=".//media/image103.jpeg" /></br>
 Figure 44: Downscaled digit recognition input and predicted digit output</p>
 
-20. You may notice the prediction may not be very accurate. This is due
+18. You may notice the prediction may not be very accurate. This is due
     to the CNN structure being a smaller version of the standard MNIST
     digit recognition CNN. In general, you should restructure and
     retrain the CNN to get better effectiveness if the CNN is not
@@ -2980,7 +2956,6 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 
 
 ```
-Now add `#define USE_SHARED_BUFFER` to line 9. You switched to shared buffer. 
 
 Dataflow parallelism with double buffers also reaches the clock
 frequency requirement of both the Hello FPGA design and the PolarFire®
