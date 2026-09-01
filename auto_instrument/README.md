@@ -685,249 +685,67 @@ set monitoring_mode 1
 
 in `hls_output/scripts/instrument/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
-### How the Two Processes Communicate
+Then, open a new terminal on the build host and start a monitoring process that periodically captures the data (this is done instead of using the GUI):
 
-The monitoring process and the visualizing process hand data to each other through a
-semaphore file, `hls_output/scripts/instrument/test`. The handshake is **blocking in
-both directions**:
+- On Linux:
 
-- `monitor.tcl` truncates the file, captures a buffer, writes the `.vcd`, writes `1`
-  to the file, and then **busy-waits** until the file reads `0`.
-- `update_vcd.tcl` in ModelSim polls the file once per second. When it reads `1` it
-  merges the new samples onto the end of the waveform, reloads the dataset, and writes
-  `0` back.
-
-Two consequences follow from this, and they determine the start-up and shutdown orders
-below:
-
-- ModelSim must already be running before the monitoring process finishes its first
-  capture. Otherwise the monitoring process writes `1` and waits forever.
-- ModelSim opens the semaphore file in `r+` mode, so the file must already exist when
-  ModelSim starts.
-
-### Start-up Order
-
-**Step 1 — start the JTAG server** on the `JTAG_HOST` machine, if it is not already
-running (see [Connecting to the JTAG Cable](#connecting-to-the-jtag-cable)).
-
-**Step 2 — start the executable on the board** and leave it running:
-
+```bash
+identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+```
+  
+- On Windows:
 ```console
-./auto_instrument.accel.elf 20 20 20 20
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
 
-Without a running executable the FIFOs stay idle and every capture is a flat line.
-Larger delays make the occupancy easier to see.
+**KNOWN ISSUE:** If you are using Identify 2025.2 and your board is __not__ connected to the build host, you may need to manually load the activation created in the previous section. To do so, in `hls_output/scripts/instrument/monitor.tcl`, load the activation before the `source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl` command, such that your `monitor.tcl` script looks like this:
 
-**Step 3 — create the semaphore file** so that ModelSim can start in any order
-relative to the monitoring process:
+```
+### Previous commands here...
 
-| Windows (PowerShell) | Linux (bash) |
-| --- | --- |
-| `Set-Content hls_output\scripts\instrument\test "0"` | `echo 0 > hls_output/scripts/instrument/test` |
+17 set prj_file [glob $synthesisPath/*.prj]
+18 set prj_basename [file rootname [file tail $prj_file]]
+19 project open $synthesisPath/$prj_basename.prj
+20 activation load $synthesisPath/last_run.adc
+21
+22 source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl
+```
 
-**Step 4 — clear any stray local JTAG helper.** Each `server start` launches a local
-`acteljtag` helper on the build host that binds the same port number as the remote
-server. If a previous debugger session exited abnormally without taking that helper
-with it, the next `server start` collides with it and reports the misleading error
-`Server not started or connection failed due to conflicting port assignment`, or fails
-later at `run` with `Unable to create JTAG session`:
+If an activation was not automatically created in the previous section (i.e., the `hls_output/soc/synthesis/last_run.adc` file does not exist), you will have to create it manually. First, open the synthesis project in Identify.
 
-| Windows (PowerShell) | Linux (bash) |
-| --- | --- |
-| `Get-Process -Name acteljtag -ErrorAction SilentlyContinue \| Stop-Process -Force` | `pkill -f acteljtag` |
-| `Get-Process \| Where-Object { $_.ProcessName -match 'identify' } \| Stop-Process -Force` | `pkill -f identify_debugger` |
+On Linux, run
 
-**Step 5 — open ModelSim for visualization.** This must come *before* Step 6:
+```bash
+identify_debugger_shell -licensetype identdebugger_actel -shell  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+On Windows, run
+
+```powershell
+identify_debugger_console -licensetype identdebugger_actel  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+Then set the JTAG server and programmer ID, and then save the activation.
+
+```
+server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
+com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
+activation save [PATH TO THE AUTO INSTRUMENT EXAMPLE HERE]/hls_output/soc/synthesis/last_run.adc
+```
+
+With `last_run.adc` and the code changes, you should now be able to run `monitor.tcl`, and proceed with the tutorial.
+
+</br>
+
+Finally, open Modelsim in a new terminal for visualization:
 
 ```console
 vsim -do hls_output/scripts/instrument/update_vcd.tcl
 ```
 
-The Wave window will be empty at this point. That is expected — it is polling the
-semaphore file and waiting for the first capture.
+This will launch ModelSim again, but the waveform will update continuously (no need to press `Ctrl+R` to refresh) as soon as Identify provides new captured data periodically.
 
-**Step 6 — patch `monitor.tcl` so that it connects to the JTAG server.** This is a
-one-time edit, required only if the board is *not* attached to the build host.
-
-As shipped, `monitor.tcl` issues only `com cabletype` and `com cableoption`; it never
-opens a connection to the JTAG server. That is sufficient for a directly attached cable,
-but on a remote setup its capture loop fails at `run -iice ... -wait` with:
-
-```text
-Error: No programmer found for port '<PROGRAMMER_ID>':  !
-  at line 60 of <SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/utils/instrument/monitor.tcl
-```
-
-Open that same file:
-
-```text
-<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/utils/instrument/monitor.tcl
-```
-
-Locate these lines (around lines 27-29) — `project open` immediately followed by
-`com cabletype`:
-
-```tcl
-project open $synthesisPath/$prj_basename.prj
-
-com cabletype Microsemi_BuiltinJTAG
-```
-
-Insert the following block **between** them:
-
-```tcl
-## Connect to the acteljtag server. Required when the JTAG cable is attached to a
-## different machine than the one running the debugger. Skipped when JTAG_HOST is
-## unset, so a locally attached cable continues to work unchanged.
-if {[info exists ::env(JTAG_HOST)] && $::env(JTAG_HOST) ne ""} {
-    set jtag_port 57123
-    if {[info exists ::env(JTAG_PORT)] && $::env(JTAG_PORT) ne ""} {
-        set jtag_port $::env(JTAG_PORT)
-    }
-    puts "Connecting to acteljtag at $::env(JTAG_HOST):$jtag_port"
-    server set -addr $::env(JTAG_HOST) -port $jtag_port -cabletype Microsemi_BuiltinJTAG
-    server start
-    ## The server start handshake completes on the Tcl event loop. An interactive
-    ## prompt yields to that loop between commands, but a sourced script does not,
-    ## and `run` would then fail with "Unable to create JTAG session".
-    after 3000
-    catch {update}
-}
-```
-
-A second, one-line edit is also needed. Find the end of the `com cableoption` block that
-follows, a few lines below:
-
-```tcl
-com cabletype Microsemi_BuiltinJTAG
-if {$programmer_id != ""} {
-	com cableoption Microsemi_BuiltinJTAG_port $programmer_id
-}
-```
-
-and add `com check` immediately after its closing brace:
-
-```tcl
-## Establish and verify the JTAG session. This is not merely a diagnostic: without
-## it, `run -iice ... -wait` below fails with "Unable to create JTAG session".
-com check
-```
-
-Four details matter across these two edits, each corresponding to a distinct failure:
-
-| Detail | Error if omitted |
-| --- | --- |
-| Insert the first block *after* `project open` | `This operation can't be performed. A design must first be loaded.` at `server set` |
-| `server set` and `server start` | `No programmer found for port '<PROGRAMMER_ID>'` at `run` |
-| `after 3000` plus `update` | `Unable to create JTAG session` at `server start` |
-| `com check`, *after* `com cableoption` | `Unable to create JTAG session` at `run` |
-
-The first block reads `JTAG_HOST` and the optional `JTAG_PORT` from the environment
-variables set up in [Requirements](#requirements). `JTAG_PORT` defaults to `57123`; **set
-it if you started `acteljtag` on a different port**, otherwise the connection attempt
-goes to a port where nothing is listening and, after a 15-second timeout, reports the
-misleading `conflicting port assignment` error described below. Because the block is
-skipped when `JTAG_HOST` is unset, the patched file remains correct for local setups.
-
-Note that this file lives in the SmartHLS installation, not in `hls_output/`, so both
-edits survive rebuilds — but they will be lost if SmartHLS is reinstalled or upgraded.
-
-The error `Server not started or connection failed due to conflicting port assignment`
-has two unrelated causes, so check both:
-
-1. Nothing is listening on the port the debugger printed in its
-   `Connecting to acteljtag at <host>:<port>` line. Verify with
-   `Test-NetConnection -ComputerName <host> -Port <port>` on Windows, or
-   `ss -ltnp | grep <port>` on the JTAG host.
-2. A stray local `acteljtag` helper is holding the port on the build host — see Step 4.
-
-**Step 7 — start the monitoring process** in a new terminal (this is done instead of
-using the GUI):
-
-| Windows (PowerShell) | Linux (bash) |
-| --- | --- |
-| `identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID` | `identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID` |
-
-A successful start prints `Connecting to acteljtag at ...`, then the device chain, then
-`DI179 IICE '<IICE_NAME>' configured. Waiting for trigger.` The waveform will then update
-continuously (no need to press `Ctrl+R` to refresh) as soon as Identify provides new
-captured data periodically.
-
-To confirm progress without watching the GUI, note that
-`hls_output/soc/synthesis/identify.vcd` grows by roughly one buffer's worth of data per
-capture, and `hls_output/scripts/instrument/wave.do` appearing means the waveform
-template has been applied. In monitoring mode that template is
-`fifo_dashboard_wave_template.do`; delete any `wave.do` left over from Part 1, or it
-will be reused instead.
-
-You can change the delays at any time by restarting the executable on the board. There
-is no need to restart ModelSim or the monitoring process.
-
-### Recovering from Capture-Loop Failures
-
-The capture loop re-establishes the full hardware connection on **every** iteration — each
-round logs `Connect to hardware...`, `Auto-detecting port names...`, and
-`Checking communication with the ... cable and the hardware...` again. Over many rounds
-this repeated connect/disconnect cycle is hard on the programmer, and the loop can stop
-for reasons that have nothing to do with your configuration. Two failures observed in
-practice, both *after* the loop had already captured successfully for several rounds:
-
-```text
-@E::Signal 000 error in identify_debugger_shell.exe
-Stack trace
-...
-Please open a web case about this problem. A Synopsys CAE will then contact you.
-```
-
-```text
-Error:   Unable to Navigate to JTAG Reset State:  (Error: FP6 connection failed.) !
-Error:  Unable to Enable Programmer:  (Error: Failed to enable FP6 programmer) !
-```
-
-The first is an internal crash in the Identify debugger itself. The second means the
-programmer stopped responding — often a lingering after-effect of the first, because a
-crashed debugger can leave the programmer in a bad state.
-
-Neither is fixed by editing scripts or environment variables. Recover in this order, and
-only escalate if the previous step does not help:
-
-1. Clear the stray local `acteljtag` helper and any debugger remnants on the build host,
-   as in Step 4. A crashed debugger leaves both behind.
-2. [Restart `acteljtag`](#restarting-the-jtag-server) on the `JTAG_HOST` machine. This
-   re-initializes the programmer, and is usually what actually clears
-   `Failed to enable FP6 programmer`.
-3. Power-cycle the board, then restart `acteljtag` again.
-
-Because each recovery costs a restart, prefer to keep monitoring sessions short and
-targeted: start the loop, observe the behaviour you are interested in, then shut down. If
-you need many rounds, expect to restart the loop occasionally — the accumulated waveform
-in `identify.vcd` is preserved across restarts of the monitoring process, since only
-ModelSim appends to it.
-
-### Shutdown Order
-
-Shut down in the reverse of the start-up order. **The order matters**: if ModelSim is
-closed first, the monitoring process is left spinning in its busy-wait loop, which
-never terminates and saturates a CPU core.
-
-**Step 1 — stop the monitoring process.** Press `Ctrl + C` in its terminal, or:
-
-| Windows (PowerShell) | Linux (bash) |
-| --- | --- |
-| `Get-Process \| Where-Object { $_.ProcessName -match 'identify' } \| Stop-Process -Force` | `pkill -f identify_debugger` |
-
-**Step 2 — close ModelSim.**
-
-**Step 3 — clear the local JTAG helper** left behind by `server start`:
-
-| Windows (PowerShell) | Linux (bash) |
-| --- | --- |
-| `Get-Process -Name acteljtag -ErrorAction SilentlyContinue \| Stop-Process -Force` | `pkill -f acteljtag` |
-
-**Step 4 — stop the executable on the board** with `Ctrl + C`.
-
-**Step 5 — stop the JTAG server** on the `JTAG_HOST` machine, if you no longer need it.
+Now close ModelSim and the Identify Debugger console.
 
 ## Part 3: Monitoring Mode with FIFO Dashboard
 
@@ -935,15 +753,18 @@ When writing C++ to design a hardware module, it may not be clear at first how d
 
 The FIFO Monitoring Dashboard aims to show developers, in nearly real-time, how filled up their FIFOs are getting as their program executes. It does so in an intuitive manner using a bar graph, where each bar represents a FIFO.
 
-Start the monitoring loop that will generate the periodic captures. Follow the same
-[Start-up Order](#start-up-order) as Part 2, except that the dashboard replaces ModelSim
-as the visualizing process. If the board is not attached to the build host, `monitor.tcl`
-must already carry the JTAG server patch from Step 6 of that section, or the loop fails
-with `No programmer found for port '<PROGRAMMER_ID>'`:
+Start the monitoring loop that will generate the periodic captures:
 
-| Windows (PowerShell) | Linux (bash) |
-| --- | --- |
-| `identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID` | `identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID` |
+- On Linux:
+  
+```bash
+identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+```
+
+- On Windows:
+```console
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
+```
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:
 
@@ -952,32 +773,6 @@ shls -s instrument_monitor_fifos
 ```
 
 Now, when you run the `auto_instrument.accel.elf` executable on-board, you should see the bar graph changing according to how full the FIFOs are. Try playing around with different delays and see how this affects the bar graphs. The occupancies should match the values you see for the `usedw` signal in ModelSim, for the FIFO dashboard is simply a python-based visualization of this signal!
-
-### Reading the Bar Graph
-
-Each FIFO is drawn as three overlaid bars, so a bar that looks like an empty white
-outline is not a failure to plot:
-
-| Layer | Meaning | Appearance |
-| --- | --- | --- |
-| Bottom | FIFO **depth** (its capacity) | Hollow — white fill, black edge |
-| Middle | **Peak** occupancy | Translucent gray |
-| Top | **Average** occupancy | Solid, colour-coded by how full the FIFO is |
-
-The four user FIFOs in this design are declared with `FIFO1_DEPTH` .. `FIFO4_DEPTH` set
-to `256` in `main.cpp`, so their white outlines are drawn at 256. With small delays the
-steady-state occupancy is only around `N + 8` elements, which at 9/256 (3.5%) is a
-sliver barely visible at the base of the bar. This is correct behaviour, not a missing
-plot — to make the coloured occupancy layer clearly visible, rerun the executable with
-much larger delays:
-
-```console
-./auto_instrument.accel.elf 200 200 200 200
-```
-
-The shorter bars on the left are internal scalar FIFOs, whose depths are only 1, 8, or
-64, so they appear proportionally much fuller. Each bar is also captioned with
-`average/depth (percent)`.
 
 The bar graph should periodically change as it receives data from the monitoring process. The timestamp at the top of the plot indicates the time the plotted data was created by the monitoring process.
 

@@ -53,7 +53,7 @@ Updated document for SmartHLS™ 2025.2 release.
 
 ## Revision 11.0
 
-Updated document for SmartHLS™ 2025=6.1 release.
+Updated document for SmartHLS™ 2026.1 release.
 
 # Overview
 
@@ -168,52 +168,45 @@ to follow along.
 ## Generating the Libero Project
 
 Before starting the training, we need to first generate the Libero project. 
-Ensure that you have a valid SmartHLS/Libero license, and that the `shls` and `libero`
-commands are available on your PATH.
 
-Neither command is on your PATH by default. Libero SoC ships a setup script that adds
-them; it has to be run once in every new terminal, before any of the commands below.
-
-On Windows, dot-source `setup_shls_path.ps1` from your Libero SoC installation:
-
-```powershell
-. "C:\Microchip\Libero_SoC_2026.1\SmartHLS\SmartHLS\bin\setup_shls_path.ps1"
-```
-
-Note the leading `. ` (a dot followed by a space). Without it the PATH changes are
-discarded as soon as the script exits, and `shls` will still not be found. Adjust the
-path if Libero SoC is installed somewhere other than `C:\Microchip`.
-
-On Linux, source `setup_shls_path.sh` instead:
+If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
 ```bash
-source <Libero install>/SmartHLS/SmartHLS/bin/setup_shls_path.sh
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
-Verify that both tools resolve before continuing — `Get-Command shls, libero` on
-Windows, `which shls libero` on Linux. 
+Then, navigate to the Libero directory, e.g.:
 
+```powershell
+cd C:\Workspace\fpga-hls-examples\Training1\Libero
+```
 
-Generate the Libero project in advance. 
-
-  * If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory. Then run `run_shls_on_examples.ps1` to generate the HLS example designs. e.g.:
-
-```ps1
-cd C:\Workspace\fpga-hls-examples-main\Training3\Libero
+and run the following script to generate the HLS example designs:
+```powershell
 .\run_shls_on_examples.ps1
 ```
 
-  * If you are using Linux, open a terminal and navigate to the Libero directory. Then run `run_shls_on_examples.sh` to generate the HLS example designs. e.g.:
+If you are using Linux, open a terminal, set up the paths as described above, and navigate
+to the Libero directory, e.g.:
 
 ```bash
-cd Workspace/fpga-hls-examples-main/Training3/Libero
+cd Workspace/fpga-hls-examples/Training1/Libero
+```
+and run the following script to generate the HLS example designs:
+``` bash
 bash run_shls_on_examples.sh
 ```
+On Windows, script execution is restricted by default. If `.\run_shls_on_examples.ps1`
+fails with "running scripts is disabled on this system", run it with a per-invocation
+bypass instead — this requires no administrator rights and changes no persistent setting:
 
-  * When working with windows, make sure to set the execution policy to Unrestricted in order to run the script.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\run_shls_on_examples.ps1
+```
 
-  * When this completes, use Libero to generate the project. Open Libero 2026.1, and go to Project -> Execute Script.
-Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1`.
+When this completes, use Libero to generate the project. Open Libero 2026.1, and go to Project -> Execute Script.
+Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY:1`.
+
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
 <p align="center"><img src=".//media/generate_only.png" /></p>
@@ -1153,7 +1146,7 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 1.  If you have not already, download a terminal emulator like PuTTY. We
     will use this to communicate with the Mi-V via UART.
 
-2.  Connect the JTAG Programing Header from J18 and the USB cable from J12 on the PolarFire® board to your PC.
+2.   Connect the USB cable from J12 on the PolarFire® board to your PC.
 
 3.  Connect the HDMI cable from the PolarFire Video Kit (J2) to your
     external Monitor.
@@ -1179,31 +1172,27 @@ Figure 8: PolarFire® Video and Imaging Kit Peripherals</p>
 Alternatively, you may generate your own bitstream from the Libero project created in the [prerequisites](#generating-the-libero-project) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
 
-Note: as step 1 documented, to obtain this .job file, you can either: 
-- Run `./setup.ps1` under `\fpga-hls-examples\` directory, to obtain pre-compiled binary. OR
-- re-generate the bitstream and Libero project from scratch by following the instructions here: <https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/Libero>
+9. Enter a project location. Click OK.
 
-10. Enter a project location. Click OK.
-
-11. Now the Programmer window will open. If you do not see the
+10. Now the Programmer window will open. If you do not see the
     Programmer for the MPF300TS PolarFire® FPGA, then click
     Refresh/Rescan Programmers.
 
 <p align="center"><img src=".//media/image34.png" /></br>
 
-12. Now click the RUN button to program the FPGA.
+11. Now click the RUN button to program the FPGA.
 
-13. After programming you should see the RUN PASSED. Now close FlashPro
+12. After programming you should see the RUN PASSED. Now close FlashPro
     Express.
 
 <p align="center"><img src=".//media/image35.png" /></br>
 
-14. Now open the Windows Device Manager menu by opening the Start Menu
+13. Now open the Windows Device Manager menu by opening the Start Menu
     and then searching for Device Manager.
 
 <p align="center"><img src=".//media/image36.png" /></br>
 
-15. In the Device Manager, look for a device type called Ports (COM &
+14. In the Device Manager, look for a device type called Ports (COM &
     LPT) and open it. You should find a COM port corresponding to the
     USB connection with the PolarFire Video Kit. Note this COM port
     number. If there is confusion about which COM port it is, unplug
@@ -1211,32 +1200,32 @@ Note: as step 1 documented, to obtain this .job file, you can either:
 
 <p align="center"><img src=".//media/image37.png" /></br>
 
-16. Now open PuTTY, select Serial connection, enter a baud rate of
+15. Now open PuTTY, select Serial connection, enter a baud rate of
     115200, and enter the same COM port you saw in Device Manager. Next
     click Open.
 
 <p align="center"><img src=".//media/image41.png" /></br>
 
-17. This will open an empty PuTTY console.
+16. This will open an empty PuTTY console.
 
 <p align="center"><img src=".//media/image42.png" /></br>
 
-18. Now double check the HDMI cable from the PolarFire Video Kit (J2) to
+17. Now double check the HDMI cable from the PolarFire Video Kit (J2) to
     your external Monitor as the design will block until there is a
     screen detected.
 
-19. Power cycle the board. You should see a rotating image on your HDMI
+18. Power cycle the board. You should see a rotating image on your HDMI
     output. This video feed is coming from the texture mapper SmartHLS
     core.
 
 <p align="center"><img src=".//media/image43.png" /></br>
 
-20. You should also see output in PuTTY with some setup messages and a
+19. You should also see output in PuTTY with some setup messages and a
     line asking for “mode”. This is the wide multiply operation mode.
 
 <p align="center"><img src=".//media/image44.png" /></br>
 
-21. Choose to run in single mode (1). The Mi-V will prompt you to enter
+20. Choose to run in single mode (1). The Mi-V will prompt you to enter
     in each input to the wide multiply as 32-bit unsigned chunks. Enter
     the values in hexadecimal. If the Mi-V complains that you are
     sending an invalid character when pressing enter, make sure that
@@ -1245,7 +1234,7 @@ Note: as step 1 documented, to obtain this .job file, you can either:
 
 <p align="center"><img src=".//media/image45.png" /></br>
 
-22. Next, choose to run in burst mode (2) The Mi-V will automatically
+21. Next, choose to run in burst mode (2) The Mi-V will automatically
     send some testbench values to DDR and signal to the wide multiply
     core to operate on them. Afterwards the Mi-V will print out the
     results stored to DDR by the multiply core.
@@ -1466,11 +1455,9 @@ the hardware generated by SmartHLS. Run the custom testbench
 
 ```
 ...
-# This testbench expects a pipelined wide multiply with initiation
-interval of 1 and pipeline latency of 43.
-# If there are mismatches in this testbench but not in co-simulation,
-check your pipeline results.
-# Simulation finished! 0 mismatches.
+# This testbench expects a pipelined wide multiply with initiation interval of 1 and pipeline latency of 7.
+# If there are mismatches in this testbench but not in co-simulation, check your pipeline results.
+# Simulation finished!           0 mismatches.
 # PASS
 ...
 ```
@@ -1711,7 +1698,7 @@ return mismatch_cnt;
 Mismatches: 0
 PASS
 ...
-Simulation time (cycles): 1659
+Simulation time (cycles): 705
 SW/HW co-simulation: PASS
 ```
 
@@ -2277,12 +2264,6 @@ Configure Design Initialization Data and Memories -\> Fabric RAMs. As
 shown in Figure 12, we specified the memory initialization hex file of
 the *texture_frame* RAM to the relative path:
 “`src/cfg_and_mem_files/lena_8Bit_Greyscale_512x512.hex`”.
-
-Firstly, generate component for `LEGUP_PROCESSING`.
-<p align="center"><img src=".//media/generate_component_legup.png" /></br>
-
-Secondly, click `Generate FPGA Array Data` in the `Design Flow` section.
-<p align="center"><img src=".//media/fpga_array.png" /></br>
 
 Then, you may modify frabric ram initialization
 
