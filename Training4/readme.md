@@ -78,13 +78,13 @@ training.
 
 You should install the following software:
 
-  - SmartHLS™ 2025.2 or later: this is packaged with Libero
-  - Libero® SoC 2025.2 (with QuestaSim Pro 2021.3) or later
+  - SmartHLS™ 2026.1 or later: this is packaged with Libero
+  - Libero® SoC 2026.1 (with QuestaSim Pro 2021.3) or later
       - [Libero Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
   - A terminal emulator such as PuTTY
       - [Windows Download](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-This document uses the Windows versions of Libero® SoC 2025.1 and SmartHLS 2025.1. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
+This document uses the Windows versions of Libero® SoC 2026.1 and SmartHLS 2026.1. Depending on the version you use, the results generated from your Libero® SoC and SmartHLS could be slightly different from that presented in this document.
 
 Additionally, while the default simulator for SmartHLS is now QuestaSim, ModelSim will still be supported. Some screenshots of the simulator may have been captured using Modelsim.
 
@@ -500,7 +500,7 @@ as shown below.
 
 ```
 13:58:58 **** Build of configuration LegUp for project vector_add_soc ****
-"C:\Microchip\SmartHLS-2025.1\SmartHLS\bin\shls.bat" -s sw_compile sw_run 
+"C:\Microchip\SmartHLS-2026.1\SmartHLS\bin\shls.bat" -s sw_compile sw_run 
 Info: Running the following targets: sw_compile sw_run
 Info: Compiling Software...
 RESULT: PASS
@@ -737,7 +737,7 @@ report file. SmartHLS will summarize the resource usage and Fmax results
 reported by Libero® after place and route. You should get similar
 results as shown below in Figure 6‑20. Your numbers may differ slightly,
 depending on the version of SmartHLS and Libero® you are using. This
-tutorial used Libero® SoC v2025.1. The timing results and resource usage
+tutorial used Libero® SoC v2026.1. The timing results and resource usage
 might also differ depending on the random seed used in the Libero tool
 flow.
 
@@ -1528,7 +1528,7 @@ to control the accelerator IP on the FPGA fabric.
 ![](.//media/image2.png) In the same menu as before, click *SmartHLS -\>
 RISC-V SoC Features (available for PolarFire SoC only) -\> Reference SoC
 with HLS Accelerator(s) -\> Run software with accelerators* (Figure
-7‑7/effo). SmartHLS will automatically run all the steps prior to Run
+7‑7). SmartHLS will automatically run all the steps prior to Run
 software with accelerators, i.e. *Generate Libero design, RTL synthesis,
 Place-and-route and generate bitstream, Program board, Cross-compile
 software with accelerator drivers* (Figure 7‑7).
@@ -1986,7 +1986,7 @@ takes in a SmartHLS project and calls SmartHLS to generate HDL from C++
 and integrate the modules into the SoC. This script attempts to obtain
 the path to SmartHLS based on the user’s PATH. If the script cannot find
 SmartHLS, the script will attempt to look in the default
-`C:Microchip\SmartHLS-v2025.1` installation path for Windows. If SmartHLS
+`C:Microchip\SmartHLS-v2026.1` installation path for Windows. If SmartHLS
 still cannot be found, the script will give an error and users will have
 to manually modify the script or add SmartHLS to their PATH environment
 variable.
@@ -2326,20 +2326,20 @@ threshold:0</td>
 <tr class="even">
 <td>do_invert:0<br />
 threshold:200</td>
-<td>141</td>
-<td>57</td>
+<td>128</td>
+<td>60</td>
 </tr>
 <tr class="odd">
 <td>do_invert:1<br />
 threshold:0</td>
-<td>46</td>
-<td>57</td>
+<td>47</td>
+<td>60</td>
 </tr>
 <tr class="even">
 <td>do_invert:1<br />
 threshold:200</td>
-<td>173</td>
-<td>112</td>
+<td>167</td>
+<td>116</td>
 </tr>
 </tbody>
 </table>
@@ -2350,11 +2350,11 @@ threshold:200</td>
 
 We summarize the runtime of the application with various program
 arguments in Figure 8‑29. When using hardware accelerator, the execution
-times of either invert or threshold is roughly 55 ms (Figure 8‑29).
-However when running only in software, inversion takes about 46 ms while
-the `threshold_to_zero()` function takes approximately 141 ms. So, a
+times of either invert or threshold is roughly 56 ms (Figure 8‑29).
+However when running only in software, inversion takes about 47 ms while
+the `threshold_to_zero()` function takes approximately 128 ms. So, a
 slight increase in complexity has a big effect on the overall software
-runtime. 57 ms is approximately the time the MSS needs to move data to
+runtime. 60 ms is approximately the time the MSS needs to move data to
 and from the accelerator and DDR. This is, in fact, where most of the
 time is spent in these simple hardware accelerators as can be seen in
 Figure 8‑30.
@@ -2366,7 +2366,7 @@ Figure 8‑30.
 If we look at the `hls_output/reports/summary.hls.invert.rpt` (Figure
 8‑31), we can see that the invert latency is 86,402 cycles at 125MHz,
 which is 0.7ms. The invert function is called 24 times, which means that
-the invert pipeline total runtime is only about 17 ms of the 55 ms
+the invert pipeline total runtime is only about 17 ms of the 56 ms
 measured runtime. This represents only 30% of the total runtime, with
 the other 70% spent performing data transfer.
 
@@ -2390,7 +2390,7 @@ the alternation of data transfer in Figure 8‑22. The hardware modules
 cannot run in parallel but the three channels per pixel (Red, Green, and
 Blue) are processed in parallel in the pipeline. When only one of the
 invert() or `threshold_to_zero()` hardware accelerators are called, the
-processing time is about the same (57 ms) because the data transfer time
+processing time is about the same (60 ms) because the data transfer time
 dominates the overall runtime.
 
 ### CPU usage (main.cpu_usage.cpp)
@@ -2451,13 +2451,13 @@ Running software-only causes the CPU to reach 100% usage:
 <img src=".//media/image73.png" />
 <p align="center">Figure 8‑32 CPU Usage when Running Software on RISC-V Only</p></p>
 
-Running with hardware module, the CPU utilization is about 11%:
+Running with hardware module, the CPU utilization is about 10%:
 
 <p align="center">
 <img src=".//media/image74.png" />
 <p align="center">Figure 8‑33 CPU Usage when Running with Accelerators</p></p>
 
-As shown in Figure 8-33, CPU usage is only around 11%. The MSS only needs to
+As shown in Figure 8-33, CPU usage is only around 10%. The MSS only needs to
 check occasionally (e.g., every 1 second), instead of many thousands of
 times per second, which frees up the CPU to do other useful work.
 
@@ -2551,7 +2551,7 @@ shls clean
 <p align="center">Figure 8‑36 Runtime Results of main.non-blocking.cpp</p></p>
 
 Recall in Figure 8‑29, performing a single `invert` or `threshold_to_zero`
-takes approximately 57 ms with accelerators as that is the approximate
+takes approximately 60 ms with accelerators as that is the approximate
 amount of time required to transfer the data from the DMA to the
 accelerator then back. Running `invert` and `threshold_to_zero` in
 parallel in this example did not completely overlap the runtime of the
@@ -2654,10 +2654,10 @@ run_sw.shls.bat
 <img src=".//media/image78.png" />
 <p align="center">Figure 8‑39 main.fifo.cpp Runtime with Hardware Acceleration</p></p>
 
-As shown in Figure 8‑39, the runtime is now \~57 ms for both hardware
+As shown in Figure 8‑39, the runtime is now \~60 ms for both hardware
 modules, which is the same runtime as running only one of the
 accelerators and almost half the runtime of running both accelerators
-(\~112ms) in `main.simple.cpp` variation. Despite an increase in
+(\~116ms) in `main.simple.cpp` variation. Despite an increase in
 computation in the accelerator, we do not see any difference in runtime
 between a simple invert and the combined `invert` and `threshold_to_zero`
 function. The runtime is still dominated by DMA transfers. Thus, we can
@@ -2690,57 +2690,57 @@ threshold:0</td>
 <td></td>
 <td>do_invert:0<br />
 threshold:200</td>
-<td>141 ms</td>
-<td>57 ms</td>
+<td>128 ms</td>
+<td>60 ms</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>do_invert:1<br />
 threshold:0</td>
-<td>46 ms</td>
-<td>57 ms</td>
+<td>47 ms</td>
+<td>60 ms</td>
 </tr>
 <tr class="even">
 <td></td>
 <td>do_invert:1<br />
 threshold:200</td>
-<td>173 ms</td>
-<td>112 ms</td>
+<td>167 ms</td>
+<td>116 ms</td>
 </tr>
 <tr class="odd">
 <td>main.non-blocking.cpp</td>
 <td>do_invert:1<br />
 threshold:200</td>
-<td>260 ms</td>
-<td>72 ms</td>
+<td>250 ms</td>
+<td>76 ms</td>
 </tr>
 <tr class="even">
 <td>main.fifo.cpp</td>
 <td>do_invert:0<br />
 threshold:0</td>
 <td>4.6 s to 5.0 s</td>
-<td>57 ms</td>
+<td>59 ms</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>do_invert:0<br />
 threshold:200</td>
 <td>4.6 s to 5.0 s</td>
-<td>57 ms</td>
+<td>59 ms</td>
 </tr>
 <tr class="even">
 <td></td>
 <td>do_invert:1<br />
 threshold:0</td>
 <td>4.6 s to 5.0 s</td>
-<td>57 ms</td>
+<td>59 ms</td>
 </tr>
 <tr class="odd">
 <td></td>
 <td>do_invert:1<br />
 threshold:200</td>
 <td>4.6 s to 5.0 s</td>
-<td>57 ms</td>
+<td>59 ms</td>
 </tr>
 </tbody>
 </table>
@@ -2753,25 +2753,25 @@ Several things are of note here:
 1.  **DMA transfers dominate the overall runtime when running with
     accelerators.** When `main.fifo.cpp` consolidated invert and
     `threshold_to_zero` into a single accelerator, the runtime is
-    effectively halved (57 ms) compared to `main.simple.cpp`’s runtime of
-    performing both transformations (112 ms). Regardless of the
+    effectively halved (60 ms) compared to `main.simple.cpp`’s runtime of
+    performing both transformations (116 ms). Regardless of the
     complexity of invert, threshold_to_zero, and the combined
-    function, the runtime is about 55 ms for each function called.
+    function, the runtime is about 56 ms for each function called.
 2.  **The DMA is shared and can become the bottleneck when multiple
     accelerators are accessing at the same time.** `main.non-blocking.cpp`
     produces an inverted image and a threshold\_to\_zero image in
     parallel. However, the execution of invert and threshold\_to\_zero
     functions can only be partially overlapped due to the DMA being
     shared amongst them. Hence, the runtime is longer (72 ms) than
-    running only one of the transformations (57 ms), but shorter than
-    `main.simple.cpp`’s runtime of performing both transformations (112
+    running only one of the transformations (60 ms), but shorter than
+    `main.simple.cpp`’s runtime of performing both transformations (116
     ms).
 3.  **Saving could be accomplished even for relatively simple functions
     despite the cost of DMA transfer.** In `main.simple.cpp`, the
-    accelerator version (57 ms) almost breaks even with the simple
-    invert software function (46 ms). Running the accelerator version of
-    threshold\_to\_zero (57 ms) took less than 40% of the pure software
-    runtime (141 ms).
+    accelerator version (60 ms) almost breaks even with the simple
+    invert software function (47 ms). Running the accelerator version of
+    threshold\_to\_zero (60 ms) took less than 40% of the pure software
+    runtime (128 ms).
 4.  **Threads are expensive in software but cheap in hardware.**
     main.fifo.cpp uses `hls::thread` to implement the producer-consumer
     behaviour. Creating and destroying threads for very simple
@@ -2782,7 +2782,7 @@ Several things are of note here:
     performs a check on the argument and does not send the data to the
     accelerator if calculations were not required, i.e., the argument is
     zero. On the other hand, `main.fifo.cpp` blindly sends the data to the
-    accelerator to compute. Hence, `main.fifo.cpp` still takes 55
+    accelerator to compute. Hence, `main.fifo.cpp` still takes 56
     microseconds to complete even when the arguments are zero, but
     `main.simple.cpp` saved time (0 ms) by not doing the unnecessary
     calculations.
