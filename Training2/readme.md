@@ -1,7 +1,7 @@
 <h1><p align="center">SmartHLS™ Training Session 2:</p></h1>
 <h2><p align="center">Multi-threaded Digit Recognition on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 9.0</br>Jan 6, 2026<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 9.0</br>August, 2026<br /> <br /> <br /> </p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
@@ -43,7 +43,7 @@ Updated document for SmartHLS™ 2024.2 release.
 Updated document for SmartHLS™ 2025.1 release.
 
 ## Revision 9.0
-Updated document for SmartHLS™ 2025.2 release.
+Updated document for SmartHLS™ 2026.1 release.
 
 # Overview
 
@@ -115,12 +115,12 @@ PolarFire FPGA</p></br>
 Before beginning this training, you should install the following
 software:
 
-  - Libero® SoC 2025.2 (or later) with QuestaSim
+  - Libero® SoC 2026.1 (or later) with QuestaSim
     - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - SmartHLS 2025.2 (or later): this is packaged with Libero
+  - SmartHLS 2026.1 (or later): this is packaged with Libero
 
-This document uses the Windows versions of Libero® SoC 2025.2 and
-SmartHLS 2025.2. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2026.1 and
+SmartHLS 2026.1. Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -147,6 +147,7 @@ training document to indicate sections where you need to perform actions
 to follow along.
 
 ## Generating the Libero Project
+
 If you plan on following [Appendix B: Integrating into SmartDesign](#appendix-b-integrating-into-smartdesign),
 generate the Libero project in advance. 
 
@@ -183,12 +184,12 @@ Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1
 # Setting up SmartHLS
 
 In this section we will set up the workspace and projects for SmartHLS
-2025.2 used in this tutorial, as well as tool paths. We assume that
-SmartHLS 2025.2 and Libero® SoC 2025.2 have already been installed prior
+2026.1 used in this tutorial, as well as tool paths. We assume that
+SmartHLS 2026.1 and Libero® SoC 2026.1 have already been installed prior
 to this training. A Libero SoC install is needed for SmartHLS to run
 synthesis.
 
-![](.//media/image3.png) To set up SmartHLS 2025.2:
+![](.//media/image3.png) To set up SmartHLS 2026.1:
 
 1.  Download the zip file from github if you have not already (see
     Prerequisites). Extract the contents of the zip file. We will use
@@ -196,7 +197,7 @@ synthesis.
     **Warning:** Make sure to extract to a directory with a short path
     to avoid long path issues.
 
-2.  Open SmartHLS 2025.2 and choose a workspace.
+2.  Open SmartHLS 2026.1 and choose a workspace.
 
 <p align="center"><img src=".//media/image9.png" /></p></br>
 
@@ -238,9 +239,9 @@ synthesis.
 9.  Make sure the tool paths to vsim.exe and libero.exe are properly set
     to:
 
-    `C:\Microchip\Libero_SoC_2025.2\QuestaSim\win32acoem\vsim.exe`
+    `C:\Microchip\Libero_SoC_2026.1\QuestaSim\win32acoem\vsim.exe`
 
-    `C:\Microchip\Libero_SoC_2025.2\Libero_SoC\Designer\bin\libero.exe`
+    `C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe`
 
     Note: update these tool paths if your Libero is installed in a
     different location.
@@ -1013,7 +1014,7 @@ output which indicates that the design passed the test.
 # At cycle 2083: PASS
 # ** Note: $finish : ../custom_tb.v(98)
 #    Time: 20855 ns Iteration: 1 Instance: /custom\_tb
-# End time: 17:34:52 on Feb 06,2025, Elapsed time: 0:00:24 
+# End time: 19:23:55 on Aug 06,2026, Elapsed time: 0:00:24 
 # Errors: 0, Warnings: 0
 ```
 
@@ -1532,25 +1533,25 @@ input digits from 0-9 were predicted correctly.
 
 ```
 Info: Running the following targets: sw
-Highest confidence: 3267, digit-0
-Highest confidence: 2686, digit-1
-Highest confidence: 3284, digit-2
-Highest confidence: 2690, digit-3
-Highest confidence: 1935, digit-4
-Highest confidence: 1370, digit-5
-Highest confidence: 2913, digit-6
-Highest confidence: 3555, digit-7
-Highest confidence: 1879, digit-8
-Highest confidence: 2093, digit-9
+Highest confidence:  3267, digit-0
+Highest confidence:  2686, digit-1
+Highest confidence:  3284, digit-2
 Received prediction: 0
 Received prediction: 1
+Highest confidence:  2690, digit-3
 Received prediction: 2
 Received prediction: 3
+Highest confidence:  1935, digit-4
 Received prediction: 4
+Highest confidence:  1370, digit-5
 Received prediction: 5
+Highest confidence:  2913, digit-6
 Received prediction: 6
+Highest confidence:  3555, digit-7
 Received prediction: 7
+Highest confidence:  1879, digit-8
 Received prediction: 8
+Highest confidence:  2093, digit-9
 Received prediction: 9
 ```
 
@@ -2082,26 +2083,26 @@ similar output to the software test stating that the digits 0-9 were
 recognized.
 
 ```
-# Highest confidence: 3267, digit- 0
-# Prediction: 0 (cycle gap since last output = 20698)
-# Highest confidence: 2686, digit- 1
-# Prediction: 1 (cycle gap since last output = 10900)
-# Highest confidence: 3284, digit- 2
-# Prediction: 2 (cycle gap since last output = 10902)
-# Highest confidence: 2690, digit- 3
-# Prediction: 3 (cycle gap since last output = 10900)
-# Highest confidence: 1935, digit- 4
-# Prediction: 4 (cycle gap since last output = 10902)
-# Highest confidence: 1370, digit- 5
-# Prediction: 5 (cycle gap since last output = 10900)
-# Highest confidence: 2913, digit- 6
-# Prediction: 6 (cycle gap since last output = 10902)
-# Highest confidence: 3555, digit- 7
-# Prediction: 7 (cycle gap since last output = 10900)
-# Highest confidence: 1879, digit- 8
-# Prediction: 8 (cycle gap since last output = 10902)
-# Highest confidence: 2093, digit- 9
-# Prediction: 9 (cycle gap since last output = 10900) 
+# Highest confidence:  3267, digit- 0
+# Prediction:  0 (cycle gap since last output =       20698)
+# Highest confidence:  2686, digit- 1
+# Prediction:  1 (cycle gap since last output =       10900)
+# Highest confidence:  3284, digit- 2
+# Prediction:  2 (cycle gap since last output =       10902)
+# Highest confidence:  2690, digit- 3
+# Prediction:  3 (cycle gap since last output =       10900)
+# Highest confidence:  1935, digit- 4
+# Prediction:  4 (cycle gap since last output =       10902)
+# Highest confidence:  1370, digit- 5
+# Prediction:  5 (cycle gap since last output =       10900)
+# Highest confidence:  2913, digit- 6
+# Prediction:  6 (cycle gap since last output =       10902)
+# Highest confidence:  3555, digit- 7
+# Prediction:  7 (cycle gap since last output =       10900)
+# Highest confidence:  1879, digit- 8
+# Prediction:  8 (cycle gap since last output =       10902)
+# Highest confidence:  2093, digit- 9
+# Prediction:  9 (cycle gap since last output =       10900)
 ```
 
 ## Checking Quality of Results (QoR): Fmax and Area
@@ -2116,12 +2117,13 @@ the `summary.results.rpt` report file:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 4.699 ns    | 5.301 ns | 188.644 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 4.548 ns    | 5.452 ns | 183.419 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
+
 
 ```
 
-The 188.644 MHz Fmax for the CNN meets both the 100 MHz frequency
+The 183.722 MHz Fmax for the CNN meets both the 100 MHz frequency
 requirement of the Hello FPGA design presented in Figure 25, as well as
 the 148.500 MHz frequency requirement for the PolarFire® Video Kit
 design presented in Figure 26.
@@ -2139,8 +2141,8 @@ below 8% of the PolarFire FPGA and is acceptable.
 +--------------------------+--------------------+--------+------------+
 | Resource Type            | Used               | Total  | Percentage |
 +--------------------------+--------------------+--------+------------+
-| Fabric + Interface 4LUT* | 5758 + 1536 = 7294 | 299544 | 2.44       |
-| Fabric + Interface DFF*  | 3226 + 1536 = 4762 | 299544 | 1.59       |
+| Fabric + Interface 4LUT* | 6331 + 1536 = 7867 | 299544 | 2.63       |
+| Fabric + Interface DFF*  | 3109 + 1536 = 4645 | 299544 | 1.55       |
 | User I/O                 | 0                  | 512    | 0.00       |
 | uSRAM                    | 44                 | 2772   | 1.59       |
 | LSRAM                    | 8                  | 952    | 0.84       |
@@ -2148,7 +2150,8 @@ below 8% of the PolarFire FPGA and is acceptable.
 +--------------------------+--------------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 8) + (36 * 20) + (12 * 44) = 1536.
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 8) + (36 * 20) + (12 * 44) = 1608. 
+
 ```
 
 We have now created a drop-in replacement for the original RTL digit
@@ -2521,7 +2524,7 @@ pipelining for this loop so there are no overlapping iterations. This
 means the entire loop of 5 iterations takes 10 cycles total to run. 
 
 <p align="center"><img src=".//media/image80.png" /></br>
-Figure 37: Schedule Viewer for BB_1.</p>
+Figure 37: Schedule Viewer for BB_2.</p>
 
 ![](.//media/image3.png)Next click on the `BB_1` basic block under
 `no_loop_unroll` shown in Figure 38. This basic block runs once after
@@ -2529,7 +2532,7 @@ the loop finishes and takes 2 cycles to finish. This means the
 `no_loop_unroll` function takes 12 cycles to finish in total.
 
 <p align="center"><img src=".//media/image81.png" /></br>
-Figure 38: Schedule Viewer for BB_2.</p>
+Figure 38: Schedule Viewer for BB_1.</p>
 
 ![](.//media/image3.png)Next, click on the `BB_0` block under
 `loop_unroll` to bring up the schedule for `loop_unroll` shown in Figure
@@ -2574,9 +2577,9 @@ Figure 40: Block Diagram of Custom Wrapper for SmartHLS-generated CNN
 block</p>
 
 ![](.//media/image3.png)To integrate the PolarFire® Video Kit design in
-Libero SoC 2025.2:
+Libero SoC 2026.1:
 
-1.  Launch Libero SoC 2025.2 and open the Digit Recognition project created 
+1.  Launch Libero SoC 2026.1 and open the Digit Recognition project created 
     in the [Prerequisites section](#generating-the-libero-project) by navigating to and click on: `Training2\Libero\Libero_training2\Libero_training2.prjx.`
 
 2.  Navigate to the Design Hierarchy and search for “`custom_wrapper`”.
@@ -2657,38 +2660,38 @@ Figure 41: PolarFire® Video and Imaging Kit Peripherals</p>
 
 5.  Make sure all the DIP switches (SW6) are in the ON position.
 
-5.  Connect the AC adapter to the board and power it on (SW4).
+6.  Connect the AC adapter to the board and power it on (SW4).
 
-6.  Open up FlashPro Express (FPExpress v2025.2), which you can find in
-    the Start Menu, listed under “Microchip Libero SoC v2025.2”:
+7.  Open up FlashPro Express (FPExpress v2026.1), which you can find in
+    the Start Menu, listed under “Microchip Libero SoC v2026.1”:
 
 <p align="center"><img src=".//media/image98.png" /></p>
 
-7. Select Project and New Job Project.
+8. Select Project and New Job Project.
 
 <p align="center"><img src=".//media/image99.png" /></p>
 
-8. Now select the job file “`Training2/VIDEO_KIT_TOP.job`” downloaded from the release assets.
+9. Now select the job file “`Training2/VIDEO_KIT_TOP.job`” downloaded from the release assets.
 Alternatively, you may generate your own bitstream from the Libero project created in the [previous section](#appendix-b-integrating-into-smartdesign) by running "Generate Bitstream", which runs
 Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
 
-9. Enter a project location. Click OK.
+10. Enter a project location. Click OK.
 
-10. Now the Programmer window will open. If you do not see the
+11. Now the Programmer window will open. If you do not see the
     Programmer for the MPF300TS PolarFire® FPGA, then click
     Refresh/Rescan Programmers.
 
 <p align="center"><img src=".//media/image100.png" /></p>
 
-11. Now click the RUN button to program the FPGA.
+12. Now click the RUN button to program the FPGA.
 
-12. After programming you should see the RUN PASSED. Now power cycle the
+13. After programming you should see the RUN PASSED. Now power cycle the
     board, then **make sure to press the user reset switch**, and close
     FlashPro Express.
 
 <p align="center"><img src=".//media/image101.png" /></p>
 
-13. Now you should see two video streams on your monitor, one smaller
+14. Now you should see two video streams on your monitor, one smaller
     picture in picture on the top left and then the background. If the
     video streams look blurry, try focusing the camera by rotating the
     camera lens. You should also see a downscaled greyscale version of
@@ -2704,13 +2707,13 @@ Synthesis, Place and Route, and Timing (approx. 1-2 hours.)
     reprogrammed until the wrapping goes away. The top-left camera view
     being purple does not affect the classification.
 
-14. Using your smartphone, open this document and zoom in on the example
+15. Using your smartphone, open this document and zoom in on the example
     handwritten digits shown in Figure 42.
 
 <p align="center"><img src=".//media/image102.png" /></br>
 Figure 42: Example Handwritten Digits</p>
 
-18. Now hold your smartphone screen up the PolarFire® Video Kit camera
+16. Now hold your smartphone screen up the PolarFire® Video Kit camera
     and move your phone until the picture in picture shows only one
     digit. For example, if you hold the “5” digit from Figure 42 up to
     the camera, you should see the output on the top left of the monitor
@@ -2720,7 +2723,7 @@ Figure 42: Example Handwritten Digits</p>
 <p align="center"><img src=".//media/image103.jpeg" /></br>
 Figure 43: Expected output on Monitor for “5” digit</p>
 
-19. Below the picture in picture, as shown in Figure 44, you will see a
+17. Below the picture in picture, as shown in Figure 44, you will see a
     small 28x28 green image which shows the downscaled greyscale image
     seen by the digit recognition CNN hardware block. On the right is
     the digit predicted by the hardware, in this case the prediction was
@@ -2731,7 +2734,7 @@ Figure 43: Expected output on Monitor for “5” digit</p>
 <p align="center"><img src=".//media/image103.jpeg" /></br>
 Figure 44: Downscaled digit recognition input and predicted digit output</p>
 
-20. You may notice the prediction may not be very accurate. This is due
+18. You may notice the prediction may not be very accurate. This is due
     to the CNN structure being a smaller version of the standard MNIST
     digit recognition CNN. In general, you should restructure and
     retrain the CNN to get better effectiveness if the CNN is not
@@ -2908,13 +2911,15 @@ Next, click Synthesize Hardware to FPGA (![](.//media/image59.png)). The
 `summary.results.rpt` report file will be generated once this step is
 finished.
 
+This is the result of using **double buffer**
+
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: ClassifierPipeline_top) ======
 
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 4.573 ns    | 5.427 ns | 184.264 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 4.501 ns    | 5.499 ns | 181.851 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -2925,8 +2930,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+--------------------+--------+------------+
 | Resource Type            | Used               | Total  | Percentage |
 +--------------------------+--------------------+--------+------------+
-| Fabric + Interface 4LUT* | 6354 + 2016 = 8370 | 299544 | 2.79       |
-| Fabric + Interface DFF*  | 3108 + 2016 = 5124 | 299544 | 1.71       |
+| Fabric + Interface 4LUT* | 6891 + 2016 = 8907 | 299544 | 2.97       |
+| Fabric + Interface DFF*  | 2957 + 2016 = 4973 | 299544 | 1.66       |
 | User I/O                 | 0                  | 512    | 0.00       |
 | uSRAM                    | 48                 | 2772   | 1.73       |
 | LSRAM                    | 20                 | 952    | 2.10       |
@@ -2935,6 +2940,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 20) + (36 * 20) + (12 * 48) = 2016.
+
+
 ```
 
 Dataflow parallelism with double buffers also reaches the clock
@@ -2943,7 +2950,7 @@ Video Kit design presented in Figure 25 and Figure 26. Resource
 utilization is similar to the version with threads, although uSRAM and
 LSRAM usage increased from 44 and 10 to 48 and 20 when using double
 buffers. This is because the initial thread implementation was closer to
-shared buffers. The shared buffer results are shown below.
+shared buffers. The **shared buffer** results are shown below.
 
 ```
 ====== 2. Timing Result of HLS-generated IP Core (top-level module: ClassifierPipeline_top) ======
@@ -2951,7 +2958,7 @@ shared buffers. The shared buffer results are shown below.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 4.978 ns    | 5.022 ns | 199.124 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 4.887 ns    | 5.113 ns | 195.580 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -2962,8 +2969,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+--------------------+--------+------------+
 | Resource Type            | Used               | Total  | Percentage |
 +--------------------------+--------------------+--------+------------+
-| Fabric + Interface 4LUT* | 5692 + 1608 = 7300 | 299544 | 2.44       |
-| Fabric + Interface DFF*  | 2976 + 1608 = 4584 | 299544 | 1.53       |
+| Fabric + Interface 4LUT* | 6261 + 1608 = 7869 | 299544 | 2.63       |
+| Fabric + Interface DFF*  | 2969 + 1608 = 4577 | 299544 | 1.53       |
 | User I/O                 | 0                  | 512    | 0.00       |
 | uSRAM                    | 44                 | 2772   | 1.59       |
 | LSRAM                    | 10                 | 952    | 1.05       |
@@ -2971,7 +2978,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+--------------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 10) + (36 * 20) + (12 * 44) = 1608. 
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 10) + (36 * 20) + (12 * 44)
 ```
 
 Notice that double buffers use more memory than shared buffers, because
