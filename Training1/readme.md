@@ -96,7 +96,7 @@ The following hardware is required:
 
 Make sure the following demo is working on your board: [AN5270 (Earlier DG0849): PolarFire FPGA Dual Camera Video Kit Demo Guide]([Download Link](https://www.microchip.com/en-us/application-notes/an5270)).
 
-
+We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/trainingdoc.md).
 
 We assume some knowledge of the C/C++ programming language for this training.
 
@@ -125,8 +125,7 @@ and run the following script to generate the HLS example designs:
 .\run_shls_on_examples.ps1
 ```
 
-If you are using Linux, open a terminal, set up the paths as described above, and navigate
-to the Libero directory, e.g.:
+If you are using Linux, open a terminal and navigate to the Libero directory, e.g.:
 
 ```bash
 cd Workspace/fpga-hls-examples/Training1/Libero

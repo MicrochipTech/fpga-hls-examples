@@ -167,22 +167,23 @@ to follow along.
 
 ## Generating the Libero Project
 
-Before starting the training, we need to first generate the Libero project. 
+efore starting the training, we need to first generate the Libero project. 
+
 
 If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
-```bash
+```
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
 Then, navigate to the Libero directory, e.g.:
 
-```powershell
+```ps1
 cd C:\Workspace\fpga-hls-examples\Training1\Libero
 ```
 
 and run the following script to generate the HLS example designs:
-```powershell
+```ps1
 .\run_shls_on_examples.ps1
 ```
 
@@ -2264,8 +2265,6 @@ Configure Design Initialization Data and Memories -\> Fabric RAMs. As
 shown in Figure 12, we specified the memory initialization hex file of
 the *texture_frame* RAM to the relative path:
 “`src/cfg_and_mem_files/lena_8Bit_Greyscale_512x512.hex`”.
-
-Then, you may modify frabric ram initialization
 
 <p align="center"><img src=".//media/edit_fabric_ram_initialization.png" /></br>
 Figure 12: Manual memory initialization of a SmartHLS-generated RAM

@@ -148,50 +148,37 @@ to follow along.
 
 ## Generating the Libero Project
 
-Before starting the training, we need to first generate the Libero project. 
+If you plan on following [Appendix B: Integrating into SmartDesign](#appendix-b-integrating-into-smartdesign),
+generate the Libero project in advance. 
 
-If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
-```bash
+  * If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
+
+```
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
-Then, navigate to the Libero directory, e.g.:
+Then navigate to the Libero directory and run `run_shls_on_examples.ps1` to generate the HLS example designs. e.g.:
 
-```powershell
-cd C:\Workspace\fpga-hls-examples\Training1\Libero
+```bat
+cd C:\Workspace\fpga-hls-examples\Training2\Libero
+run_shls_on_examples.ps1
 ```
 
-and run the following script to generate the HLS example designs:
-```powershell
-.\run_shls_on_examples.ps1
-```
-
-If you are using Linux, open a terminal, set up the paths as described above, and navigate
-to the Libero directory, e.g.:
+  * If you are using Linux, open a terminal and navigate to the Libero directory. Then run `run_shls_on_examples.sh` to generate the HLS example designs. e.g.:
 
 ```bash
-cd Workspace/fpga-hls-examples/Training1/Libero
-```
-and run the following script to generate the HLS example designs:
-``` bash
+cd Workspace/fpga-hls-examples/Training2/Libero
 bash run_shls_on_examples.sh
 ```
-On Windows, script execution is restricted by default. If `.\run_shls_on_examples.ps1`
-fails with "running scripts is disabled on this system", run it with a per-invocation
-bypass instead — this requires no administrator rights and changes no persistent setting:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\run_shls_on_examples.ps1
-```
-
-When this completes, use Libero to generate the project. Open Libero 2026.1, and go to Project -> Execute Script.
-Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY:1`.
+  * When this completes, use Libero to generate the project. Open Libero 2025.2, and go to Project -> Execute Script.
+Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
 <p align="center"><img src=".//media/generate_only.png" /></p>
 
-Click 'Run'. This should take about 10 minutes.
+* Click 'Run'. This should take about 10 minutes.
 
 
 # Setting up SmartHLS
@@ -415,7 +402,7 @@ In summary, dataflow parallelism can be used whenever we have a task
 that can be broken down into a sequence of tasks that can all run in
 parallel on a data stream. It allows tasks to start executing as soon as
 their prerequisites are ready. Dataflow parallelism was shown in
-Training 2, and more detailed information can be found in the [SmartHLS
+Training 1, and more detailed information can be found in the [SmartHLS
 User
 Guide](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_data_flow&redirect=true&version=latest).
 An example using dataflow parallelism will also be discussed in Appendix
@@ -2163,7 +2150,7 @@ below 8% of the PolarFire FPGA and is acceptable.
 +--------------------------+--------------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 8) + (36 * 20) + (12 * 44) = 1536.
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 8) + (36 * 20) + (12 * 44) = 1608. 
 
 ```
 

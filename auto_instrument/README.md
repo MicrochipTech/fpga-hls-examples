@@ -46,7 +46,7 @@ To minimize area overhead, users can control instrumentation scope through confi
 
 Before beginning this tutorial, you should install the following software:
 
-- Libero® SoC 2025.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
+- Libero® SoC 2026.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
 
 - The following hardware is required:
   - PolarFire® SoC FPGA Icicle Kit. Please follow [this link](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html) to set up your Icicle Kit and make sure Linux boots-up and that the board has an IP network address assigned to it.
@@ -191,8 +191,7 @@ void hlsModule(volatile unsigned char& go,
 }
 ```
 
-A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-F622374A-37E3-440B-922A-7980536D3130).
-
+A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-21/Chunk1922885941.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-0E09913C-B743-4F4C-BDD1-386B5DE84F69).
 **NOTE:** Make sure to clean your project and re-run `shls -a instrument_init` if you modify the top-level modules of your design, for example, if you want to add a new top-level function.
 
 Now, let's change the log levels related to `hlsModule()`. A lower log level means fewer signals will be instrumented, which in turn saves resources. The same property applies to the FIFO log level. Let's change `log_level` to 3, and the `fifo_log_level` to 3.
@@ -373,91 +372,6 @@ Get-Command acteljtag
 
 *NOTE*: Keep the `acteljtag` server terminal open as occasionally it may get disconnected and may need to be started again.
 
-The server exiting is a common cause of otherwise baffling failures later on, and the
-error messages never name it as the reason. Before blaming anything else, confirm the
-server is both **running** and **reachable**:
-
-| Where | Command |
-| --- | --- |
-| On the `JTAG_HOST` machine | `ss -ltnp \| grep <port>` |
-| From the build host (Windows) | `Test-NetConnection -ComputerName $env:JTAG_HOST -Port $env:JTAG_PORT` |
-| From the build host (Linux) | `nc -z $JTAG_HOST $JTAG_PORT && echo reachable` |
-
-A `LISTEN` line you saw earlier is not evidence that the server is still alive; re-run the
-check. Note also that the PID in a stale `ss` snapshot may already be gone, in which case
-`kill <pid>` reports `No such process`.
-
-To keep the server alive across dropped SSH sessions, start it detached rather than in a
-foreground terminal:
-
-```bash
-nohup acteljtag -p <port> > ~/acteljtag.log 2>&1 &
-```
-
-Invoke `acteljtag` by name, so that the `PATH` resolves it to the wrapper script in the
-Identify installation's `bin` directory. That wrapper sets `LD_LIBRARY_PATH` before
-execing the real executable. Calling the executable directly fails:
-
-```text
-.../Identify/linux_a_64/acteljtag: error while loading shared libraries:
-libcyusb.so: cannot open shared object file: No such file or directory
-```
-
-This is an easy mistake to make, because `ps -ef` displays the wrapper's *exec target*
-(`.../linux_a_64/acteljtag`) rather than the wrapper path you actually ran.
-
-#### Restarting the JTAG Server
-
-Restarting `acteljtag` re-initializes the programmer, and is the standard recovery step
-whenever the debugger reports that it cannot open or enable the programmer, for example:
-
-```text
-Error:  Programmer Port Initialization failed for port '<PROGRAMMER_ID>':  (Can not connect to the programmer) !
-Error:  Unable to Enable Programmer:  (Error: Failed to enable FP6 programmer) !
-```
-
-A debugger session that crashed can leave the programmer in a state that no amount of
-retrying from the build host will clear, so restart the server rather than relaunching the
-debugger repeatedly. On the `JTAG_HOST` machine:
-
-```bash
-# 1. Find the current PID, and check that nothing else is holding the programmer.
-ps -ef | grep -iE 'acteljtag|FPExpress|prgsrv|fpcommserv' | grep -v grep
-
-# 2. Stop it, using the PID from step 1.
-kill <PID>
-
-# 3. Confirm the port is released. This should print nothing.
-ss -ltnp | grep <port>
-
-# 4. Start a fresh server.
-nohup acteljtag -p <port> > ~/acteljtag.log 2>&1 &
-
-# 5. Confirm it is listening, and note that the PID has changed.
-ss -ltnp | grep <port>
-cat ~/acteljtag.log
-```
-
-Step 5 matters: confirming a `LISTEN` line is not enough on its own, because the wedged
-old process also holds the port and looks identical. Check that the PID is **new**.
-
-These two messages in `~/acteljtag.log` at start-up are harmless and can be ignored. They
-come from probing the *embedded* FP6, which is a separate device from a standalone FP6
-programmer:
-
-```text
-DEF0012: Unable to open file "/data/sysvr.def" (`DEFSYS')
-Failed to open eFP6 HID handle.
-```
-
-If the programmer still cannot be opened after a clean restart, power-cycle the board. The
-programmer is a USB device on the board, so its state is tied to board power and cannot
-always be cleared in software. Sequence: stop `acteljtag`, power-cycle the board, wait for
-Linux to boot and become reachable over SSH, then start `acteljtag` again.
-
-Note also that on a shared `JTAG_HOST` the programmer may legitimately be in use by
-someone else's FlashPro Express or debugger session — step 1 above will show it.
-
 Now open an interactive shell for Identify Debugger:
 
 On Linux, run
@@ -512,7 +426,6 @@ Running...
 This will wait until `inputFifo`'s `empty` signal becomes low. But to get it to become low, we need to run the `auto_instrument.accel.elf` binary that was compiled earlier on-board.
 
 ### Running the Software
-**NOTE:** this is a known issue. If Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\examples\scripts\utils\instrument and go to line 198 of update_vcd.tcl. Here, change "$merged_file" to "$vcdFile". This issue will be fixed for the next release of Libero.
 
 Now, to run the design on the board, open an `ssh` session to the Icicle Kit board:
 
@@ -541,8 +454,6 @@ vsim -do hls_output/scripts/instrument/vsim_keyboard_shortcut
 Now, open the ModelSim window and press Ctrl + R to refresh.
 
 You should see the signals for FIFOs arranged and grouped in an intuitive manner. You can expand the `User_Defined_FIFOs` group to see the signals for the FIFOs in the design. For example, here's the grouped signals for `fifo1` (after toggling on leaf names):
-
-**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. This is a known issue. To solve this issue, go to line 257 of "C:\Microchip\Libero_SoC\SmartHLS\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$". This issue will be fixed for the next release of Libero.
 
 ![alt text](assets/wave_template_grouping.png)
 
