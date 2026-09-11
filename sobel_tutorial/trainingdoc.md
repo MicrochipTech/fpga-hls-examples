@@ -1149,7 +1149,7 @@ for (int i = 0; i < HEIGHT; i++) {
 ```
 
 ![](.//media/image2.png) Now, re-run Software to Hardware by clicking
-the ![](.//media/image77.png) icon. Notice that the iteration latency of the `for` loop is 2052. As a result, the II is undefined (or nondeterministic). However, you *can* see the II of the inner loop for each branching possibility by looking at the two lines for the inner loop. We can see that one branch gives an II of 4, and the other an II of 1
+the ![](.//media/image77.png) icon. In the scheduling results, the inner loop has an II of 4 and an iteration latency of 6 cycles. The outer-loop iteration takes approximately 2052 cycles because it waits for the inner pipeline to process all 512 pixels before starting the next row. Flattening the loops avoids this repeated pipeline overhead
 
 ```
 +-------------------------------------------------------------------------------------------------------------+

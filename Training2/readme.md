@@ -2978,7 +2978,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+--------------------+--------+------------+
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
-  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 10) + (36 * 20) + (12 * 44)
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 10) + (36 * 20) + (12 * 44) = 1608
 ```
 
 Notice that double buffers use more memory than shared buffers, because
