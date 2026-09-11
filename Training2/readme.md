@@ -151,8 +151,7 @@ to follow along.
 If you plan on following [Appendix B: Integrating into SmartDesign](#appendix-b-integrating-into-smartdesign),
 generate the Libero project in advance. 
 
-
-  * If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
+* If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
 ```
 Set-ExecutionPolicy Unrestricted -Scope CurrentUser

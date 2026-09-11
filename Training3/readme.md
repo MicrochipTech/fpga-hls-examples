@@ -179,7 +179,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser
 Then, navigate to the Libero directory, e.g.:
 
 ```ps1
-cd C:\Workspace\fpga-hls-examples\Training1\Libero
+cd C:\Workspace\fpga-hls-examples\Training3\Libero
 ```
 
 and run the following script to generate the HLS example designs:
@@ -191,7 +191,7 @@ If you are using Linux, open a terminal, set up the paths as described above, an
 to the Libero directory, e.g.:
 
 ```bash
-cd Workspace/fpga-hls-examples/Training1/Libero
+cd Workspace/fpga-hls-examples/Training3/Libero
 ```
 and run the following script to generate the HLS example designs:
 ``` bash
@@ -1333,7 +1333,7 @@ older version of SmartHLS, you can set the
 [USE\_FIFO\_FOR\_PIPELINE\_REG](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_use_fifo_for_pipieline_reg&redirect=true&version=latest)
 parameter to 1 in a custom configuration file to enable this behavior.
 The steps to do this are similar to setting the `STRENGTH_REDUCTION`
-parameter as seen in the RGB2YCbCr section of the [SmartHLS Training 1 document](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/).
+parameter as seen in the RGB2YCbCr section of the [SmartHLS Training 3 document](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training3/).
 
 ## Simulation and Generated Hardware
 
