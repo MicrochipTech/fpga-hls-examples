@@ -393,6 +393,7 @@ server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
 server start
 com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
 com check
+waveform period 10
 ```
 
 ### Triggering and Capturing Data
@@ -463,7 +464,7 @@ Let's take a look at the `empty` and `write_data` signals for `fifo1`, and compa
 
 ![alt text](assets/empty_signals_delay_0.png)
 
-Notice that the delay between the falling edges is 120ns. Since `set waveform_period 10` sets the clock's half-period, a clock cycle is 20ns, so 120ns is 6 clock cycles. The reason for this offset in delay is due to some of the control logic in the generated Verilog code. In general, expect
+Notice that the delay between the falling edges is 60ns. Since a clock cycle is 10ns, 60ns is 6 clock cycles. The reason for this offset in delay is due to some of the control logic in the generated Verilog code. In general, expect
 
 - A 6-cycle delay when the delay is 0
 - An (9 + N)-cycle delay when the delay is N, for some positive integer N.
