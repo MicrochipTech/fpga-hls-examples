@@ -1333,7 +1333,7 @@ older version of SmartHLS, you can set the
 [USE\_FIFO\_FOR\_PIPELINE\_REG](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=hls_use_fifo_for_pipieline_reg&redirect=true&version=latest)
 parameter to 1 in a custom configuration file to enable this behavior.
 The steps to do this are similar to setting the `STRENGTH_REDUCTION`
-parameter as seen in the RGB2YCbCr section of the [SmartHLS Training 3 document](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training3/).
+parameter as seen in the RGB2YCbCr section of the [SmartHLS Training 1 document](https://github.com/MicrochipTech/fpga-hls-examples/tree/main/Training1/).
 
 ## Simulation and Generated Hardware
 
