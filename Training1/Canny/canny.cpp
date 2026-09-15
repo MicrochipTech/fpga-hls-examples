@@ -55,7 +55,10 @@ int main() {
     	printf( "Error: Unable to open the file %s \n",GOLDEN_OUTPUT);
     	return 1;
     }
-           
+
+    bmp_pixel_t *input_channel_mem = input_channel;
+    bmp_pixel_t *golden_output_image_mem = golden_output_image;
+
     // convert image to grayscale and write to input array
     unsigned char (*input_image)[WIDTH] = new unsigned char[HEIGHT][WIDTH];
     for (i = 0; i < HEIGHT; i++) {
@@ -130,6 +133,17 @@ int main() {
     }
 
     write_bmp("output.bmp", &input_channel_header, output_image);
+
+    free(input_channel_mem);
+    free(golden_output_image_mem);
+    free(output_image);
+
+    delete[] input_image;
+    delete[] gaussian_output;
+    delete[] sobel_output;
+    delete[] nonmaximum_suppression_output;
+    delete[] hysteresis_output_golden;
+
     return result_incorrect;
 }
 

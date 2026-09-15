@@ -81,6 +81,8 @@ int main() {
     	return 1;
     }
 
+    bmp_pixel_t *golden_output_image_mem = golden_output_image;
+
     output_image = (bmp_pixel_t*)malloc(SIZE * sizeof(bmp_pixel_t));
     output_image_ptr = output_image;
 
@@ -133,6 +135,14 @@ int main() {
     }
 
     write_bmp("output.bmp", &input_channel_header, output_image);
+
+    free(input_channel);
+    free(golden_output_image_mem);
+    free(output_image);
+
+    delete[] input_image;
+    delete[] output_image_gaussian;
+
     return result_incorrect;
 }
 
