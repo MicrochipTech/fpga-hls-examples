@@ -171,7 +171,7 @@ cd Workspace/fpga-hls-examples/Training2/Libero
 bash run_shls_on_examples.sh
 ```
 
-  * When this completes, use Libero to generate the project. Open Libero 2025.2, and go to Project -> Execute Script.
+  * When this completes, use Libero to generate the project. Open Libero 2026.1, and go to Project -> Execute Script.
 Choose `libero_flow.tcl` under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
@@ -238,7 +238,7 @@ synthesis.
 9.  Make sure the tool paths to vsim.exe and libero.exe are properly set
     to:
 
-    `C:\Microchip\Libero_SoC_2026.1\QuestaSim\win32acoem\vsim.exe`
+    `C:\Microchip\Libero_SoC_2026.1\ModelSim_Pro\win32acoem\vsim.exe`
 
     `C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe`
 
