@@ -238,10 +238,10 @@ synthesis.
 9.  Make sure the tool paths to vsim.exe and libero.exe are properly set
     to:
 
-    `C:\Microchip\Libero_SoC_2026.1\ModelSim_Pro\win32acoem\vsim.exe`
-
-    `C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe`
-
+```console
+C:\Microchip\Libero_SoC_2026.1\Libero_SoC\ModelSim_Pro\win32acoem\vsim.exe
+C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe
+```
     Note: update these tool paths if your Libero is installed in a
     different location.
 

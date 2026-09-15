@@ -270,8 +270,8 @@ synthesis.
     > set to:
 
 ```console
-C:\Microchip\Libero_SoC_2026.1\ModelSim_Pro\win32acoem\vsim.exe`
-C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe`
+C:\Microchip\Libero_SoC_2026.1\Libero_SoC\ModelSim_Pro\win32acoem\vsim.exe
+C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe
 ```
 
 Note: update these tool paths if your Libero is installed in a

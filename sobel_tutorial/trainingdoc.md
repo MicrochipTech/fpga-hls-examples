@@ -1,6 +1,6 @@
 <h1><p align="center">SmartHLS™ Tutorial for Microchip PolarFire®:</p></h1>
 <h2><p align="center">Sobel Filtering for Image Edge Detection</p></h2>
-<h2><p align="center">Revision 11.0</br>May 2025</br></p></h2>
+<h2><p align="center">Revision 12.0</br>August, 2026</br></p></h2>
 <p align="center"><img src=".//media/image1.png" /></p>
 
 # Revision History
