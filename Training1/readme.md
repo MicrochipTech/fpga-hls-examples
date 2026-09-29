@@ -2,7 +2,7 @@
 <h1><p align="center">SmartHLS™ Training Session 1:</p></h1>
 <h2><p align="center">Image Processing on the PolarFire® Video Kit</p></h2>
 
-<h2><p align="center">Training</br>Revision 10</br>May 30, 2025<br /> <br /> <br /> </p></h2>
+<h2><p align="center">Training</br>Revision 12</br>August, 2026<br /> <br /> <br /> </p></h2>
 
 <p align="center"><img src=".//media/image1.png" /></p>
 
@@ -55,19 +55,27 @@ Updated document for outdated figures and for SmartHLS™ 2024.2 release.
 
 Updated document for outdated figures and for SmartHLS™ 2025.1 release.
 
+## Revision 11
+
+Updated document for outdated figures and for SmartHLS™ 2025.2 release.
+
+## Revision 12
+
+Updated document for outdated figures and for SmartHLS™ 2026.1 release.
+
 # Prerequisites
 
 Before beginning this training, you should install the following
 software:
 
-  - Libero® SoC 2025.1 (or later) with QuestaSim Pro
+  - Libero® SoC 2026.1 (or later) with QuestaSim Pro
     - [Download](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)
-  - SmartHLS 2025.1 (or later): this is packaged with Libero
+  - SmartHLS 2026.1 (or later): this is packaged with Libero
   - AN5270 (Earrlier DG0849) Video Control GUI used by the PolarFire board demo
       - [Download Link](https://www.microchip.com/en-us/application-notes/an5270)
 
-This document uses the Windows versions of Libero® SoC 2025.1 and
-SmartHLS 2025.1. Depending on the version you use, the results generated
+This document uses the Windows versions of Libero® SoC 2026.1 and
+SmartHLS 2026.1. Depending on the version you use, the results generated
 from your Libero® SoC and SmartHLS could be slightly different from that
 presented in this document.
 
@@ -88,7 +96,7 @@ The following hardware is required:
 
 Make sure the following demo is working on your board: [AN5270 (Earlier DG0849): PolarFire FPGA Dual Camera Video Kit Demo Guide]([Download Link](https://www.microchip.com/en-us/application-notes/an5270)).
 
-We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/Sobel_Tutorial_Microsemi.pdf).
+We assume you have already completed the [SmartHLS Tutorial: Sobel Filtering for Image Edge Detection](https://github.com/MicrochipTech/fpga-hls-examples/blob/main/sobel_tutorial/trainingdoc.md).
 
 We assume some knowledge of the C/C++ programming language for this training.
 
@@ -99,32 +107,42 @@ to follow along.
 ## Generating the Libero Project
 
 Before starting the training, we need to first generate the Libero project. 
-Ensure to seup the liscence and the shls and libero paths 
 
+If you are using Windows, you will first need to allow script execution, as Windows restricts script execution by default. To do this, right-click the PowerShell icon and select "Run as administrator" then run:
 
-If you are using Windows, open the Windows command prompt (cmd) and navigate to the Libero directory, e.g.:
+```bash
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+```
 
-```bat
-cd C:\Workspace\fpga-hls-examples-main\Training1\Libero
+Then, navigate to the Libero directory, e.g.:
+
+```powershell
+cd C:\Workspace\fpga-hls-examples\Training1\Libero
 ```
 
 and run the following script to generate the HLS example designs:
-```bat
-run_shls_on_examples.ps1
+```powershell
+.\run_shls_on_examples.ps1
 ```
 
 If you are using Linux, open a terminal and navigate to the Libero directory, e.g.:
 
 ```bash
-cd Workspace/fpga-hls-examples/Training1/Libero
+cd Workspace/fpga-hls-examples-main/Training1/Libero
 ```
 and run the following script to generate the HLS example designs:
 ``` bash
 bash run_shls_on_examples.sh
 ```
-When working with windows, make sure to set the execution policy to Unrestricted in order to run the script.
+On Windows, script execution is restricted by default. If `.\run_shls_on_examples.ps1`
+fails with "running scripts is disabled on this system", run it with a per-invocation
+bypass instead — this requires no administrator rights and changes no persistent setting:
 
-When this completes, use Libero to generate the project. Open Libero 2025.1, and go to Project -> Execute Script.
+```powershell
+powershell -ExecutionPolicy Bypass -File .\run_shls_on_examples.ps1
+```
+
+When this completes, use Libero to generate the project. Open Libero 2026.1, and go to Project -> Execute Script.
 Choose libero_flow.tcl under "Script file". In Arguments, put `GENERATE_ONLY:1`.
 
 <p align="center"><img src=".//media/libero_execute_script.png" /></p>
@@ -333,7 +351,7 @@ the steps below:
 
 6. Connect the AC adapter to the board and power it on (SW4).
 
-7. Open up FlashPro Express (FPExpress v2025.1), which you can find in the Start Menu, listed under “Microchip Libero SoC v2025.1”:
+7. Open up FlashPro Express (FPExpress v2026.1), which you can find in the Start Menu, listed under “Microchip Libero SoC v2026.1”:
 <p align="center"><img src=".//media/image9.png" /></p>
 
 8. Select Project and New Job Project.
@@ -488,7 +506,7 @@ directions below.
     Prerequisites). We will use
     the Training1 folder of the extracted content for this training.
 
-2.  Open SmartHLS 2025.1 and choose a workspace.
+2.  Open SmartHLS 2026.1 and choose a workspace.
 
 <p align="center"><img src=".//media/image26.png" /></p>
 
@@ -1197,7 +1215,7 @@ if (out != ap_uint<24>("4C6E57")) {
     return 1;
 }
 ```
-Next, starting from line 169, we run alpha blending on the two input
+Next, starting from line 163, we run alpha blending on the two input
 image files. We specify the input alpha value of 50%, which is
 represented by the 8-bit value 127:
 ```c
@@ -1356,9 +1374,8 @@ PolarFire FPGA device by clicking on the ![](.//media/image65.png). This
 will launch Libero SoC in the background and run synthesis, place, and
 route. This should take 5 minutes and generate the “synthesis” directory
 which holds the Libero SoC project directory, and the
-summary.results.rpt file (note that all of those files/directories are 
-located under the directory "hls_output"). This will give both the timing 
-and the resource results. Note that if you only want the resource result, you
+summary.results.rpt file. This will give both the timing and the
+resource results. Note that if you only want the resource result, you
 can click on ![](.//media/image66.png), which will run synthesis only
 with no place and route.
 
@@ -1373,7 +1390,7 @@ timing and resource usage:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 7.449 ns    | 2.551 ns | 392.003 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 7.429 ns    | 2.571 ns | 388.954 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -1386,7 +1403,6 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-----------------+--------+------------+
 | Fabric + Interface 4LUT* | 153 + 216 = 369 | 299544 | 0.12       |
 | Fabric + Interface DFF*  | 12 + 216 = 228  | 299544 | 0.08       |
-| I/O Register             | 0               | 1536   | 0.00       |
 | User I/O                 | 0               | 512    | 0.00       |
 | uSRAM                    | 0               | 2772   | 0.00       |
 | LSRAM                    | 0               | 952    | 0.00       |
@@ -1403,7 +1419,7 @@ Blending block must be at most 6.734 ns.
 <p align="center"><img src=".//media/image68.png"/></p></br>
 
 We can see from section 2 of `summary.result.rpt` that the minimum period
-for the synthesized block is 2.551 ns, which is below the threshold. This
+for the synthesized block is 2.571 ns, which is below the threshold. This
 means we can safely integrate this block into the demo design and meet
 timing.
 
@@ -1439,7 +1455,7 @@ Browse.
 
 Now navigate to your `Libero.exe`, for example:
 ```
-C:\Microchip\Libero_SoC_2025.1\Libero_SoC\Designer\bin\libero.exe
+C:\Microchip\Libero_SoC_2026.1\Libero_SoC\Designer\bin\libero.exe
 ```
 Click OK.
 
@@ -1462,7 +1478,7 @@ report:
 <p align="center"><img src=".//media/image75.png"/></p></br>
 
 In the resource report we notice that SmartHLS is including the
-“Interface 4LUTs” when reporting 371 4LUTs (155 Fabric 4LUTs + 216
+“Interface 4LUTs” when reporting 369 4LUTs (153 Fabric 4LUTs + 216
 Interface 4LUTs). SmartHLS is also including “Interface DFFs” when
 reporting 228 DFFs (12 Fabric DFFs + 216 Interface DFFs). On PolarFire
 FPGAs, “Interface” 4LUTs/DFFs are only required by DSP blocks and RAM
@@ -1526,7 +1542,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
     <p align="center"><img src=".//media/image79.png"/></p></br>
 2.  Click the “Compile Software to Hardware” button
     ![](.//media/image80.png) on the top toolbar.
-3.  Launch Libero SoC 2025.1 and open the project: “`Libero/Libero_training1/Libero_training1.prjx`” you generated as part of the [prerequisites](#generating-the-libero-project) .
+3.  Launch Libero SoC 2026.1 and open the project: “`Libero/Libero_training1/Libero_training1.prjx`” you generated as part of the [prerequisites](#generating-the-libero-project) .
     On Windows, if you see errors about missing files or errors in Synthesis, you will need to move the project to a directory with a short name (such as `C:\Downloads` or `C:\Workspace`) to avoid issues with long filenames.
     
     Note: The Libero project was created when SmartHLS still had the
@@ -2060,7 +2076,7 @@ representation of `fixpt_t(65.738)` by adding this code in the main
 function on line 104 after the test case validation loop:
 ```c
 std::cout << fixpt_t(65.738).to_fixpt_string(10) << std::endl;
-std::cout << "= " << fixpt_t(65.738).to_double() << std::endl;
+std::cout << "= " << (double)fixpt_t(65.738) << std::endl;
 ```
 
 Now recompile (![](.//media/image59.png)) and rerun
@@ -2097,8 +2113,6 @@ see this output in the Console:
 +------------------------+-----------------+--------------------------+... 
 Simulation time (cycles): 9 
 SW/HW co-simulation: PASS
- 
-15:54:48 Build Finished (took 16s.619ms)
 ```
 
 The other columns and messages in the simulation log report other
@@ -2151,7 +2165,7 @@ module.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 7.276 ns    | 2.724 ns | 367.107 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 7.246 ns    | 2.754 ns | 363.108 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -2162,9 +2176,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
 +--------------------------+-----------------+--------+------------+
-| Fabric + Interface 4LUT* | 368 + 180 = 548 | 299544 | 0.18       |
+| Fabric + Interface 4LUT* | 365 + 180 = 545 | 299544 | 0.18       |
 | Fabric + Interface DFF*  | 89 + 180 = 269  | 299544 | 0.09       |
-| I/O Register             | 0               | 1536   | 0.00       |
 | User I/O                 | 0               | 512    | 0.00       |
 | uSRAM                    | 0               | 2772   | 0.00       |
 | LSRAM                    | 0               | 952    | 0.00       |
@@ -2173,10 +2186,11 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 5) + (12 * 0) = 180.
+
 ```
 
 We can see from section 2 of summary.result.rpt that the minimum period
-for the synthesized block is 2.724 ns, which is below the threshold of
+for the synthesized block is 2.754 ns, which is below the threshold of
 6.734 ns from the demo design. This means we can safely integrate this
 block into the demo design and meet timing.
 
@@ -2255,7 +2269,7 @@ changes. This will turn off (0) the SmartHLS strength reduction
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 7.225 ns    | 2.775 ns | 360.360 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 7.246 ns    | 2.754 ns | 363.108 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -2266,9 +2280,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
 +--------------------------+-----------------+--------+------------+
-| Fabric + Interface 4LUT* | 362 + 180 = 542 | 299544 | 0.18       |
+| Fabric + Interface 4LUT* | 365 + 180 = 545 | 299544 | 0.18       |
 | Fabric + Interface DFF*  | 89 + 180 = 269  | 299544 | 0.09       |
-| I/O Register             | 0               | 1536   | 0.00       |
 | User I/O                 | 0               | 512    | 0.00       |
 | uSRAM                    | 0               | 2772   | 0.00       |
 | LSRAM                    | 0               | 952    | 0.00       |
@@ -2392,7 +2405,7 @@ output in `summary.results.rpt`:
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 8.479 ns    | 1.521 ns | 657.462 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 8.791 ns    | 1.209 ns | 827.130 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -2403,9 +2416,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-----------------+--------+------------+
 | Resource Type            | Used            | Total  | Percentage |
 +--------------------------+-----------------+--------+------------+
-| Fabric + Interface 4LUT* | 240 + 180 = 420 | 299544 | 0.18       |
-| Fabric + Interface DFF*  | 89 + 180 = 269  | 299544 | 0.09       |
-| I/O Register             | 0               | 1536   | 0.00       |
+| Fabric + Interface 4LUT* | 251 + 180 = 431 | 299544 | 0.14       |
+| Fabric + Interface DFF*  | 4 + 180 = 184   | 299544 | 0.06       |
 | User I/O                 | 0               | 512    | 0.00       |
 | uSRAM                    | 0               | 2772   | 0.00       |
 | LSRAM                    | 0               | 952    | 0.00       |
@@ -2414,6 +2426,7 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 
 * Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 0) + (36 * 5) + (12 * 0) = 180.
+
 ```
 Now close all project files.
 
@@ -2626,7 +2639,7 @@ following output in the Console stating that the co-sim has passed:
 +----------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 | Top-Level Name             | Number of calls | Simulation time (cycles) | Call Latency (min/max/avg) | Call II (min/max/avg) |
 +----------------------------+-----------------+--------------------------+----------------------------+-----------------------+
-| gaussian_filter_memory_top | 1               | 88,021                   | 88,020 (single call)       | N/A (single call)     |
+| gaussian_filter_memory_top | 1               | 88,021                   | 88,019 (single call)       | N/A (single call)     |
 +----------------------------+-----------------+--------------------------+----------------------------+-----------------------+
 Simulation time (cycles): 88,021
 SW/HW co-simulation: PASS
@@ -2816,7 +2829,7 @@ the number of stages is 23.
 ```
 Info: Done pipelining the loop on line 35 of gaussian_filter.cpp with
 label "for_loop_gaussian_filter_cpp_35_5".
-    Pipeline Initiation Interval (II) = 13. Pipeline length = 18.
+    Pipeline Initiation Interval (II) = 13. Pipeline length = 16.
 ```
 We can see that there is memory contention within the loop pipeline that
 prevents the initiation interval from becoming 1 in the SmartHLS Info
@@ -3183,7 +3196,7 @@ the `summary.results.rpt` file.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 5.368 ns    | 4.632 ns | 215.889 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 5.452 ns    | 4.548 ns | 219.877 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -3194,9 +3207,8 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-------------------+--------+------------+
 | Resource Type            | Used              | Total  | Percentage |
 +--------------------------+-------------------+--------+------------+
-| Fabric + Interface 4LUT* | 1103 + 144 = 1247 | 299544 | 0.42       |
-| Fabric + Interface DFF*  | 761 + 144 = 905   | 299544 | 0.30       |
-| I/O Register             | 0                 | 1536   | 0.00       |
+| Fabric + Interface 4LUT* | 1003 + 144 = 1147 | 299544 | 0.38       |
+| Fabric + Interface DFF*  | 752 + 144 = 896   | 299544 | 0.30       |
 | User I/O                 | 0                 | 512    | 0.00       |
 | uSRAM                    | 0                 | 2772   | 0.00       |
 | LSRAM                    | 4                 | 952    | 0.42       |
@@ -3207,9 +3219,9 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
   Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 4) + (36 * 0) + (12 * 0) = 144.
 ```
 We can see from section 2 of summary.result.rpt that the minimum period
-for the synthesized block is 4.632 ns, which is below the threshold of
+for the synthesized block is 4.548 ns, which is below the threshold of
 6.353 ns from the demo design. This means we can safely integrate this
-block into the demo design and meet timing. SmartHLS 2025.1 also reports
+block into the demo design and meet timing. SmartHLS 2026.1 also reports
 the usage for fabric and interface 4LUTs and DFFs separately.
 
 ![](.//media/image2.png)Now close all project files.
@@ -3316,15 +3328,6 @@ pipeline then has an initiation interval of 1 as well.
 ```
 ====== 2. Function and Loop Scheduling Results ======
 
-+--------------------------------------------------------------------------------------------------------------------------+
-| Function: gaussian_filter takes 2077448 cycles                                                                           |
-+-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
-| Loop                              | Location In Source             | Trip Count | Iteration Latency | II | Total Latency |
-+-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
-| for.loop:gaussian_filter.cpp:23:5 | line 23 of gaussian_filter.cpp | 2077442    | 3                 | 1  | 2077444       |
-+-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
-
-
 +--------------------------------------------------------------------------------------------------------------------+
 | Function: sobel_filter takes 2075527 cycles                                                                        |
 +--------------------------------+-----------------------------+------------+-------------------+----+---------------+
@@ -3332,6 +3335,15 @@ pipeline then has an initiation interval of 1 as well.
 +--------------------------------+-----------------------------+------------+-------------------+----+---------------+
 | for.loop:sobel_filter.cpp:19:5 | line 19 of sobel_filter.cpp | 2075521    | 3                 | 1  | 2075523       |
 +--------------------------------+-----------------------------+------------+-------------------+----+---------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+| Function: gaussian_filter takes 2077448 cycles                                                                           |
++-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
+| Loop                              | Location In Source             | Trip Count | Iteration Latency | II | Total Latency |
++-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
+| for.loop:gaussian_filter.cpp:23:5 | line 23 of gaussian_filter.cpp | 2077442    | 3                 | 1  | 2077444       |
++-----------------------------------+--------------------------------+------------+-------------------+----+---------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------+
@@ -3350,7 +3362,6 @@ pipeline then has an initiation interval of 1 as well.
 +-------------------------------------+----------------------------------+------------+-------------------+----+---------------+
 | for.loop:hysteresis_filter.cpp:14:5 | line 14 of hysteresis_filter.cpp | 2075521    | 3                 | 1  | 2075523       |
 +-------------------------------------+----------------------------------+------------+-------------------+----+---------------+
-
 ```
 ![](.//media/image2.png)Now we uncomment `FAST_COSIM` in `define.hpp`,
 save, then rerun SmartHLS to generate the hardware
@@ -3445,7 +3456,7 @@ and check the Fmax and resource usage.
 +--------------+---------------+-------------+-------------+----------+-------------+
 | Clock Domain | Target Period | Target Fmax | Worst Slack | Period   | Fmax        |
 +--------------+---------------+-------------+-------------+----------+-------------+
-| clk          | 10.000 ns     | 100.000 MHz | 3.610 ns    | 6.290 ns | 156.495 MHz |
+| clk          | 10.000 ns     | 100.000 MHz | 4.101 ns    | 5.899 ns | 169.520 MHz |
 +--------------+---------------+-------------+-------------+----------+-------------+
 
 The reported Fmax is for the HLS core in isolation (from Libero's post-place-and-route timing analysis).
@@ -3456,15 +3467,16 @@ When the HLS core is integrated into a larger system, the system Fmax may be low
 +--------------------------+-------------------+--------+------------+
 | Resource Type            | Used              | Total  | Percentage |
 +--------------------------+-------------------+--------+------------+
-| Fabric + Interface 4LUT* | 3168 + 396 = 3564 | 299544 | 1.19       |
-| Fabric + Interface DFF*  | 2149 + 396 = 2545 | 299544 | 0.85       |
-| I/O Register             | 0                 | 1536   | 0.00       |
+| Fabric + Interface 4LUT* | 3045 + 396 = 3441 | 299544 | 1.15       |
+| Fabric + Interface DFF*  | 1971 + 396 = 2367 | 299544 | 0.79       |
 | User I/O                 | 0                 | 512    | 0.00       |
 | uSRAM                    | 3                 | 2772   | 0.11       |
 | LSRAM                    | 10                | 952    | 1.05       |
 | Math                     | 0                 | 924    | 0.00       |
 +--------------------------+-------------------+--------+------------+
 
+* Interface 4LUTs and DFFs are occupied due to the uses of LSRAM, Math, and uSRAM.
+  Number of interface 4LUTs/DFFs = (36 * #.LSRAM) + (36 * #.Math) + (12 * #.uSRAM) = (36 * 10) + (36 * 0) + (12 * 3) = 396.
 ```
 We can see from section 2 of `summary.result.rpt` that the minimum period
 for the synthesized block is 6.092 ns, which is below the threshold of
@@ -3490,7 +3502,7 @@ generated Verilog Cores into Libero® SoC SmartDesign.
 2.  Click the “Compile Software to Hardware” button
     ![](.//media/image80.png) on the top toolbar.
 
-3.  Launch Libero® SoC 2025.1 and open the project: “`Libero_training1/Libero_training1.prjx`”
+3.  Launch Libero® SoC 2026.1 and open the project: “`Libero_training1/Libero_training1.prjx`”
 
 4.  Navigate to the Design Hierarchy and search for “canny”. Right click
     the canny_top design component and select Unlink. This is to make

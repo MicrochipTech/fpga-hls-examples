@@ -13,6 +13,16 @@ Set-StrictMode -Version Latest
 $SHLS_ROOT_DIR = Split-Path -Parent (Split-Path -Parent (Get-Command shls).Source)
 Write-Host  "SmartHLS root directory: $SHLS_ROOT_DIR"
 
+if (!(Get-Command riscv64-unknown-linux-gnu-g++ -ErrorAction SilentlyContinue)){
+	Write-Host "`nCaution: riscv64-unknown-linux-gnu-g++ not found, adding $SHLS_ROOT_DIR\swtools\binutils\riscv-gnu-toolchain\bin to PATH. Please check this!`n"
+	$env:PATH+=";$SHLS_ROOT_DIR\swtools\binutils\riscv-gnu-toolchain\bin"
+}
+
+if (!($Env:Path -split ";" -contains "$SHLS_ROOT_DIR\dependencies\lib\cygwin")){
+	Write-Host "`nCaution: Cygwin libs not found on PATH, adding $SHLS_ROOT_DIR\dependencies\lib\cygwin to PATH. Please check this!`n"
+	$env:PATH+=";$SHLS_ROOT_DIR\dependencies\lib\cygwin"
+}
+
 $EXAMPLE_ROOT_FOLDER = Join-Path -Path $PSScriptRoot -ChildPath './../../../../../'
 Write-Host "Example root folder: $EXAMPLE_ROOT_FOLDER"
 
@@ -97,7 +107,7 @@ if ($null -eq $env:BOARD_IP) {
 if ($arch -eq "riscv_64") {
     $copy_path = "root@" + $env:BOARD_IP + ":/srv/www/test/h264/"
     Write-Host "Copying file to board...(BOARD_IP:$copy_path)"
-    scp $ELF $copy_path
+    scp -O $ELF $copy_path
 
     Write-Host "Deleting output files"
     ssh "root@$env:BOARD_IP" "rm -f /srv/www/test/h264/output.*"

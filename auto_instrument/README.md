@@ -8,9 +8,12 @@
   - [Instrument and Compile](#instrument-and-compile)
     - [Instrumenting the design](#instrumenting-the-design)
     - [Compile \& Program Hardware](#compile--program-hardware)
+      - [Programming a `.job` File From Any Location](#programming-a-job-file-from-any-location)
+      - [Identifying the Correct `.job` File on a Remote JTAG Host](#identifying-the-correct-job-file-on-a-remote-jtag-host)
     - [Compiling the software](#compiling-the-software)
   - [Part 1: Debugging Mode](#part-1-debugging-mode)
     - [Connecting to the JTAG Cable](#connecting-to-the-jtag-cable)
+      - [Restarting the JTAG Server](#restarting-the-jtag-server)
     - [Triggering and Capturing dDta](#triggering-and-capturing-data)
     - [Running the Software](#running-the-software)
       - [Exercise 1 - Examine the Submodule Delays](#exercise-1---examine-the-submodule-delays)
@@ -43,7 +46,7 @@ To minimize area overhead, users can control instrumentation scope through confi
 
 Before beginning this tutorial, you should install the following software:
 
-- Libero® SoC 2025.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
+- Libero® SoC 2026.1 or later ([Download Page](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)). SmartHLS™ is packaged with Libero
 
 - The following hardware is required:
   - PolarFire® SoC FPGA Icicle Kit. Please follow [this link](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-1F9BA312-87A9-43F0-A66E-B83D805E3F02.html) to set up your Icicle Kit and make sure Linux boots-up and that the board has an IP network address assigned to it.
@@ -188,8 +191,7 @@ void hlsModule(volatile unsigned char& go,
 }
 ```
 
-A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-13/GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-F622374A-37E3-440B-922A-7980536D3130).
-
+A full explanation of the parameters of `instrument_conf.json` is located in the [User Guide](https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-21/Chunk1922885941.html#GUID-0BA4F982-F732-459D-8CAB-C02B0E92879F__GUID-0E09913C-B743-4F4C-BDD1-386B5DE84F69).
 **NOTE:** Make sure to clean your project and re-run `shls -a instrument_init` if you modify the top-level modules of your design, for example, if you want to add a new top-level function.
 
 Now, let's change the log levels related to `hlsModule()`. A lower log level means fewer signals will be instrumented, which in turn saves resources. The same property applies to the FIFO log level. Let's change `log_level` to 3, and the `fifo_log_level` to 3.
@@ -218,6 +220,113 @@ shls soc_accel_proj_program
 ```
 
 Alternatively, you can also use FlashPro Express. If you do, please make sure you close FPExpress after flashing the bitstream, as it may interfere with the debugging process.
+
+#### Programming a `.job` File From Any Location
+
+`shls soc_accel_proj_program` only ever programs the `.job` file at the one fixed path
+inside the current project's `hls_output/`. That path is hard-coded — there is no command
+line option to point it elsewhere — and the command always programs through a *locally*
+attached programmer. So if you have copied the `.job` file to another directory, or to the
+`JTAG_HOST` machine, this command cannot flash it.
+
+Invoke the underlying TCL script directly instead. It accepts any `.job` path, and it also
+supports remote programming:
+
+```text
+<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/libero/FPExpress_program.tcl
+```
+
+It takes four mandatory positional arguments, in this order, followed by optional
+`name:value` arguments:
+
+| Argument | Value for this design | Notes |
+| --- | --- | --- |
+| 1. job file | path to your `.job` | Any location. |
+| 2. `useSPI` | `1` | `1` programs the SPI image *and* the FPGA bitstream. Use `1` whenever the design's `MPFS_ICICLE_KIT_BASE_DESIGN_RAM.new.cfg` contains `-storage_type {SPI}`, as this one does. |
+| 3. project location | e.g. `FPExpress_project` | Output directory for the FlashPro Express project. **Create it first** — the script does not, and fails with `Error: Folder '<path>' doesn't exist.` |
+| 4. device name | `MPFS250T_ES` | The Icicle Kit default. |
+| `jtagId:<id>` | `jtagId:$PROGRAMMER_ID` | Optional. Omit to let FlashPro Express choose. |
+| `remoteHostName:<host>` | `remoteHostName:$JTAG_HOST` | Optional. Requires `ENABLE_REMOTE_SOLUTION:1` as well. |
+
+The FlashPro Express executable is under the Libero installation, and note that the
+directory and capitalisation differ by platform:
+
+| Platform | Path |
+| --- | --- |
+| Windows | `<LIBERO_INSTALLATION_DIRECTORY>\Designer\bin\FPExpress.exe` |
+| Linux | `<LIBERO_INSTALLATION_DIRECTORY>/Designer/bin64/FPExpress` |
+
+On Linux the executable is `FPExpress`, spelled with capitals; there is no `fpexpress`.
+
+To program locally, from any `.job` location:
+
+```powershell
+mkdir FPExpress_project
+& "<LIBERO_INSTALLATION_DIRECTORY>\Designer\bin\FPExpress.exe" `
+    "script:<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/libero/FPExpress_program.tcl" `
+    "script_args:<path-to>/Icicle_SoC.job 1 FPExpress_project MPFS250T_ES jtagId:$env:PROGRAMMER_ID" `
+    "logfile:fpexpress_job.log"
+```
+
+To program a board attached to a remote `JTAG_HOST` from the build host, add
+`remoteHostName:` and `ENABLE_REMOTE_SOLUTION:1`. This requires a FlashPro Express
+programmer server running on that host:
+
+```powershell
+& "<LIBERO_INSTALLATION_DIRECTORY>\Designer\bin\FPExpress.exe" `
+    "script:<SMARTHLS_INSTALLATION_DIRECTORY>/SmartHLS/examples/scripts/libero/FPExpress_program.tcl" `
+    "script_args:<path-to>/Icicle_SoC.job 1 FPExpress_project MPFS250T_ES jtagId:$env:PROGRAMMER_ID remoteHostName:$env:JTAG_HOST" `
+    "logfile:fpexpress_job.log" `
+    "ENABLE_REMOTE_SOLUTION:1"
+```
+
+Alternatively, copy the `.job` file to the `JTAG_HOST` and run the local form of the command
+there, which avoids needing the programmer server.
+
+Always pass all four mandatory arguments. With fewer, the script's usage message itself has
+a quoting defect and you get a confusing TCL parse error rather than the intended help
+text. Check `fpexpress_job.log` for results; SPI programming takes noticeably longer than
+the FPGA bitstream, so allow several minutes before assuming it has hung.
+
+#### Identifying the Correct `.job` File on a Remote JTAG Host
+
+If the board is attached to a different machine, the `.job` file has to be copied over
+before FlashPro Express can flash it, and on a shared `JTAG_HOST` you will likely find
+several `.job` files sitting there from other people and earlier runs. **Every one of them
+is named after its Libero project**, so on this design they are all called `Icicle_SoC.job`
+— the filename tells you nothing, and neither does the timestamp if someone else built at
+around the same time. Flashing the wrong one silently gives you a bitstream with no IICE
+in it, and the failure only shows up much later, as `run -iice` not finding the IICE.
+
+Identify the file by its content instead. Compute a hash of your local build:
+
+| Where | Command |
+| --- | --- |
+| Build host (Windows) | `Get-FileHash hls_output\soc\designer\MPFS_ICICLE_KIT_BASE_DESIGN\Icicle_SoC.job -Algorithm MD5` |
+| Build host (Linux) | `md5sum hls_output/soc/designer/MPFS_ICICLE_KIT_BASE_DESIGN/Icicle_SoC.job` |
+| `JTAG_HOST`, for each candidate | `md5sum *.job` |
+
+Only a file whose hash matches your local build is the one you just compiled.
+
+For a quicker first pass, note that a `.job` file contains its SmartHLS project name as
+plain text, so you can filter out other people's files without hashing anything:
+
+```bash
+grep -a -c auto_instrument *.job
+```
+
+Files that report `0` did not come from this example. This narrows the candidates, but it
+does not distinguish your build from an older build of the same example — confirm with the
+hash.
+
+The underlying problem is worth avoiding rather than repeatedly diagnosing. When copying
+the file over, give it a name that identifies the build, or put it in a directory of your
+own:
+
+```bash
+scp hls_output/soc/designer/MPFS_ICICLE_KIT_BASE_DESIGN/Icicle_SoC.job \
+    <user>@<JTAG_HOST>:~/my_builds/auto_instrument_instrumented.job
+```
 
 At this point the FPGA has been programmed with the instrumented design. Now let's compile the software.
 
@@ -284,6 +393,7 @@ server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
 server start
 com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
 com check
+waveform period 10
 ```
 
 ### Triggering and Capturing Data
@@ -317,7 +427,6 @@ Running...
 This will wait until `inputFifo`'s `empty` signal becomes low. But to get it to become low, we need to run the `auto_instrument.accel.elf` binary that was compiled earlier on-board.
 
 ### Running the Software
-**NOTE:** this is a known issue. If Windows is being used as host device, open C:\Microchip\Libero_SoC_2025.1\SmartHLS\SmartHLS\examples\scripts\utils\instrument and go to line 198 of update_vcd.tcl. Here, change "$merged_file" to "$vcdFile". This issue will be fixed for the next release of Libero.
 
 Now, to run the design on the board, open an `ssh` session to the Icicle Kit board:
 
@@ -346,8 +455,6 @@ vsim -do hls_output/scripts/instrument/vsim_keyboard_shortcut
 Now, open the ModelSim window and press Ctrl + R to refresh.
 
 You should see the signals for FIFOs arranged and grouped in an intuitive manner. You can expand the `User_Defined_FIFOs` group to see the signals for the FIFOs in the design. For example, here's the grouped signals for `fifo1` (after toggling on leaf names):
-
-**NOTE:** it is noticed that at times the modelsim displays error message in regards to "....clken" signals not found. This is a known issue. To solve this issue, go to line 257 of "C:\Microchip\Libero_SoC\SmartHLS\SmartHLS\lib\python\instrumentation\read_vcd.py" and change "clk" to "clk$". This issue will be fixed for the next release of Libero.
 
 ![alt text](assets/wave_template_grouping.png)
 
@@ -488,7 +595,7 @@ to
 set monitoring_mode 1
 ```
 
-in `hls_output/scripts/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
+in `hls_output/scripts/instrument/update_vcd.tcl`. This indicates to the waveform updating scripts that when we get new data from the debugger, we don't want to refresh the waveform, but rather want to concatenate the new data to the end of the existing waveform.
 
 Then, open a new terminal on the build host and start a monitoring process that periodically captures the data (this is done instead of using the GUI):
 
@@ -500,8 +607,47 @@ identify_debugger_shell -licensetype identdebugger_actel ./hls_output/scripts/in
   
 - On Windows:
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
+
+**KNOWN ISSUE:** If you are using Identify 2025.2 and your board is __not__ connected to the build host, you may need to manually load the activation created in the previous section. To do so, in `hls_output/scripts/instrument/monitor.tcl`, load the activation before the `source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl` command, such that your `monitor.tcl` script looks like this:
+
+```
+### Previous commands here...
+
+17 set prj_file [glob $synthesisPath/*.prj]
+18 set prj_basename [file rootname [file tail $prj_file]]
+19 project open $synthesisPath/$prj_basename.prj
+20 activation load $synthesisPath/last_run.adc
+21
+22 source SMARTHLS_INSTALLATION_PATH_HERE/examples/scripts/utils/instrument/monitor.tcl
+```
+
+If an activation was not automatically created in the previous section (i.e., the `hls_output/soc/synthesis/last_run.adc` file does not exist), you will have to create it manually. First, open the synthesis project in Identify.
+
+On Linux, run
+
+```bash
+identify_debugger_shell -licensetype identdebugger_actel -shell  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+On Windows, run
+
+```powershell
+identify_debugger_console -licensetype identdebugger_actel  hls_output/soc/synthesis/MPFS_ICICLE_KIT_BASE_DESIGN_syn.prj
+```
+
+Then set the JTAG server and programmer ID, and then save the activation.
+
+```
+server set -addr $::env(JTAG_HOST) -port 57123 -cabletype Microsemi_BuiltinJTAG
+com cableoption Microsemi_BuiltinJTAG_port $::env(PROGRAMMER_ID)
+activation save [PATH TO THE AUTO INSTRUMENT EXAMPLE HERE]/hls_output/soc/synthesis/last_run.adc
+```
+
+With `last_run.adc` and the code changes, you should now be able to run `monitor.tcl`, and proceed with the tutorial.
+
+</br>
 
 Finally, open Modelsim in a new terminal for visualization:
 
@@ -524,12 +670,12 @@ Start the monitoring loop that will generate the periodic captures:
 - On Linux:
   
 ```bash
-identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER ID
+identify_debugger_shell -licensetype identdebugger_actel hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
 ```
 
 - On Windows:
 ```console
-identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $PROGRAMMER_ID
+identify_debugger_console -licensetype identdebugger_actel ./hls_output/scripts/instrument/monitor.tcl $env:PROGRAMMER_ID
 ```
 
 Finally, open a new terminal and launch the FIFO Monitoring Dashboard:

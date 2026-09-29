@@ -16,9 +16,7 @@ Linux:
 Windows:
 <pre> ./setup.ps1 </pre>
 
-(**if needed**)
-
-By default, Windows restricts script execution. To allow scripts, right-click the PowerShell icon and select "Run as administrator" then run
+Note that by default, Windows restricts script execution. To allow scripts, right-click the PowerShell icon and select "Run as administrator" then run
 <pre> Set-ExecutionPolicy Unrestricted </pre>
 or set execution policy for current user only
 <pre> Set-ExecutionPolicy Unrestricted -Scope CurrentUser </pre>
@@ -54,3 +52,9 @@ Example | Description
 Example | Description
 --------|------------
 [RISC-V example](./risc-v-demo)|End-to-end SmartHLS + RISC-V + H264 over Ethernet Example.
+
+## SmartHLS Coding Assistant
+
+| Example | Description |
+| --- | --- |
+| [shls-assistant](./shls-assistant) | Claude Code-based AI coding assistant for SmartHLS. It integrates Anthropic's Claude code with a Model Context Protocol (MCP) server and RAG to help generate, optimize, and test SmartHLS C++ code for Microchip FPGAs. |

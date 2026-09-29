@@ -1,0 +1,14 @@
+{
+  "name": "mchp_hls_marketplace",
+  "owner": {
+    "name": "Microchip Technology",
+    "email": "smartHLS@microchip.com"
+  },
+  "plugins": [
+    {
+      "name": "shls_coding_assistant",
+      "source": "./shls-assistant/shls_plugin",
+      "description": "MCP server and coding assistant for SmartHLS projects"
+    }
+  ]
+}
