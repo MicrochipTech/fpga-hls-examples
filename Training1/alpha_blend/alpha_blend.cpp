@@ -141,6 +141,10 @@ int main() {
     golden_output_image = read_bmp(GOLDEN_OUTPUT, &golden_output_image_header);
     if (!golden_output_image) return 1;
 
+    bmp_pixel_t *input_channel1_mem = input_channel1;
+    bmp_pixel_t *input_channel2_mem = input_channel2;
+    bmp_pixel_t *golden_output_image_mem = golden_output_image;
+
     output_image = (bmp_pixel_t*)malloc(SIZE * sizeof(bmp_pixel_t));
     output_image_ptr = output_image;
 
@@ -200,6 +204,11 @@ int main() {
     }
 
     write_bmp("output.bmp", &input_channel1_header, output_image);
+
+    free(input_channel1_mem);
+    free(input_channel2_mem);
+    free(golden_output_image_mem);
+    free(output_image);
 
     printf("PASS!\n");
     return 0;

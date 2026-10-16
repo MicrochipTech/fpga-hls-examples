@@ -1,6 +1,5 @@
 source $env(SHLS_ROOT_DIR)/examples/shls.tcl
 set_project PolarFireSoC MPFS250T Icicle_SoC
-set_parameter POINTSTO_ANALYZE_HW_ONLY 1
 
 #
 # Parameters used for SoC integration

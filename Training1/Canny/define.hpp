@@ -20,8 +20,6 @@
 #endif
 #define SIZE (WIDTH*HEIGHT)
 
-void window_and_line_buffer(hls::ap_uint<10> input,
-                            hls::ap_uint<10> window[3][3]);
 
 // Gaussian Filter.
 const unsigned int GF_KERNEL_SIZE = 5;

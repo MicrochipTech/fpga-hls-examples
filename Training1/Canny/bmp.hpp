@@ -1,34 +1,7 @@
 #ifndef __PPM_H__
 #define __PPM_H__
 
-#include "hls/ap_int.hpp"
 #include "define.hpp"
-
-using namespace hls;
-
-// bit width of a pixel
-const int W = 8;
-
-// 24-bit RGB
-typedef ap_uint<3*W> rgb_t;
-
-// 7:0 blue
-const int B2 = 0;
-const int B1 = B2 + W-1;
-
-// 15:8 green
-const int G2 = W;
-const int G1 = G2 + W-1;
-
-// 23:16 red
-const int R2 = 2*W;
-const int R1 = R2 + W-1;
-
-struct input_t {
-    rgb_t      channel1;
-    rgb_t      channel2;
-    ap_uint<8> alpha;
-};
 
 #define SIZE (WIDTH*HEIGHT)
 
